@@ -1,0 +1,28 @@
+student:
+  global_hidden_dim: 64
+  alternative_hidden_dim: 32
+  cat_embedding_dim: 8
+  mode_embedding_dim: 8
+  scorer_hidden_dim: 64
+  dropout: 0.1
+
+training:
+  seed: 42
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  max_epochs: 200
+  patience: 20
+
+loss:
+  lambda_action: 1.0
+  lambda_distribution: 1.0
+  lambda_departure: 1.0
+  huber_delta: 1.0
+
+split:
+  strategy: group
+  group_field: split_group_id
+  train_ratio: 0.7
+  val_ratio: 0.15
+  test_ratio: 0.15

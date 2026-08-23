@@ -1,0 +1,26 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# secrets
+.env
+
+# generated artifacts (large / reproducible)
+data/
+outputs/
+models/
+experiments/
+tools/matsim-2026.0-release.zip
+tools/matsim-2026.0-release/
+
+# large datasets / downloads
+singapore-gtfs.zip
+*.gtfs.zip
+
+# local tooling
+.qoder/
+.idea/
+.vscode/

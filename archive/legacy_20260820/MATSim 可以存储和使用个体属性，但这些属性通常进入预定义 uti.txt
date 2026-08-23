@@ -1,0 +1,37 @@
+MATSim 可以存储和使用个体属性，但这些属性通常进入预定义 utility/scoring/replanning 机制；我们希望学习一个由 rich individual profile + context 驱动的 behavioral policy。
+
+同一个外部 shock 对不同 persona 为什么产生不同 behavioral elasticity
+
+Behavioral Elasticity Preservation
+
+weather、交通中断、实时拥堵、票价变化、道路封闭等动态外部环境被系统建模为行为扰动变量
+                 MATSim
+                   │
+        当前城市交通环境 Context_t
+                   │
+    ┌──────────────┼──────────────┐
+    │              │              │
+ congestion    transit delay   road closure
+ weather*      fare/cost       accessibility
+    │
+    ↓
+Individual Persona
+age / income / occupation / car ownership
+mobility limitation / household / habit
+    │
+    ↓
+Distilled Traveler Agent
+    │
+    ├── mode choice
+    ├── departure time
+    ├── route
+    ├── destination
+    └── cancel/reschedule trip
+    │
+    ↓
+MATSim执行所有人的选择
+    │
+    ↓
+新的 congestion / crowding / travel time
+    │
+    └────────────→ 下一轮决策

@@ -1,0 +1,3 @@
+[submodule "tools/MATSim"]
+	path = tools/MATSim
+	url = https://github.com/matsim-org/matsim-example-project.git

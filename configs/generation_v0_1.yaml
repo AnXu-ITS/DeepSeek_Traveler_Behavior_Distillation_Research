@@ -1,0 +1,159 @@
+dataset:
+  version: TBD_v0.1
+
+generation:
+  seed: 42
+
+persona:
+  age_group:
+    18-24: 0.15
+    25-34: 0.30
+    35-44: 0.25
+    45-64: 0.25
+    65+: 0.05
+  income_group:
+    low: 0.35
+    medium: 0.45
+    high: 0.20
+  occupation:
+    student: 0.10
+    office_worker: 0.40
+    service_worker: 0.15
+    manual_worker: 0.10
+    retired: 0.10
+    unemployed: 0.05
+    other: 0.10
+  household_size:
+    min: 1
+    max: 5
+  has_children_prob: 0.35
+  car_ownership_prob: 0.55
+  driving_license_prob: 0.70
+  bike_ownership_prob: 0.45
+  transit_pass_prob: 0.30
+  habitual_mode:
+    car: 0.35
+    pt: 0.30
+    bike: 0.10
+    walk: 0.10
+    mixed: 0.15
+  schedule_flexibility:
+    low: 0.30
+    medium: 0.45
+    high: 0.25
+  mobility_limitation:
+    none: 0.85
+    mild: 0.10
+    significant: 0.05
+
+trip:
+  purposes:
+    commute: 0.40
+    education: 0.15
+    shopping: 0.20
+    leisure: 0.25
+  origin_type: home
+  templates:
+    commute:
+      distance_km: [2.0, 30.0]
+      departure_window_min: [420, 540]
+      arrival_window_min: [480, 600]
+      time_constraint: hard
+      destination_type: work
+    education:
+      distance_km: [1.0, 15.0]
+      departure_window_min: [420, 520]
+      arrival_window_min: [480, 570]
+      time_constraint: hard
+      destination_type: school
+    shopping:
+      distance_km: [0.5, 12.0]
+      departure_window_min: [540, 1080]
+      arrival_window_min: [600, 1140]
+      time_constraint: soft
+      destination_type: shop
+    leisure:
+      distance_km: [0.5, 20.0]
+      departure_window_min: [600, 1200]
+      arrival_window_min: [660, 1260]
+      time_constraint: soft
+      destination_type: leisure
+    healthcare:
+      distance_km: [1.0, 20.0]
+      departure_window_min: [480, 960]
+      arrival_window_min: [540, 1020]
+      time_constraint: medium
+      destination_type: healthcare
+    escort:
+      distance_km: [0.5, 10.0]
+      departure_window_min: [420, 1020]
+      arrival_window_min: [480, 1080]
+      time_constraint: medium
+      destination_type: school
+    other:
+      distance_km: [1.0, 15.0]
+      departure_window_min: [480, 1080]
+      arrival_window_min: [540, 1140]
+      time_constraint: soft
+      destination_type: other
+
+alternatives:
+  base_speeds_kmh:
+    walk: 4.5
+    bike: 14.0
+    car: 32.0
+    pt: 18.0
+  access_time_min:
+    car: 3.0
+    pt: 8.0
+    bike: 1.0
+    walk: 0.0
+  transfers:
+    car: 0
+    pt: 1
+    bike: 0
+    walk: 0
+  weather_exposure:
+    car: 0.05
+    pt: 0.40
+    bike: 0.90
+    walk: 1.00
+  base_monetary_cost:
+    car_per_km: 0.6
+    parking_base: 5.0
+    pt_base_fare: 2.0
+    pt_per_km: 0.15
+  effects:
+    congestion_travel_time_factor_max: 0.5
+    congestion_reliability_delay_max: 15.0
+    weather_travel_time_factor_max: 0.15
+    transfer_time_per_transfer_min: 4.0
+    transit_disruption_travel_time_min: 15.0
+    transit_disruption_reliability_min: 30.0
+    road_disruption_travel_time_min: 20.0
+    road_disruption_reliability_min: 20.0
+
+baseline_context:
+  weather_condition: clear
+  weather_intensity: 0.0
+  road_congestion: 0.3
+  transit_delay_min: 0
+  transit_disruption: false
+  road_disruption: false
+  fare_multiplier: 1.0
+  parking_cost_multiplier: 1.0
+  congestion_charge: 0.0
+
+perturbations:
+  weather_intensity:
+    levels: [0.0, 0.25, 0.5, 0.75, 1.0]
+  road_congestion:
+    levels: [0.2, 0.4, 0.6, 0.8]
+  transit_delay:
+    levels: [0, 5, 15, 30]
+  fare_multiplier:
+    levels: [1.0, 1.25, 1.5, 2.0]
+  parking_cost_multiplier:
+    levels: [1.0, 1.5, 2.0, 3.0]
+  road_disruption:
+    levels: [false, true]

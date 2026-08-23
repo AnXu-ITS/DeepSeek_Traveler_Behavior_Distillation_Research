@@ -1,0 +1,10 @@
+teacher:
+  model: deepseek-v4-pro
+  prompt_version: teacher_v0.1
+  temperature: 0.2
+  max_retries: 2
+  timeout_seconds: 120
+  max_tokens: 8192
+  probability_tolerance: 0.001
+  departure_shift_min: -60
+  departure_shift_max: 60
