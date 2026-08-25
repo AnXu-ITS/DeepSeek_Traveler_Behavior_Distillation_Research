@@ -1,0 +1,38 @@
+# S6 causal mechanism audit configuration.
+#
+# For each audit axis we define:
+#   - context_field / axis : which context perturbation flag to change
+#   - intervention_level    : the "natural intervention" value (must coincide
+#                             with a single-axis level already in the S3 dataset,
+#                             so State A/B teacher targets can be reused)
+#   - target_mode           : the mode whose causal mediator is manipulated
+#   - mediator_attrs        : the alternative attributes that form the mediator
+#                             (decoupled from the context flag in State C/D)
+#
+# The four audit states per (persona, trip, axis):
+#   A baseline     : context normal, mediator normal  (reuse S3 baseline)
+#   B natural      : context high, mediator high      (reuse S3 single-axis CF)
+#   C broken-path  : context high, mediator FIXED at baseline  (NEW, needs teacher)
+#   D mediator-only: context normal, mediator high    (NEW, needs teacher)
+
+audit_axes:
+  - axis_id: congestion
+    axis: road_congestion
+    intervention_level: 0.8
+    target_mode: car
+    mediator_attrs: [travel_time_min, reliability_delay_min]
+
+  - axis_id: transit_delay
+    axis: transit_delay
+    intervention_level: 30
+    target_mode: pt
+    mediator_attrs: [travel_time_min, reliability_delay_min]
+
+  - axis_id: parking_cost
+    axis: parking_cost_multiplier
+    intervention_level: 3.0
+    target_mode: car
+    mediator_attrs: [monetary_cost]
+
+# Teacher sampling for the NEW states (C and D). A/B reuse the S3 K=3 targets.
+teacher_repeats: 5

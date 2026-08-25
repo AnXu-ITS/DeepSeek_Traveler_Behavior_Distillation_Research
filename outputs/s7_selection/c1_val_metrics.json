@@ -1,0 +1,30 @@
+{
+  "checkpoint": "outputs/student_s5_joint_m2/checkpoints/best.pt",
+  "val_mechanism_gap": {
+    "congestion": {
+      "G_nat": 0.0799,
+      "G_broken": 0.0779,
+      "G_med": 0.0258,
+      "n_quads": 2
+    },
+    "parking_cost": {
+      "G_nat": 0.1518,
+      "G_broken": 0.1769,
+      "G_med": 0.0142,
+      "n_quads": 2
+    }
+  },
+  "val_mean_mechanism_gap": 0.0877,
+  "val_legacy": {
+    "mode_accuracy": 0.9248,
+    "kl": 0.0473,
+    "probability_l1": 0.1708,
+    "n": 226
+  },
+  "val_seen_joint": {
+    "mode_accuracy": 0.9167,
+    "kl": 0.0352,
+    "probability_l1": 0.1415,
+    "n": 72
+  }
+}

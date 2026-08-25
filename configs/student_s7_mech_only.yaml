@@ -1,0 +1,39 @@
+# S7 ablation — MECHANISM-ONLY (lambda_mechanism=0.5, lambda_broken=0).
+# Ablation A of S7 instruction §30 (Q1: does L_mechanism alone work?).
+# See configs/student_s7_w1.yaml for the full design notes.
+
+student:
+  global_hidden_dim: 64
+  alternative_hidden_dim: 32
+  cat_embedding_dim: 8
+  mode_embedding_dim: 8
+  scorer_hidden_dim: 64
+  dropout: 0.1
+
+training:
+  seed: 42
+  batch_size: 32
+  mechanism_batch_size: 8
+  learning_rate: 0.000125
+  weight_decay: 0.0001
+  max_epochs: 120
+  patience: 15
+  replay_ratio: "2:1:1"
+  het_pairs_per_epoch: 52
+
+loss:
+  lambda_action: 1.0
+  lambda_distribution: 1.0
+  lambda_departure: 1.0
+  lambda_elasticity: 0.0
+  lambda_direction: 1.0
+  lambda_magnitude: 1.0
+  direction_margin: 0.0
+  lambda_heterogeneity: 1.0
+  huber_delta: 1.0
+  lambda_mechanism: 0.5
+  lambda_broken: 0.0
+
+split:
+  strategy: s3c_persona_holdout
+  group_field: persona_group_id

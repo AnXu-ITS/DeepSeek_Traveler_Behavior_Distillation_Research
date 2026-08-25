@@ -1,0 +1,180 @@
+{
+  "seeds": [
+    42,
+    7,
+    123,
+    2024
+  ],
+  "per_seed": [
+    {
+      "seed": 42,
+      "parking_cost_G_med": {
+        "mean": -0.0054,
+        "ci_low": -0.009,
+        "ci_high": -0.0018,
+        "excl_zero": true
+      },
+      "congestion_G_broken": {
+        "mean": 0.0017,
+        "ci_low": -0.0131,
+        "ci_high": 0.0127,
+        "excl_zero": false
+      },
+      "congestion_Gap_shortcut": {
+        "mean": -0.0566,
+        "ci_low": -0.1164,
+        "ci_high": -0.0051,
+        "excl_zero": true
+      },
+      "legacy_kl_delta": {
+        "mean": -0.004,
+        "ci_low": -0.0052,
+        "ci_high": -0.0027,
+        "excl_zero": true
+      },
+      "seen_joint_kl_delta": {
+        "mean": -0.0021,
+        "ci_low": -0.0035,
+        "ci_high": -0.0006,
+        "excl_zero": true
+      }
+    },
+    {
+      "seed": 7,
+      "parking_cost_G_med": {
+        "mean": -0.0057,
+        "ci_low": -0.0096,
+        "ci_high": -0.0021,
+        "excl_zero": true
+      },
+      "congestion_G_broken": {
+        "mean": -0.0006,
+        "ci_low": -0.0153,
+        "ci_high": 0.0111,
+        "excl_zero": false
+      },
+      "congestion_Gap_shortcut": {
+        "mean": -0.056,
+        "ci_low": -0.1064,
+        "ci_high": -0.0125,
+        "excl_zero": true
+      },
+      "legacy_kl_delta": {
+        "mean": -0.0022,
+        "ci_low": -0.0035,
+        "ci_high": -0.0009,
+        "excl_zero": true
+      },
+      "seen_joint_kl_delta": {
+        "mean": -0.0013,
+        "ci_low": -0.0027,
+        "ci_high": 0.0004,
+        "excl_zero": false
+      }
+    },
+    {
+      "seed": 123,
+      "parking_cost_G_med": {
+        "mean": -0.006,
+        "ci_low": -0.0099,
+        "ci_high": -0.0021,
+        "excl_zero": true
+      },
+      "congestion_G_broken": {
+        "mean": 0.0012,
+        "ci_low": -0.0134,
+        "ci_high": 0.0142,
+        "excl_zero": false
+      },
+      "congestion_Gap_shortcut": {
+        "mean": -0.0485,
+        "ci_low": -0.0792,
+        "ci_high": -0.0221,
+        "excl_zero": true
+      },
+      "legacy_kl_delta": {
+        "mean": -0.0025,
+        "ci_low": -0.0037,
+        "ci_high": -0.0012,
+        "excl_zero": true
+      },
+      "seen_joint_kl_delta": {
+        "mean": -0.0011,
+        "ci_low": -0.0025,
+        "ci_high": 0.0004,
+        "excl_zero": false
+      }
+    },
+    {
+      "seed": 2024,
+      "parking_cost_G_med": {
+        "mean": -0.0056,
+        "ci_low": -0.0093,
+        "ci_high": -0.0021,
+        "excl_zero": true
+      },
+      "congestion_G_broken": {
+        "mean": 0.0016,
+        "ci_low": -0.0126,
+        "ci_high": 0.0127,
+        "excl_zero": false
+      },
+      "congestion_Gap_shortcut": {
+        "mean": -0.055,
+        "ci_low": -0.1035,
+        "ci_high": -0.0143,
+        "excl_zero": true
+      },
+      "legacy_kl_delta": {
+        "mean": -0.003,
+        "ci_low": -0.0044,
+        "ci_high": -0.0016,
+        "excl_zero": true
+      },
+      "seen_joint_kl_delta": {
+        "mean": -0.0015,
+        "ci_low": -0.0031,
+        "ci_high": 0.0002,
+        "excl_zero": false
+      }
+    }
+  ],
+  "verdict": {
+    "parking_cost_G_med": {
+      "label": "parking G_med (repair)",
+      "seeds_negative": 4,
+      "seeds_positive": 0,
+      "values": [
+        -0.0054,
+        -0.0057,
+        -0.006,
+        -0.0056
+      ]
+    },
+    "congestion_G_broken": {
+      "label": "congestion G_broken",
+      "seeds_negative": 1,
+      "seeds_positive": 3,
+      "values": [
+        0.0017,
+        -0.0006,
+        0.0012,
+        0.0016
+      ]
+    },
+    "congestion_Gap_shortcut": {
+      "label": "congestion Gap_shortcut (repair)",
+      "seeds_negative": 4,
+      "seeds_positive": 0,
+      "values": [
+        -0.0566,
+        -0.056,
+        -0.0485,
+        -0.055
+      ]
+    }
+  },
+  "regressed_seeds": [],
+  "stable_across_seeds": true,
+  "interpretation": "S7 improvement > training-seed variance: the repair direction is consistent across all seeds and no seed regresses legacy/seen-joint KL."
+}

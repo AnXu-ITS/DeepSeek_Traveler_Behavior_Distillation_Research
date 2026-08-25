@@ -1,0 +1,24 @@
+{
+  "metric": "L2 over all trainable parameters",
+  "vs_c1": {
+    "W1": 0.133601,
+    "W2": 0.133347,
+    "W3": 0.132755,
+    "mech_only": 0.133526,
+    "broken_only": 0.133635
+  },
+  "pairwise_variants": {
+    "W1|W2": 0.00411,
+    "W1|W3": 0.008952,
+    "W1|broken_only": 0.003246,
+    "W1|mech_only": 0.003741,
+    "W2|W3": 0.006722,
+    "W2|broken_only": 0.005166,
+    "W2|mech_only": 0.004322,
+    "W3|broken_only": 0.009703,
+    "W3|mech_only": 0.00862,
+    "broken_only|mech_only": 0.006054
+  },
+  "pairwise_max": 0.009703,
+  "interpretation": "pairwise variant distances are ~2 orders of magnitude smaller than the distance from C1 => all lambda variants converge to nearly the same model; the mechanism-loss WEIGHT does not differentiate outcomes within the tested range, the shared S7 fine-tuning regime does."
+}

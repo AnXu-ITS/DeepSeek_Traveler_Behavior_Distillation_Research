@@ -12,6 +12,7 @@ from .losses import (
     elasticity_magnitude_loss,
     elasticity_sign_agreement,
 )
+from .mechanism_losses import mechanism_fidelity_loss, broken_path_fidelity_loss
 from .eval import predict_probs, persona_breakdown, counterfactual_sign_agreement
 from .dataset import (
     AggregatedTeacherDataset,
@@ -23,6 +24,14 @@ from .dataset import (
     make_persona_contrast_pairs,
     PersonaContrastPairDataset,
     collate_contrast_pairs,
+)
+from .mechanism_dataset import (
+    MechanismQuadruplet,
+    QuadMember,
+    load_mechanism_quadruplets,
+    encode_quad_member,
+    MechanismQuadrupletDataset,
+    collate_quadruplets,
 )
 from .split import group_aware_split, group_overlap
 
@@ -39,6 +48,8 @@ __all__ = [
     "elasticity_direction_loss",
     "elasticity_magnitude_loss",
     "elasticity_sign_agreement",
+    "mechanism_fidelity_loss",
+    "broken_path_fidelity_loss",
     "predict_probs",
     "persona_breakdown",
     "counterfactual_sign_agreement",
@@ -51,6 +62,12 @@ __all__ = [
     "make_persona_contrast_pairs",
     "PersonaContrastPairDataset",
     "collate_contrast_pairs",
+    "MechanismQuadruplet",
+    "QuadMember",
+    "load_mechanism_quadruplets",
+    "encode_quad_member",
+    "MechanismQuadrupletDataset",
+    "collate_quadruplets",
     "group_aware_split",
     "group_overlap",
 ]

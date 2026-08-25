@@ -1,0 +1,52 @@
+# S5 multi-axis / joint counterfactual sampling configuration.
+#
+# Each combination defines an ordered list of axes and a list of joint levels
+# (one value per axis, applied simultaneously). Joint levels are chosen to
+# COINCIDE with the single-axis levels already present in the S3 dataset so the
+# interaction metric  I_ij = P_ij - P_i - P_j + P_0  can be computed by linking
+# the joint state back to its two single-axis counterparts (same split_group_id).
+#
+# teacher_repeats (K) follows the S5 design:
+#   - high-SNR axes (weather, road_disruption)   -> K = 3
+#   - low-SNR axes (fare, congestion, delay)     -> K = 5
+#   - causal K=7 subset (from a low-SNR combo)   -> k7_subset
+joint_combinations:
+  - combination_id: rain_x_congestion
+    seen_in_training: true
+    teacher_repeats: 3
+    axes: [weather_intensity, road_congestion]
+    joint_levels:
+      - [0.5, 0.6]
+      - [1.0, 0.8]
+
+  - combination_id: fare_x_congestion
+    seen_in_training: false            # UNSEEN combination holdout (compositional test)
+    teacher_repeats: 5
+    axes: [fare_multiplier, road_congestion]
+    joint_levels:
+      - [1.5, 0.6]
+      - [2.0, 0.8]
+
+  - combination_id: fare_x_transit_delay
+    seen_in_training: true
+    teacher_repeats: 5
+    axes: [fare_multiplier, transit_delay]
+    joint_levels:
+      - [1.5, 15]
+      - [2.0, 30]
+
+  - combination_id: road_disruption_x_congestion
+    seen_in_training: true
+    teacher_repeats: 3
+    axes: [road_disruption, road_congestion]
+    joint_levels:
+      - [true, 0.6]
+      - [true, 0.8]
+
+# K=7 causal subset: the first N joint states (deterministic baseline order) of
+# the named low-SNR combination are sampled K=7 instead of their base K, giving
+# M2 a teacher-noise-stabilized target. M1 aggregates only the first base-K of
+# those 7 repeats; M2 aggregates all 7.
+k7_subset:
+  combination_id: fare_x_transit_delay
+  n_states: 40

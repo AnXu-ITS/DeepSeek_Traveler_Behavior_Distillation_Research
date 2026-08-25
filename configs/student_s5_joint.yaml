@@ -1,0 +1,41 @@
+# S5 multi-axis joint fine-tune configuration.
+#
+# Fine-tunes the frozen S3-C student (persona-holdout, decomposed elasticity +
+# heterogeneity) on the merged dataset (S3 single-axis + S5 seen joint combos).
+# The feature extractor is FROZEN from the S3-C checkpoint (no new feature
+# categories are introduced by joint states), so the model weights are the only
+# thing updated.
+
+student:
+  global_hidden_dim: 64
+  alternative_hidden_dim: 32
+  cat_embedding_dim: 8
+  mode_embedding_dim: 8
+  scorer_hidden_dim: 64
+  dropout: 0.1
+
+training:
+  seed: 42
+  batch_size: 32
+  learning_rate: 0.0005        # lower LR for fine-tune (vs 0.001 from-scratch)
+  weight_decay: 0.0001
+  max_epochs: 120
+  patience: 15
+
+loss:
+  lambda_action: 1.0
+  lambda_distribution: 1.0
+  lambda_departure: 1.0
+  lambda_elasticity: 0.0
+  lambda_direction: 1.0
+  lambda_magnitude: 1.0
+  direction_margin: 0.0
+  lambda_heterogeneity: 1.0
+  huber_delta: 1.0
+
+split:
+  # S5 reuses the EXACT S3-C persona holdout so M0/M1/M2 share the same unseen
+  # test personas. The train/val/test persona sets are read from the S3-C
+  # split_manifest.json at train time.
+  strategy: s3c_persona_holdout
+  group_field: persona_group_id

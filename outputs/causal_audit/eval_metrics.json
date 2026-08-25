@@ -1,0 +1,112 @@
+{
+  "n_groups": 152,
+  "n_skipped_unavailable": 88,
+  "n_teacher_complete": 152,
+  "models": {
+    "Teacher": {
+      "transit_delay": {
+        "E_natural": 0.3475,
+        "E_broken": 0.2071,
+        "E_mediator": 0.2894,
+        "R_shortcut": 0.7299,
+        "R_mediator": 0.9701,
+        "dP_target_B": -0.1654,
+        "dP_target_C": -0.0975,
+        "dP_target_D": -0.1378,
+        "n": 80
+      },
+      "congestion": {
+        "E_natural": 0.2533,
+        "E_broken": 0.1172,
+        "E_mediator": 0.1978,
+        "R_shortcut": 0.516,
+        "R_mediator": 0.8892,
+        "dP_target_B": -0.112,
+        "dP_target_C": -0.0385,
+        "dP_target_D": -0.0949,
+        "n": 36
+      },
+      "parking_cost": {
+        "E_natural": 0.4504,
+        "E_broken": 0.3139,
+        "E_mediator": 0.2203,
+        "R_shortcut": 0.6871,
+        "R_mediator": 0.5586,
+        "dP_target_B": -0.2216,
+        "dP_target_C": -0.1526,
+        "dP_target_D": -0.108,
+        "n": 36
+      }
+    },
+    "C0_preS5": {
+      "transit_delay": {
+        "E_natural": 0.3935,
+        "E_broken": 0.1165,
+        "E_mediator": 0.323,
+        "R_shortcut": 0.3701,
+        "R_mediator": 0.9003,
+        "dP_target_B": -0.194,
+        "dP_target_C": -0.0214,
+        "dP_target_D": -0.1615,
+        "n": 80
+      },
+      "congestion": {
+        "E_natural": 0.2029,
+        "E_broken": 0.1567,
+        "E_mediator": 0.1517,
+        "R_shortcut": 0.8119,
+        "R_mediator": 0.7488,
+        "dP_target_B": -0.0972,
+        "dP_target_C": -0.0699,
+        "dP_target_D": -0.0758,
+        "n": 36
+      },
+      "parking_cost": {
+        "E_natural": 0.4591,
+        "E_broken": 0.4717,
+        "E_mediator": 0.0226,
+        "R_shortcut": 1.0309,
+        "R_mediator": 0.0525,
+        "dP_target_B": -0.2279,
+        "dP_target_C": -0.2343,
+        "dP_target_D": 0.0111,
+        "n": 36
+      }
+    },
+    "C1_S5": {
+      "transit_delay": {
+        "E_natural": 0.3732,
+        "E_broken": 0.1284,
+        "E_mediator": 0.2848,
+        "R_shortcut": 0.3458,
+        "R_mediator": 0.8425,
+        "dP_target_B": -0.1835,
+        "dP_target_C": -0.0399,
+        "dP_target_D": -0.1424,
+        "n": 80
+      },
+      "congestion": {
+        "E_natural": 0.1778,
+        "E_broken": 0.171,
+        "E_mediator": 0.108,
+        "R_shortcut": 1.0206,
+        "R_mediator": 0.6722,
+        "dP_target_B": -0.0833,
+        "dP_target_C": -0.074,
+        "dP_target_D": -0.0521,
+        "n": 36
+      },
+      "parking_cost": {
+        "E_natural": 0.4535,
+        "E_broken": 0.4642,
+        "E_mediator": 0.0236,
+        "R_shortcut": 1.0197,
+        "R_mediator": 0.0588,
+        "dP_target_B": -0.2256,
+        "dP_target_C": -0.2309,
+        "dP_target_D": 0.0111,
+        "n": 36
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "source": "data/causal_audit/states_with_teacher.jsonl (S6 verbatim, no new API)",
+  "axes": [
+    "congestion",
+    "parking_cost"
+  ],
+  "car_available_filter": true,
+  "persona_split": "s3c_persona_holdout (verbatim)",
+  "counts_per_axis_split": {
+    "congestion": {
+      "test": 8,
+      "train": 26,
+      "val": 2
+    },
+    "parking_cost": {
+      "test": 8,
+      "train": 26,
+      "val": 2
+    }
+  },
+  "personas": {
+    "train": [
+      "P000004",
+      "P000005",
+      "P000010",
+      "P000011",
+      "P000012",
+      "P000013",
+      "P000014",
+      "P000017",
+      "P000019",
+      "P000020",
+      "P000021",
+      "P000022",
+      "P000023",
+      "P000024",
+      "P000025",
+      "P000026",
+      "P000027",
+      "P000029",
+      "P000030",
+      "P000031",
+      "P000032",
+      "P000033",
+      "P000034",
+      "P000035",
+      "P000036",
+      "P000037",
+      "P000038",
+      "P000040"
+    ],
+    "val": [
+      "P000001",
+      "P000003",
+      "P000006",
+      "P000007",
+      "P000028",
+      "P000039"
+    ],
+    "test": [
+      "P000002",
+      "P000008",
+      "P000009",
+      "P000015",
+      "P000016",
+      "P000018"
+    ]
+  },
+  "persona_overlap": false
+}
