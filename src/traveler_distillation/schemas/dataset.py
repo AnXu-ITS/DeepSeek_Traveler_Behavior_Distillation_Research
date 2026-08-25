@@ -12,10 +12,17 @@ class Perturbation(BaseModel):
 
     ``level`` may be a float (weather intensity, multipliers), an int
     (transit delay minutes) or a bool (road disruption).
+
+    For S5 multi-axis (joint) samples, ``axis == "joint"`` and ``level`` is a
+    dummy (0.0) while ``joint_axes`` carries the ordered list of
+    ``{"axis": ..., "level": ...}`` entries. This keeps single-axis consumers
+    backward compatible (they skip/ignore non-baseline axis values) while
+    giving joint states an explicit, machine-readable decomposition.
     """
 
     axis: str = Field(min_length=1)
     level: float | int | bool
+    joint_axes: list[dict] = Field(default_factory=list)
 
 
 class TeacherMetadata(BaseModel):

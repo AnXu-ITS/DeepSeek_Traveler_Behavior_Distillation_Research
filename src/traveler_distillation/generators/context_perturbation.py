@@ -55,3 +55,25 @@ AXIS_HANDLERS = {
     "parking_cost_multiplier": _set_parking_cost_multiplier,
     "road_disruption": _set_road_disruption,
 }
+
+
+def perturb_context_multi(
+    context: DynamicContext,
+    axes: list[tuple[str, float | int | bool]],
+) -> DynamicContext:
+    """Return a deep copy of ``context`` with MULTIPLE axes changed at once.
+
+    ``axes`` is an ordered list of ``(axis, level)`` pairs, applied in order
+    onto successive deep copies. Used by the S5 multi-axis / joint
+    counterfactual generator. Unknown axes raise ``ValueError`` (same contract
+    as :func:`perturb_context`).
+    """
+    new = context.model_copy(deep=True)
+    for axis, level in axes:
+        handler = AXIS_HANDLERS.get(axis)
+        if handler is None:
+            raise ValueError(
+                f"unknown perturbation axis '{axis}'. Supported: {sorted(AXIS_HANDLERS)}"
+            )
+        handler(new, level)
+    return new

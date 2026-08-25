@@ -20,13 +20,38 @@ class TeacherResponseParser:
     reliably parsed it is reported as a failure.
     """
 
-    def parse(self, raw: str) -> UniversalTravelerAction:
+    def parse(self, raw: str, clip_departure: bool = False) -> UniversalTravelerAction:
         text = self._strip_fences(raw.strip())
         data = self._load_json(text)
+        if clip_departure and "departure_time_shift_min" in data:
+            data["departure_time_shift_min"] = self._clip_shift(data["departure_time_shift_min"])
         try:
             return UniversalTravelerAction.model_validate(data)
         except ValidationError as exc:
             raise TeacherParseError(f"action schema validation failed: {exc}")
+
+    @staticmethod
+    def _clip_shift(v, lo: float = -60.0, hi: float = 60.0):
+        """Clip a departure shift to the student's representable range [lo, hi].
+
+        Used for S5 joint states: severe multi-axis contexts make the teacher
+        suggest departures beyond ±60 min, which the lightweight student
+        (60·tanh head) cannot represent. The MODE PROBABILITIES are unaffected;
+        only the (secondary) departure target is clipped. Mirrors the S2
+        "distillation range == student representable range" boundary, but keeps
+        the state instead of discarding it.
+        """
+        if isinstance(v, bool):
+            return int(v)
+        if isinstance(v, (int, float)):
+            return int(round(max(lo, min(hi, float(v)))))
+        if isinstance(v, str):
+            s = v.strip()
+            try:
+                return int(round(max(lo, min(hi, float(s)))))
+            except ValueError:
+                return v
+        return v
 
     @staticmethod
     def _strip_fences(text: str) -> str:

@@ -135,6 +135,7 @@ def _process_state(
     existing_valid: list[dict],
     t_section: dict,
     use_cache_bypass: bool = True,
+    clip_departure: bool = False,
 ) -> dict:
     """Fetch/parse/validate K uncached repeats for one state and aggregate.
 
@@ -183,7 +184,7 @@ def _process_state(
             continue
 
         try:
-            action = parser.parse(raw_content)
+            action = parser.parse(raw_content, clip_departure=clip_departure)
             res = validator.validate(st["state"], action)
             if not res.valid:
                 raise ValueError(res.reason)
