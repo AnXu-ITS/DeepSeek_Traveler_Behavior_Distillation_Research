@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "frozen_source": "src/traveler_distillation/student/model.py (TravelerStudent.forward)",
+  "outputs": {
+    "mode_probabilities": {
+      "type": "dict[str,float] over available modes",
+      "definition": "masked softmax over available-alternative utilities",
+      "constraint": "sums to 1 over available modes; unavailable modes carry 0"
+    },
+    "departure_time_shift_min": {
+      "type": "float",
+      "definition": "60 * tanh(departure_head([global_emb, pooled_alt_emb]))",
+      "range": "(-60, +60) minutes by construction"
+    },
+    "utilities": {
+      "type": "float per alternative",
+      "definition": "raw scorer logits"
+    }
+  },
+  "heads": {
+    "mode_head": "scorer([global_emb, alt_emb]) -> 1 logit per alternative",
+    "departure_head": "departure_head([global_emb, masked-mean-pooled alt_emb]) -> 1 logit"
+  }
+}

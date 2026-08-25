@@ -1,0 +1,162 @@
+[
+  {
+    "epoch": 1,
+    "train_mechanism_loss": 0.096481,
+    "train_broken_loss": 0.049715,
+    "val_total_loss": 196.321547,
+    "val_legacy_kl": 0.0448,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0353,
+    "val_mean_mechanism_gap": 0.091983
+  },
+  {
+    "epoch": 2,
+    "train_mechanism_loss": 0.09486,
+    "train_broken_loss": 0.044692,
+    "val_total_loss": 198.090918,
+    "val_legacy_kl": 0.0433,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.035,
+    "val_mean_mechanism_gap": 0.096
+  },
+  {
+    "epoch": 3,
+    "train_mechanism_loss": 0.095591,
+    "train_broken_loss": 0.04383,
+    "val_total_loss": 197.561256,
+    "val_legacy_kl": 0.0423,
+    "val_legacy_acc": 0.9204,
+    "val_seen_joint_kl": 0.0348,
+    "val_mean_mechanism_gap": 0.099283
+  },
+  {
+    "epoch": 4,
+    "train_mechanism_loss": 0.100066,
+    "train_broken_loss": 0.054258,
+    "val_total_loss": 198.857449,
+    "val_legacy_kl": 0.0412,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0343,
+    "val_mean_mechanism_gap": 0.102967
+  },
+  {
+    "epoch": 5,
+    "train_mechanism_loss": 0.093326,
+    "train_broken_loss": 0.047982,
+    "val_total_loss": 200.801052,
+    "val_legacy_kl": 0.0409,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0343,
+    "val_mean_mechanism_gap": 0.106217
+  },
+  {
+    "epoch": 6,
+    "train_mechanism_loss": 0.10167,
+    "train_broken_loss": 0.046772,
+    "val_total_loss": 202.314924,
+    "val_legacy_kl": 0.0405,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0341,
+    "val_mean_mechanism_gap": 0.108183
+  },
+  {
+    "epoch": 7,
+    "train_mechanism_loss": 0.094986,
+    "train_broken_loss": 0.042847,
+    "val_total_loss": 202.89582,
+    "val_legacy_kl": 0.0403,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.034,
+    "val_mean_mechanism_gap": 0.11035
+  },
+  {
+    "epoch": 8,
+    "train_mechanism_loss": 0.099115,
+    "train_broken_loss": 0.045852,
+    "val_total_loss": 203.222614,
+    "val_legacy_kl": 0.0399,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0337,
+    "val_mean_mechanism_gap": 0.111667
+  },
+  {
+    "epoch": 9,
+    "train_mechanism_loss": 0.095849,
+    "train_broken_loss": 0.047835,
+    "val_total_loss": 204.236562,
+    "val_legacy_kl": 0.0395,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0338,
+    "val_mean_mechanism_gap": 0.1128
+  },
+  {
+    "epoch": 10,
+    "train_mechanism_loss": 0.097145,
+    "train_broken_loss": 0.038669,
+    "val_total_loss": 205.26187,
+    "val_legacy_kl": 0.0398,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0348,
+    "val_mean_mechanism_gap": 0.113917
+  },
+  {
+    "epoch": 11,
+    "train_mechanism_loss": 0.108126,
+    "train_broken_loss": 0.042845,
+    "val_total_loss": 204.140636,
+    "val_legacy_kl": 0.0398,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0351,
+    "val_mean_mechanism_gap": 0.1152
+  },
+  {
+    "epoch": 12,
+    "train_mechanism_loss": 0.100942,
+    "train_broken_loss": 0.044614,
+    "val_total_loss": 203.96278,
+    "val_legacy_kl": 0.0396,
+    "val_legacy_acc": 0.9292,
+    "val_seen_joint_kl": 0.0347,
+    "val_mean_mechanism_gap": 0.11675
+  },
+  {
+    "epoch": 13,
+    "train_mechanism_loss": 0.094613,
+    "train_broken_loss": 0.049272,
+    "val_total_loss": 203.407979,
+    "val_legacy_kl": 0.0397,
+    "val_legacy_acc": 0.9292,
+    "val_seen_joint_kl": 0.0352,
+    "val_mean_mechanism_gap": 0.117583
+  },
+  {
+    "epoch": 14,
+    "train_mechanism_loss": 0.102604,
+    "train_broken_loss": 0.04452,
+    "val_total_loss": 202.812259,
+    "val_legacy_kl": 0.04,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0357,
+    "val_mean_mechanism_gap": 0.118367
+  },
+  {
+    "epoch": 15,
+    "train_mechanism_loss": 0.111006,
+    "train_broken_loss": 0.04675,
+    "val_total_loss": 202.688918,
+    "val_legacy_kl": 0.0403,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.0365,
+    "val_mean_mechanism_gap": 0.1184
+  },
+  {
+    "epoch": 16,
+    "train_mechanism_loss": 0.09273,
+    "train_broken_loss": 0.045247,
+    "val_total_loss": 204.802184,
+    "val_legacy_kl": 0.0403,
+    "val_legacy_acc": 0.9248,
+    "val_seen_joint_kl": 0.037,
+    "val_mean_mechanism_gap": 0.117833
+  }
+]

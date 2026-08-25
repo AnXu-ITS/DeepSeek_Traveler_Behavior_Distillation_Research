@@ -1,0 +1,11 @@
+{
+  "source": "checkpoint key 'config' (training-time snapshot)",
+  "config": {
+    "global_hidden_dim": 64,
+    "alternative_hidden_dim": 32,
+    "cat_embedding_dim": 8,
+    "mode_embedding_dim": 8,
+    "scorer_hidden_dim": 64,
+    "dropout": 0.1
+  }
+}

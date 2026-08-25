@@ -1,0 +1,61 @@
+# Uncommitted-work inventory at freeze time
+
+---- git diff (tracked modifications) ----
+(empty - no tracked modifications)
+
+---- git diff --cached (staged modifications) ----
+(empty)
+
+---- untracked files (git ls-files --others --exclude-standard) ----
+S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md
+S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md
+releases/s7_w3_generic_core_v1/FINAL_S7_W3_FREEZE.md
+releases/s7_w3_generic_core_v1/README.md
+releases/s7_w3_generic_core_v1/checkpoint/model.pt
+releases/s7_w3_generic_core_v1/checkpoint/model.pt.meta.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed123/model.pt
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed123/model.pt.meta.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed123/training_history.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed123/val_metrics.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed2024/model.pt
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed2024/model.pt.meta.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed2024/training_history.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed2024/val_metrics.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed7/model.pt
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed7/model.pt.meta.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed7/training_history.json
+releases/s7_w3_generic_core_v1/checkpoint/seeds/seed7/val_metrics.json
+releases/s7_w3_generic_core_v1/checkpoint/training_history.json
+releases/s7_w3_generic_core_v1/checkpoint/val_metrics.json
+releases/s7_w3_generic_core_v1/code_manifest/code_manifest_provenance.json
+releases/s7_w3_generic_core_v1/code_manifest/environment.txt
+releases/s7_w3_generic_core_v1/code_manifest/git_commit.txt
+releases/s7_w3_generic_core_v1/code_manifest/git_status.txt
+releases/s7_w3_generic_core_v1/code_manifest/uncommitted.patch
+releases/s7_w3_generic_core_v1/config/checkpoint_embedded_config.json
+releases/s7_w3_generic_core_v1/config/student_s7_w3.yaml
+releases/s7_w3_generic_core_v1/data_manifest/data_manifest.json
+releases/s7_w3_generic_core_v1/metrics/final_metrics.json
+releases/s7_w3_generic_core_v1/metrics/seed_robustness.csv
+releases/s7_w3_generic_core_v1/metrics/seeds/causal_eval_seeds.json
+releases/s7_w3_generic_core_v1/metrics/seeds/regression_eval_seeds.json
+releases/s7_w3_generic_core_v1/metrics/seeds/seed_summary.json
+releases/s7_w3_generic_core_v1/metrics/selection/selection.json
+releases/s7_w3_generic_core_v1/metrics/selection/variant_distances.json
+releases/s7_w3_generic_core_v1/normalization/category_mapping.json
+releases/s7_w3_generic_core_v1/normalization/mode_mapping.json
+releases/s7_w3_generic_core_v1/normalization/normalization.json
+releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S5_MULTI_AXIS.md
+releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md
+releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md
+releases/s7_w3_generic_core_v1/reports/SEED_ROBUSTNESS_S7_W3.md
+releases/s7_w3_generic_core_v1/schema/feature_order.txt
+releases/s7_w3_generic_core_v1/schema/input_schema.json
+releases/s7_w3_generic_core_v1/schema/output_schema.json
+releases/s7_w3_generic_core_v1/smoke/causal_smoke.json
+releases/s7_w3_generic_core_v1/smoke/regression_smoke.json
+scripts/freeze_s7_w3_release.py
+src/traveler_distillation/student/release_guard.py
+tests/test_release_guard.py
+
+# All listed untracked files were committed as part of the freeze commit.

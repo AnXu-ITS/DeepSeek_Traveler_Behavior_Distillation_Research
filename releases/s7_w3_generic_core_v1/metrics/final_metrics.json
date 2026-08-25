@@ -1,0 +1,170 @@
+{
+  "model": "S7-W3",
+  "release": "Generic Behavioral Core v1.0",
+  "status": "FROZEN",
+  "source": {
+    "legacy_and_joint": "outputs/s7_regression/eval_metrics.json (models.W3)",
+    "causal_mechanism": "outputs/s7_causal_eval/eval_metrics.json (models.W3)",
+    "seed_robustness": "outputs/s7_seed_check/seed_summary.json",
+    "protocol": "test-only; paired bootstrap B=2000 seed=42; units = quadruplet group (causal) / state (regression); 95% CI"
+  },
+  "legacy": {
+    "n": 226,
+    "mode_accuracy": {
+      "mean": 0.8451,
+      "ci_low": 0.8009,
+      "ci_high": 0.8895
+    },
+    "kl": {
+      "mean": 0.0695,
+      "ci_low": 0.0583,
+      "ci_high": 0.0815
+    },
+    "probability_l1": {
+      "mean": 0.242,
+      "ci_low": 0.2137,
+      "ci_high": 0.2701
+    },
+    "delta_p_gap": {
+      "mean": 0.0506,
+      "ci_low": 0.044,
+      "ci_high": 0.0575
+    },
+    "sign_agreement": {
+      "mean": 0.7122,
+      "ci_low": 0.6639,
+      "ci_high": 0.7609
+    }
+  },
+  "multi_axis": {
+    "seen_joint": {
+      "n": 72,
+      "kl": {
+        "mean": 0.0421,
+        "ci_low": 0.0286,
+        "ci_high": 0.0578
+      },
+      "l1": {
+        "mean": 0.173,
+        "ci_low": 0.1344,
+        "ci_high": 0.2116
+      }
+    },
+    "unseen_joint": {
+      "n": 24,
+      "kl": {
+        "mean": 0.0845,
+        "ci_low": 0.0328,
+        "ci_high": 0.1481
+      },
+      "l1": {
+        "mean": 0.2355,
+        "ci_low": 0.1396,
+        "ci_high": 0.3452
+      }
+    },
+    "interaction_l1_error": {
+      "mean": 0.0488,
+      "ci_low": 0.0379,
+      "ci_high": 0.0603
+    }
+  },
+  "causal_mechanism": {
+    "congestion": {
+      "G_med": {
+        "mean": 0.1763,
+        "ci_low": 0.1068,
+        "ci_high": 0.2543
+      },
+      "Gap_shortcut": {
+        "mean": 0.3455,
+        "ci_low": 0.1554,
+        "ci_high": 0.5608
+      },
+      "R_shortcut": {
+        "mean": 0.7755,
+        "ci_low": 0.502,
+        "ci_high": 1.0664
+      },
+      "R_mediator": {
+        "mean": 0.8303,
+        "ci_low": 0.3676,
+        "ci_high": 1.3576
+      }
+    },
+    "parking_cost": {
+      "G_med": {
+        "mean": 0.258,
+        "ci_low": 0.1409,
+        "ci_high": 0.3952
+      },
+      "Gap_shortcut": {
+        "mean": 0.3335,
+        "ci_low": 0.1983,
+        "ci_high": 0.4871
+      },
+      "R_shortcut": {
+        "mean": 1.0434,
+        "ci_low": 1.0174,
+        "ci_high": 1.0739
+      },
+      "R_mediator": {
+        "mean": 0.0849,
+        "ci_low": 0.0603,
+        "ci_high": 0.1086
+      }
+    }
+  },
+  "robustness": {
+    "seeds": [
+      42,
+      7,
+      123,
+      2024
+    ],
+    "stable_across_seeds": true,
+    "verdict": {
+      "parking_cost_G_med": {
+        "label": "parking G_med (repair)",
+        "seeds_negative": 4,
+        "seeds_positive": 0,
+        "values": [
+          -0.0054,
+          -0.0057,
+          -0.006,
+          -0.0056
+        ]
+      },
+      "congestion_G_broken": {
+        "label": "congestion G_broken",
+        "seeds_negative": 1,
+        "seeds_positive": 3,
+        "values": [
+          0.0017,
+          -0.0006,
+          0.0012,
+          0.0016
+        ]
+      },
+      "congestion_Gap_shortcut": {
+        "label": "congestion Gap_shortcut (repair)",
+        "seeds_negative": 4,
+        "seeds_positive": 0,
+        "values": [
+          -0.0566,
+          -0.056,
+          -0.0485,
+          -0.055
+        ]
+      }
+    },
+    "regressed_seeds": [],
+    "interpretation": "S7 improvement > training-seed variance: the repair direction is consistent across all seeds and no seed regresses legacy/seen-joint KL.",
+    "notes": [
+      "4/4 seeds: parking G_med delta CI excludes 0 and is negative (repair)",
+      "4/4 seeds: congestion Gap_shortcut delta CI excludes 0 and is negative (repair)",
+      "4/4 seeds: legacy KL delta CI excludes 0 and is negative (no regression)",
+      "4/4 seeds: seen joint KL delta direction negative; none significantly regressed"
+    ]
+  }
+}

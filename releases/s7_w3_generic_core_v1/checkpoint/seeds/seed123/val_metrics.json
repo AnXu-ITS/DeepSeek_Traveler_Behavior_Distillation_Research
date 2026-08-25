@@ -1,0 +1,36 @@
+{
+  "variant": "student_s7_w3_seed123",
+  "lambda_mechanism": 1.0,
+  "lambda_broken": 1.0,
+  "learning_rate": 0.000125,
+  "replay_ratio": "2:1:1",
+  "n_train_quadruplets": 52,
+  "best_epoch": 1,
+  "runtime_seconds": 2.88,
+  "val_mechanism_gap": {
+    "congestion": {
+      "G_nat": 0.0838,
+      "G_broken": 0.0776,
+      "G_med": 0.0307,
+      "n_quads": 2
+    },
+    "parking_cost": {
+      "G_nat": 0.16,
+      "G_broken": 0.1865,
+      "G_med": 0.0156,
+      "n_quads": 2
+    }
+  },
+  "val_mean_mechanism_gap": 0.0924,
+  "val_legacy": {
+    "mode_accuracy": 0.9247787610619469,
+    "kl": 0.04513329365579164,
+    "probability_l1": 0.15940142040495323
+  },
+  "val_seen_joint": {
+    "mode_accuracy": 0.9166666666666666,
+    "kl": 0.035588240820086665,
+    "probability_l1": 0.1394823675768243
+  },
+  "selection_note": "model selection uses val only; the causal test set was never loaded for train/val"
+}

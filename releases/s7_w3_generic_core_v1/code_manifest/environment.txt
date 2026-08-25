@@ -1,0 +1,8 @@
+# Environment facts captured at freeze time
+python: Python 3.12.13 (main, Aug 7 2026, 02:26:41) [MSC v.1944 64 bit (AMD64)]
+torch: 2.13.0+cpu
+numpy: 2.5.2
+pydantic: 2.13.4
+java: openjdk 25.0.4 2026-07-21 LTS (Temurin-25.0.4+7)
+matsim: 2026.0 (tools/matsim-2026.0-release/matsim-2026.0)
+os: Microsoft Windows NT 10.0.26200.0

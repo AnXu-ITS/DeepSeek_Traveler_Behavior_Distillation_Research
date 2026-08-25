@@ -580,3 +580,28 @@ effective approach capacities were represented using green-ratio sensitivity fac
   整体步行回退并计数。
 - 需求侧仍为 synthetic personas/trips（Freeze 不冻结需求生成），活动点采样自站点 300m 内
   真实路网节点；student 的 alternative 属性仍为合成值（真实网络派生属性留待 Phase C）。
+
+## S7-W3 正式冻结完成 ✅（2026-08-26）
+
+依据 `S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md` 执行 15 步冻结，发布目录：
+`releases/s7_w3_generic_core_v1/`（git 追踪、只读保护）。
+
+- **唯一 checkpoint**：`checkpoint/model.pt`（SHA256 `8263faec…b2b6`，24,370 参数，
+  seed=42，来源 `outputs/student_s7_w3/checkpoints/best.pt`；optimizer/scheduler
+  state 未保存，已如实记录）。
+- **冻结内容**：config、输入/输出 schema + `feature_order.txt`、normalization
+  （从 checkpoint `extractor_state` 提取）、4-seed checkpoint（42/7/123/2024）与
+  seed 评估、data manifest（S3 1513 态 / S5 640 态 / S6 960 态 / S7 72 四联组，
+  含 K 分布与 SHA256）、code manifest（S7 代码 commit `222e17e`、冻结时 HEAD
+  `02f64b3`）、`FINAL_S7_W3_FREEZE.md`、`README.md`、全量 `SHA256SUMS.txt`。
+- **复现性 Gate（不重训）**：对冻结 checkpoint 重跑 regression + causal 评估，
+  7/7 门禁指标与历史 S7 数值**完全一致（Δ=0.0000）**：legacy acc 0.8451 /
+  legacy KL 0.0695 / prob L1 0.2420 / seen joint KL 0.0421 / unseen joint KL 0.0845 /
+  parking G_med 0.2580 / congestion Gap_shortcut 0.3455。
+- **Git**：冻结提交 `freeze: S7-W3 generic behavioral core v1.0` + 注释 tag
+  `s7-w3-generic-core-v1.0`；工作树 clean。
+- **只读保护**：release 文件 Windows read-only 属性 +
+  `src/traveler_distillation/student/release_guard.py` 硬断言（S8+ 脚本必须调用，
+  `tests/test_release_guard.py` 6/6 通过）。
+- **正式定义**：`S7-W3 = Generic Behavioral Core v1.0 = FROZEN`。
+  S8 只能 load → 新实验 → 独立输出/发布目录，不得修改 S7-W3 本体。

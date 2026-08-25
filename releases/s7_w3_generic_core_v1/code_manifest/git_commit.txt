@@ -1,0 +1,10 @@
+commit 02f64b3a87921c7651a27b2f1755fee7069a00c4
+subject: Earlier-phase artifacts: teacher dataset generation, joint generator, v0.2-v0.3 and Phase 9/10 reports
+author: An Xu <xuan17614502469@163.com>
+date: 2026-08-26T00:14:28+08:00
+branch: main
+remote: https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research.git
+
+# S7-W3 was trained/evaluated with the code at commit 222e17e (S6/S7 implementation).
+# Freeze performed at the commit above; S7-relevant paths (src/traveler_distillation/student/,
+# schemas/, S7 scripts, configs/student_s7_w3.yaml) are identical between 222e17e and HEAD.

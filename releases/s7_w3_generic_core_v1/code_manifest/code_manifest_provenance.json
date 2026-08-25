@@ -1,0 +1,4 @@
+{
+  "note": "git_commit.txt = code commit at which S7-W3 was trained/evaluated; git_status.txt = worktree status captured immediately before the freeze commit; uncommitted.patch = git diff of tracked files plus untracked-file inventory at that moment.",
+  "captured_at_utc": "2026-08-25T23:17:36.116835+00:00"
+}

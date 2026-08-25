@@ -1,0 +1,109 @@
+{
+  "release": "s7_w3_generic_core_v1",
+  "generated_at_utc": "2026-08-25T23:17:36.005359+00:00",
+  "note": "Manifest records identities/checksums; bulk data files remain at their original paths (not duplicated).",
+  "datasets": [
+    {
+      "kind": "S3_legacy_single_axis",
+      "path": "data\\student_v0_3_s3\\aggregated_teacher_dataset.jsonl",
+      "n_states": 1513,
+      "n_personas": 40,
+      "teacher_k_distribution": {
+        "3": 1513
+      },
+      "incomplete_states_in_file": 0,
+      "sha256": "549e127957a4e035d91927163c7ef9a16aaab52ee049446ff5cb1932b5b39c87",
+      "file_size_bytes": 3612366,
+      "creation_date_utc": "2026-08-23T05:45:34.508012+00:00",
+      "source_model": "deepseek-v4-pro",
+      "teacher_k_default": 3,
+      "split": "persona holdout (80 split groups; test = 6 unseen personas / 226 states)",
+      "repeat_records": {
+        "path": "data/student_v0_3_s3/repeat_records.jsonl",
+        "n_repeats": 4539,
+        "sha256": "35fd28e064bb8cf5ba51d2a9eddc2b7dff514979abf2149a905c16079bb1d589"
+      },
+      "provenance": "merged S1-S4 axis extension batches over 40 personas (PROGRESS.md S3: 1513 states / 4539 repeats / 80 groups)"
+    },
+    {
+      "kind": "S5_joint_full",
+      "path": "data\\student_s5_joint\\aggregated_teacher_dataset.jsonl",
+      "n_states": 640,
+      "n_personas": 40,
+      "teacher_k_distribution": {
+        "3": 320,
+        "5": 280,
+        "7": 40
+      },
+      "incomplete_states_in_file": 0,
+      "sha256": "2b730ffe39bf8807e67acb0fb19b9c4581d996d0d52be223afbb1062604bfbb1",
+      "file_size_bytes": 1616325,
+      "creation_date_utc": "2026-08-24T06:44:26.019161+00:00",
+      "source_model": "deepseek-v4-pro",
+      "combos": [
+        "rain_x_congestion",
+        "fare_x_congestion",
+        "fare_x_transit_delay",
+        "road_disruption_x_congestion"
+      ],
+      "k7_subset": "fare_x_transit_delay, 40 states",
+      "k5_view": {
+        "path": "data/student_s5_joint/aggregated_teacher_dataset_k5.jsonl",
+        "n_states": 640,
+        "sha256": "2dcc05180853abfe9475392c21ea9f3912a548fd5f899b5f1c249c9572c063b7"
+      },
+      "generation_manifest": "data/student_s5_joint/generation_manifest.json (n_joint_states=640, n_teacher_calls=2640)",
+      "split": "persona holdout; fare_x_congestion = unseen combination holdout",
+      "provenance": "PROGRESS.md S5: 640 joint states / 2640 teacher calls / K={3:320, 5:280, 7:40}"
+    },
+    {
+      "kind": "S6_causal_audit",
+      "path": "data\\causal_audit\\states_with_teacher.jsonl",
+      "n_states": 960,
+      "n_personas": 40,
+      "teacher_k_distribution": {
+        "3": 473,
+        "5": 487
+      },
+      "incomplete_states_in_file": 0,
+      "sha256": "c2ef2b40be5c730e0dab162f14ed0903fb1f586c30ba7b3e60445221cc4e6019",
+      "file_size_bytes": 1996255,
+      "creation_date_utc": "2026-08-25T04:21:36.144692+00:00",
+      "source_model": "deepseek-v4-pro",
+      "teacher_k_note": "A/B states reuse S3 K=3 targets; C/D new states K=5 (2435 calls, 0 incomplete)",
+      "axes": [
+        "congestion",
+        "parking_cost",
+        "transit_delay"
+      ],
+      "states_without_teacher": "data/causal_audit/states.jsonl",
+      "provenance": "PROGRESS.md S6: 960 audit states (A/B/C/D quadruplets); final S7 test evaluation uses only the 8 test quadruplet groups per axis",
+      "pre_teacher_path": "data/causal_audit/states.jsonl",
+      "pre_teacher_sha256": "1a89a656e2cf273727d65cbb1a306f5624305e63a297642d9162c27c74c84856"
+    },
+    {
+      "kind": "S7_mechanism_quadruplets",
+      "path": "data\\student_s7_mechanism\\quadruplets.jsonl",
+      "n_states": 72,
+      "n_personas": 18,
+      "teacher_k_distribution": {
+        "3": 144,
+        "5": 144
+      },
+      "incomplete_states_in_file": 0,
+      "sha256": "a416fb7082b79db37443136861e9cd5d499d546552158a0afc5874918508a86e",
+      "file_size_bytes": 512760,
+      "creation_date_utc": "2026-08-25T05:36:55.074338+00:00",
+      "source_model": "S6 verbatim (0 new API calls)",
+      "teacher_k_note": "A/B=K3 (S3 reuse), C/D=K5 (S6)",
+      "axes": [
+        "congestion",
+        "parking_cost"
+      ],
+      "split": "s3c_persona_holdout, car-available filtered; per axis train 26 / val 2 / test 8",
+      "split_manifest": "data/student_s7_mechanism/split_manifest.json",
+      "split_manifest_sha256": "f7282742015fb3ebc2aa6736e5f9655edd775dc11cd55533c2facbe135c111ff",
+      "provenance": "built by scripts/build_s7_mechanism_dataset.py from S6 states; test quadruplets never used for train/val/selection"
+    }
+  ]
+}

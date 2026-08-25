@@ -1,0 +1,6 @@
+{
+  "seed": 7,
+  "checkpoint_source": "outputs\\student_s7_w3_seed7\\checkpoints\\best.pt",
+  "checkpoint_saved_at_utc": "2026-08-25T05:42:14.348807+00:00",
+  "sha256": "93ba0dcfb16d89c523e5046964fadfc7f7e442096ef86c62ec7c25ea08cf24b7"
+}

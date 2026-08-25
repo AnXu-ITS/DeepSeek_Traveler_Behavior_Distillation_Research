@@ -1,0 +1,10 @@
+# git status --porcelain captured immediately BEFORE the freeze commit
+?? S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md
+?? S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md
+?? releases/
+?? scripts/freeze_s7_w3_release.py
+?? src/traveler_distillation/student/release_guard.py
+?? tests/test_release_guard.py
+
+# The untracked files listed above (instruction docs, releases/, freeze script) were
+# committed as part of the freeze commit 'freeze: S7-W3 generic behavioral core v1.0'.
