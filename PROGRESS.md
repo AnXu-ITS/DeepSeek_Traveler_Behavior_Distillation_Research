@@ -1,7 +1,7 @@
 # 实验进度与执行记录
 
 > 蒸馏出行意图 · 个体行为蒸馏研究（DeepSeek V4 Pro → 轻量 Traveler Agent → MATSim）
-> 更新日期：2026-08-20（v0.2 实验接手）
+> 更新日期：2026-08-24（S7 完成、Freeze S7-W3、Singapore 验证线主线化）
 
 ## 研究目标（不变）
 
@@ -285,6 +285,45 @@ L_heterogeneity 进一步改善分布拟合（L1 0.76→0.29）且不牺牲 accu
   ③ 跨轴规律扩容后仍成立（拟合上限=教师信噪比），追低信噪比轴幅度应 K>3 压噪而非加 persona。
   完整报告：`outputs/EXPERIMENT_REPORT_v0_3_S3.md`。
 
+## S5 多轴联合蒸馏实验完成 ✅（2026-08-24）
+
+依据 `S5_MULTI_AXIS_DISTILLATION_EXPERIMENT_DESIGN.md`，从"单轴行为弹性蒸馏"升级为
+"多条件联合行为响应蒸馏"。
+
+### 数据
+- 四组合 × 80 baselines × 2 joint levels = **640 joint 态**；**2640 次教师调用**（0 incomplete）。
+- K 策略：high-SNR（rain×cong、disruption×cong）K=3；low-SNR（fare×cong、fare×delay）K=5；
+  **K=7 因果子集**（fare×delay 最强档 40 态）。K 分布 {3:320, 5:280, 7:40}。
+- fare×congestion 完全 holdout（unseen combination 组合泛化测试）。
+- 实现：`joint_axes` schema、`perturb_context_multi`、`JointContextGenerator`、
+  `generate_joint_teacher_dataset.py` / `validate_joint_dataset.py` / `rebuild_k5_view.py` /
+  `train_student_s5_joint.py` / `eval_s5_joint.py` / `make_s5_report.py` / `run_s5_experiment.py`。
+
+### 过程中修复的三个工程问题
+1. joint 态触发教师建议出发 >60min，被 schema ±60 反复拒绝 → **解析时裁剪 departure 到 ±60**
+   （保留 mode 概率；与 S2 "蒸馏范围=student 可表示范围"边界一致）。
+2. joint 态触发超长推理（completion 高达 8000+ token，接近 8192 上限）→ empty-content 失败
+   → **max_tokens 提到 12000**（32768 会让部分态推理 >10min 致吞吐崩塌，故取中）。
+3. `_rebuild_target` 把 pydantic 对象当 dict 调 `.get()`（AttributeError）→ K=7 子集态 k5 视图
+   缺失 → 改为接收原始 repeat 记录 + 合并 resume repeats，新增 `rebuild_k5_view.py` 确定性回填。
+
+### 结果（test = 6 未见 personas / 96 joint 态）
+| 指标 | M0 单轴 | M1 joint(K=5) | M2 joint(+K=7) |
+|---|---|---|---|
+| seen joint KL | 0.0538 | **0.0440** | 0.0441 |
+| unseen joint KL (fare×cong) | 0.0954 | 0.0890 | **0.0880** |
+| interaction L1 error | 0.0469 | 0.0464 | **0.0453** |
+| legacy acc（不退化） | 0.8496 | 0.8496 | 0.8451 |
+| legacy KL | 0.0776 | 0.0745 | **0.0735** |
+
+### 结论
+- **RQ-M2 成立**：定向 joint 微调使 seen joint KL 降 ~18%（0.0538→0.0440），且不牺牲单轴能力。
+- **RQ-M3 有限**：unseen 组合（fare×cong）KL 降 ~7.8%（0.0954→0.0880），记忆强于组合泛化，但方向正确。
+- **RQ-M4**：interaction 误差整体很小（≈0.045），联合响应近似可加，冲突组合略难。
+- **RQ-M5**：K=7 稳定化方向正确但幅度有限（40 态子集规模限制效应量）。
+- 报告：`outputs/EXPERIMENT_REPORT_S5_MULTI_AXIS.md`；数据：`data/student_s5_joint/`；
+  模型：`outputs/student_s5_joint_m1|m2/`；评估：`outputs/s5_joint_eval/`。
+
 ## 下一步（已规划，按优先级）
 
 ### 1. 扩训：补扰动轴覆盖 + 人群扩容（✅ 全部完成）
@@ -316,3 +355,228 @@ acc 0.63–1.0 泛化非均匀；逐轴弹性随扩容收敛（天气 0.102/延�
 ### 3. 论文写作
 - 全部 Phase 0–10 已有端到端证据，可进入写作阶段：`ccf-paper-writer` 起草、
   `ccf-integrity-auditor` 核验数字一致性（蓝图、两份实验报告、Phase 9/10 报告）。
+
+## S6 因果机制审计完成 ✅（2026-08-24）
+
+依据 `S6_REASONING_CAUSAL_AUDIT_EXPERIMENT_DESIGN.md`，检验 Student 蒸馏后保留的是
+交通行为机制（mediator 驱动）还是 context-to-action shortcut。
+
+### 方法与数据
+- 三轴 × 四联组 A/B/C/D（baseline / natural / broken-path / mediator-only），
+  broken/mediator 态人为解耦 context 标签与 causal mediator（car/pt travel_time、
+  reliability、monetary_cost）。
+- 960 审计态；Teacher K=5 跑 487 个新态（2435 调用，0 incomplete，中途断电后经
+  增量进度文件 resume 续跑完成）；A/B 复用 S3 K=3 目标。
+- 实现：`generate_causal_audit_states.py` / `run_teacher_causal_audit.py`（增量落盘+
+  断点续跑）/ `eval_causal_mechanism.py` / `make_s6_report.py` + `configs/causal_audit.yaml`。
+
+### 结果（R_shortcut ↓=机制、R_mediator ↑=机制；congestion/parking 仅 car-可用 36 组）
+| 轴 | Teacher | C0 pre-S5 | C1 S5 | 判定 |
+|---|---|---|---|---|
+| transit_delay | 0.73 / **0.97** | 0.37 / **0.90** | 0.35 / **0.84** | Case 3 两者机制一致 |
+| congestion | 0.52 / **0.89** | 0.81 / 0.75 | 1.02 / 0.67 | Case 1 蒸馏退化 |
+| parking_cost | 0.69 / 0.56 | 1.03 / **0.05** | 1.02 / 0.06 | Case 1 机制丢失 |
+
+（斜杠前 R_shortcut、后 R_mediator）
+
+### 结论
+- **Grade B — Partial Mechanism Preservation**：transit_delay 通路（delay→PT travel_time）
+  蒸馏后完整保留；congestion 通路部分退化；parking_cost 通路（monetary_cost mediator）
+  几乎完全丢失——Student 对该轴主要响应 parking_cost_multiplier 标签。
+- **RQ-C5 关键发现**：S5 多轴补训只改善插值、不改善机制——congestion 的 R_shortcut
+  C0 0.81 → C1 1.02（反而加剧 shortcut）。
+- 论文表述边界（§27）：可写 "partial causal consistency under mediator interventions"，
+  不可写 "full causal chain-of-thought"。
+- 后续方向（§20/21）：若需修复，走 S7 causal-aware fine-tuning（A/B/C/D 四联组 +
+  L_path + L_shortcut）。
+- 报告：`outputs/EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md`；数据：`data/causal_audit/`；
+  评估：`outputs/causal_audit/eval_metrics.json`。
+
+## S7 机制感知补训完成 ✅（2026-08-24）
+
+依据 `S7_MECHANISM_AWARE_FINETUNING_INSTRUCTIONS.md` + 用户五条不可违反约束，
+从 C1（S5 joint M2）定向补训 congestion / parking_cost 机制保真。
+
+### 五条约束的执行方式
+1. **test 隔离**：机制四联组按 S3-C persona holdout 切分（congestion/parking 各
+   train 26 / val 2 / test 8 组，car-可用过滤）；训练只加载 train、early-stop 与
+   选模只用 val、最终评估只用 test（训练脚本硬断言 test=16 后丢弃引用）。
+2. **零新增 API**：teacher target 完全复用 S6（A/B=K3、C/D=K5），本阶段 0 次调用。
+3. **gap 主指标**：G_nat/G_broken/G_med（表 A1）定级，R_shortcut/R_mediator 次指标。
+4. **paired bootstrap CI**：B=2000/seed=42，单位=四联组（causal）/state（regression），
+   所有聚合量与 C2-vs-C1 差分均报 95% CI。
+5. **消融**：W1/W2/W3（λ 0.25/0.5/1.0 双项）+ mech_only + broken_only（0.5 单项）共 5 变体。
+
+### 实现
+- `src/traveler_distillation/student/mechanism_dataset.py`：`MechanismQuadrupletDataset`
+  + `collate_quadruplets`（A/B/C/D 四联组编码、成员 mode 对齐断言）。
+- `src/traveler_distillation/student/mechanism_losses.py`：`mechanism_fidelity_loss`
+  （natural+mediator 效应保真）+ `broken_path_fidelity_loss`（匹配 Teacher 非零
+  broken effect，禁止推向 0）。
+- `scripts/`：`build_s7_mechanism_dataset.py`、`train_student_s7.py`（replay 2:1:1 +
+  52 het 对/epoch、LR=S5×0.25）、`eval_s7_causal_repair.py`（test-only + bootstrap）、
+  `eval_s7_regression.py`、`eval_s7_val_metrics.py`、`s7_variant_distances.py`、
+  `run_s7_experiment.py`、`make_s7_report.py`；`configs/student_s7_{w1,w2,w3,mech_only,broken_only}.yaml`。
+- 测试 11 个新增（`tests/test_mechanism_losses.py`、`test_mechanism_dataset.py`），全套通过。
+
+### 结果（test 四联组，8 组/轴，配对 bootstrap；与 S6 的 36 组口径不可直接比较）
+- **Grade B — 部分成功**（选 W3）：parking mediator gap 显著下降
+  （ΔG_med −0.0054 [−0.0090, −0.0018]）、congestion shortcut gap 显著下降
+  （−0.0566 [−0.1164, −0.0051]）；parking shortcut gap 小幅显著反向
+  （+0.0073 [+0.0005, +0.0128]）；congestion mediator gap 无变化。
+- **无回归**：legacy KL 0.0735→0.0695（CI 不含 0，反而改善）、seen joint KL
+  0.0441→0.0421（显著改善）、unseen joint KL 方向改善；legacy acc 0.8451 不变。
+- **λ 消融关键发现**：五变体两两 L2 距离 ≤0.0097、距 C1 ≈0.133 —— λ 在 [0.25,1.0]
+  内不区分结果，变体收敛到几乎同一模型；观测到的变化来自 S7 微调制度整体
+  （机制四联组 + replay + 低 LR），L_mechanism/L_broken 的单独归因无法在该消融中建立。
+- **val/test 背离**：val 仅 2 组/轴，val gap 未检测到修复（选模在各近似相同模型间进行）；
+  最终判定只依赖 test 配对 bootstrap。
+- 报告：`outputs/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md`；数据：`data/student_s7_mechanism/`；
+  模型：`outputs/student_s7_{w1,w2,w3,mech_only,broken_only}/`；评估：
+  `outputs/s7_causal_eval/`、`outputs/s7_regression/`、`outputs/s7_selection/`。
+
+### S7 结论与下一步
+- 机制补训到此为止（§36）：**定向机制监督能产生统计显著但幅度有限的局部修复
+  （parking mediator、congestion shortcut），无法完全恢复 parking 的 mediator 通路
+  （R_mediator 0.071→0.085 vs Teacher 0.769）；论文表述 “axis-dependent mechanism
+  preservation under targeted mechanism-aware supervision”。
+- **Seed Robustness Check（最终小检查，`scripts/run_s7_seed_check.py`，零 API）**：
+  W3 配置 × 4 训练种子（42/7/123/2024）重训后在同一 test-only 管线上复测 ——
+  **STABLE=True**：parking G_med 4/4 种子显著为负（−0.0054~−0.0060，CI 全部不含 0）、
+  congestion Gap_shortcut 4/4 种子显著为负（−0.0485~−0.0566）、legacy KL 4/4 显著为负、
+  seen joint KL 4/4 方向为负；无任何种子出现显著回退。congestion G_broken 跨种子符号
+  混排且均不显著（与主报告"修复发生在 shortcut ratio 而非 broken effect"一致）。
+  判定：S7 改善超过训练种子方差，可放心 Freeze S7-W3。
+- 按 §40 Grade B：**Freeze S7-W3**（整体性能不劣于 C1 且显著更优）→
+  **Singapore OSM + GTFS real-world validation**（`NEXT_STEP_PLAN_SINGAPORE_AIT.md`），
+  论文注明网络验证评估行为可执行性与系统响应，而非完整因果机制保真。
+
+## 阶段转换：模型训练线冻结 · 交通验证线主线化 ✅（2026-08-24）
+
+**Freeze 声明**：最终 Student = **S7-W3**（Grade B + 4-seed 稳定，回退点 S5-M2）。
+不再扩 persona / 加扰动轴 / 重训 Teacher / 做机制补训；重新训练的唯一条件 = 发现明确
+数据或方法错误。
+
+**主线切换**：从“证明 Student 值不值得信”切换到“证明已审计 Student 放进真实交通供给系统后
+有没有研究价值”。计划书更新为 v2.0（`NEXT_STEP_PLAN_SINGAPORE_AIT.md`，v1.0 已归档至
+`archive/legacy_20260821/root/`）：Phase A（真实供给跑通，100-agent exit=0 门禁）→
+Phase B（100/500/1000 规模验证）→ Phase C（正式论文情景）→ Phase D（真实网络反馈闭环）。
+
+### Phase A 资源侦察（已完成，未开始执行）
+- ✅ MATSim 2026.0 + 全部依赖 jar（`tools/matsim-2026.0-release/`），核心 jar 内含
+  `org.matsim.core.utils.io.OsmNetworkReader`（OSM→network.xml）；Java 25 可用。
+- ✅ `singapore-gtfs.zip` 已在工作区：6 agency / **603 线路（593 bus + 9 MRT）** /
+  5,376 stops / 230,915 trips / 8.17M stop_times；目标区域（Tampines+Pasir Ris bbox
+  lat 1.33–1.40 × lon 103.90–104.02）含 **746 站**。
+- ✅ 既有资产：`RunMatsimPreloaded.java`（预加载运行器）、`MATSimAdapter`
+  （需从 synthetic grid 扩展为真实供给 + scheduled PT）。
+- ❌ 待获取/实现：OSM 区域提取、OSM→network.xml 转换脚本、GTFS→transitSchedule.xml +
+  transitVehicles.xml 转换器（首选 matsim-pt2matsim，失败则自研 stop-snapping +
+  route-routing 转换器）。
+
+### Phase A 执行清单（按计划书 §2.4，执行中）
+1. ✅ GTFS zip 归档（`data/singapore/gtfs/raw/`，sha256 + 快照 + 来源如实标注：社区构建 feed singapore-gtfs-2025，非官方 DataMall）
+2. ✅ OSM bbox 下载（Overpass，`data/singapore/osm/tampines_pasir_ris.osm`，16.8MB，102,784 节点 / 30,140 highway ways）
+3. ✅ OSM → network.xml（自研纯 Python 转换器 `src/traveler_distillation/singapore/osm_network.py`：
+   100,867 节点 / 191,637 链路 / 3,520 km，UTM 48N 投影（级数与数值积分一致到 μm），
+   car 最大连通分量 95%、walk 95%；按 highway 类别映射 freespeed/capacity/modes）
+4. ✅ GTFS → transitSchedule + transitVehicles（`src/traveler_distillation/singapore/gtfs_prep.py` +
+   `build_transit.py`：工作日 WD 服务日 + 早高峰 06:00–10:30 窗口，**5,580 trips / 170 线路 / 851 站
+   （含 256 个 MRT 车次）**；供应裁剪策略=保留区域内最长连续站段（18,327 trips 裁剪）；stop
+   snapping（仅 car 最大分量 + 本地道路节点，mean 60m/p90 186m）+ 人工接入链 ai_in/ai_out +
+   单行道 transit 专用反向链 busr_*（28,681 条）+ 行人/自行车反向链 pdr_*（25,441 条）；
+   **191/191 序列路由成功、0 失败**；transitSchedule.xml 139MB / transitVehicles 5,580 辆）
+5. ✅ **100 个 S7-W3 agents baseline 运行 exit=0**（`scripts/singapore/run_phase_a_smoke.py`）
+6. ✅ **car / pt / walk / bike 四模式 executed legs 全部出现**；5,580 transit 车次全部发车、
+   pt 8 上车/8 下车、stuckAndAbort=0、departure 5,796 = arrival 5,796
+
+### ✅ Phase A Gate PASSED（2026-08-25，`outputs/singapore_phase_a/PHASE_A_GATE.md`）
+**真实 OSM + scheduled PT + S7 Student population 在 MATSim 中完整执行。**
+关键修复沉淀：MATSim leg 路线惯例（路线须从当前活动 link 开始）、活动 link 须为入向 link、
+transit 首站 ai_in 起始、车辆文件 XSD 格式、Raptor 配置（swissRailRaptor modeMapping）、
+启动器 `RunMatsimPreloaded.java` --release 21 编译（规避 Guice ASM 对 Java 25 类文件崩溃）。
+已记录近似（门禁报告 §3）：MRT rail-on-road、busr_/pdr_ 反向链、PT 直连无换乘（换乘与
+2026 umlauf 车辆链机制冲突已关闭）、早高峰时窗（回程 pt 全步行回退）、需求侧 synthetic。
+→ 下一步 **Phase B 规模化验证**（100→500→1000 agents，8 项运行指标）。
+
+## Phase B 规模化验证完成 ✅（2026-08-25）
+
+`scripts/singapore/run_phase_b_scaling.py`（构建 + MATSim + 事件流指标），
+`outputs/singapore_phase_b/scale_report.md`：
+
+| 指标 | 100 | 500 | 1000 |
+|---|---|---|---|
+| planning fallbacks | 49 | 245 | 501（随规模线性，≈50% 为 pt→walk） |
+| failed trips / stuckAndAbort | 0 / 0 | 0 / 0 | 0 / 0 |
+| PT boardings | 12 | 55 | 127（线性） |
+| mean trip time (min) | 8.96 | 9.67 | 9.62 |
+| road delay (s/passage) | 0.51 | 0.51 | 0.51 |
+| congestion（自由流+15s 慢行占比） | 0.0 | 0.0002 | 0.0 |
+| runtime (s) | 29.4 | 26.5 | 27.6 |
+| executed mode share | 0.18/0.33/0.06/0.43 | 0.18/0.29/0.06/0.48 | 0.19/0.29/0.06/0.47 |
+
+**判定：规模扩大无异常（失败行程 0、mode share 漂移 <5pp、无拥堵失控、runtime 平稳），
+可进入 Phase C。** 备注：runtime 平稳因 5,580 个 transit 车次主导事件负载；baseline
+无拥堵符合 1000 人规模预期。经验文档：`docs/MATSIM_2026_REAL_SUPPLY_INTEGRATION.md`
+（13 个集成坑 + 配置模板 + 防御清单）。
+
+## Phase B.5A — PT Routing Validity ✅（2026-08-25，目标 ≥90% 达成 98.0%）
+
+用户硬性检查：Student intended PT 的 itinerary 构建成功率不得低于 90%，回退须分类。
+- **供给升级**：全天服务 05:00–23:00，**20,966 trips / 859 站**（原双时窗 11,796）。
+- **规划器升级**（`matsim/adapter.py::_plan_pt`）：直连 + **1 次换乘（独立 pt leg +
+  换乘步行，无 chainedRoute**——绕开 2026 umlauf 车辆链冲突）**+ 步行延伸**（上/下车站
+  可在起讫点 1.5km 内）+ 回退原因分类（no_service_window / no_direct_or_transfer /
+  no_stops_in_radius）。
+- **结果（1000 agents, seed=3000）**：intended 904 → routed **886（98.0%）**
+  （direct 687 / transfer 199 / fallback 18，全部为 no_direct_or_transfer）；
+  MATSim exit=0、pt 上车 1,082=下车 1,082、不平衡车辆 0；stuckAndAbort 3 全部在
+  endTime（错过单班次车辆等至模拟结束，0.3%，计入 waitingForPt 指标）。
+- 迭代过程：75.9% → 84.1% → 98.0%。报告：`outputs/singapore_phase_b5/pt_validity_v3/pt_validity.md`。
+
+## Phase B.5B — Demand Loading Sweep（1k–10k 完成；40k 探针执行中）
+
+`scripts/singapore/run_phase_b_scaling.py --scales 1000,2000,5000,10000`
+（同一供给 + 冻结 S7-W3，只变 population scale）：记录 mean trip time / car travel
+time / road delay / slow-link share / **car VKT** / **拥堵分布**（链路平均延误
+>15s/30s/60s 占比 + p50/p90）/ runtime。
+
+**结果：1k–10k 全部 free-flow，未找到 N\***——car VKT 完美线性（3.7k→7.1k→18.2k→36.2k km）、
+延误恒 0.52 s/passage、慢行占比 <0.05%。原因：真实供给容量（~1,760 有向车道公里）远大于
+该需求密度（~8 veh/h/车道公里）。线性外推可见拥堵需 **N≈30k–50k**。
+- **40k 探针完成：仍 free-flow**（延误 0.54s、慢行 0.05%、VKT 142,538 km 线性）——
+  换算峰值利用率仅 ~2% 容量；**需求单边扩展到拥堵需 N≈80万–120万，不可行**。
+- 归因：OSM 容量按 highway 类别饱和流率赋值、**无路口延误建模**——真实拥堵由路口瓶颈
+  产生，需求侧无法弥补。决策点见 `demand_sweep/scale_report.md`：
+  ① **供给侧标定（推荐）**：城市道路容量 ×0.35–0.45 的路口有效绿信比折减（标准工程做法，
+  如实写入 method）；② 需求加码 2 trips × 80k（构建 12h+）；③ 接受 free-flow 弱化网络级结论。
+- **N\* 未冻结，Phase C 等待用户决策。**
+
+## Phase B.5C — Effective-Capacity Calibration ✅（2026-08-25，方案已冻结）
+
+诊断（`outputs/singapore_phase_b5/loading_diagnostic.md`）：峰值 car 3,452 辆/h；
+链路 V/C **max 0.361 / P99 0.06**；早晚双峰集中；OD 高度分散（top-20 链路仅 ~4% VKT）；
+**sample 因子 ≈0.115**（40k 为 sample population）。
+
+标定测试（10k baseline × 同一种子，`calibration/calibration_report.md`，全档存档）：
+- green-ratio 三档（approach×0.35/0.45/0.55，659 信号交叉口 1,242 条入向链）→ 全部 free-flow；
+- qsim 容量因子 0.12→重拥堵（car travel 8.4→17.2 min）、0.2→中-重、**0.3→轻-中度
+  （slow 0.17%、links>15s 0.36%、car travel +13%）**、0.4–0.7→轻；
+- **car 行程失败率全档恒为 0.2%**（failed_trips 大头是 pt 等待乘客：道路变慢拖慢公交→
+  错过单班次连接），无 road gridlock。
+
+**冻结（Phase C 统一使用，不得改动）：N\*=10,000；flowCapacityFactor=storageCapacityFactor=0.3
+（原网络不动）；全天供给 20,966 trips；PT 规划器（直连+1 换乘+步行延伸）；Student=S7-W3。**
+论文表述（用户指定口径）："Signal timings were not explicitly available; therefore,
+effective approach capacities were represented using green-ratio sensitivity factors"；
+实验定性为 "a controlled real-network experiment under calibrated effective capacity"；
+**不得**称 "calibrated reproduction of real Singapore congestion"。
+
+### Phase A 已记录的工程近似（如实写入 routing report）
+- **MRT rail-on-road**：OSM 转换不含 railway，MRT 车次沿道路图路由（transportMode=rail），显式降级。
+- **单行道 transit 反向链**：GTFS 线路在 OSM 单行道建模 + snapping 误差下会产生有向不可达，
+  为 bus/rail 生成仅 transit 可用的反向链（car 不受影响）——pt2matsim 同款近似，已记录。
+- **PT 直连无换乘**：agent 的 pt 行程仅搜索直达车次（walk→pt→walk），无换乘规划；无直达时
+  整体步行回退并计数。
+- 需求侧仍为 synthetic personas/trips（Freeze 不冻结需求生成），活动点采样自站点 300m 内
+  真实路网节点；student 的 alternative 属性仍为合成值（真实网络派生属性留待 Phase C）。

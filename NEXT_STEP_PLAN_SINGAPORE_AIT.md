@@ -1,1000 +1,267 @@
-# 下一阶段研究执行计划  
-## Singapore Real-World Validation × Traveler Agent Distillation × MATSim
+# Singapore 真实网络验证计划
+## v2.0 — 模型训练线冻结 · 交通验证线主线化
 
-**项目主线**：DeepSeek V4 Pro → 轻量 Traveler Agent → MATSim  
-**建议投稿方向**：Artificial Intelligence for Transportation（AIT）  
-**计划状态**：从“模型开发阶段”切换到“真实性验证 + 论文收口阶段”  
-**依据文件**：`Task_Phase.txt`、`PROGRESS.md`  
-**计划版本**：v1.0  
-**日期**：2026-08-23
+**项目主线**：DeepSeek V4 Pro Teacher → 轻量 Traveler Agent（已审计、已冻结）→ MATSim 真实网络
+**计划版本**：v2.0（2026-08-24，替代 v1.0，旧版归档于 `archive/legacy_20260821/root/NEXT_STEP_PLAN_SINGAPORE_AIT_v1.0.md`）
+**状态**：阶段转换已完成 —— 模型训练线冻结，交通验证线成为主线。
 
 ---
 
-# 1. 当前研究状态
+# 0. 阶段转换声明
 
-## 1.1 已完成的核心工作
+> 前面在证明 **Student 值不值得信**；现在开始证明 **这个已经审计过的 Student 放进真实交通供给系统后有没有研究价值**。
 
-现有项目已经完成完整的端到端技术链：
+**模型线冻结（Freeze，即刻生效）**：
 
-1. 研究行为边界与 Universal State/Action；
-2. DeepSeek V4 Pro Teacher Prompt；
-3. Scenario Generator；
-4. K=3 聚合 Teacher Dataset；
-5. 蒸馏设计：
-   - Choice / Distribution；
-   - Decomposed Elasticity；
-   - Heterogeneity；
-6. 约 24k 参数的 lightweight Traveler Agent；
-7. Individual-level evaluation + persona-holdout；
-8. MATSimAdapter；
-9. 1000-person population-scale simulation；
-10. Network feedback loop。
+| 冻结项 | 值 |
+|---|---|
+| 最终 Student | **S7-W3**（`outputs/student_s7_w3/checkpoints/best.pt`，Grade B + 4-seed 稳定） |
+| 回退点 | S5-Joint-M2（`outputs/student_s5_joint_m2/checkpoints/best.pt`） |
+| 不再做的事 | 不扩 persona、不加扰动轴、不重训 Teacher、不做机制补训 S8、不换 Student 架构 |
 
-目前六个动态扰动轴已经全部覆盖：
+重新训练主模型的唯一条件：发现明确的数据错误或方法错误（v1.0 Phase 11 Gate 保持有效）。
 
-- weather；
-- fare；
-- road congestion；
-- transit delay；
-- parking cost；
-- road disruption。
-
-最终训练数据规模已经扩展到：
-
-- **40 personas**；
-- **1513 aggregated states**；
-- **4539 DeepSeek repeat records**；
-- **80 baselines**；
-- **1433 counterfactual states**；
-- persona-holdout test = **6 unseen personas / 226 states**。
-
-现阶段最重要的实验发现包括：
-
-- Student 可以保留 Teacher 的 mode choice 与概率分布；
-- elasticity-aware training 能改善动态扰动响应；
-- heterogeneity-aware training 能进一步改善分布拟合；
-- 六个扰动轴的蒸馏难度与 Teacher signal-to-noise ratio 存在稳定关联；
-- Student 决策已经成功进入 MATSim；
-- population-level mode shift 和 network feedback loop 已经跑通。
-
-因此，**后续不再以继续扩大模型、增加扰动轴或增加 persona 数量为主线。**
+**论文表述基调**（S7 收口结论）：Student 在 output/joint 行为蒸馏下保持预测性能，机制保真为
+“axis-dependent mechanism preservation under targeted mechanism-aware supervision”；
+网络验证评估的是**行为可执行性与系统响应**，而非完整因果机制保真。
 
 ---
 
-# 2. 当前论文真正的剩余缺口
+# 1. 四阶段总览
 
-目前项目的主要短板不是“AI 模型还不够强”，而是以下四类验证仍然不足。
+| 阶段 | 名称 | 核心问题 | 成功标准 | 论文角色 |
+|---|---|---|---|---|
+| **A** | 真实供给网络跑通 | 真实 OSM + scheduled PT + S7 Student 能不能在 MATSim 里完整执行？ | 100 agents baseline exit=0，四模式全可跑 | 可行性门禁（不是论文实验） |
+| **B** | 规模化验证 | 100→500→1000 agents 规模扩大有没有异常？ | 各项运行指标随规模平稳、无异常断裂 | 规模证据 |
+| **C** | 正式论文情景 | 真实网络上扰动情景的行为响应 | baseline + 5 单轴 + 联合情景全部完成 | 主实验 |
+| **D** | 真实网络反馈闭环 | Phase 10 的 Student→MATSim→congestion→再决策能否迁移到真实网络？ | 闭环收敛 | 系统级证据 |
 
-## 2.1 Supply realism 不足
-
-当前 Phase 8–10 仍主要依赖：
-
-- synthetic grid；
-- teleported public transport；
-- 人工设置道路容量；
-- road congestion 单一网络反馈。
-
-下一阶段需要将其替换为：
-
-> **Singapore OSM real road network + GTFS-based public transport network**
+**执行纪律**：Phase A 未过门禁，不进入 B/C/D；任何阶段出现无法修复的供给构建阻塞时，
+按 §8 的降级路径处理，不允许为了“结果好看”伪造供给。
 
 ---
 
-## 2.2 Demand / behavioral realism 不足
+# 2. Phase A — 真实供给网络跑通（当前唯一目标）
 
-当前 persona 和 trip 仍然属于 synthetic behavioral states。
+> 第一阶段只设一个明确目标：**先把真实供给网络跑通**。
+> 成功标准不是“结果好看”，而是：**真实 OSM + scheduled PT + S7 Student population 能在 MATSim 中完整执行**。
 
-现有实验已经能够证明：
+## 2.1 区域
 
-> Student ≈ DeepSeek Teacher
+**Tampines + Pasir Ris**（v1.0 §4.1 不变）：
 
-但 journal 论文还需要进一步回答：
+- 裁剪约 **10–15 km 级别**区域；
+- 目标 bbox（初始值，执行时可微调）：`lat 1.330–1.400, lon 103.900–104.015`
+  （GTFS 实测该范围含 **746 个公交站**，MRT East-West Line 穿区而过）；
+- 区域包含 car / bus / MRT / walk / bike 全部模式，居住功能明显，路网规模可控。
+- 备用区域：Jurong East + Clementi（仅当 Tampines/Pasir Ris 线路匹配严重失败时启用）。
 
-> Teacher / Student 的行为响应是否与真实交通行为规律一致？
-
-因此需要增加 **external behavioral plausibility validation**。
-
----
-
-## 2.3 Transportation baseline 不足
-
-现有 A/B/C 主要属于内部 ablation：
-
-- A：基础 choice/distribution；
-- B：+ elasticity；
-- C：+ heterogeneity。
-
-还需要增加至少一个交通行为领域基线：
-
-- **Multinomial Logit (MNL)**。
-
-可选增加：
-
-- conventional MLP / XGBoost。
-
----
-
-## 2.4 Teacher uncertainty 目前主要是相关性证据
-
-当前已经观察到：
-
-> Student elasticity fitting ceiling 与 Teacher axis SNR 高度一致。
-
-但目前主要属于 observational evidence。
-
-下一阶段应设计：
-
-> **K=3 → K=5 / K=7**
-
-来验证：
-
-Teacher noise ↓  
-→ distilled behavioral response quality ↑
-
-从而把这个发现从“现象”提升为论文中的独立机制性贡献。
-
----
-
-# 3. 下一阶段总目标
-
-下一阶段不再进行开放式模型开发，而是完成以下五个目标：
-
-### G1 — Singapore real-world multimodal environment
-将现有 synthetic grid 替换为真实新加坡道路 + 公共交通网络。
-
-### G2 — Transportation-domain comparison
-增加 MNL 等传统交通行为模型 baseline。
-
-### G3 — External behavioral plausibility
-验证 Teacher / Student 对票价、天气、停车费、延误、中断等变化的响应是否与经验规律一致。
-
-### G4 — Teacher-noise causal validation
-验证增加 Teacher repeat sampling 能否降低噪声并改善 Student elasticity。
-
-### G5 — Scalability / deployment evidence
-正式量化 DeepSeek Teacher 与 lightweight Student 在速度、成本、参数量和大规模仿真可执行性上的差异。
-
----
-
-# 4. Singapore Case Study 设计
-
-## 4.1 推荐主研究区域
-
-### Primary case study
-
-**Tampines + Pasir Ris**
-
-推荐原因：
-
-- car / bus / MRT / walk / bike 均存在；
-- 居住功能明显；
-- 公共交通体系完整；
-- 路网规模可控；
-- 比 CBD 更容易解释；
-- 适合研究 rain、fare、parking、congestion、transit delay、road disruption。
-
-建议不要直接模拟整个新加坡。
-
-推荐先裁剪约 **10–15 km 级别区域**，以保持 MATSim 网络规模和数据转换可控。
-
-### Backup case study
-
-**Jurong East + Clementi**
-
-当 Tampines / Pasir Ris 的公交线路匹配或 GTFS route mapping 出现严重问题时，可作为备用区域。
-
----
-
-# 5. Singapore 数据方案
-
-## 5.1 Road network
-
-使用：
-
-> **OpenStreetMap Singapore road network**
-
-目标产物：
+## 2.2 数据与产物清单
 
 ```text
-network.xml
-```
-
-需要保留：
-
-- OSM 下载日期；
-- 原始 `.osm.pbf`；
-- 裁剪 bbox；
-- OSM → MATSim 转换配置；
-- 坐标系信息；
-- network statistics。
-
----
-
-## 5.2 Public transport
-
-第一阶段直接使用当前已经找到的：
-
-> `singapore-gtfs-2026 / singapore-gtfs.zip`
-
-暂时**不要求申请 LTA DataMall API**。
-
-但论文中必须准确描述数据性质：
-
-- Bus services / routes / stops 基于 LTA DataMall；
-- bus travel times 含估算；
-- MRT schedules 为 synthetic / frequency-based schedules；
-- 不能将整个 ZIP 表述为“官方实测 GTFS timetable”。
-
-建议保存：
-
-```text
-data/singapore/gtfs/raw/singapore-gtfs.zip
-data/singapore/gtfs/README_snapshot.md
-data/singapore/gtfs/source_metadata.json
-data/singapore/gtfs/checksum.sha256
-```
-
-这样可保证论文数据版本可追溯。
-
----
-
-## 5.3 Optional external data
-
-后续用于 external plausibility 时，再考虑加入：
-
-- Singapore public transport ridership；
-- LTA passenger-volume data；
-- published Singapore mode share；
-- published fare elasticity；
-- rain / weather-related travel behavior literature；
-- parking-price sensitivity literature。
-
-这些数据主要用于：
-
-> **sanity check / behavioral plausibility**
-
-而不是声称已经完成真实人口 calibration。
-
----
-
-# 6. Phase 11 — 当前模型与数据冻结
-
-## 目标
-
-正式结束“模型继续扩展”阶段。
-
-## 工作
-
-- [ ] 冻结 40-persona / 6-axis 数据集；
-- [ ] 冻结当前 A/B/C checkpoint；
-- [ ] 保存最终 config；
-- [ ] 保存所有关键 metrics；
-- [ ] 为当前版本建立 Git tag / release snapshot；
-- [ ] 建立 `FINAL_DEVELOPMENT_BASELINE.md`；
-- [ ] 记录 1513 states / 4539 repeats 的 checksum；
-- [ ] 不再默认扩展 persona 数量；
-- [ ] 不再增加第七个 perturbation axis。
-
-## Gate
-
-只有发生明确的数据错误或方法错误时，才重新训练主模型。
-
----
-
-# 7. Phase 12 — Singapore OSM + GTFS 数据接入
-
-## 目标
-
-构建真实 Singapore multimodal MATSim supply network。
-
-## 12.1 OSM pipeline
-
-- [ ] 下载 Singapore OSM；
-- [ ] 裁剪 Tampines + Pasir Ris；
-- [ ] 转换为 MATSim `network.xml`；
-- [ ] 检查：
-  - connected components；
-  - one-way links；
-  - road class；
-  - free speed；
-  - capacity；
-  - link length；
-  - coordinate system。
-
-## 12.2 GTFS pipeline
-
-- [ ] 解压 `singapore-gtfs.zip`；
-- [ ] 检查基本 GTFS integrity；
-- [ ] 提取目标区域 stops / routes / trips；
-- [ ] GTFS → MATSim：
-  - `transitSchedule.xml`
-  - `transitVehicles.xml`
-- [ ] stop 坐标投影；
-- [ ] stops → MATSim links snapping；
-- [ ] transit route → road network routing；
-- [ ] 修复 disconnected / invalid routes。
-
-## 12.3 必须重点检查的问题
-
-最可能出现的工程问题：
-
-1. GTFS stop 不在 road network link 上；
-2. bus route 与 OSM 单行道不兼容；
-3. route stop sequence 可用，但 road routing 不可达；
-4. CRS 不一致；
-5. 某些线路跨出研究区域；
-6. transit vehicle / departure 配置不完整；
-7. MRT schedule 与 road-based bus routing 混合时产生配置问题。
-
-## Gate
-
-完成一个最小 baseline：
-
-> 100 agents + real OSM + scheduled PT → MATSim exit=0
-
-并满足：
-
-- 没有大量 broken transit routes；
-- bus / MRT / car / walk / bike 均能执行；
-- PT 不再完全 teleported。
-
----
-
-# 8. Phase 13 — Singapore Real-Network Smoke & Scaling
-
-## 目标
-
-先证明真实网络运行稳定，再做科学实验。
-
-## 实验规模
-
-依次运行：
-
-- 100 agents；
-- 500 agents；
-- 1000 agents。
-
-暂时只跑 baseline。
-
-## 输出
-
-记录：
-
-- MATSim runtime；
-- number of trips；
-- mode share；
-- failed / unroutable trips；
-- PT boardings；
-- road travel time；
-- network delay；
-- average trip duration；
-- link congestion statistics。
-
-## Gate
-
-1000 agents baseline 稳定运行后，才能进入主实验。
-
----
-
-# 9. Phase 14 — Singapore Main Scenario Experiment
-
-## 目标
-
-将已有 behavioral intelligence 投射到真实城市网络。
-
-个人层面仍保留完整六轴实验。
-
-网络层面不需要机械地把六轴全部做成复杂 supply interventions。
-
-推荐把以下四类作为 **main Singapore case-study scenarios**：
-
-### S0 — Baseline
-
-真实 OSM + GTFS，正常环境。
-
-### S1 — Heavy Rain
-
-Traveler context：
-
-- rain / severe weather。
-
-主要观察：
-
-- bike / walk ↓；
-- car / PT ↑；
-- network congestion change。
-
-### S2 — PT Fare Increase
-
-Traveler context：
-
-- public transport fare multiplier。
-
-观察：
-
-- PT demand loss；
-- mode substitution；
-- road demand / congestion change。
-
-### S3 — Road Disruption
-
-真实关闭一个具有较高交通作用的 road link / corridor。
-
-同时更新：
-
-- route travel time / availability；
-- road disruption context。
-
-观察：
-
-- mode switching；
-- route/network delay；
-- behavioral adaptation；
-- equilibrium response。
-
-### S4 — Transit Delay
-
-在 GTFS/MATSim schedule 层引入：
-
-- additional delay；
-- increased travel time；
-- 或降低 service reliability。
-
-观察：
-
-- PT demand change；
-- car substitution；
-- multimodal network response。
-
----
-
-# 10. Phase 15 — Singapore Network Feedback Loop
-
-## 目标
-
-将现有 Phase 10 的 synthetic network feedback loop 迁移到真实网络。
-
-现有逻辑继续保留：
-
-```text
-Student decision
-    ↓
-MATSim
-    ↓
-observed congestion / travel time
-    ↓
-context update
-    ↓
-Student re-decision
-    ↓
-new population demand
-    ↓
-MATSim
-```
-
-推荐至少跑：
-
-- baseline；
-- rain；
-- fare increase；
-- road disruption。
-
-## 主要指标
-
-- equilibrium congestion；
-- equilibrium car share；
-- equilibrium PT share；
-- convergence iterations；
-- mean travel time；
-- VKT；
-- network delay；
-- link-level congestion distribution。
-
-## 目标
-
-验证：
-
-> Disturbance → heterogeneous behavioral adaptation → population demand shift → real-network response → behavioral feedback
-
-而不仅仅是 mode-choice accuracy。
-
----
-
-# 11. Phase 16 — Transportation Baselines
-
-## 目标
-
-回答：
-
-> 为什么不直接使用传统 travel behavior model？
-
-## Baseline 1 — MNL
-
-训练 / 拟合输入：
-
-- persona attributes；
-- trip attributes；
-- mode attributes；
-- dynamic context。
-
-输出：
-
-- mode probabilities。
-
-与 Student 比较：
-
-- mode accuracy；
-- KL；
-- probability L1；
-- counterfactual ΔP error；
-- sign agreement；
-- heterogeneity preservation；
-- unseen-persona performance；
-- inference speed。
-
-## Baseline 2 — Standard ML（可选）
-
-优先顺序：
-
-1. plain MLP；
-2. XGBoost。
-
-注意：
-
-当前 Student-A 本身已经接近 plain neural baseline，因此不必为了“数量多”堆很多 ML baseline。
-
----
-
-# 12. Phase 17 — Teacher Noise Causal Experiment
-
-## 目标
-
-验证当前最有潜力的机制性发现：
-
-> Teacher uncertainty limits behavioral distillation.
-
-## 推荐轴
-
-优先：
-
-> **road_congestion**
-
-原因：
-
-- 与最终 MATSim feedback loop 直接相关；
-- 当前属于较低 SNR；
-- 已经观察到 Student magnitude under-response。
-
-备选：
-
-> fare。
-
-## 实验
-
-固定同一组 counterfactual states：
-
-```text
-K=3
-K=5
-K=7
-```
-
-不要重新增加 persona。
-
-只增加同一 state 的 Teacher repeated sampling。
-
-## 检验链
-
-### Step 1
-
-验证：
-
-```text
-Teacher pairwise noise:
-K=3 > K=5 > K=7
-```
-
-### Step 2
-
-分别聚合 Teacher targets。
-
-### Step 3
-
-训练相同 Student。
-
-### Step 4
-
-比较：
-
-- elasticity magnitude error；
-- sign agreement；
-- ΔP gap；
-- KL；
-- probability L1。
-
-## 成功结果
-
-如果出现：
-
-> Teacher noise ↓ → Student elasticity fidelity ↑
-
-则可以形成独立论文贡献：
-
-> Behavioral distillation is constrained by teacher response consistency rather than merely student capacity or dataset size.
-
----
-
-# 13. Phase 18 — External Behavioral Plausibility
-
-## 目标
-
-补上：
-
-> Student ≈ Teacher
-
-之外的第二层证据：
-
-> Teacher / Student response ≈ empirical behavioral expectation
-
-## 推荐验证轴
-
-优先选 3–4 个经验文献较成熟的变量：
-
-1. PT fare；
-2. parking cost；
-3. heavy rain；
-4. transit delay。
-
-## 两级验证
-
-### Level A — Directional plausibility
-
-例如：
-
-```text
-fare ↑      → PT ↓
-parking ↑   → car ↓
-rain ↑      → walk/bike ↓
-PT delay ↑  → PT ↓
-```
-
-### Level B — Magnitude plausibility
-
-当能够找到可比较的 empirical elasticity 时：
-
-比较：
-
-- published elasticity；
-- Teacher elasticity；
-- Student elasticity。
-
-注意：
-
-如果数据定义、城市、时期不同，只做区间或量级比较。
-
-不得把不同来源的 elasticity 当作严格 ground truth。
-
----
-
-# 14. Phase 19 — Efficiency & Scalability Benchmark
-
-## 目标
-
-正式回答：
-
-> 为什么需要 distillation？
-
-## 对比
-
-### DeepSeek Teacher
-
-记录：
-
-- API latency；
-- token usage；
-- monetary cost；
-- repeated-sampling cost；
-- ability to scale to 1k / 10k agents。
-
-### Student
-
-记录：
-
-- parameter count；
-- model size；
-- CPU inference latency；
-- GPU inference latency（如需要）；
-- memory；
-- 100 / 1000 / 10000 decisions runtime；
-- offline availability。
-
-## 核心表
-
-| Metric | DeepSeek Teacher | Student |
-|---|---:|---:|
-| Model access | API | Local |
-| Parameters | Large proprietary model | ~24k |
-| 1 decision latency | measured | measured |
-| 1000 decisions | measured/estimated | measured |
-| 10000 decisions | measured/estimated | measured |
-| API cost | measured | ~0 marginal API cost |
-| Offline execution | No | Yes |
-| MATSim population execution | impractical | Yes |
-
----
-
-# 15. Phase 20 — Statistical Robustness
-
-## 最低要求
-
-### Student training
-
-- [ ] 3–5 random seeds；
-- [ ] report mean ± std。
-
-### Individual-level evaluation
-
-对：
-
-- KL；
-- L1；
-- ΔP gap；
-- sign agreement；
-
-增加 bootstrap 95% CI。
-
-### Singapore simulation
-
-至少对主要 scenario 使用：
-
-- 3 个 population / trip random seeds。
-
-观察：
-
-- mode share shift；
-- network delay；
-- equilibrium congestion；
-
-是否稳定。
-
----
-
-# 16. Phase 21 — Final Experiment Matrix
-
-建议最后论文形成以下证据层：
-
-| Evidence level | Question | Experiment |
-|---|---|---|
-| E1 | Student 能否复制 Teacher？ | A/B/C + holdout |
-| E2 | 能否保留动态 elasticity？ | 6-axis counterfactual |
-| E3 | 能否保留 heterogeneity？ | persona contrast |
-| E4 | 是否优于传统行为模型？ | MNL baseline |
-| E5 | Teacher noise 是否限制蒸馏？ | K=3/5/7 |
-| E6 | 是否能进行 population-scale execution？ | 1000 agents |
-| E7 | 是否能进入真实交通系统？ | Singapore OSM + GTFS |
-| E8 | 是否产生网络后果？ | real network feedback loop |
-| E9 | 行为是否具有外部合理性？ | empirical plausibility |
-| E10 | 为什么必须蒸馏？ | latency/cost/scalability |
-
-这十层证据完成后，论文故事将不再是：
-
-> “我们把 LLM 做小了。”
-
-而是：
-
-> **We distill heterogeneous and context-sensitive travel behavior from a large language model into an executable traveler agent, quantify when such behavioral intelligence can be reliably distilled, and demonstrate its population-scale and network-level consequences in a real multimodal transport environment.**
-
----
-
-# 17. 推荐论文核心 Research Questions
-
-## RQ1 — Fidelity
-
-Can a lightweight Traveler Agent preserve the choice distributions of a large language model for unseen traveler personas?
-
-## RQ2 — Behavioral responsiveness
-
-Can distillation preserve heterogeneous responses to dynamic transportation contexts rather than only static mode choices?
-
-## RQ3 — Teacher uncertainty
-
-How does teacher response consistency affect the fidelity of distilled behavioral elasticity?
-
-## RQ4 — Simulation executability
-
-Can the distilled agent be executed at population scale inside MATSim?
-
-## RQ5 — System consequence
-
-Do context-induced behavioral adaptations propagate into measurable network-level outcomes in a realistic multimodal urban network?
-
----
-
-# 18. 推荐最终 Contributions
-
-论文最后建议收敛为四个核心贡献。
-
-### C1 — Behavioral distillation framework
-
-提出从 large LLM teacher 向 lightweight executable traveler agent 蒸馏：
-
-- choice；
-- probability distribution；
-- elasticity；
-- heterogeneity。
-
-### C2 — Counterfactual / heterogeneity-aware learning
-
-证明仅学习 choice 不足以保持动态出行行为，加入 elasticity / heterogeneity supervision 能改善未见 persona 的行为响应。
-
-### C3 — Teacher uncertainty as a distillation bottleneck
-
-揭示不同 context axis 的蒸馏质量受到 Teacher signal-to-noise ratio 限制，并通过 K-sampling 实验验证该机制。
-
-### C4 — Real-world transportation execution
-
-在 Singapore OSM + GTFS multimodal environment 中，将 distilled individual behavior 扩展到 population demand 和 network feedback。
-
----
-
-# 19. 明确不做的事情
-
-为了避免项目再次无限扩张，下一阶段默认**不做**：
-
-- [ ] persona 40 → 80 / 100；
-- [ ] 增加第七、第八个 context axis；
-- [ ] 再换新的 Student architecture；
-- [ ] 增加大量 Teacher 模型进行横向比较；
-- [ ] 直接模拟整个 Singapore；
-- [ ] 为了追求“真实”重新建设完整 Singapore travel demand model；
-- [ ] 一开始就接 LTA realtime API；
-- [ ] 把社区 GTFS 描述成完全官方 timetable；
-- [ ] 把 synthetic personas 描述成 Singapore representative population；
-- [ ] 在当前论文加入超出主线的新模块。
-
----
-
-# 20. 推荐目录结构
-
-```text
-data/
-  singapore/
-    osm/
-      raw/
-      clipped/
-      network/
-    gtfs/
-      raw/
-      processed/
-      README_snapshot.md
-      source_metadata.json
-      checksum.sha256
-    population/
-    scenarios/
-
+data/singapore/
+  osm/
+    source_metadata.json          # 下载源/日期/bbox/校验
+    singapore.osm.pbf             # 原始下载（或 overpass .osm）
+    tampines_pasir_ris.osm        # 裁剪后
+    network.xml                   # OSM → MATSim 转换产物
+    network_stats.json            # 节点/链路/连通分量/速度/容量统计
+  gtfs/
+    raw/singapore-gtfs.zip        # 已有（工作区根目录，需移入并留快照）
+    README_snapshot.md            # 数据性质说明（见 §2.3）
+    source_metadata.json
+    checksum.sha256
+  transit/
+    transitSchedule.xml           # GTFS → MATSim
+    transitVehicles.xml
+    stop_snapping_report.json     # 每站最近 link 距离、失败站清单
+    route_routing_report.json     # 每线路 routing 失败/降级清单
 outputs/
-  singapore_smoke/
-  singapore_population/
-  singapore_feedback/
-  baselines/
-  teacher_noise/
-  efficiency/
-  external_validation/
-
-reports/
-  FINAL_DEVELOPMENT_BASELINE.md
-  SINGAPORE_DATA_AUDIT.md
-  SINGAPORE_NETWORK_VALIDATION.md
-  SINGAPORE_SCENARIO_REPORT.md
-  BASELINE_COMPARISON.md
-  TEACHER_NOISE_CAUSAL_REPORT.md
-  EFFICIENCY_REPORT.md
-  EXTERNAL_PLAUSIBILITY_REPORT.md
-  FINAL_PAPER_EVIDENCE_MATRIX.md
+  singapore_phase_a/
+    smoke_100/                    # 100 agents baseline 运行产物（含 exit code 记录）
 ```
 
----
+## 2.3 GTFS 数据现状与表述边界（已侦察）
 
-# 21. 推荐执行顺序
+- `singapore-gtfs.zip` **已存在于工作区根目录**，内容实测：
+  - 6 个 agency（LTA + SBS Transit / SMRT / Tower Transit / Go-Ahead / 公交运营实体）；
+  - **603 条线路**：593 条 bus（route_type=3）+ **9 条 MRT**（route_type=1）；
+  - 5,376 stops、230,915 trips、8,169,065 stop_times、4 个 calendar 服务日模式；
+  - 覆盖全新加坡（lat 1.25–1.49），目标区域 746 站。
+- **表述边界（论文必须遵守）**：bus 时刻为 LTA DataMall 性质数据、旅行时间含估算；
+  MRT 为 frequency/synthetic 性质 schedule；**不得**把整个 feed 表述为“官方实测 GTFS timetable”。
+- 数据来源、下载日期、checksum 必须写入快照文件，保证可追溯。
 
-## P0 — 立即执行
+## 2.4 Phase A 执行步骤（顺序严格）
 
-1. Freeze 当前 40-persona / 6-axis 主实验；
-2. 下载并裁剪 Singapore OSM；
-3. 接入现有 `singapore-gtfs.zip`；
-4. 完成 OSM + GTFS → MATSim；
-5. 100 → 500 → 1000 agent smoke；
-6. 跑 Singapore baseline；
-7. 跑 rain / fare / disruption / transit-delay 主场景；
-8. 将 Phase 10 feedback loop 迁移到真实网络。
+1. **数据归档**：GTFS zip 移入 `data/singapore/gtfs/raw/`，生成快照 + metadata + sha256；
+2. **OSM 获取**：Overpass bbox 下载（首选）或 Geofabrik Singapore 全量 + 裁剪；
+   生成 `source_metadata.json`（日期、bbox、源）；
+3. **OSM → network.xml**：使用 MATSim 自带 `org.matsim.core.utils.io.OsmNetworkReader`
+   （已在 `tools/matsim-2026.0-release/matsim-2026.0/matsim-2026.0.jar` 内确认存在，
+   Java 25 可用）；转换配置：highway 过滤（motorway…residential/service）、capacity/freespeed
+   映射、mode 允许集（car,bike,walk; pt 走 transit network）；
+4. **network 质量检查**：连通分量、单向链路、link length/freespeed/capacity 分布、孤立节点、CRS
+   （GTFS 为 WGS84，MATSim 采用投影坐标——用 SVY21/EPSG:3414 或 UTM 48N，全链统一）；
+5. **GTFS → transitSchedule.xml + transitVehicles.xml**：
+   - 区域过滤：只保留穿过/停靠裁剪区域的线路（保留跨区域线路的区域内区段或裁剪其服务范围）；
+   - **stop-to-link snapping**：每个 stop 投影后吸附到最近可用 link（记录吸附距离，超阈值标记）；
+   - **route routing**：每个 trip 的 stop 序列在 road network 上做 shortest-path routing 生成 route path；
+   - MRT：route_type=1 的线路需要 rail 路段（OSM railway=rail/subway）——若 OSM 转换不含 rail，
+     走“rail-on-road 替代 + 频率化 schedule”的显式降级并在报告中记录；
+   - transitVehicles：按 route 配置车辆容量与发车（departures 来自 stop_times / frequencies）；
+6. **100-agent smoke**：S7-W3 Student（复用 `MATSimAdapter`，替换 synthetic grid 为真实供给）→
+   `RunMatsimPreloaded` 运行，**exit=0**；
+7. **模式完备性验证**：car / pt / walk / bike 四个模式的 leg 都能在真实网络上生成并被执行
+   （pt 从 teleported 升级为 scheduled transit——这是本阶段的核心升级）。
 
-## P1 — Journal 必须补强
+## 2.5 已知风险清单（v1.0 §12.3，逐项排查）
 
-9. MNL baseline；
-10. efficiency / scalability benchmark；
-11. external behavioral plausibility；
-12. 3–5 seeds / bootstrap CI；
-13. K=3/5/7 Teacher-noise experiment。
+1. GTFS stop 不在任何 road link 上 → snapping 报告 + 超阈值处理策略；
+2. bus route 与 OSM 单行道不兼容 → routing 需按车辆模式限制（car-like）；
+3. route stop 序列 routing 不可达 → 跳过/降级并记录；
+4. CRS 不一致 → 统一投影链；
+5. 线路跨出研究区域 → 裁剪策略（保留区域内运行段或剔除线路）；
+6. transit vehicle / departure 配置不完整 → 校验脚本；
+7. MRT 与 road-based bus routing 混合 → rail 供给缺失时按 §2.4 显式降级并记录。
 
-## P2 — 只有论文仍明显不足时再做
+## 2.6 Phase A Gate（过门禁 = 进入 Phase B）— ✅ 2026-08-25 全部达成
 
-14. 第二个 Singapore region；
-15. 第二城市 transfer；
-16. LTA API 重建最新版 feed；
-17. 更大人口规模。
+- [x] `network.xml` 质量检查全通过（连通分量、CRS、链路属性；car 最大连通分量 95%）
+- [x] transitSchedule 覆盖区域内主要 bus + MRT，route routing 失败率记录在案且策略已执行
+      （5,580 车次 / 170 线路 / 851 站；191/191 序列路由成功、0 失败）
+- [x] stop snapping 报告生成，超阈值站有明确处理（mean 60m / p90 186m / max 688m，
+      全部经人工接入链 ai_in/ai_out 连接）
+- [x] **100 个 S7-W3 agents baseline 运行 exit=0**
+- [x] car / pt / walk / bike 四模式均有实际 executed legs
+- [x] 所有产物与报告落入 `data/singapore/` 与 `outputs/singapore_phase_a/`，可复现
 
----
-
-# 22. 预计三周收口路线
-
-## Week 1 — Singapore Supply Realism
-
-目标：
-
-> real OSM + GTFS MATSim baseline 跑通
-
-完成：
-
-- Phase 11；
-- Phase 12；
-- Phase 13。
-
-## Week 2 — Main Scientific Experiments
-
-完成：
-
-- Phase 14；
-- Phase 15；
-- Phase 16；
-- Phase 17。
-
-## Week 3 — Journal Evidence Closure
-
-完成：
-
-- Phase 18；
-- Phase 19；
-- Phase 20；
-- final figures / tables；
-- paper evidence matrix；
-- manuscript drafting。
-
-如果 Singapore GTFS route mapping 花费时间明显超过预期，应优先保证：
-
-> real OSM + usable scheduled PT + one stable study region
-
-而不是追求整个 Singapore 全线路完美复现。
+门禁报告：`outputs/singapore_phase_a/PHASE_A_GATE.md`（含全部工程近似与诚实边界）。
+**执行证据**：5,580 transit 车次全部发车、pt 8 上车/8 下车、stuckAndAbort=0、
+departure 5,796 = arrival 5,796、avg trip 6.6 km。
 
 ---
 
-# 23. 最终停止条件
+# 3. Phase B — 规模化验证（100 → 500 → 1000）✅ 2026-08-25 完成
 
-当以下条件全部满足时，停止新增实验并进入论文写作：
+**目标**：确认规模扩大没有异常（不是追求好看数字）。
 
-- [ ] real Singapore OSM MATSim network 可稳定运行；
-- [ ] GTFS public transport 已接入；
-- [ ] 1000-agent baseline 成功；
-- [ ] ≥4 Singapore dynamic scenarios 完成；
-- [ ] real-network feedback loop 成功；
-- [ ] MNL baseline 完成；
-- [ ] Teacher-noise K experiment 完成；
-- [ ] efficiency benchmark 完成；
-- [ ] external behavioral plausibility 完成；
-- [ ] statistical robustness 完成；
-- [ ] 所有最终数字有统一 evidence report；
-- [ ] limitations 明确区分：
-  - supply realism；
-  - behavioral plausibility；
-  - population calibration。
+| 规模 | 100 | 500 | 1000 |
+|---|---|---|---|
+| 每次运行记录 | routing failures | PT boardings | mode share |
+| | mean trip time | road delay | runtime |
+| | failed trips | network congestion | |
 
-满足这些条件后，项目应**停止继续开发**，直接进入 AIT manuscript preparation。
+- 同一供给网络、同一 Student 决策管线，只放大 population；
+- 异常判据：boardings/failed-trips/mode share 出现与规模不成比例的突变、runtime 超线性爆炸、
+  congestion 在 baseline 下失真（如全网瘫痪）；
+- 产出 `outputs/singapore_phase_b/scale_report.md` + 规模对比表。
+
+**结果**：失败行程 0 / stuckAndAbort 0（全部规模）；PT boardings 12→55→127（线性）；
+mean trip time 8.96→9.67→9.62 min；road delay 0.51 s/passage（跨规模不变）；
+congestion ≈0；runtime 27–29 s（平稳，5,580 transit 车次主导）；mode share 漂移 <5pp。
+**判定：规模扩大无异常 → 进入 Phase C。**
 
 ---
 
-# 24. 一句话执行原则
+# 3.5 Phase B.5 — Experimental Validity Gate（2026-08-25）
 
-> **当前项目已经不缺新的模型和新的扰动轴；下一阶段的全部工作应围绕“真实新加坡交通环境、交通学基线、外部行为合理性、Teacher 噪声机制和规模化价值”收口。**
+## B.5A PT Routing Validity ✅
+- 目标：Student intended PT 的 itinerary 构建成功率 ≥90%，回退分类。
+- 供给升级：**全天 05:00–23:00（20,966 trips / 859 站）**；规划器：直连 + **1 次换乘
+  （独立 pt leg + 换乘步行，无 chainedRoute）** + 步行延伸（1.5km）。
+- **结果 98.0%（intended 904 → routed 886：direct 687 / transfer 199 / fallback 18，
+  全部 no_direct_or_transfer）**；MATSim：上车 1,082=下车 1,082、不平衡车辆 0。
+- 报告：`outputs/singapore_phase_b5/pt_validity_v3/pt_validity.md`。
 
-最终目标不是继续证明 Student “能学”，而是证明：
+## B.5B + B.5C Demand Loading & Effective-Capacity Calibration ✅ 方案冻结
+- 诊断（40k）：峰值 car 3,452 辆/h、链路 V/C max 0.361/P99 0.06、sample 因子 ≈0.115 →
+  需求单边扩展不可行（需 80万–120万 agents）。
+- 标定测试（10k × 同一种子）：green-ratio 三档（0.35/0.45/0.55）→ free-flow；
+  qsim 容量因子 0.12→重、0.3→**轻-中度（slow 0.17%、car travel +13%）**、0.5–0.7→轻；
+  **car 失败率全档 0.2%（无 gridlock）**。
+- **冻结：N\*=10,000 + flowCapacityFactor=storageCapacityFactor=0.3**；论文表述
+  "controlled real-network experiment under calibrated effective capacity"。
+- 报告：`outputs/singapore_phase_b5/calibration/calibration_report.md`、
+  `loading_diagnostic.md`。**Phase C 全部情景统一使用冻结设置，不得改动。**
 
-> **它学到的行为值得被交通仿真系统使用，而且能够在真实城市网络中产生可解释、可扩展、可验证的系统级结果。**
+# 4. Phase C — 正式论文情景
+
+在真实网络上跑主实验（每个情景独立运行，复用 Phase B 的 1000-agent 模板）：
+
+1. baseline；
+2. heavy rain；
+3. PT fare increase；
+4. transit delay；
+5. road disruption；
+6. 联合情景：rain + congestion、fare + congestion 等。
+
+情景注入方式：扰动经 Student 的 context 输入进入个体决策（与 synthetic 阶段同构），
+网络供给保持不变；产出模式转移、网络级延误、PT 使用变化等系统级指标。
+
+---
+
+# 5. Phase D — 真实网络反馈闭环
+
+把 Phase 10 已跑通的闭环迁移到 Singapore 网络：
+
+```text
+Student 决策 → MATSim 执行 → 观测 link 拥堵 c_obs → 平滑更新 c_ctx → Student 再决策 → 收敛
+```
+
+- 拥堵状态作用于真实 OSM link（而非 synthetic grid）；
+- 保持 Phase 10 的收敛判据与平滑参数口径，逐情景报告均衡 c* 与收敛轮数。
+
+---
+
+# 6. 数据可追溯规则（贯穿 A–D）
+
+- 所有外部数据（OSM/GTFS）记录：来源 URL、下载日期、版本/feed 起始日期、SHA-256、bbox；
+- 所有转换配置（OSM 过滤规则、投影、snapping 阈值、routing 算法）写入配置文件并随产物存档；
+- 所有运行记录：seed、Student checkpoint 路径、MATSim 版本（2026.0）、Java 版本（25）、exit code。
+
+---
+
+# 7. 当前资产盘点（已侦察确认）
+
+| 资产 | 状态 |
+|---|---|
+| MATSim 2026.0（含 `matsim-2026.0.jar` + 全部依赖） | ✅ `tools/matsim-2026.0-release/` |
+| `OsmNetworkReader`（OSM→network.xml） | ✅ 在核心 jar 内 |
+| Java 25 | ✅ Adoptium jdk-25 |
+| `singapore-gtfs.zip`（603 线路/5376 站/23 万 trips） | ✅ 工作区根目录 |
+| `RunMatsimPreloaded`（预加载 scenario 运行器） | ✅ `tools/java/`（Phase 8 遗留） |
+| `MATSimAdapter`（checkpoint → plans/attributes） | ✅ `src/traveler_distillation/matsim/adapter.py`（需从 synthetic grid 扩展到真实供给） |
+| OSM Singapore 提取文件 | ❌ 需下载 |
+| GTFS→transitSchedule 转换器 | ❌ 需实现（首选 matsim-pt2matsim 依赖接入，失败则自研 Java 转换器：stop snapping + Dijkstra route path） |
+
+---
+
+# 8. 停止条件与降级路径
+
+- **Phase A 阻塞**：若 bus route routing 大面积不可达（>20% trips 无法形成 route path），
+  降级顺序：① 放宽 snapping 阈值 / 修网络断层 → ② 剔除不可达线路（保留 MRT + 主 bus 走廊，
+  记录剔除比例）→ ③ 切换备用区域 Jurong East + Clementi → ④ 全部失败则冻结 Phase A，
+  论文改为 synthetic-grid 网络验证 + 真实供给构建的方法学章节。
+- **任何阶段**：不伪造供给、不删不利样本、不把降级路径的结果表述为完整真实网络。
+- **模型线**：Phase A–D 全程不再训练新 Student；如 Singapore 运行暴露 Student 决策的
+  表示边界（如 S2 时代 departure ±60 裁剪），记录为已知边界而非重训理由。
+
+---
+
+# 9. 与 v1.0 的映射（Phase 11–21 → A–D）
+
+| v1.0 | v2.0 | 说明 |
+|---|---|---|
+| Phase 11 冻结 | §0 完成 | S7-W3 已 Freeze |
+| Phase 12 数据接入 | **Phase A** | 拆细、加 gate |
+| Phase 13 规模 | **Phase B** | 明确 100/500/1000 |
+| Phase 14 主情景 | **Phase C** | 顺序调整到供给跑通之后 |
+| Phase 15 反馈闭环 | **Phase D** | 不变 |
+| Phase 16–21（MNL baseline / 因果 / plausibility / 效率 / 统计） | 暂缓 | Phase C 完成后再按需启用（P1/P2 优先级） |
+
+---
+
+# 10. 一句话执行原则
+
+> **先让真实供给网络在 MATSim 里完整跑起来（Phase A exit=0），再谈规模、情景与闭环。**
