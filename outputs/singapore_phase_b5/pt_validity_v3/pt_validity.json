@@ -1,0 +1,48 @@
+{
+  "n_agents": 1000,
+  "build_seconds": 105.8,
+  "outbound": {
+    "intended": 455,
+    "routed": 449,
+    "direct": 346,
+    "transfer": 103,
+    "fallback": 6,
+    "success_rate": 0.9868,
+    "fallback_reasons": {
+      "no_direct_or_transfer": 6
+    }
+  },
+  "return": {
+    "intended": 449,
+    "routed": 437,
+    "direct": 341,
+    "transfer": 96,
+    "fallback": 12,
+    "success_rate": 0.9733,
+    "fallback_reasons": {
+      "no_direct_or_transfer": 12
+    }
+  },
+  "combined": {
+    "intended": 904,
+    "routed": 886,
+    "direct": 687,
+    "transfer": 199,
+    "fallback": 18,
+    "success_rate": 0.9801
+  },
+  "planning_fallbacks": {
+    "pt_fallback_walk": 18,
+    "no_route_car": 29,
+    "no_route_bike": 0,
+    "pt_fallback_no_direct_or_transfer": 18
+  },
+  "matsim_exit_code": 0,
+  "matsim_runtime_seconds": 120.0,
+  "execution_check": {
+    "pt_boardings": 1082,
+    "pt_alightings": 1082,
+    "stuck_and_abort": 3,
+    "vehicles_with_unbalanced_enter_leave": 0
+  }
+}

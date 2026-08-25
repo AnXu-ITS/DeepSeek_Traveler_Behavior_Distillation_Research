@@ -1,0 +1,26 @@
+{
+  "zip": "data/singapore/gtfs/raw/singapore-gtfs.zip",
+  "service_id": "WD",
+  "bbox": {
+    "lat_min": 1.33,
+    "lat_max": 1.4,
+    "lon_min": 103.9,
+    "lon_max": 104.015
+  },
+  "margin_deg": 0.004,
+  "time_window": [
+    18000,
+    82800
+  ],
+  "supply_cropping": "longest in-region consecutive stop segment per trip (Phase A §2.4)",
+  "trips_kept": 21286,
+  "trips_trimmed": 18327,
+  "trips_dropped_no_region_run": 40695,
+  "trips_dropped_time_window": 3191,
+  "trips_dropped_too_short": 898,
+  "stops_kept": 859,
+  "mode_counts": {
+    "bus": 20382,
+    "rail": 904
+  }
+}

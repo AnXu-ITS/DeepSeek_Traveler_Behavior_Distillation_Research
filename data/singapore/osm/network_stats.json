@@ -1,0 +1,47 @@
+{
+  "source": "data\\singapore\\osm\\tampines_pasir_ris.osm",
+  "ways_kept": 30140,
+  "nodes": 100867,
+  "links": 191617,
+  "mode_link_counts": {
+    "car": 86174,
+    "bike": 185695,
+    "walk": 188373
+  },
+  "length_m": {
+    "n": 191617,
+    "min": 0.5,
+    "p50": 9.19,
+    "max": 1702.28
+  },
+  "freespeed_ms": {
+    "n": 191617,
+    "min": 0.8,
+    "p50": 3.9,
+    "max": 25.0
+  },
+  "capacity_veh_h": {
+    "n": 191617,
+    "min": 400,
+    "p50": 1000,
+    "max": 12000
+  },
+  "total_network_km": 3520.58,
+  "connectivity": {
+    "car": {
+      "components": 161,
+      "largest_component_nodes": 51326,
+      "fraction_in_largest": 0.9515
+    },
+    "bike": {
+      "components": 908,
+      "largest_component_nodes": 88602,
+      "fraction_in_largest": 0.9316
+    },
+    "walk": {
+      "components": 475,
+      "largest_component_nodes": 90922,
+      "fraction_in_largest": 0.951
+    }
+  }
+}

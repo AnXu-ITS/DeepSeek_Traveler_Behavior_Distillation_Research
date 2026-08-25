@@ -1,0 +1,29 @@
+{
+  "n_agents": 100,
+  "checkpoint": "outputs/student_s7_w3/checkpoints/best.pt",
+  "student_mode_counts": {
+    "pt": 48,
+    "bike": 15,
+    "car": 31,
+    "walk": 6
+  },
+  "executed_outbound_counts": {
+    "walk": 52,
+    "bike": 15,
+    "car": 25,
+    "pt": 8
+  },
+  "matsim_exit_code": 0,
+  "events": {
+    "leg_departures": {
+      "car": 5629,
+      "walk": 129,
+      "pt": 8,
+      "bike": 30
+    },
+    "pt_boardings": 8,
+    "n_events": 6993296,
+    "transit_vehicle_departures": 5580
+  },
+  "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)"
+}

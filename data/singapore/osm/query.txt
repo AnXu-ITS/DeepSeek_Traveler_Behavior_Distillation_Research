@@ -1,0 +1,1 @@
+[out:xml][timeout:600];(way["highway"](1.330,103.900,1.400,104.015);>;);out body;
