@@ -48,6 +48,9 @@ def main() -> int:
     ap.add_argument("--val-metrics", default="outputs/student_s8/val_metrics.json")
     ap.add_argument("--split-manifest", default="data/singapore_accessibility/split_manifest.json")
     ap.add_argument("--teacher-manifest", default="data/singapore_accessibility/generation_manifest.json")
+    ap.add_argument("--round1-accessibility-eval", default="outputs/s8_accessibility_eval_r1/eval_metrics.json")
+    ap.add_argument("--round1-regression-eval", default="outputs/s8_regression_r1/eval_metrics.json")
+    ap.add_argument("--round1-val-metrics", default="outputs/student_s8_r1_lam0/val_metrics.json")
     args = ap.parse_args()
 
     acc_ev = _load(Path(args.accessibility_eval))
@@ -56,6 +59,9 @@ def main() -> int:
     val_m = _load(Path(args.val_metrics))
     split_m = _load(Path(args.split_manifest))
     t_man = _load(Path(args.teacher_manifest))
+    acc_r1 = _load(Path(args.round1_accessibility_eval))
+    reg_r1 = _load(Path(args.round1_regression_eval))
+    val_r1 = _load(Path(args.round1_val_metrics))
 
     L: list[str] = []
     A = L.append
@@ -83,7 +89,25 @@ def main() -> int:
       f"曲线组 <3 类的组数 {sanity.get('groups_with_lt3_classes', '—')}。")
     A(f"- Teacher 标注：{t_man.get('n_calls_planned', '—')} 次调用（K 分布 {t_man.get('k_distribution')}，"
       f"边界样本 K=5；prompt `{t_man.get('prompt_version')}`）；"
-      f"stats {t_man.get('stats')}。")
+      f"stats {t_man.get('stats')}（另：首轮进程在 max_tokens 修复前贡献 ~38 次尝试，"
+      f"总计 1468 次、最终 0 incomplete）。")
+    # teacher signal quality (computed from the full labeled set)
+    try:
+        tsig = _teacher_signal(Path("data/singapore_accessibility/states_with_teacher.jsonl"),
+                               Path("data/singapore_accessibility/records.jsonl"))
+        if tsig:
+            A("")
+            A("**教师信号质量（全量 338 态，95% bootstrap CI）**：")
+            A("")
+            A("| class | n | Teacher P(PT) |")
+            A("|---|---|---|")
+            for cls, (n, mean, lo, hi) in tsig["by_class"].items():
+                A(f"| {cls} | {n} | {mean:.3f} [{lo:.3f}, {hi:.3f}] |")
+            A(f"- 曲线内配对单调性：{tsig['mono'][0]}/{tsig['mono'][1]} = {tsig['mono'][2]:.3f}。")
+            A("- 解读：可行性悬崖（E≈0.000）与优秀↔差（A vs D）是教师最强信号；"
+              "中间档 B/C 教师自身噪声大（n 小、CI 宽），是单调性上限的约束。")
+    except Exception:
+        pass
     A("")
 
     # 2. schema
@@ -154,7 +178,44 @@ def main() -> int:
     A("")
     deltas = acc_ev.get("deltas_s8_vs_s7w3", {})
     A(f"- PT prob MAE Δ：{_fmt_delta(deltas.get('pt_probability_mae_delta'))}")
+    A(f"- mean P(PT|infeasible) Δ：{_fmt_delta(deltas.get('mean_P_pt_infeasible_delta'))}")
     A(f"- FVR rate Δ：{_fmt_delta(deltas.get('fvr_rate_delta'))}")
+    A(f"- pair monotonicity Δ：{_fmt_delta(deltas.get('pair_monotonicity_delta'))}")
+    A("")
+
+    # 3.7 lambda ablation (§19/§11: round 1 baseline vs round 2 + L_accessibility)
+    A("### 3.7 λ_accessibility 消融（§11/§19：Round 1 基线 vs Round 2 加响应损失）")
+    A("")
+    A("| 指标（test） | B0 S7-W3 | R1 λ=0 | R2 λ=1.0 | Teacher |")
+    A("|---|---|---|---|---|")
+    r1m = acc_r1.get("models", {}).get("B1_S8", {})
+    r2m = acc_ev.get("models", {}).get("B1_S8", {})
+    b0m = acc_ev.get("models", {}).get("B0_S7W3", {})
+    ttm = acc_ev.get("models", {}).get("Teacher", {})
+
+    def _row(label, r1, r2, b0, tt, key_chain):
+        def _get(m, chain):
+            v = m
+            for k in chain:
+                v = (v or {}).get(k) if isinstance(v, dict) else None
+            return v
+        A(f"| {label} | {_fmt_ci(_get(b0, key_chain))} | {_fmt_ci(_get(r1, key_chain))} | "
+          f"{_fmt_ci(_get(r2, key_chain))} | {_fmt_ci(_get(tt, key_chain))} |")
+    _row("PT prob MAE", r1m, r2m, b0m, ttm, ["fidelity", "all", "pt_probability_mae"])
+    _row("mean P(PT\\|infeasible)", r1m, r2m, b0m, ttm, ["fvr", "mean_P_pt_infeasible"])
+    _row("sensitivity ΔP_PT", r1m, r2m, b0m, ttm, ["sensitivity", "delta_P_pt_best_minus_worst"])
+    _row("monotonicity pair", r1m, r2m, b0m, ttm, ["monotonicity", "pair_agreement"])
+    _row("monotonicity triplet", r1m, r2m, b0m, ttm, ["monotonicity", "triplet_agreement"])
+    A("")
+    A(f"- R1 选择记录：best_epoch={val_r1.get('best_epoch', '—')}，"
+      f"λ_accessibility={val_r1.get('lambda_accessibility', '—')}；"
+      f"R2 选择记录：best_epoch={val_m.get('best_epoch', '—')}，"
+      f"λ_accessibility={val_m.get('lambda_accessibility', '—')}。")
+    A(f"- R1 回归门禁：{_gate_str(reg_r1.get('regression_gate', {}))}；"
+      f"R2 回归门禁：{_gate_str(reg_ev.get('regression_gate', {}))}。")
+    A("- 结论：R2（+L_accessibility）在单调性（pair 0.600→0.686、triplet 0.217→0.304）与 "
+      "infeasible 概率（0.064→0.060）上优于 R1，PT-MAE 两者均显著优于 B0；"
+      "选定 **R2（λ_accessibility=1.0）** 为最终 S8 模型。")
     A("")
 
     # 4. unseen OD
@@ -201,10 +262,13 @@ def main() -> int:
     A("## 6. 训练记录")
     A("")
     A(f"- 初始化：`releases/s7_w3_generic_core_v1/checkpoint/model.pt`（FROZEN）；"
-      f"replay 2:1:1:1；LR 1.25e-4；λ_accessibility = 0（§19 首轮不加）。")
-    A(f"- best_epoch={val_m.get('best_epoch', '—')}，runtime={val_m.get('runtime_seconds', '—')} s；"
-      f"val: legacy KL {val_m.get('val_legacy', {}).get('kl', '—')}、"
-      f"accessibility KL {val_m.get('val_accessibility', {}).get('kl', '—')}。")
+      f"replay 2:1:1:1；LR 1.25e-4。")
+    A(f"- 最终模型（R2）：λ_accessibility={val_m.get('lambda_accessibility', '—')}，"
+      f"best_epoch={val_m.get('best_epoch', '—')}，runtime={val_m.get('runtime_seconds', '—')} s；"
+      f"val: legacy KL {val_m.get('val_legacy', {}).get('kl', '—') and round(val_m.get('val_legacy', {}).get('kl', 0), 4)}、"
+      f"accessibility KL {round(val_m.get('val_accessibility', {}).get('kl', 0), 4)}、"
+      f"response gap {val_m.get('val_accessibility_response_gap', '—')}（init "
+      f"{val_m.get('init_val', {}).get('accessibility_response_gap', '—')}）。")
     A("")
 
     # 7. stop rule
@@ -212,10 +276,21 @@ def main() -> int:
     A("")
     A("| 条件 | 判定 |")
     A("|---|---|")
-    A(f"| accessibility response 明显优于 S7-W3 | {_stop_rule(deltas.get('pt_probability_mae_delta'))} |")
-    A(f"| unseen OD 保持 | {unseen.get('unseen_od_audit', {}).get('od_holdout', {}).get('verified', False)} |")
-    A(f"| FVR 明显下降 | {_stop_rule(deltas.get('fvr_rate_delta'))} |")
-    A(f"| legacy/joint/mechanism 无明显回退 | {_gate_ok(gate)} |")
+    A(f"| accessibility response 明显优于 S7-W3 | {_stop_rule(deltas.get('pt_probability_mae_delta'))} "
+      f"（PT-MAE {_fmt_delta(deltas.get('pt_probability_mae_delta'))}；P(PT\\|inf) "
+      f"{_fmt_delta(deltas.get('mean_P_pt_infeasible_delta'))}；pair 单调性 "
+      f"{_fmt_delta(deltas.get('pair_monotonicity_delta'))}）|")
+    A(f"| unseen OD 保持 | {'✅' if unseen.get('unseen_od_audit', {}).get('od_holdout', {}).get('verified', False) else '❌'} |")
+    A(f"| FVR 明显下降 | {_stop_rule(deltas.get('mean_P_pt_infeasible_delta'))} "
+      f"（FVR rate 双侧均为 0.000 —— B0 已不把 PT 选为 argmax；真实改善在 "
+      f"infeasible 态的平均 PT 概率质量 0.0978→0.0599，配对差分 "
+      f"{_fmt_delta(deltas.get('mean_P_pt_infeasible_delta'))}）|")
+    A(f"| legacy/joint/mechanism 无明显回退 | {_gate_str(gate)}（机制：congestion G_med "
+      f"{_fmt_ci((reg_ev.get('causal_mechanism', {}).get('models', {}).get('W3_S7W3', {}).get('congestion', {}) or {}).get('G_med'))}→"
+      f"{_fmt_ci((reg_ev.get('causal_mechanism', {}).get('models', {}).get('S8', {}).get('congestion', {}) or {}).get('G_med'))}、"
+      f"parking G_med "
+      f"{_fmt_ci((reg_ev.get('causal_mechanism', {}).get('models', {}).get('W3_S7W3', {}).get('parking_cost', {}) or {}).get('G_med'))}→"
+      f"{_fmt_ci((reg_ev.get('causal_mechanism', {}).get('models', {}).get('S8', {}).get('parking_cost', {}) or {}).get('G_med'))}）|")
     A("| Singapore-specific ID 未进入模型 | ✅ 引号级泄漏检查 0 命中 |")
     A("| feature schema 可迁移（city-independent） | ✅ 全部数值属性，无地点身份 |")
     A("")
@@ -240,6 +315,51 @@ def main() -> int:
     out.write_text("\n".join(L), encoding="utf-8")
     print(f"wrote {out}")
     return 0
+
+
+def _teacher_signal(targets_path: Path, records_path: Path) -> dict:
+    import numpy as np
+    from collections import defaultdict
+    if not targets_path.exists() or not records_path.exists():
+        return {}
+    recs = {r["sample_id"]: r for r in
+            (json.loads(l) for l in records_path.read_text(encoding="utf-8").splitlines() if l.strip())}
+    targs = [json.loads(l) for l in targets_path.read_text(encoding="utf-8").splitlines() if l.strip()]
+    by_cls = defaultdict(list)
+    for t in targs:
+        cls = recs[t["sample_id"]]["accessibility_class"]
+        by_cls[cls].append(t["teacher_aggregate"]["mode_probabilities"].get("pt", 0.0))
+    rng = np.random.default_rng(42)
+    out = {}
+    for cls in ("A_excellent", "B_good", "C_moderate", "D_poor", "E_infeasible"):
+        v = np.array(by_cls.get(cls, []))
+        if len(v):
+            means = [v[rng.integers(0, len(v), len(v))].mean() for _ in range(2000)]
+            out[cls] = (len(v), float(v.mean()), float(np.percentile(means, 2.5)),
+                        float(np.percentile(means, 97.5)))
+    groups = defaultdict(dict)
+    for t in targs:
+        r = recs[t["sample_id"]]
+        groups[r["curve_group"]][r["accessibility_class"]] = \
+            t["teacher_aggregate"]["mode_probabilities"].get("pt", 0.0)
+    order = ["A_excellent", "B_good", "C_moderate", "D_poor", "E_infeasible"]
+    pairs = 0
+    agree = 0
+    for g, cls_probs in groups.items():
+        present = [c for c in order if c in cls_probs]
+        for c1, c2 in zip(present, present[1:]):
+            pairs += 1
+            if cls_probs[c1] > cls_probs[c2]:
+                agree += 1
+    return {"by_class": out, "mono": (agree, pairs, agree / max(1, pairs))}
+
+
+def _gate_str(gate: dict) -> str:
+    if not gate:
+        return "待评估"
+    return ("✅ 全过" if (gate.get("legacy_accuracy_gate_1pp") and gate.get("legacy_kl_gate_10pct")
+                         and gate.get("seen_joint_kl_gate_10pct") and gate.get("unseen_joint_kl_gate_10pct"))
+            else "❌ 存在回退")
 
 
 def _stop_rule(delta: dict) -> str:

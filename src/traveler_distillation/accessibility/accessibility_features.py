@@ -170,3 +170,23 @@ def load_s8(extractor_state: dict, model_state: dict, config: dict, feature_spec
     model.load_state_dict(model_state)
     model.eval()
     return ext, model
+
+
+def accessibility_response_loss(
+    p_best: torch.Tensor,
+    p_worst: torch.Tensor,
+    t_best: torch.Tensor,
+    t_worst: torch.Tensor,
+    pt_idx: torch.Tensor,
+) -> torch.Tensor:
+    """L_accessibility (S8 instructions §19, round 2 only).
+
+    E_T^acc = P_T(PT|good) - P_T(PT|poor) and E_S^acc likewise; the loss is the
+    mean |E_T^acc - E_S^acc| over curve-group pairs. ``pt_idx`` gives the PT
+    column index per row (constant within a pair: same persona -> same
+    alternative order).
+    """
+    idx = pt_idx.long()
+    e_t = t_best.gather(1, idx.unsqueeze(1)).squeeze(1) - t_worst.gather(1, idx.unsqueeze(1)).squeeze(1)
+    e_s = p_best.gather(1, idx.unsqueeze(1)).squeeze(1) - p_worst.gather(1, idx.unsqueeze(1)).squeeze(1)
+    return (e_t - e_s).abs().mean()

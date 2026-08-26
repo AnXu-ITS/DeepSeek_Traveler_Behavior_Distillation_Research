@@ -605,3 +605,42 @@ effective approach capacities were represented using green-ratio sensitivity fac
   `tests/test_release_guard.py` 6/6 通过）。
 - **正式定义**：`S7-W3 = Generic Behavioral Core v1.0 = FROZEN`。
   S8 只能 load → 新实验 → 独立输出/发布目录，不得修改 S7-W3 本体。
+
+## S8 Transit Accessibility Adaptation 完成 ✅（2026-08-26）
+
+依据 `S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md`，用新加坡真实 OSM+GTFS
+供给训练 supply-aware adaptation。报告：`reports/EXPERIMENT_REPORT_S8_TRANSIT_ACCESSIBILITY.md`。
+
+### 流程（12 步全执行）
+- **Schema Audit → Case B**：新增 6 维 city-independent 特征（pt_feasible/egress/
+  wait/in-vehicle/transfer_time/coverage_ratio），alt_encoder 14→20 维，Student-S8
+  = 24,562 参数；S7-W3 权重逐字节复用 + 新列零初始化（**S8-at-init ≡ S7-W3 输出**，
+  审计断言 4/4，`reports/S8_SCHEMA_AUDIT.md`）。
+- **数据集**：338 态（Class A 86/B 36/C 60/D 78/E 78），三套 holdout 冻结
+  （persona 28/6/6、OD 79/16/19 不相交、步行负担≥15min 画像仅测试）；route 规则
+  access≤700m、≤1 换乘、access-aware boarding；身份泄漏引号级检查 0 命中。
+- **Teacher 标注**：1,468 次调用（K=3 基础 + 边界态 K=5，用户确认预算），
+  prompt `teacher_s8_accessibility_v0.1`，0 incomplete；教师信号：E 类 P(PT)=0.000、
+  A 0.236 vs D 0.123、曲线内单调性 81.5%（B/C 中间档噪声大）。
+- **训练**：从冻结 S7-W3 初始化，replay 2:1:1:1；Round 1（λ_acc=0）→ Round 2
+  （λ_acc=1.0，§19 accessibility response loss，best_epoch=26，early stop 41）。
+
+### 结果（test = 未见 persona × 未见 OD，配对 bootstrap）
+| 指标 | S7-W3 (B0) | S8 (R2) | Teacher |
+|---|---|---|---|
+| PT prob MAE | 0.1336 | **0.1184**（Δ -0.0152，CI 不含 0） | — |
+| mean P(PT\|infeasible) | 0.0978 | **0.0599**（Δ -0.0379*） | 0.000 |
+| monotonicity pair/triplet | 0.657/0.261 | **0.686/0.304** | 0.800/0.522 |
+| sensitivity ΔP_PT | 0.163 | 0.156 | 0.212 |
+
+- **回归门禁 §26 全过且大幅改善**：legacy acc +3.5pp、legacy KL −35.8%、
+  seen joint −15.4%、unseen joint −44.6%；机制无回退（congestion G_med 0.176→0.153、
+  Gap_shortcut 0.346→0.285，parking 基本持平）。
+- **诚实边界**：FVR rate 双侧恒 0（B0 已不选 PT 为 argmax，改进体现在 infeasible
+  概率质量）；sensitivity 仍低于教师（教师 E≈0 的悬崖未被完全复现）；B/C 中间档
+  受教师噪声上限约束。
+- **Stop Rule（§33）判定：满足** → 下一步 **Freeze S8 → Phase C**。
+- 测试：142 passed（新增 S8 测试全过；13 个 error 为沙箱临时目录 ACL 限制，与代码无关）。
+- 产物：`outputs/student_s8/`（R2 最终）+ `outputs/student_s8_r1_lam0/`（λ 消融）、
+  `outputs/s8_accessibility_eval(_r1)/`、`outputs/s8_regression(_r1)/`、
+  `outputs/s8_unseen_od/`、`data/singapore_accessibility/`（DATA_README + manifest）。

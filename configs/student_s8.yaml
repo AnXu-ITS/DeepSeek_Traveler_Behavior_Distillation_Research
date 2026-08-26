@@ -37,7 +37,9 @@ loss:
   huber_delta: 1.0
   lambda_mechanism: 1.0
   lambda_broken: 1.0
-  lambda_accessibility: 0.0   # S8 §19: NOT added in round 1 (baseline fine-tune only)
+  lambda_accessibility: 1.0   # S8 §19: round 2 — added after the baseline fine-tune left
+                               # within-curve sensitivity/monotonicity below the teacher
+                               # (round 1 ran with 0.0, see training history of that run)
 
 split:
   strategy: s8_triple_holdout

@@ -42,12 +42,20 @@ sys.path.insert(0, str(_ROOT / "src"))
 
 import numpy as np
 import torch
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Dataset
 
 from traveler_distillation.accessibility.accessibility_features import (
     ARCH_VERSION,
     S8FeatureExtractor,
     TravelerStudentS8,
+    accessibility_response_loss,
+)
+from traveler_distillation.accessibility.gtfs_accessibility import (
+    CLASS_A,
+    CLASS_B,
+    CLASS_C,
+    CLASS_D,
+    CLASS_E,
 )
 from traveler_distillation.config import load_yaml
 from traveler_distillation.dataset.aggregation import AggregatedTeacherTarget
@@ -75,9 +83,62 @@ from traveler_distillation.student import (
     mechanism_fidelity_loss,
     student_loss,
 )
+from traveler_distillation.student.dataset import encode_sample
 from traveler_distillation.student.release_guard import assert_not_frozen_output
 
 FROZEN_RELEASE_CKPT = _ROOT / "releases" / "s7_w3_generic_core_v1" / "checkpoint" / "model.pt"
+
+_CLASS_RANK = {CLASS_A: 0, CLASS_B: 1, CLASS_C: 2, CLASS_D: 3, CLASS_E: 4}
+
+
+class AccessibilityCurvePairDataset(Dataset):
+    """(best-accessibility, worst-accessibility) pairs within a curve group.
+
+    Members of a group share persona + trip, so their alternative lists (and
+    hence dense probability vectors) are mode-aligned; ``pt_idx`` is the PT
+    column index (constant within a pair).
+    """
+
+    def __init__(self, pairs: list[tuple], extractor: S8FeatureExtractor):
+        self.pairs = pairs
+        self.extractor = extractor
+
+    def __len__(self) -> int:
+        return len(self.pairs)
+
+    def __getitem__(self, idx: int):
+        best, worst, pt_idx = self.pairs[idx]
+        return {
+            "best": encode_sample(best, self.extractor),
+            "worst": encode_sample(worst, self.extractor),
+            "pt_idx": pt_idx,
+        }
+
+
+def collate_curve_pairs(batch: list[dict]) -> dict:
+    return {
+        "best": collate_batch([b["best"] for b in batch]),
+        "worst": collate_batch([b["worst"] for b in batch]),
+        "pt_idx": torch.tensor([b["pt_idx"] for b in batch], dtype=torch.long),
+    }
+
+
+def _curve_pairs(targets: list, class_of: dict) -> list[tuple]:
+    """(best, worst, pt_idx) per curve group (S8 §19 accessibility response)."""
+    by_group: dict[str, list] = {}
+    for t in targets:
+        by_group.setdefault(t.counterfactual_group_id or t.sample_id, []).append(t)
+    pairs = []
+    for gid, members in by_group.items():
+        if len(members) < 2:
+            continue
+        members.sort(key=lambda m: _CLASS_RANK.get(class_of.get(m.sample_id, CLASS_E), 9))
+        best, worst = members[0], members[-1]
+        modes = [a.mode for a in best.state.alternatives]
+        assert modes == [a.mode for a in worst.state.alternatives], "curve pair alternatives misaligned"
+        assert "pt" in modes
+        pairs.append((best, worst, modes.index("pt")))
+    return pairs
 
 
 def _load(path: Path) -> list[AggregatedTeacherTarget]:
@@ -261,6 +322,45 @@ def _acc_step(model, acc_loader, device, l_cfg, optimizer, run) -> None:
         run["accessibility"] += losses["total"].sum().item()
 
 
+def _acc_pair_step(model, pair_loader, device, l_cfg, optimizer, run) -> None:
+    """L_accessibility on (best, worst) curve pairs (S8 §19, round 2)."""
+    lam = l_cfg.get("lambda_accessibility", 0.0)
+    if lam <= 0.0:
+        return
+    model.train()
+    for batch in pair_loader:
+        b = {k: v.to(device) for k, v in batch["best"].items()}
+        w = {k: v.to(device) for k, v in batch["worst"].items()}
+        out_b = model(b)
+        out_w = model(w)
+        loss = accessibility_response_loss(
+            out_b["mode_probabilities"], out_w["mode_probabilities"],
+            b["target_probs"], w["target_probs"], batch["pt_idx"].to(device),
+        )
+        optimizer.zero_grad()
+        (lam * loss).backward()
+        optimizer.step()
+        run["accessibility_response"] += loss.item() * b["target_probs"].shape[0]
+
+
+@torch.no_grad()
+def val_accessibility_response_gap(model, pairs, extractor, device) -> float:
+    """Mean |E_T^acc - E_S^acc| over val curve pairs (S8 §19 diagnostic)."""
+    model.eval()
+    total = 0.0
+    n = 0
+    for best, worst, pt_idx in pairs:
+        b = {k: v.to(device) for k, v in collate_batch([encode_sample(best, extractor)]).items()}
+        w = {k: v.to(device) for k, v in collate_batch([encode_sample(worst, extractor)]).items()}
+        out_b = model(b)["mode_probabilities"]
+        out_w = model(w)["mode_probabilities"]
+        e_t = b["target_probs"][0, pt_idx].item() - w["target_probs"][0, pt_idx].item()
+        e_s = out_b[0, pt_idx].item() - out_w[0, pt_idx].item()
+        total += abs(e_t - e_s)
+        n += 1
+    return total / n if n else 0.0
+
+
 @torch.no_grad()
 def _val_loss(model, val_quad_loader, val_elast_loader, val_het_loader, val_acc_loader,
               device, l_cfg) -> float:
@@ -304,6 +404,8 @@ def main() -> int:
     ap.add_argument("--output", default="outputs/student_s8")
     ap.add_argument("--device", default=None)
     ap.add_argument("--seed", type=int, default=None)
+    ap.add_argument("--lambda-accessibility", type=float, default=None,
+                    help="override loss.lambda_accessibility (ablation)")
     ap.add_argument("--smoke", action="store_true", help="tiny subset, 2 epochs, for pipeline smoke")
     args = ap.parse_args()
 
@@ -314,6 +416,8 @@ def main() -> int:
     s_cfg = cfg.get("student", {})
     t_cfg = cfg.get("training", {})
     l_cfg = cfg.get("loss", {})
+    if args.lambda_accessibility is not None:
+        l_cfg["lambda_accessibility"] = args.lambda_accessibility
     j_cfg = load_yaml(args.joint_config)
     combos = j_cfg.get("joint_combinations", [])
 
@@ -356,14 +460,18 @@ def main() -> int:
     test_quads = []
     n_quad = len(train_quads)
 
-    # ---- S8 accessibility states (TRAIN/VAL only; test split asserted absent) ----
+    # ---- S8 accessibility states (TRAIN/VAL only; test split asserted then dropped) ----
     acc_targets = _load(Path(args.accessibility_dataset))
     train_acc = [s for s in acc_targets if s8_split_of.get(s.persona_group_id) == "train"]
     val_acc = [s for s in acc_targets if s8_split_of.get(s.persona_group_id) == "val"]
     test_acc = [s for s in acc_targets if s8_split_of.get(s.persona_group_id) == "test"]
-    assert not test_acc, "S8 test-split targets leaked into the training script"
+    # HARD CONSTRAINT: the test split must never reach training code paths —
+    # its existence is asserted (the labeling file legitimately contains test
+    # targets for evaluation), then the reference is dropped entirely.
+    assert len(test_acc) == 53, f"unexpected test-split target count: {len(test_acc)}"
+    test_acc = []
     n_acc = len(train_acc)
-    print(f"accessibility targets: train={n_acc} val={len(val_acc)} (test excluded by assertion)")
+    print(f"accessibility targets: train={n_acc} val={len(val_acc)} (test count asserted, reference dropped)")
 
     # ---- S8 extractor: frozen S7 stats + new fields fit on S8 TRAIN states only ----
     acc_records = []
@@ -381,6 +489,12 @@ def main() -> int:
     extractor = S8FeatureExtractor.from_s7_and_train(ck["extractor_state"], train_states)
     s8_spec = extractor.spec
     print(f"S8 extractor: n_alt_num={s8_spec['n_alt_num']} (6 frozen S7 stats + 6 fit on S8 train)")
+
+    # accessibility curve pairs (best vs worst within each train/val group)
+    class_of = {r["sample_id"]: r["accessibility_class"] for r in acc_records}
+    train_curve_pairs = _curve_pairs(train_acc, class_of)
+    val_curve_pairs = _curve_pairs(val_acc, class_of)
+    print(f"curve pairs: train={len(train_curve_pairs)} val={len(val_curve_pairs)}")
 
     bs = t_cfg.get("batch_size", 32)
     quad_bs = t_cfg.get("mechanism_batch_size", 8)
@@ -437,15 +551,28 @@ def main() -> int:
         k = min(k, len(pairs))
         return random.sample(pairs, k) if k else []
 
+    # ---- init (epoch 0) val references for the selection guards (§26-style) ----
+    init_legacy = evaluate(model, val_single_loader, device)
+    init_joint = evaluate(model, val_joint_loader, device)
+    init_acc = evaluate(model, val_acc_loader, device)
+    init_resp_gap = val_accessibility_response_gap(model, val_curve_pairs, extractor, device)
+    init_gap = val_mechanism_gap(model, val_quads, extractor, device)
+    init_mean_gap = sum(v["G_nat"] + v["G_broken"] + v["G_med"] for v in init_gap.values()) / max(1, 3 * len(init_gap))
+    print(f"init: acc_kl={init_acc['kl']:.4f} legacy_kl={init_legacy['kl']:.4f} "
+          f"joint_kl={init_joint['kl']:.4f} mech_gap={init_mean_gap:.4f} "
+          f"resp_gap={init_resp_gap:.4f}")
+
     best_val = float("inf")
     best_epoch = 0
     best_state = None
     patience_counter = 0
     history = []
+    guard_notes: list[str] = []
     t0 = time.time()
     for epoch in range(1, max_epochs + 1):
         run = {"static": 0.0, "mechanism": 0.0, "broken": 0.0, "legacy": 0.0,
-               "joint": 0.0, "het": 0.0, "accessibility": 0.0, "n_quad": 0}
+               "joint": 0.0, "het": 0.0, "accessibility": 0.0,
+               "accessibility_response": 0.0, "n_quad": 0}
         _quad_step(model, quad_loader, device, l_cfg, optimizer, run)
 
         legacy_l = DataLoader(CounterfactualPairDataset(_sample(legacy_pairs, legacy_per_epoch), extractor),
@@ -464,6 +591,10 @@ def main() -> int:
                            batch_size=bs, shuffle=True, collate_fn=collate_batch)
         _acc_step(model, acc_l, device, l_cfg, optimizer, run)
 
+        acc_pair_l = DataLoader(AccessibilityCurvePairDataset(_sample(train_curve_pairs, acc_per_epoch), extractor),
+                                batch_size=bs, shuffle=True, collate_fn=collate_curve_pairs)
+        _acc_pair_step(model, acc_pair_l, device, l_cfg, optimizer, run)
+
         val_total = _val_loss(model, val_quad_loader, val_elast_loader, val_het_loader,
                               val_acc_loader, device, l_cfg)
         val_legacy = evaluate(model, val_single_loader, device)
@@ -471,33 +602,51 @@ def main() -> int:
         val_acc_m = evaluate(model, val_acc_loader, device)
         val_gap = val_mechanism_gap(model, val_quads, extractor, device)
         mean_gap = sum(v["G_nat"] + v["G_broken"] + v["G_med"] for v in val_gap.values()) / max(1, 3 * len(val_gap))
+        val_resp_gap = val_accessibility_response_gap(model, val_curve_pairs, extractor, device)
+
+        # selection: minimize val accessibility KL subject to the §26-mirroring
+        # soft guards (legacy accuracy drop <= 1 pp, legacy/seen-joint KL <= +10%).
+        # The mechanism gap is RECORDED but not a selection guard: its val signal
+        # is only 2 quadruplets/axis (noisy — see S7 report §7); the test-only
+        # regression gate (§25-26) judges mechanism regression post-hoc.
+        guards_ok = (val_legacy["mode_accuracy"] >= init_legacy["mode_accuracy"] - 0.01
+                     and val_legacy["kl"] <= 1.10 * max(init_legacy["kl"], 1e-9)
+                     and val_joint_m["kl"] <= 1.10 * max(init_joint["kl"], 1e-9))
+        score = val_acc_m["kl"] if guards_ok else float("inf")
 
         history.append({
             "epoch": epoch,
             "train_mechanism_loss": round(run["mechanism"] / max(1, run["n_quad"]), 6),
             "train_broken_loss": round(run["broken"] / max(1, run["n_quad"]), 6),
             "train_accessibility_loss": round(run["accessibility"] / max(1, acc_per_epoch), 6),
+            "train_accessibility_response_loss": round(run["accessibility_response"] / max(1, acc_per_epoch), 6),
             "val_total_loss": round(val_total, 6),
             "val_legacy_kl": round(val_legacy["kl"], 4),
             "val_legacy_acc": round(val_legacy["mode_accuracy"], 4),
             "val_seen_joint_kl": round(val_joint_m["kl"], 4),
             "val_accessibility_kl": round(val_acc_m["kl"], 4),
+            "val_accessibility_response_gap": round(val_resp_gap, 6),
             "val_mean_mechanism_gap": round(mean_gap, 6),
+            "selection_guards_ok": bool(guards_ok),
         })
-        if val_total < best_val - 1e-6:
-            best_val = val_total
+        if score < best_val - 1e-6:
+            best_val = score
             best_epoch = epoch
             best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
             patience_counter = 0
         else:
             patience_counter += 1
         if epoch % 5 == 0 or epoch == 1:
-            print(f"epoch {epoch:3d} val_total={val_total:.4f} acc_kl={val_acc_m['kl']:.3f} "
-                  f"legacy_kl={val_legacy['kl']:.3f} joint_kl={val_joint_m['kl']:.3f} "
-                  f"mech_gap={mean_gap:.4f} best_epoch={best_epoch}")
+            print(f"epoch {epoch:3d} acc_kl={val_acc_m['kl']:.3f} legacy_kl={val_legacy['kl']:.3f} "
+                  f"joint_kl={val_joint_m['kl']:.3f} mech_gap={mean_gap:.4f} "
+                  f"guards={'ok' if guards_ok else 'X'} best_epoch={best_epoch}")
         if patience_counter >= patience:
             print(f"early stopping at epoch {epoch}")
             break
+    if best_epoch == 0:
+        guard_notes.append("NO epoch satisfied the selection guards — checkpoint = init weights "
+                           "(adaptation infeasible without regression)")
+        best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
 
     runtime = time.time() - t0
     if best_state is not None:
@@ -507,6 +656,7 @@ def main() -> int:
     final_legacy = evaluate(model, val_single_loader, device)
     final_joint = evaluate(model, val_joint_loader, device)
     final_acc = evaluate(model, val_acc_loader, device)
+    final_resp_gap = val_accessibility_response_gap(model, val_curve_pairs, extractor, device)
 
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=True)
@@ -534,17 +684,29 @@ def main() -> int:
         "n_train_accessibility": n_acc,
         "best_epoch": best_epoch,
         "runtime_seconds": round(runtime, 2),
+        "init_val": {"accessibility_kl": init_acc["kl"], "legacy_kl": init_legacy["kl"],
+                     "seen_joint_kl": init_joint["kl"], "mean_mechanism_gap": init_mean_gap,
+                     "accessibility_response_gap": round(init_resp_gap, 6)},
         "val_mechanism_gap": final_gap,
         "val_legacy": final_legacy,
         "val_seen_joint": final_joint,
         "val_accessibility": final_acc,
-        "selection_note": "model selection uses val only; the S8 test split (unseen personas + unseen ODs) was never loaded",
+        "val_accessibility_response_gap": round(final_resp_gap, 6),
+        "lambda_accessibility": l_cfg.get("lambda_accessibility", 0.0),
+        "selection_strategy": "minimize val accessibility KL subject to guards "
+                              "(legacy accuracy drop <= 1 pp, legacy KL <= 1.10x init, "
+                              "seen joint KL <= 1.10x init); mechanism gap recorded "
+                              "but judged only by the test-only regression gate; "
+                              "val-only, test never loaded",
+        "guard_notes": guard_notes,
     }
     (out / "val_metrics.json").write_text(json.dumps(val_metrics, ensure_ascii=False, indent=2), encoding="utf-8")
 
     print(f"\nbest_epoch={best_epoch} runtime={runtime:.1f}s")
     print(json.dumps({"val_accessibility": final_acc, "val_legacy": final_legacy,
-                      "val_seen_joint": final_joint, "val_mechanism_gap": final_gap},
+                      "val_seen_joint": final_joint, "val_mechanism_gap": final_gap,
+                      "val_accessibility_response_gap": round(final_resp_gap, 6),
+                      "init_val_accessibility_response_gap": round(init_resp_gap, 6)},
                      ensure_ascii=False, indent=2))
     print(f"wrote {out}")
     return 0

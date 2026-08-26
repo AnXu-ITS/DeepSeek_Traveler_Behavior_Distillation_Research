@@ -250,6 +250,8 @@ def main() -> int:
             "pair_agreement": _bootstrap(np.array(mono_pairs)) if mono_pairs else None,
             "triplet_agreement": _bootstrap(np.array(mono_triplets)) if mono_triplets else None,
             "n_pairs": len(mono_pairs), "n_triplets": len(mono_triplets),
+            "raw_pairs": [float(v) for v in mono_pairs],
+            "raw_triplets": [float(v) for v in mono_triplets],
         }
         report["models"][name] = m_report
 
@@ -297,10 +299,17 @@ def main() -> int:
         "pt_probability_mae_delta": _paired_delta(
             np.array([abs(pt_prob(t.teacher_aggregate.mode_probabilities) - pt_prob(b1[s])) for s, t in ((x.sample_id, x) for x in test_targets)]),
             np.array([abs(pt_prob(t.teacher_aggregate.mode_probabilities) - pt_prob(b0[s])) for s, t in ((x.sample_id, x) for x in test_targets)])),
+        "mean_P_pt_infeasible_delta": _paired_delta(
+            np.array([pt_prob(b1[s]) for s in sid_order if class_of[s] == CLASS_E]),
+            np.array([pt_prob(b0[s]) for s in sid_order if class_of[s] == CLASS_E])),
         "fvr_rate_delta": _paired_delta(
             np.array([1.0 if max(b1[s], key=b1[s].get) == "pt" else 0.0 for s in sid_order if class_of[s] == CLASS_E]),
             np.array([1.0 if max(b0[s], key=b0[s].get) == "pt" else 0.0 for s in sid_order if class_of[s] == CLASS_E])),
-        "note": "negative MAE delta = S8 closer to teacher; negative FVR delta = S8 chooses infeasible PT less",
+        "pair_monotonicity_delta": _paired_delta(
+            np.array(report["models"]["B1_S8"]["monotonicity"]["raw_pairs"]),
+            np.array(report["models"]["B0_S7W3"]["monotonicity"]["raw_pairs"])),
+        "note": "negative MAE/P(PT|inf)/FVR delta = S8 better; monotonicity delta is "
+                "paired over per-group 0/1 pair-agreement indicators",
     }
     report["unseen_od"] = {
         "guarantee": "test split uses ONLY test-ODs and test-personas (asserted); train ODs never appear in test",
