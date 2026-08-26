@@ -1,0 +1,83 @@
+{
+  "dataset": "s8_singapore_accessibility",
+  "dataset_version": "s8_singapore_accessibility",
+  "n_states": 338,
+  "class_distribution": {
+    "A_excellent": 86,
+    "D_poor": 78,
+    "E_infeasible": 78,
+    "C_moderate": 60,
+    "B_good": 36
+  },
+  "split_counts": {
+    "train": 234,
+    "val": 51,
+    "test": 53
+  },
+  "persona_holdout": {
+    "counts": {
+      "train": 28,
+      "val": 6,
+      "test": 6
+    },
+    "note": "s7_s3c_convention; test personas never in train"
+  },
+  "od_holdout": {
+    "counts": {
+      "train": 79,
+      "val": 16,
+      "test": 19
+    },
+    "disjoint": true,
+    "note": "train/val/test ODs pairwise disjoint; every test state uses only test ODs and test personas (double holdout)"
+  },
+  "accessibility_holdout": {
+    "held_out_from_train": "feasible ODs with walking burden access_time+egress_time >= 15 min (high-burden profiles appear only in test)",
+    "transfer_rule": "planner caps at 1 vehicle-to-vehicle transfer (same routing rule as MATSimAdapter._plan_pt)",
+    "class_e_policy": "Class E (infeasible) present in every split (FVR learnable + testable)"
+  },
+  "curve_groups": {
+    "n_groups": 80,
+    "groups_with_lt3_classes": 0
+  },
+  "teacher": {
+    "prompt_version": "teacher_s8_accessibility_v0.1",
+    "k_distribution": {
+      "3": 111,
+      "5": 227
+    },
+    "n_calls_planned": 1468,
+    "incomplete": 0
+  },
+  "identity_leakage": {
+    "quote_level_hits": 0,
+    "check": "build assertion in src/traveler_distillation/accessibility/accessibility_dataset.py (every stop_id/route_id/node id string is forbidden in student/teacher-facing state)"
+  },
+  "sanity": {
+    "door_to_door_identity_max_err_min": 0.001
+  },
+  "files": {
+    "records": {
+      "path": "data/singapore_accessibility/records.jsonl",
+      "sha256": "0cf578fe645d03a5c9f57fa1b1661d941bc24245653a742d1d95f62d3c6042cd",
+      "n_states": 338
+    },
+    "states_with_teacher": {
+      "path": "data/singapore_accessibility/states_with_teacher.jsonl",
+      "sha256": "54c0b94d26b11548979b23c6b1a226fc8b1be6a110468125384a02af1bcf20ce"
+    },
+    "repeat_records": {
+      "path": "data/singapore_accessibility/repeat_records.jsonl",
+      "sha256": "6d3d73bebb8d14fbd6a84806450f7801782ef9efbf2cd839da7036bfb9839361"
+    },
+    "split_manifest": {
+      "path": "data/singapore_accessibility/split_manifest.json",
+      "sha256": "682cd29afc1cec5e1b95320f70b5a2d3597f0e03d731a5f0e85129076f79616e"
+    },
+    "generation_manifest": {
+      "path": "data/singapore_accessibility/generation_manifest.json",
+      "sha256": "1841a8b4c4c5651fbdb3aac46cfefb0a1e484a0c3901699f4bf80bfe78b33acb"
+    }
+  },
+  "note": "Manifest records identities/checksums; bulk data files remain at their original paths (not duplicated)."
+}

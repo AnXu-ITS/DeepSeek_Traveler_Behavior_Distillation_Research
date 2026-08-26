@@ -1,0 +1,1953 @@
+{
+  "dataset": "singapore_accessibility",
+  "built_at_utc": "2026-08-26T00:03:15Z",
+  "supply_sources": {
+    "network": "data/singapore/transit/network_with_transit.xml",
+    "stops": "data/singapore/transit/prep_stops.jsonl",
+    "trips_by_stop": "data/singapore/transit/trips_by_stop.json",
+    "note": "Singapore OSM + community-built GTFS feed (see data/singapore/DATA_README.md); accessibility attributes are city-independent (S8 §3)"
+  },
+  "persona_split": {
+    "train": [
+      "P000004",
+      "P000005",
+      "P000010",
+      "P000011",
+      "P000012",
+      "P000013",
+      "P000014",
+      "P000017",
+      "P000019",
+      "P000020",
+      "P000021",
+      "P000022",
+      "P000023",
+      "P000024",
+      "P000025",
+      "P000026",
+      "P000027",
+      "P000029",
+      "P000030",
+      "P000031",
+      "P000032",
+      "P000033",
+      "P000034",
+      "P000035",
+      "P000036",
+      "P000037",
+      "P000038",
+      "P000040"
+    ],
+    "val": [
+      "P000001",
+      "P000003",
+      "P000006",
+      "P000007",
+      "P000028",
+      "P000039"
+    ],
+    "test": [
+      "P000002",
+      "P000008",
+      "P000009",
+      "P000015",
+      "P000016",
+      "P000018"
+    ]
+  },
+  "persona_split_counts": {
+    "train": 28,
+    "val": 6,
+    "test": 6
+  },
+  "od_split": {
+    "train": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78
+    ],
+    "val": [
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94
+    ],
+    "test": [
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113
+    ]
+  },
+  "accessibility_holdout": {
+    "held_out_from_train": "feasible ODs with walking burden access_time+egress_time >= 15 min (high-burden profiles appear only in test)",
+    "transfer_rule": "planner caps at 1 vehicle-to-vehicle transfer (same routing rule as MATSimAdapter._plan_pt)",
+    "class_e_policy": "Class E (infeasible) present in every split (FVR learnable + testable)"
+  },
+  "curve_groups": {
+    "train": [
+      "P000004::T000001",
+      "P000004::T000002",
+      "P000005::T000001",
+      "P000005::T000002",
+      "P000010::T000001",
+      "P000010::T000002",
+      "P000011::T000001",
+      "P000011::T000002",
+      "P000012::T000001",
+      "P000012::T000002",
+      "P000013::T000001",
+      "P000013::T000002",
+      "P000014::T000001",
+      "P000014::T000002",
+      "P000017::T000001",
+      "P000017::T000002",
+      "P000019::T000001",
+      "P000019::T000002",
+      "P000020::T000001",
+      "P000020::T000002",
+      "P000021::T000003",
+      "P000021::T000004",
+      "P000022::T000003",
+      "P000022::T000004",
+      "P000023::T000003",
+      "P000023::T000004",
+      "P000024::T000003",
+      "P000024::T000004",
+      "P000025::T000003",
+      "P000025::T000004",
+      "P000026::T000003",
+      "P000026::T000004",
+      "P000027::T000003",
+      "P000027::T000004",
+      "P000029::T000003",
+      "P000029::T000004",
+      "P000030::T000003",
+      "P000030::T000004",
+      "P000031::T000003",
+      "P000031::T000004",
+      "P000032::T000003",
+      "P000032::T000004",
+      "P000033::T000003",
+      "P000033::T000004",
+      "P000034::T000003",
+      "P000034::T000004",
+      "P000035::T000003",
+      "P000035::T000004",
+      "P000036::T000003",
+      "P000036::T000004",
+      "P000037::T000003",
+      "P000037::T000004",
+      "P000038::T000003",
+      "P000038::T000004",
+      "P000040::T000003",
+      "P000040::T000004"
+    ],
+    "val": [
+      "P000001::T000001",
+      "P000001::T000002",
+      "P000003::T000001",
+      "P000003::T000002",
+      "P000006::T000001",
+      "P000006::T000002",
+      "P000007::T000001",
+      "P000007::T000002",
+      "P000028::T000003",
+      "P000028::T000004",
+      "P000039::T000003",
+      "P000039::T000004"
+    ],
+    "test": [
+      "P000002::T000001",
+      "P000002::T000002",
+      "P000008::T000001",
+      "P000008::T000002",
+      "P000009::T000001",
+      "P000009::T000002",
+      "P000015::T000001",
+      "P000015::T000002",
+      "P000016::T000001",
+      "P000016::T000002",
+      "P000018::T000001",
+      "P000018::T000002"
+    ]
+  },
+  "boundary_pairs_k5": [
+    {
+      "group": "P000004::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000003",
+        "S8_000004"
+      ]
+    },
+    {
+      "group": "P000004::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000006",
+        "S8_000007"
+      ]
+    },
+    {
+      "group": "P000004::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000007",
+        "S8_000008"
+      ]
+    },
+    {
+      "group": "P000005::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000010",
+        "S8_000011"
+      ]
+    },
+    {
+      "group": "P000005::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000011",
+        "S8_000012"
+      ]
+    },
+    {
+      "group": "P000005::T000002",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000014",
+        "S8_000015"
+      ]
+    },
+    {
+      "group": "P000005::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000015",
+        "S8_000016"
+      ]
+    },
+    {
+      "group": "P000005::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000016",
+        "S8_000017"
+      ]
+    },
+    {
+      "group": "P000010::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000019",
+        "S8_000020"
+      ]
+    },
+    {
+      "group": "P000010::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000020",
+        "S8_000021"
+      ]
+    },
+    {
+      "group": "P000010::T000002",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000023",
+        "S8_000024"
+      ]
+    },
+    {
+      "group": "P000010::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000024",
+        "S8_000025"
+      ]
+    },
+    {
+      "group": "P000010::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000025",
+        "S8_000026"
+      ]
+    },
+    {
+      "group": "P000011::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000028",
+        "S8_000029"
+      ]
+    },
+    {
+      "group": "P000011::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000029",
+        "S8_000030"
+      ]
+    },
+    {
+      "group": "P000011::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000033",
+        "S8_000034"
+      ]
+    },
+    {
+      "group": "P000012::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000036",
+        "S8_000037"
+      ]
+    },
+    {
+      "group": "P000012::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000037",
+        "S8_000038"
+      ]
+    },
+    {
+      "group": "P000012::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000042",
+        "S8_000043"
+      ]
+    },
+    {
+      "group": "P000013::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000045",
+        "S8_000046"
+      ]
+    },
+    {
+      "group": "P000013::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000046",
+        "S8_000047"
+      ]
+    },
+    {
+      "group": "P000013::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000050",
+        "S8_000051"
+      ]
+    },
+    {
+      "group": "P000014::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000053",
+        "S8_000054"
+      ]
+    },
+    {
+      "group": "P000014::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000054",
+        "S8_000055"
+      ]
+    },
+    {
+      "group": "P000014::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000057",
+        "S8_000058"
+      ]
+    },
+    {
+      "group": "P000014::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000058",
+        "S8_000059"
+      ]
+    },
+    {
+      "group": "P000017::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000061",
+        "S8_000062"
+      ]
+    },
+    {
+      "group": "P000017::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000062",
+        "S8_000063"
+      ]
+    },
+    {
+      "group": "P000017::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000065",
+        "S8_000066"
+      ]
+    },
+    {
+      "group": "P000017::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000066",
+        "S8_000067"
+      ]
+    },
+    {
+      "group": "P000019::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000069",
+        "S8_000070"
+      ]
+    },
+    {
+      "group": "P000019::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000070",
+        "S8_000071"
+      ]
+    },
+    {
+      "group": "P000019::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000073",
+        "S8_000074"
+      ]
+    },
+    {
+      "group": "P000019::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000074",
+        "S8_000075"
+      ]
+    },
+    {
+      "group": "P000020::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000078",
+        "S8_000079"
+      ]
+    },
+    {
+      "group": "P000020::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000081",
+        "S8_000082"
+      ]
+    },
+    {
+      "group": "P000020::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000082",
+        "S8_000083"
+      ]
+    },
+    {
+      "group": "P000021::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000085",
+        "S8_000086"
+      ]
+    },
+    {
+      "group": "P000021::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000086",
+        "S8_000087"
+      ]
+    },
+    {
+      "group": "P000021::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000089",
+        "S8_000090"
+      ]
+    },
+    {
+      "group": "P000021::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000090",
+        "S8_000091"
+      ]
+    },
+    {
+      "group": "P000022::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000094",
+        "S8_000095"
+      ]
+    },
+    {
+      "group": "P000022::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000097",
+        "S8_000098"
+      ]
+    },
+    {
+      "group": "P000022::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000098",
+        "S8_000099"
+      ]
+    },
+    {
+      "group": "P000023::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000101",
+        "S8_000102"
+      ]
+    },
+    {
+      "group": "P000023::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000102",
+        "S8_000103"
+      ]
+    },
+    {
+      "group": "P000023::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000106",
+        "S8_000107"
+      ]
+    },
+    {
+      "group": "P000024::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000109",
+        "S8_000110"
+      ]
+    },
+    {
+      "group": "P000024::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000110",
+        "S8_000111"
+      ]
+    },
+    {
+      "group": "P000024::T000004",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000112",
+        "S8_000114"
+      ]
+    },
+    {
+      "group": "P000024::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000114",
+        "S8_000115"
+      ]
+    },
+    {
+      "group": "P000024::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000115",
+        "S8_000116"
+      ]
+    },
+    {
+      "group": "P000025::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000118",
+        "S8_000119"
+      ]
+    },
+    {
+      "group": "P000025::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000119",
+        "S8_000120"
+      ]
+    },
+    {
+      "group": "P000025::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000122",
+        "S8_000123"
+      ]
+    },
+    {
+      "group": "P000025::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000123",
+        "S8_000124"
+      ]
+    },
+    {
+      "group": "P000026::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000127",
+        "S8_000128"
+      ]
+    },
+    {
+      "group": "P000026::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000130",
+        "S8_000131"
+      ]
+    },
+    {
+      "group": "P000026::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000131",
+        "S8_000132"
+      ]
+    },
+    {
+      "group": "P000027::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000134",
+        "S8_000135"
+      ]
+    },
+    {
+      "group": "P000027::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000135",
+        "S8_000136"
+      ]
+    },
+    {
+      "group": "P000027::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000138",
+        "S8_000139"
+      ]
+    },
+    {
+      "group": "P000027::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000139",
+        "S8_000140"
+      ]
+    },
+    {
+      "group": "P000029::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000142",
+        "S8_000143"
+      ]
+    },
+    {
+      "group": "P000029::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000143",
+        "S8_000144"
+      ]
+    },
+    {
+      "group": "P000029::T000004",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000145",
+        "S8_000147"
+      ]
+    },
+    {
+      "group": "P000029::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000147",
+        "S8_000148"
+      ]
+    },
+    {
+      "group": "P000029::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000148",
+        "S8_000149"
+      ]
+    },
+    {
+      "group": "P000030::T000003",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000151",
+        "S8_000152"
+      ]
+    },
+    {
+      "group": "P000030::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000152",
+        "S8_000153"
+      ]
+    },
+    {
+      "group": "P000030::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000153",
+        "S8_000154"
+      ]
+    },
+    {
+      "group": "P000030::T000004",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000155",
+        "S8_000156"
+      ]
+    },
+    {
+      "group": "P000030::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000156",
+        "S8_000157"
+      ]
+    },
+    {
+      "group": "P000030::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000157",
+        "S8_000158"
+      ]
+    },
+    {
+      "group": "P000031::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000161",
+        "S8_000162"
+      ]
+    },
+    {
+      "group": "P000031::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000164",
+        "S8_000165"
+      ]
+    },
+    {
+      "group": "P000031::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000165",
+        "S8_000166"
+      ]
+    },
+    {
+      "group": "P000032::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000168",
+        "S8_000169"
+      ]
+    },
+    {
+      "group": "P000032::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000169",
+        "S8_000170"
+      ]
+    },
+    {
+      "group": "P000032::T000004",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000172",
+        "S8_000173"
+      ]
+    },
+    {
+      "group": "P000032::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000173",
+        "S8_000174"
+      ]
+    },
+    {
+      "group": "P000032::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000174",
+        "S8_000175"
+      ]
+    },
+    {
+      "group": "P000033::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000177",
+        "S8_000178"
+      ]
+    },
+    {
+      "group": "P000033::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000178",
+        "S8_000179"
+      ]
+    },
+    {
+      "group": "P000033::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000181",
+        "S8_000182"
+      ]
+    },
+    {
+      "group": "P000033::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000182",
+        "S8_000183"
+      ]
+    },
+    {
+      "group": "P000034::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000185",
+        "S8_000186"
+      ]
+    },
+    {
+      "group": "P000034::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000186",
+        "S8_000187"
+      ]
+    },
+    {
+      "group": "P000034::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000189",
+        "S8_000190"
+      ]
+    },
+    {
+      "group": "P000034::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000190",
+        "S8_000191"
+      ]
+    },
+    {
+      "group": "P000035::T000003",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000193",
+        "S8_000194"
+      ]
+    },
+    {
+      "group": "P000035::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000194",
+        "S8_000195"
+      ]
+    },
+    {
+      "group": "P000035::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000195",
+        "S8_000196"
+      ]
+    },
+    {
+      "group": "P000035::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000198",
+        "S8_000199"
+      ]
+    },
+    {
+      "group": "P000035::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000199",
+        "S8_000200"
+      ]
+    },
+    {
+      "group": "P000036::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000202",
+        "S8_000203"
+      ]
+    },
+    {
+      "group": "P000036::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000203",
+        "S8_000204"
+      ]
+    },
+    {
+      "group": "P000036::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000206",
+        "S8_000207"
+      ]
+    },
+    {
+      "group": "P000036::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000207",
+        "S8_000208"
+      ]
+    },
+    {
+      "group": "P000037::T000003",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000210",
+        "S8_000211"
+      ]
+    },
+    {
+      "group": "P000037::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000211",
+        "S8_000212"
+      ]
+    },
+    {
+      "group": "P000037::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000212",
+        "S8_000213"
+      ]
+    },
+    {
+      "group": "P000037::T000004",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000215",
+        "S8_000216"
+      ]
+    },
+    {
+      "group": "P000037::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000216",
+        "S8_000217"
+      ]
+    },
+    {
+      "group": "P000037::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000217",
+        "S8_000218"
+      ]
+    },
+    {
+      "group": "P000038::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000221",
+        "S8_000222"
+      ]
+    },
+    {
+      "group": "P000038::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000224",
+        "S8_000225"
+      ]
+    },
+    {
+      "group": "P000038::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000225",
+        "S8_000226"
+      ]
+    },
+    {
+      "group": "P000040::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000228",
+        "S8_000229"
+      ]
+    },
+    {
+      "group": "P000040::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000229",
+        "S8_000230"
+      ]
+    },
+    {
+      "group": "P000040::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000232",
+        "S8_000233"
+      ]
+    },
+    {
+      "group": "P000040::T000004",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000233",
+        "S8_000234"
+      ]
+    },
+    {
+      "group": "P000001::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000236",
+        "S8_000237"
+      ]
+    },
+    {
+      "group": "P000001::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000237",
+        "S8_000238"
+      ]
+    },
+    {
+      "group": "P000001::T000002",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000240",
+        "S8_000241"
+      ]
+    },
+    {
+      "group": "P000001::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000241",
+        "S8_000242"
+      ]
+    },
+    {
+      "group": "P000001::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000242",
+        "S8_000243"
+      ]
+    },
+    {
+      "group": "P000003::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000245",
+        "S8_000247"
+      ]
+    },
+    {
+      "group": "P000003::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000251",
+        "S8_000252"
+      ]
+    },
+    {
+      "group": "P000006::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000255",
+        "S8_000256"
+      ]
+    },
+    {
+      "group": "P000006::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000258",
+        "S8_000260"
+      ]
+    },
+    {
+      "group": "P000007::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000262",
+        "S8_000263"
+      ]
+    },
+    {
+      "group": "P000007::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000263",
+        "S8_000264"
+      ]
+    },
+    {
+      "group": "P000007::T000002",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000266",
+        "S8_000267"
+      ]
+    },
+    {
+      "group": "P000007::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000267",
+        "S8_000268"
+      ]
+    },
+    {
+      "group": "P000007::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000268",
+        "S8_000269"
+      ]
+    },
+    {
+      "group": "P000028::T000003",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000271",
+        "S8_000272"
+      ]
+    },
+    {
+      "group": "P000028::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000272",
+        "S8_000273"
+      ]
+    },
+    {
+      "group": "P000028::T000004",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000277",
+        "S8_000275"
+      ]
+    },
+    {
+      "group": "P000028::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000275",
+        "S8_000276"
+      ]
+    },
+    {
+      "group": "P000039::T000003",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000280",
+        "S8_000281"
+      ]
+    },
+    {
+      "group": "P000039::T000004",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000285",
+        "S8_000283"
+      ]
+    },
+    {
+      "group": "P000039::T000004",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000283",
+        "S8_000284"
+      ]
+    },
+    {
+      "group": "P000002::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000291",
+        "S8_000292"
+      ]
+    },
+    {
+      "group": "P000002::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000292",
+        "S8_000293"
+      ]
+    },
+    {
+      "group": "P000008::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000299",
+        "S8_000300"
+      ]
+    },
+    {
+      "group": "P000008::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000300",
+        "S8_000301"
+      ]
+    },
+    {
+      "group": "P000009::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000304",
+        "S8_000305"
+      ]
+    },
+    {
+      "group": "P000009::T000002",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000307",
+        "S8_000308"
+      ]
+    },
+    {
+      "group": "P000015::T000002",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000317",
+        "S8_000318"
+      ]
+    },
+    {
+      "group": "P000015::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000318",
+        "S8_000319"
+      ]
+    },
+    {
+      "group": "P000015::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000319",
+        "S8_000320"
+      ]
+    },
+    {
+      "group": "P000016::T000001",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000322",
+        "S8_000323"
+      ]
+    },
+    {
+      "group": "P000016::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000323",
+        "S8_000324"
+      ]
+    },
+    {
+      "group": "P000016::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000326",
+        "S8_000327"
+      ]
+    },
+    {
+      "group": "P000016::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000327",
+        "S8_000328"
+      ]
+    },
+    {
+      "group": "P000018::T000001",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000332",
+        "S8_000333"
+      ]
+    },
+    {
+      "group": "P000018::T000002",
+      "pair": [
+        "B_good",
+        "C_moderate"
+      ],
+      "samples": [
+        "S8_000335",
+        "S8_000336"
+      ]
+    },
+    {
+      "group": "P000018::T000002",
+      "pair": [
+        "C_moderate",
+        "D_poor"
+      ],
+      "samples": [
+        "S8_000336",
+        "S8_000337"
+      ]
+    },
+    {
+      "group": "P000018::T000002",
+      "pair": [
+        "D_poor",
+        "E_infeasible"
+      ],
+      "samples": [
+        "S8_000337",
+        "S8_000338"
+      ]
+    }
+  ],
+  "sanity": {
+    "n_states": 338,
+    "class_counts": {
+      "A_excellent": 86,
+      "D_poor": 78,
+      "E_infeasible": 78,
+      "C_moderate": 60,
+      "B_good": 36
+    },
+    "split_counts": {
+      "train": 234,
+      "val": 51,
+      "test": 53
+    },
+    "door_to_door_identity_max_err_min": 0.001,
+    "od_pool_sizes": {
+      "train": 79,
+      "val": 16,
+      "test": 19
+    },
+    "groups_with_lt3_classes": 0,
+    "n_groups": 80
+  }
+}

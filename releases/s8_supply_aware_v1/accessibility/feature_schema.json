@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "source": "configs/accessibility_features.yaml (frozen) + data/singapore_accessibility/DATA_README.md",
+  "fields": [
+    {
+      "name": "pt_feasible",
+      "unit": "binary 0/1",
+      "range": "[0,1]",
+      "computation": "1.0 = a feasible itinerary exists in the departure window under the routing rules; 0.0 otherwise",
+      "normalization": "z-score (S8 train fit)",
+      "source": "plan_accessibility (GTFS + OSM network)"
+    },
+    {
+      "name": "pt_access_time_min",
+      "alias": "access_time_min (S7 field reused)",
+      "unit": "minutes",
+      "range": ">= 0",
+      "computation": "network walk time origin -> first boarding stop (access radius 700 m)",
+      "normalization": "z-score (FROZEN S7-W3 stats)",
+      "source": "OSM network walk graph"
+    },
+    {
+      "name": "pt_egress_time_min",
+      "alias": "egress_time_min",
+      "unit": "minutes",
+      "range": ">= 0",
+      "computation": "network walk time last alighting stop -> destination (egress radius 700 m, extended 1.5 km allowed)",
+      "normalization": "z-score (S8 train fit)",
+      "source": "OSM network walk graph"
+    },
+    {
+      "name": "pt_wait_time_min",
+      "alias": "wait_time_min",
+      "unit": "minutes",
+      "range": ">= 0",
+      "computation": "first boarding departure - trip departure - access walk",
+      "normalization": "z-score (S8 train fit)",
+      "source": "GTFS departure times"
+    },
+    {
+      "name": "pt_in_vehicle_time_min",
+      "alias": "in_vehicle_time_min",
+      "unit": "minutes",
+      "range": ">= 0",
+      "computation": "total time aboard transit vehicles (direct or 1-transfer itinerary)",
+      "normalization": "z-score (S8 train fit)",
+      "source": "GTFS stop times"
+    },
+    {
+      "name": "pt_transfer_count",
+      "alias": "transfers (S7 field reused)",
+      "unit": "count",
+      "range": "0 or 1 (planner cap)",
+      "computation": "vehicle-to-vehicle transfer count of the itinerary",
+      "normalization": "z-score (FROZEN S7-W3 stats)",
+      "source": "GTFS itinerary search"
+    },
+    {
+      "name": "pt_transfer_time_min",
+      "alias": "transfer_time_min",
+      "unit": "minutes",
+      "range": ">= 0",
+      "computation": "alight vehicle -> board next (walk + wait at transfer; connection window 180-2700 s)",
+      "normalization": "z-score (S8 train fit)",
+      "source": "GTFS itinerary search"
+    },
+    {
+      "name": "pt_total_door_to_door_time_min",
+      "alias": "travel_time_min of the pt alternative",
+      "unit": "minutes",
+      "range": "> 0",
+      "computation": "T_PT = T_access + T_wait + T_invehicle + T_transfer + T_egress (infeasible sentinel = 120 min)",
+      "normalization": "z-score (FROZEN S7-W3 stats)",
+      "source": "plan_accessibility"
+    },
+    {
+      "name": "pt_coverage_ratio",
+      "alias": "coverage_ratio",
+      "unit": "ratio",
+      "range": "[0,1]",
+      "computation": "R_coverage = D_PT,vehicle / D_OD (straight-line in-vehicle distance / OD distance), clipped [0,1]",
+      "normalization": "z-score (S8 train fit)",
+      "source": "GTFS stop geometry"
+    },
+    {
+      "name": "pt_generalized_cost",
+      "unit": "n/a",
+      "computation": "NOT DEFINED — S8 §7.10: no invented value-of-time parameters; raw features only",
+      "normalization": "n/a",
+      "source": "n/a",
+      "defined": false
+    }
+  ],
+  "routing_rules": {
+    "access_radius_m": 700,
+    "egress_radius_m": 700,
+    "extended_egress_m": 1500,
+    "boarding_buffer_s": "max(300, access_walk_s + 60)",
+    "max_transfers": 1,
+    "connection_window_s": [
+      180,
+      2700
+    ],
+    "departure_window_s": 3600,
+    "walk_speed_ms": 1.2,
+    "walk_time": "network-derived length / freespeed"
+  },
+  "infeasible_convention": "pt stays in the choice set with pt_feasible=0 and sentinel travel_time 120 min (FVR is learned behavior, not a mask)",
+  "identity": "ALL fields are city-independent numeric attributes; no stop_id/route_id/node id/place name ever enters the student/teacher input"
+}

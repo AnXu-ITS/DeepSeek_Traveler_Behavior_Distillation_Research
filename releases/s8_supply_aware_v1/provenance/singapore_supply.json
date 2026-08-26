@@ -1,0 +1,17 @@
+{
+  "study_area": "Tampines + Pasir Ris, Singapore",
+  "bbox": {
+    "lat_min": 1.33,
+    "lat_max": 1.4,
+    "lon_min": 103.9,
+    "lon_max": 104.015
+  },
+  "crs": "UTM 48N (src/traveler_distillation/singapore/projection.py utm48n)",
+  "network": "data/singapore/transit/network_with_transit.xml (OSM-derived; 191,617 links, 100,867 nodes, 3,520.58 km)",
+  "stops": "859 served stops (full-day supply 05:00-23:00, 20,966 trips; 20,382 bus + 904 rail)",
+  "od_candidate_nodes": "50,241 (car-accessible ∩ walk largest component)",
+  "matsim": "MATSim 2026.0, qsim; Phase C frozen settings N*=10,000, flowCapacityFactor=storageCapacityFactor=0.3",
+  "pt_planner": "direct + 1 transfer (separate legs) + extended 1.5 km walk egress (MATSimAdapter._plan_pt / plan_accessibility)",
+  "honesty_note": "S8 uses REAL Singapore transport supply, but the Teacher behavior labels are NOT observed Singapore traveler behavior (synthetic persona LLM inferences). The paper must not claim 'real Singapore traveler behavior' or 'exact reproduction of Singapore demand'.",
+  "phase_c_supply": "frozen Phase B.5 version (network_with_transit.xml + calibrated capacity factors; green-ratio sensitivity archive in outputs/singapore_phase_b5/calibration/)"
+}

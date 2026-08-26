@@ -354,6 +354,7 @@ class MATSimAdapter:
         trips_per_persona: list[list] | None = None,
         flow_capacity_factor: float | None = None,
         storage_capacity_factor: float | None = None,
+        alt_factory=None,
     ) -> dict:
         """Real-network scenario: student decisions -> population/config on the
         Singapore supply (OSM network + scheduled PT).
@@ -364,6 +365,12 @@ class MATSimAdapter:
         binding beyond the transit QSim engine. PT legs use DIRECT trips
         (no transfers) found via the trips_by_stop index; when no direct trip
         exists the leg falls back to walk and the fallback is recorded.
+
+        ``alt_factory`` (optional) overrides the alternative construction; it
+        is called as ``alt_factory(persona, trip, context, origin_node,
+        dest_node)`` and must return a list of ``TravelAlternative``. The S8
+        adapter uses this to attach real-supply transit accessibility
+        attributes to the pt alternative before the student decides.
         """
         out = Path(output_dir)
         out.mkdir(parents=True, exist_ok=True)
@@ -454,14 +461,21 @@ class MATSimAdapter:
             person_trips = trips if trips_per_persona is None else trips_per_persona[p_idx]
             last_home_link = None
             for t_idx, trip in enumerate(person_trips):
+                # destination node is chosen deterministically BEFORE the state
+                # is built so an alt_factory can attach real-supply attributes
+                # (e.g. S8 transit accessibility) keyed on the OD pair.
+                dest = activity_nodes[(h + 7919 * (t_idx + 1)) % len(activity_nodes)]["node"]
+                dest_x, dest_y = xy[dest]
+                if alt_factory is None:
+                    alternatives = alt_gen.generate(persona, trip, context)
+                else:
+                    alternatives = alt_factory(persona, trip, context, home, dest)
                 state = UniversalTravelerState(
                     persona=persona, trip=trip, context=context,
-                    alternatives=alt_gen.generate(persona, trip, context),
+                    alternatives=alternatives,
                 )
                 decision = self.decide(state)
                 dep_min = trip.desired_departure_min + decision["departure_time_shift_min"]
-                dest = activity_nodes[(h + 7919 * (t_idx + 1)) % len(activity_nodes)]["node"]
-                dest_x, dest_y = xy[dest]
                 dur_min = _ACTIVITY_DURATIONS_MIN.get(trip.destination_type, 2 * 60)
 
                 # build both leg chains first: the activity links are DERIVED

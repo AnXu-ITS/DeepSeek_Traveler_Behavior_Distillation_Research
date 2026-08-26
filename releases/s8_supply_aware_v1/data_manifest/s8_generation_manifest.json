@@ -1,0 +1,26 @@
+{
+  "dataset_version": "s8_singapore_accessibility",
+  "source": "data/singapore_accessibility/records.jsonl",
+  "prompt_version": "teacher_s8_accessibility_v0.1",
+  "k_policy": {
+    "base": 3,
+    "boundary": 5,
+    "boundary_definition": "good<->medium, medium<->poor, poor<->infeasible class transitions within a curve group"
+  },
+  "k_distribution": {
+    "3": 111,
+    "5": 227
+  },
+  "n_states": 338,
+  "n_calls_planned": 1468,
+  "stats": {
+    "attempted": 1430,
+    "valid": 1429,
+    "failed": 1,
+    "aggregated": 329
+  },
+  "endpoint": "https://api.deepseek.com/v1",
+  "model": "deepseek-v4-pro",
+  "clip_departure": true,
+  "timestamp": "2026-08-26T03:49:59.249297+00:00"
+}

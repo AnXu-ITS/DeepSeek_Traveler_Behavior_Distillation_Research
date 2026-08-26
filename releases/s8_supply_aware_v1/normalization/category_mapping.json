@@ -1,0 +1,65 @@
+{
+  "source": "checkpoint key 'extractor_state'.cat_vocabs",
+  "cat_vocabs": {
+    "age_group": {
+      "<UNK>": 0,
+      "18-24": 1,
+      "25-34": 2,
+      "35-44": 3,
+      "45-64": 4,
+      "65+": 5
+    },
+    "income_group": {
+      "<UNK>": 0,
+      "high": 1,
+      "low": 2,
+      "medium": 3
+    },
+    "occupation": {
+      "<UNK>": 0,
+      "manual_worker": 1,
+      "office_worker": 2,
+      "other": 3,
+      "retired": 4,
+      "service_worker": 5,
+      "student": 6,
+      "unemployed": 7
+    },
+    "habitual_mode": {
+      "<UNK>": 0,
+      "bike": 1,
+      "car": 2,
+      "mixed": 3,
+      "pt": 4,
+      "walk": 5
+    },
+    "schedule_flexibility": {
+      "<UNK>": 0,
+      "high": 1,
+      "low": 2,
+      "medium": 3
+    },
+    "mobility_limitation": {
+      "<UNK>": 0,
+      "mild": 1,
+      "none": 2,
+      "significant": 3
+    },
+    "purpose": {
+      "<UNK>": 0,
+      "commute": 1,
+      "shopping": 2
+    },
+    "time_constraint": {
+      "<UNK>": 0,
+      "hard": 1,
+      "soft": 2
+    },
+    "weather_condition": {
+      "<UNK>": 0,
+      "clear": 1,
+      "rain": 2
+    }
+  },
+  "note": "index 0 = <UNK> fallback in every vocab"
+}

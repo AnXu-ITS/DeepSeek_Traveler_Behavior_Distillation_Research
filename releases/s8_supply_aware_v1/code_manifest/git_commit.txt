@@ -1,0 +1,2 @@
+﻿65e505f22dafe882e5d259d22da2bac39d19cca3
+65e505f S8: transit accessibility adaptation results (Case B, R2 lambda_accessibility=1.0, regression gate all-pass, stop rule met)

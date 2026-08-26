@@ -1,0 +1,44 @@
+{
+  "schema_case": "Case B",
+  "base": "S7-W3 Generic Behavioral Core v1.0 (releases/s7_w3_generic_core_v1/schema/)",
+  "arch_version": "student_s8_v1",
+  "inherited_features": {
+    "alternative_numeric": [
+      "travel_time_min",
+      "monetary_cost",
+      "access_time_min",
+      "transfers",
+      "reliability_delay_min",
+      "weather_exposure"
+    ],
+    "note": "reused verbatim with the FROZEN S7-W3 z-score stats"
+  },
+  "added_features": {
+    "alternative_numeric": [
+      "pt_feasible",
+      "egress_time_min",
+      "wait_time_min",
+      "in_vehicle_time_min",
+      "transfer_time_min",
+      "coverage_ratio"
+    ],
+    "meaning": "city-independent real-supply transit accessibility attributes (S8 instructions §6-7)"
+  },
+  "added_dimension": {
+    "alt_encoder.0.weight": "32x14 -> 32x20 (+6 columns, zero-initialized)",
+    "n_alt_num": "6 -> 12",
+    "parameters": "24,370 -> 24,562 (+192)"
+  },
+  "added_encoder": "none (S8 reuses alt_encoder; only the first layer input is extended)",
+  "weight_migration": {
+    "global_encoder/scorer/departure_head/embeddings/alt_encoder.1-3": "byte-copied verbatim from S7-W3",
+    "alt_encoder.0.weight first 14 columns": "byte-copied verbatim from S7-W3",
+    "alt_encoder.0.weight new 6 columns": "zero-initialized => S8-at-init reproduces S7-W3 outputs exactly (initialization invariant verified 4/4, scripts/audit_s8_schema.py)"
+  },
+  "normalization_change": {
+    "old_6_fields": "UNCHANGED (frozen S7-W3 mean/std reused verbatim)",
+    "new_6_fields": "mean/std fit on the S8 TRAIN split only (238*4 alternative rows)",
+    "frozen_s7_release": "NOT modified (S7 release remains byte-identical)"
+  },
+  "documented_in": "reports/S8_SCHEMA_AUDIT.md"
+}

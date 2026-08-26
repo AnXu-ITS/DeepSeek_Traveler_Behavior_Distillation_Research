@@ -1,0 +1,59 @@
+{
+  "release": "s8_supply_aware_v1",
+  "release_name": "Supply-Aware Traveler Agent v1.0",
+  "model": "S8",
+  "status": "FROZEN",
+  "checkpoint_source": "outputs\\student_s8\\checkpoints\\best.pt",
+  "checkpoint_saved_at_utc": "2026-08-26T03:58:45.415393+00:00",
+  "seed": 42,
+  "best_epoch": 26,
+  "early_stop_epoch": 41,
+  "runtime_seconds": 8.72,
+  "parameters": 24562,
+  "params_expected": 24562,
+  "architecture": {
+    "arch_version": "student_s8_v1",
+    "n_alt_num": 12,
+    "global_hidden_dim": 64,
+    "alternative_hidden_dim": 32,
+    "cat_embedding_dim": 8,
+    "mode_embedding_dim": 8,
+    "scorer_hidden_dim": 64,
+    "dropout": 0.1
+  },
+  "arch_version": "student_s8_v1",
+  "init_checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s7_w3_generic_core_v1\\checkpoint\\model.pt",
+  "init_checkpoint_note": "FROZEN S7-W3 Generic Behavioral Core v1.0 release checkpoint",
+  "lambda_accessibility": 1.0,
+  "lambda_mechanism": 1.0,
+  "lambda_broken": 1.0,
+  "checkpoint_keys": [
+    "arch_version",
+    "config",
+    "extractor_state",
+    "feature_spec",
+    "init_checkpoint",
+    "lambda_accessibility",
+    "lambda_broken",
+    "lambda_mechanism",
+    "model_state"
+  ],
+  "optimizer_state": "NOT PRESENT (S8 best.pt stores model weights only)",
+  "scheduler_state": "NOT PRESENT",
+  "training_state": "training_history.json + val_metrics.json (copied alongside)",
+  "sha256": "f8232dde4442d882982ffb3cfaecb150b27c3e3ddb9fcc3738166b76ce823885",
+  "ablation_rounds": {
+    "R1": {
+      "lambda_accessibility": 0.0,
+      "best_epoch": 19,
+      "output": "outputs/student_s8_r1_lam0/",
+      "note": "baseline fine-tune, lower monotonicity (pair 0.600 / triplet 0.217) — not selected"
+    },
+    "R2": {
+      "lambda_accessibility": 1.0,
+      "best_epoch": 26,
+      "output": "outputs/student_s8/",
+      "note": "SELECTED: +accessibility response loss improves monotonicity and infeasible probability"
+    }
+  }
+}

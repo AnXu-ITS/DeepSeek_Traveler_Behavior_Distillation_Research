@@ -1,0 +1,52 @@
+# Feature order for S8 (student_s8_v1) — MUST match the actual tensor input order.
+# Generated from src/traveler_distillation/accessibility/accessibility_features.py S8_ALT_NUM.
+# global_cat (torch.long, n=9):
+#   0: age_group
+#   1: income_group
+#   2: occupation
+#   3: habitual_mode
+#   4: schedule_flexibility
+#   5: mobility_limitation
+#   6: purpose
+#   7: time_constraint
+#   8: weather_condition
+# global_num (torch.float32, n=17):
+#   0: household_size
+#   1: has_children
+#   2: car_ownership
+#   3: driving_license
+#   4: bike_ownership
+#   5: transit_pass
+#   6: distance_km
+#   7: desired_departure_min
+#   8: desired_arrival_min
+#   9: weather_intensity
+#   10: road_congestion
+#   11: transit_delay_min
+#   12: transit_disruption
+#   13: road_disruption
+#   14: fare_multiplier
+#   15: parking_cost_multiplier
+#   16: congestion_charge
+# alt_mode_idx (torch.long, per alternative): mode_vocab index
+# alt_num (torch.float32, per alternative, n=12):
+#   0: travel_time_min
+#   1: monetary_cost
+#   2: access_time_min
+#   3: transfers
+#   4: reliability_delay_min
+#   5: weather_exposure
+#   6: pt_feasible
+#   7: egress_time_min
+#   8: wait_time_min
+#   9: in_vehicle_time_min
+#   10: transfer_time_min
+#   11: coverage_ratio
+# alt_mask (torch.float32, per alternative): 1.0 = available, 0.0 = unavailable/padded
+
+# Canonical column order (one tensor per line, columns within a tensor in listed order):
+global_cat := age_group,income_group,occupation,habitual_mode,schedule_flexibility,mobility_limitation,purpose,time_constraint,weather_condition
+global_num := household_size,has_children,car_ownership,driving_license,bike_ownership,transit_pass,distance_km,desired_departure_min,desired_arrival_min,weather_intensity,road_congestion,transit_delay_min,transit_disruption,road_disruption,fare_multiplier,parking_cost_multiplier,congestion_charge
+alt_mode_idx := <mode_vocab index per alternative, order = state.alternatives>
+alt_num := travel_time_min,monetary_cost,access_time_min,transfers,reliability_delay_min,weather_exposure,pt_feasible,egress_time_min,wait_time_min,in_vehicle_time_min,transfer_time_min,coverage_ratio (per alternative, order = state.alternatives)
+alt_mask := <1.0/0.0 per alternative, order = state.alternatives>

@@ -1,0 +1,65 @@
+{
+  "snapshot_date": "2026-08-25",
+  "source": "Overpass API bbox extraction",
+  "query": "data/singapore/osm/query.txt ([out:xml][timeout:600];(way[\"highway\"](1.330,103.900,1.400,104.015);>;);out body;)",
+  "study_area": "Tampines + Pasir Ris (lat 1.330-1.400 x lon 103.900-104.015)",
+  "clipping_boundary": "bbox lat 1.330-1.400 x lon 103.900-104.015 (+ margin 0.004 deg for GTFS cropping)",
+  "crs": "UTM 48N",
+  "conversion_version": "src/traveler_distillation/singapore/osm_network.py (build_network)",
+  "license": "ODbL",
+  "file": "data/singapore/osm/tampines_pasir_ris.osm",
+  "file_sha256": "af9b2dc21fae7dbc4ba66b2cfe69333772900ae11dd0be6c9ecd2245e820e061",
+  "network_stats": {
+    "source": "data\\singapore\\osm\\tampines_pasir_ris.osm",
+    "ways_kept": 30140,
+    "nodes": 100867,
+    "links": 191617,
+    "mode_link_counts": {
+      "car": 86174,
+      "bike": 185695,
+      "walk": 188373
+    },
+    "length_m": {
+      "n": 191617,
+      "min": 0.5,
+      "p50": 9.19,
+      "max": 1702.28
+    },
+    "freespeed_ms": {
+      "n": 191617,
+      "min": 0.8,
+      "p50": 3.9,
+      "max": 25.0
+    },
+    "capacity_veh_h": {
+      "n": 191617,
+      "min": 400,
+      "p50": 1000,
+      "max": 12000
+    },
+    "total_network_km": 3520.58,
+    "connectivity": {
+      "car": {
+        "components": 161,
+        "largest_component_nodes": 51326,
+        "fraction_in_largest": 0.9515
+      },
+      "bike": {
+        "components": 908,
+        "largest_component_nodes": 88602,
+        "fraction_in_largest": 0.9316
+      },
+      "walk": {
+        "components": 475,
+        "largest_component_nodes": 90922,
+        "fraction_in_largest": 0.951
+      }
+    }
+  },
+  "traffic_signals": "659 highway=traffic_signals nodes (data/singapore/osm/traffic_signal_nodes.txt)",
+  "known_approximations": [
+    "MRT rail-on-road: no railway in OSM conversion; MRT trips routed on road graph (transportMode=rail), explicitly downgraded",
+    "one-way transit reverse links: busr_/ai_ artificial links for bus/rail against one-way streets (pt2matsim-style)",
+    "no junction delay model (capacity assigned by highway class saturation flow)"
+  ]
+}

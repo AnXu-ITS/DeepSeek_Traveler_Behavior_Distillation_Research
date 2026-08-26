@@ -1,0 +1,31 @@
+{
+  "prompt_version": "teacher_s8_accessibility_v0.1",
+  "prompt_module": "src/traveler_distillation/teacher/prompts_s8.py",
+  "model": "deepseek-v4-pro",
+  "endpoint": "https://api.deepseek.com/v1",
+  "k_policy": {
+    "base": 3,
+    "boundary": 5,
+    "boundary_definition": "good<->medium, medium<->poor, poor<->infeasible class transitions within a curve group"
+  },
+  "k_distribution": {
+    "3": 111,
+    "5": 227
+  },
+  "aggregation_method": "mean_probability (aggregate_repeats over K valid repeats)",
+  "output_schema": "AggregatedTeacherTarget (mode_probabilities over available modes + departure shift)",
+  "clip_departure": true,
+  "total_calls": 1468,
+  "stats": {
+    "attempted": 1430,
+    "valid": 1429,
+    "failed": 1,
+    "aggregated": 329
+  },
+  "incomplete_count": 0,
+  "note": "1,468 total attempts across both labeling rounds (first-round process contributed ~38 attempts before the max_tokens fix); final 0 incomplete",
+  "cache_bypass": "official DeepSeek endpoint has no gateway cache; cache_bypass=False",
+  "labeling_script": "scripts/label_s8_teacher.py",
+  "generated_at_utc": "2026-08-26T03:49:59.249297+00:00",
+  "budget_note": "K=3 base + K=5 boundary samples (user-approved budget)"
+}

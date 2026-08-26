@@ -1,0 +1,13 @@
+{
+  "source": "checkpoint key 'config' (training-time snapshot)",
+  "config": {
+    "arch_version": "student_s8_v1",
+    "n_alt_num": 12,
+    "global_hidden_dim": 64,
+    "alternative_hidden_dim": 32,
+    "cat_embedding_dim": 8,
+    "mode_embedding_dim": 8,
+    "scorer_hidden_dim": 64,
+    "dropout": 0.1
+  }
+}

@@ -1,0 +1,583 @@
+{
+  "model": "S8",
+  "release": "Supply-Aware Traveler Agent v1.0",
+  "base": "S7-W3 Generic Behavioral Core v1.0",
+  "status": "FROZEN",
+  "source": {
+    "accessibility": "outputs/s8_accessibility_eval/eval_metrics.json (test-only, unseen persona x unseen OD, paired bootstrap B=2000 seed=42)",
+    "regression": "outputs/s8_regression/eval_metrics.json (same pipelines as S7, paired bootstrap)",
+    "unseen_od": "outputs/s8_unseen_od/unseen_od_audit.json",
+    "protocol": "test-only; paired bootstrap B=2000 seed=42; 95% CI"
+  },
+  "accessibility": {
+    "fidelity_all": {
+      "B0_S7W3": {
+        "kl": {
+          "mean": 0.1984,
+          "ci_low": 0.1659,
+          "ci_high": 0.2295
+        },
+        "probability_l1": {
+          "mean": 0.5016,
+          "ci_low": 0.453,
+          "ci_high": 0.5496
+        },
+        "pt_probability_mae": {
+          "mean": 0.1336,
+          "ci_low": 0.1036,
+          "ci_high": 0.1631
+        }
+      },
+      "B1_S8": {
+        "kl": {
+          "mean": 0.198,
+          "ci_low": 0.1568,
+          "ci_high": 0.2414
+        },
+        "probability_l1": {
+          "mean": 0.4845,
+          "ci_low": 0.4191,
+          "ci_high": 0.5519
+        },
+        "pt_probability_mae": {
+          "mean": 0.1184,
+          "ci_low": 0.0863,
+          "ci_high": 0.1527
+        }
+      }
+    },
+    "sensitivity_delta_P_pt": {
+      "B0_S7W3": {
+        "mean": 0.1631,
+        "ci_low": 0.1376,
+        "ci_high": 0.191
+      },
+      "B1_S8": {
+        "mean": 0.1561,
+        "ci_low": 0.1188,
+        "ci_high": 0.2001
+      },
+      "Teacher": {
+        "mean": 0.2117,
+        "ci_low": 0.1547,
+        "ci_high": 0.2715
+      },
+      "n_groups": 12
+    },
+    "monotonicity": {
+      "B0_S7W3": {
+        "pair_agreement": {
+          "mean": 0.6571,
+          "ci_low": 0.4857,
+          "ci_high": 0.8
+        },
+        "triplet_agreement": {
+          "mean": 0.2609,
+          "ci_low": 0.087,
+          "ci_high": 0.4348
+        },
+        "n_pairs": 35,
+        "n_triplets": 23
+      },
+      "B1_S8": {
+        "pair_agreement": {
+          "mean": 0.6857,
+          "ci_low": 0.5143,
+          "ci_high": 0.8286
+        },
+        "triplet_agreement": {
+          "mean": 0.3043,
+          "ci_low": 0.1304,
+          "ci_high": 0.4783
+        },
+        "n_pairs": 35,
+        "n_triplets": 23
+      },
+      "Teacher": {
+        "pair_agreement": {
+          "mean": 0.8,
+          "ci_low": 0.6571,
+          "ci_high": 0.9143
+        },
+        "triplet_agreement": {
+          "mean": 0.5217,
+          "ci_low": 0.3043,
+          "ci_high": 0.7391
+        },
+        "n_pairs": 35,
+        "n_triplets": 23
+      }
+    },
+    "fvr": {
+      "B0_S7W3": {
+        "rate": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "mean_P_pt_infeasible": {
+          "mean": 0.0978,
+          "ci_low": 0.0693,
+          "ci_high": 0.1342
+        },
+        "n_infeasible": 12
+      },
+      "B1_S8": {
+        "rate": {
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0
+        },
+        "mean_P_pt_infeasible": {
+          "mean": 0.0599,
+          "ci_low": 0.0359,
+          "ci_high": 0.0904
+        },
+        "n_infeasible": 12
+      }
+    },
+    "convenience_error_by_class": {
+      "B0_S7W3": {
+        "A_excellent": {
+          "mean": 0.1137,
+          "ci_low": 0.0706,
+          "ci_high": 0.1663
+        },
+        "B_good": {
+          "mean": 0.157,
+          "ci_low": 0.1018,
+          "ci_high": 0.2219
+        },
+        "C_moderate": {
+          "mean": 0.1556,
+          "ci_low": 0.0546,
+          "ci_high": 0.2798
+        },
+        "D_poor": {
+          "mean": 0.1736,
+          "ci_low": 0.0841,
+          "ci_high": 0.2804
+        },
+        "E_infeasible": {
+          "mean": 0.0975,
+          "ci_low": 0.0691,
+          "ci_high": 0.1338
+        }
+      },
+      "B1_S8": {
+        "A_excellent": {
+          "mean": 0.1108,
+          "ci_low": 0.0559,
+          "ci_high": 0.1762
+        },
+        "B_good": {
+          "mean": 0.1286,
+          "ci_low": 0.0643,
+          "ci_high": 0.2036
+        },
+        "C_moderate": {
+          "mean": 0.1769,
+          "ci_low": 0.0742,
+          "ci_high": 0.2941
+        },
+        "D_poor": {
+          "mean": 0.1556,
+          "ci_low": 0.0506,
+          "ci_high": 0.2764
+        },
+        "E_infeasible": {
+          "mean": 0.0596,
+          "ci_low": 0.0356,
+          "ci_high": 0.0902
+        }
+      }
+    },
+    "teacher_pt_prob_by_class": {
+      "A_excellent": {
+        "mean": 0.2084,
+        "ci_low": 0.1544,
+        "ci_high": 0.2651
+      },
+      "B_good": {
+        "mean": 0.1843,
+        "ci_low": 0.1182,
+        "ci_high": 0.2886
+      },
+      "C_moderate": {
+        "mean": 0.1434,
+        "ci_low": 0.0828,
+        "ci_high": 0.2117
+      },
+      "D_poor": {
+        "mean": 0.1125,
+        "ci_low": 0.0655,
+        "ci_high": 0.1725
+      },
+      "E_infeasible": {
+        "mean": 0.0003,
+        "ci_low": 0.0,
+        "ci_high": 0.001
+      }
+    }
+  },
+  "unseen_od": {
+    "od_holdout": {
+      "n_train_ods": 79,
+      "n_test_ods": 19,
+      "overlap": [],
+      "verified": true
+    },
+    "test_records": {
+      "n": 53,
+      "od_indices_used": [
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ],
+      "class_distribution": {
+        "A_excellent": 15,
+        "B_good": 11,
+        "E_infeasible": 12,
+        "C_moderate": 7,
+        "D_poor": 8
+      },
+      "personas": [
+        "P000002",
+        "P000008",
+        "P000009",
+        "P000015",
+        "P000016",
+        "P000018"
+      ],
+      "all_unseen": true
+    },
+    "pt_probability_mae": {
+      "B0_S7W3": {
+        "mean": 0.1336,
+        "ci_low": 0.1036,
+        "ci_high": 0.1631
+      },
+      "B1_S8": {
+        "mean": 0.1184,
+        "ci_low": 0.0863,
+        "ci_high": 0.1527
+      },
+      "Teacher": null
+    }
+  },
+  "legacy": {
+    "W3_S7W3": {
+      "n": 226,
+      "mode_accuracy": {
+        "mean": 0.8451,
+        "ci_low": 0.8009,
+        "ci_high": 0.8895
+      },
+      "kl": {
+        "mean": 0.0695,
+        "ci_low": 0.0583,
+        "ci_high": 0.0815
+      },
+      "probability_l1": {
+        "mean": 0.242,
+        "ci_low": 0.2137,
+        "ci_high": 0.2701
+      },
+      "delta_p_gap": {
+        "mean": 0.0506,
+        "ci_low": 0.044,
+        "ci_high": 0.0575
+      },
+      "sign_agreement": {
+        "mean": 0.7122,
+        "ci_low": 0.6639,
+        "ci_high": 0.7609
+      }
+    },
+    "S8": {
+      "n": 226,
+      "mode_accuracy": {
+        "mean": 0.8805,
+        "ci_low": 0.8363,
+        "ci_high": 0.9204
+      },
+      "kl": {
+        "mean": 0.0446,
+        "ci_low": 0.0369,
+        "ci_high": 0.0526
+      },
+      "probability_l1": {
+        "mean": 0.1753,
+        "ci_low": 0.1524,
+        "ci_high": 0.1982
+      },
+      "delta_p_gap": {
+        "mean": 0.047,
+        "ci_low": 0.0415,
+        "ci_high": 0.0529
+      },
+      "sign_agreement": {
+        "mean": 0.7017,
+        "ci_low": 0.6515,
+        "ci_high": 0.7516
+      }
+    }
+  },
+  "multi_axis": {
+    "seen_joint": {
+      "W3_S7W3": {
+        "n": 72,
+        "kl": {
+          "mean": 0.0421,
+          "ci_low": 0.0286,
+          "ci_high": 0.0578
+        },
+        "l1": {
+          "mean": 0.173,
+          "ci_low": 0.1344,
+          "ci_high": 0.2116
+        }
+      },
+      "S8": {
+        "n": 72,
+        "kl": {
+          "mean": 0.0356,
+          "ci_low": 0.0272,
+          "ci_high": 0.0449
+        },
+        "l1": {
+          "mean": 0.1539,
+          "ci_low": 0.1249,
+          "ci_high": 0.1848
+        }
+      }
+    },
+    "unseen_joint": {
+      "W3_S7W3": {
+        "n": 24,
+        "kl": {
+          "mean": 0.0845,
+          "ci_low": 0.0328,
+          "ci_high": 0.1481
+        },
+        "l1": {
+          "mean": 0.2355,
+          "ci_low": 0.1396,
+          "ci_high": 0.3452
+        }
+      },
+      "S8": {
+        "n": 24,
+        "kl": {
+          "mean": 0.0468,
+          "ci_low": 0.0222,
+          "ci_high": 0.0756
+        },
+        "l1": {
+          "mean": 0.1701,
+          "ci_low": 0.1018,
+          "ci_high": 0.2464
+        }
+      }
+    },
+    "interaction_l1_error": {
+      "W3_S7W3": {
+        "mean": 0.0488,
+        "ci_low": 0.0379,
+        "ci_high": 0.0603
+      },
+      "S8": {
+        "mean": 0.0495,
+        "ci_low": 0.0398,
+        "ci_high": 0.0602
+      }
+    }
+  },
+  "mechanism": {
+    "congestion": {
+      "W3_S7W3": {
+        "R_shortcut": {
+          "mean": 0.7755,
+          "ci_low": 0.502,
+          "ci_high": 1.0664
+        },
+        "R_mediator": {
+          "mean": 0.8303,
+          "ci_low": 0.3676,
+          "ci_high": 1.3576
+        },
+        "G_med": {
+          "mean": 0.1763,
+          "ci_low": 0.1068,
+          "ci_high": 0.2543
+        },
+        "Gap_shortcut": {
+          "mean": 0.3455,
+          "ci_low": 0.1554,
+          "ci_high": 0.5608
+        }
+      },
+      "S8": {
+        "R_shortcut": {
+          "mean": 0.4873,
+          "ci_low": 0.2798,
+          "ci_high": 0.6949
+        },
+        "R_mediator": {
+          "mean": 0.904,
+          "ci_low": 0.6013,
+          "ci_high": 1.2196
+        },
+        "G_med": {
+          "mean": 0.1527,
+          "ci_low": 0.0882,
+          "ci_high": 0.2145
+        },
+        "Gap_shortcut": {
+          "mean": 0.2847,
+          "ci_low": 0.2439,
+          "ci_high": 0.3259
+        }
+      },
+      "delta_s8_vs_s7w3": {
+        "G_med_delta": {
+          "mean": -0.0236,
+          "ci_low": -0.0988,
+          "ci_high": 0.062,
+          "ci_excludes_zero": false
+        }
+      }
+    },
+    "parking_cost": {
+      "W3_S7W3": {
+        "R_shortcut": {
+          "mean": 1.0434,
+          "ci_low": 1.0174,
+          "ci_high": 1.0739
+        },
+        "R_mediator": {
+          "mean": 0.0849,
+          "ci_low": 0.0603,
+          "ci_high": 0.1086
+        },
+        "G_med": {
+          "mean": 0.258,
+          "ci_low": 0.1409,
+          "ci_high": 0.3952
+        },
+        "Gap_shortcut": {
+          "mean": 0.3335,
+          "ci_low": 0.1983,
+          "ci_high": 0.4871
+        }
+      },
+      "S8": {
+        "R_shortcut": {
+          "mean": 1.0628,
+          "ci_low": 1.0374,
+          "ci_high": 1.0872
+        },
+        "R_mediator": {
+          "mean": 0.0905,
+          "ci_low": 0.0567,
+          "ci_high": 0.13
+        },
+        "G_med": {
+          "mean": 0.2554,
+          "ci_low": 0.1346,
+          "ci_high": 0.3971
+        },
+        "Gap_shortcut": {
+          "mean": 0.3506,
+          "ci_low": 0.2049,
+          "ci_high": 0.517
+        }
+      },
+      "delta_s8_vs_s7w3": {
+        "G_med_delta": {
+          "mean": -0.0026,
+          "ci_low": -0.0106,
+          "ci_high": 0.004,
+          "ci_excludes_zero": false
+        }
+      }
+    }
+  },
+  "deltas_s8_vs_s7w3": {
+    "accessibility": {
+      "pt_probability_mae_delta": {
+        "mean": -0.0152,
+        "ci_low": -0.0268,
+        "ci_high": -0.0032,
+        "ci_excludes_zero": true
+      },
+      "mean_P_pt_infeasible_delta": {
+        "mean": -0.0379,
+        "ci_low": -0.0457,
+        "ci_high": -0.0315,
+        "ci_excludes_zero": true
+      },
+      "fvr_rate_delta": {
+        "mean": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "ci_excludes_zero": false
+      },
+      "pair_monotonicity_delta": {
+        "mean": 0.0286,
+        "ci_low": -0.0571,
+        "ci_high": 0.1143,
+        "ci_excludes_zero": false
+      },
+      "note": "negative MAE/P(PT|inf)/FVR delta = S8 better; monotonicity delta is paired over per-group 0/1 pair-agreement indicators"
+    },
+    "legacy_and_joint": {
+      "legacy_kl_delta": {
+        "mean": -0.0249,
+        "ci_low": -0.0339,
+        "ci_high": -0.0162,
+        "ci_excludes_zero": true
+      },
+      "seen_joint_kl_delta": {
+        "mean": -0.0064,
+        "ci_low": -0.0179,
+        "ci_high": 0.0039,
+        "ci_excludes_zero": false
+      },
+      "unseen_joint_kl_delta": {
+        "mean": -0.0378,
+        "ci_low": -0.0731,
+        "ci_high": -0.0089,
+        "ci_excludes_zero": true
+      },
+      "note": "delta = S8 - S7W3; KL increase <= 10% of the S7-W3 value required (§26)"
+    }
+  },
+  "regression_gate": {
+    "legacy_accuracy_drop_pp": -3.54,
+    "legacy_accuracy_gate_1pp": true,
+    "legacy_kl_increase_pct": -35.83,
+    "legacy_kl_gate_10pct": true,
+    "seen_joint_kl_increase_pct": -15.44,
+    "seen_joint_kl_gate_10pct": true,
+    "unseen_joint_kl_increase_pct": -44.62,
+    "unseen_joint_kl_gate_10pct": true,
+    "note": "mechanism indicators judged separately (must not clearly regress)"
+  }
+}

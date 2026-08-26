@@ -644,3 +644,41 @@ effective approach capacities were represented using green-ratio sensitivity fac
 - 产物：`outputs/student_s8/`（R2 最终）+ `outputs/student_s8_r1_lam0/`（λ 消融）、
   `outputs/s8_accessibility_eval(_r1)/`、`outputs/s8_regression(_r1)/`、
   `outputs/s8_unseen_od/`、`data/singapore_accessibility/`（DATA_README + manifest）。
+
+## S8 正式冻结完成 ✅（2026-08-26）
+
+依据 `S8_BACKUP_FREEZE_INSTRUCTIONS.md` 执行 15 步冻结，发布目录：
+`releases/s8_supply_aware_v1/`（git 追踪、只读保护）。
+
+- **唯一 checkpoint**：`checkpoint/model.pt`（SHA256 `f8232dde…3885`，
+  24,562 参数，seed=42，best_epoch=26，arch `student_s8_v1`，来源
+  `outputs/student_s8/checkpoints/best.pt`；optimizer/scheduler state 未保存）。
+- **冻结内容**：config（student_s8 / accessibility_features / training_s8，含 R1/R2
+  两轮记录）、Case B schema diff（+6 维 alt feature、alt_encoder 14→20、零初始化迁移）、
+  normalization（S7 字段沿用冻结统计 + 6 新字段 S8 train 拟合）、accessibility 特征定义、
+  Singapore 供给 provenance（OSM/GTFS manifest）、teacher provenance（1,468 次调用、
+  0 incomplete）、data manifest（338 态、三套 holdout、泄漏 0 命中）、
+  `metrics/final_metrics.json` + `comparison_s7_vs_s8.csv`、报告副本 +
+  `S8_EVIDENCE_INDEX.md`、code manifest、`FINAL_S8_FREEZE.md`、`README.md`、
+  全量 `SHA256SUMS.txt`（45 文件）。
+- **复现性 Gate（不重训）**：对冻结 checkpoint 重跑 accessibility / unseen-OD /
+  regression 三套评估，**16/16 门禁指标与历史 S8 数值完全一致（Δ=0.0000）**；
+  S7-W3 release 全量 SHA256 复核 **45/45 未变**。
+- **Singapore smoke（S8 推断 → adapter → MATSim）**：schema 断言通过（12 维 alt
+  feature、encoder 输入 20）；PT accessibility 管线 98 feasible / 2 infeasible；
+  MATSim exit=0，四模式（bike/car/pt/walk）全部执行，9 次 PT 登车、20,966 班次；
+  Phase C 冻结设置（capacity 因子 0.3/0.3）路径验证通过。
+- **Git**：冻结提交 `freeze: S8 supply-aware traveler agent v1.0` + 注释 tag
+  `s8-supply-aware-v1.0`；工作树 clean。
+- **只读保护 / Phase C Guard**：release 文件 Windows 只读属性 +
+  `release_guard.py` 硬断言新增 `s8_supply_aware_v1`（`tests/test_release_guard.py`
+  扩展）；S8 adapter `src/traveler_distillation/matsim/s8_adapter.py`（load-only，
+  arch 硬断言）+ `scripts/singapore/run_s8_smoke.py` 为 Phase C 基础设施。
+- **测试**：冻结前 155 passed / 0 error（与指令一致）；guard 扩展后 158 passed / 0 error。
+- **正式定义**：`S8 = Supply-Aware Traveler Agent v1.0 = FROZEN`；
+  `S7-W3 = Generic Behavioral Core v1.0` 永久保留为论文 generic baseline。
+- **Phase C 固定**：Student = frozen S8；N*=10,000；flowCapacityFactor =
+  storageCapacityFactor = 0.3；Singapore supply = frozen Phase B.5 版本；
+  PT planner = frozen validated 版本；顺序 C0 baseline → C1 heavy rain →
+  C2 PT fare increase → C3 transit delay → C4 road disruption → C5 joint。
+  Phase C 只能 load，不得继续训练、改权重、改 schema、改 normalization。

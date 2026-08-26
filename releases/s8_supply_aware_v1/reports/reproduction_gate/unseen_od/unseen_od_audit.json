@@ -1,0 +1,150 @@
+{
+  "unseen_od_audit": {
+    "od_holdout": {
+      "n_train_ods": 79,
+      "n_test_ods": 19,
+      "overlap": [],
+      "verified": true
+    },
+    "test_records": {
+      "n": 53,
+      "od_indices_used": [
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ],
+      "class_distribution": {
+        "A_excellent": 15,
+        "B_good": 11,
+        "E_infeasible": 12,
+        "C_moderate": 7,
+        "D_poor": 8
+      },
+      "personas": [
+        "P000002",
+        "P000008",
+        "P000009",
+        "P000015",
+        "P000016",
+        "P000018"
+      ],
+      "all_unseen": true
+    },
+    "note": "student sees only the city-independent accessibility vector; OD identity is never an input feature (S8 §15)"
+  },
+  "summary_from_accessibility_eval": {
+    "models": {
+      "B0_S7W3": {
+        "pt_probability_mae": {
+          "mean": 0.1336,
+          "ci_low": 0.1036,
+          "ci_high": 0.1631
+        },
+        "fvr": {
+          "rate": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0
+          },
+          "mean_P_pt_infeasible": {
+            "mean": 0.0978,
+            "ci_low": 0.0693,
+            "ci_high": 0.1342
+          },
+          "n_infeasible": 12
+        },
+        "sensitivity": {
+          "delta_P_pt_best_minus_worst": {
+            "mean": 0.1631,
+            "ci_low": 0.1376,
+            "ci_high": 0.191
+          },
+          "n_groups": 12
+        }
+      },
+      "B1_S8": {
+        "pt_probability_mae": {
+          "mean": 0.1184,
+          "ci_low": 0.0863,
+          "ci_high": 0.1527
+        },
+        "fvr": {
+          "rate": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0
+          },
+          "mean_P_pt_infeasible": {
+            "mean": 0.0599,
+            "ci_low": 0.0359,
+            "ci_high": 0.0904
+          },
+          "n_infeasible": 12
+        },
+        "sensitivity": {
+          "delta_P_pt_best_minus_worst": {
+            "mean": 0.1561,
+            "ci_low": 0.1188,
+            "ci_high": 0.2001
+          },
+          "n_groups": 12
+        }
+      },
+      "Teacher": {
+        "pt_probability_mae": null,
+        "fvr": null,
+        "sensitivity": {
+          "delta_P_pt_best_minus_worst": {
+            "mean": 0.2117,
+            "ci_low": 0.1547,
+            "ci_high": 0.2715
+          },
+          "n_groups": 12
+        }
+      }
+    },
+    "deltas_s8_vs_s7w3": {
+      "pt_probability_mae_delta": {
+        "mean": -0.0152,
+        "ci_low": -0.0268,
+        "ci_high": -0.0032,
+        "ci_excludes_zero": true
+      },
+      "mean_P_pt_infeasible_delta": {
+        "mean": -0.0379,
+        "ci_low": -0.0457,
+        "ci_high": -0.0315,
+        "ci_excludes_zero": true
+      },
+      "fvr_rate_delta": {
+        "mean": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "ci_excludes_zero": false
+      },
+      "pair_monotonicity_delta": {
+        "mean": 0.0286,
+        "ci_low": -0.0571,
+        "ci_high": 0.1143,
+        "ci_excludes_zero": false
+      },
+      "note": "negative MAE/P(PT|inf)/FVR delta = S8 better; monotonicity delta is paired over per-group 0/1 pair-agreement indicators"
+    }
+  }
+}

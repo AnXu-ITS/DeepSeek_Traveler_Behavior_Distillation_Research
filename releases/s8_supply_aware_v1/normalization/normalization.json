@@ -1,0 +1,185 @@
+{
+  "source": "checkpoint key 'extractor_state'",
+  "numeric_fields": {
+    "global": [
+      "household_size",
+      "has_children",
+      "car_ownership",
+      "driving_license",
+      "bike_ownership",
+      "transit_pass",
+      "distance_km",
+      "desired_departure_min",
+      "desired_arrival_min",
+      "weather_intensity",
+      "road_congestion",
+      "transit_delay_min",
+      "transit_disruption",
+      "road_disruption",
+      "fare_multiplier",
+      "parking_cost_multiplier",
+      "congestion_charge"
+    ],
+    "alternative": [
+      "travel_time_min",
+      "monetary_cost",
+      "access_time_min",
+      "transfers",
+      "reliability_delay_min",
+      "weather_exposure",
+      "pt_feasible",
+      "egress_time_min",
+      "wait_time_min",
+      "in_vehicle_time_min",
+      "transfer_time_min",
+      "coverage_ratio"
+    ]
+  },
+  "global_mean_std": {
+    "household_size": {
+      "mean": 3.180018850141376,
+      "std": 1.5148079635611977
+    },
+    "has_children": {
+      "mean": 0.42695570216776624,
+      "std": 0.4946357554344368
+    },
+    "car_ownership": {
+      "mean": 0.6437323279924599,
+      "std": 0.4788956231684185
+    },
+    "driving_license": {
+      "mean": 0.6795475966069745,
+      "std": 0.46665046935866156
+    },
+    "bike_ownership": {
+      "mean": 0.6079170593779454,
+      "std": 0.48821502260296845
+    },
+    "transit_pass": {
+      "mean": 0.4288407163053723,
+      "std": 0.49491045285391533
+    },
+    "distance_km": {
+      "mean": 18.00466258246937,
+      "std": 8.051492622182305
+    },
+    "desired_departure_min": {
+      "mean": 516.6371347785108,
+      "std": 144.60743211238912
+    },
+    "desired_arrival_min": {
+      "mean": 600.5391140433553,
+      "std": 117.25872063639798
+    },
+    "weather_intensity": {
+      "mean": 0.13195098963242224,
+      "std": 0.28557342061077934
+    },
+    "road_congestion": {
+      "mean": 0.3422243166823751,
+      "std": 0.13121756585067146
+    },
+    "transit_delay_min": {
+      "mean": 2.554194156456173,
+      "std": 7.185316858446204
+    },
+    "transit_disruption": {
+      "mean": 0.0,
+      "std": 1.0
+    },
+    "road_disruption": {
+      "mean": 0.0527803958529689,
+      "std": 0.22359478005215777
+    },
+    "fare_multiplier": {
+      "mean": 1.0923656927426955,
+      "std": 0.2464606426210555
+    },
+    "parking_cost_multiplier": {
+      "mean": 1.1847313854853911,
+      "std": 0.492921285242111
+    },
+    "congestion_charge": {
+      "mean": 0.0,
+      "std": 1.0
+    }
+  },
+  "alternative_fields": {
+    "s7_inherited": {
+      "fields": [
+        "travel_time_min",
+        "monetary_cost",
+        "access_time_min",
+        "transfers",
+        "reliability_delay_min",
+        "weather_exposure"
+      ],
+      "stats_fit_on": "FROZEN S7-W3 train split (reused verbatim, NOT refit)",
+      "stats": {
+        "travel_time_min": {
+          "mean": 110.91499670122525,
+          "std": 98.90239183174751
+        },
+        "monetary_cost": {
+          "mean": 5.465356267672008,
+          "std": 7.4037765143340435
+        },
+        "access_time_min": {
+          "mean": 3.0,
+          "std": 3.082207001484488
+        },
+        "transfers": {
+          "mean": 0.25,
+          "std": 0.4330127018922193
+        },
+        "reliability_delay_min": {
+          "mean": 2.1857917059377945,
+          "std": 4.997000826222999
+        },
+        "weather_exposure": {
+          "mean": 0.5875,
+          "std": 0.38466706383572796
+        }
+      }
+    },
+    "s8_new": {
+      "fields": [
+        "pt_feasible",
+        "egress_time_min",
+        "wait_time_min",
+        "in_vehicle_time_min",
+        "transfer_time_min",
+        "coverage_ratio"
+      ],
+      "stats_fit_on": "S8 train split only",
+      "stats": {
+        "pt_feasible": {
+          "mean": 0.19017094017094016,
+          "std": 0.39243592303131586
+        },
+        "egress_time_min": {
+          "mean": 0.6885544871794872,
+          "std": 1.9470415694328467
+        },
+        "wait_time_min": {
+          "mean": 1.4617628205128206,
+          "std": 3.273849114565678
+        },
+        "in_vehicle_time_min": {
+          "mean": 2.43042094017094,
+          "std": 7.194911391071712
+        },
+        "transfer_time_min": {
+          "mean": 0.2585480769230769,
+          "std": 1.3087886174338874
+        },
+        "coverage_ratio": {
+          "mean": 0.138521047008547,
+          "std": 0.3173892972350062
+        }
+      }
+    }
+  },
+  "note": "x_z = (x - mean) / std; std floored at 1e-8 in code"
+}

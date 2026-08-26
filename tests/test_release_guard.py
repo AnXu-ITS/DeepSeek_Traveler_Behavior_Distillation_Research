@@ -1,4 +1,4 @@
-"""Tests for the frozen-release output guard (S7-W3 freeze, step 15)."""
+"""Tests for the frozen-release output guard (S7-W3 + S8 freeze, step 15)."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -13,6 +13,7 @@ from traveler_distillation.student.release_guard import (
 
 def test_frozen_release_dir_is_known():
     assert "s7_w3_generic_core_v1" in FROZEN_RELEASE_DIRS
+    assert "s8_supply_aware_v1" in FROZEN_RELEASE_DIRS
 
 
 @pytest.mark.parametrize(
@@ -21,6 +22,9 @@ def test_frozen_release_dir_is_known():
         "outputs/s7_w3_generic_core_v1/checkpoint/model.pt",
         "outputs/s7_w3_generic_core_v1",
         "releases/s7_w3_generic_core_v1/checkpoints/best.pt",
+        "outputs/s8_supply_aware_v1/checkpoint/model.pt",
+        "releases/s8_supply_aware_v1",
+        "outputs/phase_c/s8_supply_aware_v1/population.xml",
     ],
 )
 def test_paths_inside_frozen_release_are_rejected(path):
