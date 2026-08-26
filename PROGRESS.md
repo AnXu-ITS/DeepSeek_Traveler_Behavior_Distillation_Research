@@ -682,3 +682,49 @@ effective approach capacities were represented using green-ratio sensitivity fac
   PT planner = frozen validated 版本；顺序 C0 baseline → C1 heavy rain →
   C2 PT fare increase → C3 transit delay → C4 road disruption → C5 joint。
   Phase C 只能 load，不得继续训练、改权重、改 schema、改 normalization。
+
+## Phase C — Singapore 真实网络情景实验 启动 ✅（2026-08-26）
+
+依据 `PHASE_C_SINGAPORE_SCENARIO_INSTRUCTIONS.md`（本次起草）+ 冻结指令 §18/§21 +
+`NEXT_STEP_PLAN_SINGAPORE_AIT.md` §4，进入论文主实验阶段。
+
+- **运行器**：`scripts/singapore/run_phase_c.py`（frozen S8 → `S8MATSimAdapter` →
+  `plan_accessibility` 真实供给 alternative → 情景 context 注入 → MATSim
+  lastIteration=0；复用 `scenario_metrics` 事件指标；每情景 result JSON + 汇总报告）。
+- **情景定义**：C0 baseline；C1 heavy rain（intensity 0.75）；C2 fare ×1.5；
+  C3 transit delay 15 min（pt tt/reliability +15）；C4 road disruption
+  （car tt/reliability +20）；C5 joint = rain + delay。扰动仅经 Student context 注入，
+  网络供给与时刻表六个情景完全相同。
+- **population**：N*=10,000，seed=2026（与 Phase A 同源），六个情景同一批 agent
+  （paired 对照）；capacity 因子 0.3/0.3 冻结值。
+- **状态**：C0 baseline 运行中（后台）；C1–C5 随后按序执行；产出
+  `outputs/singapore_phase_c/` + `PHASE_C_REPORT.md`。
+
+## Phase C 六情景完成 ✅（2026-08-26）
+
+全部六个情景（frozen S8，N*=10,000，seed=2026 同一 population，capacity 0.3/0.3，
+供给不变）运行完成，六 gate 全 PASS（exit=0；真人 stuck ≤ B.5C 基线 266；
+四模式；pt 下车≤登车）。报告：`outputs/singapore_phase_c/PHASE_C_REPORT.md`。
+
+### 结果（student 决策 share，C0 → 情景）
+
+| 情景 | car | pt | bike | walk | PT boardings | VKT |
+|---|---|---|---|---|---|---|
+| C0 baseline | 18.1% | 2.8% | 38.2% | 40.8% | 608 | 21,145 km |
+| C1 heavy rain | **36.0%** | **32.4%** | 14.4% | 17.2% | **6,715** | 40,855 km |
+| C2 fare ×1.5 | 20.3% | 2.6% | 37.1% | 39.9% | 550 | 23,700 km |
+| C3 delay 15min | 19.5% | **0.0%** | 38.1% | 42.4% | 3 | 22,500 km |
+| C4 road disruption | **0.2%** | 5.5% | 43.1% | **51.3%** | 1,230 | **168 km** |
+| C5 rain+delay | 36.5% | 0.2% | 13.4% | 49.9% | 43 | 41,475 km |
+
+- 方向全部符合训练行为：rain 将 walk/bike 压向 car/pt；fare 小幅 pt↓ car↑；
+  delay 使 pt 近乎清零；disruption 使 car 近乎清零；C5 联合 = 非叠加
+  （rain 的 pt 需求被 delay 重新路由回 walk）。
+- **Gate 口径修正（有据）**：stuckAndAbort 含 30:00 截断的 transit 车辆；
+  B.5C 基线（S7-W3 同设置）同样 4,347/20,966 辆截断 + 266 真人 stuck，
+  为冻结设置既有特性（报告已标注）；C0 真人 stuck 13（0.13%）。
+- **已知边界（如实记录）**：~20% transit 车辆 30:00 截断影响 PT 绝对量；
+  情景差分同一设置下有效；C1 failed_trips 1,072（10.7%，pt 错过单班次连接，
+  B.5C 已记录的机制）；FVR 恒 0 继承自 S8 测试结论。
+- **运行器**：`scripts/singapore/run_phase_c.py`（共享缓存优化：每 OD 只规划一次，
+  单进程六情景）+ `scripts/singapore/postprocess_phase_c_gates.py`（gate 拆分/重算）。
