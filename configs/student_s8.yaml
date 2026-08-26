@@ -1,0 +1,46 @@
+# S8 — Real-Supply Transit Accessibility Adaptation (Case B).
+# Initializes from the FROZEN S7-W3 release (releases/s7_w3_generic_core_v1/),
+# new architecture version student_s8_v1 (24,562 params, +6 alt features).
+# Replay 2:1:1:1 = legacy : joint : mechanism : accessibility (S8 §17).
+
+student:
+  arch_version: student_s8_v1
+  n_alt_num: 12
+  global_hidden_dim: 64
+  alternative_hidden_dim: 32
+  cat_embedding_dim: 8
+  mode_embedding_dim: 8
+  scorer_hidden_dim: 64
+  dropout: 0.1
+
+training:
+  seed: 42
+  batch_size: 32
+  mechanism_batch_size: 8
+  learning_rate: 0.000125
+  weight_decay: 0.0001
+  max_epochs: 120
+  patience: 15
+  replay_ratio: "2:1:1:1"
+  accessibility_per_epoch: 52
+  het_pairs_per_epoch: 52
+
+loss:
+  lambda_action: 1.0
+  lambda_distribution: 1.0
+  lambda_departure: 1.0
+  lambda_elasticity: 0.0
+  lambda_direction: 1.0
+  lambda_magnitude: 1.0
+  direction_margin: 0.0
+  lambda_heterogeneity: 1.0
+  huber_delta: 1.0
+  lambda_mechanism: 1.0
+  lambda_broken: 1.0
+  lambda_accessibility: 0.0   # S8 §19: NOT added in round 1 (baseline fine-tune only)
+
+split:
+  strategy: s8_triple_holdout
+  persona_holdout: s7_s3c_convention   # 28/6/6, test personas never in train
+  od_holdout: true                     # train/val/test ODs disjoint
+  accessibility_holdout: walk_burden_15min  # access+egress >= 15 min profiles only in test
