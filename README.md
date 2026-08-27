@@ -70,12 +70,28 @@ scripts/                      # 可执行管线（生成 / 标注 / 训练 / 评
 configs/                      # YAML 配置（generation / teacher / student v0.x / S5-S9）
 releases/                     # 冻结模型发布包（S7-W3 / S8-deprecated / S9，含 SHA256 与复现 gate）
 reports/                      # 实验报告 / 审计 / Phase C 报告（git 追踪）
-docs/                         # 计划 / 废弃记录（S8_DEPRECATION.md 等）
+docs/plans/                   # 研究蓝图 / Singapore 验证计划 / 任务阶段清单
+docs/stage_instructions/      # 各阶段执行指令与实验设计（S5-S8、Phase C、冻结指令）
+docs/                         # 供给集成说明 / S8_DEPRECATION.md
 tests/                        # pytest（161 passed）
 data/                         # 生成的数据集（JSONL，git 忽略，可复现生成）
 outputs/                      # 训练与运行产物（git 忽略；报告均复制至 reports/ 追踪）
 archive/legacy_*/             # 已归档的旧版文件
 ```
+
+> 2026-08-27 根目录整理：阶段指令/计划文档从仓库根目录移入 `docs/`（下表为旧路径映射，
+> 冻结 release 文档内引用的仍是冻结时的旧路径）。代码/数据/输出的默认路径未变。
+
+| 旧路径（根目录） | 新路径 |
+|---|---|
+| `S5_MULTI_AXIS_DISTILLATION_EXPERIMENT_DESIGN.md` | `docs/stage_instructions/` |
+| `S6_REASONING_CAUSAL_AUDIT_EXPERIMENT_DESIGN.md` | `docs/stage_instructions/` |
+| `S7_MECHANISM_AWARE_FINETUNING_INSTRUCTIONS.md` | `docs/stage_instructions/` |
+| `S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md` | `docs/stage_instructions/` |
+| `S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md` | `docs/stage_instructions/` |
+| `S8_BACKUP_FREEZE_INSTRUCTIONS.md` | `docs/stage_instructions/` |
+| `PHASE_C_SINGAPORE_SCENARIO_INSTRUCTIONS.md` | `docs/stage_instructions/` |
+| `DeepSeek_Traveler_Behavior_Distillation_Research_Blueprint.md` / `NEXT_STEP_PLAN_SINGAPORE_AIT.md` / `Task_Phase.txt` | `docs/plans/` |
 
 ## 环境要求
 
@@ -113,7 +129,7 @@ archive/legacy_*/             # 已归档的旧版文件
 - **冻结纪律**：release 只读 + `assert_not_frozen_output` 硬断言；
   重训仅因明确数据错误（S8→S9 一例，审计链见 `docs/S8_DEPRECATION.md`）。
 
-## 路线图（详见 `Task_Phase.txt` / `PROGRESS.md`）
+## 路线图（详见 `docs/plans/Task_Phase.txt` / `PROGRESS.md`）
 
 | 阶段 | 状态 | 内容 |
 |---|---|---|

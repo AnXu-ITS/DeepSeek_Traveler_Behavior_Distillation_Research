@@ -1,7 +1,8 @@
 # 实验进度与执行记录
 
 > 蒸馏出行意图 · 个体行为蒸馏研究（DeepSeek V4 Pro → 轻量 Traveler Agent → MATSim）
-> 更新日期：2026-08-27（S9 重训完成、S9 Freeze、Phase C 六情景重跑完成）
+> 更新日期：2026-08-27（S9 重训完成、S9 Freeze、Phase C 六情景重跑完成；同日根目录整理：
+> 阶段指令/计划文档移入 `docs/stage_instructions/` 与 `docs/plans/`，路径映射见 README）
 
 ## 研究目标（不变）
 
