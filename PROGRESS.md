@@ -1,7 +1,7 @@
 # 实验进度与执行记录
 
 > 蒸馏出行意图 · 个体行为蒸馏研究（DeepSeek V4 Pro → 轻量 Traveler Agent → MATSim）
-> 更新日期：2026-08-24（S7 完成、Freeze S7-W3、Singapore 验证线主线化）
+> 更新日期：2026-08-27（S9 重训完成、S9 Freeze、Phase C 六情景重跑完成）
 
 ## 研究目标（不变）
 
@@ -13,11 +13,18 @@
 
 并最终接入 MATSim 做 population-scale 与网络闭环验证。
 
-## 当前阶段结论
+## 当前阶段结论（2026-08-27）
 
-Teacher 侧（Phase 0–4）已完成并审计通过；Student 侧（Phase 5–7）已建立
-v0.2-A baseline、v0.2-B 弹性损失、v0.2-C 异质性损失三条训练管线，正在用
-**真实** DeepSeek K=3 聚合数据集训练验证。MATSim（Phase 8–10）尚未接入。
+- **模型线（冻结）**：`S7-W3 = Generic Behavioral Core v1.0`（论文 generic baseline）；
+  `S9 = Supply-Aware Traveler Agent v2.0`（论文 supply-aware extension，tag
+  `s9-supply-aware-v2.0`）；`S8` 因 walk/bike 速度数据错误 DEPRECATED
+  （`docs/S8_DEPRECATION.md`，release 保持字节不变）。
+- **验证线（主线）**：Singapore 真实供给（Tampines + Pasir Ris）Phase A 门禁 ✅ →
+  Phase B 规模 ✅ → B.5 PT 有效性与容量标定 ✅（N*=10,000，capacity 因子 0.3/0.3）→
+  **Phase C 六情景完成 ✅**（frozen S9，六 gate 全 PASS；报告
+  `reports/PHASE_C_SINGAPORE_REPORT.md`，基线 pt 25.3% / car 28.3% / bike 34.0% /
+  walk 12.4%）。
+- 详见文末「S9 重训完成」「Phase C 重跑完成」两节与 `releases/` 冻结记录。
 
 ## 本轮（2026-08-20）已完成的改动
 

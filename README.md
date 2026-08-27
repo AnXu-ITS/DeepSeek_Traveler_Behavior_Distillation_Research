@@ -1,12 +1,13 @@
 # DeepSeek Traveler Behavior Distillation Research
 
 > 将 DeepSeek V4 Pro 对「不同居民（Persona）× 动态城市环境（Context）→ 出行行为响应」
-> 的推理能力，蒸馏为可在 **MATSim** 中大规模运行的轻量 Traveler Agent。
+> 的推理能力，蒸馏为可在 **MATSim** 中大规模运行的轻量 Traveler Agent，并在
+> **新加坡真实路网 + 公交供给**上做情景实验。
 
 核心链路：
 
 ```text
-DeepSeek V4 Pro teaches → Lightweight Traveler Agents execute → MATSim simulates
+DeepSeek V4 Pro teaches → Lightweight Traveler Agents execute → MATSim simulates (real Singapore supply)
 ```
 
 ## 研究动机
@@ -14,31 +15,73 @@ DeepSeek V4 Pro teaches → Lightweight Traveler Agents execute → MATSim simul
 LLM 具备对异质出行者行为响应的常识性推理能力，但单次调用成本高、无法支撑
 百万级人口仿真。本项目把教师模型（DeepSeek V4 Pro）在
 `persona × context → action distribution` 上的行为策略蒸馏到一个小模型
-（student），使其：
+（student，~2.5 万参数），使其：
 
 1. 在 **可变选择集** 上输出与教师一致的行为偏好分布；
-2. 保留教师对扰动轴（天气、票价等）的 **弹性 / 方向 / 幅度** 响应；
-3. 对 **未见人群（persona-holdout）** 具备泛化能力；
-4. 能写入 MATSim 场景并在真实路网级仿真中运行，含网络反馈闭环。
+2. 保留教师对扰动轴（天气、票价、延误、拥堵、停车费）的 **弹性 / 方向 / 幅度** 响应；
+3. 对 **未见人群 / 未见 OD / 未见可达性**（三重 holdout）具备泛化能力；
+4. 能写入 MATSim 场景并在真实路网级仿真中运行。
+
+## 冻结模型（Releases）
+
+| Release | 角色 | 状态 |
+|---|---|---|
+| `s7-w3-generic-core-v1.0` | S7-W3 **Generic Behavioral Core v1.0**（24,370 参数，单轴/多轴/机制蒸馏线收口） | ✅ FROZEN — 论文 generic baseline |
+| `s8-supply-aware-v1.0` | S8 Supply-Aware Traveler Agent v1.0（24,562 参数，Case B +6 可达性特征） | ⚠️ **DEPRECATED** — walk/bike 速度数据错误（见 `docs/S8_DEPRECATION.md`），release 保持字节不变 |
+| `s9-supply-aware-v2.0` | **S9 Supply-Aware Traveler Agent v2.0**（24,562 参数，修正后重训） | ✅ FROZEN — 论文 supply-aware extension |
+
+每个 release 均为完整冻结包：checkpoint（SHA256）、config、schema（Case B diff）、
+normalization、可达性特征定义、供给/教师 provenance、数据集 manifest、最终指标、
+复现 gate、只读保护（`src/traveler_distillation/student/release_guard.py` 硬断言）。
+
+## Phase C 主实验结果（Singapore 真实网络，frozen S9）
+
+**设置**：N\*=10,000 agents（seed 2026，六情景同一 population）· Tampines + Pasir Ris
+真实 OSM 路网 + 全天 20,966 班次公交供给 · flow/storage capacity 因子 0.3（B.5C 标定）·
+扰动仅经 Student context 注入，供给不变 · `lastIteration=0`（不重规划）。
+
+| 情景 | car | pt | bike | walk | PT 登车 | car VKT | gate |
+|---|---|---|---|---|---|---|---|
+| **C0 baseline** | 28.3% | **25.3%** | 34.0% | 12.4% | 5,613 | 33,939 km | ✅ |
+| **C1 heavy rain** (0.75) | **37.5%** | **45.3%** | 13.3% | 3.8% | **9,761** | 42,778 km | ✅ |
+| **C2 PT fare ×1.5** | 29.9% | 25.7% | 32.5% | 11.8% | 5,674 | 35,798 km | ✅ |
+| **C3 transit delay 15min** | 29.0% | **10.2%** | 35.8% | **25.0%** | 2,474 | 34,685 km | ✅ |
+| **C4 road disruption** | **1.8%** | **37.5%** | **41.8%** | 19.0% | 8,537 | **2,943 km** | ✅ |
+| **C5 rain + delay** | **37.6%** | 18.6% | 24.5% | 19.2% | 4,301 | 42,823 km | ✅ |
+
+关键读数（paired，同一 10k population）：
+
+- **heavy rain** 把步行/骑行压入 car/pt（pt 25.3%→45.3%，PT 登车 +74%）；
+- **PT 延误 15 min** 使 pt 25.3%→10.2%（健康响应，非病态清零）；
+- **道路中断** 使 car 28.3%→1.8%（VKT −91%），pt/bike 吸收转移需求；
+- **联合情景（雨+延误）** 的 pt（18.6%）介于两个单轴之间——效应可解释、非简单叠加；
+- 票价弹性弱（C2 +0.4pp）如实报告。
+
+完整报告与诚实边界：`reports/PHASE_C_SINGAPORE_REPORT.md`；模型侧证据：
+`reports/EXPERIMENT_REPORT_S9_TRANSIT_ACCESSIBILITY_V2.md`（PT-MAE −0.040*、
+**FVR 0.333→0.083**、回归门禁全过、Stop Rule 六项满足）。
 
 ## 目录结构
 
 ```text
-src/traveler_distillation/    # 核心包：schemas / generators / teacher / dataset / student / audit / matsim
-scripts/                      # 可执行管线脚本（生成 / 训练 / 评估 / MATSim 运行）
-configs/                      # YAML 配置（generation / teacher / student v0.2-A/B/C、v0.3-A/B/C）
-tests/                        # pytest（116 passed）
+src/traveler_distillation/    # 核心包：schemas / generators / teacher / dataset / student /
+                              # accessibility（真实供给可达性）/ singapore（OSM/GTFS→MATSim）/ matsim
+scripts/                      # 可执行管线（生成 / 标注 / 训练 / 评估 / MATSim / 冻结 / Phase C）
+configs/                      # YAML 配置（generation / teacher / student v0.x / S5-S9）
+releases/                     # 冻结模型发布包（S7-W3 / S8-deprecated / S9，含 SHA256 与复现 gate）
+reports/                      # 实验报告 / 审计 / Phase C 报告（git 追踪）
+docs/                         # 计划 / 废弃记录（S8_DEPRECATION.md 等）
+tests/                        # pytest（161 passed）
 data/                         # 生成的数据集（JSONL，git 忽略，可复现生成）
-outputs/                      # 训练与审计产物（报告 / checkpoint / 指标，git 忽略）
-tools/MATSim/                 # MATSim 2026.0 发布包（Phase 8+ 使用，大文件忽略）
-archive/legacy_*/             # 已归档的旧版文件（见 archive/README.md）
+outputs/                      # 训练与运行产物（git 忽略；报告均复制至 reports/ 追踪）
+archive/legacy_*/             # 已归档的旧版文件
 ```
 
 ## 环境要求
 
-- Python ≥ 3.11
-- Java 25 + MATSim 2026.0（Phase 8 起的场景仿真）
-- DeepSeek API key（官方直连）
+- Python ≥ 3.12、PyTorch ≥ 2.5（CPU 可跑全部训练/评估）
+- Java 25 + MATSim 2026.0（Singapore 场景仿真）
+- DeepSeek API key（官方直连，教师标注用）
 
 ## 快速开始
 
@@ -49,115 +92,43 @@ archive/legacy_*/             # 已归档的旧版文件（见 archive/README.md
 # 2. 配置密钥：复制 .env.example 为 .env 并填写 DEEPSEEK_API_KEY
 
 # 3. 跑测试
-.venv\Scripts\python.exe -m pytest
+.venv\Scripts\python.exe -m pytest          # 161 passed
 
-# 4. 教师 API smoke test（真实 DeepSeek）
-.venv\Scripts\python.exe scripts\smoke_test_teacher.py
-```
-
-## 数据集生成（K=3 聚合教师目标）
-
-Teacher 可复现审计结论（见 `outputs/teacher_audit_v0_1/`）：same-state 概率向量存在
-真实采样方差（mean pairwise L1=0.19），故每个 state 做 **3 次 cache-busted 调用取均值
-分布**作为蒸馏目标（K3↔K5 L1 仅 0.047）。
-
-```powershell
-# dry-run 看规模与调用预算
-.venv\Scripts\python.exe scripts\generate_aggregated_teacher_dataset.py `
-  --dry-run --num-personas 8 --num-trips 3 --axes weather_intensity,fare_multiplier
-
-# 真实生成（4 并发，可 --resume 断点续跑）
-.venv\Scripts\python.exe scripts\generate_aggregated_teacher_dataset.py `
-  --num-personas 8 --num-trips 3 --axes weather_intensity,fare_multiplier `
-  --workers 4 --output data/student_v0_2_a
-```
-
-规模：8 personas × 3 trips × {weather_intensity, fare_multiplier} = 192 states × 3 = 576 次调用。
-
-## Student 训练
-
-```powershell
-# v0.2-A baseline（L_action + L_distribution）
-.venv\Scripts\python.exe scripts\train_student_v0_2_a.py `
-  --config configs/student_v0_2_a.yaml `
-  --dataset data/student_v0_2_a/aggregated_teacher_dataset.jsonl `
-  --output outputs/student_v0_2_a
-
-# v0.2-B（+ L_elasticity，行为弹性保留）
-.venv\Scripts\python.exe scripts\train_student_v0_2_b.py `
-  --config configs/student_v0_2_b.yaml `
-  --dataset data/student_v0_2_a/aggregated_teacher_dataset.jsonl `
-  --output outputs/student_v0_2_b
-
-# 对比两个 run
-.venv\Scripts\python.exe scripts/compare_students.py `
-  --baseline outputs/student_v0_2_a --candidate outputs/student_v0_2_b `
-  --output outputs/comparison_v0_2_a_vs_b.md
-```
-
-### v0.3：persona-holdout + 分解弹性损失
-
-```powershell
-# 生成 v0.3 数据集（20 personas x 2 trips x {weather, fare} = 320 states）
-.venv\Scripts\python.exe scripts\generate_aggregated_teacher_dataset.py `
-  --num-personas 20 --num-trips 2 --axes weather_intensity,fare_multiplier `
-  --workers 4 --output data/student_v0_3
-
-# 一键跑完整 v0.3 实验（校验数据 + 训练 A/B/C + 对比 + 汇总表）
-.venv\Scripts\python.exe scripts\run_v0_3_experiment.py `
-  --dataset data/student_v0_3/aggregated_teacher_dataset.jsonl `
-  --repeats data/student_v0_3/repeat_records.jsonl `
-  --outputs outputs
-```
-
-v0.3 关键变化：
-
-- **persona-holdout 切分**：`group_field=persona_group_id`，test personas 在训练中
-  完全不可见（未见人群泛化检验）；per-persona test breakdown + counterfactual
-  sign agreement 作为新评估指标。
-- **分解弹性损失**：`lambda_elasticity`(L1) / `lambda_direction`(方向对齐，只罚
-  与 teacher 反向的移动) / `lambda_magnitude`(幅度分解) 由 config 控制。
-
-## MATSim 集成与人口级仿真
-
-```powershell
-# 构建 MATSim 场景并把 student 决策写入
-.venv\Scripts\python.exe scripts\build_matsim_scenario.py
-
-# 运行 MATSim（Java 25 + MATSim 2026.0）
-.\scripts\run_matsim.ps1
-
-# Phase 9：1000 personas × 4 情景的人口级实验
-.venv\Scripts\python.exe scripts\run_population_experiment.py
-
-# Phase 10：网络反馈闭环
-.venv\Scripts\python.exe scripts\run_phase10_loop.py
+# 4. 加载冻结 S9 并做一次推断
+.venv\Scripts\python.exe scripts\singapore\run_s8_smoke.py `
+  --checkpoint releases\s9_supply_aware_v2\checkpoint\model.pt
 ```
 
 ## 关键设计决策
 
 - **Universal State/Action Schema**：simulator-independent（`schemas/`），可变选择集。
 - **可变选择集 Student**：masked softmax 只在 available alternatives 上归一化。
-- **切分按 `split_group_id`（persona::trip）**：baseline 与其全部反事实曲线同组，
-  保证弹性评估不跨 split 泄漏。
-- **蒸馏目标**：mean behavioral preference distribution（非多数投票）。
-- **评估不以 accuracy 为唯一指标**：重点看 probability L1 / KL 与 teacher 噪声下限
-  0.047 的对照、counterfactual ΔP 保留度（|ΔP_T − ΔP_S|）。
+- **三重 holdout**：persona（28/6/6）+ OD 不相交 + 可达性（高步行负担仅测试集），
+  test-only 评估，配对 bootstrap CI（B=2000）。
+- **Case B 架构演化**：S8/S9 在冻结 S7-W3 之上新增 6 维 city-independent
+  可达性特征（alt_encoder 14→20），共享权重逐字节复制 + 新列零初始化
+  （S9-at-init ≡ S7-W3 输出）。
+- **City-independence**：模型输入只有数值可达性向量，无任何地点身份
+  （引号级泄漏检查 0 命中）。
+- **冻结纪律**：release 只读 + `assert_not_frozen_output` 硬断言；
+  重训仅因明确数据错误（S8→S9 一例，审计链见 `docs/S8_DEPRECATION.md`）。
 
 ## 路线图（详见 `Task_Phase.txt` / `PROGRESS.md`）
 
 | 阶段 | 状态 | 内容 |
 |---|---|---|
-| Phase 0–7 | ✅ | Teacher 审计（K=3 聚合）→ 蒸馏（v0.2-A/B/C、v0.3-A/B/C persona-holdout + 分解弹性 + 异质性）→ 个体级验证 |
-| Phase 8 | ✅ | `MATSimAdapter`（`src/traveler_distillation/matsim/`）—— student 决策写入 MATSim 场景并真实运行成功 |
-| Phase 9 | ✅ | 1000 personas × 4 动态情景的人口级仿真，需求转移方向全部正确 |
-| Phase 10 | ✅ | 网络反馈闭环，3 情景收敛到均衡拥堵 |
-| 下一步 | 🚧 | 补训扰动轴（拥堵/延误/停车费）、OSM/GTFS 真实路网（新加坡）、S5 多轴蒸馏 / S6 推理因果审计实验 |
+| Phase 0–7（S1–S7） | ✅ | Teacher 审计（K=3/5）→ 蒸馏 v0.x → S5 多轴 → S6 因果审计 → S7 机制补训（seed 稳定）→ Freeze S7-W3 |
+| S8 | ⚠️ 废弃 | 真实供给可达性适配（Case B）——因 walk/bike 速度数据错误废弃 |
+| S9 | ✅ | 修正后重训 + Freeze（`s9-supply-aware-v2.0`） |
+| Singapore Phase A / B / B.5 | ✅ | 真实供给跑通门禁 / 规模验证 / PT 有效性 + 容量标定（N\*=10k, 0.3/0.3） |
+| **Phase C** | ✅ | **六情景主实验完成（本 README 表 + `reports/PHASE_C_SINGAPORE_REPORT.md`）** |
+| Phase D | 🚧 | 真实网络反馈闭环（Student → MATSim → 拥堵观测 → 再决策收敛） |
 
 ## 复现说明
 
-`data/`、`outputs/` 已被 git 忽略；所有数据集与实验产物均可由上文脚本从
-`configs/` 配置复现生成。大文件（MATSim 发行包、GTFS 数据）不入仓库。
+`data/`、`outputs/` 已被 git 忽略；数据集与运行产物均可由 `scripts/` 从 `configs/`
+复现生成（大文件：MATSim 发行包、GTFS 数据不入仓库）。冻结模型的复现 gate：
+`python scripts/freeze_s9_release.py verify-gate`（12/12 指标 Δ=0.0000）。
 
 ## 许可
 
