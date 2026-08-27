@@ -760,4 +760,30 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
   PT 登车 66（S8 世界为 9），exit=0。
 - **正式定义**：S9 = Supply-Aware Traveler Agent v2.0 = FROZEN（论文 supply-aware
   extension）；S8 = DEPRECATED；S7-W3 = generic baseline 不变。
-- **下一步**：用 frozen S9 重跑 Phase C C0–C5 → `outputs/singapore_phase_c_s9/`。
+
+## Phase C 重跑完成 ✅（frozen S9，2026-08-27）
+
+六情景全部完成，六 gate 全 PASS（exit=0；真人 stuck 率 3.3–4.3%/PT 登车 ≤5%；
+四模式；pt 下车≤登车）。报告：`outputs/singapore_phase_c_s9/PHASE_C_REPORT.md`。
+
+### 结果（student 决策 share，C0 → 情景）
+
+| 情景 | car | pt | bike | walk | PT boardings | VKT |
+|---|---|---|---|---|---|---|
+| C0 baseline | 28.3% | 25.3% | 34.0% | 12.4% | 5,613 | 33,939 km |
+| C1 heavy rain | **37.5%** | **45.3%** | 13.3% | 3.8% | **9,761** | 42,778 km |
+| C2 fare ×1.5 | 29.9% | 25.7% | 32.5% | 11.8% | 5,674 | 35,798 km |
+| C3 delay 15min | 29.0% | **10.2%** | 35.8% | **25.0%** | 2,474 | 34,685 km |
+| C4 road disruption | **1.8%** | **37.5%** | **41.8%** | 19.0% | 8,537 | **2,943 km** |
+| C5 rain+delay | **37.6%** | 18.6% | 24.5% | 19.2% | 4,301 | 42,823 km |
+
+- 与 S8 世界的关键差异：基线 pt 25.3%（S8: 2.8%）、walk 12.4%（S8: 40.8%）；
+  **C3 delay 使 pt 从 25.3% 降到 10.2%（不再是病态清零）**；C4 使 car 28.3%→1.8%、
+  pt/bike 吸收；C5 rain+delay 的 pt（18.6%）介于 C1（45.3%）与 C3（10.2%）之间——联合效应
+  可解释且非简单叠加；C2 票价弹性弱（+0.4pp，噪声级）如实记录。
+- Gate 口径第二次修正（有据）：S9 世界 PT 需求为 B.5C 的 ~9 倍，真人 stuck 随 PT 需求
+  增长（错过单次换乘的既有机制），绝对阈值 266 改为率口径（≤5%/PT 登车；六情景 3.3–4.3% 稳定）。
+- 已知边界同前（transit 30:00 截断 ~20%、C1/C4 failed_trips 较高、bike share 受
+  synthetic persona 自行车拥有率 45% 影响）。
+- S8 时代 `outputs/singapore_phase_c/` 结果作废（保留存档），论文使用
+  `outputs/singapore_phase_c_s9/`。

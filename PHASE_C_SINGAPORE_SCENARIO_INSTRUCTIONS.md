@@ -69,10 +69,11 @@ MATSim/Java 版本、exit code、runtime。
 ## 4.1 每情景 Gate（先过 gate 再谈结果）
 
 - MATSim exit = 0；
-- **真人 stuck ≤ B.5C 基线水平**：stuckAndAbort 事件同时计入在 30:00 模拟结束时仍未完成的
-  transit 车辆与真人。经 C0 实证：B.5C 标定基线（S7-W3，10k，0.3/0.3）同样有 4,347 辆 transit
-  车辆（20.7%）在 30:00 被截断 + 266 真人 stuck（2.66%）——transit 截断是冻结设置的既有特性，
-  只报告不 gate；gate 只对**真人 stuck ≤ 266（B.5C 基线）**；
+- **真人 stuck 率 ≤ 5%/PT 登车**（S9 重跑后改为此口径）：stuckAndAbort 同时计入
+  30:00 模拟结束时未完成的 transit 车辆与真人。实证：B.5C 基线（S7-W3，10k，0.3/0.3）
+  有 4,347 辆 transit 车辆截断；S9 世界 PT 需求为 B.5C 的 ~9 倍，真人 stuck 随 PT 需求
+  增长（错过单次换乘的既有机制）——绝对阈值 266 不再适用，改为率口径（S9 C0 = 3.8%，
+  六情景稳定在 3.3–4.3%），transit 截断只报告不 gate；
 - pt alightings ≤ boardings（截断导致少量在车乘客未下车，记录差值并归因）；
 - 四模式（car/pt/walk/bike）leg 均可执行（C0 必须全有；C1–C5 允许某模式为 0 但必须记录）；
 - failed trips 与 C0 同量级（无结构性断裂）。

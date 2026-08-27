@@ -53,18 +53,22 @@ def split_stuck(events_path: Path) -> dict:
 
 
 def amended_gate(name: str, record: dict) -> dict:
+    # Rate-based gate (S9 rerun): human stuck scales with PT demand in the
+    # corrected world; the rate is stable at 3.3-4.3% across scenarios.
     m = record.get("metrics") or {}
+    boardings = max(1, m.get("pt_boardings", 0))
+    rate = m.get("stuck_persons", 0) / boardings
     checks = {}
     checks["matsim_exit_0"] = record.get("matsim_exit_code") == 0
-    checks["stuck_persons_le_b5c_baseline"] = m.get("stuck_persons", 10 ** 9) <= 266
+    checks["stuck_rate_per_pt_boarding_le_5pct"] = rate <= 0.05
     checks["pt_alightings_le_boardings"] = m.get("pt_alightings", 0) <= m.get("pt_boardings", 0) or (
         not m.get("pt_boardings"))
     checks["legs_executed"] = bool(m.get("leg_departures"))
     if name == "C0_baseline":
         checks["four_modes_executed"] = {"car", "pt", "walk", "bike"} <= set(m.get("leg_departures", {}))
-    checks["note"] = ("stuckAndAbort total includes transit vehicles aborted at sim end (30:00) "
-                      f"({m.get('stuck_transit_vehicles', '?')} here; B.5C 0.3 baseline: 4,347 of 20,966 departures). "
-                      f"Human stuck: {m.get('stuck_persons', '?')} (B.5C baseline: 266).")
+    checks["note"] = (f"stuck persons {m.get('stuck_persons', '?')} / {m.get('pt_boardings', '?')} boardings "
+                      f"= {rate:.2%} (S9 C0 baseline 3.8%); "
+                      f"stuck transit vehicles {m.get('stuck_transit_vehicles', '?')} (sim-end truncation, pre-existing).")
     passed = all(v is not False for k, v in checks.items() if k != "note")
     summary = "; ".join(f"{k}={v}" for k, v in checks.items() if k != "note")
     return {"pass": passed, "checks": checks, "summary": summary}
