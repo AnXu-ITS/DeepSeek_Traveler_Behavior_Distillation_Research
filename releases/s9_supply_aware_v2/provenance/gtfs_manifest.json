@@ -1,0 +1,41 @@
+{
+  "source": "community-constructed singapore-gtfs-2025 (NOT official LTA DataMall)",
+  "publisher": "Singapore GTFS, https://github.com/thecrapone/singapore-gtfs-2025",
+  "version": "feed_version 1.0",
+  "feed_dates": "2025-01-01 - 2030-12-31",
+  "archived": "2026-08-24 (user-provided snapshot)",
+  "file": "data/singapore/gtfs/raw/singapore-gtfs.zip",
+  "file_size_bytes": 335668255,
+  "checksum_sha256": "1fcc6f5f2766d34aab08d40adabbb094f9124feba6e39aba671e5f532d4eb3cd",
+  "checksum_file": "data/singapore/gtfs/raw/checksum.sha256",
+  "content": {
+    "agencies": 6,
+    "routes": 603,
+    "bus_routes": 593,
+    "mrt_routes": 9,
+    "stops": 5376,
+    "trips": 230915,
+    "stop_times": 8169065,
+    "calendar_patterns": 4
+  },
+  "cropping": {
+    "service_id": "WD",
+    "time_window": "05:00-23:00 (18000-82800 s)",
+    "bbox": "lat 1.330-1.400 x lon 103.900-104.015 (margin 0.004 deg)",
+    "supply_cropping": "longest in-region consecutive stop segment per trip",
+    "trips_kept": 21286,
+    "stops_kept": 859,
+    "mode_counts": {
+      "bus": 20382,
+      "rail": 904
+    }
+  },
+  "routing_assumptions": {
+    "transfer_rule": "max 1 vehicle-to-vehicle transfer; connection window 180-2700 s",
+    "walk_radius": "access 700 m / egress 700 m (extended 1.5 km)",
+    "service_window": "full-day 05:00-23:00; departure window 1 h",
+    "boarding_buffer_s": "max(300, access_walk_s + 60)"
+  },
+  "pt_validity_version": "Phase B.5 PT validity (outputs/singapore_phase_b5/pt_validity_v3/) — frozen validated PT pipeline",
+  "honesty_note": "MRT schedules are frequency-based / synthetic; bus travel times include estimates. The paper must not describe this ZIP as an 'official measured GTFS timetable'."
+}

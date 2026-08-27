@@ -1,0 +1,16 @@
+{
+  "note": "S9 training/eval code = S8 commit 65e505f PLUS the S9 data-fix edits (gtfs_accessibility.py mode speeds, adapter.py teleported walk/bike) — see git log.",
+  "captured_at_utc": "2026-08-27T03:24:25.458289+00:00",
+  "environment": {
+    "python": "3.12.13",
+    "torch": "2.13.0+cpu",
+    "java": "OpenJDK 25.0.4",
+    "matsim": "MATSim 2026.0"
+  },
+  "data_fix": {
+    "s8_error": "walk/bike alternative travel times used road free-flow speed (length/freespeed): effective walk/bike ~29 km/h (~6x too fast for walking)",
+    "s9_fix": "walk 1.34 m/s (~4.8 km/h), bike 4.17 m/s (15 km/h), car unchanged (length/freespeed); MATSim walk/bike legs teleported (no longer consume road capacity or move at link freespeed)",
+    "s9_fix_measured": "effective walk speed median 3.28 km/h, bike 10.14 km/h, car 31.09 km/h (od_km / travel time over the 114-OD pool)",
+    "s8_status": "DEPRECATED (superseded due to the data error; release kept byte-identical, never deleted) — see docs/S8_DEPRECATION.md"
+  }
+}

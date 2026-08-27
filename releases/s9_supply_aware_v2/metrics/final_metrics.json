@@ -1,0 +1,650 @@
+{
+  "model": "S9",
+  "release": "Supply-Aware Traveler Agent v2.0",
+  "base": "S7-W3 Generic Behavioral Core v1.0",
+  "status": "FROZEN",
+  "supersedes": "S8 (DEPRECATED: walk/bike speed data error)",
+  "source": {
+    "accessibility": "outputs/s9_accessibility_eval/eval_metrics.json (test-only, unseen persona x unseen OD, paired bootstrap B=2000 seed=42)",
+    "regression": "outputs/s9_regression/eval_metrics.json",
+    "unseen_od": "outputs/s9_unseen_od/unseen_od_audit.json"
+  },
+  "accessibility": {
+    "fidelity_all": {
+      "B0_S7W3": {
+        "kl": {
+          "mean": 0.2442,
+          "ci_low": 0.1424,
+          "ci_high": 0.3968
+        },
+        "probability_l1": {
+          "mean": 0.4547,
+          "ci_low": 0.3689,
+          "ci_high": 0.5522
+        },
+        "pt_probability_mae": {
+          "mean": 0.175,
+          "ci_low": 0.1291,
+          "ci_high": 0.2296
+        }
+      },
+      "B1_S9": {
+        "kl": {
+          "mean": 0.1704,
+          "ci_low": 0.092,
+          "ci_high": 0.2939
+        },
+        "probability_l1": {
+          "mean": 0.3392,
+          "ci_low": 0.2575,
+          "ci_high": 0.4345
+        },
+        "pt_probability_mae": {
+          "mean": 0.1346,
+          "ci_low": 0.0921,
+          "ci_high": 0.1844
+        }
+      }
+    },
+    "sensitivity_delta_P_pt": {
+      "B0_S7W3": {
+        "mean": 0.0845,
+        "ci_low": 0.0161,
+        "ci_high": 0.139
+      },
+      "B1_S9": {
+        "mean": 0.1527,
+        "ci_low": 0.0992,
+        "ci_high": 0.2037
+      },
+      "Teacher": {
+        "mean": 0.448,
+        "ci_low": 0.258,
+        "ci_high": 0.6483
+      }
+    },
+    "monotonicity": {
+      "B0_S7W3": {
+        "pair_agreement": {
+          "mean": 0.6316,
+          "ci_low": 0.4737,
+          "ci_high": 0.7895
+        },
+        "triplet_agreement": {
+          "mean": 0.3077,
+          "ci_low": 0.1538,
+          "ci_high": 0.5
+        },
+        "n_pairs": 38,
+        "n_triplets": 26,
+        "raw_pairs": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "raw_triplets": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "B1_S9": {
+        "pair_agreement": {
+          "mean": 0.6579,
+          "ci_low": 0.5,
+          "ci_high": 0.8158
+        },
+        "triplet_agreement": {
+          "mean": 0.2692,
+          "ci_low": 0.1154,
+          "ci_high": 0.4615
+        },
+        "n_pairs": 38,
+        "n_triplets": 26,
+        "raw_pairs": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "raw_triplets": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "Teacher": {
+        "pair_agreement": {
+          "mean": 0.7895,
+          "ci_low": 0.6579,
+          "ci_high": 0.9211
+        },
+        "triplet_agreement": {
+          "mean": 0.6154,
+          "ci_low": 0.4231,
+          "ci_high": 0.8077
+        },
+        "n_pairs": 38,
+        "n_triplets": 26
+      }
+    },
+    "fvr": {
+      "B0_S7W3": {
+        "rate": {
+          "mean": 0.3333,
+          "ci_low": 0.0833,
+          "ci_high": 0.5833
+        },
+        "mean_P_pt_infeasible": {
+          "mean": 0.2924,
+          "ci_low": 0.1367,
+          "ci_high": 0.4681
+        },
+        "n_infeasible": 12
+      },
+      "B1_S9": {
+        "rate": {
+          "mean": 0.0833,
+          "ci_low": 0.0,
+          "ci_high": 0.25
+        },
+        "mean_P_pt_infeasible": {
+          "mean": 0.213,
+          "ci_low": 0.0666,
+          "ci_high": 0.3908
+        },
+        "n_infeasible": 12
+      }
+    },
+    "teacher_pt_prob_by_class": {
+      "A_excellent": {
+        "mean": 0.4481,
+        "ci_low": 0.2611,
+        "ci_high": 0.6461
+      },
+      "B_good": {
+        "mean": 0.429,
+        "ci_low": 0.21,
+        "ci_high": 0.648
+      },
+      "C_moderate": {
+        "mean": 0.3724,
+        "ci_low": 0.1923,
+        "ci_high": 0.5814
+      },
+      "D_poor": {
+        "mean": 0.1888,
+        "ci_low": 0.0508,
+        "ci_high": 0.3745
+      },
+      "E_infeasible": {
+        "mean": 0.0001,
+        "ci_low": 0.0,
+        "ci_high": 0.0003
+      }
+    }
+  },
+  "unseen_od": {
+    "od_holdout": {
+      "n_train_ods": 79,
+      "n_test_ods": 20,
+      "overlap": [],
+      "verified": true
+    },
+    "test_records": {
+      "n": 51,
+      "od_indices_used": [
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112
+      ],
+      "class_distribution": {
+        "A_excellent": 12,
+        "C_moderate": 13,
+        "D_poor": 12,
+        "E_infeasible": 12,
+        "B_good": 2
+      },
+      "personas": [
+        "P000002",
+        "P000008",
+        "P000009",
+        "P000015",
+        "P000016",
+        "P000018"
+      ],
+      "all_unseen": true
+    }
+  },
+  "legacy": {
+    "W3_S7W3": {
+      "n": 226,
+      "mode_accuracy": {
+        "mean": 0.8451,
+        "ci_low": 0.8009,
+        "ci_high": 0.8895
+      },
+      "kl": {
+        "mean": 0.0695,
+        "ci_low": 0.0583,
+        "ci_high": 0.0815
+      },
+      "probability_l1": {
+        "mean": 0.242,
+        "ci_low": 0.2137,
+        "ci_high": 0.2701
+      },
+      "delta_p_gap": {
+        "mean": 0.0506,
+        "ci_low": 0.044,
+        "ci_high": 0.0575
+      },
+      "sign_agreement": {
+        "mean": 0.7122,
+        "ci_low": 0.6639,
+        "ci_high": 0.7609
+      }
+    },
+    "S9": {
+      "n": 226,
+      "mode_accuracy": {
+        "mean": 0.8894,
+        "ci_low": 0.8496,
+        "ci_high": 0.9292
+      },
+      "kl": {
+        "mean": 0.0514,
+        "ci_low": 0.0423,
+        "ci_high": 0.0606
+      },
+      "probability_l1": {
+        "mean": 0.1886,
+        "ci_low": 0.1641,
+        "ci_high": 0.2131
+      },
+      "delta_p_gap": {
+        "mean": 0.0489,
+        "ci_low": 0.043,
+        "ci_high": 0.0551
+      },
+      "sign_agreement": {
+        "mean": 0.7076,
+        "ci_low": 0.6565,
+        "ci_high": 0.7559
+      }
+    }
+  },
+  "multi_axis": {
+    "seen_joint": {
+      "W3_S7W3": {
+        "n": 72,
+        "kl": {
+          "mean": 0.0421,
+          "ci_low": 0.0286,
+          "ci_high": 0.0578
+        },
+        "l1": {
+          "mean": 0.173,
+          "ci_low": 0.1344,
+          "ci_high": 0.2116
+        }
+      },
+      "S9": {
+        "n": 72,
+        "kl": {
+          "mean": 0.0407,
+          "ci_low": 0.0304,
+          "ci_high": 0.0526
+        },
+        "l1": {
+          "mean": 0.1603,
+          "ci_low": 0.1275,
+          "ci_high": 0.1956
+        }
+      }
+    },
+    "unseen_joint": {
+      "W3_S7W3": {
+        "n": 24,
+        "kl": {
+          "mean": 0.0845,
+          "ci_low": 0.0328,
+          "ci_high": 0.1481
+        },
+        "l1": {
+          "mean": 0.2355,
+          "ci_low": 0.1396,
+          "ci_high": 0.3452
+        }
+      },
+      "S9": {
+        "n": 24,
+        "kl": {
+          "mean": 0.0537,
+          "ci_low": 0.0218,
+          "ci_high": 0.0924
+        },
+        "l1": {
+          "mean": 0.1713,
+          "ci_low": 0.0943,
+          "ci_high": 0.2576
+        }
+      }
+    },
+    "interaction_l1_error": {
+      "W3_S7W3": {
+        "mean": 0.0488,
+        "ci_low": 0.0379,
+        "ci_high": 0.0603
+      },
+      "S9": {
+        "mean": 0.0504,
+        "ci_low": 0.0404,
+        "ci_high": 0.0611
+      }
+    }
+  },
+  "mechanism": {
+    "congestion": {
+      "W3_S7W3": {
+        "R_shortcut": {
+          "mean": 0.7755,
+          "ci_low": 0.502,
+          "ci_high": 1.0664
+        },
+        "R_mediator": {
+          "mean": 0.8303,
+          "ci_low": 0.3676,
+          "ci_high": 1.3576
+        },
+        "G_med": {
+          "mean": 0.1763,
+          "ci_low": 0.1068,
+          "ci_high": 0.2543
+        },
+        "Gap_shortcut": {
+          "mean": 0.3455,
+          "ci_low": 0.1554,
+          "ci_high": 0.5608
+        }
+      },
+      "S9": {
+        "R_shortcut": {
+          "mean": 0.4822,
+          "ci_low": 0.2514,
+          "ci_high": 0.7255
+        },
+        "R_mediator": {
+          "mean": 0.8323,
+          "ci_low": 0.5421,
+          "ci_high": 1.1204
+        },
+        "G_med": {
+          "mean": 0.1699,
+          "ci_low": 0.1039,
+          "ci_high": 0.2309
+        },
+        "Gap_shortcut": {
+          "mean": 0.3198,
+          "ci_low": 0.2408,
+          "ci_high": 0.4057
+        }
+      },
+      "delta_s9_vs_s7w3": {
+        "G_med_delta": {
+          "mean": -0.0064,
+          "ci_low": -0.0823,
+          "ci_high": 0.0798,
+          "ci_excludes_zero": false
+        }
+      }
+    },
+    "parking_cost": {
+      "W3_S7W3": {
+        "R_shortcut": {
+          "mean": 1.0434,
+          "ci_low": 1.0174,
+          "ci_high": 1.0739
+        },
+        "R_mediator": {
+          "mean": 0.0849,
+          "ci_low": 0.0603,
+          "ci_high": 0.1086
+        },
+        "G_med": {
+          "mean": 0.258,
+          "ci_low": 0.1409,
+          "ci_high": 0.3952
+        },
+        "Gap_shortcut": {
+          "mean": 0.3335,
+          "ci_low": 0.1983,
+          "ci_high": 0.4871
+        }
+      },
+      "S9": {
+        "R_shortcut": {
+          "mean": 1.0705,
+          "ci_low": 1.0439,
+          "ci_high": 1.0971
+        },
+        "R_mediator": {
+          "mean": 0.0968,
+          "ci_low": 0.0601,
+          "ci_high": 0.1389
+        },
+        "G_med": {
+          "mean": 0.2495,
+          "ci_low": 0.1278,
+          "ci_high": 0.3925
+        },
+        "Gap_shortcut": {
+          "mean": 0.3562,
+          "ci_low": 0.2075,
+          "ci_high": 0.5293
+        }
+      },
+      "delta_s9_vs_s7w3": {
+        "G_med_delta": {
+          "mean": -0.0085,
+          "ci_low": -0.0192,
+          "ci_high": 0.0014,
+          "ci_excludes_zero": false
+        }
+      }
+    }
+  },
+  "deltas_s9_vs_s7w3": {
+    "accessibility": {
+      "pt_probability_mae_delta": {
+        "mean": -0.0404,
+        "ci_low": -0.0529,
+        "ci_high": -0.0279,
+        "ci_excludes_zero": true
+      },
+      "mean_P_pt_infeasible_delta": {
+        "mean": -0.0794,
+        "ci_low": -0.1004,
+        "ci_high": -0.0611,
+        "ci_excludes_zero": true
+      },
+      "fvr_rate_delta": {
+        "mean": -0.25,
+        "ci_low": -0.5,
+        "ci_high": -0.0833,
+        "ci_excludes_zero": true
+      },
+      "pair_monotonicity_delta": {
+        "mean": 0.0263,
+        "ci_low": -0.1053,
+        "ci_high": 0.1579,
+        "ci_excludes_zero": false
+      },
+      "note": "negative MAE/P(PT|inf)/FVR delta = S8 better; monotonicity delta is paired over per-group 0/1 pair-agreement indicators"
+    },
+    "legacy_and_joint": {
+      "legacy_kl_delta": {
+        "mean": -0.0182,
+        "ci_low": -0.0252,
+        "ci_high": -0.0111,
+        "ci_excludes_zero": true
+      },
+      "seen_joint_kl_delta": {
+        "mean": -0.0014,
+        "ci_low": -0.0097,
+        "ci_high": 0.0068,
+        "ci_excludes_zero": false
+      },
+      "unseen_joint_kl_delta": {
+        "mean": -0.0309,
+        "ci_low": -0.056,
+        "ci_high": -0.0091,
+        "ci_excludes_zero": true
+      },
+      "note": "delta = S8 - S7W3; KL increase <= 10% of the S7-W3 value required (§26)"
+    }
+  },
+  "regression_gate": {
+    "legacy_accuracy_drop_pp": -4.43,
+    "legacy_accuracy_gate_1pp": true,
+    "legacy_kl_increase_pct": -26.04,
+    "legacy_kl_gate_10pct": true,
+    "seen_joint_kl_increase_pct": -3.33,
+    "seen_joint_kl_gate_10pct": true,
+    "unseen_joint_kl_increase_pct": -36.45,
+    "unseen_joint_kl_gate_10pct": true,
+    "note": "mechanism indicators judged separately (must not clearly regress)"
+  }
+}

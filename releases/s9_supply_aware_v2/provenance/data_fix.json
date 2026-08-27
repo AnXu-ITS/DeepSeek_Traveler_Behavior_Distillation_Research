@@ -1,0 +1,6 @@
+{
+  "s8_error": "walk/bike alternative travel times used road free-flow speed (length/freespeed): effective walk/bike ~29 km/h (~6x too fast for walking)",
+  "s9_fix": "walk 1.34 m/s (~4.8 km/h), bike 4.17 m/s (15 km/h), car unchanged (length/freespeed); MATSim walk/bike legs teleported (no longer consume road capacity or move at link freespeed)",
+  "s9_fix_measured": "effective walk speed median 3.28 km/h, bike 10.14 km/h, car 31.09 km/h (od_km / travel time over the 114-OD pool)",
+  "s8_status": "DEPRECATED (superseded due to the data error; release kept byte-identical, never deleted) — see docs/S8_DEPRECATION.md"
+}

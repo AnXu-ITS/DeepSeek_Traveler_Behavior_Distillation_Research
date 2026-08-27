@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "arch_version": "student_s8_v1",
+  "frozen_source": "src/traveler_distillation/student/model.py (TravelerStudent.forward)",
+  "outputs": {
+    "mode_probabilities": {
+      "type": "dict[str,float] over available modes",
+      "definition": "masked softmax over available-alternative utilities",
+      "constraint": "sums to 1 over available modes"
+    },
+    "departure_time_shift_min": {
+      "type": "float",
+      "definition": "60 * tanh(departure_head(...))",
+      "range": "(-60, +60) minutes"
+    },
+    "utilities": {
+      "type": "float per alternative",
+      "definition": "raw scorer logits"
+    }
+  }
+}

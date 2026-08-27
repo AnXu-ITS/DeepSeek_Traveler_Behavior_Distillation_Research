@@ -1,0 +1,27 @@
+{
+  "prompt_version": "teacher_s8_accessibility_v0.1",
+  "prompt_module": "src/traveler_distillation/teacher/prompts_s8.py",
+  "model": "deepseek-v4-pro",
+  "endpoint": "https://api.deepseek.com/v1",
+  "k_policy": {
+    "base": 3,
+    "boundary": 5
+  },
+  "k_distribution": {
+    "3": 89,
+    "5": 247
+  },
+  "aggregation_method": "mean_probability (aggregate_repeats over K valid repeats)",
+  "total_valid_calls": 1502,
+  "stats": {
+    "attempted": 1551,
+    "valid": 1502,
+    "failed": 49,
+    "aggregated": 336
+  },
+  "incomplete_count": 0,
+  "note": "Re-labeled on the CORRECTED dataset (S9). 49 transient SSL failures retried; all 336 states aggregated.",
+  "labeling_script": "scripts/label_s8_teacher.py",
+  "generated_at_utc": "2026-08-27T03:19:14.240368+00:00",
+  "dataset_version_note": "manifest 'dataset_version' field retains 's8_singapore_accessibility' (script constant); this manifest belongs to the S9 corrected dataset"
+}

@@ -1,0 +1,12 @@
+﻿ scripts/train_student_s8.py                        |  4 +++-
+ .../accessibility/gtfs_accessibility.py            | 10 +++++++--
+ src/traveler_distillation/matsim/adapter.py        | 25 ++++++++++++++++++----
+ 3 files changed, 32 insertions(+), 7 deletions(-)
+
+--- untracked inventory ---
+configs/student_s9.yaml
+releases/s9_supply_aware_v2/code_manifest/environment.txt
+releases/s9_supply_aware_v2/code_manifest/git_commit.txt
+releases/s9_supply_aware_v2/code_manifest/git_status.txt
+releases/s9_supply_aware_v2/code_manifest/uncommitted.patch
+scripts/freeze_s9_release.py

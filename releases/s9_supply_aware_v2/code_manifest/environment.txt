@@ -1,0 +1,5 @@
+﻿python 3.12.13
+torch 2.13.0+cpu
+java OpenJDK 25.0.4 Temurin
+matsim MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)
+os Windows

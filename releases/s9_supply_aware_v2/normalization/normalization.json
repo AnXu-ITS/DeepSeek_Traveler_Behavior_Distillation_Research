@@ -1,0 +1,115 @@
+{
+  "source": "checkpoint key 'extractor_state'",
+  "numeric_fields": {
+    "global": [
+      "household_size",
+      "has_children",
+      "car_ownership",
+      "driving_license",
+      "bike_ownership",
+      "transit_pass",
+      "distance_km",
+      "desired_departure_min",
+      "desired_arrival_min",
+      "weather_intensity",
+      "road_congestion",
+      "transit_delay_min",
+      "transit_disruption",
+      "road_disruption",
+      "fare_multiplier",
+      "parking_cost_multiplier",
+      "congestion_charge"
+    ],
+    "alternative": [
+      "travel_time_min",
+      "monetary_cost",
+      "access_time_min",
+      "transfers",
+      "reliability_delay_min",
+      "weather_exposure",
+      "pt_feasible",
+      "egress_time_min",
+      "wait_time_min",
+      "in_vehicle_time_min",
+      "transfer_time_min",
+      "coverage_ratio"
+    ]
+  },
+  "alternative_fields": {
+    "s7_inherited": {
+      "fields": [
+        "travel_time_min",
+        "monetary_cost",
+        "access_time_min",
+        "transfers",
+        "reliability_delay_min",
+        "weather_exposure"
+      ],
+      "stats_fit_on": "FROZEN S7-W3 train split (reused verbatim)",
+      "stats": {
+        "travel_time_min": {
+          "mean": 110.91499670122525,
+          "std": 98.90239183174751
+        },
+        "monetary_cost": {
+          "mean": 5.465356267672008,
+          "std": 7.4037765143340435
+        },
+        "access_time_min": {
+          "mean": 3.0,
+          "std": 3.082207001484488
+        },
+        "transfers": {
+          "mean": 0.25,
+          "std": 0.4330127018922193
+        },
+        "reliability_delay_min": {
+          "mean": 2.1857917059377945,
+          "std": 4.997000826222999
+        },
+        "weather_exposure": {
+          "mean": 0.5875,
+          "std": 0.38466706383572796
+        }
+      }
+    },
+    "s8_new": {
+      "fields": [
+        "pt_feasible",
+        "egress_time_min",
+        "wait_time_min",
+        "in_vehicle_time_min",
+        "transfer_time_min",
+        "coverage_ratio"
+      ],
+      "stats_fit_on": "S9 train split only",
+      "stats": {
+        "pt_feasible": {
+          "mean": 0.19017094017094016,
+          "std": 0.39243592303131586
+        },
+        "egress_time_min": {
+          "mean": 1.2976495726495725,
+          "std": 3.3477045636001677
+        },
+        "wait_time_min": {
+          "mean": 3.479190170940171,
+          "std": 34.694515955907065
+        },
+        "in_vehicle_time_min": {
+          "mean": 2.72170405982906,
+          "std": 7.506830903568419
+        },
+        "transfer_time_min": {
+          "mean": 0.0819423076923077,
+          "std": 0.6665041475661496
+        },
+        "coverage_ratio": {
+          "mean": 0.17631207264957263,
+          "std": 0.3730806910921411
+        }
+      }
+    }
+  },
+  "note": "x_z = (x - mean) / std; std floored at 1e-8 in code"
+}

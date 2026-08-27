@@ -1,0 +1,57 @@
+{
+  "release": "s9_supply_aware_v2",
+  "release_name": "Supply-Aware Traveler Agent v2.0",
+  "model": "S9",
+  "status": "FROZEN",
+  "supersedes": "S8 Supply-Aware Traveler Agent v1.0 (DEPRECATED: walk/bike speed data error)",
+  "data_fix": {
+    "s8_error": "walk/bike alternative travel times used road free-flow speed (length/freespeed): effective walk/bike ~29 km/h (~6x too fast for walking)",
+    "s9_fix": "walk 1.34 m/s (~4.8 km/h), bike 4.17 m/s (15 km/h), car unchanged (length/freespeed); MATSim walk/bike legs teleported (no longer consume road capacity or move at link freespeed)",
+    "s9_fix_measured": "effective walk speed median 3.28 km/h, bike 10.14 km/h, car 31.09 km/h (od_km / travel time over the 114-OD pool)",
+    "s8_status": "DEPRECATED (superseded due to the data error; release kept byte-identical, never deleted) — see docs/S8_DEPRECATION.md"
+  },
+  "checkpoint_source": "outputs\\student_s9\\checkpoints\\best.pt",
+  "checkpoint_saved_at_utc": "2026-08-27T03:20:57.460226+00:00",
+  "seed": 42,
+  "best_epoch": 17,
+  "runtime_seconds": 11.34,
+  "parameters": 24562,
+  "params_expected": 24562,
+  "architecture": {
+    "arch_version": "student_s8_v1",
+    "n_alt_num": 12,
+    "global_hidden_dim": 64,
+    "alternative_hidden_dim": 32,
+    "cat_embedding_dim": 8,
+    "mode_embedding_dim": 8,
+    "scorer_hidden_dim": 64,
+    "dropout": 0.1
+  },
+  "arch_version": "student_s8_v1",
+  "arch_note": "architecture identical to S8 (student_s8_v1 label kept: same Case B 12-field arch)",
+  "init_checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s7_w3_generic_core_v1\\checkpoint\\model.pt",
+  "init_checkpoint_note": "FROZEN S7-W3 Generic Behavioral Core v1.0 release checkpoint",
+  "lambda_accessibility": 1.0,
+  "lambda_mechanism": 1.0,
+  "lambda_broken": 1.0,
+  "checkpoint_keys": [
+    "arch_version",
+    "config",
+    "extractor_state",
+    "feature_spec",
+    "init_checkpoint",
+    "lambda_accessibility",
+    "lambda_broken",
+    "lambda_mechanism",
+    "model_state"
+  ],
+  "optimizer_state": "NOT PRESENT (stores model weights only)",
+  "scheduler_state": "NOT PRESENT",
+  "training_state": "training_history.json + val_metrics.json (copied alongside)",
+  "sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+  "dataset": {
+    "path": "data/singapore_accessibility/ (rebuilt with corrected walk/bike speeds)",
+    "n_states": 336,
+    "s8_legacy_archived_at": "data/singapore_accessibility_s8_legacy/"
+  }
+}

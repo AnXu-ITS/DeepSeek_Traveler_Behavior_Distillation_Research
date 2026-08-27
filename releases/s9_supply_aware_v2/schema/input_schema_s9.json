@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "arch_version": "student_s8_v1",
+  "schema_case": "Case B (identical to S8; see S8_SCHEMA_AUDIT.md)",
+  "frozen_source": "src/traveler_distillation/accessibility/accessibility_features.py (S8FeatureExtractor.encode)",
+  "persona_features": {
+    "categorical": [
+      "age_group",
+      "income_group",
+      "occupation",
+      "habitual_mode",
+      "schedule_flexibility",
+      "mobility_limitation"
+    ],
+    "numeric": [
+      "household_size",
+      "has_children",
+      "car_ownership",
+      "driving_license",
+      "bike_ownership",
+      "transit_pass"
+    ]
+  },
+  "trip_features": {
+    "categorical": [
+      "purpose",
+      "time_constraint"
+    ],
+    "numeric": [
+      "distance_km",
+      "desired_departure_min",
+      "desired_arrival_min"
+    ]
+  },
+  "dynamic_context": {
+    "categorical": [
+      "weather_condition"
+    ],
+    "numeric": [
+      "weather_intensity",
+      "road_congestion",
+      "transit_delay_min",
+      "transit_disruption",
+      "road_disruption",
+      "fare_multiplier",
+      "parking_cost_multiplier",
+      "congestion_charge"
+    ]
+  },
+  "mode_level_attributes": [
+    "travel_time_min",
+    "monetary_cost",
+    "access_time_min",
+    "transfers",
+    "reliability_delay_min",
+    "weather_exposure",
+    "pt_feasible",
+    "egress_time_min",
+    "wait_time_min",
+    "in_vehicle_time_min",
+    "transfer_time_min",
+    "coverage_ratio"
+  ],
+  "availability_representation": {
+    "choice_set_encoding": "state.alternatives list order preserved",
+    "mask_convention": "alt_mask float tensor: 1.0 = available, 0.0 = unavailable/padded",
+    "unavailable_mode_behavior": "masked alternatives -> -inf logits in masked_softmax -> zero probability mass",
+    "s9_note": "pt stays AVAILABLE even when pt_feasible=0 (FVR is learned behavior); sentinel travel_time 120 min for infeasible pt"
+  },
+  "encoding": {
+    "categorical": "learned embedding; <UNK> fallback = index 0",
+    "numeric": "z-score; S7 fields reuse FROZEN S7-W3 stats verbatim; the 6 new S8 fields fit on the S9 TRAIN split"
+  },
+  "vocabularies": {
+    "mode_vocab": {
+      "<UNK>": 0,
+      "bike": 1,
+      "car": 2,
+      "pt": 3,
+      "walk": 4
+    },
+    "cat_vocab_sizes": {
+      "age_group": 6,
+      "income_group": 4,
+      "occupation": 8,
+      "habitual_mode": 6,
+      "schedule_flexibility": 4,
+      "mobility_limitation": 4,
+      "purpose": 3,
+      "time_constraint": 3,
+      "weather_condition": 3
+    }
+  }
+}

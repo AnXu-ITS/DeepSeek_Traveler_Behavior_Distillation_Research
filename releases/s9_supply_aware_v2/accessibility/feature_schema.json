@@ -1,0 +1,10 @@
+{
+  "schema_version": "2.0",
+  "note": "Same 12 city-independent fields as S8 (see releases/s8_supply_aware_v1/accessibility/feature_schema.json). S9 change: WALK time = length/1.34 m/s, BIKE time = length/4.17 m/s (was length/freespeed for both). pt access/egress walk times now realistic; car unchanged.",
+  "mode_speeds": {
+    "car": "link freespeed (free-flow)",
+    "bike_ms": 4.17,
+    "walk_ms": 1.34
+  },
+  "matsim_execution": "walk/bike legs TELEPORTED (beeline x1.3, walk 1.39 m/s / bike 3.9 m/s); car network-simulated"
+}

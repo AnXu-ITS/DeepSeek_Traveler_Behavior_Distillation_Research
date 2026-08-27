@@ -728,3 +728,36 @@ effective approach capacities were represented using green-ratio sensitivity fac
   B.5C 已记录的机制）；FVR 恒 0 继承自 S8 测试结论。
 - **运行器**：`scripts/singapore/run_phase_c.py`（共享缓存优化：每 OD 只规划一次，
   单进程六情景）+ `scripts/singapore/postprocess_phase_c_gates.py`（gate 拆分/重算）。
+
+## ⚠️ S8 数据错误发现与废弃（2026-08-27）
+
+用户对 Phase C 结果提出质疑（pt baseline 仅 2.8%、C3 delay 后 pt 归零）→
+实证定位到**明确数据错误**：S8 供给管线用道路自由流速度（length/freespeed）计算
+walk/bike 旅行时间，有效速度中位 **29.1 km/h**（走路约 6 倍速、骑车约 2 倍速）；
+338 训练态中 pt 快于 walk 的为 **0/338**（现实速度重算应为 ~75%）。MATSim 侧
+walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，其 Phase C 结果作废。
+详见 `docs/S8_DEPRECATION.md`。处置：S8 release/tag 保持字节不变（不删除），
+数据集归档 `data/singapore_accessibility_s8_legacy/`；用户批准重训（S9）。
+
+## S9 重训完成 ✅（2026-08-27）—— Supply-Aware Traveler Agent v2.0
+
+- **修正**：walk 1.34 m/s（实测有效 3.28 km/h）、bike 4.17 m/s（实测 10.14 km/h）、
+  car 不变；pt access/egress 步行同步修正；MATSim 侧 walk/bike 仍为 network modes
+  （freespeed 行驶）并如实记录为执行层 limitation（决策在 MATSim 前由修正后
+  alternatives 决定，不受影响）。
+- **数据集重建**：336 态（A 79/B 16/C 77/D 84/E 80；train 234/val 51/test 51；
+  OD 79/14/20 不相交）；**pt 快于 walk 占 70%**；泄漏 0；door-to-door 误差 0.001。
+- **Teacher 重标注**：1,502 次有效调用（K=3×89/K=5×247；49 次瞬时 SSL 失败重试），
+  0 incomplete；教师梯度恢复真实形态（P(PT)：A 0.448/B 0.429/C 0.372/D 0.189/E 0）。
+- **训练**：从 frozen S7-W3 初始化（Case B 同 S8），best_epoch=17，24,562 参数。
+- **结果（test=51 未见 persona×OD，配对 bootstrap）**：PT MAE 0.175→0.135
+  （Δ -0.040*）；P(PT|inf) 0.292→0.213（Δ -0.079*）；**FVR 0.333→0.083（Δ -0.25*）**；
+  单调性 0.632→0.658；sensitivity 0.085→0.153（教师 0.448）；回归门禁全过
+  （legacy KL -26%、unseen joint -36.5%）；机制无回退；Stop Rule 六项全满足。
+- **冻结**：`releases/s9_supply_aware_v2/`（43 文件 SHA256、只读）、tag
+  `s9-supply-aware-v2.0`；guard 新增 s9 目录；复现 gate 12/12 Δ=0.0000；
+  S7/S8 release 复核零修改。烟测（N=100）：pt 31%/bike 30%/car 28%/walk 11%，
+  PT 登车 66（S8 世界为 9），exit=0。
+- **正式定义**：S9 = Supply-Aware Traveler Agent v2.0 = FROZEN（论文 supply-aware
+  extension）；S8 = DEPRECATED；S7-W3 = generic baseline 不变。
+- **下一步**：用 frozen S9 重跑 Phase C C0–C5 → `outputs/singapore_phase_c_s9/`。

@@ -1,0 +1,51 @@
+{
+  "variant": "student_s9",
+  "arch_version": "student_s8_v1",
+  "parameters": 24562,
+  "init_from": "releases/s7_w3_generic_core_v1/checkpoint/model.pt (FROZEN)",
+  "learning_rate": 0.000125,
+  "replay_ratio": "2:1:1:1",
+  "n_train_accessibility": 234,
+  "best_epoch": 17,
+  "runtime_seconds": 11.34,
+  "init_val": {
+    "accessibility_kl": 0.2993205294889562,
+    "legacy_kl": 0.04453257955940424,
+    "seen_joint_kl": 0.03496726183220744,
+    "mean_mechanism_gap": 0.09188333333333333,
+    "accessibility_response_gap": 0.448426
+  },
+  "val_mechanism_gap": {
+    "congestion": {
+      "G_nat": 0.1269,
+      "G_broken": 0.0757,
+      "G_med": 0.0746,
+      "n_quads": 2
+    },
+    "parking_cost": {
+      "G_nat": 0.2207,
+      "G_broken": 0.2504,
+      "G_med": 0.0175,
+      "n_quads": 2
+    }
+  },
+  "val_legacy": {
+    "mode_accuracy": 0.9292035398230089,
+    "kl": 0.044220692898451756,
+    "probability_l1": 0.15510818513885008
+  },
+  "val_seen_joint": {
+    "mode_accuracy": 0.9027777777777778,
+    "kl": 0.03763036481622192,
+    "probability_l1": 0.13771742809977797
+  },
+  "val_accessibility": {
+    "mode_accuracy": 0.8431372549019608,
+    "kl": 0.23621656380447686,
+    "probability_l1": 0.4177074432373047
+  },
+  "val_accessibility_response_gap": 0.348815,
+  "lambda_accessibility": 1.0,
+  "selection_strategy": "minimize val accessibility KL subject to guards (legacy accuracy drop <= 1 pp, legacy KL <= 1.10x init, seen joint KL <= 1.10x init); mechanism gap recorded but judged only by the test-only regression gate; val-only, test never loaded",
+  "guard_notes": []
+}

@@ -1,0 +1,28 @@
+# Effective S9 training config (frozen). Same as S8 except the corrected dataset.
+selected_round: single (lambda_accessibility=1.0; the R1/R2 ablation was settled in
+  S8 and carries over)
+training:
+  seed: 42
+  batch_size: 32
+  mechanism_batch_size: 8
+  learning_rate: 0.000125
+  weight_decay: 0.0001
+  max_epochs: 120
+  patience: 15
+  replay_ratio: '2:1:1:1'
+  accessibility_per_epoch: 52
+  het_pairs_per_epoch: 52
+loss:
+  lambda_accessibility: 1.0
+  lambda_mechanism: 1.0
+  lambda_broken: 1.0
+split:
+  strategy: s8_triple_holdout
+  persona_holdout: s7_s3c_convention (28/6/6)
+  od_holdout: true (79/14/20 disjoint)
+  accessibility_holdout: walk_burden_15min
+init_from: releases/s7_w3_generic_core_v1/checkpoint/model.pt (FROZEN)
+schema_case: Case B
+arch_version: student_s8_v1
+difference_vs_s8: dataset only (corrected walk/bike speeds); architecture/hyperparameters
+  identical

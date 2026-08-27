@@ -1,0 +1,327 @@
+{
+  "bootstrap": {
+    "B": 2000,
+    "seed": 42,
+    "unit": "state (paired over states)"
+  },
+  "models": {
+    "W3_S7W3": {
+      "legacy": {
+        "n": 226,
+        "mode_accuracy": {
+          "mean": 0.8451,
+          "ci_low": 0.8009,
+          "ci_high": 0.8895
+        },
+        "kl": {
+          "mean": 0.0695,
+          "ci_low": 0.0583,
+          "ci_high": 0.0815
+        },
+        "probability_l1": {
+          "mean": 0.242,
+          "ci_low": 0.2137,
+          "ci_high": 0.2701
+        },
+        "delta_p_gap": {
+          "mean": 0.0506,
+          "ci_low": 0.044,
+          "ci_high": 0.0575
+        },
+        "sign_agreement": {
+          "mean": 0.7122,
+          "ci_low": 0.6639,
+          "ci_high": 0.7609
+        }
+      },
+      "seen_joint": {
+        "n": 72,
+        "kl": {
+          "mean": 0.0421,
+          "ci_low": 0.0286,
+          "ci_high": 0.0578
+        },
+        "l1": {
+          "mean": 0.173,
+          "ci_low": 0.1344,
+          "ci_high": 0.2116
+        }
+      },
+      "unseen_joint": {
+        "n": 24,
+        "kl": {
+          "mean": 0.0845,
+          "ci_low": 0.0328,
+          "ci_high": 0.1481
+        },
+        "l1": {
+          "mean": 0.2355,
+          "ci_low": 0.1396,
+          "ci_high": 0.3452
+        }
+      },
+      "interaction_l1_error": {
+        "mean": 0.0488,
+        "ci_low": 0.0379,
+        "ci_high": 0.0603
+      }
+    },
+    "S8": {
+      "legacy": {
+        "n": 226,
+        "mode_accuracy": {
+          "mean": 0.8894,
+          "ci_low": 0.8496,
+          "ci_high": 0.9292
+        },
+        "kl": {
+          "mean": 0.0514,
+          "ci_low": 0.0423,
+          "ci_high": 0.0606
+        },
+        "probability_l1": {
+          "mean": 0.1886,
+          "ci_low": 0.1641,
+          "ci_high": 0.2131
+        },
+        "delta_p_gap": {
+          "mean": 0.0489,
+          "ci_low": 0.043,
+          "ci_high": 0.0551
+        },
+        "sign_agreement": {
+          "mean": 0.7076,
+          "ci_low": 0.6565,
+          "ci_high": 0.7559
+        }
+      },
+      "seen_joint": {
+        "n": 72,
+        "kl": {
+          "mean": 0.0407,
+          "ci_low": 0.0304,
+          "ci_high": 0.0526
+        },
+        "l1": {
+          "mean": 0.1603,
+          "ci_low": 0.1275,
+          "ci_high": 0.1956
+        }
+      },
+      "unseen_joint": {
+        "n": 24,
+        "kl": {
+          "mean": 0.0537,
+          "ci_low": 0.0218,
+          "ci_high": 0.0924
+        },
+        "l1": {
+          "mean": 0.1713,
+          "ci_low": 0.0943,
+          "ci_high": 0.2576
+        }
+      },
+      "interaction_l1_error": {
+        "mean": 0.0504,
+        "ci_low": 0.0404,
+        "ci_high": 0.0611
+      }
+    }
+  },
+  "deltas_s8_vs_s7w3": {
+    "legacy_kl_delta": {
+      "mean": -0.0182,
+      "ci_low": -0.0252,
+      "ci_high": -0.0111,
+      "ci_excludes_zero": true
+    },
+    "seen_joint_kl_delta": {
+      "mean": -0.0014,
+      "ci_low": -0.0097,
+      "ci_high": 0.0068,
+      "ci_excludes_zero": false
+    },
+    "unseen_joint_kl_delta": {
+      "mean": -0.0309,
+      "ci_low": -0.056,
+      "ci_high": -0.0091,
+      "ci_excludes_zero": true
+    },
+    "note": "delta = S8 - S7W3; KL increase <= 10% of the S7-W3 value required (§26)"
+  },
+  "causal_mechanism": {
+    "n_test_groups_per_axis": {
+      "congestion": 8,
+      "parking_cost": 8
+    },
+    "models": {
+      "W3_S7W3": {
+        "congestion": {
+          "R_shortcut": {
+            "mean": 0.7755,
+            "ci_low": 0.502,
+            "ci_high": 1.0664
+          },
+          "R_mediator": {
+            "mean": 0.8303,
+            "ci_low": 0.3676,
+            "ci_high": 1.3576
+          },
+          "G_med": {
+            "mean": 0.1763,
+            "ci_low": 0.1068,
+            "ci_high": 0.2543
+          },
+          "Gap_shortcut": {
+            "mean": 0.3455,
+            "ci_low": 0.1554,
+            "ci_high": 0.5608
+          }
+        },
+        "parking_cost": {
+          "R_shortcut": {
+            "mean": 1.0434,
+            "ci_low": 1.0174,
+            "ci_high": 1.0739
+          },
+          "R_mediator": {
+            "mean": 0.0849,
+            "ci_low": 0.0603,
+            "ci_high": 0.1086
+          },
+          "G_med": {
+            "mean": 0.258,
+            "ci_low": 0.1409,
+            "ci_high": 0.3952
+          },
+          "Gap_shortcut": {
+            "mean": 0.3335,
+            "ci_low": 0.1983,
+            "ci_high": 0.4871
+          }
+        }
+      },
+      "S8": {
+        "congestion": {
+          "R_shortcut": {
+            "mean": 0.4822,
+            "ci_low": 0.2514,
+            "ci_high": 0.7255
+          },
+          "R_mediator": {
+            "mean": 0.8323,
+            "ci_low": 0.5421,
+            "ci_high": 1.1204
+          },
+          "G_med": {
+            "mean": 0.1699,
+            "ci_low": 0.1039,
+            "ci_high": 0.2309
+          },
+          "Gap_shortcut": {
+            "mean": 0.3198,
+            "ci_low": 0.2408,
+            "ci_high": 0.4057
+          }
+        },
+        "parking_cost": {
+          "R_shortcut": {
+            "mean": 1.0705,
+            "ci_low": 1.0439,
+            "ci_high": 1.0971
+          },
+          "R_mediator": {
+            "mean": 0.0968,
+            "ci_low": 0.0601,
+            "ci_high": 0.1389
+          },
+          "G_med": {
+            "mean": 0.2495,
+            "ci_low": 0.1278,
+            "ci_high": 0.3925
+          },
+          "Gap_shortcut": {
+            "mean": 0.3562,
+            "ci_low": 0.2075,
+            "ci_high": 0.5293
+          }
+        }
+      },
+      "Teacher": {
+        "congestion": {
+          "R_shortcut": {
+            "mean": 0.5115,
+            "ci_low": 0.3639,
+            "ci_high": 0.6461
+          },
+          "R_mediator": {
+            "mean": 0.955,
+            "ci_low": 0.6742,
+            "ci_high": 1.2872
+          },
+          "G_med": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0
+          },
+          "Gap_shortcut": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0
+          }
+        },
+        "parking_cost": {
+          "R_shortcut": {
+            "mean": 0.7772,
+            "ci_low": 0.5723,
+            "ci_high": 0.9684
+          },
+          "R_mediator": {
+            "mean": 0.7688,
+            "ci_low": 0.5546,
+            "ci_high": 1.0523
+          },
+          "G_med": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0
+          },
+          "Gap_shortcut": {
+            "mean": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0
+          }
+        }
+      }
+    },
+    "deltas_s8_vs_s7w3": {
+      "congestion": {
+        "G_med_delta": {
+          "mean": -0.0064,
+          "ci_low": -0.0823,
+          "ci_high": 0.0798,
+          "ci_excludes_zero": false
+        }
+      },
+      "parking_cost": {
+        "G_med_delta": {
+          "mean": -0.0085,
+          "ci_low": -0.0192,
+          "ci_high": 0.0014,
+          "ci_excludes_zero": false
+        }
+      }
+    }
+  },
+  "regression_gate": {
+    "legacy_accuracy_drop_pp": -4.43,
+    "legacy_accuracy_gate_1pp": true,
+    "legacy_kl_increase_pct": -26.04,
+    "legacy_kl_gate_10pct": true,
+    "seen_joint_kl_increase_pct": -3.33,
+    "seen_joint_kl_gate_10pct": true,
+    "unseen_joint_kl_increase_pct": -36.45,
+    "unseen_joint_kl_gate_10pct": true,
+    "note": "mechanism indicators judged separately (must not clearly regress)"
+  }
+}

@@ -1,0 +1,630 @@
+{
+  "n_test_states": 51,
+  "n_test_personas": 6,
+  "n_test_ods": 20,
+  "bootstrap": {
+    "B": 2000,
+    "seed": 42
+  },
+  "models": {
+    "B0_S7W3": {
+      "fidelity": {
+        "all": {
+          "kl": {
+            "mean": 0.2442,
+            "ci_low": 0.1424,
+            "ci_high": 0.3968
+          },
+          "probability_l1": {
+            "mean": 0.4547,
+            "ci_low": 0.3689,
+            "ci_high": 0.5522
+          },
+          "pt_probability_mae": {
+            "mean": 0.175,
+            "ci_low": 0.1291,
+            "ci_high": 0.2296
+          }
+        },
+        "A_excellent": {
+          "n": 12,
+          "kl": {
+            "mean": 0.1577,
+            "ci_low": 0.096,
+            "ci_high": 0.2363
+          },
+          "probability_l1": {
+            "mean": 0.4344,
+            "ci_low": 0.3308,
+            "ci_high": 0.556
+          },
+          "pt_probability_mae": {
+            "mean": 0.1657,
+            "ci_low": 0.1041,
+            "ci_high": 0.2413
+          }
+        },
+        "B_good": {
+          "n": 2,
+          "kl": {
+            "mean": 0.0427,
+            "ci_low": 0.0,
+            "ci_high": 0.0854
+          },
+          "probability_l1": {
+            "mean": 0.1883,
+            "ci_low": 0.0015,
+            "ci_high": 0.3752
+          },
+          "pt_probability_mae": {
+            "mean": 0.0263,
+            "ci_low": 0.0007,
+            "ci_high": 0.0519
+          }
+        },
+        "C_moderate": {
+          "n": 13,
+          "kl": {
+            "mean": 0.1213,
+            "ci_low": 0.0709,
+            "ci_high": 0.1799
+          },
+          "probability_l1": {
+            "mean": 0.3475,
+            "ci_low": 0.2493,
+            "ci_high": 0.4527
+          },
+          "pt_probability_mae": {
+            "mean": 0.131,
+            "ci_low": 0.0865,
+            "ci_high": 0.1886
+          }
+        },
+        "D_poor": {
+          "n": 12,
+          "kl": {
+            "mean": 0.1535,
+            "ci_low": 0.1013,
+            "ci_high": 0.2148
+          },
+          "probability_l1": {
+            "mean": 0.4442,
+            "ci_low": 0.3346,
+            "ci_high": 0.5518
+          },
+          "pt_probability_mae": {
+            "mean": 0.1394,
+            "ci_low": 0.0782,
+            "ci_high": 0.2101
+          }
+        },
+        "E_infeasible": {
+          "n": 12,
+          "kl": {
+            "mean": 0.5882,
+            "ci_low": 0.1981,
+            "ci_high": 1.1577
+          },
+          "probability_l1": {
+            "mean": 0.6461,
+            "ci_low": 0.3558,
+            "ci_high": 0.9789
+          },
+          "pt_probability_mae": {
+            "mean": 0.2924,
+            "ci_low": 0.1366,
+            "ci_high": 0.4681
+          }
+        }
+      },
+      "fvr": {
+        "rate": {
+          "mean": 0.3333,
+          "ci_low": 0.0833,
+          "ci_high": 0.5833
+        },
+        "mean_P_pt_infeasible": {
+          "mean": 0.2924,
+          "ci_low": 0.1367,
+          "ci_high": 0.4681
+        },
+        "n_infeasible": 12
+      },
+      "convenience_error": {
+        "A_excellent": {
+          "mean": 0.1657,
+          "ci_low": 0.1041,
+          "ci_high": 0.2413
+        },
+        "B_good": {
+          "mean": 0.0263,
+          "ci_low": 0.0007,
+          "ci_high": 0.0519
+        },
+        "C_moderate": {
+          "mean": 0.131,
+          "ci_low": 0.0865,
+          "ci_high": 0.1886
+        },
+        "D_poor": {
+          "mean": 0.1394,
+          "ci_low": 0.0782,
+          "ci_high": 0.2101
+        },
+        "E_infeasible": {
+          "mean": 0.2924,
+          "ci_low": 0.1366,
+          "ci_high": 0.4681
+        }
+      },
+      "pt_prob_by_class": {
+        "A_excellent": {
+          "mean": 0.3769,
+          "ci_low": 0.2693,
+          "ci_high": 0.4969
+        },
+        "B_good": {
+          "mean": 0.4546,
+          "ci_low": 0.2619,
+          "ci_high": 0.6473
+        },
+        "C_moderate": {
+          "mean": 0.3239,
+          "ci_low": 0.1854,
+          "ci_high": 0.4841
+        },
+        "D_poor": {
+          "mean": 0.2098,
+          "ci_low": 0.1369,
+          "ci_high": 0.2932
+        },
+        "E_infeasible": {
+          "mean": 0.2924,
+          "ci_low": 0.1367,
+          "ci_high": 0.4681
+        }
+      },
+      "sensitivity": {
+        "delta_P_pt_best_minus_worst": {
+          "mean": 0.0845,
+          "ci_low": 0.0161,
+          "ci_high": 0.139
+        },
+        "n_groups": 12
+      },
+      "monotonicity": {
+        "pair_agreement": {
+          "mean": 0.6316,
+          "ci_low": 0.4737,
+          "ci_high": 0.7895
+        },
+        "triplet_agreement": {
+          "mean": 0.3077,
+          "ci_low": 0.1538,
+          "ci_high": 0.5
+        },
+        "n_pairs": 38,
+        "n_triplets": 26,
+        "raw_pairs": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "raw_triplets": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "B1_S8": {
+      "fidelity": {
+        "all": {
+          "kl": {
+            "mean": 0.1704,
+            "ci_low": 0.092,
+            "ci_high": 0.2939
+          },
+          "probability_l1": {
+            "mean": 0.3392,
+            "ci_low": 0.2575,
+            "ci_high": 0.4345
+          },
+          "pt_probability_mae": {
+            "mean": 0.1346,
+            "ci_low": 0.0921,
+            "ci_high": 0.1844
+          }
+        },
+        "A_excellent": {
+          "n": 12,
+          "kl": {
+            "mean": 0.1189,
+            "ci_low": 0.0486,
+            "ci_high": 0.2122
+          },
+          "probability_l1": {
+            "mean": 0.3241,
+            "ci_low": 0.1988,
+            "ci_high": 0.4807
+          },
+          "pt_probability_mae": {
+            "mean": 0.1346,
+            "ci_low": 0.0649,
+            "ci_high": 0.2179
+          }
+        },
+        "B_good": {
+          "n": 2,
+          "kl": {
+            "mean": 0.0387,
+            "ci_low": 0.0026,
+            "ci_high": 0.0747
+          },
+          "probability_l1": {
+            "mean": 0.1985,
+            "ci_low": 0.0681,
+            "ci_high": 0.3289
+          },
+          "pt_probability_mae": {
+            "mean": 0.0229,
+            "ci_low": 0.0118,
+            "ci_high": 0.034
+          }
+        },
+        "C_moderate": {
+          "n": 13,
+          "kl": {
+            "mean": 0.08,
+            "ci_low": 0.0393,
+            "ci_high": 0.1261
+          },
+          "probability_l1": {
+            "mean": 0.2467,
+            "ci_low": 0.1646,
+            "ci_high": 0.3315
+          },
+          "pt_probability_mae": {
+            "mean": 0.0943,
+            "ci_low": 0.0588,
+            "ci_high": 0.1346
+          }
+        },
+        "D_poor": {
+          "n": 12,
+          "kl": {
+            "mean": 0.1115,
+            "ci_low": 0.0641,
+            "ci_high": 0.1634
+          },
+          "probability_l1": {
+            "mean": 0.3591,
+            "ci_low": 0.2445,
+            "ci_high": 0.4724
+          },
+          "pt_probability_mae": {
+            "mean": 0.1186,
+            "ci_low": 0.0668,
+            "ci_high": 0.1792
+          }
+        },
+        "E_infeasible": {
+          "n": 12,
+          "kl": {
+            "mean": 0.4007,
+            "ci_low": 0.0935,
+            "ci_high": 0.86
+          },
+          "probability_l1": {
+            "mean": 0.4579,
+            "ci_low": 0.177,
+            "ci_high": 0.7944
+          },
+          "pt_probability_mae": {
+            "mean": 0.213,
+            "ci_low": 0.0665,
+            "ci_high": 0.3908
+          }
+        }
+      },
+      "fvr": {
+        "rate": {
+          "mean": 0.0833,
+          "ci_low": 0.0,
+          "ci_high": 0.25
+        },
+        "mean_P_pt_infeasible": {
+          "mean": 0.213,
+          "ci_low": 0.0666,
+          "ci_high": 0.3908
+        },
+        "n_infeasible": 12
+      },
+      "convenience_error": {
+        "A_excellent": {
+          "mean": 0.1346,
+          "ci_low": 0.0649,
+          "ci_high": 0.2179
+        },
+        "B_good": {
+          "mean": 0.0229,
+          "ci_low": 0.0118,
+          "ci_high": 0.034
+        },
+        "C_moderate": {
+          "mean": 0.0943,
+          "ci_low": 0.0588,
+          "ci_high": 0.1346
+        },
+        "D_poor": {
+          "mean": 0.1186,
+          "ci_low": 0.0668,
+          "ci_high": 0.1792
+        },
+        "E_infeasible": {
+          "mean": 0.213,
+          "ci_low": 0.0665,
+          "ci_high": 0.3908
+        }
+      },
+      "pt_prob_by_class": {
+        "A_excellent": {
+          "mean": 0.3657,
+          "ci_low": 0.2345,
+          "ci_high": 0.5147
+        },
+        "B_good": {
+          "mean": 0.4519,
+          "ci_low": 0.2218,
+          "ci_high": 0.682
+        },
+        "C_moderate": {
+          "mean": 0.326,
+          "ci_low": 0.167,
+          "ci_high": 0.5065
+        },
+        "D_poor": {
+          "mean": 0.2153,
+          "ci_low": 0.1213,
+          "ci_high": 0.325
+        },
+        "E_infeasible": {
+          "mean": 0.213,
+          "ci_low": 0.0666,
+          "ci_high": 0.3908
+        }
+      },
+      "sensitivity": {
+        "delta_P_pt_best_minus_worst": {
+          "mean": 0.1527,
+          "ci_low": 0.0992,
+          "ci_high": 0.2037
+        },
+        "n_groups": 12
+      },
+      "monotonicity": {
+        "pair_agreement": {
+          "mean": 0.6579,
+          "ci_low": 0.5,
+          "ci_high": 0.8158
+        },
+        "triplet_agreement": {
+          "mean": 0.2692,
+          "ci_low": 0.1154,
+          "ci_high": 0.4615
+        },
+        "n_pairs": 38,
+        "n_triplets": 26,
+        "raw_pairs": [
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          1.0
+        ],
+        "raw_triplets": [
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "Teacher": {
+      "pt_prob_by_class": {
+        "A_excellent": {
+          "mean": 0.4481,
+          "ci_low": 0.2611,
+          "ci_high": 0.6461
+        },
+        "B_good": {
+          "mean": 0.429,
+          "ci_low": 0.21,
+          "ci_high": 0.648
+        },
+        "C_moderate": {
+          "mean": 0.3724,
+          "ci_low": 0.1923,
+          "ci_high": 0.5814
+        },
+        "D_poor": {
+          "mean": 0.1888,
+          "ci_low": 0.0508,
+          "ci_high": 0.3745
+        },
+        "E_infeasible": {
+          "mean": 0.0001,
+          "ci_low": 0.0,
+          "ci_high": 0.0003
+        }
+      },
+      "sensitivity": {
+        "delta_P_pt_best_minus_worst": {
+          "mean": 0.448,
+          "ci_low": 0.258,
+          "ci_high": 0.6483
+        },
+        "n_groups": 12
+      },
+      "monotonicity": {
+        "pair_agreement": {
+          "mean": 0.7895,
+          "ci_low": 0.6579,
+          "ci_high": 0.9211
+        },
+        "triplet_agreement": {
+          "mean": 0.6154,
+          "ci_low": 0.4231,
+          "ci_high": 0.8077
+        },
+        "n_pairs": 38,
+        "n_triplets": 26
+      }
+    }
+  },
+  "deltas_s8_vs_s7w3": {
+    "pt_probability_mae_delta": {
+      "mean": -0.0404,
+      "ci_low": -0.0529,
+      "ci_high": -0.0279,
+      "ci_excludes_zero": true
+    },
+    "mean_P_pt_infeasible_delta": {
+      "mean": -0.0794,
+      "ci_low": -0.1004,
+      "ci_high": -0.0611,
+      "ci_excludes_zero": true
+    },
+    "fvr_rate_delta": {
+      "mean": -0.25,
+      "ci_low": -0.5,
+      "ci_high": -0.0833,
+      "ci_excludes_zero": true
+    },
+    "pair_monotonicity_delta": {
+      "mean": 0.0263,
+      "ci_low": -0.1053,
+      "ci_high": 0.1579,
+      "ci_excludes_zero": false
+    },
+    "note": "negative MAE/P(PT|inf)/FVR delta = S8 better; monotonicity delta is paired over per-group 0/1 pair-agreement indicators"
+  },
+  "unseen_od": {
+    "guarantee": "test split uses ONLY test-ODs and test-personas (asserted); train ODs never appear in test",
+    "n_test_ods": 20,
+    "od_holdout_verified": true
+  }
+}

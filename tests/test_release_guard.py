@@ -14,6 +14,7 @@ from traveler_distillation.student.release_guard import (
 def test_frozen_release_dir_is_known():
     assert "s7_w3_generic_core_v1" in FROZEN_RELEASE_DIRS
     assert "s8_supply_aware_v1" in FROZEN_RELEASE_DIRS
+    assert "s9_supply_aware_v2" in FROZEN_RELEASE_DIRS
 
 
 @pytest.mark.parametrize(
@@ -25,6 +26,8 @@ def test_frozen_release_dir_is_known():
         "outputs/s8_supply_aware_v1/checkpoint/model.pt",
         "releases/s8_supply_aware_v1",
         "outputs/phase_c/s8_supply_aware_v1/population.xml",
+        "outputs/s9_supply_aware_v2/checkpoint/model.pt",
+        "releases/s9_supply_aware_v2/checkpoint/model.pt",
     ],
 )
 def test_paths_inside_frozen_release_are_rejected(path):

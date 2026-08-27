@@ -1,0 +1,78 @@
+{
+  "dataset": "s9_singapore_accessibility (corrected walk/bike speeds)",
+  "n_states": 336,
+  "class_distribution": {
+    "A_excellent": 79,
+    "C_moderate": 77,
+    "D_poor": 84,
+    "E_infeasible": 80,
+    "B_good": 16
+  },
+  "split_counts": {
+    "train": 234,
+    "val": 51,
+    "test": 51
+  },
+  "persona_holdout": {
+    "counts": {
+      "train": 28,
+      "val": 6,
+      "test": 6
+    }
+  },
+  "od_holdout": {
+    "counts": {
+      "train": 79,
+      "val": 14,
+      "test": 20
+    },
+    "disjoint": true
+  },
+  "accessibility_holdout": {
+    "held_out_from_train": "feasible ODs with walking burden access_time+egress_time >= 15 min (high-burden profiles appear only in test)",
+    "transfer_rule": "planner caps at 1 vehicle-to-vehicle transfer (same routing rule as MATSimAdapter._plan_pt)",
+    "class_e_policy": "Class E (infeasible) present in every split (FVR learnable + testable)"
+  },
+  "curve_groups": {
+    "n_groups": 80,
+    "groups_with_lt3_classes": 0
+  },
+  "teacher": {
+    "k_distribution": {
+      "3": 89,
+      "5": 247
+    },
+    "valid_calls": 1502,
+    "incomplete": 0
+  },
+  "identity_leakage": {
+    "quote_level_hits": 0
+  },
+  "sanity": {
+    "door_to_door_identity_max_err_min": 0.001
+  },
+  "corrected_world_stats": {
+    "pt_feasible_states": 256,
+    "pt_infeasible_states": 80,
+    "pt_faster_than_walk": "234/336 (70%)"
+  },
+  "files": {
+    "records": {
+      "path": "data/singapore_accessibility/records.jsonl",
+      "sha256": "e70340a6e771ec5a1add684fe56f2391f6d62b6cd8b09cfaf332d6d8105db9db"
+    },
+    "states_with_teacher": {
+      "path": "data/singapore_accessibility/states_with_teacher.jsonl",
+      "sha256": "e620d386486b8262dd8a5101e5d80e65fe69ef9d95337c0c86e56672bc2925a9"
+    },
+    "split_manifest": {
+      "path": "data/singapore_accessibility/split_manifest.json",
+      "sha256": "b1dbb75abed0cfc8a31b1500c6bfa4ac0c45438c1145209f4d100134c39b0e96"
+    },
+    "generation_manifest": {
+      "path": "data/singapore_accessibility/generation_manifest.json",
+      "sha256": "da4c689e6c14a3363e950cd4230de3811cadc5eae12398ba2d0b1df62f6de6f7"
+    }
+  },
+  "s8_legacy_archive": "data/singapore_accessibility_s8_legacy/ (S8 audit trail, checksums recorded in the S8 release)"
+}

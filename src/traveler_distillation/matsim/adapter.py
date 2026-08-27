@@ -377,13 +377,17 @@ class MATSimAdapter:
         alt_gen = AlternativeGenerator({})
 
         # ---- supply graphs ----
+        # Mode-specific travel-time weights (S9 fix): car = length/freespeed
+        # (free-flow); walk 1.34 m/s and bike 4.17 m/s (S8 used freespeed for
+        # every mode, making walk/bike ~29 km/h — the S9 retrain data error).
         g, xy = load_network_graph(network_path)
         tt_graphs = {}
-        for mode in ("car", "bike", "walk"):
+        for mode, speed in (("car", None), ("bike", 4.17), ("walk", 1.34)):
             sg = nx.DiGraph()
             for u, v, d in g.edges(data=True):
                 if mode in d["modes"]:
-                    sg.add_edge(u, v, tt=d["length"] / max(d["free"], 0.1), id=d.get("id", f"{u}_{v}"))
+                    tt = d["length"] / max(d["free"], 0.1) if speed is None else d["length"] / speed
+                    sg.add_edge(u, v, tt=tt, id=d.get("id", f"{u}_{v}"))
             for n, (x, y) in xy.items():
                 sg.add_node(n, x=x, y=y)
             tt_graphs[mode] = sg
@@ -790,6 +794,12 @@ class MATSimAdapter:
             "\t</module>",
             '\t<module name="qsim">',
             '\t\t<param name="endTime" value="30:00:00" />',
+            # walk/bike stay NETWORK modes so pt access/egress chains execute
+            # (teleported walk legs cannot anchor transit boarding). KNOWN
+            # LIMITATION (S9, documented): MATSim moves walk/bike legs at link
+            # freespeed, so MATSim-side walk/bike trip times are optimistic;
+            # mode decisions are made BEFORE MATSim from the corrected
+            # alternatives (walk 1.34 m/s / bike 4.17 m/s) and are unaffected.
             '\t\t<param name="mainMode" value="car,bike,walk" />',
             '\t\t<param name="trafficDynamics" value="queue" />',
         ]

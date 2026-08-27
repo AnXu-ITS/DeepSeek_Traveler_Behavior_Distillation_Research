@@ -1,0 +1,52 @@
+{
+  "gate": "s8_singapore_smoke",
+  "n_agents": 100,
+  "checkpoint": "releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+  "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+  "phase_c_frozen_settings": {
+    "N_star": 10000,
+    "flow_capacity_factor": 0.3,
+    "storage_capacity_factor": 0.3,
+    "note": "smoke runs N=100 of N*=10,000 with the frozen Phase C capacity factors"
+  },
+  "schema_check": {
+    "n_alternatives": 4,
+    "alt_num_width": 12,
+    "mode_probabilities": {
+      "pt": 0.77307,
+      "walk": 0.22693
+    },
+    "departure_time_shift_min": 2.3126,
+    "schema_match": true
+  },
+  "pt_accessibility_split": {
+    "pt_feasible": 98,
+    "pt_infeasible": 2
+  },
+  "student_mode_counts": {
+    "pt": 31,
+    "bike": 30,
+    "car": 28,
+    "walk": 11
+  },
+  "executed_outbound_counts": {
+    "pt": 30,
+    "bike": 30,
+    "walk": 16,
+    "car": 24
+  },
+  "matsim_exit_code": 0,
+  "events": {
+    "leg_departures": {
+      "car": 21014,
+      "walk": 146,
+      "pt": 69,
+      "bike": 60
+    },
+    "pt_boardings": 66,
+    "n_events": 19267407,
+    "transit_vehicle_departures": 20966
+  },
+  "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+  "gate_pass": true
+}

@@ -1,0 +1,10 @@
+{
+  "source": "checkpoint key 'extractor_state'.mode_vocab",
+  "mode_vocab": {
+    "<UNK>": 0,
+    "bike": 1,
+    "car": 2,
+    "pt": 3,
+    "walk": 4
+  }
+}

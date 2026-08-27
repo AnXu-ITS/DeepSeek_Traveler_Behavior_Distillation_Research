@@ -1,0 +1,6 @@
+{
+  "schema_case": "Case B",
+  "arch_version": "student_s8_v1",
+  "note": "IDENTICAL schema evolution as S8 (6 added city-independent alt features, alt_encoder 14->20, zero-init migration). S9 differs from S8 in DATA only: corrected walk/bike travel times.",
+  "s8_diff_reference": "releases/s8_supply_aware_v1/schema/schema_diff_vs_s7.json"
+}

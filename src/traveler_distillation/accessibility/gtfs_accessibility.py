@@ -43,11 +43,17 @@ class SupplyIndex:
         sp = {k: Path(v) for k, v in supply_paths.items()}
         self.g, self.xy = load_network_graph(sp["network"])
         self.tt_graphs = {}
-        for mode in ("car", "bike", "walk"):
+        # Mode-specific travel-time weights (S9 fix, 2026-08-26):
+        # S8 used length/freespeed for ALL modes, which made walk/bike appear to
+        # move at road free-flow speed (effective ~29 km/h) — ~6x too fast for
+        # walking and ~2x for cycling. Car keeps length/freespeed (free-flow);
+        # walk uses 1.34 m/s (~4.8 km/h) and bike 4.17 m/s (15 km/h).
+        for mode, speed in (("car", None), ("bike", 4.17), ("walk", 1.34)):
             sg = nx.DiGraph()
             for u, v, d in self.g.edges(data=True):
                 if mode in d["modes"]:
-                    sg.add_edge(u, v, tt=d["length"] / max(d["free"], 0.1))
+                    tt = d["length"] / max(d["free"], 0.1) if speed is None else d["length"] / speed
+                    sg.add_edge(u, v, tt=tt)
             for n, (x, y) in self.xy.items():
                 sg.add_node(n, x=x, y=y)
             self.tt_graphs[mode] = sg

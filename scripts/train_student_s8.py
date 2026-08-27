@@ -468,7 +468,9 @@ def main() -> int:
     # HARD CONSTRAINT: the test split must never reach training code paths —
     # its existence is asserted (the labeling file legitimately contains test
     # targets for evaluation), then the reference is dropped entirely.
-    assert len(test_acc) == 53, f"unexpected test-split target count: {len(test_acc)}"
+    _split_manifest = json.loads(Path(args.split_manifest).read_text(encoding="utf-8"))
+    _expected_test = int(_split_manifest["sanity"]["split_counts"]["test"])
+    assert len(test_acc) == _expected_test, f"unexpected test-split target count: {len(test_acc)}"
     test_acc = []
     n_acc = len(train_acc)
     print(f"accessibility targets: train={n_acc} val={len(val_acc)} (test count asserted, reference dropped)")

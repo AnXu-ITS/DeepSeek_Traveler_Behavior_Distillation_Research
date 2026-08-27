@@ -1,0 +1,17 @@
+metric,source,s7w3_mean,s7w3_ci_low,s7w3_ci_high,s9_mean,s9_ci_low,s9_ci_high,teacher_mean,teacher_ci_low,teacher_ci_high,delta_mean,delta_ci_low,delta_ci_high,delta_ci_excludes_zero
+accessibility_kl,accessibility_eval,0.2442,0.1424,0.3968,0.1704,0.092,0.2939,,,,,,,
+accessibility_probability_l1,accessibility_eval,0.4547,0.3689,0.5522,0.3392,0.2575,0.4345,,,,,,,
+pt_probability_mae,accessibility_eval,0.175,0.1291,0.2296,0.1346,0.0921,0.1844,,,,-0.0404,-0.0529,-0.0279,True
+infeasible_mean_P_pt,accessibility_eval,0.2924,0.1367,0.4681,0.213,0.0666,0.3908,,,,-0.0794,-0.1004,-0.0611,True
+fvr_rate,accessibility_eval,0.3333,0.0833,0.5833,0.0833,0.0,0.25,,,,-0.25,-0.5,-0.0833,True
+monotonicity_pair_agreement,accessibility_eval,0.6316,0.4737,0.7895,0.6579,0.5,0.8158,0.7895,0.6579,0.9211,0.0263,-0.1053,0.1579,False
+monotonicity_triplet_agreement,accessibility_eval,0.3077,0.1538,0.5,0.2692,0.1154,0.4615,0.6154,0.4231,0.8077,,,,
+accessibility_sensitivity_delta_P_pt,accessibility_eval,0.0845,0.0161,0.139,0.1527,0.0992,0.2037,0.448,0.258,0.6483,,,,
+legacy_mode_accuracy,regression_eval,0.8451,0.8009,0.8895,0.8894,0.8496,0.9292,,,,,,,
+legacy_kl,regression_eval,0.0695,0.0583,0.0815,0.0514,0.0423,0.0606,,,,-0.0182,-0.0252,-0.0111,True
+seen_joint_kl,regression_eval,0.0421,0.0286,0.0578,0.0407,0.0304,0.0526,,,,-0.0014,-0.0097,0.0068,False
+unseen_joint_kl,regression_eval,0.0845,0.0328,0.1481,0.0537,0.0218,0.0924,,,,-0.0309,-0.056,-0.0091,True
+interaction_l1_error,regression_eval,0.0488,0.0379,0.0603,0.0504,0.0404,0.0611,,,,,,,
+mechanism_congestion_G_med,regression_eval,0.1763,0.1068,0.2543,0.1699,0.1039,0.2309,,,,-0.0064,-0.0823,0.0798,False
+mechanism_congestion_Gap_shortcut,regression_eval,0.3455,0.1554,0.5608,0.3198,0.2408,0.4057,,,,,,,
+mechanism_parking_cost_G_med,regression_eval,0.258,0.1409,0.3952,0.2495,0.1278,0.3925,,,,-0.0085,-0.0192,0.0014,False

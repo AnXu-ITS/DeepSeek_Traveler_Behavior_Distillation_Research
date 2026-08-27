@@ -1,0 +1,32 @@
+# S8 transit accessibility feature set (city-independent, S8 instructions §6-7).
+# All fields are per-alternative NUMERIC attributes; pt carries real values,
+# non-pt alternatives carry 0.0 defaults. No location identity anywhere.
+
+core_features:
+  # already in S7-W3 ALT_NUM (reused verbatim, z-scored with frozen stats)
+  - travel_time_min          # pt: real door-to-door T_PT = access+wait+invehicle+transfer+egress
+  - monetary_cost
+  - access_time_min          # pt: origin -> first boarding stop walk (real)
+  - transfers                # pt: vehicle-to-vehicle transfer count (planner cap = 1)
+  - reliability_delay_min
+  - weather_exposure
+
+s8_accessibility_features:
+  - pt_feasible              # 1.0 = feasible itinerary in window (routing rules), 0.0 = none
+  - egress_time_min          # last alighting stop -> destination walk
+  - wait_time_min            # first boarding wait (departure -> vehicle departure - access)
+  - in_vehicle_time_min      # total aboard transit vehicles
+  - transfer_time_min        # alight vehicle -> board next (walk + wait at transfer)
+  - coverage_ratio           # D_PT,vehicle / D_OD (clip [0,1])
+
+routing_rules:
+  access_radius_m: 700       # boarding stop within 700 m of origin (no wider fallback)
+  egress_radius_m: 700       # alighting stop within 700 m of destination (+ extended 1.5 km egress)
+  boarding_buffer_s: 300     # min first-boarding offset, access-aware: max(300, access*60+60)
+  max_transfers: 1           # same rule as MATSimAdapter._plan_pt
+  connection_window_s: [180, 2700]
+  departure_window_s: 3600   # board first vehicle within 1 h
+  walk_speed_ms: 1.2         # network-derived walk tt (length/free)
+
+generalized_cost:
+  defined: false             # S8 §7.10: no invented value-of-time; raw features only

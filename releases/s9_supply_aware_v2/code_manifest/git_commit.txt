@@ -1,0 +1,2 @@
+﻿b0789adbc3f00ed53c9fb93ffd825fcb56288078
+b0789ad Phase C: Singapore real-network scenario experiments (C0-C5, frozen S8, N*=10k, all gates pass)
