@@ -2,9 +2,10 @@
 
 > 蒸馏出行意图 · 个体行为蒸馏研究（DeepSeek V4 Pro → 轻量 Traveler Agent → MATSim）
 > 更新日期：2026-08-29（TRC_AIT_5 补充实验 E1–E5 全部完成：MNL-B 基线、DeepSeek vs S9 速率/成本、
-> 人口扩展、multi-seed 稳健性、Helsinki zero-shot 迁移；按计划书 Stop Rule 进入 manuscript v1 阶段。
-> 此前 08-27：S9 重训完成、S9 Freeze、Phase C 六情景重跑完成；同日根目录整理：
-> 阶段指令/计划文档移入 `docs/stage_instructions/` 与 `docs/plans/`，路径映射见 README）
+> 人口扩展、multi-seed 稳健性、Helsinki zero-shot 迁移——E5 六情景 C0–C5 门禁全过；
+> 按计划书 Stop Rule 进入 manuscript v1 阶段。此前 08-27：S9 重训完成、S9 Freeze、
+> Phase C 六情景重跑完成；同日根目录整理：阶段指令/计划文档移入 `docs/stage_instructions/`
+> 与 `docs/plans/`，路径映射见 README）
 
 ## 研究目标（不变）
 
@@ -904,15 +905,17 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
 - **供给**：HSL GTFS 2026-08-27 快照 + OSM 子区域（≈97 km²；节点/链路 290k/638k；GTFS trips
   13,655、站 1,269）；snap p90 21.7 m；routing failures 0；capacity 0.3/0.3 与时间窗沿用 Singapore
   冻结值（G1 平价带 0.5–4× 全过）。
-- **情景**：计划书最小集 **C0/C1/C3** 完成（N=10,000，seed 2026）；C2/C4/C5 为设计 §7 V4
-  条件扩展，未触发。
-- **门禁**：**G0–G5 全 PASS**；C0 决策四模式齐 + fallback 原因已知（PT validity 75.9% overall /
-  100.0% feasible-conditioned，如实报告）；G2 确定性（1k pilot manifest SHA256 全同）。
+- **情景**：**六情景 C0–C5 全部完成**（N=10,000，seed 2026）；C0/C1/C3 为计划书最小集，
+  C2/C4/C5 按设计 §7 V4 条件扩展执行（最小集门禁全过 + 时间预算允许）。
+- **门禁**：**六情景 Phase C gate 全 PASS、G0–G5 全 PASS**；C0 决策四模式齐 + fallback 原因已知
+  （PT validity 75.9% overall / 100.0% feasible-conditioned，如实报告）；G2 确定性
+  （1k pilot manifest SHA256 全同）。
 - **核心结论（T1–T5 见 `outputs/e5_helsinki/E5_REPORT.md`）**：C0 share 28.6/23.0/34.6/13.8
   （vs SG 冻结 28.3/25.3/34.0/12.4）；P(PT) A→E 梯度方向复现但更弱（E−A −0.047 vs SG −0.153，
-  中间类非单调——如实报告）；情景方向 C1 7/7、C3 6/7 符号一致（雨→离 bike/walk、延误→离 pt）；
-  stuck 人 1/1/2、failed trips 1（SG 30:00 截断 artifact 在 Helsinki C0 不出现）。
-  **supply-aware 接口在未见城市 zero-shot 可用（定性方向证据；无 Helsinki 标签，不做跨城统计
-  检验）**——计划书 §E5 目标达成。
-- **工件**：`outputs/e5_helsinki/`（E5_REPORT.md + e5_records/e5_acc_audit + 三情景完整 MATSim
-  输出）；paper 归档 `data_report/13_E5_HELSINKI/`（含 SHA256SUMS）。
+  中间类非单调——如实报告）；**五个情景响应方向全部与 SG 冻结一致**（C1 7/7、C2 6/7、C3 6/7、
+  C4 6/7、C5 6/7 符号匹配；C4 Δcar −23.7pp vs SG −26.5pp、ΔVKT −29,479 vs −30,996 km 幅度接近；
+  C2 Δpt +1.5pp vs +0.4pp 同为弱响应）；stuck 人 1–2、failed trips 1（SG 30:00 截断 artifact
+  在 Helsinki 不出现）。**supply-aware 接口在未见城市 zero-shot 可用（定性方向证据；无 Helsinki
+  标签，不做跨城统计检验）**——计划书 §E5 目标达成。
+- **工件**：`outputs/e5_helsinki/`（E5_REPORT.md + e5_records/e5_acc_audit + 六情景完整
+  MATSim 输出）；paper 归档 `data_report/13_E5_HELSINKI/`（含 SHA256SUMS）。

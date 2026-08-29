@@ -138,6 +138,7 @@ archive/legacy_*/             # 已归档的旧版文件
 | S9 | ✅ | 修正后重训 + Freeze（`s9-supply-aware-v2.0`） |
 | Singapore Phase A / B / B.5 | ✅ | 真实供给跑通门禁 / 规模验证 / PT 有效性 + 容量标定（N\*=10k, 0.3/0.3） |
 | **Phase C** | ✅ | **六情景主实验完成（本 README 表 + `reports/PHASE_C_SINGAPORE_REPORT.md`）** |
+| **补充实验 E1–E5（TRC_AIT_5）** | ✅ | MNL-B 基线 · DeepSeek vs S9 速率/成本 · 人口扩展 1k–50k · multi-seed 稳健性 · Helsinki zero-shot 迁移（六情景 C0–C5，门禁全过）；Stop Rule 达成 → manuscript v1 |
 | Phase D | 🚧 | 真实网络反馈闭环（Student → MATSim → 拥堵观测 → 再决策收敛） |
 
 ## 复现说明
