@@ -73,7 +73,7 @@ reports/                      # 实验报告 / 审计 / Phase C 报告（git 追
 docs/plans/                   # 研究蓝图 / Singapore 验证计划 / 任务阶段清单
 docs/stage_instructions/      # 各阶段执行指令与实验设计（S5-S8、Phase C、冻结指令）
 docs/                         # 供给集成说明 / S8_DEPRECATION.md
-tests/                        # pytest（161 passed）
+tests/                        # pytest（160 passed）
 data/                         # 生成的数据集（JSONL，git 忽略，可复现生成）
 outputs/                      # 训练与运行产物（git 忽略；报告均复制至 reports/ 追踪）
 archive/legacy_*/             # 已归档的旧版文件
@@ -108,7 +108,7 @@ archive/legacy_*/             # 已归档的旧版文件
 # 2. 配置密钥：复制 .env.example 为 .env 并填写 DEEPSEEK_API_KEY
 
 # 3. 跑测试
-.venv\Scripts\python.exe -m pytest          # 161 passed
+.venv\Scripts\python.exe -m pytest          # 160 passed
 
 # 4. 加载冻结 S9 并做一次推断
 .venv\Scripts\python.exe scripts\singapore\run_s8_smoke.py `

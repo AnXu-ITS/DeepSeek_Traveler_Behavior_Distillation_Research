@@ -732,7 +732,8 @@ effective approach capacities were represented using green-ratio sensitivity fac
   delay 使 pt 近乎清零；disruption 使 car 近乎清零；C5 联合 = 非叠加
   （rain 的 pt 需求被 delay 重新路由回 walk）。
 - **Gate 口径修正（有据）**：stuckAndAbort 含 30:00 截断的 transit 车辆；
-  B.5C 基线（S7-W3 同设置）同样 4,347/20,966 辆截断 + 266 真人 stuck，
+  B.5C 基线（S7-W3 同设置）同样存在 transit 车辆截断（冻结 S9 C0 实测 4,287/20,966 辆；
+  原 B.5C 4,347 读数无留存 JSON 佐证，统一以冻结 C0 记录为准）+ 266 真人 stuck，
   为冻结设置既有特性（报告已标注）；C0 真人 stuck 13（0.13%）。
 - **已知边界（如实记录）**：~20% transit 车辆 30:00 截断影响 PT 绝对量；
   情景差分同一设置下有效；C1 failed_trips 1,072（10.7%，pt 错过单班次连接，
@@ -834,7 +835,7 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
   4 worker 确定性分片，88 min，SHA256 `744c5896…`，checkpoint `6af79b44…` 核对通过）。
 - **G2**：10k 前缀决策与冻结 Phase C C0 `adapter_manifest.json` 逐位一致（0/10,000 不一致）
   ——状态池与冻结 S9 管线完全同源。
-- **T1 时延**（同 100 态前缀对拍）：DeepSeek mean **86.5s**（P50 87.4 / P95 162.8，N=100 实测）；
+- **T1 时延**（同 100 态前缀对拍）：DeepSeek mean **86.5s**（P50 87.4 / P95 162.8，100 次调用 / 87 次成功实测）；
   S9 CPU 顺序 mean **0.33ms**（P95 0.8ms，100k 态）——**≈3.2×10⁵ 倍**。
 - **T2 吞吐**：DeepSeek 顺序 0.7 states/min（10k 投影 240h；历史 4-worker 锚点 28–33h）；
   S9 顺序 3.0k states/s，batch 21–25k states/s（10k ≈ 0.4–3.3s）。
@@ -867,7 +868,7 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
   （跨档比值 ×8.7/×1.94/×2.34，次线性）；factory（可达性规划）占 57–63%，**decide（S9 推理）仅
   0.94–1.03 ms/态**（总量 1.0/10.3/18.8/48.8 s）；MATSim 118–202 s（1k→50k，供给主导，50k 拥堵
   初现 slow share 0.02）；py 峰值 1.97→5.27 GB（Δ 增长次线性，100k 外推 ~7 GB 安全、无需 R1）；
-  java 峰值恒 ~6.5 GB；决策 share 漂移 ≤0.6pp；stuck 3.8–4.8%；PT validity 93.5–95.1%；
+  java 峰值恒 ~6.5 GB；决策 share 漂移 ≤0.6pp（10k–50k 档；1k 试点 ±1.0pp）；stuck 3.8–4.8%；PT validity 93.5–95.1%；
   boardings 线性（5,613→11,357→28,440）。
 - **结论（计划书 §E3 目标达成）**：behavioral inference scalability 与 simulation scalability
   成功分离——**系统瓶颈 = 行为构建侧（可达性规划 + leg 路由），S9 推理与 MATSim 仿真均非瓶颈**。
@@ -888,7 +889,7 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
   全 PASS（12/12）；G3 结构一致仅 1 项报告偏离（seed7/C4 stuck 率 3.16% 略低于冻结带下限 3.3%，
   275/8,708，属良性样本波动）；G4 数字管道 PASS（程序化生成，无手抄）。
 - **核心结论（T1–T5 见 `outputs/e4_multiseed/E4_REPORT.md`）**：C0 baseline 决策 share 跨 seed 高度一致
-  （car 27.7–28.3 / pt 25.9–26.1 / bike 33.3–34.0 / walk 12.4–12.9）；C1–C5 全部响应指标 3/3 符号一致
+  （car 27.7–28.3 / pt 25.3–26.1 / bike 33.3–34.0 / walk 12.4–12.9）；C1–C5 全部响应指标 3/3 符号一致
   （Δpt share：C1 +19.9±0.2 / C2 +0.5±0.1 / C3 −15.4±0.3 / C4 +12.0±0.3 / C5 −6.7±0.3 pp）；
   **C2 fare ×1.5 弱响应经 §5.2 预注册规则判定 stable**（Δpt +0.4/+0.5/+0.5 pp、Δboardings +61/+99/+80，
   |mean|/std=8.08；与次小响应量级比 0.07×）——稳定弱效应而非抽样噪声；C0–C5 情景响应不依赖单一
@@ -914,7 +915,7 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
   （vs SG 冻结 28.3/25.3/34.0/12.4）；P(PT) A→E 梯度方向复现但更弱（E−A −0.047 vs SG −0.153，
   中间类非单调——如实报告）；**五个情景响应方向全部与 SG 冻结一致**（C1 7/7、C2 6/7、C3 6/7、
   C4 6/7、C5 6/7 符号匹配；C4 Δcar −23.7pp vs SG −26.5pp、ΔVKT −29,479 vs −30,996 km 幅度接近；
-  C2 Δpt +1.5pp vs +0.4pp 同为弱响应）；stuck 人 1–2、failed trips 1（SG 30:00 截断 artifact
+  C2 Δpt +1.5pp vs +0.4pp 同为弱响应）；stuck 人 1–2、failed trips 1–2（SG 30:00 截断 artifact
   在 Helsinki 不出现）。**supply-aware 接口在未见城市 zero-shot 可用（定性方向证据；无 Helsinki
   标签，不做跨城统计检验）**——计划书 §E5 目标达成。
 - **工件**：`outputs/e5_helsinki/`（E5_REPORT.md + e5_records/e5_acc_audit + 六情景完整

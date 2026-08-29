@@ -16,7 +16,7 @@ Usage:
     python scripts/singapore/run_phase_c.py \
         --scenarios C0_baseline,C1_heavy_rain \
         --num-agents 10000 \
-        --checkpoint releases/s8_supply_aware_v1/checkpoint/model.pt \
+        --checkpoint releases/s9_supply_aware_v2/checkpoint/model.pt \
         --output outputs/singapore_phase_c
 """
 from __future__ import annotations
@@ -346,7 +346,7 @@ def _manifest_stats(manifest: list[dict]) -> dict:
 
 def run_scenario(name: str, n: int, personas, trips, trips_per_persona,
                  adapter: S8MATSimAdapter, supply: dict, root: Path, out_root: Path,
-                 skip_matsim: bool, factory=None) -> dict:
+                 skip_matsim: bool, factory=None, checkpoint: Path | None = None) -> dict:
     s = SCENARIOS[name]
     context = make_context(name)
     out = out_root / name
@@ -376,8 +376,8 @@ def run_scenario(name: str, n: int, personas, trips, trips_per_persona,
                     for k, v in s.items()},
         "n_agents": n,
         "population_seed": 2026,
-        "checkpoint": str(root / "releases" / "s8_supply_aware_v1" / "checkpoint" / "model.pt"),
-        "checkpoint_sha256": sha256(root / "releases" / "s8_supply_aware_v1" / "checkpoint" / "model.pt"),
+        "checkpoint": str(checkpoint) if checkpoint is not None else None,
+        "checkpoint_sha256": sha256(checkpoint) if checkpoint is not None else None,
         "frozen_settings": {"flow_capacity_factor": 0.3, "storage_capacity_factor": 0.3,
                             "last_iteration": 0, "network": supply["network"],
                             "schedule": supply["schedule"]},
@@ -416,7 +416,8 @@ def _evaluate_gate(name: str, record: dict) -> dict:
     `stuckAndAbort` counts transit VEHICLES still en-route at the 30:00
     simulation end as well as human agents. Transit truncation is a
     pre-existing property of the frozen 10k + capacity-factor-0.3 setting
-    (B.5C baseline: 4,347/20,966 departures) and is reported, not gated.
+    (frozen C0 record: 4,287/20,966 routed vehicle departures; the B.5C
+    baseline showed the same phenomenon) and is reported, not gated.
 
     Human stuck scales with PT demand in the corrected world (riders missing
     the single allowed transfer when buses are slowed — the B.5C-documented
@@ -466,7 +467,8 @@ def write_report(out_root: Path, records: list[dict]) -> None:
                      f"{'PASS' if g['pass'] else 'FAIL'} |")
     lines += ["",
               "> stuck transit vehicles are aborted at the 30:00 simulation end — a pre-existing "
-              "property of the frozen 10k + 0.3-factor setting (B.5C baseline: 4,347/20,966 departures). "
+              "property of the frozen 10k + 0.3-factor setting (frozen C0 record: 4,287/20,966 "
+              "routed vehicle departures; same phenomenon as the B.5C baseline). "
               "Gates check the HUMAN stuck RATE per PT boarding (<= 5%; S9 C0 = 3.8%, "
               "stable at 3.3-4.3% across scenarios) — human stuck scales with PT demand "
               "(riders missing the single allowed transfer), not with scenario pathology.",
@@ -546,7 +548,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--scenarios", default="C0_baseline,C1_heavy_rain,C2_fare_increase,"
                                            "C3_transit_delay,C4_road_disruption,C5_joint_rain_delay")
-    ap.add_argument("--checkpoint", default="releases/s8_supply_aware_v1/checkpoint/model.pt")
+    ap.add_argument("--checkpoint", default="releases/s9_supply_aware_v2/checkpoint/model.pt")
     ap.add_argument("--config", default="configs/generation_v0_1.yaml")
     ap.add_argument("--num-agents", type=int, default=10000)
     ap.add_argument("--output", default="outputs/singapore_phase_c")
@@ -583,7 +585,7 @@ def main() -> int:
         print(f"=== scenario {name} ({SCENARIOS[name]['label']}) ===", flush=True)
         rec = run_scenario(name, n, personas, trips, trips_per_persona,
                            adapter, supply, root, out_root, args.skip_matsim,
-                           factory=factories[name])
+                           factory=factories[name], checkpoint=root / args.checkpoint)
         records.append(rec)
 
     if len(records) > 1:

@@ -13,7 +13,7 @@ Population: N* = 10000 (seed 2026, identical across scenarios); frozen S9 checkp
 | C4_road_disruption | 0 | 285 | 4311 | 8537/7441 | PASS |
 | C5_joint_rain_delay | 0 | 183 | 4266 | 4301/3752 | PASS |
 
-> stuck transit vehicles are aborted at the 30:00 simulation end — a pre-existing property of the frozen 10k + 0.3-factor setting (B.5C baseline: 4,347/20,966 departures). Gates check the HUMAN stuck RATE per PT boarding (<= 5%; S9 C0 = 3.8%, stable at 3.3-4.3% across scenarios) — human stuck scales with PT demand (riders missing the single allowed transfer), not with scenario pathology.
+> stuck transit vehicles are aborted at the 30:00 simulation end — a pre-existing property of the frozen 10k + 0.3-factor setting (frozen C0 record: 4,287/20,966 routed vehicle departures; the B.5C baseline showed the same phenomenon). Gates check the HUMAN stuck RATE per PT boarding (<= 5%; S9 C0 = 3.8%, stable at 3.3-4.3% across scenarios) — human stuck scales with PT demand (riders missing the single allowed transfer), not with scenario pathology.
 
 ## Decisions (student / executed outbound)
 
@@ -53,6 +53,7 @@ Population: N* = 10000 (seed 2026, identical across scenarios); frozen S9 checkp
 - MRT schedules are frequency-based/synthetic (community GTFS feed, not official LTA DataMall).
 - Demand is synthetic personas/trips (seed 2026); no real Singapore traveler behavior.
 - Wording: "a controlled real-network experiment under calibrated effective capacity".
-- ~20% of transit vehicles are truncated at the 30:00 simulation end (pre-existing in the frozen 10k + 0.3-factor setting, same as B.5C baseline); PT absolute quantities carry this artifact — scenario-vs-C0 deltas use the identical setting and remain informative.
+- ~20% of transit vehicles are truncated at the 30:00 simulation end (pre-existing in the frozen 10k + 0.3-factor setting; frozen C0 record: 4,287/20,966 routed vehicle departures, same phenomenon as the B.5C baseline); PT absolute quantities carry this artifact — scenario-vs-C0 deltas use the identical setting and remain informative.
+- Mode shares are computed as round(100 × count / N, 1) with Python float semantics (e.g. C4 pt 37.45% → 37.5%); all documents use the same rule.
 
 *Generated from 6 scenario result JSONs in this directory.*

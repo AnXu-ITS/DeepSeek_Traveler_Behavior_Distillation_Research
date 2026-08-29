@@ -71,7 +71,7 @@ MATSim/Java 版本、exit code、runtime。
 - MATSim exit = 0；
 - **真人 stuck 率 ≤ 5%/PT 登车**（S9 重跑后改为此口径）：stuckAndAbort 同时计入
   30:00 模拟结束时未完成的 transit 车辆与真人。实证：B.5C 基线（S7-W3，10k，0.3/0.3）
-  有 4,347 辆 transit 车辆截断；S9 世界 PT 需求为 B.5C 的 ~9 倍，真人 stuck 随 PT 需求
+  有 ~20% transit 车辆截断（冻结 S9 C0 实测 4,287/20,966 辆）；S9 世界 PT 需求为 B.5C 的 ~9 倍，真人 stuck 随 PT 需求
   增长（错过单次换乘的既有机制）——绝对阈值 266 不再适用，改为率口径（S9 C0 = 3.8%，
   六情景稳定在 3.3–4.3%），transit 截断只报告不 gate；
 - pt alightings ≤ boardings（截断导致少量在车乘客未下车，记录差值并归因）；
@@ -104,7 +104,7 @@ waiting 上升；C4 disruption → car 下降；C5 联合 → 效应叠加且不
 - 需求侧为 synthetic personas/trips（非冻结生成代码，但 seed=2026 固定）。
 - Phase C 全程不重训 Student；运行中发现的行为边界记录为 known limitation，不作为重训理由。
 - **Transit 截断（已知）**：10k + capacity 0.3 设置下约 20% 的 transit 车辆在 30:00 模拟结束时
-  仍未完成（B.5C 基线 4,347/20,966 辆，S7-W3 同设置同现象），属冻结设置的既有特性；PT 绝对量
+  仍未完成（冻结 S9 C0 实测 4,287/20,966 辆；B.5C 基线同设置同现象），属冻结设置的既有特性；PT 绝对量
   指标受此截断影响，情景间相对差分（同一设置）仍然有效，报告如实标注。
 
 ---
