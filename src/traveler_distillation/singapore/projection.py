@@ -33,15 +33,18 @@ def _c(phi: float) -> float:
     return _EP2 * math.cos(phi) ** 2
 
 
-def utm48n(lat: float, lon: float) -> tuple[float, float]:
-    """WGS84 (degrees) -> UTM 48N (easting, northing in meters).
+def _forward_utm(lat: float, lon: float, central_meridian_deg: float) -> tuple[float, float]:
+    """Shared WGS84 -> UTM transverse-Mercator series (Snyder pp. 61-64).
 
-    Standard transverse-Mercator series (Snyder pp. 61-64), adequate to
-    sub-centimeter accuracy at Singapore latitudes.
+    Returns (easting, northing) for zone central meridian ``central_meridian_deg``
+    with k0=0.9996, false easting 500000 m, false northing 0 m (northern
+    hemisphere). Extracted verbatim from ``utm48n`` so additional zones can be
+    added without duplicating the series; ``utm48n`` keeps its exact signature
+    and numeric behavior (regression-checked against the pre-extraction values).
     """
     phi = math.radians(lat)
     lam = math.radians(lon)
-    dlam = lam - _CENTRAL_MERIDIAN
+    dlam = lam - math.radians(central_meridian_deg)
 
     sin_phi = math.sin(phi)
     cos_phi = math.cos(phi)
@@ -52,7 +55,6 @@ def utm48n(lat: float, lon: float) -> tuple[float, float]:
     c = _EP2 * cos_phi * cos_phi
     a_mer = cos_phi * dlam
 
-    # meridian arc M from equator to phi
     e4 = _E2 * _E2
     e6 = e4 * _E2
     m = _A * (
@@ -76,6 +78,24 @@ def utm48n(lat: float, lon: float) -> tuple[float, float]:
         )
     )
     return easting, northing
+
+
+def utm48n(lat: float, lon: float) -> tuple[float, float]:
+    """WGS84 (degrees) -> UTM 48N (easting, northing in meters).
+
+    Standard transverse-Mercator series (Snyder pp. 61-64), adequate to
+    sub-centimeter accuracy at Singapore latitudes.
+    """
+    return _forward_utm(lat, lon, 105.0)
+
+
+def utm35n(lat: float, lon: float) -> tuple[float, float]:
+    """WGS84 (degrees) -> UTM 35N (easting, northing in meters) — Helsinki (E5).
+
+    Same series as ``utm48n`` with central meridian 27E (zone 35N); Helsinki
+    (lon ~24.9E) lies fully inside zone 35 (24E-30E).
+    """
+    return _forward_utm(lat, lon, 27.0)
 
 
 def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:

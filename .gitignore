@@ -19,6 +19,7 @@ tools/matsim-2026.0-release/
 # large datasets / downloads
 singapore-gtfs.zip
 *.gtfs.zip
+hsl/
 
 # local tooling
 .qoder/

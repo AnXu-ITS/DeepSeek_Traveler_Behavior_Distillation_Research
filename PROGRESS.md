@@ -1,7 +1,9 @@
 # 实验进度与执行记录
 
 > 蒸馏出行意图 · 个体行为蒸馏研究（DeepSeek V4 Pro → 轻量 Traveler Agent → MATSim）
-> 更新日期：2026-08-27（S9 重训完成、S9 Freeze、Phase C 六情景重跑完成；同日根目录整理：
+> 更新日期：2026-08-29（TRC_AIT_5 补充实验 E1–E5 全部完成：MNL-B 基线、DeepSeek vs S9 速率/成本、
+> 人口扩展、multi-seed 稳健性、Helsinki zero-shot 迁移；按计划书 Stop Rule 进入 manuscript v1 阶段。
+> 此前 08-27：S9 重训完成、S9 Freeze、Phase C 六情景重跑完成；同日根目录整理：
 > 阶段指令/计划文档移入 `docs/stage_instructions/` 与 `docs/plans/`，路径映射见 README）
 
 ## 研究目标（不变）
@@ -795,3 +797,122 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
   synthetic persona 自行车拥有率 45% 影响）。
 - S8 时代 `outputs/singapore_phase_c/` 结果作废（保留存档），论文使用
   `outputs/singapore_phase_c_s9/`。
+
+## E1 MNL-B baseline 完成 ✅（2026-08-28，TRC_AIT_5 补充实验第一条）
+
+- **实现**：`src/traveler_distillation/baselines/mnl.py`（规格 S3，17 参数；精确 Newton+Armijo；
+  G1 识别修正记录在案：exposure/reliability/car_own_car 吸收进 ASC，S2 commute 项不可识别被排除）。
+- **估计**：234 训练态软标签 MLE，val(51 态) 选模 S3；G1/G4 PASS（Hessian PD、SE 有限、
+  10 重启 spread 2.5e-08、逐位确定）。冻结：`outputs/e1_mnl/mnl_b_coefs.json`。
+- **决策层**（G2 PASS：S9 复算与冻结 s9_accessibility_eval 逐位一致 28 项）：
+  - T1 51 态：MNL KL 0.165 vs S9 0.170；PT-MAE 0.153 vs 0.135；FVR 均 0.083；acc 0.863 vs 0.941。
+  - T2 可达性：MNL ΔP best−worst 0.105 vs S9 0.153 vs Teacher 0.448；P(PT) 曲线不随可达性等级单调。
+  - T3 counterfactual：MNL acc 0.668 vs S9 0.889；KL 0.386 vs 0.051；sign 0.595 vs 0.708——
+    **静态相当、动态/多条件大幅落后**。
+- **仿真层**（MNL × C0–C5，10k，seed 2026，capacity 0.3/0.3；G3 PASS：decision_fn=None 复建
+  C0 与冻结 S9 C0 三工件逐字节一致 SHA256 全同；六情景 gate 全 PASS）：
+  - C0：car 36.9 / pt 31.7 / bike 21.8 / walk 9.6（S9 28.3/25.3/34.0/12.4）。
+  - C1 雨：Δpt **+1.6pp**（S9 +20.0pp）——方向对、幅度弱；
+  - C2 票价×1.5：Δpt **+7.4pp**（S9 +0.4pp）——**方向反转**（β_cost=+0.257, z=1.28）；
+  - C3 delay：Δpt −7.0pp（S9 −15.1pp）；
+  - C4 disruption：Δcar −2.9pp（S9 −26.5pp）；
+  - C5 rain+delay：Δpt −5.0pp（S9 −6.7pp）。
+- **结论**：MNL 是合格的静态选择基线；动态弹性、联合响应与 supply-aware 响应上 S9 占优；
+  MNL 在蒸馏监督下估计出符号错误的成本系数并导致 C2 反转——如实报告（E1 结论目标成立）。
+- **工件**：`outputs/e1_mnl/`（报告/系数/决策层评估）、`outputs/singapore_phase_c_mnl/`
+  （六情景仿真）；paper 归档 `data_report/10_E1_MNL/`。
+
+## E2 DeepSeek vs S9 速率/成本实验完成 ✅（2026-08-28，TRC_AIT_5 补充实验第二条）
+
+> 设计书：`TRC_AIT_5_E2_DEEPSEEK_S9_EFFICIENCY_DESIGN.md` v0.2（paper 仓库）；报告：`outputs/e2_efficiency/E2_REPORT.md`
+
+- **实现**：`scripts/bench_e2_efficiency.py`（状态池构建 + S9 计时 + G2/G4 门）、
+  `scripts/bench_e2_deepseek.py`（DeepSeek 实测，K=1 + cache_bypass + resume）、
+  `scripts/make_e2_report.py`（报告数字只从证据 JSON 生成，无手抄）。
+- **状态池**：100,000 C0 基线态（persona/trip seed 2026 + `generation_v0_1.yaml` + frozen 供给；
+  4 worker 确定性分片，88 min，SHA256 `744c5896…`，checkpoint `6af79b44…` 核对通过）。
+- **G2**：10k 前缀决策与冻结 Phase C C0 `adapter_manifest.json` 逐位一致（0/10,000 不一致）
+  ——状态池与冻结 S9 管线完全同源。
+- **T1 时延**（同 100 态前缀对拍）：DeepSeek mean **86.5s**（P50 87.4 / P95 162.8，N=100 实测）；
+  S9 CPU 顺序 mean **0.33ms**（P95 0.8ms，100k 态）——**≈3.2×10⁵ 倍**。
+- **T2 吞吐**：DeepSeek 顺序 0.7 states/min（10k 投影 240h；历史 4-worker 锚点 28–33h）；
+  S9 顺序 3.0k states/s，batch 21–25k states/s（10k ≈ 0.4–3.3s）。
+- **T3 成本**（87 次成功调用真实 token × 三档参考价格）：DeepSeek $0.0021–0.0351/state
+  → 10k $21–351、100k $208–3515（线性投影）；S9 $0；
+  一次性蒸馏投入参考行（1,502 次调用）$2.91–47.34。
+- **T4 S9 人口级**（无 MATSim，实测）：100k 端到端 5.8h（共享输入构建 208ms/state 主导），
+  决策时间合计仅 98.4s（0.98ms/state）。
+- **门禁**：G1-S9 PASS（重复 CV 0.9–1.4%）、G2 PASS、G3 PASS（100/120 调用）、G4 PASS（100k 决策逐位一致）；
+  **G1-DS FAIL 如实记录**：13/100 调用失败（SSL 断连×10 + empty_content×2 + timeout×1，
+  网关间歇性不稳定，与历史记录一致），时延/token 统计基于 87 次成功调用。
+- **诚实边界**：`deepseek-v4-pro` 公开定价未知（三档参考价格场景，账单口径未获得）；
+  DeepSeek 10k/100k 与并发行均为投影并标注；失败率 13% > 10% **触发设计 R1**
+  （N=200 扩展待用户追加批准）。
+- **工件**：`outputs/e2_efficiency/`（报告、states 190MB、decisions、build_timing、
+  6 份 time-s9、deepseek_calls.jsonl、pool_manifest）；paper 归档 `data_report/11_E2_EFFICIENCY/`。
+
+## E3 Population Scalability 完成 ✅（2026-08-28，TRC_AIT_5 补充实验第三条；止于 50k）
+
+- **依据**：`TRC_AIT_5_EXPERIMENT_PLAN.md` §E3；设计书 `TRC_AIT_5_E3_POPULATION_SCALABILITY_DESIGN.md`
+  v0.1（执行期修订 1–8 全记录在案）；执行 `scripts/singapore/run_e3_scale.py`
+  （import 复用 `run_phase_c.py`，不改默认路径；零侵入计时包装 + ctypes 内存采样）。
+- **档位**：1k×3 试点 / 10k 主锚 / 20k / 50k 全过门禁；**100k 及 200k/500k 取消执行（用户指示）**，
+  已启动的 100k 构建中止并清理（无完整工件）；S7 六条“100k 稳定”判据不再评估。
+- **门禁**：G1 前缀逐位一致（各档前 10k 决策与冻结 C0 全字段一致；10k 档 population.xml SHA256
+  全同）；G2a/G2b 全过；G3 确定性（1k×3 决策 manifest SHA 全同，CV 暖机口径全 ≤10%——修订 1）；
+  **G3′ 10k 档 24/24 指标与冻结 `phase_c_result.json` 逐字段相等**（MATSim 跨日确定性实证）；
+  G4 计时质量（10k/50k 各 1 次 ≤2 s OS 停顿，修订 4 条款记录在案）。
+- **核心读数（T1–T5 见 `outputs/e3_scale/E3_REPORT.md`）**：build 353 s→3,063→5,934→13,907 s
+  （跨档比值 ×8.7/×1.94/×2.34，次线性）；factory（可达性规划）占 57–63%，**decide（S9 推理）仅
+  0.94–1.03 ms/态**（总量 1.0/10.3/18.8/48.8 s）；MATSim 118–202 s（1k→50k，供给主导，50k 拥堵
+  初现 slow share 0.02）；py 峰值 1.97→5.27 GB（Δ 增长次线性，100k 外推 ~7 GB 安全、无需 R1）；
+  java 峰值恒 ~6.5 GB；决策 share 漂移 ≤0.6pp；stuck 3.8–4.8%；PT validity 93.5–95.1%；
+  boardings 线性（5,613→11,357→28,440）。
+- **结论（计划书 §E3 目标达成）**：behavioral inference scalability 与 simulation scalability
+  成功分离——**系统瓶颈 = 行为构建侧（可达性规划 + leg 路由），S9 推理与 MATSim 仿真均非瓶颈**。
+- **工件**：`outputs/e3_scale/`（E3_REPORT.md + 每档 result JSON + 原始逐态计时数组）；
+  paper 归档 `data_report/12_E3_SCALE/`；设计书修订 1–8。
+
+
+## E4 Phase C Multi-Seed Robustness 完成 ✅（2026-08-29，TRC_AIT_5 补充实验第四条）
+
+- **依据**：`TRC_AIT_5_EXPERIMENT_PLAN.md` §E4；设计书 `TRC_AIT_5_E4_MULTISEED_ROBUSTNESS_DESIGN.md`
+  v0.1（执行期修订 1–3 在案：并发批准、执行结果、归档编号顺延）；执行 `scripts/singapore/run_e4_multiseed.py`
+  （import 复用 `run_phase_c.py`，不改默认路径；seed 参数化 + 真实 checkpoint 字段 + 工件 SHA256）。
+- **运行量**：seed 42 × 6 情景 + seed 7 × 6 情景 = 12 次运行（seed 2026 冻结列只读复用，零重跑）
+  + G1 门禁复跑（seed 42 C0 r1）。与 E5 Helsinki 并发（用户 2026-08-28 批准，contention_note 逐运行记录；
+  计时仅为出处性元数据）。
+- **门禁**：G0 冻结列只读 + 内部一致性 PASS（6 文件 SHA256 + phase_c_records 交叉核对 6/6）；G1 r1/r0
+  population.xml 与 adapter_manifest SHA256 全同 + 决策/指标逐字段相等 PASS；G2 十二运行 Phase C gate
+  全 PASS（12/12）；G3 结构一致仅 1 项报告偏离（seed7/C4 stuck 率 3.16% 略低于冻结带下限 3.3%，
+  275/8,708，属良性样本波动）；G4 数字管道 PASS（程序化生成，无手抄）。
+- **核心结论（T1–T5 见 `outputs/e4_multiseed/E4_REPORT.md`）**：C0 baseline 决策 share 跨 seed 高度一致
+  （car 27.7–28.3 / pt 25.9–26.1 / bike 33.3–34.0 / walk 12.4–12.9）；C1–C5 全部响应指标 3/3 符号一致
+  （Δpt share：C1 +19.9±0.2 / C2 +0.5±0.1 / C3 −15.4±0.3 / C4 +12.0±0.3 / C5 −6.7±0.3 pp）；
+  **C2 fare ×1.5 弱响应经 §5.2 预注册规则判定 stable**（Δpt +0.4/+0.5/+0.5 pp、Δboardings +61/+99/+80，
+  |mean|/std=8.08；与次小响应量级比 0.07×）——稳定弱效应而非抽样噪声；C0–C5 情景响应不依赖单一
+  population seed（计划书 §E4 目标达成）。
+- **工件**：`outputs/e4_multiseed/`（E4_REPORT.md + 12 份 e4_result.json + g1_check.json + seed_records）；
+  paper 归档 `data_report/14_E4_MULTISEED/`（E5 已占 13 号，按设计 §6 S6 顺延规则）。
+
+## E5 Helsinki Zero-Shot Transfer 完成 ✅（2026-08-29，TRC_AIT_5 补充实验第五条）
+
+- **依据**：`TRC_AIT_5_EXPERIMENT_PLAN.md` §E5；设计书 `TRC_AIT_5_E5_SECOND_CITY_ZERO_SHOT_DESIGN.md`
+  v0.1（paper 仓库）；执行 `scripts/helsinki/run_e5_helsinki.py` + `prep_helsinki_gtfs.py` +
+  `build_helsinki_network.py`（frozen S9 零重训、零 Teacher；G0 teacher_guard 逐运行断言，
+  checkpoint SHA256 每运行核实）。
+- **供给**：HSL GTFS 2026-08-27 快照 + OSM 子区域（≈97 km²；节点/链路 290k/638k；GTFS trips
+  13,655、站 1,269）；snap p90 21.7 m；routing failures 0；capacity 0.3/0.3 与时间窗沿用 Singapore
+  冻结值（G1 平价带 0.5–4× 全过）。
+- **情景**：计划书最小集 **C0/C1/C3** 完成（N=10,000，seed 2026）；C2/C4/C5 为设计 §7 V4
+  条件扩展，未触发。
+- **门禁**：**G0–G5 全 PASS**；C0 决策四模式齐 + fallback 原因已知（PT validity 75.9% overall /
+  100.0% feasible-conditioned，如实报告）；G2 确定性（1k pilot manifest SHA256 全同）。
+- **核心结论（T1–T5 见 `outputs/e5_helsinki/E5_REPORT.md`）**：C0 share 28.6/23.0/34.6/13.8
+  （vs SG 冻结 28.3/25.3/34.0/12.4）；P(PT) A→E 梯度方向复现但更弱（E−A −0.047 vs SG −0.153，
+  中间类非单调——如实报告）；情景方向 C1 7/7、C3 6/7 符号一致（雨→离 bike/walk、延误→离 pt）；
+  stuck 人 1/1/2、failed trips 1（SG 30:00 截断 artifact 在 Helsinki C0 不出现）。
+  **supply-aware 接口在未见城市 zero-shot 可用（定性方向证据；无 Helsinki 标签，不做跨城统计
+  检验）**——计划书 §E5 目标达成。
+- **工件**：`outputs/e5_helsinki/`（E5_REPORT.md + e5_records/e5_acc_audit + 三情景完整 MATSim
+  输出）；paper 归档 `data_report/13_E5_HELSINKI/`（含 SHA256SUMS）。

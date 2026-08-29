@@ -355,6 +355,7 @@ class MATSimAdapter:
         flow_capacity_factor: float | None = None,
         storage_capacity_factor: float | None = None,
         alt_factory=None,
+        decision_fn=None,
     ) -> dict:
         """Real-network scenario: student decisions -> population/config on the
         Singapore supply (OSM network + scheduled PT).
@@ -371,6 +372,11 @@ class MATSimAdapter:
         dest_node)`` and must return a list of ``TravelAlternative``. The S8
         adapter uses this to attach real-supply transit accessibility
         attributes to the pt alternative before the student decides.
+
+        ``decision_fn`` (optional) replaces the student ``decide`` call for the
+        E1 MNL baseline: ``decision_fn(state) -> {"mode", "mode_probabilities",
+        "departure_time_shift_min"}``. Default path (None) is byte-identical to
+        the frozen Phase C behavior.
         """
         out = Path(output_dir)
         out.mkdir(parents=True, exist_ok=True)
@@ -478,7 +484,7 @@ class MATSimAdapter:
                     persona=persona, trip=trip, context=context,
                     alternatives=alternatives,
                 )
-                decision = self.decide(state)
+                decision = decision_fn(state) if decision_fn is not None else self.decide(state)
                 dep_min = trip.desired_departure_min + decision["departure_time_shift_min"]
                 dur_min = _ACTIVITY_DURATIONS_MIN.get(trip.destination_type, 2 * 60)
 
