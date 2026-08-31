@@ -1,0 +1,55 @@
+{
+  "experiment": "E2",
+  "pool_n": 100000,
+  "population_seed": 2026,
+  "gen_config": "configs/generation_v0_1.yaml",
+  "gen_config_sha256": "cffc833e523d7835895947c09fc0d4d0679b2cac0113b82d3cfd6a86f318a3b5",
+  "checkpoint": "releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+  "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+  "context": "C0_baseline",
+  "activity_nodes_raw": 88106,
+  "activity_nodes_filtered": 44387,
+  "workers": 4,
+  "worker_ranges": [
+    {
+      "lo": 0,
+      "hi": 25000,
+      "unique_ods": 19165,
+      "wall_s": 5166.5
+    },
+    {
+      "lo": 25000,
+      "hi": 50000,
+      "unique_ods": 19124,
+      "wall_s": 5263.5
+    },
+    {
+      "lo": 50000,
+      "hi": 75000,
+      "unique_ods": 19160,
+      "wall_s": 5231.2
+    },
+    {
+      "lo": 75000,
+      "hi": 100000,
+      "unique_ods": 19076,
+      "wall_s": 5256.3
+    }
+  ],
+  "unique_od_pairs_workers": 76525,
+  "supply_sha256": {
+    "network": "115c077018248a52374885fe4bce94240062ad810bcfaccc08f8bcdd997360b4",
+    "schedule": "ded93ecae07859bc5b9287d024e507fa1ef7bf3d15487273d9a9495a58f8bd4d",
+    "vehicles": "19cb25c2274d0d5d419db02b60dd2bba4598fdc4e6539288c9bc19105f5c2bde",
+    "stops": "e3a536ea17b9865741713fac9b54a819713d6fb18e3694fddaabcf6e48602657",
+    "snapping": "5610d21356b538193e06ce588c3e494e92dc60b7adc43156860a71a1102fb033",
+    "trips_by_stop": "0dd8178b1d442e0d054a67619fb6179ff15ff76d6d766d43196ad6ce6c9e8719",
+    "activity_nodes": "ffbf93f7ad62608f9ad179a5e964bc06aeff08ea172e88a4849ebb6148a19f7b"
+  },
+  "states_file": "outputs\\e2_efficiency\\states_100000.jsonl",
+  "states_sha256": "744c589604686d41ff9ede2391a9e5faa982299b5dede09c3cd012b63d2b6b69",
+  "decisions_file": "outputs\\e2_efficiency\\decisions_100000.json",
+  "build_timing_file": "outputs\\e2_efficiency\\build_timing_100000.json",
+  "build_wall_seconds": 5280.1,
+  "note": "state->decision pipeline identical to Phase C build_real_scenario (same generators/seed, same OD formula, same shared alt factory, same decide() call); MATSim never runs. Multiprocess ranges are deterministic and byte-identical to the single-process build (verified by G2 on the 10k prefix)."
+}

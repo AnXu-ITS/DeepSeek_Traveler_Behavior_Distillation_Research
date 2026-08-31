@@ -1,0 +1,6356 @@
+{
+  "n_stops": 1269,
+  "dist_m": {
+    "mean": 11.5,
+    "p50": 8.4,
+    "p90": 21.7,
+    "max": 223.6
+  },
+  "per_stop": [
+    {
+      "stop_id": "1010107",
+      "nearest_node": "1758868672",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1010108",
+      "nearest_node": "340861353",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1010109",
+      "nearest_node": "778254927",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1010110",
+      "nearest_node": "314746861",
+      "dist_m": 19.6
+    },
+    {
+      "stop_id": "1010111",
+      "nearest_node": "1003832563",
+      "dist_m": 10.3
+    },
+    {
+      "stop_id": "1010112",
+      "nearest_node": "11271883970",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1010124",
+      "nearest_node": "11763836487",
+      "dist_m": 17.5
+    },
+    {
+      "stop_id": "1010125",
+      "nearest_node": "2302471200",
+      "dist_m": 17.6
+    },
+    {
+      "stop_id": "1010419",
+      "nearest_node": "891522754",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1010420",
+      "nearest_node": "891522752",
+      "dist_m": 2.0
+    },
+    {
+      "stop_id": "1010421",
+      "nearest_node": "1012951955",
+      "dist_m": 8.2
+    },
+    {
+      "stop_id": "1010422",
+      "nearest_node": "891526719",
+      "dist_m": 6.2
+    },
+    {
+      "stop_id": "1010424",
+      "nearest_node": "3143554574",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1010425",
+      "nearest_node": "1375809903",
+      "dist_m": 15.9
+    },
+    {
+      "stop_id": "1010427",
+      "nearest_node": "2302471200",
+      "dist_m": 17.6
+    },
+    {
+      "stop_id": "1010428",
+      "nearest_node": "11763836487",
+      "dist_m": 17.5
+    },
+    {
+      "stop_id": "1020105",
+      "nearest_node": "344367020",
+      "dist_m": 16.4
+    },
+    {
+      "stop_id": "1020106",
+      "nearest_node": "13518980946",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1020113",
+      "nearest_node": "265731960",
+      "dist_m": 7.6
+    },
+    {
+      "stop_id": "1020115",
+      "nearest_node": "404759606",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1020116",
+      "nearest_node": "404759612",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1020117",
+      "nearest_node": "404759606",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1020119",
+      "nearest_node": "404759614",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1020120",
+      "nearest_node": "404759603",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1020122",
+      "nearest_node": "404759615",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1020123",
+      "nearest_node": "404759604",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1020128",
+      "nearest_node": "7191663192",
+      "dist_m": 6.0
+    },
+    {
+      "stop_id": "1020130",
+      "nearest_node": "7258295450",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1020131",
+      "nearest_node": "6502119438",
+      "dist_m": 1.3
+    },
+    {
+      "stop_id": "1020132",
+      "nearest_node": "6502119432",
+      "dist_m": 1.9
+    },
+    {
+      "stop_id": "1020133",
+      "nearest_node": "6502119436",
+      "dist_m": 1.5
+    },
+    {
+      "stop_id": "1020135",
+      "nearest_node": "6502119434",
+      "dist_m": 1.4
+    },
+    {
+      "stop_id": "1020169",
+      "nearest_node": "1514631279",
+      "dist_m": 7.8
+    },
+    {
+      "stop_id": "1020182",
+      "nearest_node": "36774174",
+      "dist_m": 1.7
+    },
+    {
+      "stop_id": "1020201",
+      "nearest_node": "2465767405",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1020245",
+      "nearest_node": "6502119424",
+      "dist_m": 1.2
+    },
+    {
+      "stop_id": "1020401",
+      "nearest_node": "142054929",
+      "dist_m": 15.5
+    },
+    {
+      "stop_id": "1020402",
+      "nearest_node": "142054929",
+      "dist_m": 27.5
+    },
+    {
+      "stop_id": "1020443",
+      "nearest_node": "575675035",
+      "dist_m": 17.3
+    },
+    {
+      "stop_id": "1020444",
+      "nearest_node": "14090367314",
+      "dist_m": 9.7
+    },
+    {
+      "stop_id": "1020446",
+      "nearest_node": "9353038217",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1020447",
+      "nearest_node": "5770350574",
+      "dist_m": 13.4
+    },
+    {
+      "stop_id": "1020448",
+      "nearest_node": "5770348830",
+      "dist_m": 2.1
+    },
+    {
+      "stop_id": "1020449",
+      "nearest_node": "5770348832",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1020450",
+      "nearest_node": "5770348822",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1020453",
+      "nearest_node": "25413711",
+      "dist_m": 21.2
+    },
+    {
+      "stop_id": "1020454",
+      "nearest_node": "1369465820",
+      "dist_m": 14.1
+    },
+    {
+      "stop_id": "1020455",
+      "nearest_node": "376031659",
+      "dist_m": 27.1
+    },
+    {
+      "stop_id": "1020457",
+      "nearest_node": "177934969",
+      "dist_m": 11.5
+    },
+    {
+      "stop_id": "1020458",
+      "nearest_node": "1012904523",
+      "dist_m": 14.0
+    },
+    {
+      "stop_id": "1020459",
+      "nearest_node": "1514631279",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1020460",
+      "nearest_node": "298407176",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1020463",
+      "nearest_node": "1984341849",
+      "dist_m": 16.0
+    },
+    {
+      "stop_id": "1020464",
+      "nearest_node": "1984341845",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1020501",
+      "nearest_node": "404759606",
+      "dist_m": 55.8
+    },
+    {
+      "stop_id": "1020502",
+      "nearest_node": "7191663189",
+      "dist_m": 50.2
+    },
+    {
+      "stop_id": "1020503",
+      "nearest_node": "9524721842",
+      "dist_m": 40.6
+    },
+    {
+      "stop_id": "1020551",
+      "nearest_node": "404759606",
+      "dist_m": 70.8
+    },
+    {
+      "stop_id": "1020552",
+      "nearest_node": "2485472947",
+      "dist_m": 43.5
+    },
+    {
+      "stop_id": "1020553",
+      "nearest_node": "9524721842",
+      "dist_m": 54.7
+    },
+    {
+      "stop_id": "1020601",
+      "nearest_node": "6138118795",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1020602",
+      "nearest_node": "6138118795",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1020603",
+      "nearest_node": "390420875",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1020604",
+      "nearest_node": "390420875",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1030401",
+      "nearest_node": "314935876",
+      "dist_m": 11.1
+    },
+    {
+      "stop_id": "1030423",
+      "nearest_node": "1376320200",
+      "dist_m": 23.6
+    },
+    {
+      "stop_id": "1030424",
+      "nearest_node": "1376320200",
+      "dist_m": 18.0
+    },
+    {
+      "stop_id": "1030425",
+      "nearest_node": "264012892",
+      "dist_m": 12.3
+    },
+    {
+      "stop_id": "1030426",
+      "nearest_node": "333812070",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1030427",
+      "nearest_node": "1003245904",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1040102",
+      "nearest_node": "3401767829",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1040123",
+      "nearest_node": "12823772479",
+      "dist_m": 19.5
+    },
+    {
+      "stop_id": "1040124",
+      "nearest_node": "3226317521",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1040126",
+      "nearest_node": "1973747712",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1040128",
+      "nearest_node": "25414831",
+      "dist_m": 15.7
+    },
+    {
+      "stop_id": "1040130",
+      "nearest_node": "11350420207",
+      "dist_m": 10.1
+    },
+    {
+      "stop_id": "1040142",
+      "nearest_node": "1405764739",
+      "dist_m": 0.5
+    },
+    {
+      "stop_id": "1040150",
+      "nearest_node": "2036350418",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1040153",
+      "nearest_node": "266159809",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1040155",
+      "nearest_node": "12775252915",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1040157",
+      "nearest_node": "1005727647",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1040201",
+      "nearest_node": "1355987105",
+      "dist_m": 11.6
+    },
+    {
+      "stop_id": "1040231",
+      "nearest_node": "6335868879",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1040233",
+      "nearest_node": "4100062310",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1040234",
+      "nearest_node": "1167783972",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1040271",
+      "nearest_node": "1899195265",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1040272",
+      "nearest_node": "1899195265",
+      "dist_m": 1.9
+    },
+    {
+      "stop_id": "1040273",
+      "nearest_node": "506361718",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1040274",
+      "nearest_node": "506361719",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1040275",
+      "nearest_node": "506361720",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1040276",
+      "nearest_node": "506361721",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1040277",
+      "nearest_node": "506361722",
+      "dist_m": 7.6
+    },
+    {
+      "stop_id": "1040278",
+      "nearest_node": "506361723",
+      "dist_m": 7.6
+    },
+    {
+      "stop_id": "1040279",
+      "nearest_node": "506361724",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1040280",
+      "nearest_node": "506361725",
+      "dist_m": 8.6
+    },
+    {
+      "stop_id": "1040281",
+      "nearest_node": "506361726",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1040282",
+      "nearest_node": "506361727",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1040284",
+      "nearest_node": "3205282729",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1040289",
+      "nearest_node": "1523193757",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1040401",
+      "nearest_node": "7631477464",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1040404",
+      "nearest_node": "57628555",
+      "dist_m": 15.8
+    },
+    {
+      "stop_id": "1040405",
+      "nearest_node": "1842188399",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1040406",
+      "nearest_node": "1934490984",
+      "dist_m": 10.3
+    },
+    {
+      "stop_id": "1040407",
+      "nearest_node": "314929253",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1040408",
+      "nearest_node": "674744959",
+      "dist_m": 12.3
+    },
+    {
+      "stop_id": "1040409",
+      "nearest_node": "665492485",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1040410",
+      "nearest_node": "313962153",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1040411",
+      "nearest_node": "313962123",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1040437",
+      "nearest_node": "537519900",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1040438",
+      "nearest_node": "7631477471",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1040440",
+      "nearest_node": "950318797",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1040441",
+      "nearest_node": "3401767817",
+      "dist_m": 16.3
+    },
+    {
+      "stop_id": "1040445",
+      "nearest_node": "537519900",
+      "dist_m": 16.3
+    },
+    {
+      "stop_id": "1040601",
+      "nearest_node": "506361726",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1040602",
+      "nearest_node": "506361726",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1050106",
+      "nearest_node": "436223307",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1050107",
+      "nearest_node": "1297416474",
+      "dist_m": 13.5
+    },
+    {
+      "stop_id": "1050108",
+      "nearest_node": "3812556755",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1050109",
+      "nearest_node": "2470205652",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1050110",
+      "nearest_node": "7679371998",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1050132",
+      "nearest_node": "3401767816",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1050401",
+      "nearest_node": "941399511",
+      "dist_m": 6.2
+    },
+    {
+      "stop_id": "1050408",
+      "nearest_node": "3812556755",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1050412",
+      "nearest_node": "1011256648",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1050413",
+      "nearest_node": "436223307",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1050414",
+      "nearest_node": "436223305",
+      "dist_m": 7.1
+    },
+    {
+      "stop_id": "1050415",
+      "nearest_node": "311045050",
+      "dist_m": 19.1
+    },
+    {
+      "stop_id": "1050416",
+      "nearest_node": "311045052",
+      "dist_m": 23.4
+    },
+    {
+      "stop_id": "1050417",
+      "nearest_node": "11764097598",
+      "dist_m": 13.1
+    },
+    {
+      "stop_id": "1050432",
+      "nearest_node": "3401767816",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1060101",
+      "nearest_node": "742225242",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1060103",
+      "nearest_node": "941391169",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1060104",
+      "nearest_node": "1379551742",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1060129",
+      "nearest_node": "1380192163",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1060404",
+      "nearest_node": "1379551742",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1070417",
+      "nearest_node": "746958881",
+      "dist_m": 13.1
+    },
+    {
+      "stop_id": "1070418",
+      "nearest_node": "6485238753",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1070419",
+      "nearest_node": "6485238733",
+      "dist_m": 13.3
+    },
+    {
+      "stop_id": "1070420",
+      "nearest_node": "3340705427",
+      "dist_m": 21.1
+    },
+    {
+      "stop_id": "1070421",
+      "nearest_node": "900168279",
+      "dist_m": 20.7
+    },
+    {
+      "stop_id": "1070422",
+      "nearest_node": "315391857",
+      "dist_m": 19.4
+    },
+    {
+      "stop_id": "1070424",
+      "nearest_node": "1011022115",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1080401",
+      "nearest_node": "2036286096",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1080403",
+      "nearest_node": "2036286096",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1080405",
+      "nearest_node": "445344983",
+      "dist_m": 19.6
+    },
+    {
+      "stop_id": "1080406",
+      "nearest_node": "445344983",
+      "dist_m": 16.5
+    },
+    {
+      "stop_id": "1080407",
+      "nearest_node": "176254496",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1080408",
+      "nearest_node": "279263066",
+      "dist_m": 12.8
+    },
+    {
+      "stop_id": "1080409",
+      "nearest_node": "11141876049",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1080411",
+      "nearest_node": "314061128",
+      "dist_m": 13.7
+    },
+    {
+      "stop_id": "1080413",
+      "nearest_node": "1197823409",
+      "dist_m": 14.2
+    },
+    {
+      "stop_id": "1080416",
+      "nearest_node": "6472543983",
+      "dist_m": 28.9
+    },
+    {
+      "stop_id": "1090415",
+      "nearest_node": "25470040",
+      "dist_m": 5.2
+    },
+    {
+      "stop_id": "1090416",
+      "nearest_node": "1379432988",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1100102",
+      "nearest_node": "26661611",
+      "dist_m": 19.1
+    },
+    {
+      "stop_id": "1100103",
+      "nearest_node": "25525309",
+      "dist_m": 10.7
+    },
+    {
+      "stop_id": "1100105",
+      "nearest_node": "25572452",
+      "dist_m": 18.1
+    },
+    {
+      "stop_id": "1100109",
+      "nearest_node": "6321329737",
+      "dist_m": 12.0
+    },
+    {
+      "stop_id": "1100110",
+      "nearest_node": "6321329746",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1100122",
+      "nearest_node": "470417016",
+      "dist_m": 18.0
+    },
+    {
+      "stop_id": "1100125",
+      "nearest_node": "1528652574",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1100131",
+      "nearest_node": "13299523282",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1100132",
+      "nearest_node": "5110046222",
+      "dist_m": 14.4
+    },
+    {
+      "stop_id": "1100143",
+      "nearest_node": "10586641963",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1100159",
+      "nearest_node": "6321329747",
+      "dist_m": 11.4
+    },
+    {
+      "stop_id": "1100160",
+      "nearest_node": "6321329738",
+      "dist_m": 1.9
+    },
+    {
+      "stop_id": "1100167",
+      "nearest_node": "418842200",
+      "dist_m": 12.2
+    },
+    {
+      "stop_id": "1100168",
+      "nearest_node": "12782790421",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1100206",
+      "nearest_node": "13944439072",
+      "dist_m": 7.8
+    },
+    {
+      "stop_id": "1100208",
+      "nearest_node": "10586641919",
+      "dist_m": 22.9
+    },
+    {
+      "stop_id": "1100209",
+      "nearest_node": "10586641920",
+      "dist_m": 15.8
+    },
+    {
+      "stop_id": "1100210",
+      "nearest_node": "12997504990",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1100403",
+      "nearest_node": "13677515027",
+      "dist_m": 24.1
+    },
+    {
+      "stop_id": "1100404",
+      "nearest_node": "10184089215",
+      "dist_m": 39.2
+    },
+    {
+      "stop_id": "1100405",
+      "nearest_node": "10717813683",
+      "dist_m": 15.8
+    },
+    {
+      "stop_id": "1100406",
+      "nearest_node": "7947199460",
+      "dist_m": 17.7
+    },
+    {
+      "stop_id": "1100407",
+      "nearest_node": "5251581366",
+      "dist_m": 14.7
+    },
+    {
+      "stop_id": "1100410",
+      "nearest_node": "4572298655",
+      "dist_m": 14.2
+    },
+    {
+      "stop_id": "1100411",
+      "nearest_node": "12782790421",
+      "dist_m": 10.9
+    },
+    {
+      "stop_id": "1100412",
+      "nearest_node": "34400444",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1100416",
+      "nearest_node": "6854023104",
+      "dist_m": 15.4
+    },
+    {
+      "stop_id": "1100417",
+      "nearest_node": "13234859811",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1100601",
+      "nearest_node": "5936529638",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1100602",
+      "nearest_node": "6130846984",
+      "dist_m": 11.0
+    },
+    {
+      "stop_id": "1111112",
+      "nearest_node": "404746946",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1111114",
+      "nearest_node": "404759620",
+      "dist_m": 22.1
+    },
+    {
+      "stop_id": "1111116",
+      "nearest_node": "12635704919",
+      "dist_m": 8.6
+    },
+    {
+      "stop_id": "1111117",
+      "nearest_node": "409472656",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1111119",
+      "nearest_node": "672367127",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1111131",
+      "nearest_node": "11258603869",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1111142",
+      "nearest_node": "404746945",
+      "dist_m": 23.1
+    },
+    {
+      "stop_id": "1111146",
+      "nearest_node": "13944439071",
+      "dist_m": 11.6
+    },
+    {
+      "stop_id": "1111151",
+      "nearest_node": "8835002764",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1111203",
+      "nearest_node": "14070316126",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1111204",
+      "nearest_node": "672367127",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1111251",
+      "nearest_node": "1936235222",
+      "dist_m": 13.7
+    },
+    {
+      "stop_id": "1111427",
+      "nearest_node": "404746946",
+      "dist_m": 14.9
+    },
+    {
+      "stop_id": "1111428",
+      "nearest_node": "404746946",
+      "dist_m": 21.1
+    },
+    {
+      "stop_id": "1111429",
+      "nearest_node": "404759620",
+      "dist_m": 11.8
+    },
+    {
+      "stop_id": "1111430",
+      "nearest_node": "404746945",
+      "dist_m": 20.8
+    },
+    {
+      "stop_id": "1111431",
+      "nearest_node": "11258603869",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1111432",
+      "nearest_node": "1016087894",
+      "dist_m": 13.6
+    },
+    {
+      "stop_id": "1111601",
+      "nearest_node": "1016087894",
+      "dist_m": 29.8
+    },
+    {
+      "stop_id": "1111602",
+      "nearest_node": "1016087894",
+      "dist_m": 28.0
+    },
+    {
+      "stop_id": "1112103",
+      "nearest_node": "8841324782",
+      "dist_m": 11.1
+    },
+    {
+      "stop_id": "1112104",
+      "nearest_node": "12345533146",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1112105",
+      "nearest_node": "11776517246",
+      "dist_m": 16.2
+    },
+    {
+      "stop_id": "1112126",
+      "nearest_node": "404789065",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1112152",
+      "nearest_node": "11258603863",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1112153",
+      "nearest_node": "945660238",
+      "dist_m": 14.2
+    },
+    {
+      "stop_id": "1112154",
+      "nearest_node": "13097856202",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1112155",
+      "nearest_node": "13097856203",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1112433",
+      "nearest_node": "269311894",
+      "dist_m": 11.3
+    },
+    {
+      "stop_id": "1112434",
+      "nearest_node": "8860248369",
+      "dist_m": 9.7
+    },
+    {
+      "stop_id": "1113131",
+      "nearest_node": "27038944",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1113140",
+      "nearest_node": "1528652571",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1113432",
+      "nearest_node": "269305445",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1113433",
+      "nearest_node": "404789067",
+      "dist_m": 3.8
+    },
+    {
+      "stop_id": "1113434",
+      "nearest_node": "1016088271",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1113435",
+      "nearest_node": "3757133378",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1113480",
+      "nearest_node": "2059749311",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1121124",
+      "nearest_node": "7474813948",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1121130",
+      "nearest_node": "27038935",
+      "dist_m": 15.1
+    },
+    {
+      "stop_id": "1121404",
+      "nearest_node": "2460256922",
+      "dist_m": 22.2
+    },
+    {
+      "stop_id": "1121406",
+      "nearest_node": "289555118",
+      "dist_m": 10.5
+    },
+    {
+      "stop_id": "1121436",
+      "nearest_node": "7474813948",
+      "dist_m": 3.5
+    },
+    {
+      "stop_id": "1121437",
+      "nearest_node": "289550967",
+      "dist_m": 9.1
+    },
+    {
+      "stop_id": "1121446",
+      "nearest_node": "13519107575",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1121449",
+      "nearest_node": "177285926",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1121450",
+      "nearest_node": "894103939",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1121480",
+      "nearest_node": "1396617446",
+      "dist_m": 23.0
+    },
+    {
+      "stop_id": "1121482",
+      "nearest_node": "2050451834",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1121601",
+      "nearest_node": "8831720857",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1121602",
+      "nearest_node": "8831720857",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1122101",
+      "nearest_node": "364770036",
+      "dist_m": 18.0
+    },
+    {
+      "stop_id": "1122102",
+      "nearest_node": "257726943",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1122110",
+      "nearest_node": "13084323275",
+      "dist_m": 2.7
+    },
+    {
+      "stop_id": "1122113",
+      "nearest_node": "1369415113",
+      "dist_m": 23.2
+    },
+    {
+      "stop_id": "1122114",
+      "nearest_node": "313757813",
+      "dist_m": 13.3
+    },
+    {
+      "stop_id": "1122115",
+      "nearest_node": "423747963",
+      "dist_m": 6.0
+    },
+    {
+      "stop_id": "1122116",
+      "nearest_node": "403510689",
+      "dist_m": 14.0
+    },
+    {
+      "stop_id": "1122126",
+      "nearest_node": "12782790420",
+      "dist_m": 7.1
+    },
+    {
+      "stop_id": "1122127",
+      "nearest_node": "1369430628",
+      "dist_m": 3.8
+    },
+    {
+      "stop_id": "1122132",
+      "nearest_node": "1416482342",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1122133",
+      "nearest_node": "3329764051",
+      "dist_m": 12.4
+    },
+    {
+      "stop_id": "1122134",
+      "nearest_node": "878752897",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1122135",
+      "nearest_node": "671168458",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1122196",
+      "nearest_node": "671168455",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1122400",
+      "nearest_node": "13084323275",
+      "dist_m": 2.7
+    },
+    {
+      "stop_id": "1122413",
+      "nearest_node": "1369415113",
+      "dist_m": 23.2
+    },
+    {
+      "stop_id": "1122414",
+      "nearest_node": "313757813",
+      "dist_m": 13.3
+    },
+    {
+      "stop_id": "1122415",
+      "nearest_node": "403510689",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1122416",
+      "nearest_node": "403510689",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1122440",
+      "nearest_node": "1680813258",
+      "dist_m": 18.2
+    },
+    {
+      "stop_id": "1122441",
+      "nearest_node": "962288500",
+      "dist_m": 11.2
+    },
+    {
+      "stop_id": "1122447",
+      "nearest_node": "265744987",
+      "dist_m": 9.7
+    },
+    {
+      "stop_id": "1130101",
+      "nearest_node": "3319121376",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1130102",
+      "nearest_node": "3319121376",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1130103",
+      "nearest_node": "672764613",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1130104",
+      "nearest_node": "672764610",
+      "dist_m": 11.1
+    },
+    {
+      "stop_id": "1130105",
+      "nearest_node": "11724713510",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1130106",
+      "nearest_node": "671173474",
+      "dist_m": 18.8
+    },
+    {
+      "stop_id": "1130107",
+      "nearest_node": "671173472",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1130110",
+      "nearest_node": "296097049",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1130111",
+      "nearest_node": "6327228019",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1130112",
+      "nearest_node": "12782790419",
+      "dist_m": 3.5
+    },
+    {
+      "stop_id": "1130115",
+      "nearest_node": "13130330573",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1130119",
+      "nearest_node": "333533549",
+      "dist_m": 16.6
+    },
+    {
+      "stop_id": "1130120",
+      "nearest_node": "2403728882",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1130122",
+      "nearest_node": "12103910423",
+      "dist_m": 18.7
+    },
+    {
+      "stop_id": "1130123",
+      "nearest_node": "12145049898",
+      "dist_m": 29.2
+    },
+    {
+      "stop_id": "1130139",
+      "nearest_node": "8856690368",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1130181",
+      "nearest_node": "3319121365",
+      "dist_m": 9.6
+    },
+    {
+      "stop_id": "1130182",
+      "nearest_node": "3319121365",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1130183",
+      "nearest_node": "414619164",
+      "dist_m": 15.7
+    },
+    {
+      "stop_id": "1130184",
+      "nearest_node": "295302502",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1130206",
+      "nearest_node": "671173473",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1130432",
+      "nearest_node": "313950732",
+      "dist_m": 27.1
+    },
+    {
+      "stop_id": "1130433",
+      "nearest_node": "1387035839",
+      "dist_m": 6.0
+    },
+    {
+      "stop_id": "1130434",
+      "nearest_node": "671173473",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1130435",
+      "nearest_node": "333531712",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1140101",
+      "nearest_node": "285953028",
+      "dist_m": 23.5
+    },
+    {
+      "stop_id": "1140102",
+      "nearest_node": "4451986198",
+      "dist_m": 8.5
+    },
+    {
+      "stop_id": "1140103",
+      "nearest_node": "4451986200",
+      "dist_m": 6.2
+    },
+    {
+      "stop_id": "1140104",
+      "nearest_node": "317988417",
+      "dist_m": 19.8
+    },
+    {
+      "stop_id": "1140105",
+      "nearest_node": "317988417",
+      "dist_m": 22.5
+    },
+    {
+      "stop_id": "1140106",
+      "nearest_node": "848731214",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1140109",
+      "nearest_node": "3178665609",
+      "dist_m": 15.9
+    },
+    {
+      "stop_id": "1140110",
+      "nearest_node": "983529445",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1140115",
+      "nearest_node": "6325880084",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1140117",
+      "nearest_node": "12412460387",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1140118",
+      "nearest_node": "12412460388",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1140119",
+      "nearest_node": "13172767177",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1140120",
+      "nearest_node": "2399143956",
+      "dist_m": 10.9
+    },
+    {
+      "stop_id": "1140122",
+      "nearest_node": "4451986200",
+      "dist_m": 11.5
+    },
+    {
+      "stop_id": "1140125",
+      "nearest_node": "1014167493",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1140126",
+      "nearest_node": "12782790418",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1140127",
+      "nearest_node": "12136626993",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1140131",
+      "nearest_node": "915536399",
+      "dist_m": 11.3
+    },
+    {
+      "stop_id": "1140133",
+      "nearest_node": "848731214",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1140156",
+      "nearest_node": "936602633",
+      "dist_m": 21.8
+    },
+    {
+      "stop_id": "1140157",
+      "nearest_node": "6468250706",
+      "dist_m": 13.2
+    },
+    {
+      "stop_id": "1140165",
+      "nearest_node": "848669024",
+      "dist_m": 18.8
+    },
+    {
+      "stop_id": "1140166",
+      "nearest_node": "13385847268",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1140196",
+      "nearest_node": "671170740",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1140197",
+      "nearest_node": "927771510",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1140199",
+      "nearest_node": "12782790417",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1140201",
+      "nearest_node": "13111827049",
+      "dist_m": 6.2
+    },
+    {
+      "stop_id": "1140207",
+      "nearest_node": "13817481205",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1140216",
+      "nearest_node": "12361154434",
+      "dist_m": 2.4
+    },
+    {
+      "stop_id": "1140251",
+      "nearest_node": "13111827040",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1140434",
+      "nearest_node": "11822416777",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1140435",
+      "nearest_node": "940003504",
+      "dist_m": 9.7
+    },
+    {
+      "stop_id": "1140436",
+      "nearest_node": "12419469077",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1140437",
+      "nearest_node": "13119174898",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1140438",
+      "nearest_node": "1517196430",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1140439",
+      "nearest_node": "13278461856",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1140440",
+      "nearest_node": "564112918",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1140441",
+      "nearest_node": "2688271368",
+      "dist_m": 30.7
+    },
+    {
+      "stop_id": "1140446",
+      "nearest_node": "12989821564",
+      "dist_m": 9.1
+    },
+    {
+      "stop_id": "1140450",
+      "nearest_node": "671170740",
+      "dist_m": 20.4
+    },
+    {
+      "stop_id": "1140451",
+      "nearest_node": "671170740",
+      "dist_m": 34.1
+    },
+    {
+      "stop_id": "1140452",
+      "nearest_node": "258074500",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1140453",
+      "nearest_node": "258074510",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1150101",
+      "nearest_node": "11158719215",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1150102",
+      "nearest_node": "13103298001",
+      "dist_m": 7.8
+    },
+    {
+      "stop_id": "1150107",
+      "nearest_node": "332554489",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1150108",
+      "nearest_node": "1514876701",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1150109",
+      "nearest_node": "1038110578",
+      "dist_m": 11.4
+    },
+    {
+      "stop_id": "1150110",
+      "nearest_node": "12785174059",
+      "dist_m": 3.5
+    },
+    {
+      "stop_id": "1150111",
+      "nearest_node": "5648415267",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1150112",
+      "nearest_node": "5648415268",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1150113",
+      "nearest_node": "3059039478",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1150114",
+      "nearest_node": "5637766527",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1150116",
+      "nearest_node": "5877731653",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1150118",
+      "nearest_node": "5637766529",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1150120",
+      "nearest_node": "1514836879",
+      "dist_m": 29.7
+    },
+    {
+      "stop_id": "1150123",
+      "nearest_node": "1514718093",
+      "dist_m": 12.0
+    },
+    {
+      "stop_id": "1150125",
+      "nearest_node": "12987394627",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1150127",
+      "nearest_node": "1514718116",
+      "dist_m": 11.0
+    },
+    {
+      "stop_id": "1150129",
+      "nearest_node": "1372590811",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1150130",
+      "nearest_node": "149036498",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1150133",
+      "nearest_node": "5786686451",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1150134",
+      "nearest_node": "5637766530",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1150401",
+      "nearest_node": "5403929785",
+      "dist_m": 17.1
+    },
+    {
+      "stop_id": "1150431",
+      "nearest_node": "320020750",
+      "dist_m": 5.2
+    },
+    {
+      "stop_id": "1150432",
+      "nearest_node": "3156993899",
+      "dist_m": 14.4
+    },
+    {
+      "stop_id": "1150433",
+      "nearest_node": "5516660162",
+      "dist_m": 9.7
+    },
+    {
+      "stop_id": "1150434",
+      "nearest_node": "306563839",
+      "dist_m": 15.8
+    },
+    {
+      "stop_id": "1150435",
+      "nearest_node": "25282071",
+      "dist_m": 9.4
+    },
+    {
+      "stop_id": "1150436",
+      "nearest_node": "281670430",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1150437",
+      "nearest_node": "269688438",
+      "dist_m": 8.9
+    },
+    {
+      "stop_id": "1150438",
+      "nearest_node": "269688438",
+      "dist_m": 24.5
+    },
+    {
+      "stop_id": "1160101",
+      "nearest_node": "7804094484",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1160104",
+      "nearest_node": "7804094468",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1160105",
+      "nearest_node": "866700253",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1160107",
+      "nearest_node": "10617665547",
+      "dist_m": 13.1
+    },
+    {
+      "stop_id": "1160109",
+      "nearest_node": "7804094470",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1160111",
+      "nearest_node": "1506039298",
+      "dist_m": 18.8
+    },
+    {
+      "stop_id": "1160112",
+      "nearest_node": "411274980",
+      "dist_m": 16.0
+    },
+    {
+      "stop_id": "1160113",
+      "nearest_node": "1520486460",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1160118",
+      "nearest_node": "14102732253",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1160127",
+      "nearest_node": "496241059",
+      "dist_m": 10.1
+    },
+    {
+      "stop_id": "1160202",
+      "nearest_node": "1738050440",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1160206",
+      "nearest_node": "317803317",
+      "dist_m": 10.3
+    },
+    {
+      "stop_id": "1160401",
+      "nearest_node": "1520521876",
+      "dist_m": 15.6
+    },
+    {
+      "stop_id": "1160402",
+      "nearest_node": "10617665547",
+      "dist_m": 11.7
+    },
+    {
+      "stop_id": "1160403",
+      "nearest_node": "913113511",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1160404",
+      "nearest_node": "311693099",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1160414",
+      "nearest_node": "269149202",
+      "dist_m": 14.7
+    },
+    {
+      "stop_id": "1160415",
+      "nearest_node": "269678757",
+      "dist_m": 10.9
+    },
+    {
+      "stop_id": "1171104",
+      "nearest_node": "283458920",
+      "dist_m": 11.3
+    },
+    {
+      "stop_id": "1171105",
+      "nearest_node": "411223894",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1171120",
+      "nearest_node": "1520042549",
+      "dist_m": 30.0
+    },
+    {
+      "stop_id": "1171121",
+      "nearest_node": "12785181584",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1171122",
+      "nearest_node": "771309571",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1171126",
+      "nearest_node": "746480617",
+      "dist_m": 16.3
+    },
+    {
+      "stop_id": "1171127",
+      "nearest_node": "746480617",
+      "dist_m": 15.7
+    },
+    {
+      "stop_id": "1171135",
+      "nearest_node": "5637766535",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1171150",
+      "nearest_node": "3056748762",
+      "dist_m": 38.7
+    },
+    {
+      "stop_id": "1171151",
+      "nearest_node": "452529819",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1171152",
+      "nearest_node": "4067904617",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1171153",
+      "nearest_node": "10134833491",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1171154",
+      "nearest_node": "9170474584",
+      "dist_m": 14.8
+    },
+    {
+      "stop_id": "1171156",
+      "nearest_node": "10576918040",
+      "dist_m": 13.0
+    },
+    {
+      "stop_id": "1171157",
+      "nearest_node": "8229072839",
+      "dist_m": 18.4
+    },
+    {
+      "stop_id": "1171158",
+      "nearest_node": "13300220429",
+      "dist_m": 14.5
+    },
+    {
+      "stop_id": "1171180",
+      "nearest_node": "12785181583",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1171401",
+      "nearest_node": "1520522081",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1171402",
+      "nearest_node": "11546655866",
+      "dist_m": 11.1
+    },
+    {
+      "stop_id": "1171409",
+      "nearest_node": "10576918040",
+      "dist_m": 13.0
+    },
+    {
+      "stop_id": "1171410",
+      "nearest_node": "8229072839",
+      "dist_m": 16.2
+    },
+    {
+      "stop_id": "1171411",
+      "nearest_node": "9170474584",
+      "dist_m": 14.8
+    },
+    {
+      "stop_id": "1171412",
+      "nearest_node": "13300220429",
+      "dist_m": 14.5
+    },
+    {
+      "stop_id": "1171413",
+      "nearest_node": "746480617",
+      "dist_m": 16.3
+    },
+    {
+      "stop_id": "1171414",
+      "nearest_node": "746480617",
+      "dist_m": 15.7
+    },
+    {
+      "stop_id": "1171415",
+      "nearest_node": "4067904617",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1171416",
+      "nearest_node": "10134833491",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1171417",
+      "nearest_node": "11546655866",
+      "dist_m": 3.4
+    },
+    {
+      "stop_id": "1171442",
+      "nearest_node": "771309571",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1171444",
+      "nearest_node": "1520042549",
+      "dist_m": 27.2
+    },
+    {
+      "stop_id": "1171445",
+      "nearest_node": "258060345",
+      "dist_m": 12.8
+    },
+    {
+      "stop_id": "1171457",
+      "nearest_node": "165988469",
+      "dist_m": 15.5
+    },
+    {
+      "stop_id": "1171458",
+      "nearest_node": "313754788",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1172143",
+      "nearest_node": "11843698475",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1172144",
+      "nearest_node": "13299731469",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1172145",
+      "nearest_node": "1522903579",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1172146",
+      "nearest_node": "2557033841",
+      "dist_m": 7.1
+    },
+    {
+      "stop_id": "1172503",
+      "nearest_node": "452529819",
+      "dist_m": 30.9
+    },
+    {
+      "stop_id": "1172553",
+      "nearest_node": "452529819",
+      "dist_m": 44.7
+    },
+    {
+      "stop_id": "1173101",
+      "nearest_node": "487722629",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1173102",
+      "nearest_node": "404810913",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1173107",
+      "nearest_node": "313613633",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1173108",
+      "nearest_node": "28835379",
+      "dist_m": 30.6
+    },
+    {
+      "stop_id": "1173111",
+      "nearest_node": "231160848",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1173112",
+      "nearest_node": "13081555086",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1173113",
+      "nearest_node": "6321329752",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1173115",
+      "nearest_node": "116743257",
+      "dist_m": 11.1
+    },
+    {
+      "stop_id": "1173127",
+      "nearest_node": "872277167",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1173132",
+      "nearest_node": "1723773126",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1173133",
+      "nearest_node": "13394921163",
+      "dist_m": 8.9
+    },
+    {
+      "stop_id": "1173148",
+      "nearest_node": "8636280881",
+      "dist_m": 25.2
+    },
+    {
+      "stop_id": "1173401",
+      "nearest_node": "487722629",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1173402",
+      "nearest_node": "13081555086",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1173403",
+      "nearest_node": "6321329752",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1173407",
+      "nearest_node": "868298645",
+      "dist_m": 9.6
+    },
+    {
+      "stop_id": "1173408",
+      "nearest_node": "231160848",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1173423",
+      "nearest_node": "176291638",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1173424",
+      "nearest_node": "176277651",
+      "dist_m": 7.6
+    },
+    {
+      "stop_id": "1173429",
+      "nearest_node": "13634753205",
+      "dist_m": 14.9
+    },
+    {
+      "stop_id": "1173430",
+      "nearest_node": "1045676146",
+      "dist_m": 24.6
+    },
+    {
+      "stop_id": "1173433",
+      "nearest_node": "95655270",
+      "dist_m": 13.3
+    },
+    {
+      "stop_id": "1173434",
+      "nearest_node": "868298649",
+      "dist_m": 12.3
+    },
+    {
+      "stop_id": "1174101",
+      "nearest_node": "276392587",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1174102",
+      "nearest_node": "452529819",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1174112",
+      "nearest_node": "245455996",
+      "dist_m": 42.3
+    },
+    {
+      "stop_id": "1174128",
+      "nearest_node": "6860779225",
+      "dist_m": 16.4
+    },
+    {
+      "stop_id": "1174147",
+      "nearest_node": "4771751396",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1174149",
+      "nearest_node": "245455997",
+      "dist_m": 45.5
+    },
+    {
+      "stop_id": "1174410",
+      "nearest_node": "4771751396",
+      "dist_m": 10.1
+    },
+    {
+      "stop_id": "1174411",
+      "nearest_node": "4771751396",
+      "dist_m": 17.4
+    },
+    {
+      "stop_id": "1174501",
+      "nearest_node": "2268368960",
+      "dist_m": 33.1
+    },
+    {
+      "stop_id": "1174502",
+      "nearest_node": "8293630102",
+      "dist_m": 22.9
+    },
+    {
+      "stop_id": "1174503",
+      "nearest_node": "2268368960",
+      "dist_m": 44.4
+    },
+    {
+      "stop_id": "1174504",
+      "nearest_node": "8293630102",
+      "dist_m": 56.3
+    },
+    {
+      "stop_id": "1174551",
+      "nearest_node": "2268368960",
+      "dist_m": 26.2
+    },
+    {
+      "stop_id": "1174552",
+      "nearest_node": "8293630102",
+      "dist_m": 38.0
+    },
+    {
+      "stop_id": "1174553",
+      "nearest_node": "2268368960",
+      "dist_m": 65.2
+    },
+    {
+      "stop_id": "1174554",
+      "nearest_node": "8293630102",
+      "dist_m": 53.2
+    },
+    {
+      "stop_id": "1180103",
+      "nearest_node": "7804094483",
+      "dist_m": 7.6
+    },
+    {
+      "stop_id": "1180113",
+      "nearest_node": "7804159987",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1180115",
+      "nearest_node": "7804094467",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1180121",
+      "nearest_node": "5637766534",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1180203",
+      "nearest_node": "7804159985",
+      "dist_m": 9.7
+    },
+    {
+      "stop_id": "1180206",
+      "nearest_node": "6934731143",
+      "dist_m": 11.9
+    },
+    {
+      "stop_id": "1180214",
+      "nearest_node": "1025627449",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1180437",
+      "nearest_node": "5583904259",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1180438",
+      "nearest_node": "5786686449",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1180439",
+      "nearest_node": "5589910456",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1180440",
+      "nearest_node": "414557453",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1180441",
+      "nearest_node": "269680259",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1180442",
+      "nearest_node": "7804159985",
+      "dist_m": 16.1
+    },
+    {
+      "stop_id": "1180443",
+      "nearest_node": "5637766534",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1180444",
+      "nearest_node": "257123576",
+      "dist_m": 26.4
+    },
+    {
+      "stop_id": "1201109",
+      "nearest_node": "671318863",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1201110",
+      "nearest_node": "411282872",
+      "dist_m": 16.4
+    },
+    {
+      "stop_id": "1201113",
+      "nearest_node": "865292546",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1201121",
+      "nearest_node": "1519889231",
+      "dist_m": 6.0
+    },
+    {
+      "stop_id": "1201122",
+      "nearest_node": "7874571736",
+      "dist_m": 3.0
+    },
+    {
+      "stop_id": "1201126",
+      "nearest_node": "331446257",
+      "dist_m": 10.9
+    },
+    {
+      "stop_id": "1201127",
+      "nearest_node": "4062642128",
+      "dist_m": 7.1
+    },
+    {
+      "stop_id": "1201128",
+      "nearest_node": "4062642128",
+      "dist_m": 12.8
+    },
+    {
+      "stop_id": "1201129",
+      "nearest_node": "25216587",
+      "dist_m": 18.2
+    },
+    {
+      "stop_id": "1201130",
+      "nearest_node": "4100245556",
+      "dist_m": 12.1
+    },
+    {
+      "stop_id": "1201131",
+      "nearest_node": "13333165588",
+      "dist_m": 2.6
+    },
+    {
+      "stop_id": "1201132",
+      "nearest_node": "13333165589",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1201133",
+      "nearest_node": "313937394",
+      "dist_m": 17.6
+    },
+    {
+      "stop_id": "1201134",
+      "nearest_node": "258192747",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1201139",
+      "nearest_node": "256834701",
+      "dist_m": 19.7
+    },
+    {
+      "stop_id": "1201229",
+      "nearest_node": "1011525872",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1201240",
+      "nearest_node": "256834702",
+      "dist_m": 3.8
+    },
+    {
+      "stop_id": "1201402",
+      "nearest_node": "688751234",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1201403",
+      "nearest_node": "688751234",
+      "dist_m": 13.4
+    },
+    {
+      "stop_id": "1201429",
+      "nearest_node": "258192747",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1201430",
+      "nearest_node": "313937394",
+      "dist_m": 17.6
+    },
+    {
+      "stop_id": "1201431",
+      "nearest_node": "865292563",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1201432",
+      "nearest_node": "1519889231",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1201601",
+      "nearest_node": "1937206372",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1201602",
+      "nearest_node": "1937206372",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1203210",
+      "nearest_node": "6542536928",
+      "dist_m": 15.2
+    },
+    {
+      "stop_id": "1203211",
+      "nearest_node": "1385259724",
+      "dist_m": 10.3
+    },
+    {
+      "stop_id": "1203213",
+      "nearest_node": "6555493910",
+      "dist_m": 23.8
+    },
+    {
+      "stop_id": "1203214",
+      "nearest_node": "1385259748",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1203215",
+      "nearest_node": "5527872688",
+      "dist_m": 12.0
+    },
+    {
+      "stop_id": "1203401",
+      "nearest_node": "1753228920",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1203402",
+      "nearest_node": "6555493892",
+      "dist_m": 9.7
+    },
+    {
+      "stop_id": "1203405",
+      "nearest_node": "9833992987",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1203406",
+      "nearest_node": "1383978760",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1203409",
+      "nearest_node": "5215806791",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1203410",
+      "nearest_node": "1402383705",
+      "dist_m": 19.6
+    },
+    {
+      "stop_id": "1203413",
+      "nearest_node": "6542536964",
+      "dist_m": 10.1
+    },
+    {
+      "stop_id": "1203415",
+      "nearest_node": "5527872688",
+      "dist_m": 17.6
+    },
+    {
+      "stop_id": "1203416",
+      "nearest_node": "5215806613",
+      "dist_m": 13.9
+    },
+    {
+      "stop_id": "1203418",
+      "nearest_node": "6395653462",
+      "dist_m": 16.2
+    },
+    {
+      "stop_id": "1203420",
+      "nearest_node": "6542536928",
+      "dist_m": 17.1
+    },
+    {
+      "stop_id": "1203421",
+      "nearest_node": "13326891961",
+      "dist_m": 12.5
+    },
+    {
+      "stop_id": "1203422",
+      "nearest_node": "1648055709",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1203423",
+      "nearest_node": "6537525307",
+      "dist_m": 13.0
+    },
+    {
+      "stop_id": "1203424",
+      "nearest_node": "936396489",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1203425",
+      "nearest_node": "10108763811",
+      "dist_m": 14.6
+    },
+    {
+      "stop_id": "1203426",
+      "nearest_node": "6536830478",
+      "dist_m": 15.5
+    },
+    {
+      "stop_id": "1203428",
+      "nearest_node": "6555493910",
+      "dist_m": 28.8
+    },
+    {
+      "stop_id": "1204401",
+      "nearest_node": "9447467702",
+      "dist_m": 22.9
+    },
+    {
+      "stop_id": "1204402",
+      "nearest_node": "7803622340",
+      "dist_m": 30.5
+    },
+    {
+      "stop_id": "1204403",
+      "nearest_node": "537522546",
+      "dist_m": 14.6
+    },
+    {
+      "stop_id": "1204404",
+      "nearest_node": "537522546",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1204405",
+      "nearest_node": "6812285138",
+      "dist_m": 22.1
+    },
+    {
+      "stop_id": "1204406",
+      "nearest_node": "6812285143",
+      "dist_m": 15.8
+    },
+    {
+      "stop_id": "1210101",
+      "nearest_node": "672307970",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1210111",
+      "nearest_node": "11889086412",
+      "dist_m": 27.6
+    },
+    {
+      "stop_id": "1210164",
+      "nearest_node": "9744080422",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1210202",
+      "nearest_node": "3779536124",
+      "dist_m": 15.0
+    },
+    {
+      "stop_id": "1210203",
+      "nearest_node": "11807230290",
+      "dist_m": 24.8
+    },
+    {
+      "stop_id": "1210401",
+      "nearest_node": "12100702038",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1210402",
+      "nearest_node": "11807230290",
+      "dist_m": 13.1
+    },
+    {
+      "stop_id": "1210403",
+      "nearest_node": "11889748210",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1210404",
+      "nearest_node": "3779536124",
+      "dist_m": 15.8
+    },
+    {
+      "stop_id": "1210405",
+      "nearest_node": "10102898424",
+      "dist_m": 18.8
+    },
+    {
+      "stop_id": "1210406",
+      "nearest_node": "461540592",
+      "dist_m": 30.3
+    },
+    {
+      "stop_id": "1220101",
+      "nearest_node": "671166799",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1220102",
+      "nearest_node": "419364884",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1220104",
+      "nearest_node": "672291003",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1220105",
+      "nearest_node": "269153440",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1220107",
+      "nearest_node": "34507891",
+      "dist_m": 2.5
+    },
+    {
+      "stop_id": "1220109",
+      "nearest_node": "13084323276",
+      "dist_m": 2.3
+    },
+    {
+      "stop_id": "1220110",
+      "nearest_node": "298183201",
+      "dist_m": 13.6
+    },
+    {
+      "stop_id": "1220111",
+      "nearest_node": "551592549",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1220112",
+      "nearest_node": "6321329749",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1220113",
+      "nearest_node": "6321329740",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1220114",
+      "nearest_node": "6321329751",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1220115",
+      "nearest_node": "3224616596",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1220117",
+      "nearest_node": "873937397",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1220118",
+      "nearest_node": "933210003",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1220119",
+      "nearest_node": "6321329748",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1220120",
+      "nearest_node": "6321329739",
+      "dist_m": 8.9
+    },
+    {
+      "stop_id": "1220123",
+      "nearest_node": "894104722",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1220125",
+      "nearest_node": "13249480410",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1220127",
+      "nearest_node": "672291005",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1220128",
+      "nearest_node": "671166802",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1220129",
+      "nearest_node": "671166801",
+      "dist_m": 8.3
+    },
+    {
+      "stop_id": "1220130",
+      "nearest_node": "287349679",
+      "dist_m": 16.4
+    },
+    {
+      "stop_id": "1220131",
+      "nearest_node": "11037018532",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1220134",
+      "nearest_node": "6321329750",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1220180",
+      "nearest_node": "671166800",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1220182",
+      "nearest_node": "2313484681",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1220205",
+      "nearest_node": "266151437",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1220282",
+      "nearest_node": "780268286",
+      "dist_m": 17.7
+    },
+    {
+      "stop_id": "1220402",
+      "nearest_node": "779283551",
+      "dist_m": 12.3
+    },
+    {
+      "stop_id": "1220403",
+      "nearest_node": "299512131",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1220404",
+      "nearest_node": "269153442",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1220405",
+      "nearest_node": "164778190",
+      "dist_m": 19.1
+    },
+    {
+      "stop_id": "1220406",
+      "nearest_node": "265741925",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1220407",
+      "nearest_node": "265742809",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1220408",
+      "nearest_node": "299523948",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1220409",
+      "nearest_node": "313775019",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1220410",
+      "nearest_node": "664725978",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1220411",
+      "nearest_node": "299511918",
+      "dist_m": 11.1
+    },
+    {
+      "stop_id": "1220416",
+      "nearest_node": "404810905",
+      "dist_m": 15.2
+    },
+    {
+      "stop_id": "1220417",
+      "nearest_node": "1539284633",
+      "dist_m": 16.6
+    },
+    {
+      "stop_id": "1220420",
+      "nearest_node": "404810908",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1220421",
+      "nearest_node": "25811344",
+      "dist_m": 17.2
+    },
+    {
+      "stop_id": "1220422",
+      "nearest_node": "245005141",
+      "dist_m": 12.5
+    },
+    {
+      "stop_id": "1220423",
+      "nearest_node": "288997518",
+      "dist_m": 15.5
+    },
+    {
+      "stop_id": "1220424",
+      "nearest_node": "298183201",
+      "dist_m": 10.1
+    },
+    {
+      "stop_id": "1220425",
+      "nearest_node": "404810899",
+      "dist_m": 16.5
+    },
+    {
+      "stop_id": "1220428",
+      "nearest_node": "6137951902",
+      "dist_m": 7.1
+    },
+    {
+      "stop_id": "1220429",
+      "nearest_node": "4532294313",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1220430",
+      "nearest_node": "314066879",
+      "dist_m": 12.2
+    },
+    {
+      "stop_id": "1220431",
+      "nearest_node": "12626157098",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1220433",
+      "nearest_node": "13084323276",
+      "dist_m": 2.3
+    },
+    {
+      "stop_id": "1220434",
+      "nearest_node": "13081555041",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1220435",
+      "nearest_node": "878716699",
+      "dist_m": 24.3
+    },
+    {
+      "stop_id": "1230101",
+      "nearest_node": "898898096",
+      "dist_m": 22.1
+    },
+    {
+      "stop_id": "1230102",
+      "nearest_node": "898890910",
+      "dist_m": 1.5
+    },
+    {
+      "stop_id": "1230103",
+      "nearest_node": "2013611033",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1230104",
+      "nearest_node": "9724228017",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1230109",
+      "nearest_node": "176145069",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1230112",
+      "nearest_node": "176146385",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1230113",
+      "nearest_node": "289553908",
+      "dist_m": 24.4
+    },
+    {
+      "stop_id": "1230114",
+      "nearest_node": "176146383",
+      "dist_m": 9.1
+    },
+    {
+      "stop_id": "1230405",
+      "nearest_node": "475221484",
+      "dist_m": 18.8
+    },
+    {
+      "stop_id": "1230406",
+      "nearest_node": "310627146",
+      "dist_m": 15.2
+    },
+    {
+      "stop_id": "1230407",
+      "nearest_node": "34122231",
+      "dist_m": 19.6
+    },
+    {
+      "stop_id": "1230409",
+      "nearest_node": "772790031",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1230410",
+      "nearest_node": "329958999",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1232102",
+      "nearest_node": "3760030946",
+      "dist_m": 9.1
+    },
+    {
+      "stop_id": "1232104",
+      "nearest_node": "475221484",
+      "dist_m": 10.5
+    },
+    {
+      "stop_id": "1240101",
+      "nearest_node": "893251129",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1240102",
+      "nearest_node": "671165405",
+      "dist_m": 15.4
+    },
+    {
+      "stop_id": "1240103",
+      "nearest_node": "299714877",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1240104",
+      "nearest_node": "2455408268",
+      "dist_m": 3.0
+    },
+    {
+      "stop_id": "1240105",
+      "nearest_node": "2471256087",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1240106",
+      "nearest_node": "671160196",
+      "dist_m": 8.2
+    },
+    {
+      "stop_id": "1240107",
+      "nearest_node": "349925777",
+      "dist_m": 14.4
+    },
+    {
+      "stop_id": "1240108",
+      "nearest_node": "332188924",
+      "dist_m": 11.6
+    },
+    {
+      "stop_id": "1240109",
+      "nearest_node": "248179758",
+      "dist_m": 7.6
+    },
+    {
+      "stop_id": "1240110",
+      "nearest_node": "404810910",
+      "dist_m": 27.5
+    },
+    {
+      "stop_id": "1240112",
+      "nearest_node": "34659050",
+      "dist_m": 10.5
+    },
+    {
+      "stop_id": "1240113",
+      "nearest_node": "34659050",
+      "dist_m": 12.5
+    },
+    {
+      "stop_id": "1240114",
+      "nearest_node": "317374657",
+      "dist_m": 11.3
+    },
+    {
+      "stop_id": "1240115",
+      "nearest_node": "34711795",
+      "dist_m": 12.0
+    },
+    {
+      "stop_id": "1240118",
+      "nearest_node": "299714878",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1240121",
+      "nearest_node": "34177820",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1240122",
+      "nearest_node": "671157960",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1240123",
+      "nearest_node": "32011526",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1240131",
+      "nearest_node": "773572802",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1240132",
+      "nearest_node": "773572802",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1240133",
+      "nearest_node": "364972517",
+      "dist_m": 20.2
+    },
+    {
+      "stop_id": "1240134",
+      "nearest_node": "1413054156",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1240180",
+      "nearest_node": "532444969",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1240181",
+      "nearest_node": "755858273",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1240418",
+      "nearest_node": "32010802",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1240419",
+      "nearest_node": "176146388",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1250101",
+      "nearest_node": "404810915",
+      "dist_m": 11.8
+    },
+    {
+      "stop_id": "1250103",
+      "nearest_node": "404810917",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1250104",
+      "nearest_node": "13051598114",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1250105",
+      "nearest_node": "773533911",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1250106",
+      "nearest_node": "1734111138",
+      "dist_m": 18.7
+    },
+    {
+      "stop_id": "1250107",
+      "nearest_node": "14104666916",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1250108",
+      "nearest_node": "405609225",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1250111",
+      "nearest_node": "928009721",
+      "dist_m": 1.6
+    },
+    {
+      "stop_id": "1250112",
+      "nearest_node": "13394921162",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1250113",
+      "nearest_node": "13120863461",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1250114",
+      "nearest_node": "405609213",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1250115",
+      "nearest_node": "13337786197",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1250116",
+      "nearest_node": "1640880013",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1250117",
+      "nearest_node": "405609230",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1250118",
+      "nearest_node": "290342887",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1250119",
+      "nearest_node": "2892975826",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1250120",
+      "nearest_node": "14106862776",
+      "dist_m": 1.5
+    },
+    {
+      "stop_id": "1250133",
+      "nearest_node": "765658993",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1250180",
+      "nearest_node": "265415664",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1250203",
+      "nearest_node": "767465366",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1250425",
+      "nearest_node": "449550786",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1250426",
+      "nearest_node": "278324276",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1250427",
+      "nearest_node": "278321037",
+      "dist_m": 10.1
+    },
+    {
+      "stop_id": "1250428",
+      "nearest_node": "404810920",
+      "dist_m": 15.3
+    },
+    {
+      "stop_id": "1250429",
+      "nearest_node": "11811696626",
+      "dist_m": 14.6
+    },
+    {
+      "stop_id": "1250430",
+      "nearest_node": "868586934",
+      "dist_m": 24.3
+    },
+    {
+      "stop_id": "1250431",
+      "nearest_node": "761170047",
+      "dist_m": 11.8
+    },
+    {
+      "stop_id": "1250501",
+      "nearest_node": "4989779857",
+      "dist_m": 62.0
+    },
+    {
+      "stop_id": "1250551",
+      "nearest_node": "4989779855",
+      "dist_m": 50.2
+    },
+    {
+      "stop_id": "1260102",
+      "nearest_node": "1734076787",
+      "dist_m": 24.9
+    },
+    {
+      "stop_id": "1260103",
+      "nearest_node": "13161691020",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1260104",
+      "nearest_node": "418220713",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1260105",
+      "nearest_node": "5955834369",
+      "dist_m": 9.6
+    },
+    {
+      "stop_id": "1260106",
+      "nearest_node": "601733919",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1260107",
+      "nearest_node": "585331264",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1260108",
+      "nearest_node": "460375165",
+      "dist_m": 1.1
+    },
+    {
+      "stop_id": "1260109",
+      "nearest_node": "9080176278",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1260110",
+      "nearest_node": "893184734",
+      "dist_m": 8.3
+    },
+    {
+      "stop_id": "1260111",
+      "nearest_node": "10723541675",
+      "dist_m": 12.0
+    },
+    {
+      "stop_id": "1260112",
+      "nearest_node": "893197415",
+      "dist_m": 11.6
+    },
+    {
+      "stop_id": "1260113",
+      "nearest_node": "893197420",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1260114",
+      "nearest_node": "893197417",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1260115",
+      "nearest_node": "893200092",
+      "dist_m": 12.1
+    },
+    {
+      "stop_id": "1260180",
+      "nearest_node": "3195402789",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1270102",
+      "nearest_node": "290598447",
+      "dist_m": 18.6
+    },
+    {
+      "stop_id": "1270103",
+      "nearest_node": "290598448",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1270104",
+      "nearest_node": "177585893",
+      "dist_m": 3.0
+    },
+    {
+      "stop_id": "1270105",
+      "nearest_node": "1810288911",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1270107",
+      "nearest_node": "13475670116",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1281112",
+      "nearest_node": "286083629",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1281114",
+      "nearest_node": "286083629",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1281115",
+      "nearest_node": "218087831",
+      "dist_m": 17.8
+    },
+    {
+      "stop_id": "1281116",
+      "nearest_node": "5648415428",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1281154",
+      "nearest_node": "9029249582",
+      "dist_m": 223.6
+    },
+    {
+      "stop_id": "1281155",
+      "nearest_node": "9029249582",
+      "dist_m": 189.8
+    },
+    {
+      "stop_id": "1281160",
+      "nearest_node": "288891615",
+      "dist_m": 11.7
+    },
+    {
+      "stop_id": "1282102",
+      "nearest_node": "3799274625",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1282103",
+      "nearest_node": "12785220145",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1282104",
+      "nearest_node": "5648415290",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1282136",
+      "nearest_node": "12541428479",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1282137",
+      "nearest_node": "12541428483",
+      "dist_m": 7.8
+    },
+    {
+      "stop_id": "1282139",
+      "nearest_node": "2545059434",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1282140",
+      "nearest_node": "6318347446",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1282141",
+      "nearest_node": "705994020",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1282142",
+      "nearest_node": "6422607820",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1282143",
+      "nearest_node": "1499964965",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1282144",
+      "nearest_node": "4793398202",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1282146",
+      "nearest_node": "6318347442",
+      "dist_m": 2.9
+    },
+    {
+      "stop_id": "1282147",
+      "nearest_node": "6318347445",
+      "dist_m": 3.4
+    },
+    {
+      "stop_id": "1282155",
+      "nearest_node": "727976461",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1282401",
+      "nearest_node": "12785220145",
+      "dist_m": 8.6
+    },
+    {
+      "stop_id": "1282402",
+      "nearest_node": "264825321",
+      "dist_m": 12.8
+    },
+    {
+      "stop_id": "1283130",
+      "nearest_node": "3041742927",
+      "dist_m": 12.5
+    },
+    {
+      "stop_id": "1283131",
+      "nearest_node": "36851437",
+      "dist_m": 3.0
+    },
+    {
+      "stop_id": "1283132",
+      "nearest_node": "1513115555",
+      "dist_m": 13.2
+    },
+    {
+      "stop_id": "1283133",
+      "nearest_node": "781856891",
+      "dist_m": 11.5
+    },
+    {
+      "stop_id": "1283187",
+      "nearest_node": "2149893700",
+      "dist_m": 73.6
+    },
+    {
+      "stop_id": "1284103",
+      "nearest_node": "5648415288",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1284115",
+      "nearest_node": "759544064",
+      "dist_m": 30.3
+    },
+    {
+      "stop_id": "1284116",
+      "nearest_node": "1783142515",
+      "dist_m": 63.1
+    },
+    {
+      "stop_id": "1284117",
+      "nearest_node": "404885450",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1284118",
+      "nearest_node": "404885448",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1284120",
+      "nearest_node": "2418186284",
+      "dist_m": 7.6
+    },
+    {
+      "stop_id": "1284121",
+      "nearest_node": "334006146",
+      "dist_m": 2.6
+    },
+    {
+      "stop_id": "1284122",
+      "nearest_node": "5648415284",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1284123",
+      "nearest_node": "10763500183",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1284124",
+      "nearest_node": "325259881",
+      "dist_m": 15.4
+    },
+    {
+      "stop_id": "1284125",
+      "nearest_node": "2938110165",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1284126",
+      "nearest_node": "12739028513",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1284127",
+      "nearest_node": "5648415276",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1284128",
+      "nearest_node": "10841400068",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1284129",
+      "nearest_node": "5648415287",
+      "dist_m": 3.0
+    },
+    {
+      "stop_id": "1284149",
+      "nearest_node": "3923676447",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1284150",
+      "nearest_node": "13991653197",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1284151",
+      "nearest_node": "404829723",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1284152",
+      "nearest_node": "660155092",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1284153",
+      "nearest_node": "26659983",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1284154",
+      "nearest_node": "12252943669",
+      "dist_m": 14.4
+    },
+    {
+      "stop_id": "1284155",
+      "nearest_node": "6050342068",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1284156",
+      "nearest_node": "404861643",
+      "dist_m": 14.4
+    },
+    {
+      "stop_id": "1284167",
+      "nearest_node": "2413915240",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1284168",
+      "nearest_node": "2413915240",
+      "dist_m": 15.6
+    },
+    {
+      "stop_id": "1284169",
+      "nearest_node": "2415766734",
+      "dist_m": 20.9
+    },
+    {
+      "stop_id": "1284170",
+      "nearest_node": "1324879917",
+      "dist_m": 12.8
+    },
+    {
+      "stop_id": "1284182",
+      "nearest_node": "12252943661",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1284186",
+      "nearest_node": "264825500",
+      "dist_m": 13.0
+    },
+    {
+      "stop_id": "1284188",
+      "nearest_node": "6050342315",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1284189",
+      "nearest_node": "404861644",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1284301",
+      "nearest_node": "6552857599",
+      "dist_m": 20.7
+    },
+    {
+      "stop_id": "1284401",
+      "nearest_node": "1707024119",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1284402",
+      "nearest_node": "9007499682",
+      "dist_m": 11.0
+    },
+    {
+      "stop_id": "1284403",
+      "nearest_node": "8983345985",
+      "dist_m": 20.8
+    },
+    {
+      "stop_id": "1284404",
+      "nearest_node": "7710511610",
+      "dist_m": 20.9
+    },
+    {
+      "stop_id": "1284405",
+      "nearest_node": "279192357",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1285158",
+      "nearest_node": "2058773998",
+      "dist_m": 7.3
+    },
+    {
+      "stop_id": "1285159",
+      "nearest_node": "1707195869",
+      "dist_m": 8.5
+    },
+    {
+      "stop_id": "1285160",
+      "nearest_node": "3583299543",
+      "dist_m": 3.8
+    },
+    {
+      "stop_id": "1285161",
+      "nearest_node": "35653022",
+      "dist_m": 15.9
+    },
+    {
+      "stop_id": "1285162",
+      "nearest_node": "855249865",
+      "dist_m": 8.2
+    },
+    {
+      "stop_id": "1285163",
+      "nearest_node": "36427010",
+      "dist_m": 16.4
+    },
+    {
+      "stop_id": "1285164",
+      "nearest_node": "13111966295",
+      "dist_m": 3.4
+    },
+    {
+      "stop_id": "1285165",
+      "nearest_node": "13111966295",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1285166",
+      "nearest_node": "1806085083",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1285183",
+      "nearest_node": "1028325408",
+      "dist_m": 11.0
+    },
+    {
+      "stop_id": "1285184",
+      "nearest_node": "1960271978",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1285401",
+      "nearest_node": "36430262",
+      "dist_m": 37.1
+    },
+    {
+      "stop_id": "1285402",
+      "nearest_node": "36430263",
+      "dist_m": 43.6
+    },
+    {
+      "stop_id": "1285403",
+      "nearest_node": "12703722593",
+      "dist_m": 53.3
+    },
+    {
+      "stop_id": "1285404",
+      "nearest_node": "12703722593",
+      "dist_m": 34.9
+    },
+    {
+      "stop_id": "1285501",
+      "nearest_node": "2271271281",
+      "dist_m": 37.8
+    },
+    {
+      "stop_id": "1285551",
+      "nearest_node": "2271271281",
+      "dist_m": 33.9
+    },
+    {
+      "stop_id": "1286134",
+      "nearest_node": "726458908",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1286135",
+      "nearest_node": "1513115597",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1286160",
+      "nearest_node": "13816758179",
+      "dist_m": 6.2
+    },
+    {
+      "stop_id": "1286161",
+      "nearest_node": "1522930627",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1286179",
+      "nearest_node": "12785229094",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1286180",
+      "nearest_node": "12785250504",
+      "dist_m": 17.2
+    },
+    {
+      "stop_id": "1286181",
+      "nearest_node": "1461237166",
+      "dist_m": 2.5
+    },
+    {
+      "stop_id": "1291100",
+      "nearest_node": "11610051254",
+      "dist_m": 2.4
+    },
+    {
+      "stop_id": "1291101",
+      "nearest_node": "11330576760",
+      "dist_m": 11.5
+    },
+    {
+      "stop_id": "1291104",
+      "nearest_node": "2898121523",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1291105",
+      "nearest_node": "2898121523",
+      "dist_m": 11.3
+    },
+    {
+      "stop_id": "1291106",
+      "nearest_node": "398699831",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1291107",
+      "nearest_node": "34035897",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1291108",
+      "nearest_node": "967748873",
+      "dist_m": 7.3
+    },
+    {
+      "stop_id": "1291109",
+      "nearest_node": "3204572598",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1291110",
+      "nearest_node": "3556822527",
+      "dist_m": 17.0
+    },
+    {
+      "stop_id": "1291111",
+      "nearest_node": "739376684",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1291112",
+      "nearest_node": "7397211505",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1291113",
+      "nearest_node": "7397211505",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1291114",
+      "nearest_node": "11332405916",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1291115",
+      "nearest_node": "967943188",
+      "dist_m": 10.5
+    },
+    {
+      "stop_id": "1291116",
+      "nearest_node": "1936240786",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1291117",
+      "nearest_node": "9284077086",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1291118",
+      "nearest_node": "10597326787",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1291119",
+      "nearest_node": "10182078585",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1291120",
+      "nearest_node": "7804094481",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1291121",
+      "nearest_node": "288692549",
+      "dist_m": 6.7
+    },
+    {
+      "stop_id": "1291122",
+      "nearest_node": "288692553",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1291123",
+      "nearest_node": "7522913601",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1291124",
+      "nearest_node": "470925410",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1291125",
+      "nearest_node": "8179591717",
+      "dist_m": 16.3
+    },
+    {
+      "stop_id": "1291126",
+      "nearest_node": "311691382",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1291127",
+      "nearest_node": "600509594",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1291128",
+      "nearest_node": "600509592",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1291131",
+      "nearest_node": "11330585559",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1291137",
+      "nearest_node": "311691372",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1291138",
+      "nearest_node": "14091828825",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1291139",
+      "nearest_node": "14091828825",
+      "dist_m": 18.5
+    },
+    {
+      "stop_id": "1291142",
+      "nearest_node": "3204471717",
+      "dist_m": 1.8
+    },
+    {
+      "stop_id": "1291144",
+      "nearest_node": "14102715140",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1291145",
+      "nearest_node": "305123386",
+      "dist_m": 11.1
+    },
+    {
+      "stop_id": "1291146",
+      "nearest_node": "13673911139",
+      "dist_m": 2.0
+    },
+    {
+      "stop_id": "1291148",
+      "nearest_node": "1094791692",
+      "dist_m": 19.1
+    },
+    {
+      "stop_id": "1291149",
+      "nearest_node": "13515518706",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1291150",
+      "nearest_node": "972172646",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1291151",
+      "nearest_node": "9956240630",
+      "dist_m": 2.5
+    },
+    {
+      "stop_id": "1291152",
+      "nearest_node": "8108387962",
+      "dist_m": 6.0
+    },
+    {
+      "stop_id": "1291153",
+      "nearest_node": "305129003",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1291159",
+      "nearest_node": "91198449",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1291160",
+      "nearest_node": "11612963103",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1291161",
+      "nearest_node": "13769260610",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1291162",
+      "nearest_node": "8393642039",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1291163",
+      "nearest_node": "967972076",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1291164",
+      "nearest_node": "967972076",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1291165",
+      "nearest_node": "468058958",
+      "dist_m": 12.8
+    },
+    {
+      "stop_id": "1291166",
+      "nearest_node": "1936240789",
+      "dist_m": 28.5
+    },
+    {
+      "stop_id": "1291167",
+      "nearest_node": "6138264977",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1291168",
+      "nearest_node": "1936240789",
+      "dist_m": 37.9
+    },
+    {
+      "stop_id": "1291169",
+      "nearest_node": "470925543",
+      "dist_m": 2.4
+    },
+    {
+      "stop_id": "1291170",
+      "nearest_node": "36776524",
+      "dist_m": 11.3
+    },
+    {
+      "stop_id": "1291171",
+      "nearest_node": "36776523",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1291172",
+      "nearest_node": "26429553",
+      "dist_m": 2.9
+    },
+    {
+      "stop_id": "1291173",
+      "nearest_node": "26429552",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1291174",
+      "nearest_node": "7514576449",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1291176",
+      "nearest_node": "316509083",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1291180",
+      "nearest_node": "12822456854",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1291181",
+      "nearest_node": "12822456849",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1291182",
+      "nearest_node": "3350709271",
+      "dist_m": 53.5
+    },
+    {
+      "stop_id": "1291183",
+      "nearest_node": "1401707513",
+      "dist_m": 25.3
+    },
+    {
+      "stop_id": "1291198",
+      "nearest_node": "25435541",
+      "dist_m": 1.0
+    },
+    {
+      "stop_id": "1291199",
+      "nearest_node": "1016196367",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1291204",
+      "nearest_node": "493924396",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1291219",
+      "nearest_node": "6361418058",
+      "dist_m": 10.7
+    },
+    {
+      "stop_id": "1291220",
+      "nearest_node": "9679281796",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1291401",
+      "nearest_node": "923905195",
+      "dist_m": 8.6
+    },
+    {
+      "stop_id": "1291402",
+      "nearest_node": "25254728",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1291404",
+      "nearest_node": "3188127728",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1291501",
+      "nearest_node": "1738097718",
+      "dist_m": 35.4
+    },
+    {
+      "stop_id": "1291502",
+      "nearest_node": "11792836755",
+      "dist_m": 30.1
+    },
+    {
+      "stop_id": "1291503",
+      "nearest_node": "305137211",
+      "dist_m": 26.3
+    },
+    {
+      "stop_id": "1291551",
+      "nearest_node": "1738097718",
+      "dist_m": 37.6
+    },
+    {
+      "stop_id": "1292100",
+      "nearest_node": "36871734",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1292101",
+      "nearest_node": "13765805367",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1292102",
+      "nearest_node": "13765805366",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1292103",
+      "nearest_node": "12839544849",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1292104",
+      "nearest_node": "3470110625",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1292105",
+      "nearest_node": "36871934",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1292122",
+      "nearest_node": "14102732254",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1292123",
+      "nearest_node": "14102732255",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1292145",
+      "nearest_node": "2899879210",
+      "dist_m": 47.0
+    },
+    {
+      "stop_id": "1292146",
+      "nearest_node": "60052282",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1293100",
+      "nearest_node": "502272856",
+      "dist_m": 2.4
+    },
+    {
+      "stop_id": "1293101",
+      "nearest_node": "8187891123",
+      "dist_m": 0.9
+    },
+    {
+      "stop_id": "1293102",
+      "nearest_node": "8187891141",
+      "dist_m": 1.9
+    },
+    {
+      "stop_id": "1293103",
+      "nearest_node": "13146444276",
+      "dist_m": 2.5
+    },
+    {
+      "stop_id": "1293104",
+      "nearest_node": "1216194791",
+      "dist_m": 13.0
+    },
+    {
+      "stop_id": "1293105",
+      "nearest_node": "987411632",
+      "dist_m": 20.1
+    },
+    {
+      "stop_id": "1293106",
+      "nearest_node": "987411632",
+      "dist_m": 28.6
+    },
+    {
+      "stop_id": "1293107",
+      "nearest_node": "2444897393",
+      "dist_m": 0.5
+    },
+    {
+      "stop_id": "1293108",
+      "nearest_node": "1489973709",
+      "dist_m": 1.7
+    },
+    {
+      "stop_id": "1293109",
+      "nearest_node": "36818260",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1293110",
+      "nearest_node": "36818259",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1293111",
+      "nearest_node": "8173403188",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1293112",
+      "nearest_node": "2444320375",
+      "dist_m": 3.4
+    },
+    {
+      "stop_id": "1293113",
+      "nearest_node": "3386105136",
+      "dist_m": 2.7
+    },
+    {
+      "stop_id": "1293114",
+      "nearest_node": "2446522145",
+      "dist_m": 8.3
+    },
+    {
+      "stop_id": "1293115",
+      "nearest_node": "1433413558",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1293116",
+      "nearest_node": "1433413552",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1293117",
+      "nearest_node": "91214835",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1293118",
+      "nearest_node": "91214839",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1293119",
+      "nearest_node": "91215207",
+      "dist_m": 3.8
+    },
+    {
+      "stop_id": "1293120",
+      "nearest_node": "91215212",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1293121",
+      "nearest_node": "5378206362",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1293122",
+      "nearest_node": "12415787629",
+      "dist_m": 0.7
+    },
+    {
+      "stop_id": "1293123",
+      "nearest_node": "1663411819",
+      "dist_m": 21.7
+    },
+    {
+      "stop_id": "1293124",
+      "nearest_node": "10673646237",
+      "dist_m": 10.1
+    },
+    {
+      "stop_id": "1293126",
+      "nearest_node": "417403208",
+      "dist_m": 3.0
+    },
+    {
+      "stop_id": "1293127",
+      "nearest_node": "1018282227",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1293130",
+      "nearest_node": "162283060",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1293131",
+      "nearest_node": "13269684194",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1293132",
+      "nearest_node": "12794129568",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1293133",
+      "nearest_node": "25930499",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1293134",
+      "nearest_node": "143662201",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1293135",
+      "nearest_node": "2443576383",
+      "dist_m": 5.2
+    },
+    {
+      "stop_id": "1293136",
+      "nearest_node": "14069841495",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1293138",
+      "nearest_node": "6328798071",
+      "dist_m": 2.5
+    },
+    {
+      "stop_id": "1293139",
+      "nearest_node": "11963244988",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1293150",
+      "nearest_node": "277948341",
+      "dist_m": 41.7
+    },
+    {
+      "stop_id": "1293152",
+      "nearest_node": "288891615",
+      "dist_m": 96.4
+    },
+    {
+      "stop_id": "1293153",
+      "nearest_node": "8858989178",
+      "dist_m": 41.8
+    },
+    {
+      "stop_id": "1293155",
+      "nearest_node": "760608379",
+      "dist_m": 26.5
+    },
+    {
+      "stop_id": "1293158",
+      "nearest_node": "890543653",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1293159",
+      "nearest_node": "2204708883",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1293162",
+      "nearest_node": "5648415432",
+      "dist_m": 10.7
+    },
+    {
+      "stop_id": "1293163",
+      "nearest_node": "6781971599",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1293164",
+      "nearest_node": "1018205877",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1293165",
+      "nearest_node": "10597326785",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1293168",
+      "nearest_node": "316509083",
+      "dist_m": 12.1
+    },
+    {
+      "stop_id": "1293173",
+      "nearest_node": "14069859070",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1294121",
+      "nearest_node": "12836336315",
+      "dist_m": 8.5
+    },
+    {
+      "stop_id": "1294122",
+      "nearest_node": "14091828854",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1294124",
+      "nearest_node": "281039336",
+      "dist_m": 48.1
+    },
+    {
+      "stop_id": "1294132",
+      "nearest_node": "3422159815",
+      "dist_m": 12.5
+    },
+    {
+      "stop_id": "1294137",
+      "nearest_node": "6328798084",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1294139",
+      "nearest_node": "6328798072",
+      "dist_m": 2.3
+    },
+    {
+      "stop_id": "1294140",
+      "nearest_node": "36813559",
+      "dist_m": 0.7
+    },
+    {
+      "stop_id": "1294141",
+      "nearest_node": "6328798083",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1294142",
+      "nearest_node": "6328798082",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1294143",
+      "nearest_node": "6328798073",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1294502",
+      "nearest_node": "659663289",
+      "dist_m": 38.3
+    },
+    {
+      "stop_id": "1294552",
+      "nearest_node": "659663289",
+      "dist_m": 38.3
+    },
+    {
+      "stop_id": "1301103",
+      "nearest_node": "5598333910",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1301105",
+      "nearest_node": "1008982457",
+      "dist_m": 38.9
+    },
+    {
+      "stop_id": "1301112",
+      "nearest_node": "315736406",
+      "dist_m": 11.2
+    },
+    {
+      "stop_id": "1301113",
+      "nearest_node": "7643158291",
+      "dist_m": 1.6
+    },
+    {
+      "stop_id": "1301122",
+      "nearest_node": "5637766521",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1301123",
+      "nearest_node": "5648415453",
+      "dist_m": 8.2
+    },
+    {
+      "stop_id": "1301124",
+      "nearest_node": "5637766520",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1301125",
+      "nearest_node": "5648415451",
+      "dist_m": 7.8
+    },
+    {
+      "stop_id": "1301126",
+      "nearest_node": "5648415452",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1301127",
+      "nearest_node": "1115083180",
+      "dist_m": 11.4
+    },
+    {
+      "stop_id": "1301128",
+      "nearest_node": "1008980780",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1301129",
+      "nearest_node": "1552753039",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1301131",
+      "nearest_node": "1009221195",
+      "dist_m": 11.4
+    },
+    {
+      "stop_id": "1301132",
+      "nearest_node": "6064572023",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1301133",
+      "nearest_node": "3150626241",
+      "dist_m": 12.2
+    },
+    {
+      "stop_id": "1301135",
+      "nearest_node": "354949778",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1301143",
+      "nearest_node": "672968068",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1301144",
+      "nearest_node": "25268705",
+      "dist_m": 18.1
+    },
+    {
+      "stop_id": "1301145",
+      "nearest_node": "5776723881",
+      "dist_m": 11.7
+    },
+    {
+      "stop_id": "1301146",
+      "nearest_node": "1118943917",
+      "dist_m": 20.8
+    },
+    {
+      "stop_id": "1301147",
+      "nearest_node": "13629451318",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1301148",
+      "nearest_node": "11811474679",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1301149",
+      "nearest_node": "25095383",
+      "dist_m": 2.4
+    },
+    {
+      "stop_id": "1301153",
+      "nearest_node": "1008983093",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1301158",
+      "nearest_node": "13986587593",
+      "dist_m": 12.1
+    },
+    {
+      "stop_id": "1301160",
+      "nearest_node": "27489908",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1301212",
+      "nearest_node": "333536361",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1301214",
+      "nearest_node": "28784334",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1301215",
+      "nearest_node": "960394670",
+      "dist_m": 4.7
+    },
+    {
+      "stop_id": "1301299",
+      "nearest_node": "5637766524",
+      "dist_m": 3.4
+    },
+    {
+      "stop_id": "1301450",
+      "nearest_node": "3379621803",
+      "dist_m": 11.7
+    },
+    {
+      "stop_id": "1301451",
+      "nearest_node": "414635885",
+      "dist_m": 11.0
+    },
+    {
+      "stop_id": "1301452",
+      "nearest_node": "898003994",
+      "dist_m": 16.9
+    },
+    {
+      "stop_id": "1301453",
+      "nearest_node": "1312970417",
+      "dist_m": 18.5
+    },
+    {
+      "stop_id": "1301454",
+      "nearest_node": "1008983093",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1301455",
+      "nearest_node": "672968078",
+      "dist_m": 13.6
+    },
+    {
+      "stop_id": "1301456",
+      "nearest_node": "672968068",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1304104",
+      "nearest_node": "5966404134",
+      "dist_m": 2.9
+    },
+    {
+      "stop_id": "1304105",
+      "nearest_node": "11599239002",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1304127",
+      "nearest_node": "5648415448",
+      "dist_m": 12.2
+    },
+    {
+      "stop_id": "1304129",
+      "nearest_node": "13245607837",
+      "dist_m": 1.5
+    },
+    {
+      "stop_id": "1304134",
+      "nearest_node": "1094008108",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1304136",
+      "nearest_node": "5648415444",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1304137",
+      "nearest_node": "5648415275",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1304140",
+      "nearest_node": "36758312",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1304141",
+      "nearest_node": "25005715",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1304159",
+      "nearest_node": "13103045617",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1304160",
+      "nearest_node": "25238205",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1304161",
+      "nearest_node": "659583237",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1305100",
+      "nearest_node": "1118474263",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1305101",
+      "nearest_node": "1118474263",
+      "dist_m": 3.5
+    },
+    {
+      "stop_id": "1305102",
+      "nearest_node": "1814351946",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1305103",
+      "nearest_node": "11612704768",
+      "dist_m": 21.7
+    },
+    {
+      "stop_id": "1305151",
+      "nearest_node": "365306059",
+      "dist_m": 8.9
+    },
+    {
+      "stop_id": "1305191",
+      "nearest_node": "1559449993",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1310101",
+      "nearest_node": "4060935074",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1310102",
+      "nearest_node": "12794151864",
+      "dist_m": 2.0
+    },
+    {
+      "stop_id": "1310105",
+      "nearest_node": "4166680327",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1310106",
+      "nearest_node": "4924107005",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1310107",
+      "nearest_node": "330184453",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1310108",
+      "nearest_node": "4088604852",
+      "dist_m": 6.2
+    },
+    {
+      "stop_id": "1310109",
+      "nearest_node": "304980803",
+      "dist_m": 7.1
+    },
+    {
+      "stop_id": "1310110",
+      "nearest_node": "11811479151",
+      "dist_m": 1.6
+    },
+    {
+      "stop_id": "1310127",
+      "nearest_node": "4062382727",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1310128",
+      "nearest_node": "4062382728",
+      "dist_m": 10.4
+    },
+    {
+      "stop_id": "1310129",
+      "nearest_node": "990231299",
+      "dist_m": 1.3
+    },
+    {
+      "stop_id": "1310130",
+      "nearest_node": "331487889",
+      "dist_m": 18.3
+    },
+    {
+      "stop_id": "1310137",
+      "nearest_node": "331446257",
+      "dist_m": 12.2
+    },
+    {
+      "stop_id": "1310140",
+      "nearest_node": "4061705624",
+      "dist_m": 17.1
+    },
+    {
+      "stop_id": "1310141",
+      "nearest_node": "7569837316",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1310142",
+      "nearest_node": "5381981532",
+      "dist_m": 12.5
+    },
+    {
+      "stop_id": "1310143",
+      "nearest_node": "5381981532",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1310145",
+      "nearest_node": "8612093677",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1310146",
+      "nearest_node": "8632688358",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1310152",
+      "nearest_node": "7487675040",
+      "dist_m": 9.1
+    },
+    {
+      "stop_id": "1310200",
+      "nearest_node": "331436469",
+      "dist_m": 12.1
+    },
+    {
+      "stop_id": "1310601",
+      "nearest_node": "331982337",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1310602",
+      "nearest_node": "7490749447",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1320199",
+      "nearest_node": "10040780417",
+      "dist_m": 11.5
+    },
+    {
+      "stop_id": "1361103",
+      "nearest_node": "659583268",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1361104",
+      "nearest_node": "468298232",
+      "dist_m": 3.0
+    },
+    {
+      "stop_id": "1361105",
+      "nearest_node": "974786334",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1361106",
+      "nearest_node": "932569523",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1361107",
+      "nearest_node": "12956010589",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1361108",
+      "nearest_node": "656222441",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1361112",
+      "nearest_node": "569073073",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1361114",
+      "nearest_node": "569073067",
+      "dist_m": 11.3
+    },
+    {
+      "stop_id": "1361115",
+      "nearest_node": "11760709929",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1361116",
+      "nearest_node": "1396451907",
+      "dist_m": 11.7
+    },
+    {
+      "stop_id": "1361117",
+      "nearest_node": "31457048",
+      "dist_m": 22.2
+    },
+    {
+      "stop_id": "1361120",
+      "nearest_node": "286286735",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1362105",
+      "nearest_node": "251650401",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1362107",
+      "nearest_node": "251650826",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1362108",
+      "nearest_node": "207373644",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1362112",
+      "nearest_node": "2022888543",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1362113",
+      "nearest_node": "1240659120",
+      "dist_m": 29.1
+    },
+    {
+      "stop_id": "1362115",
+      "nearest_node": "368979730",
+      "dist_m": 2.2
+    },
+    {
+      "stop_id": "1362116",
+      "nearest_node": "2885895230",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1362118",
+      "nearest_node": "1452663814",
+      "dist_m": 2.5
+    },
+    {
+      "stop_id": "1362119",
+      "nearest_node": "1431715503",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1362125",
+      "nearest_node": "339301753",
+      "dist_m": 8.6
+    },
+    {
+      "stop_id": "1362127",
+      "nearest_node": "3041778286",
+      "dist_m": 17.7
+    },
+    {
+      "stop_id": "1362128",
+      "nearest_node": "3041778296",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1362129",
+      "nearest_node": "1431715550",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1362130",
+      "nearest_node": "1431715486",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1362131",
+      "nearest_node": "1106100863",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1362132",
+      "nearest_node": "1000094047",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1362133",
+      "nearest_node": "1434855717",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1362139",
+      "nearest_node": "1241630687",
+      "dist_m": 17.9
+    },
+    {
+      "stop_id": "1362140",
+      "nearest_node": "1240627186",
+      "dist_m": 26.8
+    },
+    {
+      "stop_id": "1362141",
+      "nearest_node": "2161114292",
+      "dist_m": 32.2
+    },
+    {
+      "stop_id": "1362142",
+      "nearest_node": "2306948190",
+      "dist_m": 47.6
+    },
+    {
+      "stop_id": "1363101",
+      "nearest_node": "12888091641",
+      "dist_m": 6.0
+    },
+    {
+      "stop_id": "1363401",
+      "nearest_node": "1240659120",
+      "dist_m": 24.7
+    },
+    {
+      "stop_id": "1363402",
+      "nearest_node": "368980058",
+      "dist_m": 16.3
+    },
+    {
+      "stop_id": "1363403",
+      "nearest_node": "1240627234",
+      "dist_m": 41.1
+    },
+    {
+      "stop_id": "1363404",
+      "nearest_node": "1240627234",
+      "dist_m": 20.1
+    },
+    {
+      "stop_id": "1364101",
+      "nearest_node": "36474993",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1364102",
+      "nearest_node": "36475571",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1364103",
+      "nearest_node": "36475505",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1364104",
+      "nearest_node": "595638583",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1364105",
+      "nearest_node": "1647855700",
+      "dist_m": 7.8
+    },
+    {
+      "stop_id": "1364106",
+      "nearest_node": "31456744",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1364401",
+      "nearest_node": "1478960603",
+      "dist_m": 26.9
+    },
+    {
+      "stop_id": "1364402",
+      "nearest_node": "1478960603",
+      "dist_m": 31.4
+    },
+    {
+      "stop_id": "1383107",
+      "nearest_node": "3667142092",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1383108",
+      "nearest_node": "290340598",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1383109",
+      "nearest_node": "10789760797",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1383119",
+      "nearest_node": "714087855",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1383124",
+      "nearest_node": "337534253",
+      "dist_m": 12.0
+    },
+    {
+      "stop_id": "1383134",
+      "nearest_node": "8527058941",
+      "dist_m": 27.6
+    },
+    {
+      "stop_id": "1383135",
+      "nearest_node": "185858476",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1383136",
+      "nearest_node": "370864393",
+      "dist_m": 14.6
+    },
+    {
+      "stop_id": "1383138",
+      "nearest_node": "1324625571",
+      "dist_m": 13.0
+    },
+    {
+      "stop_id": "1383159",
+      "nearest_node": "225691117",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1383179",
+      "nearest_node": "13190169282",
+      "dist_m": 8.6
+    },
+    {
+      "stop_id": "1383192",
+      "nearest_node": "25546190",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1386100",
+      "nearest_node": "1235788357",
+      "dist_m": 7.8
+    },
+    {
+      "stop_id": "1386101",
+      "nearest_node": "1235788331",
+      "dist_m": 3.5
+    },
+    {
+      "stop_id": "1420103",
+      "nearest_node": "2888099417",
+      "dist_m": 26.9
+    },
+    {
+      "stop_id": "1420105",
+      "nearest_node": "2888094931",
+      "dist_m": 1.9
+    },
+    {
+      "stop_id": "1420107",
+      "nearest_node": "7742044423",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1420115",
+      "nearest_node": "59632033",
+      "dist_m": 13.9
+    },
+    {
+      "stop_id": "1420116",
+      "nearest_node": "796649951",
+      "dist_m": 23.2
+    },
+    {
+      "stop_id": "1420117",
+      "nearest_node": "7896969572",
+      "dist_m": 20.6
+    },
+    {
+      "stop_id": "1420118",
+      "nearest_node": "25388761",
+      "dist_m": 53.5
+    },
+    {
+      "stop_id": "1420119",
+      "nearest_node": "2482138255",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1420123",
+      "nearest_node": "1689964316",
+      "dist_m": 2.9
+    },
+    {
+      "stop_id": "1420124",
+      "nearest_node": "1689964302",
+      "dist_m": 7.7
+    },
+    {
+      "stop_id": "1420136",
+      "nearest_node": "25388763",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1420601",
+      "nearest_node": "611626729",
+      "dist_m": 49.5
+    },
+    {
+      "stop_id": "1420602",
+      "nearest_node": "611626729",
+      "dist_m": 47.1
+    },
+    {
+      "stop_id": "1431102",
+      "nearest_node": "25572649",
+      "dist_m": 11.0
+    },
+    {
+      "stop_id": "1431105",
+      "nearest_node": "25572873",
+      "dist_m": 34.6
+    },
+    {
+      "stop_id": "1431106",
+      "nearest_node": "1458506687",
+      "dist_m": 10.3
+    },
+    {
+      "stop_id": "1431107",
+      "nearest_node": "98136456",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1431108",
+      "nearest_node": "98136462",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1431109",
+      "nearest_node": "2313624868",
+      "dist_m": 8.8
+    },
+    {
+      "stop_id": "1431111",
+      "nearest_node": "391696555",
+      "dist_m": 10.5
+    },
+    {
+      "stop_id": "1431121",
+      "nearest_node": "9348695891",
+      "dist_m": 2.1
+    },
+    {
+      "stop_id": "1431129",
+      "nearest_node": "683590892",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1431130",
+      "nearest_node": "1713181735",
+      "dist_m": 4.4
+    },
+    {
+      "stop_id": "1431131",
+      "nearest_node": "10091477244",
+      "dist_m": 18.0
+    },
+    {
+      "stop_id": "1431133",
+      "nearest_node": "2318295897",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1431134",
+      "nearest_node": "5951513720",
+      "dist_m": 11.5
+    },
+    {
+      "stop_id": "1431135",
+      "nearest_node": "1896836646",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1431136",
+      "nearest_node": "2300586284",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1431137",
+      "nearest_node": "54035186",
+      "dist_m": 2.5
+    },
+    {
+      "stop_id": "1431138",
+      "nearest_node": "3800697763",
+      "dist_m": 6.5
+    },
+    {
+      "stop_id": "1431139",
+      "nearest_node": "1458506765",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1431141",
+      "nearest_node": "305495602",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1431142",
+      "nearest_node": "2491247105",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1431143",
+      "nearest_node": "11132837416",
+      "dist_m": 11.2
+    },
+    {
+      "stop_id": "1431144",
+      "nearest_node": "11151584453",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "1431145",
+      "nearest_node": "1323981689",
+      "dist_m": 9.1
+    },
+    {
+      "stop_id": "1431146",
+      "nearest_node": "673446093",
+      "dist_m": 13.6
+    },
+    {
+      "stop_id": "1431147",
+      "nearest_node": "2888136096",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1431148",
+      "nearest_node": "1323981771",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1431150",
+      "nearest_node": "2888155725",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1431181",
+      "nearest_node": "12774690326",
+      "dist_m": 45.5
+    },
+    {
+      "stop_id": "1431183",
+      "nearest_node": "1714080090",
+      "dist_m": 20.9
+    },
+    {
+      "stop_id": "1431185",
+      "nearest_node": "5836634688",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1431186",
+      "nearest_node": "13005940979",
+      "dist_m": 2.8
+    },
+    {
+      "stop_id": "1431187",
+      "nearest_node": "6321329753",
+      "dist_m": 6.0
+    },
+    {
+      "stop_id": "1431188",
+      "nearest_node": "1798728463",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1431189",
+      "nearest_node": "98136468",
+      "dist_m": 17.0
+    },
+    {
+      "stop_id": "1431201",
+      "nearest_node": "766779895",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1431204",
+      "nearest_node": "766779895",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1431205",
+      "nearest_node": "766779895",
+      "dist_m": 11.9
+    },
+    {
+      "stop_id": "1431601",
+      "nearest_node": "98136458",
+      "dist_m": 23.5
+    },
+    {
+      "stop_id": "1431602",
+      "nearest_node": "98136458",
+      "dist_m": 20.5
+    },
+    {
+      "stop_id": "1431603",
+      "nearest_node": "3178672637",
+      "dist_m": 18.2
+    },
+    {
+      "stop_id": "1431604",
+      "nearest_node": "3178672637",
+      "dist_m": 21.3
+    },
+    {
+      "stop_id": "1432110",
+      "nearest_node": "309824589",
+      "dist_m": 2.3
+    },
+    {
+      "stop_id": "1432122",
+      "nearest_node": "2888242759",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1432123",
+      "nearest_node": "1713112316",
+      "dist_m": 14.8
+    },
+    {
+      "stop_id": "1432125",
+      "nearest_node": "1404450761",
+      "dist_m": 18.5
+    },
+    {
+      "stop_id": "1432152",
+      "nearest_node": "29915741",
+      "dist_m": 17.8
+    },
+    {
+      "stop_id": "1432157",
+      "nearest_node": "1363709698",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1432158",
+      "nearest_node": "1363709759",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1432159",
+      "nearest_node": "25584801",
+      "dist_m": 4.3
+    },
+    {
+      "stop_id": "1432160",
+      "nearest_node": "1437372684",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1432161",
+      "nearest_node": "13957408026",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1432162",
+      "nearest_node": "13957408025",
+      "dist_m": 2.1
+    },
+    {
+      "stop_id": "1432164",
+      "nearest_node": "1405078144",
+      "dist_m": 13.3
+    },
+    {
+      "stop_id": "1432178",
+      "nearest_node": "2313602610",
+      "dist_m": 8.7
+    },
+    {
+      "stop_id": "1432179",
+      "nearest_node": "2313602613",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1433103",
+      "nearest_node": "1719817729",
+      "dist_m": 12.6
+    },
+    {
+      "stop_id": "1433104",
+      "nearest_node": "678517894",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1433105",
+      "nearest_node": "13654042913",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1433106",
+      "nearest_node": "11919268384",
+      "dist_m": 9.6
+    },
+    {
+      "stop_id": "1433107",
+      "nearest_node": "13651513426",
+      "dist_m": 5.2
+    },
+    {
+      "stop_id": "1433108",
+      "nearest_node": "10981093982",
+      "dist_m": 34.5
+    },
+    {
+      "stop_id": "1433113",
+      "nearest_node": "29906109",
+      "dist_m": 18.4
+    },
+    {
+      "stop_id": "1433118",
+      "nearest_node": "1723708657",
+      "dist_m": 5.4
+    },
+    {
+      "stop_id": "1433119",
+      "nearest_node": "683597762",
+      "dist_m": 10.3
+    },
+    {
+      "stop_id": "1433120",
+      "nearest_node": "317805787",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1433121",
+      "nearest_node": "11808249077",
+      "dist_m": 8.2
+    },
+    {
+      "stop_id": "1433127",
+      "nearest_node": "683590917",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1433128",
+      "nearest_node": "10620648263",
+      "dist_m": 12.3
+    },
+    {
+      "stop_id": "1433156",
+      "nearest_node": "2436553127",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1433166",
+      "nearest_node": "1449147452",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1433173",
+      "nearest_node": "1449147767",
+      "dist_m": 7.9
+    },
+    {
+      "stop_id": "1433183",
+      "nearest_node": "1711105593",
+      "dist_m": 16.8
+    },
+    {
+      "stop_id": "1434101",
+      "nearest_node": "287223365",
+      "dist_m": 42.0
+    },
+    {
+      "stop_id": "1434112",
+      "nearest_node": "1439151810",
+      "dist_m": 22.3
+    },
+    {
+      "stop_id": "1434114",
+      "nearest_node": "25525402",
+      "dist_m": 2.6
+    },
+    {
+      "stop_id": "1434153",
+      "nearest_node": "338647315",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1434154",
+      "nearest_node": "1472547222",
+      "dist_m": 15.5
+    },
+    {
+      "stop_id": "1434165",
+      "nearest_node": "11810966452",
+      "dist_m": 2.4
+    },
+    {
+      "stop_id": "1434167",
+      "nearest_node": "1237778045",
+      "dist_m": 13.6
+    },
+    {
+      "stop_id": "1434168",
+      "nearest_node": "1237778026",
+      "dist_m": 11.9
+    },
+    {
+      "stop_id": "1434169",
+      "nearest_node": "1449147435",
+      "dist_m": 10.3
+    },
+    {
+      "stop_id": "1434170",
+      "nearest_node": "29903004",
+      "dist_m": 13.7
+    },
+    {
+      "stop_id": "1434171",
+      "nearest_node": "1453578847",
+      "dist_m": 23.1
+    },
+    {
+      "stop_id": "1434173",
+      "nearest_node": "1453578807",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1434174",
+      "nearest_node": "1453578756",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1434177",
+      "nearest_node": "1469912032",
+      "dist_m": 9.6
+    },
+    {
+      "stop_id": "1434178",
+      "nearest_node": "1242475468",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1434179",
+      "nearest_node": "317791060",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1434180",
+      "nearest_node": "1243031861",
+      "dist_m": 10.8
+    },
+    {
+      "stop_id": "1434183",
+      "nearest_node": "1443607729",
+      "dist_m": 12.1
+    },
+    {
+      "stop_id": "1434184",
+      "nearest_node": "1727572671",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1434185",
+      "nearest_node": "1244737765",
+      "dist_m": 12.2
+    },
+    {
+      "stop_id": "1434186",
+      "nearest_node": "1449182231",
+      "dist_m": 8.1
+    },
+    {
+      "stop_id": "1434190",
+      "nearest_node": "316844551",
+      "dist_m": 21.6
+    },
+    {
+      "stop_id": "1440101",
+      "nearest_node": "8292776462",
+      "dist_m": 3.1
+    },
+    {
+      "stop_id": "1440102",
+      "nearest_node": "13137760894",
+      "dist_m": 17.9
+    },
+    {
+      "stop_id": "1440103",
+      "nearest_node": "1775436236",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1440104",
+      "nearest_node": "408775471",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1440105",
+      "nearest_node": "1666319955",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1440106",
+      "nearest_node": "2313589660",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1440107",
+      "nearest_node": "2293454751",
+      "dist_m": 11.6
+    },
+    {
+      "stop_id": "1440108",
+      "nearest_node": "2293454753",
+      "dist_m": 4.5
+    },
+    {
+      "stop_id": "1453151",
+      "nearest_node": "5652514471",
+      "dist_m": 5.8
+    },
+    {
+      "stop_id": "1453152",
+      "nearest_node": "5652514472",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1454101",
+      "nearest_node": "1328227694",
+      "dist_m": 0.3
+    },
+    {
+      "stop_id": "1454102",
+      "nearest_node": "1328227619",
+      "dist_m": 17.0
+    },
+    {
+      "stop_id": "1454103",
+      "nearest_node": "3729795812",
+      "dist_m": 1.9
+    },
+    {
+      "stop_id": "1454104",
+      "nearest_node": "25586489",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1454105",
+      "nearest_node": "25586491",
+      "dist_m": 1.9
+    },
+    {
+      "stop_id": "1454106",
+      "nearest_node": "702936460",
+      "dist_m": 7.2
+    },
+    {
+      "stop_id": "1454118",
+      "nearest_node": "25585580",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1454119",
+      "nearest_node": "1473500031",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1454142",
+      "nearest_node": "25586503",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1454145",
+      "nearest_node": "13152389857",
+      "dist_m": 3.6
+    },
+    {
+      "stop_id": "1454146",
+      "nearest_node": "13152389853",
+      "dist_m": 5.7
+    },
+    {
+      "stop_id": "1454147",
+      "nearest_node": "13152389826",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1454148",
+      "nearest_node": "12584584379",
+      "dist_m": 2.7
+    },
+    {
+      "stop_id": "1454149",
+      "nearest_node": "1577243618",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "1454150",
+      "nearest_node": "1577243618",
+      "dist_m": 8.5
+    },
+    {
+      "stop_id": "1454156",
+      "nearest_node": "1477285052",
+      "dist_m": 15.0
+    },
+    {
+      "stop_id": "1454157",
+      "nearest_node": "2885948644",
+      "dist_m": 4.6
+    },
+    {
+      "stop_id": "1454184",
+      "nearest_node": "3646663243",
+      "dist_m": 6.4
+    },
+    {
+      "stop_id": "1454401",
+      "nearest_node": "9344677558",
+      "dist_m": 12.5
+    },
+    {
+      "stop_id": "1454402",
+      "nearest_node": "8503045289",
+      "dist_m": 14.0
+    },
+    {
+      "stop_id": "1456107",
+      "nearest_node": "13673601202",
+      "dist_m": 2.7
+    },
+    {
+      "stop_id": "1456153",
+      "nearest_node": "13270339370",
+      "dist_m": 4.1
+    },
+    {
+      "stop_id": "1456401",
+      "nearest_node": "13673601202",
+      "dist_m": 11.2
+    },
+    {
+      "stop_id": "1456402",
+      "nearest_node": "517504765",
+      "dist_m": 18.0
+    },
+    {
+      "stop_id": "1456403",
+      "nearest_node": "6023876631",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1456404",
+      "nearest_node": "8503045273",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1464123",
+      "nearest_node": "403642731",
+      "dist_m": 75.7
+    },
+    {
+      "stop_id": "1465101",
+      "nearest_node": "11330495198",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1465102",
+      "nearest_node": "7804094473",
+      "dist_m": 5.0
+    },
+    {
+      "stop_id": "1465131",
+      "nearest_node": "6328798081",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1465145",
+      "nearest_node": "1401706867",
+      "dist_m": 10.5
+    },
+    {
+      "stop_id": "1465177",
+      "nearest_node": "1399188821",
+      "dist_m": 6.1
+    },
+    {
+      "stop_id": "1465501",
+      "nearest_node": "1401708257",
+      "dist_m": 25.6
+    },
+    {
+      "stop_id": "1465551",
+      "nearest_node": "1401708257",
+      "dist_m": 34.8
+    },
+    {
+      "stop_id": "1474102",
+      "nearest_node": "7906667319",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1474112",
+      "nearest_node": "1314951006",
+      "dist_m": 6.9
+    },
+    {
+      "stop_id": "1474114",
+      "nearest_node": "1480408820",
+      "dist_m": 3.7
+    },
+    {
+      "stop_id": "1474116",
+      "nearest_node": "12696561155",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1474127",
+      "nearest_node": "5674784421",
+      "dist_m": 9.3
+    },
+    {
+      "stop_id": "1491101",
+      "nearest_node": "29907109",
+      "dist_m": 12.6
+    },
+    {
+      "stop_id": "1491102",
+      "nearest_node": "29906339",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1491111",
+      "nearest_node": "12550847160",
+      "dist_m": 13.8
+    },
+    {
+      "stop_id": "1491112",
+      "nearest_node": "12550847159",
+      "dist_m": 18.2
+    },
+    {
+      "stop_id": "1491113",
+      "nearest_node": "10215366754",
+      "dist_m": 30.1
+    },
+    {
+      "stop_id": "1491115",
+      "nearest_node": "29907537",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1491116",
+      "nearest_node": "29907541",
+      "dist_m": 10.6
+    },
+    {
+      "stop_id": "1491117",
+      "nearest_node": "1731734875",
+      "dist_m": 5.3
+    },
+    {
+      "stop_id": "1491118",
+      "nearest_node": "29907531",
+      "dist_m": 8.6
+    },
+    {
+      "stop_id": "1491119",
+      "nearest_node": "30080370",
+      "dist_m": 38.3
+    },
+    {
+      "stop_id": "1491120",
+      "nearest_node": "30080370",
+      "dist_m": 30.2
+    },
+    {
+      "stop_id": "1491122",
+      "nearest_node": "1654134165",
+      "dist_m": 6.6
+    },
+    {
+      "stop_id": "1491123",
+      "nearest_node": "1654134167",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1491124",
+      "nearest_node": "29915346",
+      "dist_m": 3.2
+    },
+    {
+      "stop_id": "1491125",
+      "nearest_node": "1694346953",
+      "dist_m": 5.2
+    },
+    {
+      "stop_id": "1491126",
+      "nearest_node": "29911642",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1491127",
+      "nearest_node": "1643934673",
+      "dist_m": 1.8
+    },
+    {
+      "stop_id": "1491128",
+      "nearest_node": "514970452",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1491129",
+      "nearest_node": "29911451",
+      "dist_m": 2.2
+    },
+    {
+      "stop_id": "1491133",
+      "nearest_node": "29906459",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1491134",
+      "nearest_node": "251181919",
+      "dist_m": 8.0
+    },
+    {
+      "stop_id": "1491136",
+      "nearest_node": "892566748",
+      "dist_m": 15.1
+    },
+    {
+      "stop_id": "1491138",
+      "nearest_node": "29907255",
+      "dist_m": 22.1
+    },
+    {
+      "stop_id": "1491151",
+      "nearest_node": "11968070970",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1491161",
+      "nearest_node": "3420367936",
+      "dist_m": 7.4
+    },
+    {
+      "stop_id": "1491162",
+      "nearest_node": "3420367915",
+      "dist_m": 13.5
+    },
+    {
+      "stop_id": "1491163",
+      "nearest_node": "3111715582",
+      "dist_m": 9.0
+    },
+    {
+      "stop_id": "1491164",
+      "nearest_node": "5207847478",
+      "dist_m": 10.5
+    },
+    {
+      "stop_id": "1491166",
+      "nearest_node": "3111715671",
+      "dist_m": 8.4
+    },
+    {
+      "stop_id": "1491167",
+      "nearest_node": "5392914057",
+      "dist_m": 5.2
+    },
+    {
+      "stop_id": "1491169",
+      "nearest_node": "13472879633",
+      "dist_m": 6.3
+    },
+    {
+      "stop_id": "1491170",
+      "nearest_node": "13472879634",
+      "dist_m": 7.5
+    },
+    {
+      "stop_id": "1491171",
+      "nearest_node": "29907544",
+      "dist_m": 9.5
+    },
+    {
+      "stop_id": "1491174",
+      "nearest_node": "12649776142",
+      "dist_m": 10.2
+    },
+    {
+      "stop_id": "1491175",
+      "nearest_node": "6020522762",
+      "dist_m": 14.3
+    },
+    {
+      "stop_id": "1491201",
+      "nearest_node": "13472858121",
+      "dist_m": 9.8
+    },
+    {
+      "stop_id": "1491202",
+      "nearest_node": "29903032",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1491206",
+      "nearest_node": "29903015",
+      "dist_m": 9.6
+    },
+    {
+      "stop_id": "1492137",
+      "nearest_node": "1771989588",
+      "dist_m": 7.1
+    },
+    {
+      "stop_id": "1492141",
+      "nearest_node": "370707151",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1492142",
+      "nearest_node": "370707151",
+      "dist_m": 8.2
+    },
+    {
+      "stop_id": "1493102",
+      "nearest_node": "13942238065",
+      "dist_m": 5.1
+    },
+    {
+      "stop_id": "1494102",
+      "nearest_node": "4413465892",
+      "dist_m": 34.9
+    },
+    {
+      "stop_id": "1494103",
+      "nearest_node": "2981768043",
+      "dist_m": 22.5
+    },
+    {
+      "stop_id": "1494104",
+      "nearest_node": "4413020143",
+      "dist_m": 19.1
+    },
+    {
+      "stop_id": "1494105",
+      "nearest_node": "9073207692",
+      "dist_m": 6.8
+    },
+    {
+      "stop_id": "1494167",
+      "nearest_node": "5214866766",
+      "dist_m": 4.8
+    },
+    {
+      "stop_id": "1494203",
+      "nearest_node": "9816782225",
+      "dist_m": 19.5
+    },
+    {
+      "stop_id": "1494204",
+      "nearest_node": "13383163219",
+      "dist_m": 3.3
+    },
+    {
+      "stop_id": "1494205",
+      "nearest_node": "12339996138",
+      "dist_m": 15.3
+    },
+    {
+      "stop_id": "1494206",
+      "nearest_node": "10682503588",
+      "dist_m": 7.0
+    },
+    {
+      "stop_id": "1494207",
+      "nearest_node": "10682503593",
+      "dist_m": 3.9
+    },
+    {
+      "stop_id": "1494208",
+      "nearest_node": "10591523569",
+      "dist_m": 9.2
+    },
+    {
+      "stop_id": "1494303",
+      "nearest_node": "10655910468",
+      "dist_m": 13.0
+    },
+    {
+      "stop_id": "1495135",
+      "nearest_node": "892566750",
+      "dist_m": 5.2
+    },
+    {
+      "stop_id": "1495150",
+      "nearest_node": "603354438",
+      "dist_m": 4.0
+    },
+    {
+      "stop_id": "1495151",
+      "nearest_node": "1731746763",
+      "dist_m": 6.2
+    },
+    {
+      "stop_id": "1495152",
+      "nearest_node": "1773929693",
+      "dist_m": 10.0
+    },
+    {
+      "stop_id": "1495153",
+      "nearest_node": "2921183590",
+      "dist_m": 22.9
+    },
+    {
+      "stop_id": "1495154",
+      "nearest_node": "806722358",
+      "dist_m": 5.9
+    },
+    {
+      "stop_id": "1495155",
+      "nearest_node": "806722359",
+      "dist_m": 5.5
+    },
+    {
+      "stop_id": "1495157",
+      "nearest_node": "602517984",
+      "dist_m": 5.6
+    },
+    {
+      "stop_id": "1510101",
+      "nearest_node": "29903092",
+      "dist_m": 16.1
+    },
+    {
+      "stop_id": "1510102",
+      "nearest_node": "1551777368",
+      "dist_m": 17.1
+    },
+    {
+      "stop_id": "1510103",
+      "nearest_node": "1032000299",
+      "dist_m": 10.7
+    },
+    {
+      "stop_id": "1510104",
+      "nearest_node": "29903098",
+      "dist_m": 12.7
+    },
+    {
+      "stop_id": "1510105",
+      "nearest_node": "29911788",
+      "dist_m": 15.5
+    },
+    {
+      "stop_id": "1510106",
+      "nearest_node": "6583994681",
+      "dist_m": 4.9
+    },
+    {
+      "stop_id": "1510107",
+      "nearest_node": "1424869244",
+      "dist_m": 7.9
+    }
+  ]
+}

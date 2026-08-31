@@ -1,0 +1,288 @@
+{
+  "frozen_file_sha256": {
+    "C0_baseline": {
+      "path": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\singapore_phase_c_s9\\C0_baseline\\phase_c_result.json",
+      "sha256": "633e13992a4473e7096cc6699f58a95e1233ccf1685c4d9ae8aaed228c8402bc"
+    },
+    "C1_heavy_rain": {
+      "path": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\singapore_phase_c_s9\\C1_heavy_rain\\phase_c_result.json",
+      "sha256": "e7a3b56dbc4d6c902385d5a950f367024c2d0dc1011b7e9d6ee6d5c79d0099ac"
+    },
+    "C2_fare_increase": {
+      "path": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\singapore_phase_c_s9\\C2_fare_increase\\phase_c_result.json",
+      "sha256": "ad71caf78c11ecaf8b862dd4ede04d796d4c464bd2ad47928497c93a9de63f92"
+    },
+    "C3_transit_delay": {
+      "path": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\singapore_phase_c_s9\\C3_transit_delay\\phase_c_result.json",
+      "sha256": "0c272850b6ad4889a4b1065d35cbc42755a940a0eb7cea2f5eaeee214ee7ecb4"
+    },
+    "C4_road_disruption": {
+      "path": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\singapore_phase_c_s9\\C4_road_disruption\\phase_c_result.json",
+      "sha256": "27badadbbda63f53719759d01cb16b5eb8e28986a04b74fdd0ae5b1fa5f1bbac"
+    },
+    "C5_joint_rain_delay": {
+      "path": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\singapore_phase_c_s9\\C5_joint_rain_delay\\phase_c_result.json",
+      "sha256": "805fceefcf0236961259e675dd068661661852dca398d595d62d6cefd26879ce"
+    }
+  },
+  "g0_cross_check": {
+    "C0_baseline": true,
+    "C1_heavy_rain": true,
+    "C2_fare_increase": true,
+    "C3_transit_delay": true,
+    "C4_road_disruption": true,
+    "C5_joint_rain_delay": true
+  },
+  "g1": {
+    "population_xml_sha256_equal": true,
+    "adapter_manifest_sha256_equal": true,
+    "decisions_equal": true,
+    "metrics_equal": true,
+    "pass": true
+  },
+  "g3_flags": [
+    "seed7/C4_road_disruption stuck rate 3.16% outside frozen band 3.3–4.3%"
+  ],
+  "g2": [
+    {
+      "seed": 42,
+      "scenario": "C0_baseline",
+      "pass": true
+    },
+    {
+      "seed": 42,
+      "scenario": "C1_heavy_rain",
+      "pass": true
+    },
+    {
+      "seed": 42,
+      "scenario": "C2_fare_increase",
+      "pass": true
+    },
+    {
+      "seed": 42,
+      "scenario": "C3_transit_delay",
+      "pass": true
+    },
+    {
+      "seed": 42,
+      "scenario": "C4_road_disruption",
+      "pass": true
+    },
+    {
+      "seed": 42,
+      "scenario": "C5_joint_rain_delay",
+      "pass": true
+    },
+    {
+      "seed": 7,
+      "scenario": "C0_baseline",
+      "pass": true
+    },
+    {
+      "seed": 7,
+      "scenario": "C1_heavy_rain",
+      "pass": true
+    },
+    {
+      "seed": 7,
+      "scenario": "C2_fare_increase",
+      "pass": true
+    },
+    {
+      "seed": 7,
+      "scenario": "C3_transit_delay",
+      "pass": true
+    },
+    {
+      "seed": 7,
+      "scenario": "C4_road_disruption",
+      "pass": true
+    },
+    {
+      "seed": 7,
+      "scenario": "C5_joint_rain_delay",
+      "pass": true
+    }
+  ],
+  "c2_judgment": {
+    "seed_values": {
+      "pt_pp": [
+        0.4,
+        0.5,
+        0.5
+      ],
+      "boardings": [
+        61,
+        99,
+        80
+      ]
+    },
+    "pt_verdict": "stable",
+    "boardings_verdict": "stable",
+    "overall": "stable"
+  },
+  "summary": {
+    "C1_heavy_rain": {
+      "pt_pp": [
+        20.0,
+        19.7,
+        20.1
+      ],
+      "boardings": [
+        4148,
+        4108,
+        4151
+      ],
+      "car_pp": [
+        9.3,
+        9.2,
+        9.2
+      ],
+      "vkt": [
+        8838.5,
+        8699.1,
+        8649.0
+      ],
+      "stuck": [
+        155,
+        131,
+        129
+      ],
+      "pt_signs": "3/3",
+      "boardings_signs": "3/3",
+      "pt_verdict": "stable",
+      "boardings_verdict": "stable",
+      "mean_std_ratio": "95.76"
+    },
+    "C2_fare_increase": {
+      "pt_pp": [
+        0.4,
+        0.5,
+        0.5
+      ],
+      "boardings": [
+        61,
+        99,
+        80
+      ],
+      "car_pp": [
+        1.6,
+        1.8,
+        1.5
+      ],
+      "vkt": [
+        1858.8,
+        1933.5,
+        1502.9
+      ],
+      "stuck": [
+        10,
+        8,
+        16
+      ],
+      "pt_signs": "3/3",
+      "boardings_signs": "3/3",
+      "pt_verdict": "stable",
+      "boardings_verdict": "stable",
+      "mean_std_ratio": "8.08"
+    },
+    "C3_transit_delay": {
+      "pt_pp": [
+        -15.1,
+        -15.3,
+        -15.7
+      ],
+      "boardings": [
+        -3139,
+        -3232,
+        -3308
+      ],
+      "car_pp": [
+        0.8,
+        0.6,
+        0.6
+      ],
+      "vkt": [
+        745.6,
+        388.3,
+        572.3
+      ],
+      "stuck": [
+        -109,
+        -118,
+        -120
+      ],
+      "pt_signs": "3/3",
+      "boardings_signs": "3/3",
+      "pt_verdict": "stable",
+      "boardings_verdict": "stable",
+      "mean_std_ratio": "50.30"
+    },
+    "C4_road_disruption": {
+      "pt_pp": [
+        12.1,
+        11.7,
+        12.3
+      ],
+      "boardings": [
+        2924,
+        2768,
+        2848
+      ],
+      "car_pp": [
+        -26.5,
+        -26.1,
+        -26.5
+      ],
+      "vkt": [
+        -30995.6,
+        -30121.0,
+        -30683.8
+      ],
+      "stuck": [
+        74,
+        76,
+        68
+      ],
+      "pt_signs": "3/3",
+      "boardings_signs": "3/3",
+      "pt_verdict": "stable",
+      "boardings_verdict": "stable",
+      "mean_std_ratio": "39.39"
+    },
+    "C5_joint_rain_delay": {
+      "pt_pp": [
+        -6.7,
+        -6.4,
+        -6.9
+      ],
+      "boardings": [
+        -1312,
+        -1303,
+        -1443
+      ],
+      "car_pp": [
+        9.4,
+        9.3,
+        9.1
+      ],
+      "vkt": [
+        8883.8,
+        8741.3,
+        8643.0
+      ],
+      "stuck": [
+        -28,
+        -28,
+        -26
+      ],
+      "pt_signs": "3/3",
+      "boardings_signs": "3/3",
+      "pt_verdict": "stable",
+      "boardings_verdict": "stable",
+      "mean_std_ratio": "26.49"
+    }
+  },
+  "complete": true
+}

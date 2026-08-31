@@ -1,0 +1,83 @@
+{
+  "fields": {
+    "pt_feasible": {
+      "helsinki_mean": 0.7051,
+      "helsinki_std": 0.456,
+      "p5": 0.0,
+      "p50": 1.0,
+      "p95": 1.0,
+      "sg_mean": 0.19017094017094016,
+      "sg_std": 0.39243592303131586,
+      "z_mean": 1.312,
+      "z_p95": 2.064,
+      "share_abs_z_gt_3": 0.0
+    },
+    "egress_time_min": {
+      "helsinki_mean": 10.6003,
+      "helsinki_std": 9.6708,
+      "p5": 0.0,
+      "p50": 8.883,
+      "p95": 23.568,
+      "sg_mean": 1.2976495726495725,
+      "sg_std": 3.3477045636001677,
+      "z_mean": 2.779,
+      "z_p95": 6.652,
+      "share_abs_z_gt_3": 0.4778
+    },
+    "wait_time_min": {
+      "helsinki_mean": 12.017,
+      "helsinki_std": 63.6105,
+      "p5": 0.0,
+      "p50": 4.259,
+      "p95": 15.744,
+      "sg_mean": 3.479190170940171,
+      "sg_std": 34.694515955907065,
+      "z_mean": 0.246,
+      "z_p95": 0.354,
+      "share_abs_z_gt_3": 0.0142
+    },
+    "in_vehicle_time_min": {
+      "helsinki_mean": 11.8137,
+      "helsinki_std": 11.9706,
+      "p5": 0.0,
+      "p50": 9.0,
+      "p95": 35.0,
+      "sg_mean": 2.72170405982906,
+      "sg_std": 7.506830903568419,
+      "z_mean": 1.211,
+      "z_p95": 4.3,
+      "share_abs_z_gt_3": 0.1554
+    },
+    "transfer_time_min": {
+      "helsinki_mean": 0.7955,
+      "helsinki_std": 2.5613,
+      "p5": 0.0,
+      "p50": 0.0,
+      "p95": 7.0,
+      "sg_mean": 0.0819423076923077,
+      "sg_std": 0.6665041475661496,
+      "z_mean": 1.071,
+      "z_p95": 10.38,
+      "share_abs_z_gt_3": 0.1147
+    },
+    "coverage_ratio": {
+      "helsinki_mean": 0.6154,
+      "helsinki_std": 0.4367,
+      "p5": 0.0,
+      "p50": 0.8669,
+      "p95": 1.0,
+      "sg_mean": 0.17631207264957263,
+      "sg_std": 0.3730806910921411,
+      "z_mean": 1.177,
+      "z_p95": 2.208,
+      "share_abs_z_gt_3": 0.0
+    }
+  },
+  "class_counts": {
+    "D_poor": 4806,
+    "A_excellent": 954,
+    "E_infeasible": 2949,
+    "C_moderate": 445,
+    "B_good": 846
+  }
+}

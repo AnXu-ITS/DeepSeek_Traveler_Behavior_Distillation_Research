@@ -70,6 +70,8 @@ scripts/                      # 可执行管线（生成 / 标注 / 训练 / 评
 configs/                      # YAML 配置（generation / teacher / student v0.x / S5-S9）
 releases/                     # 冻结模型发布包（S7-W3 / S8-deprecated / S9，含 SHA256 与复现 gate）
 reports/                      # 实验报告 / 审计 / Phase C 报告（git 追踪）
+evidence/                     # 论文证据快照：E1–E5 报告与结果 JSON、Phase C 原始结果、S9 评估快照
+                              #（索引与大文件清单见 evidence/README.md）
 docs/plans/                   # 研究蓝图 / Singapore 验证计划 / 任务阶段清单
 docs/stage_instructions/      # 各阶段执行指令与实验设计（S5-S8、Phase C、冻结指令）
 docs/                         # 供给集成说明 / S8_DEPRECATION.md
@@ -96,8 +98,12 @@ archive/legacy_*/             # 已归档的旧版文件
 ## 环境要求
 
 - Python ≥ 3.12、PyTorch ≥ 2.5（CPU 可跑全部训练/评估）
-- Java 25 + MATSim 2026.0（Singapore 场景仿真）
+- Java 25 + MATSim 2026.0（Singapore 场景仿真；发行包从 matsim-org/matsim-libs
+  官方 GitHub Releases 下载，解压为 `tools/matsim-2026.0-release/`）
 - DeepSeek API key（官方直连，教师标注用）
+- 外部数据源（OSM/GTFS）：来源、下载日期与 SHA256 见
+  `data/singapore/gtfs/raw/source_metadata.json`、`releases/s9_supply_aware_v2/provenance/`
+  与 `evidence/e5_helsinki/supply/`（Singapore 研究区 OSM 提取已随仓库提供）
 
 ## 快速开始
 
@@ -144,7 +150,10 @@ archive/legacy_*/             # 已归档的旧版文件
 ## 复现说明
 
 `data/`、`outputs/` 已被 git 忽略；数据集与运行产物均可由 `scripts/` 从 `configs/`
-复现生成（大文件：MATSim 发行包、GTFS 数据不入仓库）。冻结模型的复现 gate：
+复现生成（大文件：MATSim 发行包、GTFS 数据不入仓库）。**论文全部数字的证据快照**
+在 `evidence/`（E1–E5 报告与结果 JSON、Phase C 原始结果、S9 评估快照，共约 21 MB）；
+超过 20 MB 的原始工件不随仓库分发，其大小、SHA256 与再生成命令列于
+`evidence/README.md` §3。冻结模型的复现 gate：
 `python scripts/freeze_s9_release.py verify-gate`（12/12 指标 Δ=0.0000）。
 
 ## 许可

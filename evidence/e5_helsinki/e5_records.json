@@ -1,0 +1,851 @@
+[
+  {
+    "experiment": "E5",
+    "city": "Helsinki",
+    "scenario": "C0_baseline",
+    "label": "C0 baseline",
+    "context": {
+      "label": "C0 baseline",
+      "weather": {
+        "condition": "clear",
+        "intensity": 0.0
+      },
+      "road_congestion": 0.3,
+      "transit_delay_min": 0,
+      "transit_disruption": false,
+      "road_disruption": false,
+      "fare_multiplier": 1.0
+    },
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+    "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "checkpoint_sha256_verified": true,
+    "teacher_guard": {
+      "teacher_modules_imported": [],
+      "api_key_env_present": {
+        "DEEPSEEK_API_KEY": false,
+        "DEEPSEEK_KEY": false,
+        "OPENAI_API_KEY": false
+      },
+      "zero_teacher": true
+    },
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\transitSchedule.xml",
+      "crs_patched": "EPSG:32635"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 9507.0,
+    "factory_timing": {
+      "n_calls": 10000,
+      "total_s": 6061.2,
+      "mean_ms": 606.12,
+      "p50_ms": 576.8,
+      "p95_ms": 1322.77,
+      "max_ms": 4079.62
+    },
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 2304,
+        "bike": 3458,
+        "walk": 1383,
+        "car": 2855
+      },
+      "executed_outbound_counts": {
+        "pt": 1748,
+        "bike": 3458,
+        "walk": 2095,
+        "car": 2699
+      },
+      "departure_shift": {
+        "mean_min": 2.048,
+        "share_earlier": 0.1325,
+        "share_later": 0.7352,
+        "share_unchanged": 0.1323
+      }
+    },
+    "decision_gate": {
+      "pass": true,
+      "checks": {
+        "manifest_built": true,
+        "four_modes_in_decisions": true,
+        "fallback_reasons_known": true,
+        "note": "student modes {'pt': 2304, 'bike': 3458, 'walk': 1383, 'car': 2855}; intended-pt 2304, outbound pt_fallback_walk 556 (reasons {'no_direct_or_transfer': 556}) -> overall validity 75.9%; feasible-pt 1748, feasible fallback 0 -> feasibility-conditioned validity 100.0%. Overall validity is REPORTED (Helsinki share of Class-E pt decisions differs from Singapore); hard checks = four modes + known fallback reasons."
+      },
+      "pt_validity_overall": 0.7587,
+      "pt_validity_feasible_conditioned": 1.0,
+      "fallback_reasons": {
+        "no_direct_or_transfer": 556
+      },
+      "student_mode_counts": {
+        "pt": 2304,
+        "bike": 3458,
+        "walk": 1383,
+        "car": 2855
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 3824,
+      "pt_alightings": 3824,
+      "waiting_for_pt": 3824,
+      "stuck_and_abort": 1,
+      "stuck_persons": 1,
+      "stuck_transit_vehicles": 0,
+      "vehicle_aborts": 0,
+      "n_events": 28846489,
+      "failed_trips": 1,
+      "mean_trip_time_min": 22.15,
+      "n_trip_legs": 27646,
+      "car_mean_travel_time_min": 15.53,
+      "n_car_legs": 5364,
+      "road_delay_mean_s_per_passage": 0.68,
+      "network_congestion_slow_share": 0.0035,
+      "car_link_passages": 1989597,
+      "car_vkt_km": 39170.9,
+      "car_links_used": 78705,
+      "share_links_delay_gt_15s": 0.0013,
+      "share_links_delay_gt_30s": 0.0006,
+      "share_links_delay_gt_60s": 0.0,
+      "mean_link_delay_p50_s": 0.52,
+      "mean_link_delay_p90_s": 0.89,
+      "leg_departures": {
+        "walk": 11542,
+        "bike": 6916,
+        "pt": 3824,
+        "car": 5365
+      }
+    },
+    "runtime_seconds": 0.1,
+    "log_tail": "",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "four_modes_executed": true,
+        "note": "stuck persons 1 / 3824 boardings = 0.03% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 0 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True; four_modes_executed=True"
+    },
+    "all_gates": {
+      "G0": true,
+      "G3": true,
+      "G4": true
+    },
+    "matlab_rerun_note": "MATSim rerun 2026-08-28 after Temp matsim_rel cleanup; exit 0",
+    "parse_seconds": 77.7
+  },
+  {
+    "experiment": "E5",
+    "city": "Helsinki",
+    "scenario": "C1_heavy_rain",
+    "label": "C1 heavy rain",
+    "context": {
+      "label": "C1 heavy rain",
+      "weather": {
+        "condition": "rain",
+        "intensity": 0.75
+      },
+      "road_congestion": 0.3,
+      "transit_delay_min": 0,
+      "transit_disruption": false,
+      "road_disruption": false,
+      "fare_multiplier": 1.0
+    },
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+    "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "checkpoint_sha256_verified": true,
+    "teacher_guard": {
+      "teacher_modules_imported": [],
+      "api_key_env_present": {
+        "DEEPSEEK_API_KEY": false,
+        "DEEPSEEK_KEY": false,
+        "OPENAI_API_KEY": false
+      },
+      "zero_teacher": true
+    },
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\transitSchedule.xml",
+      "crs_patched": "EPSG:32635"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 2953.0,
+    "factory_timing": {
+      "n_calls": 10000,
+      "total_s": 0.76,
+      "mean_ms": 0.08,
+      "p50_ms": 0.06,
+      "p95_ms": 0.13,
+      "max_ms": 3.94
+    },
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 4066,
+        "bike": 1728,
+        "car": 3757,
+        "walk": 449
+      },
+      "executed_outbound_counts": {
+        "pt": 3289,
+        "bike": 1728,
+        "walk": 1424,
+        "car": 3559
+      },
+      "departure_shift": {
+        "mean_min": -0.594,
+        "share_earlier": 0.3639,
+        "share_later": 0.3971,
+        "share_unchanged": 0.239
+      }
+    },
+    "decision_gate": {
+      "pass": true,
+      "checks": {
+        "manifest_built": true,
+        "four_modes_in_decisions": true,
+        "fallback_reasons_known": true,
+        "note": "student modes {'pt': 4066, 'bike': 1728, 'car': 3757, 'walk': 449}; intended-pt 4066, outbound pt_fallback_walk 777 (reasons {'no_direct_or_transfer': 777}) -> overall validity 80.9%; feasible-pt 3289, feasible fallback 0 -> feasibility-conditioned validity 100.0%. Overall validity is REPORTED (Helsinki share of Class-E pt decisions differs from Singapore); hard checks = four modes + known fallback reasons."
+      },
+      "pt_validity_overall": 0.8089,
+      "pt_validity_feasible_conditioned": 1.0,
+      "fallback_reasons": {
+        "no_direct_or_transfer": 777
+      },
+      "student_mode_counts": {
+        "pt": 4066,
+        "bike": 1728,
+        "car": 3757,
+        "walk": 449
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 7115,
+      "pt_alightings": 7115,
+      "waiting_for_pt": 7116,
+      "stuck_and_abort": 2,
+      "stuck_persons": 2,
+      "stuck_transit_vehicles": 0,
+      "vehicle_aborts": 0,
+      "n_events": 27826286,
+      "failed_trips": 2,
+      "mean_trip_time_min": 18.77,
+      "n_trip_legs": 34228,
+      "car_mean_travel_time_min": 14.7,
+      "n_car_legs": 7078,
+      "road_delay_mean_s_per_passage": 0.65,
+      "network_congestion_slow_share": 0.0031,
+      "car_link_passages": 2495680,
+      "car_vkt_km": 48671.0,
+      "car_links_used": 85079,
+      "share_links_delay_gt_15s": 0.0009,
+      "share_links_delay_gt_30s": 0.0005,
+      "share_links_delay_gt_60s": 0.0,
+      "mean_link_delay_p50_s": 0.52,
+      "mean_link_delay_p90_s": 0.89,
+      "leg_departures": {
+        "walk": 16579,
+        "bike": 3456,
+        "pt": 7116,
+        "car": 7079
+      }
+    },
+    "runtime_seconds": 95.0,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 2 / 7115 boardings = 0.03% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 0 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    },
+    "all_gates": {
+      "G0": true,
+      "G3": true,
+      "G4": true
+    }
+  },
+  {
+    "experiment": "E5",
+    "city": "Helsinki",
+    "scenario": "C2_fare_increase",
+    "label": "C2 PT fare increase (+50%)",
+    "context": {
+      "label": "C2 PT fare increase (+50%)",
+      "weather": {
+        "condition": "clear",
+        "intensity": 0.0
+      },
+      "road_congestion": 0.3,
+      "transit_delay_min": 0,
+      "transit_disruption": false,
+      "road_disruption": false,
+      "fare_multiplier": 1.5
+    },
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+    "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "checkpoint_sha256_verified": true,
+    "teacher_guard": {
+      "teacher_modules_imported": [],
+      "api_key_env_present": {
+        "DEEPSEEK_API_KEY": false,
+        "DEEPSEEK_KEY": false,
+        "OPENAI_API_KEY": false
+      },
+      "zero_teacher": true
+    },
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\transitSchedule.xml",
+      "crs_patched": "EPSG:32635"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 9855.7,
+    "factory_timing": {
+      "n_calls": 10000,
+      "total_s": 6314.81,
+      "mean_ms": 631.48,
+      "p50_ms": 602.25,
+      "p95_ms": 1390.24,
+      "max_ms": 5221.66
+    },
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 2449,
+        "bike": 3324,
+        "walk": 1217,
+        "car": 3010
+      },
+      "executed_outbound_counts": {
+        "pt": 1789,
+        "bike": 3324,
+        "walk": 2038,
+        "car": 2849
+      },
+      "departure_shift": {
+        "mean_min": 2.531,
+        "share_earlier": 0.1181,
+        "share_later": 0.8069,
+        "share_unchanged": 0.075
+      }
+    },
+    "decision_gate": {
+      "pass": true,
+      "checks": {
+        "manifest_built": true,
+        "four_modes_in_decisions": true,
+        "fallback_reasons_known": true,
+        "note": "student modes {'pt': 2449, 'bike': 3324, 'walk': 1217, 'car': 3010}; intended-pt 2449, outbound pt_fallback_walk 660 (reasons {'no_direct_or_transfer': 660}) -> overall validity 73.1%; feasible-pt 1789, feasible fallback 0 -> feasibility-conditioned validity 100.0%. Overall validity is REPORTED (Helsinki share of Class-E pt decisions differs from Singapore); hard checks = four modes + known fallback reasons."
+      },
+      "pt_validity_overall": 0.7305,
+      "pt_validity_feasible_conditioned": 1.0,
+      "fallback_reasons": {
+        "no_direct_or_transfer": 660
+      },
+      "student_mode_counts": {
+        "pt": 2449,
+        "bike": 3324,
+        "walk": 1217,
+        "car": 3010
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 3910,
+      "pt_alightings": 3910,
+      "waiting_for_pt": 3910,
+      "stuck_and_abort": 1,
+      "stuck_persons": 1,
+      "stuck_transit_vehicles": 0,
+      "vehicle_aborts": 0,
+      "n_events": 28812667,
+      "failed_trips": 1,
+      "mean_trip_time_min": 21.91,
+      "n_trip_legs": 27818,
+      "car_mean_travel_time_min": 15.46,
+      "n_car_legs": 5664,
+      "road_delay_mean_s_per_passage": 0.68,
+      "network_congestion_slow_share": 0.0035,
+      "car_link_passages": 2087682,
+      "car_vkt_km": 41001.5,
+      "car_links_used": 80051,
+      "share_links_delay_gt_15s": 0.0013,
+      "share_links_delay_gt_30s": 0.0006,
+      "share_links_delay_gt_60s": 0.0,
+      "mean_link_delay_p50_s": 0.52,
+      "mean_link_delay_p90_s": 0.89,
+      "leg_departures": {
+        "walk": 11596,
+        "bike": 6648,
+        "pt": 3910,
+        "car": 5665
+      }
+    },
+    "runtime_seconds": 103.3,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 1 / 3910 boardings = 0.03% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 0 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    },
+    "all_gates": {
+      "G0": true,
+      "G3": true,
+      "G4": true
+    }
+  },
+  {
+    "experiment": "E5",
+    "city": "Helsinki",
+    "scenario": "C3_transit_delay",
+    "label": "C3 transit delay (15 min)",
+    "context": {
+      "label": "C3 transit delay (15 min)",
+      "weather": {
+        "condition": "clear",
+        "intensity": 0.0
+      },
+      "road_congestion": 0.3,
+      "transit_delay_min": 15,
+      "transit_disruption": false,
+      "road_disruption": false,
+      "fare_multiplier": 1.0
+    },
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+    "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "checkpoint_sha256_verified": true,
+    "teacher_guard": {
+      "teacher_modules_imported": [],
+      "api_key_env_present": {
+        "DEEPSEEK_API_KEY": false,
+        "DEEPSEEK_KEY": false,
+        "OPENAI_API_KEY": false
+      },
+      "zero_teacher": true
+    },
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\transitSchedule.xml",
+      "crs_patched": "EPSG:32635"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 3855.9,
+    "factory_timing": {
+      "n_calls": 10000,
+      "total_s": 0.78,
+      "mean_ms": 0.08,
+      "p50_ms": 0.06,
+      "p95_ms": 0.14,
+      "max_ms": 4.71
+    },
+    "decisions": {
+      "student_mode_counts": {
+        "walk": 2588,
+        "bike": 3594,
+        "pt": 922,
+        "car": 2896
+      },
+      "executed_outbound_counts": {
+        "walk": 3223,
+        "bike": 3594,
+        "car": 2743,
+        "pt": 440
+      },
+      "departure_shift": {
+        "mean_min": -0.953,
+        "share_earlier": 0.3461,
+        "share_later": 0.5471,
+        "share_unchanged": 0.1068
+      }
+    },
+    "decision_gate": {
+      "pass": true,
+      "checks": {
+        "manifest_built": true,
+        "four_modes_in_decisions": true,
+        "fallback_reasons_known": true,
+        "note": "student modes {'walk': 2588, 'bike': 3594, 'pt': 922, 'car': 2896}; intended-pt 922, outbound pt_fallback_walk 482 (reasons {'no_direct_or_transfer': 482}) -> overall validity 47.7%; feasible-pt 440, feasible fallback 0 -> feasibility-conditioned validity 100.0%. Overall validity is REPORTED (Helsinki share of Class-E pt decisions differs from Singapore); hard checks = four modes + known fallback reasons."
+      },
+      "pt_validity_overall": 0.4772,
+      "pt_validity_feasible_conditioned": 1.0,
+      "fallback_reasons": {
+        "no_direct_or_transfer": 482
+      },
+      "student_mode_counts": {
+        "walk": 2588,
+        "bike": 3594,
+        "pt": 922,
+        "car": 2896
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 1015,
+      "pt_alightings": 1015,
+      "waiting_for_pt": 1015,
+      "stuck_and_abort": 1,
+      "stuck_persons": 1,
+      "stuck_transit_vehicles": 0,
+      "vehicle_aborts": 0,
+      "n_events": 29927198,
+      "failed_trips": 1,
+      "mean_trip_time_min": 25.86,
+      "n_trip_legs": 22028,
+      "car_mean_travel_time_min": 15.6,
+      "n_car_legs": 5455,
+      "road_delay_mean_s_per_passage": 0.69,
+      "network_congestion_slow_share": 0.0041,
+      "car_link_passages": 2008455,
+      "car_vkt_km": 39476.6,
+      "car_links_used": 78846,
+      "share_links_delay_gt_15s": 0.0015,
+      "share_links_delay_gt_30s": 0.0007,
+      "share_links_delay_gt_60s": 0.0,
+      "mean_link_delay_p50_s": 0.52,
+      "mean_link_delay_p90_s": 0.89,
+      "leg_departures": {
+        "walk": 8370,
+        "bike": 7188,
+        "pt": 1015,
+        "car": 5456
+      }
+    },
+    "runtime_seconds": 98.1,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 1 / 1015 boardings = 0.10% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 0 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    },
+    "all_gates": {
+      "G0": true,
+      "G3": true,
+      "G4": true
+    }
+  },
+  {
+    "experiment": "E5",
+    "city": "Helsinki",
+    "scenario": "C4_road_disruption",
+    "label": "C4 road disruption",
+    "context": {
+      "label": "C4 road disruption",
+      "weather": {
+        "condition": "clear",
+        "intensity": 0.0
+      },
+      "road_congestion": 0.3,
+      "transit_delay_min": 0,
+      "transit_disruption": false,
+      "road_disruption": true,
+      "fare_multiplier": 1.0
+    },
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+    "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "checkpoint_sha256_verified": true,
+    "teacher_guard": {
+      "teacher_modules_imported": [],
+      "api_key_env_present": {
+        "DEEPSEEK_API_KEY": false,
+        "DEEPSEEK_KEY": false,
+        "OPENAI_API_KEY": false
+      },
+      "zero_teacher": true
+    },
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\transitSchedule.xml",
+      "crs_patched": "EPSG:32635"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 4370.7,
+    "factory_timing": {
+      "n_calls": 10000,
+      "total_s": 0.85,
+      "mean_ms": 0.09,
+      "p50_ms": 0.07,
+      "p95_ms": 0.14,
+      "max_ms": 4.86
+    },
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 3058,
+        "bike": 4283,
+        "walk": 2178,
+        "car": 481
+      },
+      "executed_outbound_counts": {
+        "pt": 2556,
+        "bike": 4283,
+        "walk": 2699,
+        "car": 462
+      },
+      "departure_shift": {
+        "mean_min": 1.918,
+        "share_earlier": 0.1893,
+        "share_later": 0.7181,
+        "share_unchanged": 0.0926
+      }
+    },
+    "decision_gate": {
+      "pass": true,
+      "checks": {
+        "manifest_built": true,
+        "four_modes_in_decisions": true,
+        "fallback_reasons_known": true,
+        "note": "student modes {'pt': 3058, 'bike': 4283, 'walk': 2178, 'car': 481}; intended-pt 3058, outbound pt_fallback_walk 502 (reasons {'no_direct_or_transfer': 502}) -> overall validity 83.6%; feasible-pt 2556, feasible fallback 0 -> feasibility-conditioned validity 100.0%. Overall validity is REPORTED (Helsinki share of Class-E pt decisions differs from Singapore); hard checks = four modes + known fallback reasons."
+      },
+      "pt_validity_overall": 0.8358,
+      "pt_validity_feasible_conditioned": 1.0,
+      "fallback_reasons": {
+        "no_direct_or_transfer": 502
+      },
+      "student_mode_counts": {
+        "pt": 3058,
+        "bike": 4283,
+        "walk": 2178,
+        "car": 481
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 5599,
+      "pt_alightings": 5599,
+      "waiting_for_pt": 5600,
+      "stuck_and_abort": 1,
+      "stuck_persons": 1,
+      "stuck_transit_vehicles": 0,
+      "vehicle_aborts": 0,
+      "n_events": 28339388,
+      "failed_trips": 1,
+      "mean_trip_time_min": 22.64,
+      "n_trip_legs": 31198,
+      "car_mean_travel_time_min": 19.21,
+      "n_car_legs": 915,
+      "road_delay_mean_s_per_passage": 0.58,
+      "network_congestion_slow_share": 0.0015,
+      "car_link_passages": 467426,
+      "car_vkt_km": 9692.2,
+      "car_links_used": 39911,
+      "share_links_delay_gt_15s": 0.0016,
+      "share_links_delay_gt_30s": 0.0005,
+      "share_links_delay_gt_60s": 0.0001,
+      "mean_link_delay_p50_s": 0.53,
+      "mean_link_delay_p90_s": 0.88,
+      "leg_departures": {
+        "walk": 16118,
+        "car": 915,
+        "bike": 8566,
+        "pt": 5600
+      }
+    },
+    "runtime_seconds": 98.3,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 1 / 5599 boardings = 0.02% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 0 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    },
+    "all_gates": {
+      "G0": true,
+      "G3": true,
+      "G4": true
+    }
+  },
+  {
+    "experiment": "E5",
+    "city": "Helsinki",
+    "scenario": "C5_joint_rain_delay",
+    "label": "C5 joint: heavy rain + transit delay",
+    "context": {
+      "label": "C5 joint: heavy rain + transit delay",
+      "weather": {
+        "condition": "rain",
+        "intensity": 0.75
+      },
+      "road_congestion": 0.3,
+      "transit_delay_min": 15,
+      "transit_disruption": false,
+      "road_disruption": false,
+      "fare_multiplier": 1.0
+    },
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "checkpoint": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+    "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "checkpoint_sha256_verified": true,
+    "teacher_guard": {
+      "teacher_modules_imported": [],
+      "api_key_env_present": {
+        "DEEPSEEK_API_KEY": false,
+        "DEEPSEEK_KEY": false,
+        "OPENAI_API_KEY": false
+      },
+      "zero_teacher": true
+    },
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\transit\\transitSchedule.xml",
+      "crs_patched": "EPSG:32635"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 3703.4,
+    "factory_timing": {
+      "n_calls": 10000,
+      "total_s": 0.85,
+      "mean_ms": 0.09,
+      "p50_ms": 0.07,
+      "p95_ms": 0.14,
+      "max_ms": 2.62
+    },
+    "decisions": {
+      "student_mode_counts": {
+        "walk": 1797,
+        "bike": 2551,
+        "pt": 1890,
+        "car": 3762
+      },
+      "executed_outbound_counts": {
+        "walk": 2827,
+        "bike": 2551,
+        "pt": 1062,
+        "car": 3560
+      },
+      "departure_shift": {
+        "mean_min": -4.339,
+        "share_earlier": 0.4955,
+        "share_later": 0.3641,
+        "share_unchanged": 0.1404
+      }
+    },
+    "decision_gate": {
+      "pass": true,
+      "checks": {
+        "manifest_built": true,
+        "four_modes_in_decisions": true,
+        "fallback_reasons_known": true,
+        "note": "student modes {'walk': 1797, 'bike': 2551, 'pt': 1890, 'car': 3762}; intended-pt 1890, outbound pt_fallback_walk 828 (reasons {'no_direct_or_transfer': 828}) -> overall validity 56.2%; feasible-pt 1062, feasible fallback 0 -> feasibility-conditioned validity 100.0%. Overall validity is REPORTED (Helsinki share of Class-E pt decisions differs from Singapore); hard checks = four modes + known fallback reasons."
+      },
+      "pt_validity_overall": 0.5619,
+      "pt_validity_feasible_conditioned": 1.0,
+      "fallback_reasons": {
+        "no_direct_or_transfer": 828
+      },
+      "student_mode_counts": {
+        "walk": 1797,
+        "bike": 2551,
+        "pt": 1890,
+        "car": 3762
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 2405,
+      "pt_alightings": 2405,
+      "waiting_for_pt": 2405,
+      "stuck_and_abort": 1,
+      "stuck_persons": 1,
+      "stuck_transit_vehicles": 0,
+      "vehicle_aborts": 0,
+      "n_events": 29234742,
+      "failed_trips": 1,
+      "mean_trip_time_min": 22.9,
+      "n_trip_legs": 24808,
+      "car_mean_travel_time_min": 14.89,
+      "n_car_legs": 7080,
+      "road_delay_mean_s_per_passage": 0.67,
+      "network_congestion_slow_share": 0.0036,
+      "car_link_passages": 2493277,
+      "car_vkt_km": 48583.3,
+      "car_links_used": 85069,
+      "share_links_delay_gt_15s": 0.0012,
+      "share_links_delay_gt_30s": 0.0006,
+      "share_links_delay_gt_60s": 0.0,
+      "mean_link_delay_p50_s": 0.52,
+      "mean_link_delay_p90_s": 0.89,
+      "leg_departures": {
+        "walk": 10221,
+        "bike": 5102,
+        "pt": 2405,
+        "car": 7081
+      }
+    },
+    "runtime_seconds": 111.6,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 1 / 2405 boardings = 0.04% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 0 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    },
+    "all_gates": {
+      "G0": true,
+      "G3": true,
+      "G4": true
+    }
+  }
+]

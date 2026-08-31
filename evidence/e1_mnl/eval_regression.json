@@ -1,0 +1,135 @@
+{
+  "benchmark": "B3 regression (frozen S3 legacy 226 + S5 joint 72/24, Teacher labels frozen)",
+  "bootstrap": {
+    "B": 2000,
+    "seed": 42,
+    "unit": "state (paired over states)"
+  },
+  "models": {
+    "MNL_B": {
+      "legacy": {
+        "n": 226,
+        "mode_accuracy": {
+          "mean": 0.6681,
+          "ci_low": 0.6062,
+          "ci_high": 0.7301
+        },
+        "kl": {
+          "mean": 0.3863,
+          "ci_low": 0.3299,
+          "ci_high": 0.4471
+        },
+        "probability_l1": {
+          "mean": 0.5083,
+          "ci_low": 0.4555,
+          "ci_high": 0.5608
+        },
+        "delta_p_gap": {
+          "mean": 0.0743,
+          "ci_low": 0.0633,
+          "ci_high": 0.0857
+        },
+        "sign_agreement": {
+          "mean": 0.5946,
+          "ci_low": 0.5479,
+          "ci_high": 0.6406
+        }
+      },
+      "seen_joint": {
+        "n": 72,
+        "kl": {
+          "mean": 0.4047,
+          "ci_low": 0.2941,
+          "ci_high": 0.5272
+        },
+        "l1": {
+          "mean": 0.5247,
+          "ci_low": 0.4217,
+          "ci_high": 0.6293
+        }
+      },
+      "unseen_joint": {
+        "n": 24,
+        "kl": {
+          "mean": 0.3673,
+          "ci_low": 0.2567,
+          "ci_high": 0.4783
+        },
+        "l1": {
+          "mean": 0.5842,
+          "ci_low": 0.4127,
+          "ci_high": 0.7497
+        }
+      },
+      "interaction_l1_error": {
+        "mean": 0.0424,
+        "ci_low": 0.0337,
+        "ci_high": 0.0519
+      }
+    }
+  },
+  "frozen_reference": {
+    "S9": {
+      "legacy": {
+        "n": 226,
+        "mode_accuracy": {
+          "mean": 0.8894,
+          "ci_low": 0.8496,
+          "ci_high": 0.9292
+        },
+        "kl": {
+          "mean": 0.0514,
+          "ci_low": 0.0423,
+          "ci_high": 0.0606
+        },
+        "probability_l1": {
+          "mean": 0.1886,
+          "ci_low": 0.1641,
+          "ci_high": 0.2131
+        },
+        "delta_p_gap": {
+          "mean": 0.0489,
+          "ci_low": 0.043,
+          "ci_high": 0.0551
+        },
+        "sign_agreement": {
+          "mean": 0.7076,
+          "ci_low": 0.6565,
+          "ci_high": 0.7559
+        }
+      },
+      "seen_joint": {
+        "n": 72,
+        "kl": {
+          "mean": 0.0407,
+          "ci_low": 0.0304,
+          "ci_high": 0.0526
+        },
+        "l1": {
+          "mean": 0.1603,
+          "ci_low": 0.1275,
+          "ci_high": 0.1956
+        }
+      },
+      "unseen_joint": {
+        "n": 24,
+        "kl": {
+          "mean": 0.0537,
+          "ci_low": 0.0218,
+          "ci_high": 0.0924
+        },
+        "l1": {
+          "mean": 0.1713,
+          "ci_low": 0.0943,
+          "ci_high": 0.2576
+        }
+      },
+      "interaction_l1_error": {
+        "mean": 0.0504,
+        "ci_low": 0.0404,
+        "ci_high": 0.0611
+      }
+    }
+  },
+  "mnl_coefs": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\e1_mnl\\mnl_b_coefs.json"
+}

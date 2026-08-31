@@ -1,0 +1,51 @@
+{
+  "city": "Helsinki",
+  "zip": "hsl\\hsl.zip",
+  "zip_sha256": "d7baf8c702d7c09f1638df7dcc0f1c89b81aeca01f8371a43f4055dfb937acff",
+  "feed_version": "2026-08-27 04:51:22",
+  "reference_day": "2026-09-09",
+  "weekday": "wednesday",
+  "bbox": {
+    "lat_min": 60.145,
+    "lat_max": 60.23,
+    "lon_min": 24.875,
+    "lon_max": 25.06
+  },
+  "margin_deg": 0.004,
+  "time_window": [
+    18000,
+    82800
+  ],
+  "supply_cropping": "longest in-region consecutive stop segment per trip (Singapore Phase A §2.4 parity)",
+  "route_type_counts": {
+    "0": 29,
+    "4": 3,
+    "702": 14,
+    "701": 355,
+    "704": 46,
+    "900": 1,
+    "109": 13,
+    "1": 4
+  },
+  "route_type_mapping": "0/900 tram, 1 metro, 100 rail, 109 commuter rail -> rail; 3, 700-716 -> bus; 4 ferry + unknown excluded",
+  "active_service_ids": 507,
+  "excluded_counts": {
+    "service_inactive": 368599,
+    "route_excluded": 149,
+    "ferry_or_unknown": 0
+  },
+  "n_parent_stations_skipped": 122,
+  "trips_kept": 13655,
+  "trips_trimmed": 9736,
+  "trips_dropped_no_region_run": 8389,
+  "trips_dropped_time_window": 1100,
+  "trips_dropped_too_short": 489,
+  "stops_kept": 1269,
+  "mode_counts": {
+    "bus": 9567,
+    "rail": 4088
+  },
+  "note_gt24h_times": "HSL stop_times contain >=24h timestamps; parsed as plain hh*3600 (Singapore-identical code)",
+  "feed_start_date": "20260826",
+  "feed_end_date": "20261024"
+}

@@ -1,0 +1,47 @@
+{
+  "source": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\helsinki\\osm\\helsinki_sub.osm",
+  "ways_kept": 85203,
+  "nodes": 290204,
+  "links": 638328,
+  "mode_link_counts": {
+    "bike": 623288,
+    "walk": 636576,
+    "car": 173736
+  },
+  "length_m": {
+    "n": 638328,
+    "min": 0.5,
+    "p50": 7.13,
+    "max": 586.62
+  },
+  "freespeed_ms": {
+    "n": 638328,
+    "min": 0.8,
+    "p50": 1.4,
+    "max": 27.78
+  },
+  "capacity_veh_h": {
+    "n": 638328,
+    "min": 300,
+    "p50": 1000,
+    "max": 10000
+  },
+  "total_network_km": 7494.86,
+  "connectivity": {
+    "car": {
+      "components": 298,
+      "largest_component_nodes": 91840,
+      "fraction_in_largest": 0.9745
+    },
+    "bike": {
+      "components": 1268,
+      "largest_component_nodes": 275937,
+      "fraction_in_largest": 0.9711
+    },
+    "walk": {
+      "components": 702,
+      "largest_component_nodes": 282721,
+      "fraction_in_largest": 0.981
+    }
+  }
+}

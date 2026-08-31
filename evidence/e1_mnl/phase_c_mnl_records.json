@@ -1,0 +1,507 @@
+[
+  {
+    "scenario": "C0_baseline",
+    "label": "C0 baseline",
+    "decision_model": "MNL-B",
+    "mnl_coefs": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\e1_mnl\\mnl_b_coefs.json",
+    "mnl_coefs_sha256": "28ffc133864cd3b96bd21319a0331aba6b6df5475574b17d7485862b3c934e76",
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\transitSchedule.xml"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 3188.1,
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 3174,
+        "bike": 2182,
+        "walk": 959,
+        "car": 3685
+      },
+      "executed_outbound_counts": {
+        "pt": 3144,
+        "bike": 2182,
+        "walk": 1327,
+        "car": 3347
+      },
+      "departure_shift": {
+        "mean_min": 0.0,
+        "share_earlier": 0.0,
+        "share_later": 0.0,
+        "share_unchanged": 1.0
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 7038,
+      "pt_alightings": 6178,
+      "waiting_for_pt": 7266,
+      "stuck_and_abort": 4564,
+      "stuck_persons": 265,
+      "stuck_transit_vehicles": 4299,
+      "vehicle_aborts": 4324,
+      "n_events": 26057047,
+      "failed_trips": 1125,
+      "mean_trip_time_min": 45.79,
+      "n_trip_legs": 32023,
+      "car_mean_travel_time_min": 9.82,
+      "n_car_legs": 6531,
+      "road_delay_mean_s_per_passage": 0.59,
+      "network_congestion_slow_share": 0.0016,
+      "car_link_passages": 1308652,
+      "car_vkt_km": 41945.2,
+      "car_links_used": 50487,
+      "share_links_delay_gt_15s": 0.0036,
+      "share_links_delay_gt_30s": 0.0016,
+      "share_links_delay_gt_60s": 0.0004,
+      "mean_link_delay_p50_s": 0.53,
+      "mean_link_delay_p90_s": 0.91,
+      "leg_departures": {
+        "walk": 14977,
+        "car": 6541,
+        "bike": 4364,
+        "pt": 7266
+      }
+    },
+    "runtime_seconds": 140.0,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "four_modes_executed": true,
+        "note": "stuck persons 265 / 7038 boardings = 3.77% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 4299 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True; four_modes_executed=True"
+    }
+  },
+  {
+    "scenario": "C1_heavy_rain",
+    "label": "C1 heavy rain",
+    "decision_model": "MNL-B",
+    "mnl_coefs": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\e1_mnl\\mnl_b_coefs.json",
+    "mnl_coefs_sha256": "28ffc133864cd3b96bd21319a0331aba6b6df5475574b17d7485862b3c934e76",
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\transitSchedule.xml"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 2013.0,
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 3337,
+        "bike": 2127,
+        "walk": 839,
+        "car": 3697
+      },
+      "executed_outbound_counts": {
+        "pt": 3295,
+        "bike": 2127,
+        "walk": 1220,
+        "car": 3358
+      },
+      "departure_shift": {
+        "mean_min": 0.0,
+        "share_earlier": 0.0,
+        "share_later": 0.0,
+        "share_unchanged": 1.0
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 7355,
+      "pt_alightings": 6443,
+      "waiting_for_pt": 7588,
+      "stuck_and_abort": 4578,
+      "stuck_persons": 272,
+      "stuck_transit_vehicles": 4306,
+      "vehicle_aborts": 4333,
+      "n_events": 25954829,
+      "failed_trips": 1184,
+      "mean_trip_time_min": 46.55,
+      "n_trip_legs": 32531,
+      "car_mean_travel_time_min": 9.83,
+      "n_car_legs": 6552,
+      "road_delay_mean_s_per_passage": 0.59,
+      "network_congestion_slow_share": 0.0016,
+      "car_link_passages": 1312506,
+      "car_vkt_km": 42069.4,
+      "car_links_used": 50578,
+      "share_links_delay_gt_15s": 0.0038,
+      "share_links_delay_gt_30s": 0.0017,
+      "share_links_delay_gt_60s": 0.0003,
+      "mean_link_delay_p50_s": 0.53,
+      "mean_link_delay_p90_s": 0.91,
+      "leg_departures": {
+        "walk": 15311,
+        "car": 6562,
+        "bike": 4254,
+        "pt": 7588
+      }
+    },
+    "runtime_seconds": 133.8,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 272 / 7355 boardings = 3.70% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 4306 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    }
+  },
+  {
+    "scenario": "C2_fare_increase",
+    "label": "C2 PT fare increase (+50%)",
+    "decision_model": "MNL-B",
+    "mnl_coefs": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\e1_mnl\\mnl_b_coefs.json",
+    "mnl_coefs_sha256": "28ffc133864cd3b96bd21319a0331aba6b6df5475574b17d7485862b3c934e76",
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\transitSchedule.xml"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 2360.0,
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 3909,
+        "bike": 1786,
+        "walk": 673,
+        "car": 3632
+      },
+      "executed_outbound_counts": {
+        "pt": 3871,
+        "bike": 1786,
+        "walk": 1041,
+        "car": 3302
+      },
+      "departure_shift": {
+        "mean_min": 0.0,
+        "share_earlier": 0.0,
+        "share_later": 0.0,
+        "share_unchanged": 1.0
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 8572,
+      "pt_alightings": 7526,
+      "waiting_for_pt": 8834,
+      "stuck_and_abort": 4639,
+      "stuck_persons": 321,
+      "stuck_transit_vehicles": 4318,
+      "vehicle_aborts": 4365,
+      "n_events": 25670576,
+      "failed_trips": 1367,
+      "mean_trip_time_min": 48.8,
+      "n_trip_legs": 34627,
+      "car_mean_travel_time_min": 9.81,
+      "n_car_legs": 6446,
+      "road_delay_mean_s_per_passage": 0.59,
+      "network_congestion_slow_share": 0.0016,
+      "car_link_passages": 1292834,
+      "car_vkt_km": 41438.0,
+      "car_links_used": 50294,
+      "share_links_delay_gt_15s": 0.0037,
+      "share_links_delay_gt_30s": 0.0017,
+      "share_links_delay_gt_60s": 0.0004,
+      "mean_link_delay_p50_s": 0.53,
+      "mean_link_delay_p90_s": 0.91,
+      "leg_departures": {
+        "walk": 17132,
+        "car": 6456,
+        "bike": 3572,
+        "pt": 8834
+      }
+    },
+    "runtime_seconds": 134.1,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 321 / 8572 boardings = 3.74% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 4318 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    }
+  },
+  {
+    "scenario": "C3_transit_delay",
+    "label": "C3 transit delay (15 min)",
+    "decision_model": "MNL-B",
+    "mnl_coefs": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\e1_mnl\\mnl_b_coefs.json",
+    "mnl_coefs_sha256": "28ffc133864cd3b96bd21319a0331aba6b6df5475574b17d7485862b3c934e76",
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\transitSchedule.xml"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 2218.6,
+    "decisions": {
+      "student_mode_counts": {
+        "walk": 1326,
+        "bike": 2480,
+        "pt": 2472,
+        "car": 3722
+      },
+      "executed_outbound_counts": {
+        "walk": 1690,
+        "bike": 2480,
+        "pt": 2453,
+        "car": 3377
+      },
+      "departure_shift": {
+        "mean_min": 0.0,
+        "share_earlier": 0.0,
+        "share_later": 0.0,
+        "share_unchanged": 1.0
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 5575,
+      "pt_alightings": 4904,
+      "waiting_for_pt": 5760,
+      "stuck_and_abort": 4498,
+      "stuck_persons": 214,
+      "stuck_transit_vehicles": 4284,
+      "vehicle_aborts": 4301,
+      "n_events": 26421504,
+      "failed_trips": 885,
+      "mean_trip_time_min": 42.51,
+      "n_trip_legs": 29536,
+      "car_mean_travel_time_min": 9.87,
+      "n_car_legs": 6590,
+      "road_delay_mean_s_per_passage": 0.6,
+      "network_congestion_slow_share": 0.0016,
+      "car_link_passages": 1320100,
+      "car_vkt_km": 42314.9,
+      "car_links_used": 50645,
+      "share_links_delay_gt_15s": 0.0036,
+      "share_links_delay_gt_30s": 0.0016,
+      "share_links_delay_gt_60s": 0.0004,
+      "mean_link_delay_p50_s": 0.53,
+      "mean_link_delay_p90_s": 0.91,
+      "leg_departures": {
+        "walk": 13101,
+        "car": 6600,
+        "bike": 4960,
+        "pt": 5760
+      }
+    },
+    "runtime_seconds": 130.8,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 214 / 5575 boardings = 3.84% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 4284 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    }
+  },
+  {
+    "scenario": "C4_road_disruption",
+    "label": "C4 road disruption",
+    "decision_model": "MNL-B",
+    "mnl_coefs": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\e1_mnl\\mnl_b_coefs.json",
+    "mnl_coefs_sha256": "28ffc133864cd3b96bd21319a0331aba6b6df5475574b17d7485862b3c934e76",
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\transitSchedule.xml"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 2406.2,
+    "decisions": {
+      "student_mode_counts": {
+        "pt": 3289,
+        "bike": 2334,
+        "walk": 984,
+        "car": 3393
+      },
+      "executed_outbound_counts": {
+        "pt": 3259,
+        "bike": 2333,
+        "walk": 1312,
+        "car": 3096
+      },
+      "departure_shift": {
+        "mean_min": 0.0,
+        "share_earlier": 0.0,
+        "share_later": 0.0,
+        "share_unchanged": 1.0
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 7289,
+      "pt_alightings": 6403,
+      "waiting_for_pt": 7525,
+      "stuck_and_abort": 4577,
+      "stuck_persons": 275,
+      "stuck_transit_vehicles": 4302,
+      "vehicle_aborts": 4329,
+      "n_events": 26001377,
+      "failed_trips": 1161,
+      "mean_trip_time_min": 46.57,
+      "n_trip_legs": 32461,
+      "car_mean_travel_time_min": 9.9,
+      "n_car_legs": 6037,
+      "road_delay_mean_s_per_passage": 0.59,
+      "network_congestion_slow_share": 0.0016,
+      "car_link_passages": 1221856,
+      "car_vkt_km": 39295.9,
+      "car_links_used": 49495,
+      "share_links_delay_gt_15s": 0.0036,
+      "share_links_delay_gt_30s": 0.0017,
+      "share_links_delay_gt_60s": 0.0004,
+      "mean_link_delay_p50_s": 0.53,
+      "mean_link_delay_p90_s": 0.91,
+      "leg_departures": {
+        "walk": 15384,
+        "car": 6047,
+        "bike": 4666,
+        "pt": 7525
+      }
+    },
+    "runtime_seconds": 131.2,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 275 / 7289 boardings = 3.77% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 4302 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    }
+  },
+  {
+    "scenario": "C5_joint_rain_delay",
+    "label": "C5 joint: heavy rain + transit delay",
+    "decision_model": "MNL-B",
+    "mnl_coefs": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\outputs\\e1_mnl\\mnl_b_coefs.json",
+    "mnl_coefs_sha256": "28ffc133864cd3b96bd21319a0331aba6b6df5475574b17d7485862b3c934e76",
+    "n_agents": 10000,
+    "population_seed": 2026,
+    "frozen_settings": {
+      "flow_capacity_factor": 0.3,
+      "storage_capacity_factor": 0.3,
+      "last_iteration": 0,
+      "network": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\network_with_transit.xml",
+      "schedule": "C:\\Users\\xuan1\\Desktop\\UOL学习\\蒸馏出行意图workbench\\data\\singapore\\transit\\transitSchedule.xml"
+    },
+    "matsim": "MATSim 2026.0 (matsim_rel/matsim-2026.0.jar)",
+    "java": "OpenJDK 25.0.4",
+    "build_seconds": 2338.4,
+    "decisions": {
+      "student_mode_counts": {
+        "walk": 1152,
+        "bike": 2435,
+        "pt": 2678,
+        "car": 3735
+      },
+      "executed_outbound_counts": {
+        "walk": 1530,
+        "bike": 2435,
+        "pt": 2646,
+        "car": 3389
+      },
+      "departure_shift": {
+        "mean_min": 0.0,
+        "share_earlier": 0.0,
+        "share_later": 0.0,
+        "share_unchanged": 1.0
+      }
+    },
+    "matsim_exit_code": 0,
+    "metrics": {
+      "pt_boardings": 5975,
+      "pt_alightings": 5248,
+      "waiting_for_pt": 6178,
+      "stuck_and_abort": 4519,
+      "stuck_persons": 232,
+      "stuck_transit_vehicles": 4287,
+      "vehicle_aborts": 4304,
+      "n_events": 26301759,
+      "failed_trips": 959,
+      "mean_trip_time_min": 43.34,
+      "n_trip_legs": 30205,
+      "car_mean_travel_time_min": 9.87,
+      "n_car_legs": 6612,
+      "road_delay_mean_s_per_passage": 0.6,
+      "network_congestion_slow_share": 0.0016,
+      "car_link_passages": 1324238,
+      "car_vkt_km": 42448.7,
+      "car_links_used": 50738,
+      "share_links_delay_gt_15s": 0.0036,
+      "share_links_delay_gt_30s": 0.0016,
+      "share_links_delay_gt_60s": 0.0004,
+      "mean_link_delay_p50_s": 0.53,
+      "mean_link_delay_p90_s": 0.91,
+      "leg_departures": {
+        "walk": 13494,
+        "car": 6622,
+        "bike": 4870,
+        "pt": 6178
+      }
+    },
+    "runtime_seconds": 124.6,
+    "log_tail": "\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.dumpExperiencedPartialScores(DumpDataAtEndImpl.java:237)\n\tat org.matsim.core.controler.corelisteners.DumpDataAtEndImpl.notifyShutdown(DumpDataAtEndImpl.java:152)\n\tat org.matsim.core.controler.ControllerListenerManagerImpl.fireControllerShutdownEvent(ControllerListenerManagerImpl.java:156)\n\tat org.matsim.core.controler.AbstractController$1.shutdown(AbstractController.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:89)\n\tat org.matsim.core.controler.MatsimRuntimeModifications.run(MatsimRuntimeModifications.java:54)\n\tat org.matsim.core.controler.AbstractController.run(AbstractController.java:92)\n\tat org.matsim.core.controler.NewControler.run(NewControler.java:86)\n\tat org.matsim.core.controler.Controler.run(Controler.java:284)\n\tat RunMatsimPreloaded.main(RunMatsimPreloaded.java:29)",
+    "gate": {
+      "pass": true,
+      "checks": {
+        "matsim_exit_0": true,
+        "stuck_rate_per_pt_boarding_le_5pct": true,
+        "pt_alightings_le_boardings": true,
+        "legs_executed": true,
+        "note": "stuck persons 232 / 5975 boardings = 3.88% (S9 C0 baseline 3.8%; B.5C absolute reference 266); stuck transit vehicles 4287 (sim-end truncation, pre-existing)."
+      },
+      "summary": "matsim_exit_0=True; stuck_rate_per_pt_boarding_le_5pct=True; pt_alightings_le_boardings=True; legs_executed=True"
+    }
+  }
+]

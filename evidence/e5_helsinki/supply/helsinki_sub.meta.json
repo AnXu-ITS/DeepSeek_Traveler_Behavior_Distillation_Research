@@ -1,0 +1,27 @@
+{
+  "source": "hsl\\hsl.osm.pbf",
+  "source_sha256": "8c59e968929d3751add20a98ac8c36b6928d081aaca19221ddf8939accef197d",
+  "bbox": {
+    "lat_min": 60.145,
+    "lat_max": 60.23,
+    "lon_min": 24.875,
+    "lon_max": 25.06
+  },
+  "margin_deg": 0.004,
+  "source_header_bbox": {
+    "bbox_lat_lo": 59.746859999,
+    "bbox_lat_hi": 61.03463935600001,
+    "bbox_lon_lo": 23.544680000000003,
+    "bbox_lon_hi": 26.801990285000002
+  },
+  "semantics": "Overpass-equivalent: way[highway] with >=1 node in bbox; all member nodes emitted (may lie outside bbox)",
+  "nodes_in_bbox": 1018099,
+  "highway_ways_kept": 85203,
+  "nodes_emitted": 290204,
+  "way_refs_total": 421529,
+  "way_refs_missing": 0,
+  "pass1_s": 12.3,
+  "pass2_s": 14.5,
+  "pass3_s": 13.9,
+  "total_s": 40.9
+}
