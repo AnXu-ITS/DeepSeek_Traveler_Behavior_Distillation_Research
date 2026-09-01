@@ -67,15 +67,19 @@ normalization、可达性特征定义、供给/教师 provenance、数据集 man
 src/traveler_distillation/    # 核心包：schemas / generators / teacher / dataset / student /
                               # accessibility（真实供给可达性）/ singapore（OSM/GTFS→MATSim）/ matsim
 scripts/                      # 可执行管线（生成 / 标注 / 训练 / 评估 / MATSim / 冻结 / Phase C）
-configs/                      # YAML 配置（generation / teacher / student v0.x / S5-S9）
+reference_pipeline/           # Reference MATSim Integration Pipeline 包（配置/校验/特征/Student/
+                              # 路由缓存/MATSim plan 构建；见 docs/REFERENCE_PIPELINE.md）
+run_pipeline.py               # Reference 一键入口（等价 scripts/run_reference_pipeline.py）
+examples/                     # Reference 示例输入（sample_population.csv）
+configs/                      # YAML 配置（generation / teacher / student v0.x / S5-S9 / reference_example）
 releases/                     # 冻结模型发布包（S7-W3 / S8-deprecated / S9，含 SHA256 与复现 gate）
 reports/                      # 实验报告 / 审计 / Phase C 报告（git 追踪）
 evidence/                     # 论文证据快照：E1–E5 报告与结果 JSON、Phase C 原始结果、S9 评估快照
                               #（索引与大文件清单见 evidence/README.md）
 docs/plans/                   # 研究蓝图 / Singapore 验证计划 / 任务阶段清单
 docs/stage_instructions/      # 各阶段执行指令与实验设计（S5-S8、Phase C、冻结指令）
-docs/                         # 供给集成说明 / S8_DEPRECATION.md
-tests/                        # pytest（160 passed）
+docs/                         # 供给集成说明 / S8_DEPRECATION.md / Reference 文档 / 数据隔离检查
+tests/                        # pytest（172 passed，含 Reference 单测）
 data/                         # 生成的数据集（JSONL，git 忽略，可复现生成）
 outputs/                      # 训练与运行产物（git 忽略；报告均复制至 reports/ 追踪）
 archive/legacy_*/             # 已归档的旧版文件
@@ -112,13 +116,17 @@ archive/legacy_*/             # 已归档的旧版文件
 .venv\Scripts\python.exe -m pip install -e .[dev]
 
 # 2. 配置密钥：复制 .env.example 为 .env 并填写 DEEPSEEK_API_KEY
+#    （仅教师标注需要；Reference Pipeline 与 MATSim 部署不调用 Teacher，无需密钥）
 
 # 3. 跑测试
-.venv\Scripts\python.exe -m pytest          # 160 passed
+.venv\Scripts\python.exe -m pytest          # 172 passed
 
 # 4. 加载冻结 S9 并做一次推断
 .venv\Scripts\python.exe scripts\singapore\run_s8_smoke.py `
   --checkpoint releases\s9_supply_aware_v2\checkpoint\model.pt
+
+# 5. Reference MATSim Integration Pipeline：CSV → Student 决策 → population.xml（可选 --run-matsim）
+.venv\Scripts\python.exe run_pipeline.py --config configs\reference_example.yaml
 ```
 
 ## 关键设计决策

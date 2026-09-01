@@ -920,3 +920,30 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
   标签，不做跨城统计检验）**——计划书 §E5 目标达成。
 - **工件**：`outputs/e5_helsinki/`（E5_REPORT.md + e5_records/e5_acc_audit + 六情景完整
   MATSim 输出）；paper 归档 `data_report/13_E5_HELSINKI/`（含 SHA256SUMS）。
+
+
+## Reference MATSim Integration Pipeline 完成 ✅（2026-09-01）
+
+- **定位**：把 Student→MATSim 部署流程封装为可复用的 **Reference Pipeline**（非 universal
+  adapter）；生产代码零改动，冻结 release / evidence / frozen benchmark 全程只读
+  （数据隔离检查：`docs/DATA_ISOLATION_CHECK.md`）。
+- **新增**：`reference_pipeline/` 包（config / validators / feature_adapter / student_adapter /
+  route_cache / matsim_adapter / pipeline）、`run_pipeline.py` +
+  `scripts/run_reference_pipeline.py`（build / `--validate-only` / `--run-matsim`）、
+  `configs/reference_example.yaml`、`examples/sample_population.csv`、
+  `tests/test_reference_pipeline.py`（**172 passed**，含 12 项 Reference 单测）。
+- **能力**：CSV 输入校验 + `feature_mapping`（不猜字段）；batch inference（bs=256，默认）；
+  绑定式 route/accessibility 磁盘缓存（network/schedule/routing-state 元数据硬校验，变更自动
+  失效）；复用生产 `_build_legs` / `_plan_pt` / `_write_real_config` → 同输入 population.xml
+  字节一致；MATSim 启动器自动编译 + 运行 + events 解析。
+- **正确性（`docs/REFERENCE_PIPELINE_VALIDATION.md`）**：fixture N=200 vs 原 pipeline——
+  决策全字段 200/200、population.xml/config.xml **SHA256 相等**、batch vs 逐态 max Δprob
+  1.79e-7 / Δshift 3.81e-6 min、MemoizedEncoder 200/200；**10k frozen C0 只读回归**：行为决策
+  **10,000/10,000**、mode 分布与冻结 C0 完全一致（pt 2,531 / bike 3,399 / car 2,828 / walk 1,242；
+  仅 2/10,000 行 departure 为 2-dp 舍入边界翻转 0.01 min，原始差 ≤1.6e-6 min）；MATSim smoke
+  **exit 0**（114.5 s）。
+- **Benchmark**：500 trips 冷 153.5 s → 暖 15.6 s（**9.8×**，hit rate 100%）；
+  10k 冷 3,223.6 s → 暖 469.5 s（**6.9×**，179,063/179,063 命中，估算省 2,853 s 路由；
+  与 E3 原 pipeline 3,063 s 同量级）。
+- **文档与提交**：`docs/REFERENCE_PIPELINE.md`（用户文档）+ README Reference 节与目录树；
+  commit `dbfe28a`（19 files, +3,235 行）。
