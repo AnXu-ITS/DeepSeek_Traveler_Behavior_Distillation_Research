@@ -147,6 +147,30 @@ archive/legacy_*/             # 已归档的旧版文件
 | **补充实验 E1–E5（TRC_AIT_5）** | ✅ | MNL-B 基线 · DeepSeek vs S9 速率/成本 · 人口扩展 1k–50k · multi-seed 稳健性 · Helsinki zero-shot 迁移（六情景 C0–C5，门禁全过）；Stop Rule 达成 → manuscript v1 |
 | Phase D | 🚧 | 真实网络反馈闭环（Student → MATSim → 拥堵观测 → 再决策收敛） |
 
+## Reference MATSim Integration Pipeline（可复用部署入口）
+
+把上面的 Student→MATSim 部署流程封装成一条命令（面向陌生用户的 reference 实现，
+非 universal adapter）：
+
+```powershell
+# 输入自检（不加载模型）
+.venv\Scripts\python.exe scripts\run_reference_pipeline.py `
+  --config configs\reference_example.yaml --validate-only
+
+# CSV → Student 决策（batch）→ routing（磁盘缓存）→ population.xml + manifest + summary
+.venv\Scripts\python.exe scripts\run_reference_pipeline.py `
+  --config configs\reference_example.yaml
+
+# 再直接跑 MATSim
+.venv\Scripts\python.exe scripts\run_reference_pipeline.py `
+  --config configs\reference_example.yaml --run-matsim
+```
+
+- 输入规范 / 配置 / 缓存行为 / 排障：`docs/REFERENCE_PIPELINE.md`
+- 与原 pipeline 的正确性对齐（决策 100% 一致、population.xml 字节一致、10k 只读回归）：
+  `docs/REFERENCE_PIPELINE_VALIDATION.md`
+- 数据隔离约定：`docs/DATA_ISOLATION_CHECK.md`
+
 ## 复现说明
 
 `data/`、`outputs/` 已被 git 忽略；数据集与运行产物均可由 `scripts/` 从 `configs/`

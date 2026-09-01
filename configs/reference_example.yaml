@@ -1,0 +1,69 @@
+# Reference MATSim Integration Pipeline — example configuration.
+#
+# Copy this file, point `population_input` at your travelers CSV and adjust
+# `output_dir` / `scenario`. All other values are the production defaults used
+# by the frozen Phase C deployment (frozen S9 checkpoint + Singapore supply).
+#
+# Paths are relative to the repository root.
+# Unknown keys are rejected (typo safety); see docs/REFERENCE_PIPELINE.md.
+
+pipeline_name: reference_example
+log_level: INFO
+
+paths:
+  # ---- what YOU provide ----
+  population_input: examples/sample_population.csv   # travelers CSV (see schema in docs)
+  # ---- supply (prepared MATSim network + GTFS-derived schedule) ----
+  matsim_network: data/singapore/transit/network_with_transit.xml
+  transit_schedule: data/singapore/transit/transitSchedule.xml
+  transit_vehicles: data/singapore/transit/transitVehicles.xml
+  transit_stops: data/singapore/transit/prep_stops.jsonl
+  stop_snapping: data/singapore/transit/stop_snapping_report.json
+  trips_by_stop: data/singapore/transit/trips_by_stop.json
+  activity_nodes: data/singapore/transit/activity_nodes.json
+  # ---- outputs + frozen student ----
+  output_dir: outputs/reference_pipeline/example
+  student_checkpoint: releases/s9_supply_aware_v2/checkpoint/model.pt
+
+student:
+  model_type: student_s8_v1      # frozen S9 architecture (hard-asserted)
+  batch_size: 256                # audited optimum (identical decisions, see docs)
+  device: auto                   # auto | cpu | cuda
+
+scenario:                        # DynamicContext — what the Student sees
+  context_id: reference_example
+  weather:
+    condition: clear             # clear | rain | snow | heat | cold | wind | other
+    intensity: 0.0               # 0..1
+  road_congestion: 0.3           # 0..1
+  transit_delay_min: 0           # C3-style: +N min on pt travel/reliability
+  transit_disruption: false
+  road_disruption: false         # C4-style: +20 min on car travel/reliability
+  fare_multiplier: 1.0
+  parking_cost_multiplier: 1.0
+  congestion_charge: 0.0
+
+cache:
+  enabled: true
+  directory: outputs/reference_pipeline/example/cache
+  reuse: true                    # load an existing cache whose metadata matches
+  rebuild: false                 # true = ignore the existing cache and overwrite
+
+# External CSV column name -> canonical schema field name (identity by
+# default; only list the columns that differ in YOUR csv). No auto-guessing.
+feature_mapping: {}
+  # example:
+  #   hh_income: income_group
+  #   AGE_GROUP: age_group
+
+matsim:
+  run_after_build: false         # or use --run-matsim
+  config_file: ""                # default: the config.xml generated in output_dir
+  java: java
+  java_xmx: 6g
+  timeout_s: 3600
+  matsim_dir: tools/matsim-2026.0-release/matsim-2026.0
+  launcher_java: tools/java/RunMatsimPreloaded.java
+  classpath_override: ""         # expert: full java -cp value
+  flow_capacity_factor: 0.3      # frozen Phase C calibration (null = omit)
+  storage_capacity_factor: 0.3   # frozen Phase C calibration (null = omit)
