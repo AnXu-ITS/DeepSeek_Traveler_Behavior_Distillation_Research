@@ -34,7 +34,9 @@
   （数据隔离见 `docs/DATA_ISOLATION_CHECK.md`）；
 - 不做 MATSim 在线 replanning / event-triggered runtime 决策 / JVM 内嵌 ONNX；
 - 不做任意城市自动识别——供给必须由本仓库的 `src/traveler_distillation/singapore/`
-  工具链准备（OSM + GTFS → network_with_transit.xml + transitSchedule.xml + …）；
+  工具链准备（OSM + GTFS → network_with_transit.xml + transitSchedule.xml + …）。
+  已实证的第二座城市：**Helsinki**（E5 zero-shot 供给，10k C0 决策 10,000/10,000 对齐、
+  warm **92×**，见 `docs/REFERENCE_PIPELINE_VALIDATION.md` §7）；
 - 不声称适配其他 MATSim 项目（定位为 reference，非 universal adapter）。
 
 ## 3. Requirements
@@ -134,7 +136,11 @@ MATSim 执行时间由供给规模主导）：
 |---|---|---|---|
 | 25 trips（sample） | ~7 s | ~1 s | ~115 s（含 events 解析 ~43 s） |
 | 500 trips | 153 s | 16 s（9.8×） | 未测（与 10k 同量级运行模式） |
-| 10,000 trips | 3,224 s（≈54 min） | 470 s（≈7.8 min，6.9×，hit rate 100%） | Phase C 实测 137 s（E3） |
+| 10,000 trips（Singapore C0） | 3,224 s（≈54 min；原 pipeline 3,063 s） | 470 s（≈7.8 min，6.9×，hit rate 100%） | Phase C 实测 137 s（E3） |
+| 10,000 trips（Helsinki C0，第二城） | 10,492 s（≈2.9 h；原 pipeline 9,507 s） | **103 s（92×，hit rate 100%）** | E5 已跑（exit 0） |
+
+两城 10k 的完整对齐证据（决策 10,000/10,000、population.xml 字节一致）见
+`docs/REFERENCE_PIPELINE_VALIDATION.md` §6–7。
 
 ## 8. Output files
 

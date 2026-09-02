@@ -175,8 +175,11 @@ archive/legacy_*/             # 已归档的旧版文件
 ```
 
 - 输入规范 / 配置 / 缓存行为 / 排障：`docs/REFERENCE_PIPELINE.md`
-- 与原 pipeline 的正确性对齐（决策 100% 一致、population.xml 字节一致、10k 只读回归）：
+- 与原 pipeline 的正确性对齐（决策 100% 一致、population.xml 字节一致、10k 只读回归、
+  Helsinki 第二城跨城市验证）：
   `docs/REFERENCE_PIPELINE_VALIDATION.md`
+- 实测时间缩短：Singapore 10k warm **6.9×**（3,224→470 s）；Helsinki 10k warm **92×**
+  （原 pipeline 9,507 s → 103 s）；决策 10,000/10,000 保留
 - 数据隔离约定：`docs/DATA_ISOLATION_CHECK.md`
 
 ## 复现说明

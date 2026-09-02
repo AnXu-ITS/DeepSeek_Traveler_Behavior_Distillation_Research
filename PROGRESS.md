@@ -945,5 +945,11 @@ walk/bike 亦按 freespeed 行驶。结论：S8 学到的物理世界错误，�
 - **Benchmark**：500 trips 冷 153.5 s → 暖 15.6 s（**9.8×**，hit rate 100%）；
   10k 冷 3,223.6 s → 暖 469.5 s（**6.9×**，179,063/179,063 命中，估算省 2,853 s 路由；
   与 E3 原 pipeline 3,063 s 同量级）。
+- **Helsinki C0 跨城市验证 ✅（2026-09-02）**：Reference 在第二座城市（E5 zero-shot 供给，
+  同一工具链、冻结 S9）重建 10k C0——行为决策 **10,000/10,000 一致**（1/10,000 行为 2-dp
+  舍入边界翻转 -5.8↔-5.79）、mode 分布与冻结 E5 完全一致（pt 2,304 / bike 3,458 /
+  walk 1,383 / car 2,855）、**population.xml 与 E5 原产物字节一致（SHA256 `4b797a3e…`）**；
+  原 pipeline 冻结记录 9,507.0 s → Reference 冷 10,491.8 s（建库 +10.4%）→ **暖 103.2 s
+  （92.1×）**，146,812/146,812 命中，估算省 10,735 s 路由，cache 55.98 MB。
 - **文档与提交**：`docs/REFERENCE_PIPELINE.md`（用户文档）+ README Reference 节与目录树；
-  commit `dbfe28a`（19 files, +3,235 行）。
+  commit `dbfe28a`（19 files, +3,235 行）+ `33a7031`（README/PROGRESS）。

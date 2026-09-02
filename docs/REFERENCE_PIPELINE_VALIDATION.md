@@ -18,6 +18,7 @@
 | D6 | 冻结基准层：10k 只读回归 vs frozen Phase C C0 manifest | 10,000 决策 × 7 字段 | §6（行为决策 10,000/10,000） |
 | D7 | 运行层：fresh-user smoke（sample CSV + 一条命令 + MATSim） | 干净输出目录 | exit 0（§5） |
 | D8 | 回归层：仓库既有测试 + 新增 reference 单测 | `pytest` | **172 passed** |
+| D9 | 跨城市层：Helsinki C0（E5 供给，10k）只读回归 + cold/warm 计时 | `frozen-helsinki-c0` 模式 | §7 |
 
 ---
 
@@ -125,3 +126,33 @@ acc 9,996 / tt 26,874 / sp 139,063。10k 决策本身仅 ~1 s（batch 256）。
 一致**；唯一的不一致是 2/10,000 行的出发时刻 2-dp 舍入边界翻转（0.01 min），原始差为
 浮点噪声（≤1.6e-6 min）。这与 latency 审计的口径一致（审计仅承诺 mode 一致；
 shift 差 ≤5.7e-6 min 为噪声级）。
+
+## 7. Helsinki C0 跨城市验证（D9）
+
+Reference 在**第二座城市**（E5 Helsinki zero-shot 供给，同一工具链、同一冻结 S9）上
+重建 C0 population（seed 2026，N=10,000），与冻结 E5 C0 manifest
+（`outputs/e5_helsinki/C0_baseline/adapter_manifest.json`）逐字段比对；原 pipeline 的
+基线耗时直接引用冻结 `e5_result.json` 的 `build_seconds = 9507.0`（原 pipeline 不重跑）。
+
+| 检查 | 结果 |
+|---|---|
+| persona_id / trip_id / student_mode / outbound_mode / return_mode / home_node / dest_node | **10,000/10,000 全部一致** |
+| departure_shift_min / departure_min | **9,999/10,000**（1 例 2-dp 舍入边界翻转：-5.8↔-5.79，0.01 min；与新加坡 D6 同类的浮点噪声） |
+| mode 分布 | **与冻结 E5 C0 完全一致**：pt 2,304 / bike 3,458 / walk 1,383 / car 2,855 |
+| **population.xml** | **与 E5 原 pipeline 产物字节一致（SHA256 `4b797a3ef98c1adfcfed…` 相等）** |
+| 原 pipeline build（冻结记录） | **9,507.0 s**（factory mean 606 ms/state，Helsinki 路网 290k 节点/638k 链路） |
+| Reference cold build（含建库） | **10,491.8 s**（+10.4%：持久化 145,092 次路由调用；acc 9,999 / tt 28,281 / sp 106,812，cache 55.98 MB） |
+| **Reference warm build（复用缓存）** | **103.2 s** → **相对原 pipeline 92.1×；相对 cold 101.7×** |
+| warm cache | hit rate **100%**（146,812/146,812），估算 routing 节省 **10,735 s** |
+
+**结论 D9**：Reference Pipeline 在第二座城市上（a）**行为决策 10,000/10,000 一致、
+population.xml 与原 pipeline 字节一致**，（b）warm 缓存下把 9,507 s 的原 pipeline 重建
+缩短到 **103.2 s（92×）**——时间缩短在跨城市、同规模、同输入下依然成立，且决策完全
+保留（cold 建库成本 ~10% 如实单列）。
+
+## 附：cold/warm 全量数字汇总（两城）
+
+| 城市 | 原 pipeline build | Reference cold（建库） | Reference warm | warm 加速比 | 决策对齐 | population.xml |
+|---|---|---|---|---|---|---|
+| Singapore C0（10k） | 3,063 s（E3 实测） | 3,223.6 s | 469.5 s | **6.9×** | 10,000/10,000（2 边界翻转） | 与原 pipeline 字节一致（N=200 fixture 验证） |
+| Helsinki C0（10k） | 9,507.0 s（E5 冻结记录） | 10,491.8 s | **103.2 s** | **92.1×** | 10,000/10,000（1 边界翻转） | **与 E5 原产物字节一致（SHA256 相等）** |

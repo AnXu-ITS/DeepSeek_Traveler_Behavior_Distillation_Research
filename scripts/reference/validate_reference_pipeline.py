@@ -11,10 +11,18 @@ Modes:
                compares every decision field against the frozen manifest
                outputs/singapore_phase_c_s9/C0_baseline/adapter_manifest.json.
                Frozen inputs/results are never written (DATA_ISOLATION_CHECK).
+  frozen-helsinki-c0
+               Same regression on the second city: reference pipeline rebuilds
+               E5 Helsinki C0 (N=10,000, seed 2026, data/helsinki/transit/) and
+               compares against outputs/e5_helsinki/C0_baseline/
+               adapter_manifest.json. The original-pipeline build time
+               (9,507 s) is read from the frozen e5_result.json — the original
+               pipeline is NOT re-run.
 
 Usage:
     python scripts/reference/validate_reference_pipeline.py fixture
     python scripts/reference/validate_reference_pipeline.py frozen-c0
+    python scripts/reference/validate_reference_pipeline.py frozen-helsinki-c0
 """
 from __future__ import annotations
 
@@ -49,6 +57,16 @@ SUPPLY = {
     "snapping": str((ROOT / "data/singapore/transit/stop_snapping_report.json").resolve()),
     "trips_by_stop": str((ROOT / "data/singapore/transit/trips_by_stop.json").resolve()),
     "activity_nodes": str((ROOT / "data/singapore/transit/activity_nodes.json").resolve()),
+}
+# Helsinki zero-shot supply (E5, built with the same singapore/ toolchain)
+SUPPLY_HEL = {
+    "network": str((ROOT / "data/helsinki/transit/network_with_transit.xml").resolve()),
+    "schedule": str((ROOT / "data/helsinki/transit/transitSchedule.xml").resolve()),
+    "vehicles": str((ROOT / "data/helsinki/transit/transitVehicles.xml").resolve()),
+    "stops": str((ROOT / "data/helsinki/transit/prep_stops.jsonl").resolve()),
+    "snapping": str((ROOT / "data/helsinki/transit/stop_snapping_report.json").resolve()),
+    "trips_by_stop": str((ROOT / "data/helsinki/transit/trips_by_stop.json").resolve()),
+    "activity_nodes": str((ROOT / "data/helsinki/transit/activity_nodes.json").resolve()),
 }
 CHECKPOINT = ROOT / "releases/s9_supply_aware_v2/checkpoint/model.pt"
 DEV_OUT = ROOT / "outputs/reference_pipeline/validation"
@@ -258,25 +276,34 @@ def mode_fixture() -> int:
 
 
 # ---------------------------------------------------------------------------
-def mode_frozen_c0() -> int:
-    """Read-only 10k regression vs the frozen Phase C C0 manifest."""
-    frozen_manifest_path = ROOT / "outputs/singapore_phase_c_s9/C0_baseline/adapter_manifest.json"
-    if not frozen_manifest_path.exists():
-        print("frozen C0 manifest missing — run fixture mode first", file=sys.stderr)
-        return 2
-    frozen = json.loads(frozen_manifest_path.read_text(encoding="utf-8"))["decisions"]
+# Shared 10k frozen-benchmark regression (Singapore Phase C C0 / Helsinki E5 C0)
+# ---------------------------------------------------------------------------
+FROZEN_FIELDS = ["persona_id", "trip_id", "student_mode", "outbound_mode",
+                 "return_mode", "departure_shift_min", "departure_min",
+                 "home_node", "dest_node"]
 
-    out = DEV_OUT / "frozen_c0"
-    out.mkdir(parents=True, exist_ok=True)
+
+def frozen_regression(
+    supply: dict,
+    frozen_manifest_path: Path,
+    out_dir: Path,
+    report_name: str,
+) -> dict:
+    """Rebuild the frozen C0 population (seed 2026, N=10,000) through the
+    reference pipeline and compare every decision field against the frozen
+    original-pipeline manifest. READ-ONLY: frozen inputs/results are never
+    written; all outputs go to ``out_dir`` (DATA_ISOLATION_CHECK)."""
+    frozen = json.loads(frozen_manifest_path.read_text(encoding="utf-8"))["decisions"]
+    out_dir.mkdir(parents=True, exist_ok=True)
     personas, trips, trips_per_persona = population(seed=2026, n=10000)
     context = c0_context()
 
     t0 = time.perf_counter()
     student = StudentAdapter(CHECKPOINT)
-    supply_view = build_supply_view(SUPPLY["network"], SUPPLY["activity_nodes"])
-    cache = RouteCache(out / "cache" / "route_cache.pkl", SUPPLY, reuse=True, rebuild=False)
+    supply_view = build_supply_view(supply["network"], supply["activity_nodes"])
+    cache = RouteCache(out_dir / "cache" / "route_cache.pkl", supply, reuse=True, rebuild=False)
     result = build_scenario(
-        student, personas, trips_per_persona, context, out, SUPPLY, supply_view,
+        student, personas, trips_per_persona, context, out_dir, supply, supply_view,
         batch_size=256, cache=cache, flow_capacity_factor=0.3,
         storage_capacity_factor=0.3,
     )
@@ -286,15 +313,13 @@ def mode_frozen_c0() -> int:
 
     assert len(manifest_b) == len(frozen), f"{len(manifest_b)} vs {len(frozen)}"
     n = len(manifest_b)
-    fields = ["student_mode", "outbound_mode", "return_mode",
-              "departure_shift_min", "departure_min", "home_node", "dest_node"]
-    matches = {f: sum(1 for a, b in zip(manifest_b, frozen) if a[f] == b[f]) for f in fields}
+    matches = {f: sum(1 for a, b in zip(manifest_b, frozen) if a[f] == b[f])
+               for f in FROZEN_FIELDS}
 
     # departure-shift disclosure: any row-level difference must be exactly the
     # 2-dp ROUNDING-BOUNDARY flip (0.01 min = 0.6 s). The raw shift noise is
     # <= ~4e-6 min (fixture D2), so a 0.01-min flip can only occur when the
-    # raw value sits within noise of the 2-dp boundary (verified for these
-    # exact rows: |raw delta| <= 1.6e-6 min).
+    # raw value sits within noise of the 2-dp boundary.
     boundary_rows = [
         (i, a["persona_id"], a["trip_id"],
          a["departure_shift_min"], b["departure_shift_min"])
@@ -303,13 +328,15 @@ def mode_frozen_c0() -> int:
     ]
     boundary_ok = all(abs(abs(a - b) - 0.01) < 1e-9 for _, _, _, a, b in boundary_rows)
     behavioral_identical = all(
-        matches[f] == n for f in ("student_mode", "outbound_mode",
-                                  "return_mode", "home_node", "dest_node")
+        matches[f] == n for f in ("persona_id", "trip_id", "student_mode",
+                                  "outbound_mode", "return_mode",
+                                  "home_node", "dest_node")
     )
     report = {
         "n_decisions": n,
         "frozen_manifest": str(frozen_manifest_path),
         "reference_build_s": round(build_s, 1),
+        "cache_loaded_from_disk": cache.loaded,
         "field_matches": matches,
         "behavioral_fields_identical": behavioral_identical,
         "departure_shift_boundary_rows": boundary_rows,
@@ -322,7 +349,42 @@ def mode_frozen_c0() -> int:
         "cache_summary": cache.summary(),
     }
     report["PASS"] = behavioral_identical and boundary_ok and len(boundary_rows) <= 5
-    (out / "frozen_c0_regression.json").write_text(
+    (out_dir / report_name).write_text(
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(json.dumps(report, ensure_ascii=False, indent=2))
+    return report
+
+
+def mode_frozen_c0() -> int:
+    """Read-only 10k regression vs the frozen Phase C C0 manifest (Singapore)."""
+    frozen_manifest_path = ROOT / "outputs/singapore_phase_c_s9/C0_baseline/adapter_manifest.json"
+    if not frozen_manifest_path.exists():
+        print("frozen C0 manifest missing — run fixture mode first", file=sys.stderr)
+        return 2
+    report = frozen_regression(SUPPLY, frozen_manifest_path,
+                               DEV_OUT / "frozen_c0", "frozen_c0_regression.json")
+    return 0 if report["PASS"] else 1
+
+
+def mode_frozen_helsinki_c0() -> int:
+    """Read-only 10k regression vs the frozen E5 Helsinki C0 manifest
+    (second city, same toolchain — cross-city generalization evidence).
+
+    The original-pipeline baseline build time (9,507 s) is the frozen value
+    recorded in outputs/e5_helsinki/C0_baseline/e5_result.json — the original
+    pipeline is NOT re-run."""
+    frozen_manifest_path = ROOT / "outputs/e5_helsinki/C0_baseline/adapter_manifest.json"
+    if not frozen_manifest_path.exists():
+        print("frozen Helsinki C0 manifest missing", file=sys.stderr)
+        return 2
+    baseline_path = ROOT / "outputs/e5_helsinki/C0_baseline/e5_result.json"
+    baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+    report = frozen_regression(SUPPLY_HEL, frozen_manifest_path,
+                               DEV_OUT / "helsinki_c0", "frozen_helsinki_c0_regression.json")
+    report["city"] = "Helsinki"
+    report["original_pipeline_build_s"] = float(baseline["build_seconds"])
+    report["original_pipeline_factory_timing_ms"] = baseline["factory_timing"]["mean_ms"]
+    (DEV_OUT / "helsinki_c0" / "frozen_helsinki_c0_regression.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
     return 0 if report["PASS"] else 1
@@ -334,4 +396,6 @@ if __name__ == "__main__":
         raise SystemExit(mode_fixture())
     if mode == "frozen-c0":
         raise SystemExit(mode_frozen_c0())
-    raise SystemExit(f"unknown mode {mode!r}; choose fixture | frozen-c0")
+    if mode == "frozen-helsinki-c0":
+        raise SystemExit(mode_frozen_helsinki_c0())
+    raise SystemExit(f"unknown mode {mode!r}; choose fixture | frozen-c0 | frozen-helsinki-c0")
