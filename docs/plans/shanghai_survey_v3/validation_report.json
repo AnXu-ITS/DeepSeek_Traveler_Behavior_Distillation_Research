@@ -1,0 +1,25 @@
+{
+  "version": "shanghai-survey-v3.1",
+  "assessment_date": "2026-09-12",
+  "status": "PASS",
+  "checks": [
+    "ten_card_content_and_all_displayed_numbers_match_data",
+    "shared_trip_factorial_and_predefined_contrasts_are_consistent",
+    "ten_Williams_forms_balance_positions_and_ordered_adjacent_pairs",
+    "sixty_schema_states_cover_four_masks_and_missing_unsupported_boundaries",
+    "read_only_frozen_S9_encoding_and_inference_finite_no_unknown_categories",
+    "all_protected_release_model_source_and_config_hashes_unchanged"
+  ],
+  "cards": 10,
+  "order_forms": 10,
+  "unique_ordered_adjacent_pairs": 90,
+  "synthetic_QA_personas": 6,
+  "validated_states": 60,
+  "unknown_category_count": 0,
+  "protected_files_checked": 235,
+  "protected_files_changed": [],
+  "checkpoint_sha256": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+  "questionnaire_sha256": "36f6a8c43eb4bcd6d8a024f8964b62591405e29f5500084744cb42ee35cac1b3",
+  "cards_sha256": "e06a8c99760d4534a254d8cebfb5acfbd0ffc8453365dbc0ad58bc718fd25bac",
+  "note": "Synthetic fixtures only. No real respondent answers, behavior metrics, pilot completion times, training, normalization fit or model selection. Predictions checked only for structural validity and not used to tune cards."
+}

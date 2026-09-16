@@ -1,0 +1,274 @@
+{
+  "version": "shanghai-survey-v2.0",
+  "raw_encoding": "Export the symbolic codes below, not the displayed ordinal positions. Blank cells are 'skipped'; preserve unknown/refused/not_applicable separately.",
+  "missing_codes": [
+    "unknown",
+    "refused",
+    "skipped",
+    "not_applicable"
+  ],
+  "persona_fields": {
+    "age_group": {
+      "question": "P01",
+      "map": {
+        "18-24": "18-24",
+        "25-34": "25-34",
+        "35-44": "35-44",
+        "45-64": "45-64",
+        "65+": "65+"
+      }
+    },
+    "occupation": {
+      "question": "P02",
+      "map": {
+        "student": "student",
+        "office_worker": "office_worker",
+        "service_worker": "service_worker",
+        "manual_worker": "manual_worker",
+        "retired": "retired",
+        "unemployed": "unemployed",
+        "homemaker": "other",
+        "other": "other"
+      }
+    },
+    "income_group": {
+      "question": "P03",
+      "map": {
+        "below_5000": "low",
+        "from_5000_to_9999": "medium",
+        "from_10000_to_19999": "high",
+        "at_least_20000": "high"
+      }
+    },
+    "household_size": {
+      "question": "P04",
+      "kind": "positive_integer"
+    },
+    "has_children": {
+      "question": "P05",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "car_ownership": {
+      "question": "P06",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "driving_license": {
+      "question": "P07",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "bike_ownership": {
+      "question": "P09",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "transit_pass": {
+      "question": "P11",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "habitual_mode": {
+      "question": "P12",
+      "map": {
+        "car_driver": "car",
+        "public_transport": "pt",
+        "pedal_bike": "bike",
+        "walk": "walk",
+        "mixed": "mixed"
+      },
+      "unsupported": [
+        "car_passenger",
+        "ridehail",
+        "ebike",
+        "other"
+      ]
+    },
+    "schedule_flexibility": {
+      "question": "P13",
+      "map": {
+        "up_to_5": "low",
+        "from_6_to_30": "medium",
+        "over_30": "high"
+      },
+      "unsupported": [
+        "no_stable_schedule"
+      ]
+    },
+    "mobility_limitation": {
+      "question": "P14",
+      "map": {
+        "none": "none",
+        "mild": "mild",
+        "significant": "significant"
+      }
+    }
+  },
+  "other_question_codes": {
+    "S01": [
+      "yes",
+      "no"
+    ],
+    "S02": [
+      "yes",
+      "no",
+      "refused"
+    ],
+    "S03": [
+      "resident_6m_plus",
+      "resident_under_6m",
+      "nonresident_weekly_commuter",
+      "nonresident_other",
+      "refused"
+    ],
+    "P08": [
+      "yes",
+      "no",
+      "unknown",
+      "refused"
+    ],
+    "P10": [
+      "yes",
+      "no",
+      "unknown",
+      "refused"
+    ],
+    "C00": [
+      "confirmed",
+      "edit"
+    ],
+    "C01": [
+      "included",
+      "add_again",
+      "unknown"
+    ],
+    "C02": [
+      "0750",
+      "0810",
+      "unknown"
+    ],
+    "R01": [
+      "trip",
+      "no_trip",
+      "outside_shanghai",
+      "cannot_recall_or_refused"
+    ],
+    "R02": [
+      "commute",
+      "education",
+      "shopping",
+      "leisure",
+      "healthcare",
+      "escort",
+      "other",
+      "refused"
+    ],
+    "R05": [
+      "hard",
+      "medium",
+      "soft",
+      "cannot_recall_or_refused"
+    ],
+    "R08": [
+      "car_driver",
+      "car_passenger",
+      "ridehail",
+      "metro",
+      "bus",
+      "pedal_bike",
+      "ebike",
+      "walk",
+      "other",
+      "cannot_recall_or_refused"
+    ],
+    "R09": [
+      "walk",
+      "pedal_bike",
+      "ebike",
+      "bus",
+      "metro",
+      "car_taxi_ridehail",
+      "none",
+      "cannot_recall_or_refused"
+    ],
+    "E01": [
+      "ridehail",
+      "ebike",
+      "shared_bike",
+      "car_passenger",
+      "delivery_proxy",
+      "cancel_reschedule",
+      "none",
+      "cannot_judge_or_refused"
+    ],
+    "E02": [
+      "easy",
+      "mostly_clear",
+      "several_unclear",
+      "very_difficult",
+      "refused"
+    ]
+  },
+  "availability": {
+    "car": "P06 == yes AND P07 == yes AND P08 == yes",
+    "bike": "P09 == yes AND P10 == yes",
+    "pt": true,
+    "walk": true,
+    "unconfirmed_offer_policy": "Not offered, as explicitly explained and confirmed on the participant screen. This sets the experimental offer mask, not a claim of actual physical infeasibility or a replacement for missing persona inputs."
+  },
+  "choice_statuses": [
+    "selected",
+    "unable",
+    "refused",
+    "skipped"
+  ],
+  "unable_reason_codes": [
+    "unsuitable",
+    "physical_limit",
+    "cannot_understand",
+    "other",
+    "refused"
+  ],
+  "shift_statuses": [
+    "exact",
+    "over_120",
+    "cannot_estimate",
+    "cannot_judge",
+    "refused",
+    "skipped_due_to_mode",
+    "skipped"
+  ],
+  "shift_directions": [
+    "earlier",
+    "unchanged",
+    "later"
+  ],
+  "shift_sign": "earlier negative, later positive; unchanged exactly zero. Numeric answers 1..120, retained beyond model +/-60 without clipping.",
+  "fixed_trip": {
+    "purpose": "shopping",
+    "origin_type": "home",
+    "destination_type": "shop",
+    "distance_km": 6,
+    "desired_departure_min": 480,
+    "desired_arrival_min": 540,
+    "time_constraint": "hard"
+  },
+  "model_contract": {
+    "checkpoint": "releases/s9_supply_aware_v2/checkpoint/model.pt",
+    "mode_mapping": "releases/s9_supply_aware_v2/normalization/mode_mapping.json",
+    "category_mapping": "releases/s9_supply_aware_v2/normalization/category_mapping.json",
+    "normalization": "frozen checkpoint extractor; no fit/no updates/no test-answer-dependent mapping",
+    "outside_vocabulary_policy": "Do not inject unknown modes or replace an unsupported habitual mode by car/bike/mixed. Preserve raw records, report coverage and mapping reasons; primary complete-input prediction subset defined before choices."
+  }
+}

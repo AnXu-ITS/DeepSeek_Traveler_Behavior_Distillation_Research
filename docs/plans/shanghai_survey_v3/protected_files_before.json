@@ -1,0 +1,942 @@
+[
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\FINAL_S7_W3_FREEZE.md",
+    "sha256": "9404D4ED8F2123F613B3F5412F33CD35A2A8B225CFCAD41F7CA145E69ADFB00D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\README.md",
+    "sha256": "E20B7CE98307B8C5C347496FD0AB8DCA6DC72F407381C98D79D6D412184CACC3"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\model.pt",
+    "sha256": "8263FAEC7D9A1E76D7AACA67B44B36616F36E379C2FC1BC6E156167E5C53B2B6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\model.pt.meta.json",
+    "sha256": "42C735907FD7DB87BC33C292E01CB063996ADA38622D8F695F6E304277ECA8BA"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\training_history.json",
+    "sha256": "E1CAADADF45F6F8A6CBC3B3E41234CDE2ECA36686A7B5B3E70867ABA45D13E26"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\val_metrics.json",
+    "sha256": "E19B2A4DA65E7830A871F50EEB231BCE971AE3A82B2A34A36A62CCD400EF2B87"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed123\\model.pt",
+    "sha256": "78F8E3B847A2F22A576ED5D7C364E7E330B881123BEF89B386302C41BDC46698"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed123\\model.pt.meta.json",
+    "sha256": "5A4FF79AFB70D7A50F21A0CCC5189BDEC14CA3424AFA27739DBDA7EAF73CEDC4"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed123\\training_history.json",
+    "sha256": "F1E4AD912AAE4F35C1ED9D1A55BE8E581B31FB4AD8F71FE9A3E103BB647ACC0D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed123\\val_metrics.json",
+    "sha256": "799AA91C4A74FB65F507E6E005FFB7308B5567B2C70C323817BB80EF0E5282F1"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed2024\\model.pt",
+    "sha256": "98F4F30E84E47FEBB2E4081A819A699A735DB1958B3CF323EED67B67BA6D37F0"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed2024\\model.pt.meta.json",
+    "sha256": "4F2A95388A2A2AF4EF22658271A23DA8C54E50A4BBD901DCD3675BC30EC4154E"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed2024\\training_history.json",
+    "sha256": "C4B02DD21A436C2567F1B6B12582282E051EC6552EBEBB5552D142EF33697743"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed2024\\val_metrics.json",
+    "sha256": "DB6C1C8821018FBDC29BA55ECFFBEF113557B3F50A473E74AE07CA23C4E0981E"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed7\\model.pt",
+    "sha256": "93BA0DCFB16D89C523E5046964FADFC7F7E442096EF86C62EC7C25EA08CF24B7"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed7\\model.pt.meta.json",
+    "sha256": "5A3E070D3ED0CE07188718EBB8268EC685FA639B9EE912C07E5D3B1D7D3CB7EB"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed7\\training_history.json",
+    "sha256": "38F86BD33E5A02F129DAA926E2ED3FC4656A0D6ACE2DC19982318D9C5E85BAE1"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checkpoint\\seeds\\seed7\\val_metrics.json",
+    "sha256": "7EB45880DC03243C808093073BEBD01C358701B58409F2BDBD46ED7E4AE268C8"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\checksums\\SHA256SUMS.txt",
+    "sha256": "3AD9DFEF1E55275173B84A17C42F210CEFB5BBDCC43F59EF6E20CA714B5B65D9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\code_manifest\\code_manifest_provenance.json",
+    "sha256": "68C6C970E3ADA52364C58A8A8C1348F7DC2680F40B0EA1A3F67F875F512F7F54"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\code_manifest\\environment.txt",
+    "sha256": "A39FEF6475B72FEE1F6B8471534AF15014ADC1322FA189EA0C69E96A81B57FFB"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\code_manifest\\git_commit.txt",
+    "sha256": "2F5D0620392D694ECC78548404B622B900E3F20F5B1796E2AEA672B10E6DB340"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\code_manifest\\git_status.txt",
+    "sha256": "5A70629CE33DD3730281A52F1FD726AF6A6AB1F90BA865B4820279CD096DA585"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\code_manifest\\uncommitted.patch",
+    "sha256": "847BD0D78B6292298378E1C1E0B900E6618579459E3DBF0DC2DE1F7603863243"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\config\\checkpoint_embedded_config.json",
+    "sha256": "8D28833C18240F0F9121B51E2A483F2E1690CAD3ECD7F0A91A413CB1D7F6DA75"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\config\\student_s7_w3.yaml",
+    "sha256": "6A0DE4F81D8082B5653EEB22C6AA007B811705DAF4DE9629ACBA6F62CA96C3A2"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\data_manifest\\data_manifest.json",
+    "sha256": "47F591C6ACBDFFBB074F3F2DBAECA043DC65AFAFFD8480F8C362E7154BC9DC88"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\metrics\\final_metrics.json",
+    "sha256": "737B59DFBFDC3413DADC8FB9B4A5D94D449EB14316610616FDCD189772AFCA9D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\metrics\\seed_robustness.csv",
+    "sha256": "88A2C7A4997BAA534E6BE5702ED6374CE6B3749F7D693A471CAF077264875F8B"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\metrics\\seeds\\causal_eval_seeds.json",
+    "sha256": "AF1E29A673587B99CECA2A41F55548614E9345960B588A2000F7FA560DBA7926"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\metrics\\seeds\\regression_eval_seeds.json",
+    "sha256": "99D8CF173FFF2597EFAD1DDEB352808B3AB99181C557B92D06555BF93ED876E9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\metrics\\seeds\\seed_summary.json",
+    "sha256": "416A1579CA414137E03873E9753A5D8E982FFFE5F31F36FAD3596FD0A233BFF2"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\metrics\\selection\\selection.json",
+    "sha256": "84E9940D8C86014A648BD4225A12870231811629F52384BC0ACF53AE997A5C7D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\metrics\\selection\\variant_distances.json",
+    "sha256": "62A2665B95AC297656F60B74A418B93551D356E24382643D1AA6AEBA4EB6F16C"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\normalization\\category_mapping.json",
+    "sha256": "6E55719146DF0B1F80FC83104C3372FAA1BFBFCC958AC50E8A4AA1F20CB41ED9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\normalization\\mode_mapping.json",
+    "sha256": "AF05A7780EE0EB476BEF7CC76C95BC51B5BB71D52A51D4BD2EA01858EDCBA84A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\normalization\\normalization.json",
+    "sha256": "F270702FB1703E61F0F28C63740E3D1051844C6C4977805D49D693590EA0A4ED"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\reports\\EXPERIMENT_REPORT_S5_MULTI_AXIS.md",
+    "sha256": "AAE06F047CA6A39C2212A4AC60E45DE4EEF24F913545E6D304A4BC98CD31F9C6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\reports\\EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md",
+    "sha256": "4ABC54457CF4AFE4E8AC812FDB8A6A0F2E724D018A190D5425D9BBCE1681F5E1"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\reports\\EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md",
+    "sha256": "B9218DD95EB6DFA076048442BD83663FACF918C102A049A43CF85441E3E29CC6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\reports\\SEED_ROBUSTNESS_S7_W3.md",
+    "sha256": "388DC292C6249903A7C40260974727BBE19CDC4E70C2ED5619CE9DB9A69C49A2"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\schema\\feature_order.txt",
+    "sha256": "0087E6D44AAF782EAAD7E1F4384DBF7C638E384419787BA9069CE5AE636F14F9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\schema\\input_schema.json",
+    "sha256": "B690D5A4EBF9DFB8DF021093AE2CE34FC56E4B9994147FD52D9F511D599D98FA"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\schema\\output_schema.json",
+    "sha256": "3ADFCDEDE132736425C057E37B69B8F0E3A030A216DA2F50749EBD6544FA151A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\smoke\\causal_smoke.json",
+    "sha256": "28A22E922F6D56BB167ED36BE3CE2F061EA5432C9116858628A73B68E346052A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s7_w3_generic_core_v1\\smoke\\regression_smoke.json",
+    "sha256": "8ED6EEE854289218AF6E8E9292D2CE737478FEABD95AB909BE00D3F1A5345C52"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\FINAL_S8_FREEZE.md",
+    "sha256": "7F1C5009D9123438948FFBF42D75D515EA8A133895149F060A1E02CA0A7652CE"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\README.md",
+    "sha256": "4E223705EBDCFA23100FE4DAA04B2B83A439FF5731FE6F6560CEB58389D772E2"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\accessibility\\feature_definitions.md",
+    "sha256": "79998788486AC42BB1371FD8374CE45A8CFC143E4F5ADB2921DF47B0ADC44410"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\accessibility\\feature_schema.json",
+    "sha256": "D204BA5C927853F0CD48C58A199593F01866375A81EF92FA455D7C73FCFB7490"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\checkpoint\\model.pt",
+    "sha256": "F8232DDE4442D882982FFB3CFAECB150B27C3E3DDB9FCC3738166B76CE823885"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\checkpoint\\model.pt.meta.json",
+    "sha256": "32E8EEF17E9AB98C71CAF3A3E72A1CFD6EE48B12EFE6B07C0A6D45F2406091E7"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\checkpoint\\training_history.json",
+    "sha256": "D8AD6699C9D319C4C8196BB86563D65C0D0BED489D67E0391D35644DB57BADB7"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\checkpoint\\val_metrics.json",
+    "sha256": "CA58938EF093C0A2B67882703771D661C1DD5AB5B6B031D9CF7BFA75CD3B5CBD"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\checksums\\SHA256SUMS.txt",
+    "sha256": "3DD875F4314B4A950B3889D2DFED6970402C33877AB440BB2F6F84D673403D36"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\code_manifest\\code_manifest_provenance.json",
+    "sha256": "6B2D52F35CCA4B2B3EBCF0D4BC53FC3C97CB3766D57478EC13DE2A186298063A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\code_manifest\\environment.txt",
+    "sha256": "5611A71409C1A4851DB73F9D496CADBA72031395373026E301BEB56B69ADE8DE"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\code_manifest\\git_commit.txt",
+    "sha256": "B35C38C3229487322644D8F49408EDD129CC2165CAA975F500F842DAA86D0913"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\code_manifest\\git_status.txt",
+    "sha256": "11850494FC747F8AC93DD6D3C7FF2F895D60FF2E4DB6B079487D4E726C1F26A2"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\code_manifest\\uncommitted.patch",
+    "sha256": "2E1C70AA8736D32A1DA64F0C07BCC3AE9E4C481FD2BF7F139EF1CB879C634ABF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\config\\accessibility_features.yaml",
+    "sha256": "FCCE9A573DD8CA6EF91EFD8F1FE9FB143E071CB2AED58157B2CEF4AD1414C662"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\config\\checkpoint_embedded_config.json",
+    "sha256": "A7C497CAB805246272ABDEC114A955E929085442C23F4425589E313D4804487A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\config\\student_s8.yaml",
+    "sha256": "447ADF85A4583952647128730DE4CC6EBD164DB8E14AD035E3115CA128464BEF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\config\\training_s8.json",
+    "sha256": "58077D6ECD2F09F419D07183820D34438BAF628CE156F1C7BC85DA7001E9259B"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\config\\training_s8.yaml",
+    "sha256": "054E35D58EAB697629DD6789E77876F571A7C58BD013A437909CFA6BC6D6865F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\data_manifest\\DATA_README_singapore_accessibility.md",
+    "sha256": "D6EF93FF298B08A976438A0BACDA4F2E06A6692ACDD658BC43BD29841231AF48"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\data_manifest\\s8_accessibility_dataset.json",
+    "sha256": "9A16336A8EA88E595D6C8DC213926B49764687F716270C145C1CD259B44BD80E"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\data_manifest\\s8_generation_manifest.json",
+    "sha256": "3DF9F0D0A20269B350318228E61CE6812D8D07A2A97D93A689FFDF2109140BD3"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\data_manifest\\s8_split_manifest.json",
+    "sha256": "20FFE2ED4F371EE1F48D317BEB2FAE14D6E59E8B31AE6913F04064E997CB23E6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\metrics\\comparison_s7_vs_s8.csv",
+    "sha256": "757A1794291A82A1BE50F8FFC80E05BD0F8520493E8DF447977EAD55415D4CDF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\metrics\\final_metrics.json",
+    "sha256": "C8916163514C7B4D71BF53A02694041F854A42205FCC5CE5E04D5C40D38E3E50"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\normalization\\category_mapping.json",
+    "sha256": "6E55719146DF0B1F80FC83104C3372FAA1BFBFCC958AC50E8A4AA1F20CB41ED9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\normalization\\mode_mapping.json",
+    "sha256": "AF05A7780EE0EB476BEF7CC76C95BC51B5BB71D52A51D4BD2EA01858EDCBA84A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\normalization\\normalization.json",
+    "sha256": "78B68D21C790A0C0369AC434A17E67D60491AF21BBC0350DE27CE4F5B57A9278"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\provenance\\gtfs_manifest.json",
+    "sha256": "B1D6709930D8AF45139AE1333D0033C4F2B8525600D48D36677A1C2F1E8D9E0F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\provenance\\osm_manifest.json",
+    "sha256": "0B02C4552ECB407C7F4F27E6058CF92E1D5457FD328B300D76E1BC75174755BF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\provenance\\singapore_supply.json",
+    "sha256": "FEF9B6EA8E807B505401DE8DE208FFF41635501DE976E317A03BCBA1EC51A21F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\provenance\\teacher_s8.json",
+    "sha256": "A0C80955E1B026AD37B981617C6A2C32E3D383120C77FF3C0717462A9015E0DA"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\EXPERIMENT_REPORT_S5_MULTI_AXIS.md",
+    "sha256": "AAE06F047CA6A39C2212A4AC60E45DE4EEF24F913545E6D304A4BC98CD31F9C6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md",
+    "sha256": "4ABC54457CF4AFE4E8AC812FDB8A6A0F2E724D018A190D5425D9BBCE1681F5E1"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md",
+    "sha256": "B9218DD95EB6DFA076048442BD83663FACF918C102A049A43CF85441E3E29CC6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\EXPERIMENT_REPORT_S8_TRANSIT_ACCESSIBILITY.md",
+    "sha256": "6B25E8D27B535C16EBE171FD7FC06E8D3D6DDBCE4E61FC4904F4D6B1F902CD33"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\S8_EVIDENCE_INDEX.md",
+    "sha256": "9B2DAB41CE96AEBE32AFE5D295930F2A806E473E8F4B487CF8779629038E422E"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\S8_SCHEMA_AUDIT.md",
+    "sha256": "7044E24CE639230C532D8818464AFE29891B3FF5198E030E2620BA1C905DEDDF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\reproduction_gate\\singapore_smoke_result.json",
+    "sha256": "B32CCCD7F71170B34E117BA4843E335331B059F943B828F6691205CFC326AF7F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\reproduction_gate\\accessibility_eval\\eval_metrics.json",
+    "sha256": "15872BD5CF80BEAA006DA82A0C8AB3E8499DB9600B31000F85864A1D02DFFAA5"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\reproduction_gate\\regression_eval\\eval_metrics.json",
+    "sha256": "B105676829DB36912F9BD250E9D950B9687953C2F24D6C6513DD3C64177647D5"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\reports\\reproduction_gate\\unseen_od\\unseen_od_audit.json",
+    "sha256": "D4D2E2E19FFD503F51560CF86E7D94CD35A6196D426644AC0CFDCD2C8552262D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\schema\\feature_order_s8.txt",
+    "sha256": "01BC4D98D9261A2FD8CAB2F726C90475BB40534EE101DB471ADDF26E636BD598"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\schema\\input_schema_s8.json",
+    "sha256": "A0964E5D02CE88CE0920DD270ABFA7A80F34EB73CA2CD22A91CA6EF910D8617C"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\schema\\output_schema_s8.json",
+    "sha256": "F644655B6EE39D0A7721386D00277009BC9A35F887D9D2907C4097DE7A7C2CFB"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s8_supply_aware_v1\\schema\\schema_diff_vs_s7.json",
+    "sha256": "293779D7B3F7F1BF259AF74612EA4EC3CC55A8D3CC98D2CFC43F10E222348222"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\FINAL_S9_FREEZE.md",
+    "sha256": "8F71915928692DFEB72B139E75DCFD1624CF7A273EC2F6A73C0EB7A3565E4BB8"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\README.md",
+    "sha256": "050F31162DC562145761FDB1DC9E5ED3F9F065F463F5456AF49B6135731AA77F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\accessibility\\feature_definitions.md",
+    "sha256": "1F3CB5CB5F2DCA8ABD331682212C9DEDE69A76C04503C3AD0A77AA156B6DF6F3"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\accessibility\\feature_schema.json",
+    "sha256": "95DDA940FC5EA69B589E13DDCF6715140850F9C4FF8D04FDDA658B7A60C27B47"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt",
+    "sha256": "6AF79B44BC699C00CC8E913DA15043A43398829FDC8BBB4DAD2DDCB8E11D31E6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\checkpoint\\model.pt.meta.json",
+    "sha256": "1A7E02282F985015F3DBE308A3BB3BFAD2418A28B6D588F06D53DD805EAC619A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\checkpoint\\training_history.json",
+    "sha256": "44808BACE09A133508D9A713C55FB56D0E9350E38A88BE78C8360C32DE2AE458"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\checkpoint\\val_metrics.json",
+    "sha256": "8C851C08FEF759BF643FBFEDB3BD448DB74CE482FFB7F81C357C342B882E8DB2"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\checksums\\SHA256SUMS.txt",
+    "sha256": "F9195B6212E37EF67AA13F40AEAB0E72C31AE24E85F833FD4EDECAFE6CEE8A27"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\code_manifest\\code_manifest_provenance.json",
+    "sha256": "E9F0FE8721C5F02920B53A32311F49BEC9281021DA0C2034E55AB82795F619CF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\code_manifest\\environment.txt",
+    "sha256": "5611A71409C1A4851DB73F9D496CADBA72031395373026E301BEB56B69ADE8DE"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\code_manifest\\git_commit.txt",
+    "sha256": "1895C5860B880C4E3F0DE46165051AF5189CA42327CB35CFE7EB709372CCD5CD"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\code_manifest\\git_status.txt",
+    "sha256": "8AEAC7EAD1DF2A78BB79982CC9B61A39E5C6731CD06613E335BF79F73394BD13"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\code_manifest\\uncommitted.patch",
+    "sha256": "E320A350F41087275E80DAD40ED167C369C56B75B2C40D83821B97A4721E9664"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\config\\accessibility_features.yaml",
+    "sha256": "FCCE9A573DD8CA6EF91EFD8F1FE9FB143E071CB2AED58157B2CEF4AD1414C662"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\config\\checkpoint_embedded_config.json",
+    "sha256": "A7C497CAB805246272ABDEC114A955E929085442C23F4425589E313D4804487A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\config\\student_s9.yaml",
+    "sha256": "6DE1F1218579EE05EECC7491E1BDFA5CA7BFBEDFC95D7D1E89FEB7201B564DFB"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\config\\training_s9.json",
+    "sha256": "E9A43CD7814CC912AED0A8FA64DA6A0EECBDE0DAB75BA4FE14612C0312AF24EE"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\config\\training_s9.yaml",
+    "sha256": "4CA2AF4D28856C53F2B49B672E648662846AE8191A31A851D53D81FA6294B59D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\data_manifest\\s9_accessibility_dataset.json",
+    "sha256": "4E28A14E148C0495D51068AE80BF17775BA0E5A24FA408D0A9F2EC472C91C4BE"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\data_manifest\\s9_generation_manifest.json",
+    "sha256": "48203604E97586F7F1C4541A16B4B636BA3D37EE02FC06608F7735F465184B53"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\data_manifest\\s9_split_manifest.json",
+    "sha256": "D2EBF2824DFF560B0DF615EB99F20B13B43D5039EF7CDC2210BB77CF3B2FFF14"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\metrics\\comparison_s7_vs_s9.csv",
+    "sha256": "2EC449BC97265C93B8DC84ECEE62DDDF06BBA8726D5D53BE956CEE756B988240"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\metrics\\final_metrics.json",
+    "sha256": "02ACF1B5A45E45C85E64C8E6C30AD1FFBEE4AE497E8D7F5881F70D40648B7428"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\normalization\\category_mapping.json",
+    "sha256": "6E55719146DF0B1F80FC83104C3372FAA1BFBFCC958AC50E8A4AA1F20CB41ED9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\normalization\\mode_mapping.json",
+    "sha256": "AF05A7780EE0EB476BEF7CC76C95BC51B5BB71D52A51D4BD2EA01858EDCBA84A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\normalization\\normalization.json",
+    "sha256": "FB45ACF8C86A36A60DE3AEBD38EC7F342A337570E76CC4639D087CDF412BC504"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\provenance\\data_fix.json",
+    "sha256": "BCABFF40AF2DB70B16D345110D04715C4D45B86543F35B6C923F39B7D1386A25"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\provenance\\gtfs_manifest.json",
+    "sha256": "B1D6709930D8AF45139AE1333D0033C4F2B8525600D48D36677A1C2F1E8D9E0F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\provenance\\osm_manifest.json",
+    "sha256": "0B02C4552ECB407C7F4F27E6058CF92E1D5457FD328B300D76E1BC75174755BF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\provenance\\singapore_supply.json",
+    "sha256": "FEF9B6EA8E807B505401DE8DE208FFF41635501DE976E317A03BCBA1EC51A21F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\provenance\\teacher_s9.json",
+    "sha256": "1215DDD245910EEFAC2D1158ADD051E6F8E9AB86AF14DF71CBADD97B091BE013"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\EXPERIMENT_REPORT_S8_TRANSIT_ACCESSIBILITY_DEPRECATED.md",
+    "sha256": "6B25E8D27B535C16EBE171FD7FC06E8D3D6DDBCE4E61FC4904F4D6B1F902CD33"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\EXPERIMENT_REPORT_S9_TRANSIT_ACCESSIBILITY_V2.md",
+    "sha256": "ED3F861E843E3865DA090F2ACD7DCAFA2289FFB9D8CCAAA2A40F267BFB902287"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\S8_SCHEMA_AUDIT.md",
+    "sha256": "7044E24CE639230C532D8818464AFE29891B3FF5198E030E2620BA1C905DEDDF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\S9_EVIDENCE_INDEX.md",
+    "sha256": "081E956890091CA81681DF9F6D4B2E31E02544F6D79B830E3625085BA17BF621"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\reproduction_gate\\singapore_smoke_result.json",
+    "sha256": "5A4D82523BD5C772979B75E40A76675CF7BB9BA706F831049C44D04E6D95A31B"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\reproduction_gate\\accessibility_eval\\eval_metrics.json",
+    "sha256": "A4FA753A78C0BA463A4A7C323D628C0108DEA6FA20E065F821F89FD7494BFE83"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\reproduction_gate\\regression_eval\\eval_metrics.json",
+    "sha256": "9B17726CEA739A6E8AEA64DE6AFC0F27FFE665407E021CE13370D71CAC041211"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\reports\\reproduction_gate\\unseen_od\\unseen_od_audit.json",
+    "sha256": "9EB8B8519AC101067E31FF30992DE5E90D4BD63C868B9694E13399551549B8A8"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\schema\\feature_order_s9.txt",
+    "sha256": "49CC68CDD689E08D9F065D215EB5D8A132AF514105EE466F366697D5E374B9FC"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\schema\\input_schema_s9.json",
+    "sha256": "828644421EA85E09784C68BA7787775E6A5BF44216201574259A27A6BBA1FBEA"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\schema\\output_schema_s9.json",
+    "sha256": "FC56A545C80CDB102E831D7E0B1C8DAFBC6736DD2F344EDC480334C3DCD2C267"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\releases\\s9_supply_aware_v2\\schema\\schema_diff_vs_s7.json",
+    "sha256": "F1E092867FFFE9B6D2E1FF286EE147634D2450C314410D2B15B0C16FF4004575"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\__init__.py",
+    "sha256": "B716A0829F5069A269FBD640DBE22A1C480F0A29B09483CFB8230192C067CA85"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\config.py",
+    "sha256": "F05B36F1EB72BD55E3CD1056CF98E5B8121C31DB4B16F74B9D499E3DE9731600"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\accessibility\\__init__.py",
+    "sha256": "E63770D0FD2769D03D2621ADBAA4098EB4A47CBBBC91F3C112367483290D0ECF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\accessibility\\accessibility_dataset.py",
+    "sha256": "F78B170F774F8CCD387C34BF7DEDC4D159C63D9B28729D52943F701541628680"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\accessibility\\accessibility_features.py",
+    "sha256": "E36412AD9090B89FFB56D475521EC868348D0DBF0E0B09CDAEAF6104CF26BA43"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\accessibility\\gtfs_accessibility.py",
+    "sha256": "69840462A703E40E7998189DAFBF7512BB1C336B638D6BE1A71C56A3A3FA4A15"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\__init__.py",
+    "sha256": "FA6CC110A72B87FA9E659FB8094A279DCC12ADE8CA1FF34A91470B44101D84FB"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\counterfactual.py",
+    "sha256": "6C3493CBDA304C7276F75A391A2967EAD1765784EDDBF4CCF15F27AEFDF0AE1D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\flags.py",
+    "sha256": "C21746D4518C18E3ACC119D25AA562341B361A08FABE6FD99509191C5E3646AE"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\metrics.py",
+    "sha256": "E1FBBE08FC70B42D37995955D72B37ED083FB76F3E99CCE2179448F0366F4C53"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\persona_sensitivity.py",
+    "sha256": "114F570EB44D94935F6BB3B9E8D01F4C37820B23FEC5CFD593867717ABD5B3E9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\records.py",
+    "sha256": "339D2E14C35E337DC725651CA4F2D4391631761B172DC0850817581D69DD12E9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\repeatability.py",
+    "sha256": "2ADEBE0540E2742EB29040B03857216E90B0DAF54BD90740B03386621DEE9A22"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\audit\\report.py",
+    "sha256": "7006229019631C2713F28DB20903372D31E14BE22E10574309BF703FEAA37947"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\baselines\\__init__.py",
+    "sha256": "A9DC41935C332391F2FB031CB4B897C0587A9C9E9E8999CB5015F5FBA4E9054D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\baselines\\mnl.py",
+    "sha256": "00781AEEF57312892BB54C99C558AD2414024EF6323614ACC9938063FBD7A541"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\dataset\\__init__.py",
+    "sha256": "60CF6C5536F97FE846FE4F3C91DD0CA3DE1B0D16F29ECC790E8CC2F16C93166C"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\dataset\\aggregation.py",
+    "sha256": "9AA2F3369A069CF2DE7C92818EEE40C88C4CAC22A2CB5EAEB3C27E373063B6C1"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\dataset\\builder.py",
+    "sha256": "03413B76A6246D5847AB5EED029EBBD2BD76C47E831C5CCA94F93C6E662F38C6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\dataset\\statistics.py",
+    "sha256": "92FEE64D00F803B7B18B51BE6C846420FE6244BE7B7FFC3437143F7EFA280C64"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\dataset\\writer.py",
+    "sha256": "F26BC96B1679B3D0C71F71F076E7BBD9EF533A7AB22D0C72EA83D08712CA1265"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\__init__.py",
+    "sha256": "5656C2D7B189DD99D4B00C6B392C12BBB28015ED4297655D50BF6878433983AA"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\alternative_generator.py",
+    "sha256": "87CA7FADDA1E0F7C73C32D9FB60981608122672E0495450BE0039DFF69934D29"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\baseline_generator.py",
+    "sha256": "C1E9622B62EAE6DC1136341C4BF593B8BBEC2CDCA2B06011105DDD494495ADE4"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\context_perturbation.py",
+    "sha256": "061CE865E4DE309693DDF098E2F60348A839AD76518FBD7C97D4FF0A59C08115"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\counterfactual_generator.py",
+    "sha256": "7B8F11D2E5025F2395AB1EA7B153BDAF6044F688372FEC4FBCD7FB843AC56695"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\joint_generator.py",
+    "sha256": "0A4637B06EFE01326C8873005A646B2ACFE7B4D381EADA47122E1DFF3AE7114D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\persona_contrast.py",
+    "sha256": "5D0D62C4A31507296A2B70CF7BA505260B521CF6FF3F2BB8FBF9907D1B0F1233"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\persona_generator.py",
+    "sha256": "061028D099DDE893AB46ACD096ADAB0185648CB9A78CCD78E039095B82732D79"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\generators\\trip_generator.py",
+    "sha256": "F843A8A768ED01CB8847B57961D3946ACF522014D08E55C0E638BA3E0779F5C8"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\matsim\\__init__.py",
+    "sha256": "A44DB81626C8987BE240A30659496D81CCF7A869FE085255326481B305FD5152"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\matsim\\adapter.py",
+    "sha256": "6D70A6CB3DD40D0A2AFE6954EFDEF30E706F94FCC758EA84B775FF7C3CD5316F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\matsim\\runner.py",
+    "sha256": "E91F52C52FD5942F36681D1C4E6B7C07FCDB13888F35B07C499AF81A4FD64317"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\matsim\\s8_adapter.py",
+    "sha256": "B17364605EE1E3341BD717A589EBF354BC916A3AF73CA38CBA1E8735A6C20DF8"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\__init__.py",
+    "sha256": "27D7C838A3B11E51EE8FDA7DE96206782D484BDBD68F070BBA70F14D3B9E0113"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\action.py",
+    "sha256": "0749C0108ED4635904C6505FACBEFE99A7D78705CA9D90E8107845BB2F22C395"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\alternative.py",
+    "sha256": "11307DB34CF6D8573CBD9B509F78DB82326449F6D5D8A508E51A86B55803E5F7"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\context.py",
+    "sha256": "4F312B63FC329AE622F1A7F2603968E06B67C0264F62247287E59D5E5DABA972"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\dataset.py",
+    "sha256": "A8ED3CAA34B2054CA8F24FBAA7E2C1AC5F0E6398B4A6E80F46B49F0D6B913AD7"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\persona.py",
+    "sha256": "E1330694395934AEA18041327F7B689001D75304B876D013299084DC4BC83DEB"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\state.py",
+    "sha256": "FF703812B876E0B64015068956EF1303804145695164C606C7B0E5DC77576A9A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\schemas\\trip.py",
+    "sha256": "A9D1784628CE7A2094752FD0D53554C7A3804BC959203B128085E8757DA97CC6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\singapore\\__init__.py",
+    "sha256": "73A29C318B00BABD4E3E7D2586DFDE7D347AEC132BD00BC804461A239A3E416C"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\singapore\\build_transit.py",
+    "sha256": "02EE42440BB1B83F0B55825D4A2BD74109F37CFA61D66A0F3B8B7FA01234B17C"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\singapore\\gtfs_prep.py",
+    "sha256": "49C28B92725210B105BB49E3B5C1B9DC1CE2D4CA68957B21C97EF40DE4FEDB25"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\singapore\\osm_network.py",
+    "sha256": "3B85A7E687E3469FE0E1FD8364E5073C7BD552314195CBE04B0696B340D3AF1A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\singapore\\projection.py",
+    "sha256": "FBC651B9CB312B27BB4CA9695A9BC7BA95A88C765A5554B58E29D640BCD3CF39"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\singapore\\scenario_metrics.py",
+    "sha256": "4D5194733E3E9E6607E64B6D4AEB148B9D92558CC07EB1DA52FF9A6A05D8B71F"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\__init__.py",
+    "sha256": "786936D967AFFCBBD0941263F0111A915FBC1043E396F4FB7AD1C71966B0C5C0"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\dataset.py",
+    "sha256": "ADA5B0B7F2BCCF584951303651FB405F3A8F7A46F0212D6E345862772B66CD46"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\eval.py",
+    "sha256": "5068798469937179739FC2254ADF54F076442400ECB80035FDBE00A6A06952A9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\features.py",
+    "sha256": "87297F335FC446D3E3F87F438202F39426AEDB00160A2E1C2FF9233033F74326"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\losses.py",
+    "sha256": "5564CDD6FC3DB8342A5D33F37D06CF75F329CCCD573EAF3721C55A61AC00164D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\mechanism_dataset.py",
+    "sha256": "46AC502D5440238D6BE2AE7632522306D6C305ED80E95B84D8C308E39F5CC9D7"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\mechanism_losses.py",
+    "sha256": "232661615A111AB1AD330DB81B2CFD07C2E675BA8F8071B6CF7F3F6F40ABC0DF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\model.py",
+    "sha256": "B28199F64DE4BD3494A0D0CE1CD27E8B7A9EA50440821CAB0F52B480A70B0603"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\release_guard.py",
+    "sha256": "AE0CAF762CEFF3972377D4503D2F876065FA6B56089C3B5FEAD681FC6D73D417"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\student\\split.py",
+    "sha256": "E7BF5F25E2B2C7F6B63F5E755543D6C63E356BA6378511988A41560BDE6A9767"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\teacher\\__init__.py",
+    "sha256": "50CD58104C76B9974FD49E177103B46BAFAAD1B6ABAFE466B9644F040471E8D9"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\teacher\\client.py",
+    "sha256": "FB248ECD083897FA3E681D5A4D78200C03E76CCCFB003EC8145EEF66F97950DA"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\teacher\\parser.py",
+    "sha256": "3FAE820FAFE7026EE90D48D8CD162AFFA7AA120C71FF562A95D347D0EDBD5A75"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\teacher\\prompts_s8.py",
+    "sha256": "9CDE516AC3D2EE3F82CC8EFE1B4DD75C4413BC2EFF0BDCECCE5A06367CC6CD74"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\teacher\\prompts.py",
+    "sha256": "47AD184BBB03D40E0A91085745A3AC71B13C612D4BC0E191095A036DC8336C65"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation\\teacher\\validator.py",
+    "sha256": "D6D51F0998D487F61D77F4A5E608FC0B8197340ABEEA58FEB34B3F7FC2F098C6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation.egg-info\\dependency_links.txt",
+    "sha256": "01BA4719C80B6FE911B091A7C05124B64EEECE964E09C058EF8F9805DACA546B"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation.egg-info\\PKG-INFO",
+    "sha256": "F917E58BA245B7B73570A1FA07E97732C76CAFE3E0E62152127E6F867AF27CDF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation.egg-info\\requires.txt",
+    "sha256": "A402948373BACE76BE1012680035B3514CA41562AF7D43DBB73F7F78A0DAB1CF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation.egg-info\\SOURCES.txt",
+    "sha256": "799DDDB2E9E058A24288C22FC5D318C232615DB8651CF2679A92395F7361226D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\src\\traveler_distillation.egg-info\\top_level.txt",
+    "sha256": "99E4773C74934737B29073B0E06E28CF3A7A0BF130D599DEFF56A2F826844352"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\accessibility_features.yaml",
+    "sha256": "FCCE9A573DD8CA6EF91EFD8F1FE9FB143E071CB2AED58157B2CEF4AD1414C662"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\causal_audit.yaml",
+    "sha256": "1444E9E651A40C4C4BDA981A9A37B06847C6F0092E142B2C94017EE0CDFA8D2D"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\generation_v0_1.yaml",
+    "sha256": "CFFC833E523D7835895947C09FC0D4D0679B2CAC0113B82D3CFD6A86F318A3B5"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\joint_sampling.yaml",
+    "sha256": "2682743971EDE35EDF918EEDAA8F2962E18A4DF9484CB92A8235605155E55B61"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\reference_example.yaml",
+    "sha256": "E3111CDD77BD028C66E50BB26125893975CBF593D7508F73FFE20FE2FF505959"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\reference_shanghai_dmatched.yaml",
+    "sha256": "CFFF679608FEBF6EEF043C4FA3B7FBBAEAA475DD96ADFB7DC7E0B024DE06FA77"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\reference_shanghai.yaml",
+    "sha256": "2BE13FFA167D0697A653BD3B4E010A6995B70327697D97791DB9508C5288CA24"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s5_joint.yaml",
+    "sha256": "C49EC683343B86BAD9B481116D6E7E71D2DF3F89F7AD6D01D8B02B6BFD44FEC5"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s7_broken_only.yaml",
+    "sha256": "EFD5D8ECEA751D79ECDB7B8615E072DDA0DBB6F261F54B3A064F41FF1F76ABF4"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s7_mech_only.yaml",
+    "sha256": "CD443EC1DF05E7E7531B07F6021F7ED3E33EB0D66738E1326BC77DD2B126D516"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s7_w1.yaml",
+    "sha256": "9B877F4700E516D49334B2C78F5668DF16B70562482873C7EBED6A0FC2BA5BF7"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s7_w2.yaml",
+    "sha256": "DED9E0F5A2EB6CCE5258A3EE20A94DE99A2605E6CFEF22D24512C87B447D6A92"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s7_w3.yaml",
+    "sha256": "6A0DE4F81D8082B5653EEB22C6AA007B811705DAF4DE9629ACBA6F62CA96C3A2"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s8.yaml",
+    "sha256": "447ADF85A4583952647128730DE4CC6EBD164DB8E14AD035E3115CA128464BEF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_s9.yaml",
+    "sha256": "6DE1F1218579EE05EECC7491E1BDFA5CA7BFBEDFC95D7D1E89FEB7201B564DFB"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_v0_2_a.yaml",
+    "sha256": "EF44D1AAA5F37D88229350C7BCD37B5CAFCD58593541EA776AD9E104A47ECF8A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_v0_2_b.yaml",
+    "sha256": "C523EC738FBBB89FED64F3283D755597AE74BB7729EB58B316861DD14DA30321"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_v0_2_c.yaml",
+    "sha256": "C3B8872E56FA0D3EBCCEEFAD396F57D0DA594FF90A77AA585A175BE59F0D3C70"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_v0_3_a.yaml",
+    "sha256": "7F2BFDD9FAA323FEAB219A401D96D13F46FFF9C9F496C375FCBB9074EC6F4AB4"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_v0_3_b.yaml",
+    "sha256": "F25E90B9F4A598FFB912841D8AF858112EC5409B9157C56A809225B984C40B9A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\student_v0_3_c.yaml",
+    "sha256": "82BA2717D9ECDCDAD71EED9A361D5DC0398B160A70A5E5CAD28EE5BD48C77F2A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\configs\\teacher_v0_1.yaml",
+    "sha256": "91D85C437E3BB68E7242B04E25B134066AF9E03D03523480F8CF4E4A5679689A"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\__init__.py",
+    "sha256": "E6124932A2B288375F87ABE7A6B6ABD8AAD6F0300158ED2D645F87247B491856"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\config.py",
+    "sha256": "CDE3AE873E70FF215654ABA42881DBACCA0BF909472CE567068C0C65D72D54CD"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\feature_adapter.py",
+    "sha256": "969DC704A94277A8234058458F78BFA77B27168F6864808D4EEC9E2393663428"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\matsim_adapter.py",
+    "sha256": "072C1EE999D6DBF426DEBCDE7FE3EA569C98805DA5898493AD6E8030095ED83E"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\pipeline.py",
+    "sha256": "D9F84937C577B46A8CFFF9A31925CD813EC95B6501558F4FA6DD51EEC635D6A6"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\route_cache.py",
+    "sha256": "00FAE587FDCD6976E3610241BAC30F0F435C82D80E7629492107CBB72CFC62AF"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\student_adapter.py",
+    "sha256": "064D93664B35C77C6FBFF35BB582CA51C618D36AAC2A3A9A3A1A226497DB0FE8"
+  },
+  {
+    "path": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\reference_pipeline\\validators.py",
+    "sha256": "B7D2110EB59FACBC42B34BFC16324FB63F109C28FAC2B74470C2DC370C7763AC"
+  }
+]

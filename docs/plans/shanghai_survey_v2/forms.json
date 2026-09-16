@@ -1,0 +1,157 @@
+{
+  "version": "shanghai-survey-v2.0",
+  "design": "even-size Williams order design",
+  "allocation": "uniform_random_at_respondent_level_before_any_SP_answers",
+  "forms": [
+    {
+      "form_id": "F01",
+      "card_order": [
+        "B0",
+        "W1",
+        "A_TRANSFER",
+        "D1",
+        "A_WAIT",
+        "WD1",
+        "A_WALK",
+        "F1",
+        "R1",
+        "P1"
+      ]
+    },
+    {
+      "form_id": "F02",
+      "card_order": [
+        "W1",
+        "D1",
+        "B0",
+        "WD1",
+        "A_TRANSFER",
+        "F1",
+        "A_WAIT",
+        "P1",
+        "A_WALK",
+        "R1"
+      ]
+    },
+    {
+      "form_id": "F03",
+      "card_order": [
+        "D1",
+        "WD1",
+        "W1",
+        "F1",
+        "B0",
+        "P1",
+        "A_TRANSFER",
+        "R1",
+        "A_WAIT",
+        "A_WALK"
+      ]
+    },
+    {
+      "form_id": "F04",
+      "card_order": [
+        "WD1",
+        "F1",
+        "D1",
+        "P1",
+        "W1",
+        "R1",
+        "B0",
+        "A_WALK",
+        "A_TRANSFER",
+        "A_WAIT"
+      ]
+    },
+    {
+      "form_id": "F05",
+      "card_order": [
+        "F1",
+        "P1",
+        "WD1",
+        "R1",
+        "D1",
+        "A_WALK",
+        "W1",
+        "A_WAIT",
+        "B0",
+        "A_TRANSFER"
+      ]
+    },
+    {
+      "form_id": "F06",
+      "card_order": [
+        "P1",
+        "R1",
+        "F1",
+        "A_WALK",
+        "WD1",
+        "A_WAIT",
+        "D1",
+        "A_TRANSFER",
+        "W1",
+        "B0"
+      ]
+    },
+    {
+      "form_id": "F07",
+      "card_order": [
+        "R1",
+        "A_WALK",
+        "P1",
+        "A_WAIT",
+        "F1",
+        "A_TRANSFER",
+        "WD1",
+        "B0",
+        "D1",
+        "W1"
+      ]
+    },
+    {
+      "form_id": "F08",
+      "card_order": [
+        "A_WALK",
+        "A_WAIT",
+        "R1",
+        "A_TRANSFER",
+        "P1",
+        "B0",
+        "F1",
+        "W1",
+        "WD1",
+        "D1"
+      ]
+    },
+    {
+      "form_id": "F09",
+      "card_order": [
+        "A_WAIT",
+        "A_TRANSFER",
+        "A_WALK",
+        "B0",
+        "R1",
+        "W1",
+        "P1",
+        "D1",
+        "F1",
+        "WD1"
+      ]
+    },
+    {
+      "form_id": "F10",
+      "card_order": [
+        "A_TRANSFER",
+        "B0",
+        "A_WAIT",
+        "W1",
+        "A_WALK",
+        "D1",
+        "R1",
+        "WD1",
+        "P1",
+        "F1"
+      ]
+    }
+  ]
+}

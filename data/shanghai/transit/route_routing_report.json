@@ -1,0 +1,20 @@
+{
+  "n_stops": 34,
+  "n_trips": 5160,
+  "n_trips_routed": 5160,
+  "n_unique_sequences": 24,
+  "n_sequences_routed": 24,
+  "routing_failures": [],
+  "n_routing_failures": 0,
+  "snapping_dist_m": {
+    "mean": 52.9,
+    "p50": 53.3,
+    "p90": 86.3,
+    "max": 119.5
+  },
+  "n_transit_only_oneway_reverse_links": 11696,
+  "n_pedestrian_bike_reverse_links": 9277,
+  "runtime_s": 6.6,
+  "rail_degradation": "MRT trips routed on the road graph (rail-on-road); OSM railway not converted in Phase A",
+  "oneway_approximation": "transit routes may traverse one-way links against direction via transit-only reverse links (modes=bus,rail); car traffic is unaffected — documented Phase A approximation"
+}

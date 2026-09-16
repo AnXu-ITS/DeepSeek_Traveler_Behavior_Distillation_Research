@@ -1,0 +1,13 @@
+route_id,agency_id,route_short_name,route_long_name,route_type
+metro1,shmetro,1号线,上海地铁1号线,1
+metro2,shmetro,2号线,上海地铁2号线,1
+metro3,shmetro,3号线,上海地铁3号线,1
+metro4,shmetro,4号线,上海地铁4号线,1
+metro7,shmetro,7号线,上海地铁7号线,1
+metro9,shmetro,9号线,上海地铁9号线,1
+metro10,shmetro,10号线,上海地铁10号线,1
+metro11,shmetro,11号线,上海地铁11号线,1
+metro12,shmetro,12号线,上海地铁12号线,1
+metro13,shmetro,13号线,上海地铁13号线,1
+metro14,shmetro,14号线,上海地铁14号线,1
+metro15,shmetro,15号线,上海地铁15号线,1

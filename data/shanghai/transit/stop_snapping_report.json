@@ -1,0 +1,181 @@
+{
+  "n_stops": 34,
+  "dist_m": {
+    "mean": 52.9,
+    "p50": 53.3,
+    "p90": 86.3,
+    "max": 119.5
+  },
+  "per_stop": [
+    {
+      "stop_id": "s0",
+      "nearest_node": "8902742822",
+      "dist_m": 36.0
+    },
+    {
+      "stop_id": "s1",
+      "nearest_node": "64846820",
+      "dist_m": 81.5
+    },
+    {
+      "stop_id": "s10",
+      "nearest_node": "4459852493",
+      "dist_m": 46.5
+    },
+    {
+      "stop_id": "s11",
+      "nearest_node": "9778289813",
+      "dist_m": 63.0
+    },
+    {
+      "stop_id": "s12",
+      "nearest_node": "6877759495",
+      "dist_m": 86.2
+    },
+    {
+      "stop_id": "s13",
+      "nearest_node": "2388558492",
+      "dist_m": 85.6
+    },
+    {
+      "stop_id": "s14",
+      "nearest_node": "10234997866",
+      "dist_m": 86.3
+    },
+    {
+      "stop_id": "s15",
+      "nearest_node": "1882278346",
+      "dist_m": 94.4
+    },
+    {
+      "stop_id": "s16",
+      "nearest_node": "601716859",
+      "dist_m": 100.5
+    },
+    {
+      "stop_id": "s17",
+      "nearest_node": "13157680353",
+      "dist_m": 78.9
+    },
+    {
+      "stop_id": "s18",
+      "nearest_node": "3047470158",
+      "dist_m": 15.3
+    },
+    {
+      "stop_id": "s19",
+      "nearest_node": "5536172164",
+      "dist_m": 16.7
+    },
+    {
+      "stop_id": "s2",
+      "nearest_node": "4362371178",
+      "dist_m": 83.5
+    },
+    {
+      "stop_id": "s20",
+      "nearest_node": "2049780844",
+      "dist_m": 4.2
+    },
+    {
+      "stop_id": "s21",
+      "nearest_node": "2390600719",
+      "dist_m": 12.8
+    },
+    {
+      "stop_id": "s22",
+      "nearest_node": "481396589",
+      "dist_m": 51.3
+    },
+    {
+      "stop_id": "s23",
+      "nearest_node": "856908986",
+      "dist_m": 18.0
+    },
+    {
+      "stop_id": "s24",
+      "nearest_node": "856909070",
+      "dist_m": 33.4
+    },
+    {
+      "stop_id": "s25",
+      "nearest_node": "2431274398",
+      "dist_m": 29.1
+    },
+    {
+      "stop_id": "s26",
+      "nearest_node": "2412875877",
+      "dist_m": 63.7
+    },
+    {
+      "stop_id": "s27",
+      "nearest_node": "4853222082",
+      "dist_m": 58.8
+    },
+    {
+      "stop_id": "s28",
+      "nearest_node": "714016203",
+      "dist_m": 64.8
+    },
+    {
+      "stop_id": "s29",
+      "nearest_node": "10234997873",
+      "dist_m": 41.0
+    },
+    {
+      "stop_id": "s3",
+      "nearest_node": "7104204892",
+      "dist_m": 59.9
+    },
+    {
+      "stop_id": "s30",
+      "nearest_node": "856908656",
+      "dist_m": 56.6
+    },
+    {
+      "stop_id": "s31",
+      "nearest_node": "9857839976",
+      "dist_m": 47.6
+    },
+    {
+      "stop_id": "s32",
+      "nearest_node": "8314000815",
+      "dist_m": 33.4
+    },
+    {
+      "stop_id": "s33",
+      "nearest_node": "13261002047",
+      "dist_m": 55.4
+    },
+    {
+      "stop_id": "s4",
+      "nearest_node": "2366018698",
+      "dist_m": 9.9
+    },
+    {
+      "stop_id": "s5",
+      "nearest_node": "4458655110",
+      "dist_m": 22.5
+    },
+    {
+      "stop_id": "s6",
+      "nearest_node": "10922706383",
+      "dist_m": 33.2
+    },
+    {
+      "stop_id": "s7",
+      "nearest_node": "1091110546",
+      "dist_m": 49.2
+    },
+    {
+      "stop_id": "s8",
+      "nearest_node": "1414884244",
+      "dist_m": 119.5
+    },
+    {
+      "stop_id": "s9",
+      "nearest_node": "376612846",
+      "dist_m": 59.8
+    }
+  ]
+}

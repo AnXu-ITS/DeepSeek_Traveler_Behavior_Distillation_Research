@@ -1,0 +1,347 @@
+{
+  "version": "shanghai-survey-v3.1",
+  "questions": [
+    {
+      "id": "S01",
+      "text": "您是否已满18周岁，并愿意参加本次匿名调查？",
+      "options": [
+        {
+          "code": "yes",
+          "label": "是"
+        },
+        {
+          "code": "no",
+          "label": "否"
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "text": "过去30天，您是否在上海出行过？",
+      "options": [
+        {
+          "code": "yes",
+          "label": "是"
+        },
+        {
+          "code": "no",
+          "label": "否"
+        }
+      ]
+    },
+    {
+      "id": "P01",
+      "text": "您的年龄是？",
+      "options": [
+        {
+          "code": "18-24",
+          "label": "18-24岁"
+        },
+        {
+          "code": "25-34",
+          "label": "25-34岁"
+        },
+        {
+          "code": "35-44",
+          "label": "35-44岁"
+        },
+        {
+          "code": "45-64",
+          "label": "45-64岁"
+        },
+        {
+          "code": "65+",
+          "label": "65岁及以上"
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "text": "您目前主要从事什么工作？",
+      "options": [
+        {
+          "code": "student",
+          "label": "学生"
+        },
+        {
+          "code": "office_worker",
+          "label": "办公室工作"
+        },
+        {
+          "code": "service_worker",
+          "label": "服务业工作"
+        },
+        {
+          "code": "manual_worker",
+          "label": "生产、施工或体力劳动"
+        },
+        {
+          "code": "retired",
+          "label": "退休"
+        },
+        {
+          "code": "unemployed",
+          "label": "待业"
+        },
+        {
+          "code": "homemaker",
+          "label": "料理家务"
+        },
+        {
+          "code": "other",
+          "label": "其他"
+        }
+      ]
+    },
+    {
+      "id": "P03",
+      "text": "您的个人月收入大约是多少？",
+      "options": [
+        {
+          "code": "below_5000",
+          "label": "5000元以下"
+        },
+        {
+          "code": "from_5000_to_9999",
+          "label": "5000—9999元"
+        },
+        {
+          "code": "from_10000_to_19999",
+          "label": "10000—19999元"
+        },
+        {
+          "code": "at_least_20000",
+          "label": "20000元及以上"
+        },
+        {
+          "code": "refused",
+          "label": "不方便回答"
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "text": "您家通常一起生活的有几人？（包括自己）",
+      "options": [
+        {
+          "code": "1",
+          "label": "1人"
+        },
+        {
+          "code": "2",
+          "label": "2人"
+        },
+        {
+          "code": "3",
+          "label": "3人"
+        },
+        {
+          "code": "4",
+          "label": "4人"
+        },
+        {
+          "code": "5",
+          "label": "5人"
+        },
+        {
+          "code": "6",
+          "label": "6人"
+        },
+        {
+          "code": "7",
+          "label": "7人"
+        },
+        {
+          "code": "8",
+          "label": "8人"
+        },
+        {
+          "code": "9",
+          "label": "9人"
+        },
+        {
+          "code": "10",
+          "label": "10人"
+        },
+        {
+          "code": "11_plus",
+          "label": "11人及以上"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "text": "您家是否有未满18岁的孩子？",
+      "options": [
+        {
+          "code": "yes",
+          "label": "有"
+        },
+        {
+          "code": "no",
+          "label": "没有"
+        }
+      ]
+    },
+    {
+      "id": "P06",
+      "text": "您家是否有可供您使用的小汽车？",
+      "options": [
+        {
+          "code": "yes",
+          "label": "有"
+        },
+        {
+          "code": "no",
+          "label": "没有"
+        }
+      ]
+    },
+    {
+      "id": "P07",
+      "text": "您是否持有有效的小汽车驾驶证？",
+      "options": [
+        {
+          "code": "yes",
+          "label": "有"
+        },
+        {
+          "code": "no",
+          "label": "没有"
+        }
+      ]
+    },
+    {
+      "id": "P09",
+      "text": "您是否有自己的普通自行车？（不含电动车和共享单车）",
+      "options": [
+        {
+          "code": "yes",
+          "label": "有"
+        },
+        {
+          "code": "no",
+          "label": "没有"
+        }
+      ]
+    },
+    {
+      "id": "P11",
+      "text": "您是否持有目前有效的公交或地铁定期乘车套餐？（不含普通交通卡、乘车码）",
+      "options": [
+        {
+          "code": "yes",
+          "label": "有"
+        },
+        {
+          "code": "no",
+          "label": "没有"
+        }
+      ]
+    },
+    {
+      "id": "P12",
+      "text": "您平时最常用哪种方式出行？",
+      "options": [
+        {
+          "code": "car_driver",
+          "label": "自己开车"
+        },
+        {
+          "code": "car_passenger",
+          "label": "乘坐家人或朋友的车"
+        },
+        {
+          "code": "public_transport",
+          "label": "公交或地铁"
+        },
+        {
+          "code": "pedal_bike",
+          "label": "普通自行车"
+        },
+        {
+          "code": "ridehail",
+          "label": "出租车或网约车"
+        },
+        {
+          "code": "ebike",
+          "label": "电动自行车"
+        },
+        {
+          "code": "walk",
+          "label": "步行"
+        },
+        {
+          "code": "mixed",
+          "label": "多种方式差不多"
+        },
+        {
+          "code": "other",
+          "label": "其他"
+        }
+      ]
+    },
+    {
+      "id": "P13",
+      "text": "您平时的出发时间一般能调整多少？",
+      "options": [
+        {
+          "code": "up_to_5",
+          "label": "基本固定，最多调整5分钟"
+        },
+        {
+          "code": "from_6_to_30",
+          "label": "可以调整6—30分钟"
+        },
+        {
+          "code": "over_30",
+          "label": "可以调整30分钟以上"
+        },
+        {
+          "code": "no_stable_schedule",
+          "label": "没有固定出发时间"
+        }
+      ]
+    },
+    {
+      "id": "P14",
+      "text": "您的身体状况会影响步行或骑自行车吗？",
+      "options": [
+        {
+          "code": "none",
+          "label": "基本不影响"
+        },
+        {
+          "code": "mild",
+          "label": "有些影响"
+        },
+        {
+          "code": "significant",
+          "label": "影响较大"
+        }
+      ]
+    }
+  ],
+  "mode_options": [
+    {
+      "code": "car",
+      "label": "自己开车"
+    },
+    {
+      "code": "pt",
+      "label": "公交或地铁"
+    },
+    {
+      "code": "bike",
+      "label": "普通自行车"
+    },
+    {
+      "code": "walk",
+      "label": "步行"
+    },
+    {
+      "code": "unable",
+      "label": "都不适合"
+    }
+  ]
+}

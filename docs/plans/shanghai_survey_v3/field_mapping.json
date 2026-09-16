@@ -1,0 +1,170 @@
+{
+  "version": "shanghai-survey-v3.1",
+  "raw_encoding": "Use symbolic codes in question_options.json. Blank means skipped. All questions single choice.",
+  "missing_codes": [
+    "unknown",
+    "refused",
+    "skipped",
+    "not_applicable"
+  ],
+  "persona_fields": {
+    "age_group": {
+      "question": "P01",
+      "map": {
+        "18-24": "18-24",
+        "25-34": "25-34",
+        "35-44": "35-44",
+        "45-64": "45-64",
+        "65+": "65+"
+      }
+    },
+    "occupation": {
+      "question": "P02",
+      "map": {
+        "student": "student",
+        "office_worker": "office_worker",
+        "service_worker": "service_worker",
+        "manual_worker": "manual_worker",
+        "retired": "retired",
+        "unemployed": "unemployed",
+        "homemaker": "other",
+        "other": "other"
+      }
+    },
+    "income_group": {
+      "question": "P03",
+      "map": {
+        "below_5000": "low",
+        "from_5000_to_9999": "medium",
+        "from_10000_to_19999": "high",
+        "at_least_20000": "high"
+      }
+    },
+    "household_size": {
+      "question": "P04",
+      "map": {
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9,
+        "10": 10
+      },
+      "unsupported": [
+        "11_plus"
+      ]
+    },
+    "has_children": {
+      "question": "P05",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "car_ownership": {
+      "question": "P06",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "driving_license": {
+      "question": "P07",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "bike_ownership": {
+      "question": "P09",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "transit_pass": {
+      "question": "P11",
+      "map": {
+        "yes": true,
+        "no": false
+      }
+    },
+    "habitual_mode": {
+      "question": "P12",
+      "map": {
+        "car_driver": "car",
+        "public_transport": "pt",
+        "pedal_bike": "bike",
+        "walk": "walk",
+        "mixed": "mixed"
+      },
+      "unsupported": [
+        "car_passenger",
+        "ridehail",
+        "ebike",
+        "other"
+      ]
+    },
+    "schedule_flexibility": {
+      "question": "P13",
+      "map": {
+        "up_to_5": "low",
+        "from_6_to_30": "medium",
+        "over_30": "high"
+      },
+      "unsupported": [
+        "no_stable_schedule"
+      ]
+    },
+    "mobility_limitation": {
+      "question": "P14",
+      "map": {
+        "none": "none",
+        "mild": "mild",
+        "significant": "significant"
+      }
+    }
+  },
+  "other_question_codes": {
+    "S01": [
+      "yes",
+      "no"
+    ],
+    "S02": [
+      "yes",
+      "no"
+    ]
+  },
+  "availability": {
+    "car": "P06 == yes AND P07 == yes",
+    "bike": "P09 == yes",
+    "pt": true,
+    "walk": true
+  },
+  "choice_statuses": [
+    "selected",
+    "unable",
+    "skipped"
+  ],
+  "fixed_trip": {
+    "purpose": "shopping",
+    "origin_type": "home",
+    "destination_type": "shop",
+    "distance_km": 6,
+    "desired_departure_min": 480,
+    "desired_arrival_min": 540,
+    "time_constraint": "hard"
+  },
+  "model_contract": {
+    "checkpoint": "releases/s9_supply_aware_v2/checkpoint/model.pt",
+    "mode_mapping": "releases/s9_supply_aware_v2/normalization/mode_mapping.json",
+    "category_mapping": "releases/s9_supply_aware_v2/normalization/category_mapping.json",
+    "normalization": "frozen checkpoint extractor; no fit/no updates/no test-answer-dependent mapping",
+    "outside_vocabulary_policy": "Do not inject unknown modes or replace an unsupported habitual mode by car/bike/mixed. Preserve raw records, report coverage and mapping reasons; primary complete-input prediction subset defined before choices."
+  },
+  "shift_measurement": "Not collected. Evaluate mode choice only; frozen departure output is not validated by this survey."
+}

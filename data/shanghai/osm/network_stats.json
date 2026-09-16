@@ -1,0 +1,47 @@
+{
+  "source": "C:\\Users\\xuan1\\OneDrive\\桌面\\PhD论文\\DeepSeek_Traveler_Behavior_Distillation_Research-main\\data\\shanghai\\osm\\xuhui.osm",
+  "ways_kept": 7362,
+  "nodes": 30425,
+  "links": 56810,
+  "mode_link_counts": {
+    "car": 35690,
+    "bike": 53975,
+    "walk": 54391
+  },
+  "length_m": {
+    "n": 56810,
+    "min": 0.52,
+    "p50": 19.57,
+    "max": 1659.73
+  },
+  "freespeed_ms": {
+    "n": 56810,
+    "min": 0.8,
+    "p50": 7.0,
+    "max": 22.22
+  },
+  "capacity_veh_h": {
+    "n": 56810,
+    "min": 300,
+    "p50": 1000,
+    "max": 10500
+  },
+  "total_network_km": 1914.39,
+  "connectivity": {
+    "car": {
+      "components": 23,
+      "largest_component_nodes": 21053,
+      "fraction_in_largest": 0.9913
+    },
+    "bike": {
+      "components": 90,
+      "largest_component_nodes": 26930,
+      "fraction_in_largest": 0.9631
+    },
+    "walk": {
+      "components": 64,
+      "largest_component_nodes": 27218,
+      "fraction_in_largest": 0.9694
+    }
+  }
+}

@@ -1,0 +1,887 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-05-31T22:37:44Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 471013952,
+  "lat": 31.1950755,
+  "lon": 121.4339035,
+  "tags": {
+    "name": "徐家汇",
+    "name:en": "Xujiahui",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 471014085,
+  "lat": 31.2064527,
+  "lon": 121.4419408,
+  "tags": {
+    "name": "衡山路",
+    "name:en": "Hengshan Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q3269835"
+  }
+},
+{
+  "type": "node",
+  "id": 471015395,
+  "lat": 31.2188995,
+  "lon": 121.4552697,
+  "tags": {
+    "name": "陕西南路",
+    "name:en": "South Shaanxi Road",
+    "name:zh": "陕西南路",
+    "name:zh-Hans": "陕西南路",
+    "name:zh-Hant": "陕西南路",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 471016169,
+  "lat": 31.2249337,
+  "lon": 121.4693495,
+  "tags": {
+    "alt_name": "黄陂南路",
+    "alt_name:en": "South Huangpi Road",
+    "alt_name:zh": "黄陂南路",
+    "name": "一大会址·黄陂南路",
+    "name:en": "Site of the First CPC National Congress·South Huangpi Road",
+    "name:zh": "一大会址·黄陂南路",
+    "network": "上海地铁",
+    "network:en": "Shanghai Metro",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q2383478"
+  }
+},
+{
+  "type": "node",
+  "id": 2448270613,
+  "lat": 31.1748452,
+  "lon": 121.4486885,
+  "tags": {
+    "name": "龙华",
+    "name:en": "Longhua",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2448270617,
+  "lat": 31.1615085,
+  "lon": 121.4551734,
+  "tags": {
+    "name": "龙耀路",
+    "name:en": "Longyao Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q11178088"
+  }
+},
+{
+  "type": "node",
+  "id": 2448270633,
+  "lat": 31.1812817,
+  "lon": 121.4367543,
+  "tags": {
+    "name": "上海游泳馆",
+    "name:en": "Shanghai Swimming Center",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q10867965"
+  }
+},
+{
+  "type": "node",
+  "id": 2448270636,
+  "lat": 31.1974902,
+  "lon": 121.4323653,
+  "tags": {
+    "name": "徐家汇",
+    "name:en": "Xujiahui",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2448270639,
+  "lat": 31.1695006,
+  "lon": 121.4538663,
+  "tags": {
+    "name": "云锦路",
+    "name:en": "Yunjin Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q10881325"
+  }
+},
+{
+  "type": "node",
+  "id": 4241260093,
+  "lat": 31.2252923,
+  "lon": 121.4421389,
+  "tags": {
+    "name": "静安寺",
+    "name:en": "Jing'an Temple",
+    "name:zh": "静安寺",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4520492425,
+  "lat": 31.2200642,
+  "lon": 121.4115608,
+  "tags": {
+    "building": "yes",
+    "name": "中山公园",
+    "name:en": "Zhongshan Park",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4571430228,
+  "lat": 31.2151666,
+  "lon": 121.4464856,
+  "tags": {
+    "name": "常熟路",
+    "name:en": "Changshu Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5306355592,
+  "lat": 31.1554593,
+  "lon": 121.4758296,
+  "tags": {
+    "name": "东方体育中心",
+    "name:en": "Oriental Sports Center",
+    "name:zh": "东方体育中心",
+    "network": "上海地铁",
+    "note": "8号线 - For Line 8 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306355597,
+  "lat": 31.2208466,
+  "lon": 121.4784338,
+  "tags": {
+    "name": "老西门",
+    "name:en": "Laoximen",
+    "network": "上海地铁",
+    "note": "8号线 - For Line 8 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306355598,
+  "lat": 31.2291468,
+  "lon": 121.4749289,
+  "tags": {
+    "name": "大世界",
+    "name:en": "Dashijie",
+    "name:zh": "大世界",
+    "name:zh-Hans": "大世界",
+    "name:zh-Hant": "大世界",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q31005",
+    "wikipedia": "zh:大世界站 (上海市)"
+  }
+},
+{
+  "type": "node",
+  "id": 5306402950,
+  "lat": 31.1862088,
+  "lon": 121.4227293,
+  "tags": {
+    "name": "宜山路",
+    "name:en": "Yishan Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306402951,
+  "lat": 31.2046319,
+  "lon": 121.4563670,
+  "tags": {
+    "name": "嘉善路",
+    "name:en": "Jiashan Road",
+    "network": "上海地铁",
+    "note": "9号线 - For Line 9 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306402952,
+  "lat": 31.2082336,
+  "lon": 121.4640097,
+  "tags": {
+    "name": "打浦桥",
+    "name:en": "Dapuqiao",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q5936524"
+  }
+},
+{
+  "type": "node",
+  "id": 5306402955,
+  "lat": 31.2112829,
+  "lon": 121.4720292,
+  "tags": {
+    "name": "马当路",
+    "name:en": "Madang Road",
+    "network": "上海地铁",
+    "note": "9号线 - For Line 9 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306444957,
+  "lat": 31.1983438,
+  "lon": 121.4079018,
+  "tags": {
+    "name": "宋园路",
+    "name:en": "Songyuan Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q985965"
+  }
+},
+{
+  "type": "node",
+  "id": 5306444958,
+  "lat": 31.1985770,
+  "lon": 121.4175044,
+  "tags": {
+    "name": "虹桥路",
+    "name:en": "Hongqiao Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q952567",
+    "wikipedia": "en:Hongqiao Road station"
+  }
+},
+{
+  "type": "node",
+  "id": 5306444959,
+  "lat": 31.2040391,
+  "lon": 121.4304645,
+  "tags": {
+    "name": "交通大学",
+    "name:en": "Jiao Tong University",
+    "network": "上海地铁",
+    "note": "10号线 - For Line 10 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306444960,
+  "lat": 31.2100122,
+  "lon": 121.4396546,
+  "tags": {
+    "name": "上海图书馆",
+    "name:en": "Shanghai Library",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q986024"
+  }
+},
+{
+  "type": "node",
+  "id": 5306444961,
+  "lat": 31.2168438,
+  "lon": 121.4540097,
+  "tags": {
+    "name": "陕西南路",
+    "name:en": "South Shaanxi Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306444964,
+  "lat": 31.2180993,
+  "lon": 121.4699438,
+  "tags": {
+    "alt_name": "新天地",
+    "alt_name:en": "Xintiandi",
+    "alt_name:zh": "新天地",
+    "name": "一大会址·新天地",
+    "name:en": "Site of the First CPC National Congress·Xintiandi",
+    "name:ko": "신천지",
+    "name:zh": "一大会址·新天地",
+    "network": "上海地铁",
+    "network:en": "Shanghai Metro",
+    "note": "10号线 - Line 10",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306464707,
+  "lat": 31.1662502,
+  "lon": 121.4061275,
+  "tags": {
+    "name": "虹漕路",
+    "name:en": "Hongcao Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q16928600"
+  }
+},
+{
+  "type": "node",
+  "id": 5306464708,
+  "lat": 31.1689829,
+  "lon": 121.4149819,
+  "tags": {
+    "name": "桂林公园",
+    "name:en": "Guilin Park",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q11111541"
+  }
+},
+{
+  "type": "node",
+  "id": 5306464710,
+  "lat": 31.1720693,
+  "lon": 121.4389457,
+  "tags": {
+    "name": "龙漕路",
+    "name:en": "Longcao Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306464711,
+  "lat": 31.1766510,
+  "lon": 121.4481765,
+  "tags": {
+    "name": "龙华",
+    "name:en": "Longhua",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306464713,
+  "lat": 31.2294277,
+  "lon": 121.4547881,
+  "tags": {
+    "name": "南京西路",
+    "name:en": "West Nanjing Road",
+    "name:ja": "南京西路",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5306477816,
+  "lat": 31.2218467,
+  "lon": 121.4598334,
+  "tags": {
+    "name": "淮海中路",
+    "name:en": "Middle Huaihai Road",
+    "name:zh": "淮海中路",
+    "name:zh-Hans": "淮海中路",
+    "name:zh-Hant": "淮海中路",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q11152722",
+    "wikipedia": "zh:淮海中路站"
+  }
+},
+{
+  "type": "node",
+  "id": 5306477817,
+  "lat": 31.1992369,
+  "lon": 121.4770974,
+  "tags": {
+    "air_conditioning": "yes",
+    "name": "世博会博物馆",
+    "name:en": "World Expo Museum",
+    "name:zh": "世博会博物馆",
+    "name:zh-Hans": "世博会博物馆",
+    "name:zh-Hant": "世博會博物館",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q5957575",
+    "wikipedia": "zh:世博会博物馆站"
+  }
+},
+{
+  "type": "node",
+  "id": 5308432220,
+  "lat": 31.2177863,
+  "lon": 121.4546929,
+  "tags": {
+    "name": "陕西南路",
+    "name:en": "South Shaanxi Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 5312024931,
+  "lat": 31.1704329,
+  "lon": 121.4291103,
+  "tags": {
+    "name": "漕宝路",
+    "name:en": "Caobao Road",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5313309164,
+  "lat": 31.1553732,
+  "lon": 121.4760043,
+  "tags": {
+    "name": "东方体育中心",
+    "name:en": "Oriental Sports Center",
+    "name:zh": "东方体育中心",
+    "network": "上海地铁",
+    "note": "11号线 - For Line 11 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5313309165,
+  "lat": 31.1554470,
+  "lon": 121.4760334,
+  "tags": {
+    "name": "东方体育中心",
+    "name:en": "Oriental Sports Center",
+    "name:zh": "东方体育中心",
+    "network": "上海地铁",
+    "note": "6号线 - For Line 6 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5314250343,
+  "lat": 31.2209254,
+  "lon": 121.4790180,
+  "tags": {
+    "name": "老西门",
+    "name:en": "Laoximen",
+    "network": "上海地铁",
+    "note": "10号线 - For Line 10 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5314254695,
+  "lat": 31.2116709,
+  "lon": 121.4717526,
+  "tags": {
+    "name": "马当路",
+    "name:en": "Madang Road",
+    "network": "上海地铁",
+    "note": "13号线 - For Line 13 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5314264654,
+  "lat": 31.2179361,
+  "lon": 121.4698190,
+  "tags": {
+    "alt_name": "新天地",
+    "alt_name:en": "Xintiandi",
+    "alt_name:zh": "新天地",
+    "name": "一大会址·新天地",
+    "name:en": "Site of the First CPC National Congress·Xintiandi",
+    "name:ko": "신천지",
+    "name:zh": "一大会址·新天地",
+    "network": "上海地铁",
+    "network:en": "Shanghai Metro",
+    "note": "13号线 - Line 13",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5314264656,
+  "lat": 31.2042741,
+  "lon": 121.4563950,
+  "tags": {
+    "name": "嘉善路",
+    "name:en": "Jiashan Road",
+    "network": "上海地铁",
+    "note": "12号线 - For Line 12 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5314272524,
+  "lat": 31.2215398,
+  "lon": 121.4262469,
+  "tags": {
+    "name": "江苏路",
+    "name:en": "Jiangsu Road",
+    "network": "上海地铁",
+    "note": "11号线 - For Line 11 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5314272527,
+  "lat": 31.2041503,
+  "lon": 121.4306485,
+  "tags": {
+    "name": "交通大学",
+    "name:en": "Jiao Tong University",
+    "network": "上海地铁",
+    "note": "11号线 - For Line 11 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5314277877,
+  "lat": 31.1963162,
+  "lon": 121.4313608,
+  "tags": {
+    "name": "徐家汇",
+    "name:en": "Xujiahui",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9381931089,
+  "lat": 31.2289000,
+  "lon": 121.4317639,
+  "tags": {
+    "name": "武定路",
+    "name:en": "Wuding Road",
+    "name:zh": "武定路",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "toilets:wheelchair": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9381946298,
+  "lat": 31.2237595,
+  "lon": 121.4407549,
+  "tags": {
+    "name": "静安寺",
+    "name:en": "Jing'an Temple",
+    "name:zh": "静安寺",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9381954260,
+  "lat": 31.2256562,
+  "lon": 121.4679564,
+  "tags": {
+    "alt_name": "黄陂南路",
+    "alt_name:en": "South Huangpi Road",
+    "alt_name:zh": "黄陂南路",
+    "name": "一大会址·黄陂南路",
+    "name:en": "Site of the First CPC National Congress·South Huangpi Road",
+    "name:zh": "一大会址·黄陂南路",
+    "name:zh-Hans": "一大会址·黄陂南路",
+    "name:zh-Hant": "一大會址·黃陂南路",
+    "network": "上海地铁",
+    "network:en": "Shanghai Metro",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wheelchair": "yes",
+    "wikidata": "Q2383478",
+    "wikipedia": "zh:一大会址·黄陂南路站"
+  }
+},
+{
+  "type": "node",
+  "id": 9381954263,
+  "lat": 31.2286365,
+  "lon": 121.4751877,
+  "tags": {
+    "name": "大世界",
+    "name:en": "Dashijie",
+    "name:zh": "大世界",
+    "name:zh-Hans": "大世界",
+    "name:zh-Hant": "大世界",
+    "network": "上海地铁",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes",
+    "wikidata": "Q31005",
+    "wikipedia": "zh:大世界站 (上海市)"
+  }
+},
+{
+  "type": "node",
+  "id": 11216978072,
+  "lat": 31.2214433,
+  "lon": 121.4270110,
+  "tags": {
+    "name": "江苏路",
+    "name:en": "Jiangsu Road",
+    "network": "上海地铁",
+    "note": "2号线 - For Line 2 - 请不要合并",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13444650655,
+  "lat": 31.1831258,
+  "lon": 121.4772501,
+  "tags": {
+    "construction": "yes",
+    "name": "世博大道（在建）",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13444650656,
+  "lat": 31.1764998,
+  "lon": 121.4693654,
+  "tags": {
+    "construction": "yes",
+    "name": "后滩（在建）",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13444650657,
+  "lat": 31.1663375,
+  "lon": 121.4735790,
+  "tags": {
+    "construction": "yes",
+    "name": "德州路（在建）",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13444650658,
+  "lat": 31.1582463,
+  "lon": 121.4767061,
+  "tags": {
+    "construction": "yes",
+    "name": "东方体育中心（在建）",
+    "public_transport": "station",
+    "railway": "station",
+    "station": "subway",
+    "subway": "yes"
+  }
+}
+
+  ]
+}

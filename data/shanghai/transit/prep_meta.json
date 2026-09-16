@@ -1,0 +1,41 @@
+{
+  "city": "Shanghai",
+  "zip": "data\\shanghai\\gtfs\\raw\\shanghai-gtfs-synthetic.zip",
+  "zip_sha256": "ee313b540dcc154a206a985fe471bb43f4f0bee3c92cc38f0e9714977704dcff",
+  "feed_version": null,
+  "reference_day": "2026-09-09",
+  "weekday": "wednesday",
+  "bbox": {
+    "lat_min": 31.15,
+    "lat_max": 31.23,
+    "lon_min": 121.4,
+    "lon_max": 121.48
+  },
+  "margin_deg": 0.004,
+  "time_window": [
+    18000,
+    82800
+  ],
+  "supply_cropping": "longest in-region consecutive stop segment per trip (Singapore Phase A parity)",
+  "route_type_counts": {
+    "1": 12
+  },
+  "route_type_mapping": "0/1/100-102/109/400-402 -> rail; 3, 700-716 -> bus; ferry(4)+unknown excluded",
+  "active_service_ids": 1,
+  "excluded_counts": {
+    "service_inactive": 0,
+    "route_excluded": 0,
+    "ferry_or_unknown": 0
+  },
+  "n_parent_stations_skipped": 0,
+  "trips_kept": 5160,
+  "trips_trimmed": 0,
+  "trips_dropped_no_region_run": 0,
+  "trips_dropped_time_window": 0,
+  "trips_dropped_too_short": 0,
+  "stops_kept": 34,
+  "mode_counts": {
+    "bus": 0,
+    "rail": 5160
+  }
+}
