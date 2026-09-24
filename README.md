@@ -2,7 +2,7 @@
 
 **Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation**
 
-An Xu, Zekai Jin and Yunfei Yin
+An Xu, Zekai Jin Chengbo Zhang and Yunfei Yin
 
 This project studies whether a compact traveler model can preserve an LLM Teacher's **response to changing travel conditions**, and whether that response remains useful when compared with stated choices and carried into transport simulation. The Students predict probabilities for car, public transport (PT), bicycle and walking, together with a departure-time adjustment. Behavioral prediction runs locally after training.
 
