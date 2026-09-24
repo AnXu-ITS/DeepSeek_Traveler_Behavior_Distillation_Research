@@ -1,0 +1,58 @@
+{
+  "status": "authoritative interpretation; historical exports retained unchanged",
+  "supersedes": [
+    {
+      "path": "mapping_audit.json",
+      "field": "primary"
+    },
+    {
+      "path": "task_field_sources.csv",
+      "field": "available source annotation"
+    }
+  ],
+  "primary": "Original ownership-conditioned model contract; all explicit human mode labels scored, including 8 Singapore and 2 Shanghai support conflicts; no taxi-inclusive behavioral-validity claim",
+  "task_states_profile": "task_states.jsonl intentionally retains historical all-displayed-options state export. Ownership availability is a deterministic derived mask, not a modification of questionnaire options or raw answers.",
+  "ownership": {
+    "car": "car_ownership and driving_license",
+    "bike": "bike_ownership",
+    "pt": true,
+    "walk": true
+  },
+  "all_options": "All four displayed options is an alternative support-expansion diagnostic; displayed option does not establish private-car or bicycle access.",
+  "defaults": "ownership_default_sensitivity contains the same fixed numerical/categorical profiles evaluated on original support; old predictions/<city>/<default> remain all-options sensitivity, not primary-support evidence.",
+  "fields": "authoritative_task_field_sources.csv retains displayed/default field provenance and adds evaluation support explicitly",
+  "human_exclusions": "Shanghai two raw none-suitable responses (unable) excluded only from four-mode scoring and contrasts requiring that label. No explicit masked label removed.",
+  "claim_scope": "Original support satisfies source availability rules only; this does not prove survey numeric features/personas are in distribution.",
+  "source_sha256": {
+    "outputs\\revision_20260921\\survey\\task_states.jsonl": "18c12f682524739a181dd1d910195097347bacd6f032fc4de8cf05d5bed4ba3e",
+    "outputs\\revision_20260921\\survey\\human_labels.jsonl": "e4db289ce4ed0cb2de68abd8b75e2b13c7169c94c40c48d6fc4433a3ec4b676f",
+    "outputs\\revision_20260921\\survey\\mapping_audit.json": "82068cc930619cdedf5e064a05673706a12a2c5c47e9c38d6b12d82a7d32260d",
+    "outputs\\revision_20260921\\survey\\task_field_sources.csv": "38e41cb7cffac45aebff6f74d8565ddc96df76a7c216ebb3ef97654544d843e2",
+    "outputs\\survey_alignment_20260909\\bundle\\mapping_config.json": "53050a5cbd53bae636bf59d2f75375e2673c736e93e7b63bf26479303dd4cc1c",
+    "releases\\s9_supply_aware_v2\\checkpoint\\model.pt": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "outputs\\reviewer_closure_20260920\\baseline\\model.npz": "a0871249e33b86a11b6204a980026e583705944a8d79e70f18d7ef47c7da8e31",
+    "outputs\\matched_response_v1\\train\\soft_kl_seed42\\best.pt": "a12d9d5f9a702689404ce0cf269b53a9bf123b0377a65923026490339e504996",
+    "outputs\\matched_response_v1\\train\\soft_kl_seed2026\\best.pt": "6ded47bc4ccc4bce80369080899406f0c1bfd461e9837fabed10f53e34622eaa",
+    "outputs\\matched_response_v1\\train\\soft_kl_seed7\\best.pt": "e789b92f39844b49bb49346795b074724d4f48c9862ee8627fce8abc612ec645",
+    "outputs\\matched_response_v1\\train\\ce_kl_seed42\\best.pt": "fce3f214169e665644ecfef12188bc31ff102a796b023e98c76cd3534b55f425",
+    "outputs\\matched_response_v1\\train\\ce_kl_seed2026\\best.pt": "bfc30c7e656d614a6aa222c1ca5988f4c9a2567cfdcff892a24da9cb9e1cea91",
+    "outputs\\matched_response_v1\\train\\ce_kl_seed7\\best.pt": "bcd7cf117e0404fdd3cdd2b0bb980382675b4dc40dd4446c43acb5998c944571",
+    "outputs\\matched_response_v1\\train\\signed_l1_seed42\\best.pt": "557990208b44115f4d06a78ff2b476b6f0b8d0f31679dcd3e960373ba3a9f2bd",
+    "outputs\\matched_response_v1\\train\\signed_l1_seed2026\\best.pt": "294696b835170966d2f3cae8912c8000abcf78b11aaf0248ea6f94d49dca6071",
+    "outputs\\matched_response_v1\\train\\signed_l1_seed7\\best.pt": "6c4308a44eaaa45d622d798ef161e21c8fb046fd6ddcd75beab66e9c5f436a63",
+    "outputs\\matched_response_v1\\train\\direction_magnitude_seed42\\best.pt": "bb1de99d9300997224a26e54e98be204512c13c633a639d6ce2368018f9338f5",
+    "outputs\\matched_response_v1\\train\\direction_magnitude_seed2026\\best.pt": "36cc9a5909ff427041fc6c0f91715f2793369f8c1fd41bfef90b591a99b2bc74",
+    "outputs\\matched_response_v1\\train\\direction_magnitude_seed7\\best.pt": "11824a9069eb987ce7200b28e5d84c713246de59dd0d0dcaf3071bb262334df0"
+  },
+  "screening_wording": {
+    "field": "S02",
+    "raw_question": "过去30天，您是否在上海出行过？",
+    "english_meaning": "Whether the respondent had travelled in Shanghai in the past 30 days",
+    "interpretation": "Recent Shanghai travel screening, not residence. Eight no answers skip subsequent persona/tasks; 333 yes answers provide all ten task answers.",
+    "legacy_names": "residence/residency_screenout/n_residents and human_complete_resident_sensitivity are retained only as historical machine-readable field/path names. They do not assert residence.",
+    "supersedes": "Earlier flow-audit prose describing the eight Shanghai screen-outs as nonresidents and the 333 as residents; all cohort membership and numeric results unchanged.",
+    "singapore": "The separate Singapore visitor/residence screening wording remains unchanged."
+  },
+  "screening_field_dictionary": "authoritative_screening_fields.csv",
+  "submission_date_audit": "sample_flow_audit/submission_dates_and_screening.json"
+}

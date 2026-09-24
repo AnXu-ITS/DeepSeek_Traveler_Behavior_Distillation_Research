@@ -1,0 +1,28 @@
+{
+  "selected_l2": 0.0001,
+  "val_macro_kl": 0.050257232992378824,
+  "departure_candidates": [
+    {
+      "l2": 0.0001,
+      "val_mae": 9.821312916490076
+    },
+    {
+      "l2": 0.001,
+      "val_mae": 9.386417177278577
+    },
+    {
+      "l2": 0.01,
+      "val_mae": 11.092364022607823
+    },
+    {
+      "l2": 0.1,
+      "val_mae": 11.424850979465944
+    }
+  ],
+  "selected_departure_l2": 0.001,
+  "features": 111,
+  "mode_parameters": 444,
+  "train_endpoints": 1839,
+  "train_exposures": 3362,
+  "test_used_for_selection": false
+}

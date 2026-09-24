@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "runs": [
+    {
+      "model": "bounded_linear",
+      "seed": 42,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "174dbf8cbdd5fe28082e502e5337b1367fdd2f0f15bb38d927946a6af1ed5c68"
+    },
+    {
+      "model": "bounded_linear",
+      "seed": 2026,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "d1e07beaea7a6ad168bfa14547cd4d904b5bdcc5a77d58fdf35eb6ba083603fc"
+    },
+    {
+      "model": "bounded_linear",
+      "seed": 7,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "a3745513bbe7a4e0d46a8c522571f7965ed5936739a8d9a92c927fdd7cadb6ac"
+    },
+    {
+      "model": "independent_neural",
+      "seed": 42,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "7a88393317c6648610c1a4ace99f1fb0e167c7a40f99ca3b4190724e813ff9f4"
+    },
+    {
+      "model": "independent_neural",
+      "seed": 2026,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "fb9a0987e2a94c8ab1d0812a675292404b55712b9f44096c87a1b3d7b2de92f6"
+    },
+    {
+      "model": "independent_neural",
+      "seed": 7,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "c0ff21daf4b64440431b67bf337b0065c6baa5a1cb5539ebbd06ccc7bf837664"
+    },
+    {
+      "model": "soft_kl",
+      "seed": 42,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "d61890f2562391e46d55c606dd7fbedcac80d1c4a069f39f14f7835bbdd01c7b"
+    },
+    {
+      "model": "soft_kl",
+      "seed": 2026,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "bc42fe9cca896d9f335a02099528e9cba627351d2865601ef279d8b6f5e22d8d"
+    },
+    {
+      "model": "soft_kl",
+      "seed": 7,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "28e4f5f679770f3c3cb7019f6e33a7ed9c710c0177c4ca0b847d2b8fce9a3e71"
+    },
+    {
+      "model": "ce_kl",
+      "seed": 42,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "5fbc18f08b4fe43c8cd5d5989b9c041ca9ccd9cf1da8793300dc6ba115bc9c61"
+    },
+    {
+      "model": "ce_kl",
+      "seed": 2026,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "e0f2ede6c259d69fabfad2d5bea9142c3120c8b211601888fdacb48ca4dcbfbb"
+    },
+    {
+      "model": "ce_kl",
+      "seed": 7,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "ebd8b328fab83afc449cb7d1a85940a927e5f54e78126b45db9c34a93bf564ea"
+    },
+    {
+      "model": "signed_l1",
+      "seed": 42,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "7a1ee64fc0f15e3e3134bb0536a6c64092135e64ed38b753452693714192a65d"
+    },
+    {
+      "model": "signed_l1",
+      "seed": 2026,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "ec31ca2d6fcf7c801804515e583fd749e9031c18fadc604a557715b357b1963c"
+    },
+    {
+      "model": "signed_l1",
+      "seed": 7,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "265171c232474e2e4651277c06136ad25070753f372cd7a96b7acdc2d5b23d28"
+    },
+    {
+      "model": "direction_magnitude",
+      "seed": 42,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "7534270f561f156411b5dc33f51e83630de04aedb272212e43456565690883b4"
+    },
+    {
+      "model": "direction_magnitude",
+      "seed": 2026,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "8f23b17543153bb02450e7013b7806f2a26a114c0fcd4d63279b1c10c389ed8f"
+    },
+    {
+      "model": "direction_magnitude",
+      "seed": 7,
+      "training_complete": true,
+      "selection_matches_validation_minimum": true,
+      "outputs_bounded": true,
+      "n_test_predictions": 437,
+      "checkpoint_sha256": "e9af3f82d7d0b097244014965d4cad8091497f468f9a46201d6193d6bf27ea42"
+    }
+  ],
+  "original_KL_checkpoint_hashes_unchanged": {
+    "outputs\\matched_response_v1\\train\\soft_kl_seed42\\best.pt": "a12d9d5f9a702689404ce0cf269b53a9bf123b0377a65923026490339e504996",
+    "outputs\\matched_response_v1\\train\\soft_kl_seed2026\\best.pt": "6ded47bc4ccc4bce80369080899406f0c1bfd461e9837fabed10f53e34622eaa",
+    "outputs\\matched_response_v1\\train\\soft_kl_seed7\\best.pt": "e789b92f39844b49bb49346795b074724d4f48c9862ee8627fce8abc612ec645",
+    "outputs\\matched_response_v1\\train\\ce_kl_seed42\\best.pt": "fce3f214169e665644ecfef12188bc31ff102a796b023e98c76cd3534b55f425",
+    "outputs\\matched_response_v1\\train\\ce_kl_seed2026\\best.pt": "bfc30c7e656d614a6aa222c1ca5988f4c9a2567cfdcff892a24da9cb9e1cea91",
+    "outputs\\matched_response_v1\\train\\ce_kl_seed7\\best.pt": "bcd7cf117e0404fdd3cdd2b0bb980382675b4dc40dd4446c43acb5998c944571",
+    "outputs\\matched_response_v1\\train\\signed_l1_seed42\\best.pt": "557990208b44115f4d06a78ff2b476b6f0b8d0f31679dcd3e960373ba3a9f2bd",
+    "outputs\\matched_response_v1\\train\\signed_l1_seed2026\\best.pt": "294696b835170966d2f3cae8912c8000abcf78b11aaf0248ea6f94d49dca6071",
+    "outputs\\matched_response_v1\\train\\signed_l1_seed7\\best.pt": "6c4308a44eaaa45d622d798ef161e21c8fb046fd6ddcd75beab66e9c5f436a63",
+    "outputs\\matched_response_v1\\train\\direction_magnitude_seed42\\best.pt": "bb1de99d9300997224a26e54e98be204512c13c633a639d6ce2368018f9338f5",
+    "outputs\\matched_response_v1\\train\\direction_magnitude_seed2026\\best.pt": "36cc9a5909ff427041fc6c0f91715f2793369f8c1fd41bfef90b591a99b2bc74",
+    "outputs\\matched_response_v1\\train\\direction_magnitude_seed7\\best.pt": "11824a9069eb987ce7200b28e5d84c713246de59dd0d0dcaf3071bb262334df0"
+  },
+  "all_model_choice_predictions_identical_to_frozen_MNL_S": true,
+  "source_preservation": "Original raw data and all original checkpoints read-only; only revision paths written.",
+  "runtime_note": "MAE-selection reruns retain model initializations, data, exposure schedule, epochs and optimizer settings; two CPU threads used instead of original four. KL replay weight differences are explicitly recorded, so reruns are not represented as bitwise recovery of original trajectories."
+}

@@ -1,0 +1,194 @@
+{
+  "protocol_id": "fb9102c7f8425b459fdeb715968896fb0cf34a5ff048d2b2bcc357a1d098b500",
+  "bundle_id": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+  "variant": "soft_kl",
+  "seed": 42,
+  "smoke": false,
+  "split": "val",
+  "initial_model_hash": "0904bbd455dd3c02cd301beba2b501b09b0a194e2e399711dc282e0dd4e597e8",
+  "extractor_hash": "7487254cd295b3734013f9956323bc18c3437fec764664a81314995954fccf3f",
+  "best_epoch": 118,
+  "checkpoint_sha256": "a12d9d5f9a702689404ce0cf269b53a9bf123b0377a65923026490339e504996",
+  "metrics": {
+    "state": {
+      "n": 365,
+      "personas": 6,
+      "kl": 0.08095935523803284,
+      "probability_l1": 0.2492824463341554,
+      "mode_accuracy": 0.8356164383561644,
+      "departure_mae": 9.967832995419919,
+      "pt_mae": 0.08950648425754187,
+      "fvr": 0.08333333333333333,
+      "infeasible_pt_mass": 0.1539243538863957,
+      "n_infeasible": 12,
+      "departure_p90": 23.692206287384035,
+      "by_source": {
+        "accessibility": {
+          "n": 51,
+          "personas": 6,
+          "kl": 0.12567193067159388,
+          "probability_l1": 0.3167603926790263,
+          "mode_accuracy": 0.8235294117647058,
+          "departure_mae": 9.00979005627299,
+          "pt_mae": 0.11472524945337866,
+          "fvr": 0.08333333333333333,
+          "infeasible_pt_mass": 0.1539243538863957,
+          "n_infeasible": 12,
+          "departure_p90": 17.74256181716919
+        },
+        "joint": {
+          "n": 72,
+          "personas": 6,
+          "kl": 0.05860785539485688,
+          "probability_l1": 0.21319981471175853,
+          "mode_accuracy": 0.8333333333333334,
+          "departure_mae": 11.370807195774383,
+          "pt_mae": 0.08405567905056771,
+          "fvr": null,
+          "infeasible_pt_mass": null,
+          "n_infeasible": 0,
+          "departure_p90": 25.4546000957489
+        },
+        "legacy": {
+          "n": 226,
+          "personas": 6,
+          "kl": 0.06812222845504376,
+          "probability_l1": 0.2221476048452905,
+          "mode_accuracy": 0.8584070796460177,
+          "departure_mae": 10.192756405928387,
+          "pt_mae": 0.08125769413515055,
+          "fvr": null,
+          "infeasible_pt_mass": null,
+          "n_infeasible": 0,
+          "departure_p90": 23.688061952590942
+        },
+        "mechanism": {
+          "n": 16,
+          "personas": 1,
+          "kl": 0.2203441861475695,
+          "probability_l1": 0.5798479706908819,
+          "mode_accuracy": 0.5625,
+          "departure_mae": 3.531167788923532,
+          "pt_mae": 0.15016445410597323,
+          "fvr": null,
+          "infeasible_pt_mass": null,
+          "n_infeasible": 0,
+          "departure_p90": 8.257251319503784
+        }
+      },
+      "macro_source_kl": 0.11818655016726601
+    },
+    "response": {
+      "n": 337,
+      "personas": 6,
+      "groups": 12,
+      "response_gap": 0.06438295547049706,
+      "thresholds": {
+        "0.0001": {
+          "informative_n": 787,
+          "quiet_n": 62,
+          "informative_sign": 0.6797966963151207,
+          "informative_fraction": 0.9269729093050648,
+          "false_response": 0.007428104294494035
+        },
+        "0.001": {
+          "informative_n": 779,
+          "quiet_n": 70,
+          "informative_sign": 0.6790757381258024,
+          "informative_fraction": 0.917550058892815,
+          "false_response": 0.009474519823145653
+        },
+        "0.01": {
+          "informative_n": 521,
+          "quiet_n": 328,
+          "informative_sign": 0.7677543186180422,
+          "informative_fraction": 0.6136631330977621,
+          "false_response": 0.012201632878447815
+        }
+      }
+    },
+    "interaction": {
+      "n": 70,
+      "error": 0.04353322195183305
+    },
+    "by_bucket": {
+      "accessibility": {
+        "state": {
+          "n": 51,
+          "personas": 6,
+          "kl": 0.12567193067159388,
+          "probability_l1": 0.3167603926790263,
+          "mode_accuracy": 0.8235294117647058,
+          "departure_mae": 9.00979005627299,
+          "pt_mae": 0.11472524945337866,
+          "fvr": 0.08333333333333333,
+          "infeasible_pt_mass": 0.1539243538863957,
+          "n_infeasible": 12,
+          "departure_p90": 17.74256181716919
+        },
+        "pairs": 39,
+        "response_gap": 0.15769942663306713,
+        "interaction_gap": null
+      },
+      "joint_seen": {
+        "state": {
+          "n": 72,
+          "personas": 6,
+          "kl": 0.05860785539485688,
+          "probability_l1": 0.21319981471175853,
+          "mode_accuracy": 0.8333333333333334,
+          "departure_mae": 11.370807195774383,
+          "pt_mae": 0.08405567905056771,
+          "fvr": null,
+          "infeasible_pt_mass": null,
+          "n_infeasible": 0,
+          "departure_p90": 25.4546000957489
+        },
+        "pairs": 72,
+        "response_gap": 0.06738299523380373,
+        "interaction_gap": 0.04353322195183305
+      },
+      "legacy": {
+        "state": {
+          "n": 226,
+          "personas": 6,
+          "kl": 0.06812222845504376,
+          "probability_l1": 0.2221476048452905,
+          "mode_accuracy": 0.8584070796460177,
+          "departure_mae": 10.192756405928387,
+          "pt_mae": 0.08125769413515055,
+          "fvr": null,
+          "infeasible_pt_mass": null,
+          "n_infeasible": 0,
+          "departure_p90": 23.688061952590942
+        },
+        "pairs": 214,
+        "response_gap": 0.04564549614189118,
+        "interaction_gap": null
+      },
+      "mechanism": {
+        "state": {
+          "n": 16,
+          "personas": 1,
+          "kl": 0.2203441861475695,
+          "probability_l1": 0.5798479706908819,
+          "mode_accuracy": 0.5625,
+          "departure_mae": 3.531167788923532,
+          "pt_mae": 0.15016445410597323,
+          "fvr": null,
+          "infeasible_pt_mass": null,
+          "n_infeasible": 0,
+          "departure_p90": 8.257251319503784
+        },
+        "pairs": 12,
+        "response_gap": 0.07725554363910937,
+        "interaction_gap": null
+      }
+    }
+  },
+  "raw_hashes": {
+    "predictions": "3593315fc9e09e58103c5ae7285caa7546f5b4376d5bcc6414ad6d4e2944b284",
+    "pairs": "1c5bc99dcd173e4cb1d85aaa07d6c4b29d7c7c895d36f1b8e28c89108fbdde25",
+    "interactions": "8bbf0e1a09e03d0822137266df24cd496494882e81744ac2154bb54134a35db3"
+  }
+}

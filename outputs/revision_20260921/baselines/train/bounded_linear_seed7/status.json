@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "kind": "bounded_linear",
+  "seed": 7,
+  "epochs": 120,
+  "optimizer_steps": 6360,
+  "best_epoch": 22,
+  "best_validation_departure_mae": 13.809181034441876,
+  "elapsed_s": 2.616790600004606,
+  "parameters": 111,
+  "initial_model_hash": "902ac3dd15d0af489075f546dda5ee6f6e1bdcb769b9468dddb60491b522600b",
+  "checkpoint_sha256": "a3745513bbe7a4e0d46a8c522571f7965ed5936739a8d9a92c927fdd7cadb6ac"
+}

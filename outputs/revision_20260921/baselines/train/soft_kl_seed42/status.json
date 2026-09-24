@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "kind": "soft_kl",
+  "seed": 42,
+  "epochs": 120,
+  "optimizer_steps": 6360,
+  "best_epoch": 2,
+  "best_validation_departure_mae": 9.574230771356838,
+  "elapsed_s": 29.905464099982055,
+  "parameters": 24562,
+  "initial_model_hash": "0904bbd455dd3c02cd301beba2b501b09b0a194e2e399711dc282e0dd4e597e8",
+  "checkpoint_sha256": "d61890f2562391e46d55c606dd7fbedcac80d1c4a069f39f14f7835bbdd01c7b",
+  "kl_replay": {
+    "original_epoch": 118,
+    "replay_epoch": 118,
+    "max_absolute_weight_difference": 0.22983717918395996
+  }
+}

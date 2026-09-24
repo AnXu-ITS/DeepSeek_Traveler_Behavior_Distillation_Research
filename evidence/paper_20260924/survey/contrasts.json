@@ -1,0 +1,126 @@
+{
+  "Singapore": {
+    "accessibility": {
+      "weights": {
+        "1": -1,
+        "6": 1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "weather": {
+      "weights": {
+        "3": -1,
+        "7": 1
+      },
+      "modes": [
+        "bike",
+        "walk"
+      ]
+    },
+    "fare": {
+      "weights": {
+        "8": -1,
+        "2": 1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "transit_delay": {
+      "weights": {
+        "5": -1,
+        "9": 1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "roadworks": {
+      "weights": {
+        "10": -1,
+        "4": 1
+      },
+      "modes": [
+        "car"
+      ]
+    }
+  },
+  "Shanghai": {
+    "rain": {
+      "weights": {
+        "B0": -1,
+        "W1": 1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "delay": {
+      "weights": {
+        "B0": -1,
+        "D1": 1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "rain_delay_interaction": {
+      "weights": {
+        "B0": 1,
+        "W1": -1,
+        "D1": -1,
+        "WD1": 1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "fare": {
+      "weights": {
+        "B0": -1,
+        "F1": 1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "parking": {
+      "weights": {
+        "B0": -1,
+        "P1": 1
+      },
+      "modes": [
+        "car"
+      ]
+    },
+    "road": {
+      "weights": {
+        "B0": -1,
+        "R1": 1
+      },
+      "modes": [
+        "car"
+      ]
+    },
+    "walk_vs_wait": {
+      "weights": {
+        "A_WALK": 1,
+        "A_WAIT": -1
+      },
+      "modes": [
+        "pt"
+      ]
+    },
+    "transfer_vs_wait": {
+      "weights": {
+        "A_TRANSFER": 1,
+        "A_WAIT": -1
+      },
+      "modes": [
+        "pt"
+      ]
+    }
+  }
+}

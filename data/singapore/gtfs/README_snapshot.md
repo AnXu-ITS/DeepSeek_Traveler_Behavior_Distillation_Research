@@ -1,10 +1,10 @@
 # Singapore GTFS Snapshot
 
-- **File**: `raw/singapore-gtfs.zip`（335,668,255 bytes）
+- **File**: `raw/singapore-gtfs.zip`(335,668,255 bytes)
 - **SHA-256**: `1fcc6f5f2766d34aab08d40adabbb094f9124feba6e39aba671e5f532d4eb3cd`
 - **Origin**: user-provided snapshot, publisher field = "Singapore GTFS",
-  `https://github.com/thecrapone/singapore-gtfs-2025`（community-constructed feed）
-- **Feed dates**: 2025-01-01 – 2030-12-31（feed_version 1.0）
+  `https://github.com/thecrapone/singapore-gtfs-2025`(community-constructed feed)
+- **Feed dates**: 2025-01-01 – 2030-12-31(feed_version 1.0)
 - **Archived**: 2026-08-24 (moved from workspace root)
 
 ## Content (verified 2026-08-24)

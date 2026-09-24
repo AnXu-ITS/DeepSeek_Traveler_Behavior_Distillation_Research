@@ -1,0 +1,10 @@
+{
+  "status": "complete",
+  "smoke": false,
+  "epochs": 120,
+  "optimizer_steps": 6360,
+  "best_epoch": 120,
+  "best_validation": 0.10310316328897319,
+  "elapsed_s": 31.25,
+  "best_checkpoint_sha256": "6c4308a44eaaa45d622d798ef161e21c8fb046fd6ddcd75beab66e9c5f436a63"
+}

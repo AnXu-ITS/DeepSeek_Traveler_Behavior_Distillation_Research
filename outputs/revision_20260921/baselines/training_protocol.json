@@ -1,0 +1,96 @@
+{
+  "training": {
+    "epochs": 120,
+    "batch_units": 32,
+    "learning_rate": 0.000125,
+    "weight_decay": 0.0001,
+    "seeds": [
+      42,
+      2026,
+      7
+    ],
+    "threads": 2,
+    "departure_huber_delta": 1.0,
+    "selection": "minimum unweighted validation endpoint departure MAE; earliest tie",
+    "train_endpoints": 1839,
+    "validation_endpoints": 365,
+    "units_per_epoch": 1681,
+    "endpoint_exposures_per_epoch": 3362,
+    "initialization": "independent random initialization; no inherited weights",
+    "bundle_id": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+    "survey_used_for_training_or_selection": false
+  },
+  "original_config": {
+    "protocol": {
+      "name": "matched_response_v1",
+      "initialization": "random",
+      "selection": "macro_source_kl"
+    },
+    "data": {
+      "legacy": "data/student_v0_3_s3/aggregated_teacher_dataset.jsonl",
+      "joint": "data/student_s5_joint/aggregated_teacher_dataset_k5.jsonl",
+      "joint_config": "configs/joint_sampling.yaml",
+      "mechanism": "data/student_s7_mechanism/quadruplets.jsonl",
+      "accessibility": "data/singapore_accessibility/states_with_teacher.jsonl",
+      "accessibility_records": "data/singapore_accessibility/records.jsonl",
+      "legacy_split": "outputs/student_v0_3_s3_c/split_manifest.json",
+      "accessibility_split": "data/singapore_accessibility/split_manifest.json"
+    },
+    "student": {
+      "arch_version": "student_s8_v1",
+      "n_alt_num": 12,
+      "global_hidden_dim": 64,
+      "alternative_hidden_dim": 32,
+      "cat_embedding_dim": 8,
+      "mode_embedding_dim": 8,
+      "scorer_hidden_dim": 64,
+      "dropout": 0.1
+    },
+    "training": {
+      "variants": [
+        "soft_kl",
+        "ce_kl",
+        "signed_l1",
+        "direction_magnitude"
+      ],
+      "seeds": [
+        42,
+        2026,
+        7
+      ],
+      "epochs": 120,
+      "batch_units": 32,
+      "eval_batch_size": 128,
+      "learning_rate": 0.000125,
+      "weight_decay": 0.0001,
+      "threads": 4
+    },
+    "objective": {
+      "departure_weight": 1.0,
+      "departure_huber_delta": 1.0,
+      "response_weight": 1.0,
+      "response_mask": "union",
+      "direction_eps": 1e-06,
+      "signed_huber_beta": 0.05
+    },
+    "evaluation": {
+      "sign_thresholds": [
+        0.0001,
+        0.001,
+        0.01
+      ],
+      "bootstrap_resamples": 10000,
+      "bootstrap_seed": 917
+    },
+    "smoke": {
+      "epochs": 2,
+      "units_per_source": 2
+    }
+  },
+  "source_hashes": {
+    "scripts\\revision_20260921\\departure_baselines.py": "e9970168a6a0bf891aaf05aa128dae190202053af9e6c6d48400d64a4debd0ea",
+    "outputs\\matched_response_v1\\bundle\\manifest.json": "ff323bb84f5ea54041237392558a3a94f0ee5f76475531312b8950063b195de5",
+    "src\\traveler_distillation\\matched_response\\experiment.py": "f22afe804a9fceb195dd6cb21bed89ce8126a234d48d9bcc4465f106499d8d21",
+    "outputs\\reviewer_closure_20260920\\baseline\\model.npz": "a0871249e33b86a11b6204a980026e583705944a8d79e70f18d7ef47c7da8e31"
+  }
+}

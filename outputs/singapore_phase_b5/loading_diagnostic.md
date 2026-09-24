@@ -1,16 +1,12 @@
-# Phase B.5C — 40k Baseline Loading 诊断
+# Network loading diagnostic
 
-数据：`outputs/singapore_phase_b5/demand_sweep_probe40k/scale_40000/output/ITERS/it.0/0.events.xml.zst`（40k 探针，无重跑）
+This diagnostic examines network loading, departures, congestion and completion under the historical supply and demand representation. Active-mode speeds and whether a mode is network-routed or teleported affect capacity and travel-time interpretation. A low stuck count alone does not establish faithful physical or behavioral simulation.
 
-## 1. Peak-hour car demand（车辆数，非 agents 数）
+This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_b5/loading_diagnostic.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
 
-- 当日 car 出行车辆：**11579** 辆（40,000 agents × ~28% car 决策，一致）
-- 逐小时出发分布：`{6: 18, 7: 3300, 8: 3385, 9: 413, 10: 468, 11: 554, 12: 688, 13: 1191, 14: 1913, 15: 2226, 16: 3452, 17: 2429, 18: 727, 19: 765, 20: 400, 21: 272, 22: 280, 23: 155}`
-- **模拟峰值 3452 辆/h**
+[Current research](<../../docs/RESEARCH_DESIGN.md>) · [Training](<../../docs/TRAINING.md>) · [Results](<../../docs/RESULTS.md>) · [Data and access](<../../docs/DATA_SOURCES.md>) · [Model use](<../../docs/MODEL_USE.md>)
 
-## 2. 逐链路 peak-hour V/C（仅 car 可用链路）
-
-- 使用中的链路：64725；V/C max=0.361（10695495432_10695495431，cap=700，peak flow=253/h）、P99=0.060、P95=0.030、P50=0.005
+## Historical numerical table 1
 
 | rank | link | peak flow (veh/h) | capacity | V/C |
 |---|---|---|---:|---:|
@@ -34,22 +30,3 @@
 | 18 | `10564385660_10564385658` | 248 | 800 | 0.310 |
 | 19 | `10564385658_10564385659` | 248 | 800 | 0.310 |
 | 20 | `1840121849_8310679163` | 247 | 800 | 0.309 |
-
-## 3. 时间集中度
-
-- 出发分布见 §1；若车辆在两三小时内均匀释放，拥堵天然被稀释。峰值小时占比 = 29.81%。
-
-## 4. OD 分散度
-
-- car agents=11579, distinct OD pairs=10040, pairs/cars=0.867
-- VKT 集中度：top-20 链路占全部 car VKT 的 **0.0%**（142967 veh-km 总 VKT）。
-
-## 5. Full population 还是 sample？
-
-- **Sample**：40k synthetic agents 代表的是研究区 ~45 万居民的需求样本；模拟峰值 3452 辆/h vs 现实参考 ~30k 辆/h（45 万人 × 2.2 出行 × ~30% car × 10% 高峰系数，无实测计数，量级参考）→ **采样因子 ≈ 0.115**。
-
-## 结论建议
-
-- 若 max V/C 仅在 0.0x 量级：green-ratio 折减（×0.35–0.55）不足以产生拥堵，真正的缺口是 demand sample factor（约 ×0.1 的容量等效）。
-- 后续标定路径由用户在两者间决策；本诊断只给数字。
-

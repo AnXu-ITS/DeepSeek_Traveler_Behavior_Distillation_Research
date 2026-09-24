@@ -1,197 +1,103 @@
 # DeepSeek Traveler Behavior Distillation Research
 
-> 将 DeepSeek V4 Pro 对「不同居民（Persona）× 动态城市环境（Context）→ 出行行为响应」
-> 的推理能力，蒸馏为可在 **MATSim** 中大规模运行的轻量 Traveler Agent，并在
-> **新加坡真实路网 + 公交供给**上做情景实验。
+**Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation**
 
-核心链路：
+An Xu, Zekai Jin and Yunfei Yin
 
-```text
-DeepSeek V4 Pro teaches → Lightweight Traveler Agents execute → MATSim simulates (real Singapore supply)
-```
+This project studies whether a compact traveler model can preserve an LLM Teacher's **response to changing travel conditions**, and whether that response remains useful when compared with stated choices and carried into transport simulation. The Students predict probabilities for car, public transport (PT), bicycle and walking, together with a departure-time adjustment. Behavioral prediction runs locally after training.
 
-## 研究动机
+[Research and design](docs/RESEARCH_DESIGN.md) · [Data sources](docs/DATA_SOURCES.md) · [Training](docs/TRAINING.md) · [Results](docs/RESULTS.md) · [Questionnaires](docs/surveys/README.md) · [Model use](docs/MODEL_USE.md) · [Reproduction](docs/REPRODUCIBILITY.md)
 
-LLM 具备对异质出行者行为响应的常识性推理能力，但单次调用成本高、无法支撑
-百万级人口仿真。本项目把教师模型（DeepSeek V4 Pro）在
-`persona × context → action distribution` 上的行为策略蒸馏到一个小模型
-（student，~2.5 万参数），使其：
+![Figure 1. Research direction: preserving responses for the same traveler and the same trip.](docs/assets/figure1.png)
 
-1. 在 **可变选择集** 上输出与教师一致的行为偏好分布；
-2. 保留教师对扰动轴（天气、票价、延误、拥堵、停车费）的 **弹性 / 方向 / 幅度** 响应；
-3. 对 **未见人群 / 未见 OD / 未见可达性**（三重 holdout）具备泛化能力；
-4. 能写入 MATSim 场景并在真实路网级仿真中运行。
+*Figure 1 from the current manuscript. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Download the original PDF](docs/assets/figure1.pdf).*
 
-## 冻结模型（Releases）
+## Research questions
 
-| Release | 角色 | 状态 |
+1. **Teacher fidelity:** Does matching predictions at individual states also preserve changes between paired states? We compare four neural objectives under matched training conditions and an MNL Student with separate departure prediction.
+2. **Agreement with people:** Do model responses agree with stated choices in Singapore and Shanghai? Human responses are held out from fitting and model selection.
+3. **Simulation execution:** How do predicted responses change during mode assignment, route search and MATSim execution? We track probabilities, assigned modes, routed modes and simulated PT boarding separately.
+
+## Main findings
+
+| Evidence | Result | Interpretation |
 |---|---|---|
-| `s7-w3-generic-core-v1.0` | S7-W3 **Generic Behavioral Core v1.0**（24,370 参数，单轴/多轴/机制蒸馏线收口） | ✅ FROZEN — 论文 generic baseline |
-| `s8-supply-aware-v1.0` | S8 Supply-Aware Traveler Agent v1.0（24,562 参数，Case B +6 可达性特征） | ⚠️ **DEPRECATED** — walk/bike 速度数据错误（见 `docs/S8_DEPRECATION.md`），release 保持字节不变 |
-| `s9-supply-aware-v2.0` | **S9 Supply-Aware Traveler Agent v2.0**（24,562 参数，修正后重训） | ✅ FROZEN — 论文 supply-aware extension |
+| Six held-out synthetic personas; three training seeds | Direction+magnitude supervision reduces probability-response error by **4.97%** relative to soft KL; MNL-S reduces it by a further **14.30%** | A simpler choice specification can outperform the joint neural model on Teacher response fidelity |
+| Independent neural timing with MNL-S | Departure MAE **7.61 ± 0.72 min** against the Teacher | Choice and timing can be modeled separately; timing fits use a different selection criterion |
+| Singapore: 332 people; Shanghai: 321 modeled people | SA-Student accuracy **66.93% / 80.46%** | Accuracy alone is insufficient: intervention-specific response discrepancies remain |
+| Singapore poorer PT access | MNL-S predicts **+13.85 pp** PT response; respondents show **−24.40 pp** | The model closest to the Teacher can reverse a human response |
+| Helsinki: 1,000 fixed travelers, 140 runs | SA-Student deterministic response: **−13.10 pp** predicted versus **−12.30 pp** simulated | Feasibility-constrained assignment improves routability but does not necessarily reduce the response gap |
 
-每个 release 均为完整冻结包：checkpoint（SHA256）、config、schema（Case B diff）、
-normalization、可达性特征定义、供给/教师 provenance、数据集 manifest、最终指标、
-复现 gate、只读保护（`src/traveler_distillation/student/release_guard.py` 硬断言）。
+These are distinct evidence levels. Teacher judgments are numerical elicited targets, the surveys are convenience/snowball stated-choice samples, and MATSim outcomes are simulated trips. The study does not establish population-representative behavior, causal policy effects or citywide field validation. [Full results and uncertainty](docs/RESULTS.md).
 
-## Phase C 主实验结果（Singapore 真实网络，frozen S9）
+## Experimental execution workflow
 
-**设置**：N\*=10,000 agents（seed 2026，六情景同一 population）· Tampines + Pasir Ris
-真实 OSM 路网 + 全天 20,966 班次公交供给 · flow/storage capacity 因子 0.3（B.5C 标定）·
-扰动仅经 Student context 注入，供给不变 · `lastIteration=0`（不重规划）。
-
-| 情景 | car | pt | bike | walk | PT 登车 | car VKT | gate |
-|---|---|---|---|---|---|---|---|
-| **C0 baseline** | 28.3% | **25.3%** | 34.0% | 12.4% | 5,613 | 33,939 km | ✅ |
-| **C1 heavy rain** (0.75) | **37.5%** | **45.3%** | 13.3% | 3.8% | **9,761** | 42,778 km | ✅ |
-| **C2 PT fare ×1.5** | 29.9% | 25.7% | 32.5% | 11.8% | 5,674 | 35,798 km | ✅ |
-| **C3 transit delay 15min** | 29.0% | **10.2%** | 35.8% | **25.0%** | 2,474 | 34,685 km | ✅ |
-| **C4 road disruption** | **1.8%** | **37.5%** | **41.8%** | 19.0% | 8,537 | **2,943 km** | ✅ |
-| **C5 rain + delay** | **37.6%** | 18.6% | 24.5% | 19.2% | 4,301 | 42,823 km | ✅ |
-
-关键读数（paired，同一 10k population）：
-
-- **heavy rain** 把步行/骑行压入 car/pt（pt 25.3%→45.3%，PT 登车 +74%）；
-- **PT 延误 15 min** 使 pt 25.3%→10.2%（健康响应，非病态清零）；
-- **道路中断** 使 car 28.3%→1.8%（VKT −91%），pt/bike 吸收转移需求；
-- **联合情景（雨+延误）** 的 pt（18.6%）介于两个单轴之间——效应可解释、非简单叠加；
-- 票价弹性弱（C2 +0.4pp）如实报告。
-
-完整报告与诚实边界：`reports/PHASE_C_SINGAPORE_REPORT.md`；模型侧证据：
-`reports/EXPERIMENT_REPORT_S9_TRANSIT_ACCESSIBILITY_V2.md`（PT-MAE −0.040*、
-**FVR 0.333→0.083**、回归门禁全过、Stop Rule 六项满足）。
-
-## 目录结构
-
-```text
-src/traveler_distillation/    # 核心包：schemas / generators / teacher / dataset / student /
-                              # accessibility（真实供给可达性）/ singapore（OSM/GTFS→MATSim）/ matsim
-scripts/                      # 可执行管线（生成 / 标注 / 训练 / 评估 / MATSim / 冻结 / Phase C）
-reference_pipeline/           # Reference MATSim Integration Pipeline 包（配置/校验/特征/Student/
-                              # 路由缓存/MATSim plan 构建；见 docs/REFERENCE_PIPELINE.md）
-run_pipeline.py               # Reference 一键入口（等价 scripts/run_reference_pipeline.py）
-examples/                     # Reference 示例输入（sample_population.csv）
-configs/                      # YAML 配置（generation / teacher / student v0.x / S5-S9 / reference_example）
-releases/                     # 冻结模型发布包（S7-W3 / S8-deprecated / S9，含 SHA256 与复现 gate）
-reports/                      # 实验报告 / 审计 / Phase C 报告（git 追踪）
-evidence/                     # 论文证据快照：E1–E5 报告与结果 JSON、Phase C 原始结果、S9 评估快照
-                              #（索引与大文件清单见 evidence/README.md）
-docs/plans/                   # 研究蓝图 / Singapore 验证计划 / 任务阶段清单
-docs/stage_instructions/      # 各阶段执行指令与实验设计（S5-S8、Phase C、冻结指令）
-docs/                         # 供给集成说明 / S8_DEPRECATION.md / Reference 文档 / 数据隔离检查
-tests/                        # pytest（172 passed，含 Reference 单测）
-data/                         # 生成的数据集（JSONL，git 忽略，可复现生成）
-outputs/                      # 训练与运行产物（git 忽略；报告均复制至 reports/ 追踪）
-archive/legacy_*/             # 已归档的旧版文件
+```mermaid
+flowchart TD
+    A["Traveler attributes + scenario conditions"] --> B["Behavioral state encoding"]
+    B --> C["Student"]
+    C --> D["Mode probabilities + departure adjustment"]
+    D --> E["Demand-plan construction"]
+    E --> F["Mode assignment + route-feasibility check"]
+    F --> G["Multimodal routing"]
+    G --> H["MATSim population/plans"]
+    H --> I["MATSim execution"]
+    I --> J["Realized trips and events"]
 ```
 
-> 2026-08-27 根目录整理：阶段指令/计划文档从仓库根目录移入 `docs/`（下表为旧路径映射，
-> 冻结 release 文档内引用的仍是冻结时的旧路径）。代码/数据/输出的默认路径未变。
+This is the deployment sequence. Training uses offline Teacher targets; the evaluated simulation keeps behavioral predictions fixed and does not feed simulated experience back into the Student. [Assignment, routing and event definitions](docs/EXECUTION_WORKFLOW.md).
 
-| 旧路径（根目录） | 新路径 |
+## Start here
+
+| Reader | Recommended route |
 |---|---|
-| `S5_MULTI_AXIS_DISTILLATION_EXPERIMENT_DESIGN.md` | `docs/stage_instructions/` |
-| `S6_REASONING_CAUSAL_AUDIT_EXPERIMENT_DESIGN.md` | `docs/stage_instructions/` |
-| `S7_MECHANISM_AWARE_FINETUNING_INSTRUCTIONS.md` | `docs/stage_instructions/` |
-| `S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md` | `docs/stage_instructions/` |
-| `S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md` | `docs/stage_instructions/` |
-| `S8_BACKUP_FREEZE_INSTRUCTIONS.md` | `docs/stage_instructions/` |
-| `PHASE_C_SINGAPORE_SCENARIO_INSTRUCTIONS.md` | `docs/stage_instructions/` |
-| `DeepSeek_Traveler_Behavior_Distillation_Research_Blueprint.md` / `NEXT_STEP_PLAN_SINGAPORE_AIT.md` / `Task_Phase.txt` | `docs/plans/` |
+| Reviewer | [Study design](docs/RESEARCH_DESIGN.md) → [complete results](docs/RESULTS.md) → [evidence and reproduction scope](docs/REPRODUCIBILITY.md) |
+| Researcher | [Data provenance](docs/DATA_SOURCES.md) → [training objectives and splits](docs/TRAINING.md) → [questionnaire instruments and results](docs/surveys/README.md) |
+| Model user | [Model card and quick start](docs/MODEL_USE.md) → [execution workflow](docs/EXECUTION_WORKFLOW.md) |
 
-## 环境要求
+The [main article](paper/cas-sc-template.pdf) and [supplement](paper/supplement.pdf) are the 24 September 2026 manuscript snapshot. They are research manuscripts; no publication acceptance is claimed. Their availability paragraphs predate this repository expansion; the [current inventory](docs/REPRODUCIBILITY.md) describes the files now included.
 
-- Python ≥ 3.12、PyTorch ≥ 2.5（CPU 可跑全部训练/评估）
-- Java 25 + MATSim 2026.0（Singapore 场景仿真；发行包从 matsim-org/matsim-libs
-  官方 GitHub Releases 下载，解压为 `tools/matsim-2026.0-release/`）
-- DeepSeek API key（官方直连，教师标注用）
-- 外部数据源（OSM/GTFS）：来源、下载日期与 SHA256 见
-  `data/singapore/gtfs/raw/source_metadata.json`、`releases/s9_supply_aware_v2/provenance/`
-  与 `evidence/e5_helsinki/supply/`（Singapore 研究区 OSM 提取已随仓库提供）
+## Models and supporting materials
 
-## 快速开始
-
-```powershell
-# 1. 依赖
-.venv\Scripts\python.exe -m pip install -e .[dev]
-
-# 2. 配置密钥：复制 .env.example 为 .env 并填写 DEEPSEEK_API_KEY
-#    （仅教师标注需要；Reference Pipeline 与 MATSim 部署不调用 Teacher，无需密钥）
-
-# 3. 跑测试
-.venv\Scripts\python.exe -m pytest          # 172 passed
-
-# 4. 加载冻结 S9 并做一次推断
-.venv\Scripts\python.exe scripts\singapore\run_s8_smoke.py `
-  --checkpoint releases\s9_supply_aware_v2\checkpoint\model.pt
-
-# 5. Reference MATSim Integration Pipeline：CSV → Student 决策 → population.xml（可选 --run-matsim）
-.venv\Scripts\python.exe run_pipeline.py --config configs\reference_example.yaml
-```
-
-## 关键设计决策
-
-- **Universal State/Action Schema**：simulator-independent（`schemas/`），可变选择集。
-- **可变选择集 Student**：masked softmax 只在 available alternatives 上归一化。
-- **三重 holdout**：persona（28/6/6）+ OD 不相交 + 可达性（高步行负担仅测试集），
-  test-only 评估，配对 bootstrap CI（B=2000）。
-- **Case B 架构演化**：S8/S9 在冻结 S7-W3 之上新增 6 维 city-independent
-  可达性特征（alt_encoder 14→20），共享权重逐字节复制 + 新列零初始化
-  （S9-at-init ≡ S7-W3 输出）。
-- **City-independence**：模型输入只有数值可达性向量，无任何地点身份
-  （引号级泄漏检查 0 命中）。
-- **冻结纪律**：release 只读 + `assert_not_frozen_output` 硬断言；
-  重训仅因明确数据错误（S8→S9 一例，审计链见 `docs/S8_DEPRECATION.md`）。
-
-## 路线图（详见 `docs/plans/Task_Phase.txt` / `PROGRESS.md`）
-
-| 阶段 | 状态 | 内容 |
+| Material | Location | Role |
 |---|---|---|
-| Phase 0–7（S1–S7） | ✅ | Teacher 审计（K=3/5）→ 蒸馏 v0.x → S5 多轴 → S6 因果审计 → S7 机制补训（seed 稳定）→ Freeze S7-W3 |
-| S8 | ⚠️ 废弃 | 真实供给可达性适配（Case B）——因 walk/bike 速度数据错误废弃 |
-| S9 | ✅ | 修正后重训 + Freeze（`s9-supply-aware-v2.0`） |
-| Singapore Phase A / B / B.5 | ✅ | 真实供给跑通门禁 / 规模验证 / PT 有效性 + 容量标定（N\*=10k, 0.3/0.3） |
-| **Phase C** | ✅ | **六情景主实验完成（本 README 表 + `reports/PHASE_C_SINGAPORE_REPORT.md`）** |
-| **补充实验 E1–E5（TRC_AIT_5）** | ✅ | MNL-B 基线 · DeepSeek vs S9 速率/成本 · 人口扩展 1k–50k · multi-seed 稳健性 · Helsinki zero-shot 迁移（六情景 C0–C5，门禁全过）；Stop Rule 达成 → manuscript v1 |
-| Phase D | 🚧 | 真实网络反馈闭环（Student → MATSim → 拥堵观测 → 再决策收敛） |
+| **SA-Student**, archival identifier **S9** | [Frozen release](releases/s9_supply_aware_v2/README.md) | 24,562-parameter supply-adapted model; fixed during survey and execution evaluation |
+| S7-W3 | [Predecessor release](releases/s7_w3_generic_core_v1/README.md) | Generic behavioral initialization for adaptation |
+| S8 | [Deprecation notice](docs/S8_DEPRECATION.md) | Historical checkpoint with incorrect active-mode speed inputs; not a current result |
+| Controlled neural fits | [Training records](outputs/matched_response_v1/train) | Four objectives × three seeds, selected by validation macro-source KL |
+| Prepared benchmark | [Bundle](outputs/matched_response_v1/bundle) | Synthetic states, targets, splits, response pairs and interactions |
+| Modular timing fits | [Baseline records](outputs/revision_20260921/baselines) | Separate timing selection and evaluation |
+| Manuscript evidence | [Evidence index](evidence/paper_20260924/README.md) | Published-precision tables, aggregate outputs and file hashes |
 
-## Reference MATSim Integration Pipeline（可复用部署入口）
+The repository is access-controlled as of this update. This revision does not change its visibility or grant new licenses. Raw participant workbooks and participant-linked Teacher payloads are not added. Large MATSim event archives remain retained by the authors; the repository includes run-level results and their analysis code. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
 
-把上面的 Student→MATSim 部署流程封装成一条命令（面向陌生用户的 reference 实现，
-非 universal adapter）：
+## Quick start: local model inference
 
-```powershell
-# 输入自检（不加载模型）
-.venv\Scripts\python.exe scripts\run_reference_pipeline.py `
-  --config configs\reference_example.yaml --validate-only
-
-# CSV → Student 决策（batch）→ routing（磁盘缓存）→ population.xml + manifest + summary
-.venv\Scripts\python.exe scripts\run_reference_pipeline.py `
-  --config configs\reference_example.yaml
-
-# 再直接跑 MATSim
-.venv\Scripts\python.exe scripts\run_reference_pipeline.py `
-  --config configs\reference_example.yaml --run-matsim
+```bash
+python -m venv .venv
+# Activate .venv using the command appropriate for your shell.
+python -m pip install -e .
+python -m pip install -r requirements-research.txt
+python examples/predict_released_student.py
 ```
 
-- 输入规范 / 配置 / 缓存行为 / 排障：`docs/REFERENCE_PIPELINE.md`
-- 与原 pipeline 的正确性对齐（决策 100% 一致、population.xml 字节一致、10k 只读回归、
-  Helsinki 第二城跨城市验证）：
-  `docs/REFERENCE_PIPELINE_VALIDATION.md`
-- 实测时间缩短（两城同一缓存机制、口径统一）：Singapore 10k warm **6.5×** vs 原 pipeline
-  （3,063→470 s；cold→warm 6.9×）；Helsinki 10k warm **92.1×** vs 原 pipeline
-  （9,507→103 s；cold→warm 101.7×）；决策 10,000/10,000 保留
-- 数据隔离约定：`docs/DATA_ISOLATION_CHECK.md`
+The example loads a released checkpoint and one synthetic held-out state. It requires neither an API key nor Java, a transport network or a new Teacher request. Full MATSim construction additionally requires supply files and the Java/MATSim runtime. [Detailed usage](docs/MODEL_USE.md).
 
-## 复现说明
+## Repository map
 
-`data/`、`outputs/` 已被 git 忽略；数据集与运行产物均可由 `scripts/` 从 `configs/`
-复现生成（大文件：MATSim 发行包、GTFS 数据不入仓库）。**论文全部数字的证据快照**
-在 `evidence/`（E1–E5 报告与结果 JSON、Phase C 原始结果、S9 评估快照，共约 21 MB）；
-超过 20 MB 的原始工件不随仓库分发，其大小、SHA256 与再生成命令列于
-`evidence/README.md` §3。冻结模型的复现 gate：
-`python scripts/freeze_s9_release.py verify-gate`（12/12 指标 Δ=0.0000）。
+```text
+docs/                         Research, data, training, results and user guides
+docs/surveys/                 English questionnaires and complete response tables
+docs/assets/                  Manuscript Figure 1 and supporting figures
+paper/                        Main article and supplement PDF snapshots
+src/traveler_distillation/    State schemas, Students, training and transport adapters
+reference_pipeline/          Reusable population-to-MATSim pipeline
+scripts/revision_20260921/    Later experiment and statistical analysis code
+outputs/matched_response_v1/  Prepared synthetic benchmark and selected fitted models
+outputs/revision_20260921/    Compact modular-model evidence
+evidence/paper_20260924/       Current manuscript tables and aggregate results
+releases/                    Original model versions and translated documentation
+archive/                     Earlier plans and experiment history
+```
 
-## 许可
-
-Private research repository. All rights reserved.
+Historical reports remain available for provenance. Their dates, model names and scope matter: earlier MNL-B, single-city deployment and prototype feedback experiments are not the current MNL-S comparison or the 140-run Helsinki experiment. [Documentation history](docs/DOCUMENTATION_HISTORY.md).

@@ -1,0 +1,23 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Descriptive matched diagnostics using the first two preselected people per city (four people, 40 states, three queries per state in each condition). Changes are right minus left under the comparisons defined in the text.}
+\label{tab:teacher_prompt_pilot}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrr@{}}
+\toprule
+Comparison & Scope & Mean state probability $L_1$ & PT change (pp) \\
+\midrule
+System prompt & Singapore & 0.0767 & +1.55 \\
+System prompt & Shanghai & 0.0327 & +0.53 \\
+System prompt & Pooled four people & 0.0547 & +1.04 \\
+\midrule
+Unused metadata & Singapore & 0.0843 & -1.00 \\
+Unused metadata & Shanghai & 0.0343 & -1.12 \\
+Unused metadata & Pooled four people & 0.0593 & -1.06 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+All task groups and all three query repeats are complete; no person was replaced and no human answer was used in this diagnostic. Probability vectors are averaged over repeats before calculating the state-level differences. The pooled result weights the two cities equally, with 20 states each. The differences are descriptive and carry no confidence intervals.
+\end{minipage}
+\end{table}

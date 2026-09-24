@@ -1,0 +1,56 @@
+schema_version: survey_alignment_v1
+questionnaire_sha256: cd5d83861b432088c35379a7880c5202d2d5eb2a1d16349d3191896b075a96ea
+# Frozen transcription: distance, car time, driving cost, taxi cost, PT time,
+# PT fare, access walk, transfers, bicycle time, walking time. Minutes / SGD / km.
+tasks:
+  1: [4.2, 10, 7.50, 13.50, 32, 2.80, 3, 0, 20, 65]
+  2: [5.3, 12, 8.20, 15.50, 32, 4.20, 4, 0, 24, 75]
+  3: [2.5, 8.5, 6.50, 10.50, 26, 2.40, 4, 0, 12.5, 38]
+  4: [6.0, 34, 9.00, 17.00, 32, 2.20, 4, 0, 28, 80]
+  5: [8.5, 18, 10.10, 21.50, 38, 3.30, 5, 1, 45, 140]
+  6: [4.2, 10, 7.50, 13.50, 48, 2.80, 12, 2, 20, 65]
+  7: [2.5, 8.5, 6.50, 10.50, 26, 2.40, 4, 0, 12.5, 38]
+  8: [5.3, 12, 8.20, 15.50, 32, 2.80, 4, 0, 24, 75]
+  9: [8.5, 18, 10.10, 21.50, 53, 3.30, 5, 1, 45, 140]
+  10: [6.0, 24, 9.00, 17.00, 32, 2.20, 4, 0, 28, 80]
+pairs:
+  accessibility: {base: 1, intervention: 6, outcome_modes: [pt]}
+  weather: {base: 3, intervention: 7, outcome_modes: [bike, walk]}
+  fare: {base: 8, intervention: 2, outcome_modes: [pt]}
+  transit_delay: {base: 5, intervention: 9, outcome_modes: [pt]}
+  roadworks: {base: 10, intervention: 4, outcome_modes: [car]}
+# Reference encodings, NOT measured respondent facts. Profiles are not fit to choices.
+defaults:
+  missing_income: medium
+  employed_occupation: other
+  household_size: 2
+  has_children: false
+  transit_pass: false
+  schedule_flexibility: medium
+  mobility_limitation: none
+  purpose: other
+  desired_departure_min: 480
+  desired_arrival_min: 540
+  time_constraint: soft
+  car_cost_rule: access_based
+  road_congestion: 0.2
+  rain_intensity: 0.75
+  egress_min: 3.0
+  wait_min: 5.0
+  transfer_min_each: 3.0
+  coverage_ratio: 0.8
+  delay_allocation: wait
+profiles:
+  primary: {}
+  taxi_for_all: {car_cost_rule: taxi_all}
+  missing_income_low: {missing_income: low}
+  missing_income_high: {missing_income: high}
+  employed_office: {employed_occupation: office_worker}
+  transit_pass_yes: {transit_pass: true}
+  flexible_schedule: {schedule_flexibility: high}
+  commute_morning: {purpose: commute}
+  other_midday: {desired_departure_min: 720, desired_arrival_min: 780}
+  accessibility_lower: {coverage_ratio: 0.5, egress_min: 5.0, wait_min: 8.0}
+  accessibility_upper: {coverage_ratio: 1.0, egress_min: 1.0, wait_min: 3.0}
+  delay_in_vehicle: {delay_allocation: in_vehicle}
+  heavier_rain: {rain_intensity: 1.0}

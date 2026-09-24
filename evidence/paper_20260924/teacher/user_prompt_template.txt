@@ -1,0 +1,17 @@
+Estimate this traveler's behavioral response.
+
+TRAVELER STATE:
+
+{state_json}
+
+Return exactly:
+
+{
+  "selected_mode": "...",
+  "mode_probabilities": {
+    "<available_mode>": 0.0
+  },
+  "departure_time_shift_min": 0,
+  "confidence": 0.0,
+  "reason_codes": []
+}

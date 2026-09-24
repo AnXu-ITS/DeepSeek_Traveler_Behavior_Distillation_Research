@@ -1,0 +1,22 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Fields of the encoded traveler state. Mode availability is represented separately from these attributes.}
+\label{tab:input_dictionary}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\linewidth}{@{}p{0.25\linewidth}X@{}}
+\toprule
+Input group & Fields \\
+\midrule
+Categorical traveler fields & age group, income group, occupation, habitual mode, schedule flexibility, mobility limitation \\
+Categorical trip/context fields & trip purpose, time constraint, weather condition \\
+Numerical traveler fields & household size, presence of children, car ownership, driving licence, bicycle ownership, transit pass \\
+Numerical trip fields & distance (km), desired departure time, desired arrival time \\
+Numerical context fields & weather intensity, road congestion, PT delay, PT disruption, road disruption, fare multiplier, parking cost multiplier, congestion charge \\
+Alternative fields & travel time, monetary cost, access time, number of transfers, reliability delay, weather exposure \\
+Additional PT-supply fields & PT feasibility, egress time, waiting time, in-vehicle time, transfer time, coverage ratio \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+The nine categorical and seventeen global numerical fields form the shared state; each mode has twelve numerical attributes. Times are in minutes and distance in kilometres before encoding. Categorical vocabularies and numerical normalization are fitted on training data. For SA-Student, existing statistics are inherited and only the six added supply fields receive newly fitted normalization. The supplementary data files give the variable names used in the implementation.
+\end{minipage}
+\end{table}

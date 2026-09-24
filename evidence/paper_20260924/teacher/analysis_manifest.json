@@ -1,0 +1,23 @@
+{
+  "additive_identity_max_abs_error": 2.220446049250313e-16,
+  "respondents": {
+    "Singapore": 24,
+    "Shanghai": 24
+  },
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20260922,
+  "unit": "respondent; same draws across all models and decomposition terms",
+  "family": "Bonferroni within5 Singapore /8 Shanghai contrasts; no claim of global FWER across all methods",
+  "model_seedmean": "mean response across three separately fitted models, not an accuracy evaluation of an ensemble",
+  "scope": "stratified selected existing respondents; contemporary API model; Shanghai reference numerical encoding of qualitative questionnaire",
+  "prompt_version": "teacher_s8_accessibility_v0.1",
+  "profile": "ownership",
+  "unused_metadata_policy": "Neutral persona ID; constant query/scenario IDs; origin/destination types unspecified. All Student-encoded fields unchanged.",
+  "attribution_boundary": "Shared numerical and categorical raw attributes and availability, not identical language versus numerical encoders. Contemporary Teacher differences do not isolate historical compression effects.",
+  "source_hashes": {
+    "outputs\\revision_20260921\\teacher_accessibility_neutral_ownership\\selected_states.jsonl": "192085cfff4716aa72ee4ba11e13260bfc4e8ceab34c59654c52508f80b0b5b3",
+    "outputs\\revision_20260921\\teacher_accessibility_neutral_ownership\\calls.jsonl": "adcb20be3be6826e13b49950667da4b185ce101034c2ac9f82a859810fe8d729",
+    "outputs\\revision_20260921\\teacher_accessibility_neutral_ownership\\aggregates.jsonl": "046f5958294ad9c1cbb9d132ac1bcb7316683eae72d46a1080812c8163e3b21b",
+    "scripts\\revision_20260921\\analyze_teacher.py": "3c850d1a277d866edfba76395da08cab2325f5e75527ef1fd11f6f4646587642"
+  }
+}

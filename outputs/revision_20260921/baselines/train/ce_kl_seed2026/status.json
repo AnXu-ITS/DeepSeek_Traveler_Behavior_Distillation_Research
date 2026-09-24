@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "kind": "ce_kl",
+  "seed": 2026,
+  "epochs": 120,
+  "optimizer_steps": 6360,
+  "best_epoch": 108,
+  "best_validation_departure_mae": 7.661211484155932,
+  "elapsed_s": 38.455219399998896,
+  "parameters": 24562,
+  "initial_model_hash": "466bf3ec11ff3755f5f9e46141bff8edb0b4a8a67718be9418ad09475a8f4ae5",
+  "checkpoint_sha256": "e0f2ede6c259d69fabfad2d5bea9142c3120c8b211601888fdacb48ca4dcbfbb",
+  "kl_replay": {
+    "original_epoch": 49,
+    "replay_epoch": 49,
+    "max_absolute_weight_difference": 0.005696358159184456
+  }
+}

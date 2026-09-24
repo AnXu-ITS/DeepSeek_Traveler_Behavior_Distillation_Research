@@ -1,0 +1,66 @@
+{
+  "description": "Documented S9 adaptation settings; this is a descriptive manifest, not a drop-in training configuration.",
+  "initialization": "S7-W3",
+  "parameters": 24562,
+  "new_pt_supply_fields": [
+    "pt_feasible",
+    "egress_time_min",
+    "wait_time_min",
+    "in_vehicle_time_min",
+    "transfer_time_min",
+    "coverage_ratio"
+  ],
+  "accessibility_states": {
+    "train": 234,
+    "validation": 51,
+    "test": 51
+  },
+  "od_counts": {
+    "train": 79,
+    "validation": 14,
+    "test": 20
+  },
+  "persona_counts": {
+    "train": 28,
+    "validation": 6,
+    "test": 6
+  },
+  "teacher_target_repeats": {
+    "three_repeat_states": 89,
+    "five_repeat_states": 247,
+    "valid_calls": 1502
+  },
+  "optimizer": {
+    "name": "Adam",
+    "learning_rate": 0.000125,
+    "weight_decay": 0.0001
+  },
+  "batch_size": 32,
+  "mechanism_batch_size": 8,
+  "seed": 42,
+  "max_epochs": 120,
+  "patience": 15,
+  "selected_epoch": 17,
+  "replay_ratio": {
+    "legacy": 2,
+    "joint_context": 1,
+    "mechanism": 1,
+    "accessibility": 1
+  },
+  "per_epoch_targets": {
+    "legacy_pairs": 104,
+    "joint_pairs": 52,
+    "persona_pairs": 52,
+    "accessibility_states": 52,
+    "accessibility_curve_pairs": 52
+  },
+  "selection": {
+    "minimize": "validation_accessibility_kl",
+    "guards_relative_to_initialization": {
+      "legacy_accuracy_drop_pp_max": 1,
+      "legacy_kl_increase_fraction_max": 0.1,
+      "seen_joint_kl_increase_fraction_max": 0.1
+    }
+  },
+  "source_note": "Compiled from the manuscript archive supplied in this ZIP and the linked study implementation. No training or model evaluation was performed in this edit."
+}

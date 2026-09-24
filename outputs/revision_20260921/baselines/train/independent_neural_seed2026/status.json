@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "kind": "independent_neural",
+  "seed": 2026,
+  "epochs": 120,
+  "optimizer_steps": 6360,
+  "best_epoch": 116,
+  "best_validation_departure_mae": 7.592899748632034,
+  "elapsed_s": 19.799675599992042,
+  "parameters": 18289,
+  "initial_model_hash": "4803e55fd2e1569176a41660c409f4200aaec510843954d092928e1086d387d8",
+  "checkpoint_sha256": "fb9a0987e2a94c8ab1d0812a675292404b55712b9f44096c87a1b3d7b2de92f6"
+}

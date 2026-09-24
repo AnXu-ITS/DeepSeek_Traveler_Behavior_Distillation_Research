@@ -1,0 +1,39 @@
+{
+  "edition": "2026-09-24",
+  "scope": "Repository documentation and evidence checks; local inference and two archived-source checkpoint evaluations. No new full training, Teacher query or MATSim run.",
+  "checks": {
+    "artifact_manifest_hashes": true,
+    "sa_student_checkpoint_unchanged": true,
+    "controlled_selected_checkpoints": true,
+    "exact_reevaluation_soft_kl_seed42": true,
+    "exact_reevaluation_direction_magnitude_seed2026": true,
+    "train_endpoint_count": true,
+    "val_endpoint_count": true,
+    "test_endpoint_count": true,
+    "complete_78_survey_contrasts": true,
+    "primary_survey_accuracy": true,
+    "helsinki_140_completed_runs": true,
+    "helsinki_70_published_pairs": true,
+    "all_markdown_english_no_han": true,
+    "all_local_markdown_links_resolve": true,
+    "all_markdown_fences_balanced": true,
+    "markdown_author_machine_paths_removed": true,
+    "added_text_and_code_archives_credential_scan": true,
+    "no_new_raw_response_workbooks": true
+  },
+  "details": {
+    "artifact_count": 533,
+    "markdown_files": 96,
+    "han_files": [],
+    "broken_links": [],
+    "unbalanced_fences": [],
+    "machine_path_files": [],
+    "credential_findings": []
+  },
+  "passed": true,
+  "limits": [
+    "Aggregate survey verification does not rerun participant-level bootstrap.",
+    "Run-summary checks do not rerun 140 simulations or reparse the full event archive.",
+    "Historical documentation translations do not constitute a new scientific result."
+  ]
+}

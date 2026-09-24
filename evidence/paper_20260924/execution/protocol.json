@@ -1,0 +1,27 @@
+{
+  "n": 1000,
+  "population_seed": 2026,
+  "population_selection": "first 1000 from unchanged historical 10000 stream, matched person/trip/OD to historical manifest",
+  "sampling_seeds": [
+    42,
+    2026,
+    7
+  ],
+  "common_random_numbers": "SHA256 seed+person; shared across scenario/model/policy",
+  "perturbation": "perceived PT delay +15 min in context and legacy alternative travel-time/reliability fields; original unchanged physical schedule",
+  "primary_denominator": "same initial N persons; unique outbound PT people",
+  "retention_denominator": "assigned outbound PT persons",
+  "simulation": "MATSim 2026.0, iteration 0, fixed full Helsinki network/schedule, capacity factors .3/.3, original network link-freespeed execution",
+  "source_hashes": {
+    "releases\\s9_supply_aware_v2\\checkpoint\\model.pt": "6af79b44bc699c00cc8e913da15043a43398829fdc8bbb4dad2ddcb8e11d31e6",
+    "scripts\\revision_20260921\\helsinki_execution.py": "0a080c5304b74f297ff9dbadcde150987e5c4e8eef5c643cc097dce504c6840f",
+    "src\\traveler_distillation\\matsim\\adapter.py": "dd99ef5c8ecc59cead137c6bd5920b4af4b178f361865499006cba8d8a16729d",
+    "data\\helsinki\\transit\\network_with_transit.xml": "b229bd33e75412abdd44db6be4db14ccf830a1203717795e02b64d2127a284a4",
+    "data\\helsinki\\transit\\transitSchedule.xml": "f662a9529850fb8b11dcdf2fd75d231279cb76c48e2130e74792c18945a6ac15",
+    "data\\helsinki\\transit\\transitVehicles.xml": "2b54060b0d4db404b484c511f6d3f41e403a1b8afa715fe1bd608ebb949e67fa",
+    "data\\helsinki\\transit\\prep_stops.jsonl": "40289830f58ad23e4cc915377cc0d46804a0e8ea4baaf75b0dbaf2510ce2ed48",
+    "data\\helsinki\\transit\\stop_snapping_report.json": "08f8f4b874ee14b05d71967d5702bcc9c619b06bb5d654bbcafd083155e124b7",
+    "data\\helsinki\\transit\\trips_by_stop.json": "16c47922197150c346c8acd9bbc9301ccb0c3be7add5759c685bb114d408b48f",
+    "data\\helsinki\\transit\\activity_nodes.json": "e8944c3f272210d0099222f1411a6de7d09ff75ba4ea1624551057ec2e371afd"
+  }
+}

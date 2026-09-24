@@ -1,29 +1,9 @@
-# 简版实施说明（仅研究者阅读）
+# Shanghai questionnaire design history
 
-当前问卷为上一级 Shanghai_Travel_Intention_Survey.md，版本 shanghai-survey-v3.1。
-14道基本情况单选，10张情景卡各1道交通方式单选，共24道单选。不设置理解测试、确认页、原因追问、详细出行日记或出发时间选择题。耗时通过试填实测。
+This is an earlier questionnaire-design or implementation record. It documents the development of respondent attributes, scenario cards, display logic and data mappings. It is not evidence that every proposed question or numerical setting was administered. The final field instrument has 23 required single-choice questions, including ten scenario tasks. Use the complete English field questionnaire and current sample-flow/result documentation for the paper.
 
-## 平台设置
+This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/plans/shanghai_survey_v3/IMPLEMENTATION.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
 
-- 只展示问卷正文，不展示变量代码及研究者说明。
-- S01或S02选“否”结束；其余题可跳过，不弹补答确认。
-- 每人随机且均衡分配 forms.json 中一个顺序，展示全部10张卡。记录实际顺序，卡片编号按展示顺序生成。
-- P06、P07均为“有”时显示开车选项及表格行；P09为“有”时显示自行车选项及表格行。公交或地铁、步行始终显示。纸质版保留正文的选项适用说明。
-- 家庭人数可用单选下拉框。每张卡选完交通方式后直接下一卡，不追问原因。
-- 按 question_options.json 导出代码；未答留空；“都不适合”记 choice_status=unable、chosen_mode留空，正常方式记selected。
-- 删除旧版C00/C01/C02、P08/P10、S03、R系列、E系列和精确分钟字段，旧数据不能直接标记为v3。
+[Current research](<../../RESEARCH_DESIGN.md>) · [Training](<../../TRAINING.md>) · [Results](<../../RESULTS.md>) · [Data and access](<../../DATA_SOURCES.md>) · [Model use](<../../MODEL_USE.md>)
 
-## 冻结模型对应
-
-模型、词表、归一化及原始推理代码保持冻结。10张卡数值和顺序方案不变，数据以 cards.json 为准。survey_adapter.py 仅转换问卷数据，不调用参考流水线重新估算时间费用。
-
-交通套餐不包括普通交通卡；家庭车辆、自有普通自行车按题目定义编码。网约车、电动车、搭乘他人汽车等不受支持的习惯方式不强行归类。缺失必要输入和家庭人数11人及以上保留原始记录，单列覆盖率，不伪造模型输入。
-
-本版不采集情景下的出发时间调整，只评估交通方式选择，不验证冻结模型的出发时间输出。“都不适合”单列比例。情景中的计划出发和到达时间仍作为固定模型输入保留；基本情况P13为模型需要的日常时间灵活性输入，不是情景出发时间结果题。
-
-本版用于假设情景选择比较，不包含详细实际出行验证。旧版存放于 shanghai_survey_v2；使用本目录的编码及空表头。
-
-## 重建与验证
-
-项目根目录运行 .venv/Scripts/python.exe -B docs/plans/simplify_survey.py 重建。
-运行本目录 validate_package.py 检查显示数值、冻结输入接口及受保护文件哈希；结果写入 validation_report.json。
+For the administered instrument, use the [complete English Shanghai questionnaire](<../../surveys/SHANGHAI_QUESTIONNAIRE.md>) and [survey results](<../../surveys/RESULTS.md>) instead of these earlier design drafts.

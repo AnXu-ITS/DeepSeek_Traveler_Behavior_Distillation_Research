@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "kind": "direction_magnitude",
+  "seed": 7,
+  "epochs": 120,
+  "optimizer_steps": 6360,
+  "best_epoch": 30,
+  "best_validation_departure_mae": 7.715049542143427,
+  "elapsed_s": 30.218249199999264,
+  "parameters": 24562,
+  "initial_model_hash": "907c0a9e060c4e690ca21d64f4abf9ccdba0cadb2cd31ad3ecd87ba09a762bad",
+  "checkpoint_sha256": "e9af3f82d7d0b097244014965d4cad8091497f468f9a46201d6193d6bf27ea42",
+  "kl_replay": {
+    "original_epoch": 120,
+    "replay_epoch": 118,
+    "max_absolute_weight_difference": 0.28768977522850037
+  }
+}

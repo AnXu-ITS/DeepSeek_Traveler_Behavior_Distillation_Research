@@ -1,0 +1,106 @@
+{
+  "soft_kl": {
+    "original_KL_selection": {
+      "mean": 0.4270290295355403,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        -0.4934067509600998,
+        1.6878935034085267
+      ]
+    },
+    "new_MAE_selection": {
+      "mean": -0.002677772707988231,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        -0.03100948207133705,
+        0.023615392003316422
+      ]
+    }
+  },
+  "ce_kl": {
+    "original_KL_selection": {
+      "mean": 0.45375502605197715,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        -0.5238845012603225,
+        1.773087930430808
+      ]
+    },
+    "new_MAE_selection": {
+      "mean": 0.17996543207010127,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        0.0017345888937164346,
+        0.417780737779486
+      ]
+    }
+  },
+  "signed_l1": {
+    "original_KL_selection": {
+      "mean": 0.41724331124571085,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        -0.5911237522824034,
+        1.7787600790342561
+      ]
+    },
+    "new_MAE_selection": {
+      "mean": -0.10937711870313194,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        -0.3663373470522474,
+        0.10689685541067522
+      ]
+    }
+  },
+  "direction_magnitude": {
+    "original_KL_selection": {
+      "mean": 0.4277394670047098,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        -0.5306650069545833,
+        1.6716202543654817
+      ]
+    },
+    "new_MAE_selection": {
+      "mean": 0.055831011569168094,
+      "n": 437,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        -0.058971740171728224,
+        0.16874269733687286
+      ]
+    }
+  }
+}

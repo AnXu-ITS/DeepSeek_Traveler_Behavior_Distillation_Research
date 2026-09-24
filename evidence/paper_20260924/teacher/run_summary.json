@@ -1,0 +1,25 @@
+{
+  "attempts": 2880,
+  "valid_repeat_targets": 1440,
+  "states": 480,
+  "complete_states": 480,
+  "returned_models": [
+    "deepseek-v4-pro"
+  ],
+  "usage": {
+    "prompt_tokens": 2324370,
+    "completion_tokens": 3254670,
+    "total_tokens": 5579040,
+    "prompt_cache_hit_tokens": 1409152,
+    "prompt_cache_miss_tokens": 915218
+  },
+  "estimated_cost_usd_offpeak_to_peak": [
+    7.079291824,
+    14.158583648
+  ],
+  "cost_is_estimate_not_billed_amount": true,
+  "failure_counts": {
+    "http_402": 1440
+  },
+  "duplicate_completion_ids": 0
+}

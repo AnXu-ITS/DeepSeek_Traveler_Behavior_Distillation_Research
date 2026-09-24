@@ -1,100 +1,43 @@
-# E3 Population Scalability — Report
+# Historical population-scale experiment
 
-> 依据：`TRC_AIT_5_EXPERIMENT_PLAN.md` §E3；设计书 `TRC_AIT_5_E3_POPULATION_SCALABILITY_DESIGN.md` v0.1
-> 生成：`scripts/make_e3_report.py`（全部数字来自 `outputs/e3_scale/**/e3_result.json`，无手抄）
+This experiment constructs nested synthetic populations under the frozen Singapore supply/model settings, reaching 50,000 agents. It separates inference from supply/route preparation and MATSim execution. The fixed 10,000-person baseline provides a consistency reference. Scaling a synthetic population demonstrates computational/execution behavior under those conditions, not validation of population-representative travel demand.
 
-冻结设置：frozen S9（SHA256 `6af79b44…31e6`）· Singapore supply 全档不变 · C0 baseline ·
-seed=2026 嵌套前缀 · capacity 0.3/0.3 · lastIteration=0 · `-Xmx6g` · 单机 24C/31.4 GB。
+This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/evidence/e3_scale/E3_REPORT.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
 
-## G3 确定性门（1k × 3 重复）
+[Current research](<../../docs/RESEARCH_DESIGN.md>) · [Training](<../../docs/TRAINING.md>) · [Results](<../../docs/RESULTS.md>) · [Data and access](<../../docs/DATA_SOURCES.md>) · [Model use](<../../docs/MODEL_USE.md>)
 
-| 项 | 值 | 判据 |
-|---|---|---|
-| repeats | 3 | 3 |
-| decisions 逐位一致（manifest SHA256） | True | True |
-| CV build wall | 4.32% | ≤10% |
-| CV MATSim wall（全三重复 / r1–r2 暖机） | 11.35% / 2.36% | ≤10%（暖机口径，修订 1） |
-| CV decide mean | 4.4% | ≤10% |
-| **G3 PASS** | **True** | 全过才进 S3 |
+## Historical numerical table 1
 
-> r0 为 JVM/OS 缓存冷启动（MATSim 墙钟 +23 s）；暖机口径按设计书执行期修订 1。
-
-## 档位范围（执行口径）
-
-> 本报告覆盖 **1k×3 / 10k / 20k / 50k**；100k 及 200k/500k 扩展档未执行（用户指示 E3 止于 50k，设计书执行期修订 8）。S7 六条“100k 稳定”判据因此不再评估；T4 瓶颈判定在 1k–50k 范围内给出。
-
-## T1 — 逐档计时与资源分解（实测）
-
-| N | T_setup | T_factory | T_decide（mean/P50/P95 ms · 总量） | T_residual | T_build | T_matsim | T_parse | peak RAM py（P1/Δ, MB） | peak RAM jvm（MB） | population.xml | events.zst | states/s | agents/s |
+| N | T_setup | T_factory | T_decide(mean/P50/P95 ms · total) | T_residual | T_build | T_matsim | T_parse | peak RAM py(P1/Δ, MB) | peak RAM jvm(MB) | population.xml | events.zst | states/s | agents/s |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1,000 | 6.1 s | 3.7 min | 1.0195/0.7959/1.9455 ms · 1.0 s | 2.2 min | 5.9 min | 2.4 min | 55.2 s | 1,966/746 | 6,564 | 9 | 200 | 2.83 | 6.89 |
 | 10,000 | 5.8 s | 31.6 min | 1.0309/0.7284/1.8277 ms · 10.3 s | 19.3 min | 51.1 min | 2.1 min | 1.2 min | 2,742/1,497 | 6,569 | 94 | 273 | 3.26 | 81.26 |
 | 20,000 | 5.8 s | 1.01 h | 0.9417/0.7476/1.815 ms · 18.8 s | 38.1 min | 1.65 h | 2.4 min | 1.6 min | 3,272/2,004 | 6,577 | 189 | 352 | 3.37 | 138.82 |
 | 50,000 | 5.9 s | 2.22 h | 0.9759/0.7463/1.7967 ms · 48.8 s | 1.63 h | 3.86 h | 3.4 min | 2.7 min | 5,271/3,924 | 6,559 | 472 | 589 | 3.6 | 247.43 |
 
-> G4 停顿记录：N=10,000：1 个 decide 停顿 [1113.47] ms（OS 级，P99 其余 1.8277 ms；设计修订 4 记录在案）；N=50,000：1 个 decide 停顿 [1659.76] ms（OS 级，P99 其余 1.7967 ms；设计修订 4 记录在案）
+## Historical numerical table 2
 
-
-> 1k 行为三重复的中位 run（按 build_s 取中位）；CV 见上方 G3 表。
-
-
-> 冻结参照（不进表）：10k build 50.2 min / MATSim 2.3 min / population.xml 94.1 MB / events 272.5 MB。
-
-## T2 — 逐档聚合行为与系统指标
-
-| N | 决策 share（car/pt/bike/walk） | 执行 share | PT validity | boardings | stuck 人（率） | failed trips | mean trip time（min） | car VKT（km） | road delay（s/pass） | slow share | drift vs 10k（pp, 决策侧） |
+| N | decision share(car/pt/bike/walk) | execution share | PT validity | boardings | stuck people(rate) | failed trips | mean trip time(min) | car VKT(km) | road delay(s/pass) | slow share | drift vs 10k(pp, behavioral decision stage) |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 10k（冻结参照） | 28.3/25.3/34.0/12.4 | 25.7/24.6/34.0/15.8 | 93.5%（164/2531） | 5613 | 211（3.8%） | 938 | 43.67 | 33939.0 | 0.59 | 0.0014 | 0/0/0/0 |
-| 1,000 | 27.3/24.7/34.6/13.4 | 25.4/24.2/34.6/15.8 | 95.1%（12/247） | 560 | 27（4.8%） | 98 | 43.82 | 3308.2 | 0.58 | 0.0014 | -1.0/-0.6/+0.6/+1.0 |
-| 10,000（E3 复现） | 28.3/25.3/34.0/12.4 | 25.7/24.6/34.0/15.8 | 93.5%（164/2531） | 5613 | 211（3.8%） | 938 | 43.67 | 33939.0 | 0.59 | 0.0014 | +0.0/+0.0/+0.0/+0.0 |
-| 20,000 | 28.5/25.3/33.9/12.3 | 25.7/24.7/33.8/15.8 | 93.9%（307/5068） | 11357 | 426（3.8%） | 1956 | 43.9 | 67599.6 | 0.62 | 0.0021 | +0.2/+0.0/-0.1/-0.1 |
-| 50,000 | 28.8/25.5/33.4/12.3 | 26.0/24.9/33.3/15.7 | 94.2%（738/12766） | 28440 | 1153（4.1%） | 5586 | 48.92 | 171193.1 | 1.45 | 0.02 | +0.5/+0.2/-0.6/-0.1 |
+| 10k(frozen reference) | 28.3/25.3/34.0/12.4 | 25.7/24.6/34.0/15.8 | 93.5%(164/2531) | 5613 | 211(3.8%) | 938 | 43.67 | 33939.0 | 0.59 | 0.0014 | 0/0/0/0 |
+| 1,000 | 27.3/24.7/34.6/13.4 | 25.4/24.2/34.6/15.8 | 95.1%(12/247) | 560 | 27(4.8%) | 98 | 43.82 | 3308.2 | 0.58 | 0.0014 | -1.0/-0.6/+0.6/+1.0 |
+| 10,000(E3 reproduction) | 28.3/25.3/34.0/12.4 | 25.7/24.6/34.0/15.8 | 93.5%(164/2531) | 5613 | 211(3.8%) | 938 | 43.67 | 33939.0 | 0.59 | 0.0014 | +0.0/+0.0/+0.0/+0.0 |
+| 20,000 | 28.5/25.3/33.9/12.3 | 25.7/24.7/33.8/15.8 | 93.9%(307/5068) | 11357 | 426(3.8%) | 1956 | 43.9 | 67599.6 | 0.62 | 0.0021 | +0.2/+0.0/-0.1/-0.1 |
+| 50,000 | 28.8/25.5/33.4/12.3 | 26.0/24.9/33.3/15.7 | 94.2%(738/12766) | 28440 | 1153(4.1%) | 5586 | 48.92 | 171193.1 | 1.45 | 0.02 | +0.5/+0.2/-0.6/-0.1 |
 
-> 10k E3 复现行须与冻结参照逐位一致（G1/G3′）；漂移 = 前缀构成差异（非独立样本，E4 才是多 seed）。
+## Historical numerical table 3
 
-## T3 — 扩展比值（相邻档实测比值 vs 线性期望）
-
-| 跃迁 | T_factory | T_decide | T_build | T_matsim | peak RAM py | peak RAM jvm | 线性期望 |
+|transition| T_factory | T_decide | T_build | T_matsim | peak RAM py | peak RAM jvm |linear expectation|
 |---|---|---|---|---|---|---|---|
 | 1,000→10,000 | 8.56 | 10.11 | 8.67 | 0.85 | 1.39 | 1.00 | ×10 |
 | 10,000→20,000 | 1.92 | 1.83 | 1.94 | 1.17 | 1.19 | 1.00 | ×2 |
 | 20,000→50,000 | 2.20 | 2.59 | 2.34 | 1.40 | 1.61 | 1.00 | ×2.5 |
 
-> 线性期望 = N 之比；<期望 = 摊销（OD/路径复用），>期望 = 超线性（拥堵/争用）。
+## Historical numerical table 4
 
-## T4 — 瓶颈判定（由 T1–T3 计算，不新增测量）
-
-| N | 墙钟占比 build/matsim/parse | 资源警戒（超时/OOM/≥24 GB） | 拥堵读数（slow share / stuck 率） | 判定 |
+| N | wall-clock share build/matsim/parse | resource caution(timeout/OOM/≥24 GB) | congestion measure(slow share / stuck rate) |interpretation|
 |---|---|---|---|---|
-| 1,000 | 64%/26%/10% | 无 | 0.0014 / 4.8% | 瓶颈 = build；ceiling = 未触发 |
-| 10,000 | 94%/4%/2% | 无 | 0.0014 / 3.8% | 瓶颈 = build；ceiling = 未触发 |
-| 20,000 | 96%/2%/2% | 无 | 0.0021 / 3.8% | 瓶颈 = build；ceiling = 未触发 |
-| 50,000 | 97%/1%/1% | 无 | 0.02 / 4.1% | 瓶颈 = build；ceiling = 未触发 |
-
-> 警戒线 24 GB = 本机 31.4 GB 的安全余量（设计 §7）。
-
-## T5 — 门禁与稳定判据汇总
-
-| N | G1 前缀匹配 | G2a | G2b（≤20k 硬门/其余报告） | G3′ | G4 | overall |
-|---|---|---|---|---|---|---|
-| 1,000 | True（1000 态） | True | True（rate=0.0482，hard=True） | — | True | **True** |
-| 10,000 | True（10000 态，pop.xml SHA=True） | True | True（rate=0.0376，hard=True） | True | True | **True** |
-| 20,000 | True（10000 态） | True | True（rate=0.0375，hard=True） | — | True | **True** |
-| 50,000 | True（10000 态） | True | True（rate=0.0405，hard=False） | — | True | **True** |
-
-> 1k 档 G3（跨重复）：decisions 逐位一致 = True；CV 全 ≤10% = True。
-
-
-> G2b 在 N>20k 为报告项（重载档的偏离是 E3 要观测的发现，预注册口径）。
-
-## Honest boundaries
-
-- 地图与供给全档冻结，E3 只放大 N（计划书 §E3 红线：不地图+人口同时放大）；不采纳 `补充实验.md` 原始“1/4 新加坡 × 1M × 6 轮”口径。
-- N 档位为 seed=2026 序列的嵌套前缀；mode-share 漂移是前缀构成的抽样差异，非独立重复样本（无跨 N bootstrap；多 seed 属 E4）。
-- capacity 0.3/0.3 按 10k 标定；50k 的拥堵读数不得表述为“标定的新加坡拥堵水平”（“a controlled real-network experiment under calibrated effective capacity”）。
-- 计时为单机无争用口径；绝对值绑定本机（24C/31.4 GB/CPU-only torch），论文以跨档比值与瓶颈结论为可移植主张；50k 档 build 尾部 ~15% 与并行 E5 Helsinki 试点重叠（已声明，G4 无停顿）。
-- 峰值内存：Python 侧为 OS 峰值工作集（P0/P1 两读数，P1 含进程启动）；Java 侧 1 s 采样（粒度注明）；`-Xmx6g` 冻结。
-- T_matsim 含 JVM 启动与输出写盘；T_parse 为 harness 开销，不计入两侧。
-- 30:00 transit 截断既存（≈20%），随拥堵放大；PT 绝对量读数带此 artifact，跨档比较如实标注。
-- lastIteration=0：一次性决策；闭环重规划扩展性不在 E3 范围（Phase D 按 Stop Rule 已停）。
-- E3 零 API 调用、零重训、仅 C0；“10k 档逐位复现 Phase C C0”是所有读数的有效性锚。
+| 1,000 | 64%/26%/10% |none| 0.0014 / 4.8% | bottleneck = build; ceiling = not triggered |
+| 10,000 | 94%/4%/2% |none| 0.0014 / 3.8% | bottleneck = build; ceiling = not triggered |
+| 20,000 | 96%/2%/2% |none| 0.0021 / 3.8% | bottleneck = build; ceiling = not triggered |
+| 50,000 | 97%/1%/1% |none| 0.02 / 4.1% | bottleneck = build; ceiling = not triggered |

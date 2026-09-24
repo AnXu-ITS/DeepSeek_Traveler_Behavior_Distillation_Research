@@ -1,0 +1,39 @@
+group,position_within_group,field,representation
+Categorical traveler fields,1,age_group,categorical
+Categorical traveler fields,2,income_group,categorical
+Categorical traveler fields,3,occupation,categorical
+Categorical traveler fields,4,habitual_mode,categorical
+Categorical traveler fields,5,schedule_flexibility,categorical
+Categorical traveler fields,6,mobility_limitation,categorical
+Categorical trip/context fields,1,purpose,categorical
+Categorical trip/context fields,2,time_constraint,categorical
+Categorical trip/context fields,3,weather_condition,categorical
+Numerical traveler fields,1,household_size,numerical
+Numerical traveler fields,2,has_children,numerical
+Numerical traveler fields,3,car_ownership,numerical
+Numerical traveler fields,4,driving_license,numerical
+Numerical traveler fields,5,bike_ownership,numerical
+Numerical traveler fields,6,transit_pass,numerical
+Numerical trip fields,1,distance_km,numerical
+Numerical trip fields,2,desired_departure_min,numerical
+Numerical trip fields,3,desired_arrival_min,numerical
+Numerical context fields,1,weather_intensity,numerical
+Numerical context fields,2,road_congestion,numerical
+Numerical context fields,3,transit_delay_min,numerical
+Numerical context fields,4,transit_disruption,numerical
+Numerical context fields,5,road_disruption,numerical
+Numerical context fields,6,fare_multiplier,numerical
+Numerical context fields,7,parking_cost_multiplier,numerical
+Numerical context fields,8,congestion_charge,numerical
+Alternative fields,1,travel_time_min,numerical
+Alternative fields,2,monetary_cost,numerical
+Alternative fields,3,access_time_min,numerical
+Alternative fields,4,transfers,numerical
+Alternative fields,5,reliability_delay_min,numerical
+Alternative fields,6,weather_exposure,numerical
+Additional PT-supply fields,1,pt_feasible,numerical
+Additional PT-supply fields,2,egress_time_min,numerical
+Additional PT-supply fields,3,wait_time_min,numerical
+Additional PT-supply fields,4,in_vehicle_time_min,numerical
+Additional PT-supply fields,5,transfer_time_min,numerical
+Additional PT-supply fields,6,coverage_ratio,numerical

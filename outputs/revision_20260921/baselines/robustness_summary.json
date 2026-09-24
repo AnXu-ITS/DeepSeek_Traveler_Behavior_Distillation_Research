@@ -1,0 +1,29 @@
+{
+  "ce_kl": {
+    "seed_mean_leave_one_out_difference_range": [
+      0.005307234972460671,
+      0.007011774846322999
+    ],
+    "seed_mean_improves_all_six_removals": false,
+    "individual_seed_removal_improved": 0,
+    "individual_seed_removal_n": 18
+  },
+  "signed_l1": {
+    "seed_mean_leave_one_out_difference_range": [
+      -0.0035209187743016866,
+      -0.001981741260945274
+    ],
+    "seed_mean_improves_all_six_removals": true,
+    "individual_seed_removal_improved": 14,
+    "individual_seed_removal_n": 18
+  },
+  "direction_magnitude": {
+    "seed_mean_leave_one_out_difference_range": [
+      -0.004076842059501872,
+      -0.003095262198719437
+    ],
+    "seed_mean_improves_all_six_removals": true,
+    "individual_seed_removal_improved": 18,
+    "individual_seed_removal_n": 18
+  }
+}

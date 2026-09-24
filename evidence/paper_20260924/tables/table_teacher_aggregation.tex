@@ -1,0 +1,20 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Response-error sensitivity to aggregation of the recoverable Teacher supervision repeats.}
+\label{tab:teacher_aggregation}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Aggregation & Soft KL & CE + KL & Signed & Dir. + mag. & MNL-S \\
+\midrule
+Reference mean & 0.06922 & 0.07560 & 0.06651 & 0.06592 & 0.05727 \\
+Median, renormalized & 0.07097 & 0.07798 & 0.06871 & 0.06770 & 0.05850 \\
+Omit call 1 & 0.07801 & 0.08362 & 0.07549 & 0.07487 & 0.06694 \\
+Omit call 2 & 0.07093 & 0.07654 & 0.06865 & 0.06818 & 0.06157 \\
+Omit call 3 & 0.06860 & 0.07630 & 0.06566 & 0.06514 & 0.05626 \\
+\bottomrule
+\end{tabular}
+\par\smallskip{\footnotesize All rows use the same 373 states and 350 response pairs with recoverable calls. Neural entries average three fixed model seeds. Omit-call conditions remove the indicated query from every state; five-call states retain the remaining four calls. Median probabilities are renormalized to sum to one. No model is retrained.}
+\end{table}
+

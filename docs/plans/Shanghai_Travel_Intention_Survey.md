@@ -1,295 +1,99 @@
-# 上海出行选择问卷
+# Shanghai questionnaire design history
 
-本问卷用于了解不同出行条件下的交通选择，匿名填写，仅用于学术研究。所有题目均为单选，不想回答的题目可以跳过。
+This is an earlier questionnaire-design or implementation record. It documents the development of respondent attributes, scenario cards, display logic and data mappings. It is not evidence that every proposed question or numerical setting was administered. The final field instrument has 23 required single-choice questions, including ten scenario tasks. Use the complete English field questionnaire and current sample-flow/result documentation for the paper.
 
-## 一、基本情况
+This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/plans/Shanghai_Travel_Intention_Survey.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
 
-**1. 您是否已满18周岁，并愿意参加本次匿名调查？**
+[Current research](<../RESEARCH_DESIGN.md>) · [Training](<../TRAINING.md>) · [Results](<../RESULTS.md>) · [Data and access](<../DATA_SOURCES.md>) · [Model use](<../MODEL_USE.md>)
 
-<!-- question_id=S01 -->
+For the administered instrument, use the [complete English Shanghai questionnaire](<../surveys/SHANGHAI_QUESTIONNAIRE.md>) and [survey results](<../surveys/RESULTS.md>) instead of these earlier design drafts.
 
-○ 是　○ 否
+## Historical numerical table 1
 
-选择“否”，问卷结束。
-
-**2. 过去30天，您是否在上海出行过？**
-
-<!-- question_id=S02 -->
-
-○ 是　○ 否
-
-选择“否”，问卷结束。
-
-**3. 您的年龄是？**
-
-<!-- question_id=P01 -->
-
-○ 18-24岁　○ 25-34岁　○ 35-44岁　○ 45-64岁　○ 65岁及以上
-
-**4. 您目前主要从事什么工作？**
-
-<!-- question_id=P02 -->
-
-○ 学生　○ 办公室工作　○ 服务业工作　○ 生产、施工或体力劳动　○ 退休　○ 待业　○ 料理家务　○ 其他
-
-**5. 您的个人月收入大约是多少？**
-
-<!-- question_id=P03 -->
-
-○ 5000元以下　○ 5000—9999元　○ 10000—19999元　○ 20000元及以上　○ 不方便回答
-
-**6. 您家通常一起生活的有几人？（包括自己）**
-
-<!-- question_id=P04 -->
-
-○ 1人　○ 2人　○ 3人　○ 4人　○ 5人　○ 6人　○ 7人　○ 8人　○ 9人　○ 10人　○ 11人及以上
-
-**7. 您家是否有未满18岁的孩子？**
-
-<!-- question_id=P05 -->
-
-○ 有　○ 没有
-
-**8. 您家是否有可供您使用的小汽车？**
-
-<!-- question_id=P06 -->
-
-○ 有　○ 没有
-
-**9. 您是否持有有效的小汽车驾驶证？**
-
-<!-- question_id=P07 -->
-
-○ 有　○ 没有
-
-**10. 您是否有自己的普通自行车？（不含电动车和共享单车）**
-
-<!-- question_id=P09 -->
-
-○ 有　○ 没有
-
-**11. 您是否持有目前有效的公交或地铁定期乘车套餐？（不含普通交通卡、乘车码）**
-
-<!-- question_id=P11 -->
-
-○ 有　○ 没有
-
-**12. 您平时最常用哪种方式出行？**
-
-<!-- question_id=P12 -->
-
-○ 自己开车　○ 乘坐家人或朋友的车　○ 公交或地铁　○ 普通自行车　○ 出租车或网约车　○ 电动自行车　○ 步行　○ 多种方式差不多　○ 其他
-
-**13. 您平时的出发时间一般能调整多少？**
-
-<!-- question_id=P13 -->
-
-○ 基本固定，最多调整5分钟　○ 可以调整6—30分钟　○ 可以调整30分钟以上　○ 没有固定出发时间
-
-**14. 您的身体状况会影响步行或骑自行车吗？**
-
-<!-- question_id=P14 -->
-
-○ 基本不影响　○ 有些影响　○ 影响较大
-
-## 二、出行选择
-
-请设想：您要从家里去 **6公里外的商店取一件已买好的商品**，原计划 **早上8:00出发，9:00前到达**。下面是同一次出行遇到的10种情况，每种情况单独选择。
-
-表中是从家到商店的**全程时间和总费用**，已包含步行、等车、换乘和停车。您只需选出自己最可能采取的做法，不用计算。
-
-如果您家有可用的小汽车且您有驾照，就可以选择自己开车；如果您有自己的普通自行车，就可以选择骑车。
-
-## 情景卡 01
-
-<!-- card_id=B0，后台按分配顺序展示 -->
-
-**晴天，交通正常。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 35 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 15 |
+|bus or metro| 35 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车5分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 2
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 02
-
-<!-- card_id=W1，后台按分配顺序展示 -->
-
-**下雨，出行时间和费用如下。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 35 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 15 |
+|bus or metro| 35 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车5分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 3
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 03
-
-<!-- card_id=D1，后台按分配顺序展示 -->
-
-**晴天，公交或地铁发生延误，等车比平时多15分钟。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 50 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 15 |
+|bus or metro| 50 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车20分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 4
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 04
-
-<!-- card_id=WD1，后台按分配顺序展示 -->
-
-**下雨，公交或地铁发生延误，等车比平时多15分钟。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 50 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 15 |
+|bus or metro| 50 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车20分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 5
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 05
-
-<!-- card_id=F1，后台按分配顺序展示 -->
-
-**晴天，公交或地铁票价涨到6元。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 35 | 6 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 15 |
+|bus or metro| 35 | 6 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车5分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 6
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 06
-
-<!-- card_id=P1，后台按分配顺序展示 -->
-
-**晴天，停车费涨到30元，开车总费用为35元。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 35 |
-| 公交或地铁 | 35 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 35 |
+|bus or metro| 35 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车5分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 7
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 07
-
-<!-- card_id=R1，后台按分配顺序展示 -->
-
-**晴天，道路临时受阻，开车比平时多花20分钟。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 40 | 15 |
-| 公交或地铁 | 35 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 40 | 15 |
+|bus or metro| 35 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车5分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 8
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 08
-
-<!-- card_id=A_WALK，后台按分配顺序展示 -->
-
-**晴天，公交或地铁站点较远，进站和出站各需步行12分钟。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 45 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 15 |
+|bus or metro| 45 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共24分钟，首次等车5分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 9
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 09
-
-<!-- card_id=A_WAIT，后台按分配顺序展示 -->
-
-**晴天，公交或地铁班次较少，首次等车需要15分钟。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 45 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
+|drive oneself| 20 | 15 |
+|bus or metro| 45 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |
 
-公交或地铁：进出站步行共14分钟，首次等车15分钟，无需换乘。以上均已计入全程时间。
+## Historical numerical table 10
 
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
-## 情景卡 10
-
-<!-- card_id=A_TRANSFER，后台按分配顺序展示 -->
-
-**晴天，公交或地铁需要换乘1次，换乘步行和等车共需10分钟。**
-
-| 出行方式 | 全程时间（分钟） | 总费用（元） |
+|travel mode| total travel time(minutes) | total cost(CNY) |
 |---|---:|---:|
-| 自己开车 | 20 | 15 |
-| 公交或地铁 | 45 | 4 |
-| 普通自行车 | 25 | 0 |
-| 步行 | 80 | 0 |
-
-公交或地铁：进出站步行共14分钟，首次等车5分钟，换乘1次（10分钟）。以上均已计入全程时间。
-
-**您会选择哪种方式？**
-
-○ 自己开车　○ 公交或地铁　○ 普通自行车　○ 步行　○ 都不适合
-
----
-
-问卷结束，感谢您的参与！
+|drive oneself| 20 | 15 |
+|bus or metro| 45 | 4 |
+|conventional bicycle| 25 | 0 |
+|walking| 80 | 0 |

@@ -1,0 +1,161 @@
+{
+  "state": {
+    "cat_vocabs": {
+      "age_group": {
+        "<UNK>": 0,
+        "18-24": 1,
+        "25-34": 2,
+        "35-44": 3,
+        "45-64": 4,
+        "65+": 5
+      },
+      "income_group": {
+        "<UNK>": 0,
+        "high": 1,
+        "low": 2,
+        "medium": 3
+      },
+      "occupation": {
+        "<UNK>": 0,
+        "manual_worker": 1,
+        "office_worker": 2,
+        "other": 3,
+        "retired": 4,
+        "service_worker": 5,
+        "student": 6,
+        "unemployed": 7
+      },
+      "habitual_mode": {
+        "<UNK>": 0,
+        "bike": 1,
+        "car": 2,
+        "mixed": 3,
+        "pt": 4,
+        "walk": 5
+      },
+      "schedule_flexibility": {
+        "<UNK>": 0,
+        "high": 1,
+        "low": 2,
+        "medium": 3
+      },
+      "mobility_limitation": {
+        "<UNK>": 0,
+        "mild": 1,
+        "none": 2,
+        "significant": 3
+      },
+      "purpose": {
+        "<UNK>": 0,
+        "commute": 1,
+        "shopping": 2
+      },
+      "time_constraint": {
+        "<UNK>": 0,
+        "hard": 1,
+        "soft": 2
+      },
+      "weather_condition": {
+        "<UNK>": 0,
+        "clear": 1,
+        "rain": 2
+      }
+    },
+    "mode_vocab": {
+      "<UNK>": 0,
+      "bike": 1,
+      "car": 2,
+      "pt": 3,
+      "walk": 4
+    },
+    "num_mean": {
+      "household_size": 3.184883088635128,
+      "has_children": 0.42251223491027734,
+      "car_ownership": 0.6840674279499728,
+      "driving_license": 0.7161500815660685,
+      "bike_ownership": 0.598694942903752,
+      "transit_pass": 0.4230560087003806,
+      "distance_km": 16.467825448613375,
+      "desired_departure_min": 511.04078303425774,
+      "desired_arrival_min": 596.2387166938554,
+      "weather_intensity": 0.12180532898314302,
+      "road_congestion": 0.37449700924415447,
+      "transit_delay_min": 2.843936922240348,
+      "transit_disruption": 0.0,
+      "road_disruption": 0.09135399673735727,
+      "fare_multiplier": 1.0989668297988038,
+      "parking_cost_multiplier": 1.163132137030995,
+      "congestion_charge": 0.0,
+      "travel_time_min": 104.63279676454594,
+      "monetary_cost": 5.157959624796085,
+      "access_time_min": 2.704005845568244,
+      "transfers": 0.22036432843936923,
+      "reliability_delay_min": 2.5721179989124523,
+      "weather_exposure": 0.5874999999999999,
+      "pt_feasible": 0.024197933659597607,
+      "egress_time_min": 0.1651169113648722,
+      "wait_time_min": 0.44270282762370855,
+      "in_vehicle_time_min": 0.3463179717237629,
+      "transfer_time_min": 0.010426590538336054,
+      "coverage_ratio": 0.022434488852637303
+    },
+    "num_std": {
+      "household_size": 1.525769179052174,
+      "has_children": 0.4939591544463975,
+      "car_ownership": 0.464886203245355,
+      "driving_license": 0.4508648824636733,
+      "bike_ownership": 0.4901625324779783,
+      "transit_pass": 0.4940441500543085,
+      "distance_km": 8.734698827918884,
+      "desired_departure_min": 140.90690863538703,
+      "desired_arrival_min": 114.11295407559254,
+      "weather_intensity": 0.283414669873295,
+      "road_congestion": 0.18563693352745955,
+      "transit_delay_min": 7.727911387186173,
+      "transit_disruption": 1.0,
+      "road_disruption": 0.2881118602513062,
+      "fare_multiplier": 0.2612223295956925,
+      "parking_cost_multiplier": 0.49634901883610666,
+      "congestion_charge": 1.0,
+      "travel_time_min": 97.02252288709,
+      "monetary_cost": 7.141107672861843,
+      "access_time_min": 3.065457579358544,
+      "transfers": 0.41449232947165016,
+      "reliability_delay_min": 6.088040087750465,
+      "weather_exposure": 0.3846670638357279,
+      "pt_feasible": 0.1536632476104918,
+      "egress_time_min": 1.270050927539873,
+      "wait_time_min": 12.430122364120203,
+      "in_vehicle_time_min": 2.8272080076362704,
+      "transfer_time_min": 0.23931270350665532,
+      "coverage_ratio": 0.1454751727490828
+    }
+  },
+  "spec": {
+    "cat_names": [
+      "age_group",
+      "income_group",
+      "occupation",
+      "habitual_mode",
+      "schedule_flexibility",
+      "mobility_limitation",
+      "purpose",
+      "time_constraint",
+      "weather_condition"
+    ],
+    "cat_vocab_sizes": {
+      "age_group": 6,
+      "income_group": 4,
+      "occupation": 8,
+      "habitual_mode": 6,
+      "schedule_flexibility": 4,
+      "mobility_limitation": 4,
+      "purpose": 3,
+      "time_constraint": 3,
+      "weather_condition": 3
+    },
+    "n_global_num": 17,
+    "n_alt_num": 12,
+    "mode_vocab_size": 5
+  }
+}

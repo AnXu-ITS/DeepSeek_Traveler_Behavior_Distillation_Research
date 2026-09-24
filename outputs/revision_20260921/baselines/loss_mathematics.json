@@ -1,0 +1,172 @@
+{
+  "CE_KL_optimum": [
+    {
+      "teacher": [
+        0.6,
+        0.25,
+        0.15
+      ],
+      "numerical_optimum": [
+        0.8000000000123001,
+        0.12499999992387095,
+        0.07500000006382905
+      ],
+      "analytic_optimum": [
+        0.8,
+        0.125,
+        0.075
+      ],
+      "max_absolute_error": 7.612904751042038e-11
+    },
+    {
+      "teacher": [
+        0.31,
+        0.29,
+        0.23,
+        0.17
+      ],
+      "numerical_optimum": [
+        0.6550000005980889,
+        0.14499999899977606,
+        0.1150000008212277,
+        0.08499999958090733
+      ],
+      "analytic_optimum": [
+        0.655,
+        0.145,
+        0.115,
+        0.085
+      ],
+      "max_absolute_error": 1.000223931457711e-09
+    },
+    {
+      "teacher": [
+        0.85,
+        0.1,
+        0.05
+      ],
+      "numerical_optimum": [
+        0.9249999995221293,
+        0.05000000029481054,
+        0.025000000183060145
+      ],
+      "analytic_optimum": [
+        0.925,
+        0.05,
+        0.025
+      ],
+      "max_absolute_error": 4.778707429764495e-10
+    }
+  ],
+  "scalar_flat_interval": [
+    {
+      "teacher": 0.2,
+      "student": -0.199,
+      "loss": 0.2,
+      "gradient": 0.0
+    },
+    {
+      "teacher": 0.2,
+      "student": -0.15,
+      "loss": 0.2,
+      "gradient": 0.0
+    },
+    {
+      "teacher": 0.2,
+      "student": -0.1,
+      "loss": 0.2,
+      "gradient": 0.0
+    },
+    {
+      "teacher": 0.2,
+      "student": -0.05,
+      "loss": 0.2,
+      "gradient": 0.0
+    },
+    {
+      "teacher": 0.2,
+      "student": -0.001,
+      "loss": 0.2,
+      "gradient": 0.0
+    }
+  ],
+  "legal_probability_examples": [
+    {
+      "teacher_delta": [
+        0.2,
+        -0.1,
+        -0.1
+      ],
+      "student_delta": [
+        -0.1,
+        0.05,
+        0.05
+      ],
+      "baseline_probability": [
+        0.4,
+        0.3,
+        0.3
+      ],
+      "teacher_probability": [
+        0.6000000000000001,
+        0.19999999999999998,
+        0.19999999999999998
+      ],
+      "student_probability": [
+        0.30000000000000004,
+        0.35,
+        0.35
+      ],
+      "informative_modes": 3,
+      "available_modes": 3,
+      "direction": 0.06666666666666667,
+      "magnitude": 0.06666666666666667,
+      "gradient": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "teacher_delta": [
+        0.2,
+        -0.2,
+        0.0
+      ],
+      "student_delta": [
+        -0.1,
+        0.1,
+        0.0
+      ],
+      "baseline_probability": [
+        0.4,
+        0.3,
+        0.3
+      ],
+      "teacher_probability": [
+        0.6000000000000001,
+        0.09999999999999998,
+        0.3
+      ],
+      "student_probability": [
+        0.30000000000000004,
+        0.4,
+        0.3
+      ],
+      "informative_modes": 2,
+      "available_modes": 3,
+      "direction": 0.1,
+      "magnitude": 0.06666666666666667,
+      "gradient": [
+        -0.16666666666666669,
+        0.16666666666666669,
+        -0.0
+      ]
+    }
+  ],
+  "real_test_mask_counts": {
+    "all_pairs": 398,
+    "same_direction_and_magnitude_denominator": 357
+  },
+  "interpretation": "CE+KL free-state optimum sharpens at Teacher argmax; unchanged argmax endpoints have exactly half the ideal probability difference. Actual networks also share parameters, optimize departure and can add pair losses, so half-response is not asserted for trained networks. Direction uses informative-mode denominator and magnitude uses available-mode denominator: exact cancellation requires equal effective denominator/weights. When quiet modes exist, these denominators differ and the opposite-direction interval need not be flat. Scalar and probability-vector tests use interior points to avoid nondifferentiable boundaries."
+}

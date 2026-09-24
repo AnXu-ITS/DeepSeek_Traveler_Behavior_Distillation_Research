@@ -1,0 +1,9 @@
+{
+  "n_endpoints": 437,
+  "repetitions": 30,
+  "warmups": 5,
+  "median_ms": 0.9737500076880679,
+  "per_endpoint_us": 2.22826088715805,
+  "scope": "batched pre-encoded model computation; combination includes both MNL matrix softmax and timing branch; excludes encoding",
+  "threads": 2
+}

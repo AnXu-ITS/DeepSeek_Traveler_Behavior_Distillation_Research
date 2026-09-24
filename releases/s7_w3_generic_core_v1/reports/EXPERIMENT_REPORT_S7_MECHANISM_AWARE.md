@@ -1,36 +1,12 @@
-# S7 机制感知补训实验报告
+# S7 mechanism-aware training
 
-## Mechanism-Aware Behavioral Distillation — Causal-Aware Fine-Tuning
+S7 supplements the generic Student with mechanism and between-person response supervision while checking retention of earlier endpoint and context behavior. The W3 model was frozen as the generic behavioral predecessor. Its inherited supervision matters when interpreting S9: adaptation from this checkpoint is not a matched comparison against a randomly initialized baseline. Current controlled objectives deliberately exclude these auxiliary updates.
 
-**阶段**：S7（依据 `S7_MECHANISM_AWARE_FINETUNING_INSTRUCTIONS.md`）  
-**前置**：S5 多轴蒸馏 ✅ / S6 因果机制审计 ✅（Grade B — 机制部分保留）  
-**起点**：C1 = `outputs/student_s5_joint_m2/checkpoints/best.pt`（S5 最优）  
-**目标**：定向修复 S6 暴露的 congestion 与 parking_cost 机制保真退化，不牺牲既有性能。
+This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
 
-## 0. 执行约束遵守声明（五条不可违反约束 + S7 禁令）
+[Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-| 约束 | 执行情况 |
-|---|---|
-| ① 最终 causal test set 禁止参与训练 / 超参 / 选模 | ✅ 机制数据集按 S3-C persona holdout 切分，训练仅加载 split=train（26 组/轴）、early-stop 与选模仅用 split=val（2 组/轴）；最终评估仅用 split=test（8 组/轴）。训练脚本对 test 数量做硬断言并在加载后立即丢弃引用。 |
-| ② Teacher target 第一轮完全复用 S6，不新增 API 变量 | ✅ 本阶段 **0 次 API 调用**；全部 teacher target 来自 `data/causal_audit/states_with_teacher.jsonl`（A/B=K3 复用 S3、C/D=K5），legacy/joint 来自既有 S3/S5 聚合数据集。 |
-| ③ Teacher–Student effect gap 为 primary，ratio 为 secondary | ✅ 表 A1（G_nat/G_broken/G_med）为主指标表，定级规则基于 gap；表 A2 的 R_shortcut/R_mediator 及其 gap 为次指标。 |
-| ④ 最终结果必须做 paired bootstrap CI | ✅ B=2000、seed=42、配对单位=四联组（causal）/ state（regression），全部聚合量报告均值与 95% 百分位 CI；所有 C2 vs C1 变化量报告配对差分 CI。 |
-| ⑤ mechanism-only / broken-only / both ablation | ✅ 训练 5 个变体：W1(0.25/0.25)、W2(0.5/0.5)、W3(1.0/1.0)、mech_only(0.5/0)、broken_only(0/0.5)，§30 Q1/Q2/Q3 逐一回答。 |
-
-S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数据、不重训 Teacher、Student 架构不变（24,370 参数）、不强制 broken effect=0（L_broken 匹配 Teacher 自身的非零 broken effect）、无样本删除、未从零重建项目。
-
-## 1. 数据与训练
-
-- 机制四联组：congestion 26/2/8（train/val/test）+ parking_cost 26/2/8 = **72 组**（car-可用过滤，S7 §9）。
-- Replay 混合：legacy 单轴对 : seen-joint 对 : 机制四联组 = **2:1:1**（S7 §16），另加固定 52 对/epoch 的 heterogeneity 回放（L_base 组成部分）；机制样本占比 ≈ 25% < 50%。
-- LR = S5 LR × 0.25 = 1.25e-4；early stopping 监控 val total loss（含 val 四联组机制损失 + val legacy/joint）。
-- 损失：L_S7 = L_base + λm·L_mechanism + λb·L_broken（§12–14 定义，禁止把 broken effect 推向 0）。
-
-**最终 causal 评估口径**：仅 test 四联组（congestion 8 组、parking_cost 8 组）。注意：与 S6 报告的 36 组/轴口径不同，S6 是开发期审计（含训练 persona），S7 最终判定只允许未参与训练的 test 组 —— 本报告 Teacher/C0/C1 数字均为 **test-only 重算值**，与 S6 全量值不可直接比较。
-
-## 2. 主指标 Table A1 — Teacher–Student Effect Gap（primary，95% 配对 bootstrap CI）
-
-### congestion（n=8 test 四联组）
+## Historical numerical table 1
 
 | model | G_nat (natural gap) | G_broken (broken gap) | G_med (mediator gap) |
 |---|---|---|---|
@@ -43,7 +19,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 0.1340 [0.0738, 0.2149] | 0.1377 [0.0719, 0.2051] | 0.1764 [0.1065, 0.2545] |
 | broken_only | 0.1337 [0.0732, 0.2152] | 0.1372 [0.0719, 0.2037] | 0.1766 [0.1063, 0.2549] |
 
-**vs C1 的 gap 变化（负值 = 向 Teacher 靠近；* = CI 不含 0）**
+## Historical numerical table 2
 
 | variant | ΔG_nat | ΔG_broken | ΔG_med |
 |---|---|---|---|
@@ -53,7 +29,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | -0.0060 [-0.0245, +0.0124] | +0.0022 [-0.0119, +0.0128] | +0.0072 [-0.0144, +0.0267] |
 | broken_only | -0.0064 [-0.0243, +0.0117] | +0.0016 [-0.0131, +0.0127] | +0.0073 [-0.0136, +0.0263] |
 
-### parking_cost（n=8 test 四联组）
+## Historical numerical table 3
 
 | model | G_nat (natural gap) | G_broken (broken gap) | G_med (mediator gap) |
 |---|---|---|---|
@@ -66,7 +42,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 0.2044 [0.1168, 0.3273] | 0.2448 [0.1257, 0.3591] | 0.2579 [0.1408, 0.3951] |
 | broken_only | 0.2037 [0.1160, 0.3273] | 0.2446 [0.1258, 0.3587] | 0.2579 [0.1408, 0.3951] |
 
-**vs C1 的 gap 变化（负值 = 向 Teacher 靠近；* = CI 不含 0）**
+## Historical numerical table 4
 
 | variant | ΔG_nat | ΔG_broken | ΔG_med |
 |---|---|---|---|
@@ -76,9 +52,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | +0.0020 [-0.0132, +0.0145] | -0.0023 [-0.0179, +0.0127] | -0.0055 [-0.0091, -0.0019] |
 | broken_only | +0.0013 [-0.0141, +0.0141] | -0.0026 [-0.0183, +0.0126] | -0.0055 [-0.0091, -0.0019] |
 
-## 3. 次指标 Table A2 — Shortcut / Mediator Ratio（secondary，95% 配对 bootstrap CI）
-
-### congestion
+## Historical numerical table 5
 
 | model | R_shortcut | R_mediator | Gap_shortcut vs Teacher | Gap_mediator vs Teacher |
 |---|---|---|---|---|
@@ -91,7 +65,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 0.7777 [0.5040, 1.0674] | 0.8296 [0.3641, 1.3579] | 0.3476 [0.1566, 0.5633] | 0.8336 [0.4673, 1.2198] |
 | broken_only | 0.7819 [0.5068, 1.0726] | 0.8317 [0.3629, 1.3650] | 0.3514 [0.1618, 0.5680] | 0.8377 [0.4691, 1.2245] |
 
-### parking_cost
+## Historical numerical table 6
 
 | model | R_shortcut | R_mediator | Gap_shortcut vs Teacher | Gap_mediator vs Teacher |
 |---|---|---|---|---|
@@ -104,9 +78,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 1.0432 [1.0172, 1.0737] | 0.0848 [0.0602, 0.1086] | 0.3333 [0.1983, 0.4869] | 0.6840 [0.4887, 0.9612] |
 | broken_only | 1.0434 [1.0174, 1.0740] | 0.0850 [0.0605, 0.1089] | 0.3336 [0.1985, 0.4871] | 0.6837 [0.4884, 0.9609] |
 
-## 4. Table B — Effect Fidelity（E = ‖P_X − P_A‖₁，95% CI）
-
-### congestion
+## Historical numerical table 7
 
 | model | E_natural | E_broken | E_mediator |
 |---|---|---|---|
@@ -119,7 +91,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 0.1953 [0.1409, 0.2496] | 0.1620 [0.0764, 0.2609] | 0.1354 [0.0584, 0.2148] |
 | broken_only | 0.1939 [0.1397, 0.2480] | 0.1614 [0.0763, 0.2595] | 0.1346 [0.0576, 0.2139] |
 
-### parking_cost
+## Historical numerical table 8
 
 | model | E_natural | E_broken | E_mediator |
 |---|---|---|---|
@@ -132,9 +104,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 0.4138 [0.3326, 0.4929] | 0.4288 [0.3514, 0.5064] | 0.0324 [0.0257, 0.0407] |
 | broken_only | 0.4127 [0.3320, 0.4916] | 0.4277 [0.3506, 0.5051] | 0.0324 [0.0258, 0.0407] |
 
-## 5. Table C — Performance Retention（legacy 六轴 + S5 joint，C1 为基准）
-
-### legacy single-axis（S3 test：6 未见 personas / 226 态）
+## Historical numerical table 9
 
 | model | mode acc | KL | prob L1 | ΔP gap | sign agreement |
 |---|---|---|---|---|---|
@@ -145,7 +115,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 0.8451 [0.8009, 0.8895] | 0.0697 [0.0584, 0.0817] | 0.2424 [0.2140, 0.2705] | 0.0507 [0.0440, 0.0575] | 0.7122 [0.6639, 0.7609] |
 | broken_only | 0.8451 [0.8009, 0.8895] | 0.0697 [0.0584, 0.0818] | 0.2424 [0.2140, 0.2705] | 0.0506 [0.0440, 0.0575] | 0.7122 [0.6639, 0.7609] |
 
-### joint（test personas；seen 3 组合 / unseen fare×cong holdout）
+## Historical numerical table 10
 
 | model | seen joint KL | seen joint L1 | unseen joint KL | unseen joint L1 | interaction L1 err |
 |---|---|---|---|---|---|
@@ -156,7 +126,7 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | 0.0421 [0.0287, 0.0578] | 0.1733 [0.1346, 0.2118] | 0.0848 [0.0330, 0.1485] | 0.2360 [0.1400, 0.3458] | 0.0488 [0.0380, 0.0604] |
 | broken_only | 0.0421 [0.0286, 0.0578] | 0.1730 [0.1344, 0.2116] | 0.0850 [0.0330, 0.1488] | 0.2362 [0.1400, 0.3462] | 0.0488 [0.0379, 0.0603] |
 
-### regression delta vs C1（负 KL delta = 未退化；* = CI 不含 0）
+## Historical numerical table 11
 
 | variant | Δ legacy KL | Δ seen joint KL | Δ unseen joint KL |
 |---|---|---|---|
@@ -166,61 +136,16 @@ S7 禁令遵守：persona 40 不变、无第七扰动轴、不重跑 legacy 数�
 | mech_only | -0.0038 [-0.0050, -0.0025]* | -0.0020 [-0.0035, -0.0006]* | -0.0032 [-0.0077, +0.0015] |
 | broken_only | -0.0038 [-0.0050, -0.0025]* | -0.0020 [-0.0034, -0.0006]* | -0.0030 [-0.0075, +0.0018] |
 
-## 6. Ablation 结论（§30 Q1/Q2/Q3）
+## Historical numerical table 12
 
-| 问题 | 回答（依据 test 四联组 gap 差分 + regression 差分） |
-|---|---|
-| Q1（只加 L_mechanism 是否有效？） | G_med 变化：congestion +0.0072、parking -0.0055；legacy KL 变化 -0.0038。 |
-| Q2（只加 L_broken 是否有效？） | G_med 变化：congestion +0.0073、parking -0.0055；legacy KL 变化 -0.0038。 |
-| Q3（两者同时加是否最好？） | W2(both 0.5/0.5)：G_med 变化 congestion +0.0072、parking -0.0055；legacy KL 变化 -0.0038。 |
-
-**λ 消融的关键发现（checkpoint L2 距离）**：
-
-- 五个变体距 C1 的距离：`W1=0.133601, W2=0.133347, W3=0.132755, mech_only=0.133526, broken_only=0.133635`；
-- 变体两两距离最大仅 `0.009703` —— 比距 C1 的距离小约两个数量级。
-- **解读**：在测试的 λ ∈ [0.25, 1.0] 范围内，机制损失权重并不能区分训练结果；五个变体收敛到几乎同一个模型。观测到的修复/变化来自 **S7 微调制度整体**（机制四联组数据 + 2:1:1 replay + 低 LR），而非某个特定 λ。因此 Q1/Q2/Q3 的诚实回答是：**三种配置在统计上不可区分**，L_mechanism/L_broken 的作用不能在该消融中被单独归因（效应量低于 λ 敏感性）。
-
-
-## 7. 定级与判定（§26 / §40）
-
-- 入选变体（val-only 选模）：**W3**（通过回归门禁）。
-- 四个修复指标中显著改善（差分 CI 不含 0 且为负）2/4，方向改善 2/4。
-- 回归边界（legacy KL ≤ 0.0809、seen ≤ 0.0485、unseen ≤ 0.0968）全部满足。
-
-### §26 四项修复条件逐项判定（W3 vs C1，test 四联组配对差分 CI）
-
-| 条件 | Δ 均值 [95% CI] | 判定 |
+|condition| Δ mean [95% CI] |interpretation|
 |---|---|---|
-| congestion mediator gap ↓ | +0.0071 [-0.0148, +0.0274] | ✗ 未达成（n.s.） |
-| parking_cost mediator gap ↓ | -0.0054 [-0.0090, -0.0018] | ✅ 显著达成 |
-| congestion shortcut gap ↓ | -0.0566 [-0.1164, -0.0051] | ✅ 显著达成 |
-| parking_cost shortcut gap ↓ | +0.0073 [+0.0005, +0.0128] | ❌ 显著反向 |
+| congestion mediator gap ↓ | +0.0071 [-0.0148, +0.0274] | ✗ not achieved(n.s.) |
+| parking_cost mediator gap ↓ | -0.0054 [-0.0090, -0.0018] | ✅ statistically supported improvement |
+| congestion shortcut gap ↓ | -0.0566 [-0.1164, -0.0051] | ✅ statistically supported improvement |
+| parking_cost shortcut gap ↓ | +0.0073 [+0.0005, +0.0128] | ❌ significant opposite response |
 
-**val/test 背离说明（重要）**：val 四联组仅 2 组/轴，val 机制 gap 在所有变体上均略高于 C1（C1 val gap 0.0877，变体 W3 为 0.0919），即 val 无法检测到修复信号；最终判定依据 test（8 组/轴）配对 bootstrap。这同时说明 val 选模实际上是在几乎相同的模型间选择（见 §6 距离诊断），选模结论（W3）对最终判定不敏感。
-
-### Grade **B** — 部分成功
-parking mediator gap 与 congestion shortcut gap 显著改善（幅度有限），parking shortcut gap 出现小幅显著反向；legacy/joint 无退化（KL 反而显著微降）。下一步：Freeze S7（W3）或 S5，按整体性能择优 → Singapore；论文表述 “axis-dependent mechanism preservation under targeted mechanism-aware supervision”。
-
-## 8. 局限（诚实边界）
-
-- 最终因果判定仅 8 组/轴（test persona 中 car 可用组），统计功效有限；CI 较宽，方向性改善与显著性需分开表述。
-- val 选模信号仅 2 组/轴，选模噪声真实存在；但 test 从未参与，选模过程未污染最终判定。
-- A/B teacher target 为 K=3（复用 S3）、C/D 为 K=5，教师自身噪声传导进效应估计；本轮按约束未做 K 升级。
-- mediator 定义仅覆盖 travel_time/reliability/monetary_cost 直接属性。
-- 所有 CI 为 paired bootstrap（B=2000，seed=42，单位=四联组/state）。
-
-## 9. 下一阶段
-
-无论 S7 成败，机制补训到此为止（§36）。进入 **Singapore OSM + GTFS real-world validation**（`NEXT_STEP_PLAN_SINGAPORE_AIT.md`）：使用 S7 入选变体（Grade A/B）或 S5（Grade C），并在论文中按 §36 注明网络验证评估的是行为可执行性与系统响应，而非完整因果机制保真。
-
----
-
-*选定变体：W3；定级：B；生成依据：`outputs/s7_causal_eval/eval_metrics.json`、`outputs/s7_regression/eval_metrics.json`、`outputs\s7_selection\selection.json`。*
-
-
-## 10. Seed Robustness Check（最终小检查：S7 改善 vs 训练种子方差）
-
-- W3 配置 × 4 个训练种子（42, 7, 123, 2024），零 API，同一 test-only 评估管线（配对 bootstrap 与主报告一致）。
+## Historical numerical table 13
 
 | seed | parking G_med | congestion G_broken | congestion Gap_shortcut | Δ legacy KL | Δ seen joint KL |
 |---|---|---|---|---|---|
@@ -228,8 +153,3 @@ parking mediator gap 与 congestion shortcut gap 显著改善（幅度有限）�
 | 7 | -0.0057 [-0.0096, -0.0021]* | -0.0006 [-0.0153, +0.0111] | -0.0560 [-0.1064, -0.0125]* | -0.0022 [-0.0035, -0.0009]* | -0.0013 [-0.0027, +0.0004] |
 | 123 | -0.0060 [-0.0099, -0.0021]* | +0.0012 [-0.0134, +0.0142] | -0.0485 [-0.0792, -0.0221]* | -0.0025 [-0.0037, -0.0012]* | -0.0011 [-0.0025, +0.0004] |
 | 2024 | -0.0056 [-0.0093, -0.0021]* | +0.0016 [-0.0126, +0.0127] | -0.0550 [-0.1035, -0.0143]* | -0.0030 [-0.0044, -0.0016]* | -0.0015 [-0.0031, +0.0002] |
-
-**结论：stable across seeds** — parking G_med 与 congestion Gap_shortcut 的修复方向在全部 4 个种子下一致，且没有任何种子在 legacy / seen-joint KL 上出现显著回退（回归 CI 完全在 0 之上）。S7 的改善超过训练种子方差，可以放心 **Freeze S7-W3** 进入 Singapore。
-
-- 明细：`outputs/s7_seed_check/seed_summary.json`；评估：`outputs/s7_seed_check/causal_eval_seeds.json`、`regression_eval_seeds.json`。
-

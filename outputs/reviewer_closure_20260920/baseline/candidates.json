@@ -1,0 +1,38 @@
+[
+  {
+    "l2": 0.0001,
+    "val_macro_kl": 0.050257232992378824,
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "iterations": 1197,
+    "train_objective": 0.577158165340496,
+    "gradient_max": 8.401172479221133e-07
+  },
+  {
+    "l2": 0.001,
+    "val_macro_kl": 0.061967927646364135,
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "iterations": 490,
+    "train_objective": 0.581611145739035,
+    "gradient_max": 1.6035974145388234e-07
+  },
+  {
+    "l2": 0.01,
+    "val_macro_kl": 0.0832345394508173,
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "iterations": 158,
+    "train_objective": 0.5993024100244146,
+    "gradient_max": 3.6726113849334854e-07
+  },
+  {
+    "l2": 0.1,
+    "val_macro_kl": 0.15782095018653594,
+    "success": true,
+    "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+    "iterations": 64,
+    "train_objective": 0.6556695165272246,
+    "gradient_max": 4.0562696783374985e-07
+  }
+]

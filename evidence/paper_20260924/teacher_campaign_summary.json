@@ -1,0 +1,137 @@
+{
+  "status": "complete",
+  "conditions": {
+    "teacher": {
+      "expected_valid_targets": 1440,
+      "scope": "full diagnostic cohort",
+      "summary": {
+        "attempts": 5064,
+        "valid_repeat_targets": 1440,
+        "states": 480,
+        "complete_states": 480,
+        "returned_models": [
+          "deepseek-v4-pro"
+        ],
+        "usage": {
+          "prompt_tokens": 1968824,
+          "completion_tokens": 5574925,
+          "total_tokens": 7543749,
+          "prompt_cache_hit_tokens": 1192832,
+          "prompt_cache_miss_tokens": 775992
+        },
+        "estimated_cost_usd_offpeak_to_peak": [
+          11.576748524000001,
+          23.153497048000002
+        ],
+        "cost_is_estimate_not_billed_amount": true,
+        "failure_counts": {
+          "TeacherParseError": 35,
+          "http_429": 2692,
+          "http_402": 897
+        },
+        "duplicate_completion_ids": 0
+      },
+      "calls_sha256": "0d2214c21ec10ec0b61b1f5dc7d73baaf740173e1ceb76de53ffa90db242d8df"
+    },
+    "teacher_ownership": {
+      "expected_valid_targets": 120,
+      "scope": "four-person pilot",
+      "summary": {
+        "attempts": 471,
+        "valid_repeat_targets": 120,
+        "states": 40,
+        "complete_states": 40,
+        "returned_models": [
+          "deepseek-v4-pro"
+        ],
+        "usage": {
+          "prompt_tokens": 160182,
+          "completion_tokens": 234800,
+          "total_tokens": 394982,
+          "prompt_cache_hit_tokens": 84736,
+          "prompt_cache_miss_tokens": 75446
+        },
+        "estimated_cost_usd_offpeak_to_peak": [
+          0.516562552,
+          1.033125104
+        ],
+        "cost_is_estimate_not_billed_amount": true,
+        "failure_counts": {
+          "http_429": 265,
+          "http_402": 86
+        },
+        "duplicate_completion_ids": 0
+      },
+      "calls_sha256": "f0ebf4e09026861fdce8725fcdc13eefe9820029fcf4bc695e8dfed52386cf65"
+    },
+    "teacher_accessibility_neutral_ownership": {
+      "expected_valid_targets": 1440,
+      "scope": "full diagnostic cohort",
+      "summary": {
+        "attempts": 2880,
+        "valid_repeat_targets": 1440,
+        "states": 480,
+        "complete_states": 480,
+        "returned_models": [
+          "deepseek-v4-pro"
+        ],
+        "usage": {
+          "prompt_tokens": 2324370,
+          "completion_tokens": 3254670,
+          "total_tokens": 5579040,
+          "prompt_cache_hit_tokens": 1409152,
+          "prompt_cache_miss_tokens": 915218
+        },
+        "estimated_cost_usd_offpeak_to_peak": [
+          7.079291824,
+          14.158583648
+        ],
+        "cost_is_estimate_not_billed_amount": true,
+        "failure_counts": {
+          "http_402": 1440
+        },
+        "duplicate_completion_ids": 0
+      },
+      "calls_sha256": "adcb20be3be6826e13b49950667da4b185ce101034c2ac9f82a859810fe8d729"
+    },
+    "teacher_neutral_ownership": {
+      "expected_valid_targets": 120,
+      "scope": "four-person pilot",
+      "summary": {
+        "attempts": 240,
+        "valid_repeat_targets": 120,
+        "states": 40,
+        "complete_states": 40,
+        "returned_models": [
+          "deepseek-v4-pro"
+        ],
+        "usage": {
+          "prompt_tokens": 159510,
+          "completion_tokens": 238704,
+          "total_tokens": 398214,
+          "prompt_cache_hit_tokens": 94720,
+          "prompt_cache_miss_tokens": 64790
+        },
+        "estimated_cost_usd_offpeak_to_peak": [
+          0.5174791599999999,
+          1.0349583199999999
+        ],
+        "cost_is_estimate_not_billed_amount": true,
+        "failure_counts": {
+          "http_402": 120
+        },
+        "duplicate_completion_ids": 0
+      },
+      "calls_sha256": "46b72517a3a8c1cae42f83f74287e7604351b83eeb00095aa40b2efc4e750449"
+    }
+  },
+  "total_valid_targets": 3120,
+  "total_attempts": 8655,
+  "estimated_cost_usd_offpeak_to_peak": [
+    19.69008206,
+    39.38016412
+  ],
+  "cost_is_estimate_not_billed_amount": true,
+  "no_new_api_calls": true,
+  "temperature_interpretation": "Requested 0.2; thinking/effort omitted. Provider documents default thinking with temperature ignored; see api_behavior_note.json."
+}

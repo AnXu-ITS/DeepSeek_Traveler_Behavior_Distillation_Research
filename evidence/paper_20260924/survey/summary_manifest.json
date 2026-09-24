@@ -1,0 +1,17 @@
+{
+  "files": {
+    "task_states.jsonl": "18c12f682524739a181dd1d910195097347bacd6f032fc4de8cf05d5bed4ba3e",
+    "human_labels.jsonl": "e4db289ce4ed0cb2de68abd8b75e2b13c7169c94c40c48d6fc4433a3ec4b676f",
+    "model_scores.csv": "8674d33cd8e53e54bc5806d12acd0b7eae017c85abaf3236fbe0c4e00174cfe4",
+    "model_responses.csv": "1618bce8721bddf12e098e4648ccb077677d9c00721e2ee56db031b7b8b285b2",
+    "seed_summary.csv": "19a2fb2930a07d5b92eeb43122c22a12d55c642f5666a11d762b6249db693940",
+    "paired_model_comparisons.csv": "e23094128fe78bc6c8e84d9219f7b9be61f06a3ef6dcffa2499635502781c6ad",
+    "primary_model_predictions.jsonl": "5da4aaea90727d5de883f5eb6adb2305d1cc3a20a19ba729c27e2dd161ba0f09",
+    "task_field_sources.csv": "38e41cb7cffac45aebff6f74d8565ddc96df76a7c216ebb3ef97654544d843e2",
+    "family_responses.json": "d991c75a86443eefb763ea7643497c10f9677e28136b16a9725f604283628f8f",
+    "family_choice_intervals.csv": "bfaa569683b1ca8e68431f3f735180c436e1a98d3921b15ebe5c55691910bed7"
+  },
+  "bootstrap": "10000 resamples seed917; same respondents and same resampling matrix for every model and training seed within each city; complete task panels retained",
+  "multiplicity": "Shanghai8 and Singapore5 contrast-family Bonferroni intervals accompany nominal95 intervals. Paired model comparisons exploratory95 intervals; no multiplicity-adjusted superiority claim.",
+  "seed_uncertainty": "Individual training seeds and sample SD reported separately from respondent resampling. No survey data used for fitting or selection."
+}

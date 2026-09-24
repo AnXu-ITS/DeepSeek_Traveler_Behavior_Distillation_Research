@@ -1,0 +1,20 @@
+# Preserve research evidence bytes across Git checkout on different platforms.
+outputs/matched_response_v1/** -text
+outputs/revision_20260921/baselines/** -text
+evidence/paper_20260924/** -text
+src/traveler_distillation/matched_response/** -text
+scripts/revision_20260921/** -text
+scripts/shanghai/** -text
+scripts/matched_response.py -text
+scripts/survey_alignment.py -text
+scripts/survey_alignment_lib.py -text
+configs/matched_response.yaml -text
+configs/survey_alignment.yaml -text
+*.pt -text
+*.npz -text
+*.zip -text
+*.pdf -text
+*.png -text
+
+outputs/reviewer_closure_20260920/baseline/** -text
+cvpr_workspace/analysis/statistics/** -text

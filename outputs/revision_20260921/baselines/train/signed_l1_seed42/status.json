@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "kind": "signed_l1",
+  "seed": 42,
+  "epochs": 120,
+  "optimizer_steps": 6360,
+  "best_epoch": 2,
+  "best_validation_departure_mae": 9.57186767789413,
+  "elapsed_s": 33.84394510000129,
+  "parameters": 24562,
+  "initial_model_hash": "0904bbd455dd3c02cd301beba2b501b09b0a194e2e399711dc282e0dd4e597e8",
+  "checkpoint_sha256": "7a1ee64fc0f15e3e3134bb0536a6c64092135e64ed38b753452693714192a65d",
+  "kl_replay": {
+    "original_epoch": 118,
+    "replay_epoch": 118,
+    "max_absolute_weight_difference": 0.1670713871717453
+  }
+}

@@ -1,0 +1,24 @@
+\begin{resulttable}
+\centering\small
+\caption{Departure prediction under a common selection criterion (validation MAE).}
+\label{tab:timing_main}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrr@{}}
+\toprule
+Choice model & Departure predictor & Total parameters & MAE (min) $\downarrow$ \\
+\midrule
+Joint / soft KL & Shared neural encoders & 24,562 & $7.61\pm0.75$ \\
+Joint / CE+KL & Shared neural encoders & 24,562 & $7.43\pm0.91$ \\
+Joint / signed response & Shared neural encoders & 24,562 & $7.71\pm0.66$ \\
+Joint / direction+magnitude & Shared neural encoders & 24,562 & $7.55\pm0.80$ \\
+\midrule
+MNL-S & Ridge regression & 555 & $12.35$ \\
+MNL-S & Bounded linear & 555 & $11.19\pm1.24$ \\
+MNL-S & Independent neural & 18,733 & $7.61\pm0.72$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+Errors are measured against Teacher departure targets on the 437 test states. Neural and bounded-linear predictors report means $\pm$ SD over three training seeds, and the ridge fit is deterministic. MNL-S choice probabilities are identical across the three timing predictors. The joint models in this table are trained separately and selected by validation departure MAE, whereas those in Table~\ref{tab:response_main} are selected by validation KL.
+\end{minipage}
+\end{resulttable}

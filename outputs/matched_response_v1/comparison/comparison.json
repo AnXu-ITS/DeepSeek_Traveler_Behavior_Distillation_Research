@@ -1,0 +1,513 @@
+{
+  "reference": "soft_kl",
+  "protocol_id": "fb9102c7f8425b459fdeb715968896fb0cf34a5ff048d2b2bcc357a1d098b500",
+  "split": "test",
+  "smoke": false,
+  "training_seeds": [
+    7,
+    42,
+    2026
+  ],
+  "n_training_seeds": 3,
+  "comparisons": {
+    "ce_kl minus soft_kl": {
+      "predictions.kl": {
+        "mean": 0.014130900776403341,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.0008157745685108252,
+          0.029119789390958304
+        ],
+        "per_training_seed": {
+          "7": -7.404304118220181e-05,
+          "42": 0.03252195991183641,
+          "2026": 0.009944785458555818
+        },
+        "training_seed_sd": 0.01669633262782692
+      },
+      "predictions.probability_l1": {
+        "mean": -0.011057218284260442,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.037306620967446205,
+          0.014773444642070248
+        ],
+        "per_training_seed": {
+          "7": -0.03197841541653635,
+          "42": 0.012051608578586856,
+          "2026": -0.013244848014831837
+        },
+        "training_seed_sd": 0.022096380837850826
+      },
+      "predictions.mode_accuracy": {
+        "mean": -2.2865005083813292e-18,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.027113237639553436,
+          0.021406727828746176
+        ],
+        "per_training_seed": {
+          "7": 0.011441647597254004,
+          "42": -0.02288329519450801,
+          "2026": 0.011441647597254004
+        },
+        "training_seed_sd": 0.0198175149607423
+      },
+      "predictions.departure_mae": {
+        "mean": -0.026725996516436933,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.1991481333244118,
+          0.12964635497704152
+        ],
+        "per_training_seed": {
+          "7": -0.05745249806981472,
+          "42": -0.23067779551193426,
+          "2026": 0.2079523040324381
+        },
+        "training_seed_sd": 0.22092346973524293
+      },
+      "predictions.pt_mae": {
+        "mean": -0.0141818679165425,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.029591856145015756,
+          0.0019587445831439005
+        ],
+        "per_training_seed": {
+          "7": -0.02200336531750052,
+          "42": -0.0047460461882463155,
+          "2026": -0.01579619224388067
+        },
+        "training_seed_sd": 0.008741184024925207
+      },
+      "predictions.fvr": {
+        "mean": 0.0,
+        "n": 12,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "per_training_seed": {
+          "7": 0.0,
+          "42": 0.0,
+          "2026": 0.0
+        },
+        "training_seed_sd": 0.0
+      },
+      "predictions.infeasible_pt_mass": {
+        "mean": -0.014412525860178799,
+        "n": 12,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.02453910051068911,
+          -0.008338171400181537
+        ],
+        "per_training_seed": {
+          "7": -0.034770475584082305,
+          "42": -0.009305398154538125,
+          "2026": 0.000838296158084025
+        },
+        "training_seed_sd": 0.018345523194984597
+      },
+      "pairs.response_gap": {
+        "mean": 0.0059772118502853895,
+        "n": 398,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          0.003510218787004715,
+          0.008387938768836927
+        ],
+        "per_training_seed": {
+          "7": 0.0067949838502595825,
+          "42": 0.007423749929063762,
+          "2026": 0.003712901771532823
+        },
+        "training_seed_sd": 0.0019859913884554066
+      },
+      "interactions.interaction_gap": {
+        "mean": 0.0061524737108334384,
+        "n": 94,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          0.0017510840684014446,
+          0.00964272890854822
+        ],
+        "per_training_seed": {
+          "7": 0.008700393728290533,
+          "42": 0.008608285695802638,
+          "2026": 0.0011487417084071446
+        },
+        "training_seed_sd": 0.004333603747055213
+      }
+    },
+    "direction_magnitude minus soft_kl": {
+      "predictions.kl": {
+        "mean": -0.004750156085454982,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.008200612697431197,
+          -0.001676081143699945
+        ],
+        "per_training_seed": {
+          "7": -0.006408608666341675,
+          "42": -0.005216757972014871,
+          "2026": -0.0026251016180084
+        },
+        "training_seed_sd": 0.001934429990101174
+      },
+      "predictions.probability_l1": {
+        "mean": -0.010790254149858463,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.018101625619270607,
+          -0.004262963913551605
+        ],
+        "per_training_seed": {
+          "7": -0.015605945940450545,
+          "42": -0.012425854736897106,
+          "2026": -0.004338961772227743
+        },
+        "training_seed_sd": 0.0058088402475870065
+      },
+      "predictions.mode_accuracy": {
+        "mean": -0.007627765064836005,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.02545743834526651,
+          0.006864988558352402
+        ],
+        "per_training_seed": {
+          "7": 0.009153318077803204,
+          "42": -0.016018306636155607,
+          "2026": -0.016018306636155607
+        },
+        "training_seed_sd": 0.014532844304544358
+      },
+      "predictions.departure_mae": {
+        "mean": -0.0007104374691695824,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.1220500102454978,
+          0.16047479294271108
+        ],
+        "per_training_seed": {
+          "7": 0.16996169029182376,
+          "42": -0.140452226631565,
+          "2026": -0.03164077606776759
+        },
+        "training_seed_sd": 0.15750147408611154
+      },
+      "predictions.pt_mae": {
+        "mean": -0.006766362551996946,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.011245696816352712,
+          -0.0020791387335490435
+        ],
+        "per_training_seed": {
+          "7": -0.007764436141439108,
+          "42": -0.006195215625257351,
+          "2026": -0.006339435889294383
+        },
+        "training_seed_sd": 0.0008673598091888955
+      },
+      "predictions.fvr": {
+        "mean": -0.02777777777777778,
+        "n": 12,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.08333333333333333,
+          0.0
+        ],
+        "per_training_seed": {
+          "7": -0.08333333333333333,
+          "42": 0.0,
+          "2026": 0.0
+        },
+        "training_seed_sd": 0.048112522432468816
+      },
+      "predictions.infeasible_pt_mass": {
+        "mean": -0.02515033875695533,
+        "n": 12,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.04529992456729006,
+          -0.005927468371939742
+        ],
+        "per_training_seed": {
+          "7": -0.046610860231642924,
+          "42": -0.019800286507233977,
+          "2026": -0.009039869531989098
+        },
+        "training_seed_sd": 0.01934843998477474
+      },
+      "pairs.response_gap": {
+        "mean": -0.0034454906288230187,
+        "n": 398,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.005040481616706609,
+          -0.0019092654900995968
+        ],
+        "per_training_seed": {
+          "7": -0.0009444536226529413,
+          "42": -0.004986084657806086,
+          "2026": -0.0044059336060100285
+        },
+        "training_seed_sd": 0.0021852993823270883
+      },
+      "interactions.interaction_gap": {
+        "mean": 0.000706606969956201,
+        "n": 94,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.001079754942262429,
+          0.0021944551270430346
+        ],
+        "per_training_seed": {
+          "7": 0.001382047525468836,
+          "42": 0.0028704303035461216,
+          "2026": -0.0021326569191463555
+        },
+        "training_seed_sd": 0.0025690242111530586
+      }
+    },
+    "signed_l1 minus soft_kl": {
+      "predictions.kl": {
+        "mean": -0.0017985792220892697,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.006298364132027593,
+          0.0028752299070255115
+        ],
+        "per_training_seed": {
+          "7": -0.004458556774039316,
+          "42": -0.008645042934756354,
+          "2026": 0.00770786204252786
+        },
+        "training_seed_sd": 0.00849476225280498
+      },
+      "predictions.probability_l1": {
+        "mean": -0.0033666180268572088,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.010888686315504787,
+          0.00573685427889138
+        ],
+        "per_training_seed": {
+          "7": -0.009565367865403991,
+          "42": -0.020590920087176723,
+          "2026": 0.020056433872009092
+        },
+        "training_seed_sd": 0.021020709327743855
+      },
+      "predictions.mode_accuracy": {
+        "mean": 0.0007627765064835986,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.017503805175038054,
+          0.016055045871559634
+        ],
+        "per_training_seed": {
+          "7": 0.016018306636155607,
+          "42": 0.0,
+          "2026": -0.013729977116704805
+        },
+        "training_seed_sd": 0.014888803429399798
+      },
+      "predictions.departure_mae": {
+        "mean": 0.009785718289829234,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.14027105791545583,
+          0.1557679752617965
+        ],
+        "per_training_seed": {
+          "7": -0.031941608409709714,
+          "42": -0.022227743213714124,
+          "2026": 0.08352650649291156
+        },
+        "training_seed_sd": 0.06404582482777763
+      },
+      "predictions.pt_mae": {
+        "mean": -0.0036997385752227255,
+        "n": 437,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.007500460101089475,
+          0.0009094973326857924
+        ],
+        "per_training_seed": {
+          "7": -0.0030387819120482294,
+          "42": -0.012998145234261047,
+          "2026": 0.004937711420641099
+        },
+        "training_seed_sd": 0.008986177511558821
+      },
+      "predictions.fvr": {
+        "mean": -0.05555555555555556,
+        "n": 12,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.16666666666666666,
+          0.0
+        ],
+        "per_training_seed": {
+          "7": -0.08333333333333333,
+          "42": -0.08333333333333333,
+          "2026": 0.0
+        },
+        "training_seed_sd": 0.048112522432468816
+      },
+      "predictions.infeasible_pt_mass": {
+        "mean": -0.03395035317710911,
+        "n": 12,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.06321957455818644,
+          -0.007434897111832268
+        ],
+        "per_training_seed": {
+          "7": -0.05033939064014703,
+          "42": -0.03521700492516781,
+          "2026": -0.016294663966012497
+        },
+        "training_seed_sd": 0.01705767154588448
+      },
+      "pairs.response_gap": {
+        "mean": -0.002770888975012918,
+        "n": 398,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.005018369901815152,
+          -0.00098085628751705
+        ],
+        "per_training_seed": {
+          "7": 0.0002671502006741082,
+          "42": -0.005237320870878777,
+          "2026": -0.003342496254834083
+        },
+        "training_seed_sd": 0.002796399757929659
+      },
+      "interactions.interaction_gap": {
+        "mean": 0.0008381729723159644,
+        "n": 94,
+        "n_personas": 6,
+        "bootstrap_unit": "persona, all associated tasks retained",
+        "uncertainty": "conditional on fixed training seeds and existing tasks",
+        "small_cluster_warning": true,
+        "ci": [
+          -0.00017379866223615745,
+          0.0018137693507763216
+        ],
+        "per_training_seed": {
+          "7": 0.0012213695504189397,
+          "42": 0.0016771810618594234,
+          "2026": -0.00038403169533047105
+        },
+        "training_seed_sd": 0.0010827184401786848
+      }
+    }
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 917,
+    "unit": "persona",
+    "method": "percentile"
+  },
+  "interpretation": "Mean metric differences across matched training seeds. CI resamples personas after averaging per-unit metric differences across these fixed seeds; seed SD is separate. Not a joint seed-and-population CI."
+}

@@ -1,0 +1,399 @@
+[
+  {
+    "path": "PROGRESS.md",
+    "original_sha256": "2f3a71943514ff5b70c24c226bcf1919a25a8f302cc9b39fd308dfc6cade9598",
+    "retained_numerical_tables": 13,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "archive/README.md",
+    "original_sha256": "6ec36b7b2ea6c08ec5224a304b3ad42b7142391f3b48967312765c7e33c074f5",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/DATA_ISOLATION_CHECK.md",
+    "original_sha256": "7cce5d20a94e23186c8a003e948bb60d7cf5542e803cfac1803ddad315f3186b",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/MATSIM_2026_REAL_SUPPLY_INTEGRATION.md",
+    "original_sha256": "ae02dff3820b6ea699c115ea65f29fae5dbb77b52c0d59e8c9b92fe8bf32f84c",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/PIPELINE_LATENCY_AUDIT.md",
+    "original_sha256": "a72642d88390305f304b48bd71bc4a43d1ef8894d1fd97edbfd92ba7185c8b17",
+    "retained_numerical_tables": 3,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/REFERENCE_PIPELINE.md",
+    "original_sha256": "4a6e792922d775df9b980d0f3d8b3f110ff1fdfeedab1e5763dea85c0afcf1d0",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/REFERENCE_PIPELINE_VALIDATION.md",
+    "original_sha256": "c1416b0a3a3ed315af12613475bd8396a6122aab336ffaadbd12eef11ec0bbac",
+    "retained_numerical_tables": 4,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/S8_DEPRECATION.md",
+    "original_sha256": "c7aa82b0d868cc8466662ff3989830d39cd9d0679011c2e47d14494064f42074",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "evidence/README.md",
+    "original_sha256": "4dd554fc07c65effbfbc9f53a7f7d565bceda0c2ed20b7399d2ab279d629b5eb",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_S5_MULTI_AXIS.md",
+    "original_sha256": "aae06f047ca6a39c2212a4ac60e45de4eef24f913545e6d304a4bc98cd31f9c6",
+    "retained_numerical_tables": 5,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md",
+    "original_sha256": "4abc54457cf4afe4e8ac812fdb8a6a0f2e724d018a190d5425d9bbce1681f5e1",
+    "retained_numerical_tables": 2,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md",
+    "original_sha256": "b9218dd95eb6dfa076048442bd83663facf918c102a049a43cf85441e3e29cc6",
+    "retained_numerical_tables": 13,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_v0_2.md",
+    "original_sha256": "a4fc149c2d04306f998d800fc81a9da27473af6098901d933780125f3f8e5027",
+    "retained_numerical_tables": 2,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_v0_3.md",
+    "original_sha256": "1594e5222fdd186b414aee708cbc1770aa4178660558d94cae8090b0008a22b1",
+    "retained_numerical_tables": 4,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_v0_3_S1.md",
+    "original_sha256": "79c7a172cc19f440bba82075ad18e7d90cd611ab6329906e87ab0808ed14e803",
+    "retained_numerical_tables": 3,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_v0_3_S2.md",
+    "original_sha256": "575d07b3dcbad389543a7d45b4a5c58cbd019c62823a11fbb8f0bac067b14fd9",
+    "retained_numerical_tables": 3,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_v0_3_S3.md",
+    "original_sha256": "f149d448fc2c1559032627487e6ac87a4f8865f9071459c883d114087aa8d8be",
+    "retained_numerical_tables": 4,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/EXPERIMENT_REPORT_v0_3_S4.md",
+    "original_sha256": "f62be87557b2289b5a516ee45bb86be8f1c724f8d704108dd4fe8cd6f47b8c7c",
+    "retained_numerical_tables": 3,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/PHASE10_feedback_loop_report.md",
+    "original_sha256": "f29baf284d3442f3bec0b45ecce8bfa19f354a0ff5b1030b540fc5e9172901fa",
+    "retained_numerical_tables": 4,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/PHASE9_population_report.md",
+    "original_sha256": "9cff970be234e011e4f03820a4d91b4300457417ac06792735ddc30b51029ae1",
+    "retained_numerical_tables": 3,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "reports/EXPERIMENT_REPORT_S8_TRANSIT_ACCESSIBILITY.md",
+    "original_sha256": "6b25e8d27b535c16ebe171fd7fc06e8d3d6ddbce4e61fc4904f4d6b1f902cd33",
+    "retained_numerical_tables": 8,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "reports/EXPERIMENT_REPORT_S9_TRANSIT_ACCESSIBILITY_V2.md",
+    "original_sha256": "ed3f861e843e3865da090f2acd7dcafa2289ffb9d8ccaaa2a40f267bfb902287",
+    "retained_numerical_tables": 3,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "reports/S8_SCHEMA_AUDIT.md",
+    "original_sha256": "7044e24ce639230c532d8818464afe29891b3ff5198e030e2620ba1c905deddf",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "archive/legacy_20260821/root/COST_AND_TIME_ESTIMATE.md",
+    "original_sha256": "c3f859803b81ab3d1ef31fcbc5d7d23e9924129a0d5dcc8848fe1df761d70115",
+    "retained_numerical_tables": 2,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "archive/legacy_20260821/root/NEXT_STEP_PLAN_SINGAPORE_AIT_v1.0.md",
+    "original_sha256": "d765f9d5c89f76e5db0de0aeb87b7c9f1c77e690826e5bdf296578a0d017d35c",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "data/shanghai/DATA_README.md",
+    "original_sha256": "d94d31cfc3d7e28d4839af4356e7e9dcd8502c0293f9a63ef24ff3c72064a9d4",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "data/singapore/DATA_README.md",
+    "original_sha256": "2e9c4b9541de4831e59ce98f9ce7593a1b68f6ab74f77d2b5322cf36b9921695",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/DeepSeek_Traveler_Behavior_Distillation_Research_Blueprint.md",
+    "original_sha256": "a44b9f2609c290d99c1bdd1a453ce645d650d60c177aa73499827a97ecb3dbe4",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/NEXT_STEP_PLAN_SINGAPORE_AIT.md",
+    "original_sha256": "c1054a0f0cedad9723a95c53b9fa91a38d5e04aadb0cf3266ef9174197bcb59d",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/Shanghai_Travel_Intention_Survey.md",
+    "original_sha256": "6e616848617b3dfa887b2282946c88394c4aeb90d5ee498218ddb35c85d81a1c",
+    "retained_numerical_tables": 10,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/stage_instructions/PHASE_C_SINGAPORE_SCENARIO_INSTRUCTIONS.md",
+    "original_sha256": "17a9b6c5a58f0c990f27697cbd040c92a3ef3f3df548604e47dd58af47805fac",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/stage_instructions/S5_MULTI_AXIS_DISTILLATION_EXPERIMENT_DESIGN.md",
+    "original_sha256": "f8c356b6679a46cdae3ae6b92234b64071d035c61dbc9b894b18292539629531",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/stage_instructions/S6_REASONING_CAUSAL_AUDIT_EXPERIMENT_DESIGN.md",
+    "original_sha256": "78016b3c4588734dda22910a106d2c59a679729cf51801c889966d834966d8ce",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/stage_instructions/S7_MECHANISM_AWARE_FINETUNING_INSTRUCTIONS.md",
+    "original_sha256": "bbbc13190b77c29726ae9a9196f84c4ec4444385cf75676511c2be628a9cfcb0",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/stage_instructions/S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md",
+    "original_sha256": "34c420157600b9012ddb798f0d3e45dbb9951f21cee7e70c2b361e2089c7e12e",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/stage_instructions/S8_BACKUP_FREEZE_INSTRUCTIONS.md",
+    "original_sha256": "b6d4d116c1b1d22d76084b426272958a1f6af064512d2b4493bb06f7edceb0af",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/stage_instructions/S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md",
+    "original_sha256": "fb24fe0f0a01e507b56c4a98832e3081fea14f20f0a217c19f18dec8982d1ee5",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v2/CHANGELOG.md",
+    "original_sha256": "1fcd60231667baf572f3a049c680a934a3609efd1ee0e8b793787e8f70ee2f02",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v2/IMPLEMENTATION.md",
+    "original_sha256": "473013fb41f750ef87c6899fcb41a247d8eb0599ed4a68192e0d94e3f20146d2",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v2/participant_sections.md",
+    "original_sha256": "d418e30d6305b3b30a311506699f31d387436ec2999583554bdbd26eb9de9d8e",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v2/Shanghai_Travel_Intention_Survey_v1_original.md",
+    "original_sha256": "d9cccbfbbe5c3e45bc5f4ae57ab81ad569bd8209795c01fdf567d2971b509629",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v2/Shanghai_Travel_Intention_Survey_v2_full.md",
+    "original_sha256": "fcf401cc45f517b70eb259b85c304225707470d3b4ac58379b96906dfd201d43",
+    "retained_numerical_tables": 10,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v3/IMPLEMENTATION.md",
+    "original_sha256": "2e643b6ad9bf97cdb045f305fe967cdf820f7fcba049f6f26f76ca6d33d8f8b1",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v3/field/README.md",
+    "original_sha256": "632a5d3b6e40f108b013437b4c7df0d91eb64d9e7bfc088b423d31cc0e396370",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "docs/plans/shanghai_survey_v3/field/Shanghai_Field_Questionnaire.md",
+    "original_sha256": "7e030ff56fa66e8eaf201363db8c9be5549c2972b528d2694b3c0cea44bfbc49",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true,
+    "original_path": "docs/plans/shanghai_survey_v3/field/\u4e0a\u6d77\u51fa\u884c\u65b9\u5f0f\u8c03\u67e5_\u95ee\u5377.md"
+  },
+  {
+    "path": "evidence/e1_mnl/E1_REPORT.md",
+    "original_sha256": "714ab9edf463b2715019512022d842f53d34b4c89d76a5da4413a011b082226d",
+    "retained_numerical_tables": 7,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "evidence/e2_efficiency/E2_REPORT.md",
+    "original_sha256": "1103610052b8616810f184a1cb698ac115491af5df0b65a5630608833d6225b6",
+    "retained_numerical_tables": 5,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "evidence/e3_scale/E3_REPORT.md",
+    "original_sha256": "252b4770d8c2266ad4b286c101803ee312e468f68d815fce3042fb721900650b",
+    "retained_numerical_tables": 4,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "evidence/e4_multiseed/E4_REPORT.md",
+    "original_sha256": "189778253509293e395cb66841c388d20a8d7bd02fc9054b2e46aefee4a66d1a",
+    "retained_numerical_tables": 5,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/singapore_phase_a/PHASE_A_GATE.md",
+    "original_sha256": "33a36a5d5cb30ae769109bcffd131e8cfb42f193f551d0901a2b7eda13e454b9",
+    "retained_numerical_tables": 2,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/singapore_phase_b/scale_report.md",
+    "original_sha256": "257aab46f3dc233352af7269dfcf126ca067c4456102004fa96ceea21d7e43e2",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/singapore_phase_b5/loading_diagnostic.md",
+    "original_sha256": "63e6368ec627a46de5bc203bc61f9f43a07af182e16a26ee2f606efb55874eba",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/singapore_phase_b5/calibration/calibration_report.md",
+    "original_sha256": "b6c60c958cfb8589d04729b615a6c3eaebbcb2cceb9a28099f95f38bedadfe40",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/singapore_phase_b5/demand_sweep/scale_report.md",
+    "original_sha256": "05cfcc19a294d253a54348f35e094c93a1ec0150e4f6966b12f1e27d68278037",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "outputs/singapore_phase_b5/pt_validity_v3/pt_validity.md",
+    "original_sha256": "1d96065b3f3d786d58af3053978904f5235e32201fdaedc36f8a371ea3a8d092",
+    "retained_numerical_tables": 1,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S5_MULTI_AXIS.md",
+    "original_sha256": "aae06f047ca6a39c2212a4ac60e45de4eef24f913545e6d304a4bc98cd31f9c6",
+    "retained_numerical_tables": 5,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md",
+    "original_sha256": "4abc54457cf4afe4e8ac812fdb8a6a0f2e724d018a190d5425d9bbce1681f5e1",
+    "retained_numerical_tables": 2,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md",
+    "original_sha256": "b9218dd95eb6dfa076048442bd83663facf918c102a049a43cf85441e3e29cc6",
+    "retained_numerical_tables": 13,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s8_supply_aware_v1/reports/EXPERIMENT_REPORT_S5_MULTI_AXIS.md",
+    "original_sha256": "aae06f047ca6a39c2212a4ac60e45de4eef24f913545e6d304a4bc98cd31f9c6",
+    "retained_numerical_tables": 5,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s8_supply_aware_v1/reports/EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md",
+    "original_sha256": "4abc54457cf4afe4e8ac812fdb8a6a0f2e724d018a190d5425d9bbce1681f5e1",
+    "retained_numerical_tables": 2,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s8_supply_aware_v1/reports/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md",
+    "original_sha256": "b9218dd95eb6dfa076048442bd83663facf918c102a049a43cf85441e3e29cc6",
+    "retained_numerical_tables": 13,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s8_supply_aware_v1/reports/EXPERIMENT_REPORT_S8_TRANSIT_ACCESSIBILITY.md",
+    "original_sha256": "6b25e8d27b535c16ebe171fd7fc06e8d3d6ddbce4e61fc4904f4d6b1f902cd33",
+    "retained_numerical_tables": 8,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s8_supply_aware_v1/reports/S8_SCHEMA_AUDIT.md",
+    "original_sha256": "7044e24ce639230c532d8818464afe29891b3ff5198e030e2620ba1c905deddf",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s9_supply_aware_v2/reports/EXPERIMENT_REPORT_S8_TRANSIT_ACCESSIBILITY_DEPRECATED.md",
+    "original_sha256": "6b25e8d27b535c16ebe171fd7fc06e8d3d6ddbce4e61fc4904f4d6b1f902cd33",
+    "retained_numerical_tables": 8,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s9_supply_aware_v2/reports/EXPERIMENT_REPORT_S9_TRANSIT_ACCESSIBILITY_V2.md",
+    "original_sha256": "ed3f861e843e3865da090f2acd7dcafa2289ffb9d8ccaaa2a40f267bfb902287",
+    "retained_numerical_tables": 3,
+    "editorial_consolidation": true
+  },
+  {
+    "path": "releases/s9_supply_aware_v2/reports/S8_SCHEMA_AUDIT.md",
+    "original_sha256": "7044e24ce639230c532d8818464afe29891b3ff5198e030e2620ba1c905deddf",
+    "retained_numerical_tables": 0,
+    "editorial_consolidation": true
+  }
+]

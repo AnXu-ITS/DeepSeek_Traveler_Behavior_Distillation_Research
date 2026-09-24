@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "Please cite the associated manuscript and identify the repository commit used in your analysis."
+type: software
+title: "DeepSeek Traveler Behavior Distillation Research"
+authors:
+  - family-names: Xu
+    given-names: An
+  - family-names: Jin
+    given-names: Zekai
+  - family-names: Yin
+    given-names: Yunfei
+repository-code: "https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research"
+preferred-citation:
+  type: unpublished
+  title: "Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation"
+  authors:
+    - family-names: Xu
+      given-names: An
+    - family-names: Jin
+      given-names: Zekai
+    - family-names: Yin
+      given-names: Yunfei
+  year: 2026
+  notes: "Manuscript snapshot dated 24 September 2026; no publication acceptance is implied."

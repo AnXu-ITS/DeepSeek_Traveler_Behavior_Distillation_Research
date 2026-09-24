@@ -1,26 +1,9 @@
-# 修订记录
+# Shanghai questionnaire design history
 
-版本 shanghai-survey-v2.0，2026-09-12。
+This is an earlier questionnaire-design or implementation record. It documents the development of respondent attributes, scenario cards, display logic and data mappings. It is not evidence that every proposed question or numerical setting was administered. The final field instrument has 23 required single-choice questions, including ten scenario tasks. Use the complete English field questionnaire and current sample-flow/result documentation for the paper.
 
-已直接替换上一级 Shanghai_Travel_Intention_Survey.md，并保留 Shanghai_Travel_Intention_Survey_v1_original.md。上一轮审查报告针对v1，原始行号应对应本备份或审查文件夹的source_packet.md，不对应本次新版行号。
+This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/plans/shanghai_survey_v2/CHANGELOG.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
 
-| 原问题 | 本次处理 |
-|---|---|
-| 问卷五方式，冻结模型四方式 | SP明确四模式条件选择，网约车、电动车等仍保留为真实习惯/RP/范围外需求 |
-| 无完整人物字段 | 补齐家庭、儿童、驾照、通票、日程弹性、行动限制；明确缺失与不支持类别 |
-| 隐含无车也可自驾 | 确认可用性、条件显示、记录实际offer mask，输入拥有字段保持原意 |
-| 没有真实行程 | 增加可跳过的统一日期第一趟出行回忆，明确它不是完整RP预测输入 |
-| 目的和时刻不明确 | 固定为已学习词表内的shopping、hard，08:00出发、09:00前到店 |
-| 雨与延误不同距离且无联合 | 共同6公里基准、雨、延误、雨＋延误四格 |
-| S9可达性特征缺失 | 卡片补齐全部特征，增加总时长45分钟的步行/候车/换乘三个方案 |
-| 情景数增加风险 | 共用B0，全部扰动与可达性共10张卡 |
-| 正交与偏差消除表述过强 | 明确配对/共享基准设计，另提供10个平衡题序，不承诺消除所有偏差 |
-| 时间类别无法对应模型 | 精确整数分钟、正负方向与范围外状态，缺失不记0，超过模型范围不裁剪 |
-| 人与模型读不同数值 | 从cards.json同一数据源生成题面，新增独立SP适配器，避免供给公式覆盖 |
-| 完全匿名/时长未经核实 | 调整为具体不收集项、去标识分析说明和待试填验证的时间估计 |
-| 模型冻结约束 | 所有新增内容在调查文档目录，235个受保护文件前后哈希保持一致 |
+[Current research](<../../RESEARCH_DESIGN.md>) · [Training](<../../TRAINING.md>) · [Results](<../../RESULTS.md>) · [Data and access](<../../DATA_SOURCES.md>) · [Model use](<../../MODEL_USE.md>)
 
-技术校验见validation_report.json，覆盖60个合成状态、四类可用性集合、冻结词表与只读推断。未产生受访者数据或有效性结果。
-
-正文保持中英母版，正式平台每人只显示选定语言。原模型和原生产管线均未修改，新适配器仅把问卷资料转为原schema支持的状态。
-
+For the administered instrument, use the [complete English Shanghai questionnaire](<../../surveys/SHANGHAI_QUESTIONNAIRE.md>) and [survey results](<../../surveys/RESULTS.md>) instead of these earlier design drafts.

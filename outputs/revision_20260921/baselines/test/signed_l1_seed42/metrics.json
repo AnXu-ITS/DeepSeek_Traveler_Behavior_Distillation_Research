@@ -1,0 +1,200 @@
+{
+  "state": {
+    "n": 437,
+    "personas": 6,
+    "kl": 0.44134569316269917,
+    "probability_l1": 0.8145335635082468,
+    "mode_accuracy": 0.5675057208237986,
+    "departure_mae": 8.464195379762492,
+    "pt_mae": 0.26177729175845893,
+    "fvr": 0.3333333333333333,
+    "infeasible_pt_mass": 0.4010678107539813,
+    "n_infeasible": 12,
+    "departure_p90": 25.612428500480654,
+    "by_source": {
+      "accessibility": {
+        "n": 51,
+        "personas": 6,
+        "kl": 0.5532465048212305,
+        "probability_l1": 0.9224927148460661,
+        "mode_accuracy": 0.6274509803921569,
+        "departure_mae": 10.790080735112172,
+        "pt_mae": 0.2874551988916475,
+        "fvr": 0.3333333333333333,
+        "infeasible_pt_mass": 0.4010678107539813,
+        "n_infeasible": 12,
+        "departure_p90": 29.478709166812898,
+        "departure_median": 3.835604190826416
+      },
+      "joint": {
+        "n": 96,
+        "personas": 6,
+        "kl": 0.42841405281734396,
+        "probability_l1": 0.798905610018224,
+        "mode_accuracy": 0.5208333333333334,
+        "departure_mae": 11.247428858630608,
+        "pt_mae": 0.2756744475643415,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 27.95374059677124,
+        "departure_median": 4.661154446220397
+      },
+      "legacy": {
+        "n": 226,
+        "personas": 6,
+        "kl": 0.4319622404315207,
+        "probability_l1": 0.8070705682538385,
+        "mode_accuracy": 0.5929203539823009,
+        "departure_mae": 7.597200255603759,
+        "pt_mae": 0.2706090784428541,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 25.346379280090332,
+        "departure_median": 2.9495858577728273
+      },
+      "mechanism": {
+        "n": 64,
+        "personas": 4,
+        "kl": 0.404707511847314,
+        "probability_l1": 0.7782992470130856,
+        "mode_accuracy": 0.5,
+        "departure_mae": 5.497481801101565,
+        "pt_mae": 0.18928222907360504,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 13.64324386745453,
+        "departure_median": 3.1494877338409424
+      }
+    },
+    "macro_source_kl": 0.45458257747935227,
+    "departure_median": 3.3553853034973145
+  },
+  "response": {
+    "n": 398,
+    "personas": 6,
+    "groups": 12,
+    "response_gap": 0.08182892524566533,
+    "thresholds": {
+      "0.0001": {
+        "informative_n": 1097,
+        "quiet_n": 53,
+        "informative_sign": 0.6326344576116681,
+        "informative_fraction": 0.9539130434782609,
+        "false_response": 0.0025381957584956908
+      },
+      "0.001": {
+        "informative_n": 1089,
+        "quiet_n": 61,
+        "informative_sign": 0.6317722681359045,
+        "informative_fraction": 0.9469565217391305,
+        "false_response": 0.002402108223711858
+      },
+      "0.01": {
+        "informative_n": 851,
+        "quiet_n": 299,
+        "informative_sign": 0.6251468860164512,
+        "informative_fraction": 0.74,
+        "false_response": 0.0023689703598469
+      }
+    }
+  },
+  "interaction": {
+    "n": 94,
+    "error": 0.040867311189139284
+  },
+  "by_bucket": {
+    "accessibility": {
+      "state": {
+        "n": 51,
+        "personas": 6,
+        "kl": 0.5532465048212305,
+        "probability_l1": 0.9224927148460661,
+        "mode_accuracy": 0.6274509803921569,
+        "departure_mae": 10.790080735112172,
+        "pt_mae": 0.2874551988916475,
+        "fvr": 0.3333333333333333,
+        "infeasible_pt_mass": 0.4010678107539813,
+        "n_infeasible": 12,
+        "departure_p90": 29.478709166812898
+      },
+      "pairs": 40,
+      "response_gap": 0.1427241513424678,
+      "interaction_gap": null
+    },
+    "joint_seen": {
+      "state": {
+        "n": 72,
+        "personas": 6,
+        "kl": 0.4317944578812734,
+        "probability_l1": 0.7999107054051433,
+        "mode_accuracy": 0.5277777777777778,
+        "departure_mae": 12.12523485216366,
+        "pt_mae": 0.2804603057312407,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 29.139882242679594
+      },
+      "pairs": 72,
+      "response_gap": 0.10879585474997602,
+      "interaction_gap": 0.04200487224916057
+    },
+    "joint_unseen": {
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.4182728376255557,
+        "probability_l1": 0.7958903238574663,
+        "mode_accuracy": 0.5,
+        "departure_mae": 8.614010878031452,
+        "pt_mae": 0.26131687306364376,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 23.281999123096465
+      },
+      "pairs": 24,
+      "response_gap": 0.044307068338143955,
+      "interaction_gap": 0.03754942476407719
+    },
+    "legacy": {
+      "state": {
+        "n": 226,
+        "personas": 6,
+        "kl": 0.4319622404315207,
+        "probability_l1": 0.8070705682538385,
+        "mode_accuracy": 0.5929203539823009,
+        "departure_mae": 7.597200255603759,
+        "pt_mae": 0.2706090784428541,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 25.346379280090332
+      },
+      "pairs": 214,
+      "response_gap": 0.06461676322347128,
+      "interaction_gap": null
+    },
+    "mechanism": {
+      "state": {
+        "n": 64,
+        "personas": 4,
+        "kl": 0.404707511847314,
+        "probability_l1": 0.7782992470130856,
+        "mode_accuracy": 0.5,
+        "departure_mae": 5.497481801101565,
+        "pt_mae": 0.18928222907360504,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 13.64324386745453
+      },
+      "pairs": 48,
+      "response_gap": 0.0861309933779063,
+      "interaction_gap": null
+    }
+  }
+}

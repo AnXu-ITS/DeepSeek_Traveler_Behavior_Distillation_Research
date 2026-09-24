@@ -1,0 +1,25 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Where response errors arise in the controlled comparison.}
+\label{tab:response_breakdown}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrr@{}}
+\toprule
+Grouping & Group & Pairs & Soft KL & CE + KL & Signed & Dir. + mag. \\
+\midrule
+source & accessibility & 40 & 0.12287 & 0.12834 & 0.11296 & 0.11947 \\
+source & joint & 96 & 0.06726 & 0.07674 & 0.06340 & 0.06211 \\
+source & single-context & 214 & 0.06008 & 0.06523 & 0.05923 & 0.05762 \\
+source & mechanism & 48 & 0.06987 & 0.07292 & 0.06666 & 0.06540 \\
+persona & P000002 & 70 & 0.07917 & 0.08605 & 0.07992 & 0.07869 \\
+persona & P000008 & 57 & 0.06081 & 0.06934 & 0.05331 & 0.05527 \\
+persona & P000009 & 72 & 0.07308 & 0.07613 & 0.07095 & 0.06901 \\
+persona & P000015 & 58 & 0.05493 & 0.06483 & 0.04941 & 0.04955 \\
+persona & P000016 & 70 & 0.07682 & 0.08440 & 0.07479 & 0.07574 \\
+persona & P000018 & 71 & 0.06689 & 0.06810 & 0.06530 & 0.06209 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip{\footnotesize Values are response errors averaged over the three training seeds. Each grouping independently partitions the same 398 response pairs; its rows must not be added to those of another grouping. Mechanism contrasts retain their constructed label/attribute intervention definition.}
+\end{table}
+

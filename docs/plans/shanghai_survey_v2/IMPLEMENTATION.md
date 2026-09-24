@@ -1,188 +1,36 @@
-# 上海问卷 v2.0 实施与编码说明
+# Shanghai questionnaire design history
 
-**适用对象为冻结 S9 的条件选择外部评估。** 模型权重、模型结构、冻结词表、normalization 和原有生产代码保持不变。此文件是新编制的调查实施方案，不是已经完成的预注册、抽样或统计分析记录。
+This is an earlier questionnaire-design or implementation record. It documents the development of respondent attributes, scenario cards, display logic and data mappings. It is not evidence that every proposed question or numerical setting was administered. The final field instrument has 23 required single-choice questions, including ten scenario tasks. Use the complete English field questionnaire and current sample-flow/result documentation for the paper.
 
-问卷正文位于上一级 `Shanghai_Travel_Intention_Survey.md`。本文件、原始备份、JSON、脚本、编码及研究代号均不展示给受访者。
+This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/plans/shanghai_survey_v2/IMPLEMENTATION.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
 
-## 1. 本次已作出的研究选择
+[Current research](<../../RESEARCH_DESIGN.md>) · [Training](<../../TRAINING.md>) · [Results](<../../RESULTS.md>) · [Data and access](<../../DATA_SOURCES.md>) · [Model use](<../../MODEL_USE.md>)
 
-主任务为6公里、09:00前到店领取预约物品，原计划08:00出发，统一编码为 shopping + hard。这是所有受访者的同一假设任务，不把游客、学生或退休人员强行描述为上班者。冻结 category_mapping.json 的 purpose 实际只有 commute 与 shopping 有已学习编码，time_constraint 只有 hard 与 soft；采用该任务避免直接引入未知目的。shopping 与 hard 的组合仍是需要如实描述的外部情景，不能据此声称训练中已验证过该组合。
+For the administered instrument, use the [complete English Shanghai questionnaire](<../../surveys/SHANGHAI_QUESTIONNAIRE.md>) and [survey results](<../../surveys/RESULTS.md>) instead of these earlier design drafts.
 
-主 SP 比较 car、pt、bike、walk 四类中的条件选择。每人有10张卡，保留五类扰动，增加雨与延误的交互及可达性时间构成对照。共用基准不会增加独立受访者数量。
+## Historical numerical table 1
 
-RP 模块是可跳过的一趟实际出行回忆，用于描述样本和后续有条件的外部对照；它不是完整日记、真实备选方案数据库或全市需求扩样依据。本轮不把缺少真实路线与备选属性的 RP 直接送入哈希 OD 管线，宣称真实行为预测已成立。
-
-## 2. 卡片参数，唯一来源为 cards.json
-
-| 卡ID | 条件 | 自驾总时长/费用 | PT总时长/费用 | PT进站/候车/车内/换乘/离站 | 换乘数 |
+| cardID |condition| total driving duration/cost | PTtotal duration/cost | PTentering stop/waiting/in vehicle/transfer/leaving stop |number of transfers|
 |---|---|---|---|---|---:|
-| B0 | 晴天基准 | 20分/15元 | 35分/4元 | 7/5/16/0/7 | 0 |
-| W1 | 暴雨，时间费用固定 | 20分/15元 | 35分/4元 | 7/5/16/0/7 | 0 |
-| D1 | PT额外延误15分钟 | 20分/15元 | 50分/4元 | 7/20/16/0/7 | 0 |
-| WD1 | 暴雨＋PT延误15分钟 | 20分/15元 | 50分/4元 | 7/20/16/0/7 | 0 |
-| F1 | PT票价4→6 | 20分/15元 | 35分/6元 | 7/5/16/0/7 | 0 |
-| P1 | 停车10→30 | 20分/35元 | 35分/4元 | 7/5/16/0/7 | 0 |
-| R1 | 道路中断，自驾额外20分钟 | 40分/15元 | 35分/4元 | 7/5/16/0/7 | 0 |
-| A_WALK | PT接驳步行各增加5分钟 | 20分/15元 | 45分/4元 | 12/5/16/0/12 | 0 |
-| A_WAIT | 正常班次的首次候车增加10分钟 | 20分/15元 | 45分/4元 | 7/15/16/0/7 | 0 |
-| A_TRANSFER | 1次换乘，换乘合计10分钟 | 20分/15元 | 45分/4元 | 7/5/16/10/7 | 1 |
+| B0 |clear-weather baseline| 20minutes/15CNY | 35minutes/4CNY | 7/5/16/0/7 | 0 |
+| W1 | heavy rain, time and cost held fixed | 20minutes/15CNY | 35minutes/4CNY | 7/5/16/0/7 | 0 |
+| D1 | PTadditional delay15minutes | 20minutes/15CNY | 50minutes/4CNY | 7/20/16/0/7 | 0 |
+| WD1 | heavy rain＋PTdelay15minutes | 20minutes/15CNY | 50minutes/4CNY | 7/20/16/0/7 | 0 |
+| F1 | PTfare4→6 | 20minutes/15CNY | 35minutes/6CNY | 7/5/16/0/7 | 0 |
+| P1 | parking10→30 | 20minutes/35CNY | 35minutes/4CNY | 7/5/16/0/7 | 0 |
+| R1 | road disruption, additional driving cost20minutes | 40minutes/15CNY | 35minutes/4CNY | 7/5/16/0/7 | 0 |
+| A_WALK | PTeach access walk increases by5minutes | 20minutes/15CNY | 45minutes/4CNY | 12/5/16/0/12 | 0 |
+| A_WAIT | initial waiting for normal service increases by10minutes | 20minutes/15CNY | 45minutes/4CNY | 7/15/16/0/7 | 0 |
+| A_TRANSFER | 1transfers, total transfer time10minutes | 20minutes/15CNY | 45minutes/4CNY | 7/5/16/10/7 | 1 |
 
-所有卡片普通自行车25分钟、0元，步行80分钟、0元。这是明确给定的实验方案，不是声称来自某条上海实测路线。自驾15元拆为油电等5元＋停车10元，P1为5＋30元。
-
-### 与原项目情景的关系
-
-天气变量为 clear/0 或 rain/0.75。W1保持所有数值备选属性不变，专门检验在给定时耗费用下的天气响应；因此不照搬原 Phase C 雨天时间生成公式，也不称为原C1的逐字复现。WD1是在完全相同D1属性上增加同一雨变量，构成明确的二因素设计。
-
-D1的额外15分钟计入首次候车及总时间，同时在 context.transit_delay_min 和 PT reliability_delay_min 记录15。后两个是额外延误信息特征，不是再向50分钟加15。A_WAIT是可预期的正常班次候车，context.transit_delay_min=0、reliability_delay_min=0，不能与突发延误混写。
-
-R1的额外20分钟已在40分钟总时间内，同时记录road_disruption和额外延误信息。基准road_congestion=0.3是固定背景指数，0额外延误表示没有额外异常，不表示完全无日常拥堵。
-
-PT所有卡均确有给定可行路线，pt_feasible=1。coverage_ratio=0.8是共同固定的假设路线覆盖特征，含义为车内路径约覆盖OD距离的80%，不是受访者作答，也不属于本次被识别的效应。全部非PT新增可达性字段为0，符合既有特征约定。weather_exposure固定为car 0.05、pt 0.4、bike 0.9、walk 1，是沿用的暴露特征标定，不宣称等于各卡“露天分钟/总分钟”的实测比例。这些固定假设在研究报告中公开。
-
-A_WALK、A_WAIT和A_TRANSFER的PT总时间均45分钟，因此可直接比较相同总时耗下时间组成的响应。它们各自对B0的差异同时含总时耗变化，不能称为在总时耗不变下的单属性效应。它们也不检验不可行PT的FVR，不应宣称覆盖全部S9供给能力。
-
-## 3. 呈现和随机顺序
-
-使用forms.json中的10个Williams题序版本，在任何SP回答产生前均匀随机分配，每人固定一种，回退页面不得重新分配。若平台支持随机区组，可每10人随机打乱发放10个版本，平衡数量。保存实际分配记录，不能在论文中把此处方案写成已经执行。
-
-设计文件的10个版本让每张卡在每个位置出现一次，90个有序相邻卡片对各出现一次。它平衡位置与一阶携带效应的设计暴露，不证明完全消除记忆、疲劳或顺序效应。小样本随机实施未必获得精确人数平衡，报告实际人数。
-
-问卷母版中的01–10是编程索引。线上显示“第1/10题”等当前位置，不显示B0、W1、干预假设或配对结论。模式行保持固定顺序，避免每题跳动造成阅读负担；本研究不声称已经排除模式行次序影响。
-
-默认中文，受访者可在开始选择英文，随后整份固定一种语言。中英母版用于内容核对，不应在手机上逐句双语叠加显示。每页一张卡，四方式表与PT分项都应无需横向滚动。PT分项可显示为一行换行公式或竖排短列表，不隐藏在默认折叠区域。
-
-参考日期由调查平台按Asia/Shanghai时区计算为“最近一个已完整结束的周一至周五”，保存ISO日期。例如周一作答回忆上周五，周二回忆周一；公共假日仍按周一至周五口径。不要动态混用“昨天”“最近有出行的一天”。
-
-## 4. 个人字段与选项代码
-
-field_mapping.json是机器可读编码表。导出使用其中的语义代码，不使用随展示顺序变化的数字序号。保留原始选项，代码映射是新增的预先规定操作定义，未在正式数据上调优。
-
-| 字段 | 来源与规则 |
-|---|---|
-| persona_id | 平台生成的匿名respondent_id |
-| age_group | P01原样五档 |
-| occupation | P02，家庭照料与其他分别保留原始码，入模均为other |
-| income_group | P03少于5000为low；5000至不足10000为medium；10000及以上为high，保留两档高收入原始值 |
-| household_size | P04正整数，不把“20以上”默认填20 |
-| has_children | P05，儿童定义为未满18岁 |
-| car_ownership / driving_license | P06 / P07真实回答，不能被可用性问答覆盖 |
-| bike_ownership | P09普通家庭自行车；不得把电动车或仅能租共享单车改为拥有普通车 |
-| transit_pass | P11实际期间通票；储值卡或支付码不算 |
-| habitual_mode | P12，自驾→car，地铁/公交→pt，普通自行车→bike，步行→walk，真正无主导的多模式→mixed |
-| schedule_flexibility | P13，≤5分钟low，6–30分钟medium，>30分钟high |
-| mobility_limitation | P14三档对应none/mild/significant |
-
-### 不能无损映射的人群
-
-P12以网约车、汽车乘客、电动车或其他方式为主的人，仍可答完整问卷，保留其原始数据。冻结模型没有相应habitual_mode，不能擅自改成car/bike/mixed，也不能为了凑齐输入调用Teacher猜值。本版本主预测评分限于可完整映射人物输入的受访者，并同步报告总人数、此子集人数，以及按P12/年龄/身份等划分的覆盖差异。这是输入范围限制，不是按SP结果筛选。
-
-收入拒答、日程无法判断等同样保存原因，不把缺失收入填中等。主分析不做未经验证的插补。可以另做明确标注的缺失输入敏感性研究，但不得回写或改善主分析选样规则。完整输入子集并不代表全上海人群。
-
-人民币金额按题面数值进入monetary_cost，这是本次预先规定的数值尺度映射，不是已证明冻结模型学会上海货币价值。保持原normalization，不按预测表现选择汇率或重拟合标准化。收入主映射保持5000/10000阈值；可另报告事先列明的5000/20000阈值敏感性结果，但不得选择更有利的一组替代主结果。该替代映射将10000至不足20000原始档记为medium，其余不变。
-
-### 可用性与跳题
-
-- car可选，当且仅当P06=yes、P07=yes、P08=yes。
-- bike可选，当且仅当P09=yes、P10=yes。
-- pt和walk是所有卡片的给定选项，身体限制仍进入人物字段；无法实际完成时受访者可选择“无法选择”。
-- P08只在P06=P07=yes时展示；否则记not_applicable。P10只在P09=yes时展示。
-- 对unknown/refused等未确认可用的car/bike，本组明确不提供，页面先展示并通过C00确认。这个mask表示实验提供的选择集，不冒充现实物理不可行判断。
-- 与生产生成器的两个条件相比，额外P08/P10只控制新SP状态的available字段；原Persona拥有字段不变。模型原本支持可变选择集，不需修改模型或生产生成器。
-- 若S01不同意或S02不符合，结束；不要进入SP。普通题允许跳过，后端保留缺失。
-- R01非trip则跳过RP后续；R11只在R08/R09显示使用公交或轨道时出现。
-- 多选中的none、unknown/refused类项与实质选项互斥；保留真实并存的不同接驳方式。
-- 模式选择unable/refused时跳过时间题，时间状态skipped_due_to_mode；不得记为0。
-
-## 5. 时间答案和无法选择的处理
-
-choice_status分为selected、unable、refused、skipped。仅selected时填写chosen_mode为四个合法值。unable_reason另存，不能创造一个模型没有的第五种交通方式。
-
-时间题使用0或1–120的整数分钟，每个整数都可选，另有>120、无法估计、无法判断和拒答。提前为负，延后为正，原计划08:00是480分钟。平台显示换算时刻，例如提前20分钟为07:40。不调整是精确0；空值和不知道不是0。
-
-模型出发头范围为约±60分钟，受访者可回答超过60分钟。完整保留±61至±120，不裁剪。对于所有精确分钟答案报告总体误差，另报告范围内/范围外分层和范围外比例。>120是开口区间，不填121或其他伪精确值；报告区间信息或最小可能误差。它也超出题目06:00–10:00稳定条件窗口，另标记为范围外回答，不用于该窗口内机制解释。
-
-有些人可能选择导致09:00以后到达的组合。可记录为任务约束违反率并作敏感性分析，不能因其“不符合预期偏好”自动删人。某些方式从未被选、雨天未换方式、价格升高后仍选择同一种方式，都不是无效答卷理由。
-
-主报告同时提供全体可映射人的unable/拒答/漏答比例与四模式作答覆盖率。四模式log loss等分数只对selected作答有定义，明确分母。配对份额差使用两卡均selected的同一受访者集合，四格交互使用四卡均selected的同一集合；另报告该集合覆盖及unable转移，避免用不同分母制造效应。
-
-## 6. 预先规定的分析方案
-
-这是本次编制的待锁定方案，尚无正式样本、功效结果或注册号。
-
-- 独立单位为受访者，卡片为其重复测量。所有模型比较、共同基准和四格组合保留在同一受访者内。
-- 预测评分以受访者为等权单位，先在每人有效卡上平均log loss、Brier score，再跨人汇总；辅助报告accuracy、macro-F1、混淆矩阵和每卡分布。
-- cards.json列出8个主要对比，目标方式分别为PT或car。人类ΔH为相同受访者集合中选择指示量的对比均值，模型ΔS为同一集合中概率的同一线性对比均值。报告ΔS−ΔH及区间。
-- 联合效应为WD1−W1−D1+B0，不以“一个显著另一个不显著”判断交互；概率尺度交互不等同于认知机制证明。
-- 8个主要对比属于同一比较族。优先报告效应和受访者簇bootstrap区间，不只报告显著性。如作统一95%家族置信度的区间判定，可使用每项99.375%双侧区间的Bonferroni方案；另展示普通95%区间时明确其未调整。该方案不是已经执行的统计结果。
-- bootstrap按受访者抽取完整记录，所有模型使用同一次抽样；拟采用10000次重抽样、固定种子20260912并报告实际实施。过小的有效配对样本或零转移场景如实报告，不能保证bootstrap自动解决稀疏性。
-- 有车组的停车与道路分析另给可自驾子组结果；全样本中car被mask的人预测与选择均为0会稀释该效应。子组资格根据预先的P06–P08而非SP答案确定。
-- 异质性优先查看收入×票价、可自驾性×停车/道路、时间弹性×延误、行动限制×接驳负担；这些均标为次要或探索性。不得因某一分组结果有利而重新设定收入阈值。
-- 现有S9和可选冻结S7/MNL-B使用相同状态与样本；若检验可达性扩展价值，S7与S9的对比必须明确输入能力区别。仅S9随可达性改变，不足以证明S9优于S7。
-- 原有MNL-B是Teacher监督基线。新增人类拟合MNL时按受访者划分开发/留出样本，不用留出答案选规格、改编码或调任何模型。
-- RP仅在目的、时间约束、人物属性均在冻结支持范围且获得可信备选属性时，另定义实际行为预测。当前可选地标和事后分项时间不自动构成这样的证据；不把习惯方式同时充当RP标签。
-- 全样本原始RP和E01仍描述超出四模式的真实需求，并报告限制。市域模式份额、客流和交通政策因果效应不由本短问卷直接证明。
-
-正式样本量尚待根据预调查完成率、完整输入率、有效配对转移及目标区间精度规划，不能把计划中的500或1000写成已达到功效要求。招募时覆盖不同年龄、职业、收入、车辆条件和在沪身份，记录渠道；没有概率抽样及匹配权重时，报告样本内结果。
-
-## 7. 数据文件与运行
-
-| 文件 | 用途 |
-|---|---|
-| 上一级Shanghai_Travel_Intention_Survey.md | 已替换的完整中英文问卷 |
-| participant_sections.md | 公共说明、人口与RP部分的编辑源 |
-| build_package.py | 从公共部分和参数生成问卷、卡片JSON、题序与空模板 |
-| cards.json | 十张卡全部状态特征和预定对比，数据文件 |
-| forms.json | 十个分配题序 |
-| field_mapping.json | 原始语义码、人物映射、缺失与范围外规则 |
-| respondents_template.csv | 一人一行的原始导出表头 |
-| sp_responses_template.csv | 一人一卡一行，含实际mask和时间状态 |
-| rp_trips_template.csv | 实际出行补充数据表头 |
-| canonical_personas_template.csv | 编码后人物结构参考，非原始问卷替代品 |
-| survey_adapter.py | 独立SP输入适配器，复用原schema，不改模型；不处理RP、不调用Teacher |
-| validate_package.py | 结构、题序、字段、状态与冻结模型读取检查 |
-| validation_report.json | 本地技术检查结果，非受访者效度结果 |
-| protected_files_before.json / protected_files_after.json | 模型、release与生产源码的前后哈希证明 |
-| Shanghai_Travel_Intention_Survey_v1_original.md | 原问卷备份 |
-
-每位受访者保留一行respondents，每张卡在sp_responses中使用respondent_id＋card_id联合唯一键；trip_id生成respondent_id::card_id。保留form_id和task_order。删除或新增页面后不能沿用旧version冒充同一问卷。
-
-SP响应chosen_mode不可用时标记程序/数据不一致并排查，不自动改成其他方式。不要把chosen_mode、出发时间回答或R08实际结果写入SP输入特征。
-
-适配示例，在项目根目录执行：
+## Retained English technical listings
 
 ```powershell
 .venv/Scripts/python.exe -B docs/plans/shanghai_survey_v2/survey_adapter.py --respondents exports/respondents.csv --output-dir outputs/shanghai_survey_v2_run1
 ```
 
-输入采用respondents_template表头与field_mapping语义码。适配器为完整输入的人生成每张卡的UniversalTravelerState，并给所有输入人保留coverage审计。它不读取SP选择答案，因此不会按预测正确与否筛选。输出记录的state子对象可以送入现有冻结StudentAdapter.predict；不要再调用build_real_alternatives覆盖卡片，也不要重复乘费用倍率或加延误。
-
-```python
-# 仅示意调用关系，正式数据须读取实际导出的state
-states = [UniversalTravelerState.model_validate(row["state"]) for row in records]
-predictions = frozen_student_adapter.predict(states)
-```
-
-问卷内容修改后，用以下命令同步生成并技术检查：
 
 ```powershell
 .venv/Scripts/python.exe -B docs/plans/shanghai_survey_v2/build_package.py
 .venv/Scripts/python.exe -B docs/plans/shanghai_survey_v2/validate_package.py
 ```
-
-## 8. 发布前的实际准备
-
-本次已完成问卷、编码、题序和本地技术核对。以下事项需要在正式平台或真实试填中完成，当前不作完成声明。
-
-1. 在招募邀请或平台信息页填入真实研究单位、联系人及数据处理说明；平台不要额外收集问卷未声明的身份字段，核实日志/IP等设置。
-2. 按字段与题序实施页面，测试中文、英文、手机、跳题、返回修改和保存恢复。C00确认后若改变P06–P10，应刷新所有可用性，清除受影响的旧选择并再次确认，保存修订轨迹。
-3. 用目标人群做认知访谈和试填，查看15–20分钟估计是否准确、是否理解总时间不重复加算、是否理解四模式条件限制与预约购物任务。
-4. C01/C02首答错误时解释并允许重答，保存两次结果。主要有效输入分析保留参与者，另报告第二次仍理解错误者及排除后的敏感性结果，不根据模型偏好一致性删人。
-5. 只在明确出现重复提交或技术损坏时按事先规则处理。快速作答时间在预调查后再设可审计阈值，不凭一个任意秒数断定无效；不自动删除全程同一方式者。
-6. 试填如需修改问题，升级版本并隔离试填数据与后续正式验证数据。正式回收后不得继续以结果为依据优化题卡以贴合模型。
-7. 当前仅有徐汇局部、合成地铁时刻表的部署证据。SP参数是标准化假设，不依赖该网络反推；RP或城市仿真扩展需要另行匹配真实供给。
-
-不存在通过修改问卷就能保证模型符合人类行为的承诺。本版本解决可比较性和接口问题，最终一致程度由真实数据决定。
-
-## 方法依据
-
-中性措辞、完整选项、目标人群认知访谈和试填遵循[AAPOR调查实践建议](https://aapor.org/standards-and-ethics/best-practices/)。RP与SP的证据定位参考[美国交通部收录的RP-SP调查指南](https://rosap.ntl.bts.gov/view/dot/64639)。本次具体卡片数值、编码阈值、题序及统计方案是针对项目新编制的设计，不能写成这些机构为本问卷作过验证。

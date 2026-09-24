@@ -1,0 +1,56 @@
+# Controlled objective experiment. This is NOT a retraining of frozen S9.
+protocol:
+  name: matched_response_v1
+  initialization: random
+  selection: macro_source_kl
+
+data:
+  legacy: data/student_v0_3_s3/aggregated_teacher_dataset.jsonl
+  joint: data/student_s5_joint/aggregated_teacher_dataset_k5.jsonl
+  joint_config: configs/joint_sampling.yaml
+  mechanism: data/student_s7_mechanism/quadruplets.jsonl
+  accessibility: data/singapore_accessibility/states_with_teacher.jsonl
+  accessibility_records: data/singapore_accessibility/records.jsonl
+  legacy_split: outputs/student_v0_3_s3_c/split_manifest.json
+  accessibility_split: data/singapore_accessibility/split_manifest.json
+
+student:
+  arch_version: student_s8_v1
+  n_alt_num: 12
+  global_hidden_dim: 64
+  alternative_hidden_dim: 32
+  cat_embedding_dim: 8
+  mode_embedding_dim: 8
+  scorer_hidden_dim: 64
+  dropout: 0.1
+
+training:
+  # First-stage comparison: four objectives x three seeds. Optional objectives
+  # direction, magnitude and signed_huber are also available via --variant.
+  variants: [soft_kl, ce_kl, signed_l1, direction_magnitude]
+  seeds: [42, 2026, 7]
+  epochs: 120
+  batch_units: 32
+  eval_batch_size: 128
+  learning_rate: 0.000125
+  weight_decay: 0.0001
+  threads: 4
+
+objective:
+  departure_weight: 1.0
+  departure_huber_delta: 1.0
+  response_weight: 1.0
+  # Union counts lost/new alternatives as part of a distributional response.
+  # All variants use the same mask. Historical S9 used perturbed-state mask.
+  response_mask: union
+  direction_eps: 0.000001
+  signed_huber_beta: 0.05
+
+evaluation:
+  sign_thresholds: [0.0001, 0.001, 0.01]
+  bootstrap_resamples: 10000
+  bootstrap_seed: 917
+
+smoke:
+  epochs: 2
+  units_per_source: 2

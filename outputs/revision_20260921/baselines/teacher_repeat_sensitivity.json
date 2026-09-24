@@ -1,0 +1,68 @@
+{
+  "test_endpoints": 437,
+  "repeated_endpoints": 373,
+  "repeated_pairs": 350,
+  "original_pairs": 398,
+  "test_k_counts": {
+    "3": 287,
+    "5": 86
+  },
+  "variability_by_k": {
+    "3": {
+      "n": 287,
+      "mean_probability_sd": 0.0290748843184245,
+      "mean_departure_sd": 3.269051855774749
+    },
+    "5": {
+      "n": 86,
+      "mean_probability_sd": 0.023623980239882294,
+      "mean_departure_sd": 6.496049170020014
+    }
+  },
+  "max_target_reproduction_error": 6.200006198442409e-07,
+  "target_resampling": {
+    "ce_kl": {
+      "mean": 0.006206647479922085,
+      "target_resampling_95_interval": [
+        0.004657008839472251,
+        0.007620226403886176
+      ],
+      "fraction_lower_than_soft_kl": 0.0
+    },
+    "signed_l1": {
+      "mean": -0.0025760487859419097,
+      "target_resampling_95_interval": [
+        -0.003191716492590007,
+        -0.0019522699128758012
+      ],
+      "fraction_lower_than_soft_kl": 1.0
+    },
+    "direction_magnitude": {
+      "mean": -0.0031621155483148736,
+      "target_resampling_95_interval": [
+        -0.003659164140918227,
+        -0.0027029083230194996
+      ],
+      "fraction_lower_than_soft_kl": 1.0
+    },
+    "mnl_s": {
+      "mean": -0.010989408271747238,
+      "target_resampling_95_interval": [
+        -0.013177354985453959,
+        -0.008548656753831683
+      ],
+      "fraction_lower_than_soft_kl": 1.0
+    }
+  },
+  "replicates": 1000,
+  "seed": 917,
+  "scope": "Conditioned on fixed trained models and existing repeats. Independently resample calls within each endpoint, preserve shared endpoints across all response pairs and models. These are target-aggregation sensitivity intervals, not human or population confidence intervals. Mechanism raw repeated actions are not included because their repeat records are absent from the checked source files; no replacement targets are invented.",
+  "source_sha256": {
+    "data/student_v0_3_s3/aggregated_teacher_dataset.jsonl": "549e127957a4e035d91927163c7ef9a16aaab52ee049446ff5cb1932b5b39c87",
+    "data/student_v0_3_s3/repeat_records.jsonl": "35fd28e064bb8cf5ba51d2a9eddc2b7dff514979abf2149a905c16079bb1d589",
+    "data/student_s5_joint/aggregated_teacher_dataset_k5.jsonl": "2dcc05180853abfe9475392c21ea9f3912a548fd5f899b5f1c249c9572c063b7",
+    "data/student_s5_joint/repeat_records.jsonl": "d00a2dd86712fd29fdc1dab5c0a25aec6020c36fb132703da21b84cc914426b9",
+    "data/singapore_accessibility/states_with_teacher.jsonl": "e620d386486b8262dd8a5101e5d80e65fe69ef9d95337c0c86e56672bc2925a9",
+    "data/singapore_accessibility/repeat_records.jsonl": "f205551bd1d7cc5b84d55ec97e237046738540ae3217e678b752d8ce9c5d055e"
+  }
+}

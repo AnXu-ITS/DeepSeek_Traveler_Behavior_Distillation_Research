@@ -1,0 +1,31 @@
+{
+  "model": "deepseek-v4-pro",
+  "temperature": 0.2,
+  "max_tokens": 8192,
+  "timeout_seconds": 300,
+  "workers": 32,
+  "repeats": 3,
+  "retry_token_budgets": [
+    8192,
+    16384,
+    32768
+  ],
+  "per_city": 24,
+  "selection_seed": 20260921,
+  "bootstrap_seed": 20260922,
+  "bootstrap_draws": 10000,
+  "max_attempts": 3,
+  "profile": "ownership",
+  "prompt_version": "teacher_s8_accessibility_v0.1",
+  "thinking": "API default, no override; historical request fields retained",
+  "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "pricing_checked": "2026-09-21",
+  "usd_per_million_peak": {
+    "input_miss": 1.32,
+    "input_hit": 0.044,
+    "output": 3.96
+  },
+  "selection": "age x car ownership round-robin strata, seeded random order within strata; full 10-task groups; no outcome access",
+  "neutral_identifiers": true,
+  "unused_metadata_policy": "Neutral persona ID; constant query/scenario IDs; origin/destination types unspecified. All Student-encoded fields unchanged."
+}

@@ -1,0 +1,18 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Shanghai assigned-input sensitivity under the ownership-conditioned model support.}
+\label{tab:od_sensitivity}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Input encoding & Runs & Accuracy (\%) & \shortstack{Paired gain (pp)\\mean $\pm$ SD [range]} & Brier \\
+\midrule
+Fixed reference & 1 & 80.46 & -- & 0.3241 \\
+Assigned OD & 1 & 83.26 & 2.804 & 0.2789 \\
+Fresh OD assignment & 20 & 83.02 $\pm$ 0.21 & \shortstack{2.564 $\pm$ 0.214\\{}[2.181, 2.866]} & 0.2780 $\pm$ 0.0021 \\
+Whole-vector permutation & 20 & 82.98 $\pm$ 0.16 & \shortstack{2.519 $\pm$ 0.163\\{}[2.212, 2.804]} & 0.2787 $\pm$ 0.0020 \\
+\bottomrule
+\end{tabular}
+\par\smallskip\begin{minipage}{0.98\textwidth}\footnotesize Every run retains 321 respondents and 3,208 explicit labels, including two structurally unsupported bicycle labels. Accuracy and Brier use all explicit choices; gains average paired changes within each respondent. Dispersion and ranges describe assignments, not respondent uncertainty. \end{minipage}
+\end{table}

@@ -1,0 +1,92 @@
+{
+  "status": "source_and_available_outputs_checked",
+  "selected_tasks": 480,
+  "feature_identity_mismatches": [],
+  "valid_call_records": 162,
+  "unique_valid_call_keys": 162,
+  "duplicate_valid_repeat_keys": 0,
+  "max_valid_teacher_probability_sum_error": 2.220446049250313e-16,
+  "choice_denominator_recomputation": {
+    "Singapore": {
+      "survey_options": {
+        "n_respondents": 332,
+        "n_choices": 3320,
+        "n_unscored": 0,
+        "accuracy": 0.23373493975903614,
+        "brier": 1.0291251327378939,
+        "structural_masked_labels": 0,
+        "raw_NLL_infinite": false,
+        "min_true_probability": 0.008619456551969051
+      },
+      "ownership": {
+        "n_respondents": 332,
+        "n_choices": 3320,
+        "n_unscored": 0,
+        "accuracy": 0.6692771084337349,
+        "brier": 0.5052855016958351,
+        "structural_masked_labels": 8,
+        "raw_NLL_infinite": true,
+        "min_true_probability": 0.0
+      },
+      "car_relaxed": {
+        "n_respondents": 332,
+        "n_choices": 3320,
+        "n_unscored": 0,
+        "accuracy": 0.2716867469879518,
+        "brier": 0.954531072827434,
+        "structural_masked_labels": 0,
+        "raw_NLL_infinite": false,
+        "min_true_probability": 0.012595695443451405
+      }
+    },
+    "Shanghai": {
+      "survey_options": {
+        "n_respondents": 321,
+        "n_choices": 3208,
+        "n_unscored": 2,
+        "accuracy": 0.12718204488778054,
+        "brier": 1.1051649075229482,
+        "structural_masked_labels": 0,
+        "raw_NLL_infinite": false,
+        "min_true_probability": 0.003748150309547782
+      },
+      "ownership": {
+        "n_respondents": 321,
+        "n_choices": 3208,
+        "n_unscored": 2,
+        "accuracy": 0.8045511221945137,
+        "brier": 0.3240897229240812,
+        "structural_masked_labels": 2,
+        "raw_NLL_infinite": true,
+        "min_true_probability": 0.0
+      },
+      "car_relaxed": {
+        "n_respondents": 321,
+        "n_choices": 3208,
+        "n_unscored": 2,
+        "accuracy": 0.3774937655860349,
+        "brier": 0.8594622420955573,
+        "structural_masked_labels": 2,
+        "raw_NLL_infinite": true,
+        "min_true_probability": 0.0
+      }
+    }
+  },
+  "findings": [
+    "Selected Teacher states match primary Student feature tensors exactly for all 480 tasks; changed opaque person/trip identifiers do not enter the extractor.",
+    "Teacher analysis uses the same respondent/task grid and the same complete-case contrast rows for Human, Teacher and Student; bootstrap draws are shared across all models and all decomposition terms within each contrast.",
+    "Choice scoring includes explicitly selected mask-conflicting labels; only absent/undecided labels are excluded. Primary survey_options and ownership sensitivity use the same answers.",
+    "Teacher age-by-car-ownership round-robin sample is a balanced-strata diagnostic sample, not a probability-weighted estimate of either city population. Its Human response must come from that same selected subset; current analysis does so.",
+    "Shanghai reference numeric encoding matches Teacher to Student numerically, but the archived human instrument provides qualitative scenarios and a few explicit numeric interventions, not the whole reference table; exact numerical Teacher-Human task equivalence must not be claimed.",
+    "SG survey_options makes all offered modes available; the older ownership-conditioned rule removes named alternatives. These compare option/support mappings, not a causal effect of car/bike ownership. The composite driving/taxi utility remains unresolved.",
+    "analyze_teacher.py currently reports clipped NLL and count of exact zero-probability labels but omits an explicit raw-NLL Infinity field. Add or state this when any true_zero_labels>0; epsilon=1e-8 must be documented.",
+    "TeacherResponseValidator allows probability sums within 1e-3 of one. Current valid calls are checked below; normalize before scoring only if future valid calls actually deviate materially, retaining raw outputs.",
+    "Teacher analysis refuses incomplete selected groups and requires all three repeats for every selected task. Current calls may still be running; do not interpret absence of final Teacher analysis as completed evidence."
+  ],
+  "source_sha256": {
+    "outputs\\revision_20260921\\survey\\task_states.jsonl": "18c12f682524739a181dd1d910195097347bacd6f032fc4de8cf05d5bed4ba3e",
+    "outputs\\revision_20260921\\survey\\human_labels.jsonl": "e4db289ce4ed0cb2de68abd8b75e2b13c7169c94c40c48d6fc4433a3ec4b676f",
+    "outputs\\revision_20260921\\teacher\\selected_states.jsonl": "d497a69e9c09aa1513e52eba21fef980527acbfa171cac09d9e9d8758a0d16c0",
+    "scripts\\revision_20260921\\analyze_teacher.py": "f88baa8edc6f2f5c012b63dff710a7d41b0eec6482fc5e2cda6449f7056caafa"
+  }
+}
