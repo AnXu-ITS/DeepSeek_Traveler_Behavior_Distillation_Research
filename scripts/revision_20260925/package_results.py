@@ -14,7 +14,7 @@ def main():
     # Include checkpoints, per-unit predictions, frozen synthetic states and all
     # failed API attempts. No .env, credentials, raw questionnaires or events.
     for p in source.rglob('*'):
-        if p.is_file() and p.suffix in ['.json','.jsonl','.csv','.npz','.pt','.md','.xml']:
+        if p.is_file() and p.suffix in ['.json','.jsonl','.csv','.npz','.pt','.md','.xml','.yaml','.py']:
             entries['outputs/revision_20260925/'+p.relative_to(source).as_posix()]=p
     physical=RAW/'outputs/revision_20260925/physical_supply'
     for p in physical.rglob('*'):
@@ -29,6 +29,8 @@ def main():
         for filename in ['person_ledger.jsonl','result.json','config.xml']:
             entries['physical_supply/runs/'+logical+'/'+filename]=Path(r['source'])/filename
     for p in (ROOT/'scripts/revision_20260925').glob('*.py'):entries['scripts/revision_20260925/'+p.name]=p
+    for rel in ['cvpr_workspace/analysis/statistics/synthetic_audit.py','docs/SYNTHETIC_ANALYSIS_PROTOCOL.md']:
+        entries[rel]=ROOT/rel
     manifest={name:dict(sha256=file_hash(p),bytes=p.stat().st_size) for name,p in sorted(entries.items())}
     write_json(target/'package_manifest.json',manifest)
     archive=target/'reproducible_results.zip'

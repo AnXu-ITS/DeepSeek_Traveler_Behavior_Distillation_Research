@@ -3,7 +3,7 @@ from pathlib import Path
 import collections,copy,sys
 from controlled import *
 from offline_audits import RAW,rows
-sys.path[:0]=[str(RAW/'cvpr_workspace/analysis/statistics'),str(RAW/'scripts/shanghai')]
+sys.path[:0]=[str(ROOT/'cvpr_workspace/analysis/statistics'),str(ROOT/'scripts/shanghai')]
 from reviewer_closure import LinearUtility
 from scipy.optimize import minimize
 from scipy.special import logsumexp

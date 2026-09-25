@@ -41,8 +41,11 @@ def main():
             family_stats.append(dict(variant='signed_minus_soft',selection=sel,paired=paired_cluster_difference(avgs['signed_l1'],avgs['soft_kl'],'response_gap',10000,20260925)))
         write_json(family/'delay_only_test_summary.json',family_stats)
     api=read_json(DEST/'synthetic/pilot/status.json') if (DEST/'synthetic/pilot/status.json').exists() else {}
+    formal=read_json(DEST/'synthetic/formal/status.json') if (DEST/'synthetic/formal/status.json').exists() else {}
+    formal_audit=read_json(DEST/'synthetic/formal/acquisition_audit.json') if (DEST/'synthetic/formal/acquisition_audit.json').exists() else {}
+    done=formal.get('complete',False) and formal_audit.get('all_checks_passed',False)
     physical=read_json(DEST/'physical_supply/comparisons.json') if (DEST/'physical_supply/comparisons.json').exists() else {}
-    write_json(DEST/'stage_status.json',dict(A='complete',B=dict(local_family_training='complete' if family_stats else 'running',pilot=api,formal='not started' if not (DEST/'synthetic/formal/analysis.json').exists() else 'complete',blocker='Provider requires Global privacy region; pending author setting change' if not api.get('complete') else None),C='deferred by author: no independent new human responses',D=dict(completed=physical.get('completed_runs',0),expected=40),manuscript_writing='not started; stop gate retained'))
+    write_json(DEST/'stage_status.json',dict(A='complete',B=dict(local_family_training='complete' if family_stats else 'running',pilot=api,formal=formal,status='complete' if done else 'incomplete',blocker=None if done else 'See acquisition attempt ledger and status; do not infer missing responses'),C='deferred by author: no independent new human responses',D=dict(completed=physical.get('completed_runs',0),expected=40),manuscript_writing='not started; stop gate retained'))
     lines=['# 实验进展与写作前报告','', '这是实验记录，不是论文正文修订。原问卷、原始人类回答及历史实验文件保持原样。','',
       '## 已完成：零 API 训练和复核','', '27 次完整重训，54 个按不同验证标准选择的检查点；各次均为 120 epoch / 6,360 updates。九个历史同配置模型参数和选中 epoch 完全复现。',
       '另完成 4 个 MNL 正则化候选拟合；两个选择标准均选择 L2=0.0001。MNL choice 与 departure 的选择规则保持区分。','',
@@ -54,13 +57,14 @@ def main():
       '旧执行实验逐阶段统计：先在每个人内平均配对分配种子，再整体重采样人，分别计算概率调整、分配、路径、上车对响应的增量。','',
       '## 干预类别留出','', '另将正 transit_delay 的端点及整个 delay 机制四元组从训练、验证和所有关联单元移除，重新拟合特征统计，再训练 soft-KL / signed-L1 × 3 种子，共 6 个模型。各自 120 epoch / 5,280 updates；同一留出实验内预算一致，不能与全数据训练混称同更新数。历史测试的 delay-only 结果是回顾性诊断；新模型参考样本评估另列。','',
       '## API 与新增数据','',f'当前 pilot 有效响应：{api.get("valid",0)}/432。请求实际模型 deepseek-v4.1-flash，提供方 OpenCode Go；不能记为 V4 Pro 或 DeepSeek 官方直供。',
-      '预检遇到 HTTP 400：Go 要求工作区 Privacy 使用 Global regions。已经停止自动重试，等待作者修改或选择暂缓。失败请求未报告 token 用量；这不能替代账户账单。',
-      '计划 pilot 约 1.84M tokens（包含 10% 余量）；按旧平均用量与 Go Flash 价格约 0.7–1.5 USD 的套餐额度。套餐订阅费与按 token 计算的额度价值分开报告。正式人数按 pilot 中逐人主要差值 SD 和半宽 0.01 计算，30–120 人，pilot 与正式人设完全分离。','',
+      '作者设置 Global 后预检成功。保留最初两次 HTTP 400、全部连接故障和无效响应；仅补采缺失的有效 state-repeat 单元，传输恢复修订不改变模型、提示词、温度、输出上限或情境。',
+      f'正式响应：{formal.get("valid",0)}/{formal.get("required","尚未锁定")}。正式人数按 pilot 中逐人主要差值 SD 和半宽 0.01 计算，30–120 人，pilot 与正式人设完全分离。计划公式不保证最终达到该精度。',
+      '已收到 usage 的失败/无效回答也计入成本；未返回 usage 的调用记为未知，不能按零费用处理。按 token 估算的套餐额度价值、订阅费和实际账单分别报告。','',
       '独立人类修复验证按作者回复暂缓，现有问卷不能充当新增独立验证。','',
       '## 物理供给实验','',f'已核验 {physical.get("completed_runs",0)}/40 个模型×情境×配对分配种子组合。',
       '按线路与停站序列分组隔班删除，原 13,655 趟保留 6,924 趟。供给索引与 MATSim 时刻表共同修改。四臂为原行为/原供给、仅感知延迟/原供给、冻结原行为/受扰供给、按受扰 LOS 重算行为/受扰供给。',
       '时间沿用历史网络运行口径，不能据此声称校准过的步行、骑行效率改善；主要判断仍是初始人群分母下的概率、分配、路径、实际上车和完成情况。','',
-      '## 写作停止点','', '尚未开始把新结果写入论文。待其余可执行实验与完整性核验结束后，再向作者汇报；新 API 的阻塞单独列明，不能声称全部实验已经完成。']
+      '## 写作停止点','', '尚未开始把新结果写入论文。已完成的阶段按证据单独列出；独立人类修复仍延期，不能把其他实验的完成改述为独立人类修复已经验证。']
     if family_stats:
         lines+=['','## 必须保留的类别留出负结果','']
         for sel in ['static','response']:
@@ -69,10 +73,32 @@ def main():
             lines.append(f'{sel} 选择下，58 个 delay 测试对：soft-KL={ss["soft_kl"]["response_gap"]:.6f}，signed-L1={ss["signed_l1"]["response_gap"]:.6f}；signed-minus-soft={diff["mean"]:.6f}，配对区间 {diff["ci"]}。')
         lines.append('signed-L1 在这项类别留出诊断中更差；不能将已覆盖任务的响应改善写成未见干预上的普遍提升。区间仍条件于仅 6 个历史测试人设。')
     if (DEST/'physical_supply/verified_contrasts.json').exists():
-        lines+=['','## 四臂供给实验已核验结果','', '| 模型 | 比较 | 原始 PT 概率变化 pp | 实际上车变化 pp | 完成率变化 pp |','|---|---|---:|---:|---:|']
+        lines+=['','## 四臂供给实验已核验结果','', '| 模型 | 比较 | 原始 PT 概率变化 pp | 实际上车变化 pp | 完成率变化 pp | 完成/时限时间变化 min |','|---|---|---:|---:|---:|---:|']
         for r in read_json(DEST/'physical_supply/verified_contrasts.json'):
-            m=r['metrics'];lines.append(f'| {r["model"]} | {r["arm"]} minus {r["baseline"]} | {m["raw_pt_pp"]["mean"]:.3f} | {m["boarded_pt_pp"]["mean"]:.3f} | {m["completion_pp"]["mean"]:.3f} |')
-        lines+=['','40 个组合包括 12 个逐人核验后复用的历史运行与 28 个新 MATSim 运行。每个组合的初始分母为 1,000 人，配对分配种子为 5 个；不能把 40,000 次执行记录视作 40,000 个独立人。区间、各阶段及行程时间见 `physical_supply`。']
+            m=r['metrics'];lines.append(f'| {r["model"]} | {r["arm"]} minus {r["baseline"]} | {m["raw_pt_pp"]["mean"]:.3f} | {m["boarded_pt_pp"]["mean"]:.3f} | {m["completion_pp"]["mean"]:.3f} | {m["completion_or_horizon_minutes"]["mean"]:.3f} |')
+        lines+=['','40 个组合包括 12 个逐人核验后复用的历史运行与 28 个新 MATSim 运行。每个组合的初始分母为 1,000 人，配对分配种子为 5 个；不能把 40,000 次执行记录视作 40,000 个独立人。区间、各阶段及行程时间见 `physical_supply`。',
+            '本次各组出程均完成，因此完成/时限时间等于本次观测的出程时长。冻结行为、减少班次后上车比例未变，但模拟时长发生变化；这不等于供给没有影响，也不能将负时长差解释为现实减班收益。该时间结果沿用未校准的历史自由流网络执行口径。']
+    for cohort,label in [('pilot','独立 pilot：仅用于样本量规划'),('formal','正式新合成人设实验')]:
+        folder=DEST/'synthetic'/cohort
+        if not (folder/'acquisition_audit.json').exists():continue
+        a=read_json(folder/'analysis.json');audit=read_json(folder/'acquisition_audit.json');u=audit['usage']
+        lines+=['',f'## {label}','',f'{a["n"]} 个人设；{audit["valid"]} 个有效回答。主比较为全数据、static 选模下 signed-L1 减 soft-KL 的逐人响应误差差值，负数有利于 signed-L1：均值 {a["mean"]:.6f}，95% 配对人设区间 [{a["ci95"][0]:.6f}, {a["ci95"][1]:.6f}]。',
+            '每个人设内平均三个训练种子及 11 个干预对，再重采样人设；不能把调用次数、训练种子或共享 baseline 当独立样本。所有次要比较为描述性、点态区间。']
+        if cohort=='pilot':lines.append(f'规划 SD={a["sd"]:.6f}，锁定正式人数 {a["formal_n_required"]}；pilot 不并入正式测试。')
+        lines+=['',f'记录请求 {u["total_attempts"]} 次，其中 {u["usage_reported_attempts"]} 次有 usage，{u["usage_unknown_attempts"]} 次 usage 未知。已记录输入 {u["input_tokens"]:,}、输出 {u["output_tokens"]:,}、合计 {u["total_tokens"]:,} tokens；缓存输入 {u["cached_input_tokens"]:,} 已包含在输入中，reasoning 已包含在输出中。',
+            f'按请求 UTC 峰/闲时及缓存量估算已记录部分：USD {u["request_time_rate_quota_estimate_usd"]:.4f} 套餐额度；全峰时、无缓存保守重估 USD {u["known_usage_peak_no_cache_usd"]:.4f}。不包括未知用量，不是实际账单；账户剩余额度未核实。Go 订阅 USD 10/月不应再次按每次请求叠加。',
+            '', '| 训练数据 | 方法 | 选模 | 平均响应误差 | 95% 人设区间 |','|---|---|---|---:|---|']
+        for r in read_json(folder/'descriptive_summary.json'):
+            if r['metric']=='response_gap' and r['card']=='ALL':lines.append(f'| {r["family"]} | {r["variant"]} | {r["selection"]} | {r["mean"]:.6f} | [{r["ci_low"]:.6f}, {r["ci_high"]:.6f}] |')
+        lines+=['','逐强度/干预、交互、不可行 PT 概率和 departure MAE 见同目录 `descriptive_summary.csv`；逐人配对差见 `paired_contrasts.csv`。输入覆盖的 192 项审计见 `intensity_support_audit.json`。不同数值强度不自动等于独立的未见类别。',
+            '新参考来自 Go Flash，与历史 Pro 来源不同。因此这项结果是跨参考模型的一致性评估，不是原 Pro 压缩误差，也不是人类行为准确率。实验固定一个数值行程，不能据此声称跨城市或真实人群泛化。']
+    if (DEST/'mnl_selection/extended_sensitivity_summary.json').exists():
+        lines+=['','## 优化与 MNL 方向诊断','', '保留 135 条固定诊断批次的梯度记录，分别列出 KL、加权 departure、加权 response 范数和 KL-response 余弦；见 `audit/gradient_summary.json`。这些是沿训练轨迹的诊断，不能单凭梯度大小认定某个损失有因果优势。',
+            '', '| 选择 | 扰动 | 可行端点数 | PT 概率平均变化 | PT 概率增加比例 |','|---|---|---:|---:|---:|']
+        for r in read_json(DEST/'mnl_selection/extended_sensitivity_summary.json')['rows']:
+            if r['subset']=='service_feasible':lines.append(f'| {r["selection"]} | {r["perturbation"]} | {r["n_endpoints"]} | {r["mean_pt_probability_change"]:.6f} | {r["fraction_pt_increases"]:.3f} |')
+        lines+=['','接驳扰动同时增加 access 与 total PT time 各 5 分钟，避免只改分量而不改总量。该 MNL 使用无单调约束的共同特征，系数和概率方向不应解释为已识别的经济偏好或时间价值。']
+    if done:lines+=['','A、B 与 D 已完成；C 按作者要求延期。现在停在写作前，等待作者阅读本报告后决定论文论证范围。']
     (DEST/'EXPERIMENT_REPORT_CN.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print(json.dumps(read_json(DEST/'stage_status.json')),flush=True)
 
