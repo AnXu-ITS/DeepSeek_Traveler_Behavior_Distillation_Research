@@ -26,6 +26,11 @@ def main():
     assert all(checks.values()),checks
     write_json(DEST/'training_verification.json',dict(checks=checks,regression=regression,driver_sha256=file_hash(ROOT/'scripts/revision_20260925/controlled.py')))
     write_json(DEST/'weight_selection_summary.json',summary)
+    resources=[]
+    for stage,root in [('controlled',OUT),('delay_family',DEST/'delay_family/train')]:
+        paths=sorted(root.glob('*/status.json'));elapsed=[read_json(p)['elapsed_s'] for p in paths]
+        resources.append(dict(stage=stage,runs=len(paths),sum_run_elapsed_s=sum(elapsed),min_run_elapsed_s=min(elapsed),max_run_elapsed_s=max(elapsed),source_sha256={p.relative_to(ROOT).as_posix():file_hash(p) for p in paths}))
+    write_json(DEST/'training_resource_summary.json',dict(stages=resources,interpretation='Sum of recorded per-fit elapsed times, not end-to-end campaign wall time or CPU-seconds. No currency conversion without measured resource billing or a declared tariff.'))
     with (DEST/'weight_selection_summary.csv').open('w',encoding='utf-8-sig',newline='') as f:
         wr=csv.DictWriter(f,fieldnames=list(summary[0]));wr.writeheader();wr.writerows(summary)
     family=DEST/'delay_family';family_stats=[]
@@ -51,6 +56,7 @@ def main():
       '另完成 4 个 MNL 正则化候选拟合；两个选择标准均选择 L2=0.0001。MNL choice 与 departure 的选择规则保持区分。','',
       '| 目标 | 权重 | 选择 | 平均响应误差 | 训练种子 SD | 静态宏 KL |','|---|---:|---|---:|---:|---:|']
     for r in summary:lines.append(f'| {r["variant"]} | {r["weight"]:g} | {r["selection"]} | {r["response_gap"]:.6f} | {r["response_seed_sd"]:.6f} | {r["static_kl"]:.6f} |')
+    lines+=['',f'逐次训练耗时之和：27 个受控拟合 {resources[0]["sum_run_elapsed_s"]:.2f} 秒，6 个家族留出拟合 {resources[1]["sum_run_elapsed_s"]:.2f} 秒。不是端到端 campaign wall-clock 或 CPU-seconds；没有资源账单/费率，不虚构美元训练成本。']
     lines+=['','这些均值不是独立总体样本：原测试集只有 6 个独立人设。配对人设区间见 `controlled/paired_comparisons.json`，权重网格的比较为敏感性分析，不能事后选最优测试权重当作预注册主结果。','',
       '组合留出审计：训练/验证未引用 fare×congestion 留出端点；测试有 24 个该组合端点。构成它的单独因素在训练中存在，因此结论只适用于组合留出，不是全部干预类别未见。','',
       '重复 Teacher 分析覆盖 373 个端点、350 对响应。K=3 使用 1 vs 1，K=5 使用 2 vs 2，保留共享端点和方法间相同分配。30 个分配相互相关，不能视作 30 次独立试验，也不能当作精确噪声上限。','',

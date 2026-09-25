@@ -83,6 +83,6 @@ Recompute the rate-card scenarios without an API key:
 python scripts/audit_api_costs_20260925.py --aggregate evidence/revision_20260925/api_usage_aggregate.json --output outputs/recomputed_api_costs
 ```
 
-This verifies arithmetic from aggregate usage. Rebuilding those aggregates requires the retained source ledgers whose hashes are listed in the evidence file. It is separate from independent end-to-end reproduction. New experiments in [the revision plan](REVISION_EXPERIMENT_PLAN.md) remain proposed and require the author's decision before execution.
+This verifies arithmetic from aggregate usage. Rebuilding those aggregates requires the retained source ledgers whose hashes are listed in the evidence file. It is separate from independent end-to-end reproduction. The author subsequently authorized the [experimental sequence](EXPERIMENTS_20260925.md), with new-human validation deferred and a stop before manuscript writing. Its new outputs are separate from this editorial snapshot and the historical pinned evidence.
 
 Three manifest-pinned SVG assets use explicit `-text` attributes so Git does not convert their line endings on Windows. Their restored working bytes equal the existing pinned Git blobs; the recorded hashes and check algorithm are unchanged. This fixes artifact checkout integrity only, not the separate training-source path-fingerprint portability issue.

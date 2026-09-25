@@ -7,9 +7,20 @@ from offline_audits import RAW
 def main():
     source=OUT.parent;target=ROOT/'evidence/experiments_20260925';target.mkdir(parents=True,exist_ok=True)
     status=json.loads((source/'stage_status.json').read_text());assert status['A']=='complete' and status['D']['completed']==40
+    if (source/'synthetic/formal_launch_plan.json').exists():
+        assert status['B']['status']=='complete','Formal acquisition was launched: final packaging requires its verified completion'
     assert json.loads((source/'physical_supply/verification.json').read_text())['verified']==40
     for rel in ['EXPERIMENT_REPORT_CN.md','stage_status.json','protocol.json','training_verification.json','weight_selection_summary.json','weight_selection_summary.csv','controlled/paired_comparisons.json','delay_family/delay_only_test_summary.json','audit/combination_leakage.json','audit/repeat_disjoint_summary.json','physical_supply/supply_audit.json','physical_supply/run_metrics.json','physical_supply/verified_contrasts.json','physical_supply/verification.json']:
         out=target/rel;out.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source/rel,out)
+    for cohort in ['pilot','formal']:
+        for filename in ['status.json','analysis.json','acquisition_audit.json','descriptive_summary.csv','paired_contrasts.csv','statistics.yaml']:
+            p=source/'synthetic'/cohort/filename
+            if p.exists():
+                out=target/'synthetic'/cohort/filename;out.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,out)
+    for filename in ['acquisition_protocol.json','transport_recovery_amendment.json','formal_launch_plan.json','intensity_support_audit.json']:
+        p=source/'synthetic'/filename
+        if p.exists():
+            out=target/'synthetic'/filename;out.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(p,out)
     entries={}
     # Include checkpoints, per-unit predictions, frozen synthetic states and all
     # failed API attempts. No .env, credentials, raw questionnaires or events.
