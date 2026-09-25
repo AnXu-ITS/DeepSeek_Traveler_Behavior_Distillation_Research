@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "utc": "2026-09-25T05:03:57.918652+00:00",
+  "reason": "Observed ConnectError and RemoteProtocolError after successful Global preflight; recover missing slots without changing inference inputs",
+  "first_driver_sha256": "ae6b1dc81dfcf0a418c1b4c48f20bc104177a055b6e13078a1a3cebc668cf48b",
+  "model_prompt_states_unchanged": true,
+  "workers": 8,
+  "persistent_http_client": true,
+  "backoff_seconds": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "max_total_attempts": "3 x required valid responses per cohort",
+  "max_lifetime_attempts_per_state_repeat": 8,
+  "known_usage_peak_no_cache_caps_usd": {
+    "pilot": 3,
+    "formal": 8
+  },
+  "unknown_usage": "Unknown, not zero; excluded from known-usage sum. Attempt caps bound possible exposure but totals are not invoices.",
+  "stop_conditions": "Any HTTP4xx; known-usage cap; attempt cap; explicit STOP_REQUESTED file; no automatic balance setting change",
+  "outcome_independent": "Only missing/invalid slots retried; retain first strictly valid response; no condition based on model errors or test outcomes",
+  "applies": "After the currently active v1 pilot process finishes; all formal acquisition uses v2"
+}

@@ -1,0 +1,79 @@
+city,model,contrast,n,human,model_response,bias,lower,upper,source
+Singapore,S9,PT access (PT),332,-24.4,-14.42,9.98,3.01,16.93,table_responses_sg_complete.tex
+Singapore,S9,Rain (bike + walk),332,-21.99,-19.7,2.29,-3.4,8.46,table_responses_sg_complete.tex
+Singapore,S9,Fare (PT),332,-0.6,2.1,2.7,-4.33,9.64,table_responses_sg_complete.tex
+Singapore,S9,Delay (PT),332,-12.05,-14.86,-2.81,-9.81,4.28,table_responses_sg_complete.tex
+Singapore,S9,Roadworks (car),332,-3.92,-6.09,-2.17,-7.23,2.84,table_responses_sg_complete.tex
+Singapore,MNL-S,PT access (PT),332,-24.4,13.85,38.25,31.03,45.3,table_responses_sg_complete.tex
+Singapore,MNL-S,Rain (bike + walk),332,-21.99,-9.28,12.71,7.27,18.29,table_responses_sg_complete.tex
+Singapore,MNL-S,Fare (PT),332,-0.6,-0.58,0.03,-6.92,6.97,table_responses_sg_complete.tex
+Singapore,MNL-S,Delay (PT),332,-12.05,-8.74,3.31,-3.26,9.83,table_responses_sg_complete.tex
+Singapore,MNL-S,Roadworks (car),332,-3.92,-4.92,-1.0,-5.75,3.84,table_responses_sg_complete.tex
+Singapore,Soft KL,PT access (PT),332,-24.4,-9.97,14.43,7.79,21.12,table_responses_sg_complete.tex
+Singapore,Soft KL,Rain (bike + walk),332,-21.99,-1.58,20.4,14.48,26.62,table_responses_sg_complete.tex
+Singapore,Soft KL,Fare (PT),332,-0.6,-0.17,0.44,-6.57,7.36,table_responses_sg_complete.tex
+Singapore,Soft KL,Delay (PT),332,-12.05,-10.26,1.78,-4.88,8.38,table_responses_sg_complete.tex
+Singapore,Soft KL,Roadworks (car),332,-3.92,-4.8,-0.88,-5.61,3.95,table_responses_sg_complete.tex
+Singapore,CE+KL,PT access (PT),332,-24.4,-23.37,1.03,-6.22,8.11,table_responses_sg_complete.tex
+Singapore,CE+KL,Rain (bike + walk),332,-21.99,-4.95,17.04,11.15,23.24,table_responses_sg_complete.tex
+Singapore,CE+KL,Fare (PT),332,-0.6,-0.63,-0.03,-7.02,6.88,table_responses_sg_complete.tex
+Singapore,CE+KL,Delay (PT),332,-12.05,-5.42,6.63,-0.17,13.45,table_responses_sg_complete.tex
+Singapore,CE+KL,Roadworks (car),332,-3.92,-4.92,-1.01,-5.75,3.83,table_responses_sg_complete.tex
+Singapore,Signed response,PT access (PT),332,-24.4,-8.12,16.28,9.64,22.91,table_responses_sg_complete.tex
+Singapore,Signed response,Rain (bike + walk),332,-21.99,-3.01,18.98,13.08,25.15,table_responses_sg_complete.tex
+Singapore,Signed response,Fare (PT),332,-0.6,-0.24,0.36,-6.65,7.3,table_responses_sg_complete.tex
+Singapore,Signed response,Delay (PT),332,-12.05,-11.11,0.94,-5.71,7.5,table_responses_sg_complete.tex
+Singapore,Signed response,Roadworks (car),332,-3.92,-4.42,-0.51,-5.25,4.34,table_responses_sg_complete.tex
+Singapore,Direction+magnitude,PT access (PT),332,-24.4,-10.06,14.34,7.67,20.96,table_responses_sg_complete.tex
+Singapore,Direction+magnitude,Rain (bike + walk),332,-21.99,-3.4,18.59,12.67,24.75,table_responses_sg_complete.tex
+Singapore,Direction+magnitude,Fare (PT),332,-0.6,-0.77,-0.16,-7.18,6.75,table_responses_sg_complete.tex
+Singapore,Direction+magnitude,Delay (PT),332,-12.05,-13.39,-1.34,-8.2,5.5,table_responses_sg_complete.tex
+Singapore,Direction+magnitude,Roadworks (car),332,-3.92,-4.37,-0.46,-5.2,4.4,table_responses_sg_complete.tex
+Shanghai,S9,Rain (PT),321,4.67,2.7,-1.98,-8.31,4.21,table_responses_sh_complete.tex
+Shanghai,S9,Delay (PT),321,-14.64,-30.57,-15.93,-22.41,-9.21,table_responses_sh_complete.tex
+Shanghai,S9,Rain $\times$ delay (PT),320,9.38,7.99,-1.39,-9.11,6.2,table_responses_sh_complete.tex
+Shanghai,S9,Fare (PT),321,-5.92,1.13,7.05,0.15,13.96,table_responses_sh_complete.tex
+Shanghai,S9,Parking (car),321,-9.35,-7.62,1.73,-2.06,5.7,table_responses_sh_complete.tex
+Shanghai,S9,Road penalty (car),321,-9.35,-12.47,-3.13,-8.47,1.68,table_responses_sh_complete.tex
+Shanghai,S9,Walk vs wait (PT),320,1.88,-11.75,-13.62,-19.71,-7.62,table_responses_sh_complete.tex
+Shanghai,S9,Transfer vs wait (PT),321,2.49,4.21,1.72,-5.02,8.09,table_responses_sh_complete.tex
+Shanghai,MNL-S,Rain (PT),321,4.67,5.54,0.87,-5.21,7.0,table_responses_sh_complete.tex
+Shanghai,MNL-S,Delay (PT),321,-14.64,-8.55,6.09,0.22,12.39,table_responses_sh_complete.tex
+Shanghai,MNL-S,Rain $\times$ delay (PT),320,9.38,1.45,-7.93,-15.54,-0.38,table_responses_sh_complete.tex
+Shanghai,MNL-S,Fare (PT),321,-5.92,-0.41,5.51,-1.35,12.38,table_responses_sh_complete.tex
+Shanghai,MNL-S,Parking (car),321,-9.35,-9.45,-0.11,-3.87,3.69,table_responses_sh_complete.tex
+Shanghai,MNL-S,Road penalty (car),321,-9.35,-9.5,-0.15,-5.32,4.65,table_responses_sh_complete.tex
+Shanghai,MNL-S,Walk vs wait (PT),320,1.88,-6.7,-8.58,-14.81,-2.51,table_responses_sh_complete.tex
+Shanghai,MNL-S,Transfer vs wait (PT),321,2.49,-1.15,-3.64,-10.94,3.14,table_responses_sh_complete.tex
+Shanghai,Soft KL,Rain (PT),321,4.67,3.17,-1.5,-7.91,4.91,table_responses_sh_complete.tex
+Shanghai,Soft KL,Delay (PT),321,-14.64,-18.59,-3.94,-9.9,2.3,table_responses_sh_complete.tex
+Shanghai,Soft KL,Rain $\times$ delay (PT),320,9.38,0.4,-8.98,-16.51,-1.38,table_responses_sh_complete.tex
+Shanghai,Soft KL,Fare (PT),321,-5.92,0.23,6.15,-0.77,13.0,table_responses_sh_complete.tex
+Shanghai,Soft KL,Parking (car),321,-9.35,-4.62,4.73,0.87,8.91,table_responses_sh_complete.tex
+Shanghai,Soft KL,Road penalty (car),321,-9.35,-9.93,-0.58,-5.74,4.21,table_responses_sh_complete.tex
+Shanghai,Soft KL,Walk vs wait (PT),320,1.88,-7.7,-9.58,-15.76,-3.52,table_responses_sh_complete.tex
+Shanghai,Soft KL,Transfer vs wait (PT),321,2.49,-17.25,-19.74,-26.48,-13.43,table_responses_sh_complete.tex
+Shanghai,CE+KL,Rain (PT),321,4.67,4.49,-0.19,-6.5,6.19,table_responses_sh_complete.tex
+Shanghai,CE+KL,Delay (PT),321,-14.64,-19.38,-4.74,-10.73,1.59,table_responses_sh_complete.tex
+Shanghai,CE+KL,Rain $\times$ delay (PT),320,9.38,1.67,-7.71,-15.3,-0.12,table_responses_sh_complete.tex
+Shanghai,CE+KL,Fare (PT),321,-5.92,-0.08,5.83,-1.08,12.74,table_responses_sh_complete.tex
+Shanghai,CE+KL,Parking (car),321,-9.35,-6.71,2.63,-1.21,6.65,table_responses_sh_complete.tex
+Shanghai,CE+KL,Road penalty (car),321,-9.35,-11.15,-1.8,-7.04,2.97,table_responses_sh_complete.tex
+Shanghai,CE+KL,Walk vs wait (PT),320,1.88,-8.95,-10.82,-16.93,-4.8,table_responses_sh_complete.tex
+Shanghai,CE+KL,Transfer vs wait (PT),321,2.49,-31.39,-33.88,-40.58,-27.36,table_responses_sh_complete.tex
+Shanghai,Signed response,Rain (PT),321,4.67,3.44,-1.23,-7.64,5.16,table_responses_sh_complete.tex
+Shanghai,Signed response,Delay (PT),321,-14.64,-17.15,-2.51,-8.48,3.75,table_responses_sh_complete.tex
+Shanghai,Signed response,Rain $\times$ delay (PT),320,9.38,1.28,-8.1,-15.66,-0.56,table_responses_sh_complete.tex
+Shanghai,Signed response,Fare (PT),321,-5.92,-0.43,5.49,-1.42,12.33,table_responses_sh_complete.tex
+Shanghai,Signed response,Parking (car),321,-9.35,-5.92,3.42,-0.42,7.49,table_responses_sh_complete.tex
+Shanghai,Signed response,Road penalty (car),321,-9.35,-9.75,-0.41,-5.56,4.36,table_responses_sh_complete.tex
+Shanghai,Signed response,Walk vs wait (PT),320,1.88,-8.88,-10.76,-16.97,-4.71,table_responses_sh_complete.tex
+Shanghai,Signed response,Transfer vs wait (PT),321,2.49,-22.18,-24.68,-31.38,-18.29,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Rain (PT),321,4.67,3.39,-1.28,-7.67,5.09,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Delay (PT),321,-14.64,-16.98,-2.34,-8.28,3.87,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Rain $\times$ delay (PT),320,9.38,0.85,-8.52,-16.07,-0.96,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Fare (PT),321,-5.92,-0.7,5.22,-1.68,12.09,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Parking (car),321,-9.35,-5.16,4.19,0.34,8.33,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Road penalty (car),321,-9.35,-9.12,0.22,-4.91,4.98,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Walk vs wait (PT),320,1.88,-7.88,-9.75,-15.93,-3.71,table_responses_sh_complete.tex
+Shanghai,Direction+magnitude,Transfer vs wait (PT),321,2.49,-16.63,-19.12,-25.93,-12.77,table_responses_sh_complete.tex

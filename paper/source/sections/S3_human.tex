@@ -1,0 +1,44 @@
+\section{Human response comparisons}
+\label{sec:supp_human}
+\subsection{Full questionnaire samples}
+Each contrast compares the change in a respondent's stated choice with the change in model probability across the same tasks. Simple contrasts use weights of $-1$ and $+1$, and the rain--delay interaction combines four tasks. All explicit choices are retained under the availability rule of Section~\ref{main-sec:supp_inputs}. Table~\ref{tab:human_primary} gives further choice diagnostics, and Tables~\ref{tab:responses_singapore_0}--\ref{tab:responses_shanghai_1} give the complete response results.
+
+Uncertainty is estimated from 10,000 respondent resamples shared across models. Each resampled respondent carries all tasks and model predictions, so within-person pairing is preserved. Neural responses average three fitted seeds, and the spread across seeds is reported separately. Nominal intervals have 95\% coverage, and Bonferroni-adjusted intervals within each city have 99\% coverage for the five Singapore contrasts and 99.375\% for the eight Shanghai contrasts, applied separately for each model. The intervals are conditional on the fitted models. An interval that includes zero reflects uncertainty about the mean bias and does not establish equivalence.
+\input{generated/narrative/table_human_full.tex}
+\FloatBarrier
+\input{generated/narrative/table_responses_sg_complete.tex}
+\input{generated/narrative/table_responses_sh_complete.tex}
+Table~\ref{tab:survey_counts} reports switches in both directions within each Singapore task pair. The exact McNemar tests, which are not adjusted for multiplicity, test whether switching into and out of the target mode group is equally frequent. They concern the human data alone and are separate from the comparisons with models.
+\input{generated/narrative/table_sg_paired_counts.tex}
+\FloatBarrier
+
+\subsection{Contemporary Teacher on matched tasks}
+\label{sec:teacher_revision}
+The Teacher comparison uses 24 respondents per city, drawn in turn from strata defined by age and car ownership (random seed 20260921). Each respondent contributes ten tasks, and each task receives three valid Teacher queries, giving 240 explicit choices per city. Every contrast has 24 complete respondents, and the subsets contain no answers of the no-suitable-mode type and no choices of modes that the model treats as unavailable.
+
+The Teacher prompts contain the same numerical and categorical attributes and the same ownership and access rule as the Student inputs, but not the recorded human choices. Persona identifiers are replaced by neutral codes, task and context identifiers by constants, and origin and destination types by an unspecified value. The Students do not use any of these metadata. Monetary values are given without currency names. The prompt is the one used to label the accessibility supervision of SA-Student, which explains PT feasibility and the components of door-to-door time. The reference values and the private-car representation follow Section~\ref{main-sec:supp_inputs}.
+
+All successful requests returned the model field \texttt{deepseek-v4-pro} from the official DeepSeek service. Requests specified a temperature of 0.2 and a budget of 16,384 tokens, without changing the default reasoning settings. According to the provider's documentation, the default reasoning mode uses high effort and ignores the temperature parameter,\footnote{DeepSeek API documentation, \url{https://api-docs.deepseek.com/guides/thinking_mode/}, accessed 22 September 2026.} so the temperature setting may not have controlled sampling. These queries were made after the Students had been trained and are separate from the supervision used to train them.
+
+The three probability vectors for each state are averaged. Table~\ref{tab:teacher_subset_choices} gives choice metrics for the subsets, and Table~\ref{tab:teacher_query_repeats} gives the human and Teacher responses together with the variation across repeated queries. Neural accuracy is computed for each fitted seed before averaging.
+\input{generated/narrative/table_teacher_choices.tex}
+\input{generated/narrative/table_teacher_repeats.tex}
+
+For a contrast with mean responses $H$, $T$ and $S$ for people, Teacher and Student, the signed differences satisfy $S-H=(T-H)+(S-T)$. The intervals use 10,000 respondent resamples (seed 20260922) with identical draws for all models and terms. Table~\ref{main-tab:teacher_decomposition_s9} in the main article decomposes the discrepancy of SA-Student, and Table~\ref{tab:teacher_decomposition_combined} gives the Student--Teacher differences for the other three Students. Differences between Teacher and people appear in both of these tables and in Table~\ref{tab:teacher_query_repeats}. Nominal intervals, Student--human differences and changes in absolute bias are provided in the supplementary data files (Section~\ref{sec:materials_scope}).
+\input{generated/narrative/table_teacher_decomp_combined.tex}
+Across the 240 states in each city, the mean within-state SD of PT probability is 4.47 percentage points in Singapore and 2.95 in Shanghai, and the mean SD of departure adjustment is 2.05 and 1.47 minutes. Repeated queries are independent across states, so these values describe variability in the Teacher's answers and are distinct from respondent uncertainty.
+
+\subsection{Teacher prompt and metadata sensitivity}
+A small diagnostic uses the first two selected respondents in each city, with all ten tasks and three queries per condition, and keeps the ownership and access rule of the Students. One comparison replaces a generic prompt with the accessibility-aware prompt while metadata are held neutral. The other replaces identifiers that reveal the city with neutral values while the generic prompt is held fixed, without removing all metadata fields.
+
+Across these 40 states, the change of prompt shifts mean PT probability by $+1.04$ points and the neutral metadata shift it by $-1.06$ points (Table~\ref{tab:teacher_prompt_pilot}). Both prompt conditions used the same token budget, whereas some requests in the metadata comparison were repeated with different budgets. Table~\ref{tab:teacher_pilot_sd} reports the variation across repeated queries.
+\input{generated/narrative/table_teacher_prompt_pilot.tex}
+\input{generated/narrative/table_teacher_pilot_sd.tex}
+
+\subsection{Shanghai supply-input sensitivity}
+\label{sec:od_sensitivity}
+In the network-based condition, each respondent is assigned the origin--destination pair closest to a 6-km target among 150 sampled origins, which yields 61 distinct pairs for the 321 respondents. Twenty further assignments repeat this rule with independent random draws. Twenty permutations exchange complete baseline supply profiles, together with their origin--destination pair and departure time, between respondents while personal characteristics stay with each respondent. All ten tasks apply their specified changes to the assigned baseline. Human answers play no part in the assignment.
+
+Table~\ref{tab:od_sensitivity} scores all 3,208 explicit choices under the model's availability rule. Relative to the reference inputs, network-based inputs raise accuracy by 2.804 percentage points (respondent-paired 95\% interval $[2.055,3.583]$) and change the Brier score by $-0.0452$ ($[-0.0547,-0.0351]$). Gains are averaged over tasks within each respondent and then over respondents. The mean gain is 2.564 points under fresh assignments and 2.519 points after exchanging supply profiles. That the gain survives the exchange suggests that it stems largely from a general shift in the numerical inputs. The assigned trips are constructed scenarios, not observations of respondents' journeys.
+\input{generated/narrative/table_od_sensitivity.tex}
+\FloatBarrier

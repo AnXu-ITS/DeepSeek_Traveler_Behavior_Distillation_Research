@@ -1,0 +1,12 @@
+{
+  "pdf_pages": {
+    "cas-sc-template.pdf": 19,
+    "supplement.pdf": 24
+  },
+  "compiled": true,
+  "visual_review": "All main and supplementary pages reviewed in rendered montages; selected dense pages reviewed at larger scale.",
+  "original_protected_assets_checked": 79,
+  "protected_assets_unchanged": true,
+  "new_empirical_experiments": false,
+  "independent_full_reproduction": false
+}

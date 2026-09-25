@@ -1,0 +1,12 @@
+model,selection_group,response_error,response_error_sd,departure_mae,departure_mae_sd,source
+Soft KL,Original validation-KL-selected,0.0693,0.0032,7.1786,0.6945,Main Table 1 and existing Figure 3 vector
+CE+KL,Original validation-KL-selected,0.0753,0.0016,7.1518,0.6311,Main Table 1 and existing Figure 3 vector
+Signed response,Original validation-KL-selected,0.0665,0.0050,7.1883,0.6994,Main Table 1 and existing Figure 3 vector
+Direction+magnitude,Original validation-KL-selected,0.0659,0.0042,7.1778,0.5417,Main Table 1 and existing Figure 3 vector
+MNL-S + ridge,Original validation-KL-selected,0.0564,0.0000,12.3539,0.0000,ridge diagnostic result
+Joint Soft KL,Timing-selected/modular,0.078912,0.005957,7.6083,0.7508,departure_comparison.csv
+Joint CE+KL,Timing-selected/modular,0.079567,0.003030,7.4256,0.9116,departure_comparison.csv
+Joint Signed,Timing-selected/modular,0.077859,0.004122,7.7150,0.6567,departure_comparison.csv
+Joint Direction+magnitude,Timing-selected/modular,0.076395,0.006267,7.5497,0.8005,departure_comparison.csv
+MNL-S + bounded linear,Timing-selected/modular,0.056438,0.000000,11.1887,1.2411,departure_summary.json
+MNL-S + independent neural timing,Timing-selected/modular,0.056438,0.000000,7.6056,0.7239,departure_summary.json

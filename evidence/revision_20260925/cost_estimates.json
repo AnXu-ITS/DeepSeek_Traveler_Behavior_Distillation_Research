@@ -1,0 +1,101 @@
+{
+  "cost_is_estimate_not_invoice": true,
+  "prices": {
+    "teacher": {
+      "offpeak_usd": 11.576748524000001,
+      "peak_usd": 23.153497048000002,
+      "offpeak_cny": 78.9323763,
+      "peak_cny": 157.8647526
+    },
+    "teacher_accessibility_neutral_ownership": {
+      "offpeak_usd": 7.079291824,
+      "peak_usd": 14.158583648,
+      "offpeak_cny": 48.2678988,
+      "peak_cny": 96.5357976
+    },
+    "teacher_neutral_ownership": {
+      "offpeak_usd": 0.5174791599999999,
+      "peak_usd": 1.0349583199999999,
+      "offpeak_cny": 3.528267,
+      "peak_cny": 7.056534
+    },
+    "teacher_ownership": {
+      "offpeak_usd": 0.516562552,
+      "peak_usd": 1.033125104,
+      "offpeak_cny": 3.5220173999999997,
+      "peak_cny": 7.0440347999999995
+    },
+    "e2_efficiency": {
+      "offpeak_usd": 0.757401348,
+      "peak_usd": 1.514802696,
+      "offpeak_cny": 5.1641001,
+      "peak_cny": 10.3282002
+    },
+    "primary_supervision_archives": {
+      "offpeak_usd": 65.831972184,
+      "peak_usd": 131.663944368,
+      "offpeak_cny": 448.8543558,
+      "peak_cny": 897.7087116
+    },
+    "other_historical_archives": {
+      "offpeak_usd": 16.43161674,
+      "peak_usd": 32.86323348,
+      "offpeak_cny": 112.0337505,
+      "peak_cny": 224.067501
+    },
+    "retained_total_deduplicated": {
+      "offpeak_usd": 102.711072332,
+      "peak_usd": 205.422144664,
+      "offpeak_cny": 700.3027658999999,
+      "peak_cny": 1400.6055317999999
+    }
+  },
+  "planning_reference_mean_tokens": {
+    "prompt_tokens": 1614.1458333333333,
+    "completion_tokens": 2260.1875,
+    "prompt_cache_hit_tokens": 978.5777777777778,
+    "prompt_cache_miss_tokens": 635.5680555555556
+  },
+  "budget": [
+    {
+      "id": "synthetic_pilot_12x12x3",
+      "successful_calls": 432,
+      "attempt_allowance": 476,
+      "assumption": "10% extra usage-bearing calls; reference token mix; not a confidence interval",
+      "expected_tokens_with_allowance": 1841083.2000000002,
+      "offpeak_usd": 2.33616630192,
+      "peak_usd": 4.67233260384,
+      "offpeak_cny": 15.928406604000003,
+      "peak_cny": 31.856813208000005,
+      "peak_no_cache_token_envelope_usd": 32.13982464,
+      "peak_no_cache_token_envelope_cny": 219.135168
+    },
+    {
+      "id": "formal_example_60x12x3",
+      "successful_calls": 2160,
+      "attempt_allowance": 2376,
+      "assumption": "10% extra usage-bearing calls; reference token mix; not a confidence interval",
+      "expected_tokens_with_allowance": 9205416.0,
+      "offpeak_usd": 11.6808315096,
+      "peak_usd": 23.3616630192,
+      "offpeak_cny": 79.64203302,
+      "peak_cny": 159.28406604,
+      "peak_no_cache_token_envelope_usd": 160.42904063999998,
+      "peak_no_cache_token_envelope_cny": 1093.834368
+    },
+    {
+      "id": "human_example_120x10x3",
+      "successful_calls": 3600,
+      "attempt_allowance": 3960,
+      "assumption": "10% extra usage-bearing calls; reference token mix; not a confidence interval",
+      "expected_tokens_with_allowance": 15342360.0,
+      "offpeak_usd": 19.468052516,
+      "peak_usd": 38.936105032,
+      "offpeak_cny": 132.7367217,
+      "peak_cny": 265.4734434,
+      "peak_no_cache_token_envelope_usd": 267.3817344,
+      "peak_no_cache_token_envelope_cny": 1823.05728
+    }
+  ],
+  "api_calls_executed_by_this_script": 0
+}

@@ -1,0 +1,77 @@
+{
+  "checks": {
+    "formal_n_30": true,
+    "primary_mean_recomputed": true,
+    "negative_delay_results_present": true,
+    "40_runs_complete": true,
+    "supply_contrasts_recomputed": true,
+    "source_hashes": true,
+    "ethics_verbatim": true,
+    "new_figures_vector": true,
+    "no_plaintext_api_key": true,
+    "original_figure1_preserved": true,
+    "original_figure1_caption_preserved": true
+  },
+  "numeric_density": {
+    "before_core_words": 8043,
+    "after_core_words": 5252,
+    "before_core_numeric_tokens": 297,
+    "after_core_numeric_tokens": 41,
+    "note": "Source token counts, including LaTeX, not visible prose word counts."
+  },
+  "figures": [
+    {
+      "file": "figure1_questions.pdf",
+      "embedded_images": 0,
+      "text_chars": 495,
+      "svg_has_editable_text": true,
+      "used_in_article": false
+    },
+    {
+      "file": "figure2_learning.pdf",
+      "embedded_images": 0,
+      "text_chars": 367,
+      "svg_has_editable_text": true,
+      "used_in_article": true
+    },
+    {
+      "file": "figure3_human.pdf",
+      "embedded_images": 0,
+      "text_chars": 670,
+      "svg_has_editable_text": true,
+      "used_in_article": true
+    },
+    {
+      "file": "figure4_decomposition.pdf",
+      "embedded_images": 0,
+      "text_chars": 199,
+      "svg_has_editable_text": true,
+      "used_in_article": true
+    },
+    {
+      "file": "figure5_supply.pdf",
+      "embedded_images": 0,
+      "text_chars": 502,
+      "svg_has_editable_text": true,
+      "used_in_article": true
+    },
+    {
+      "file": "figureA_generalization.pdf",
+      "embedded_images": 0,
+      "text_chars": 343,
+      "svg_has_editable_text": true,
+      "used_in_article": true
+    },
+    {
+      "file": "figureA_weights.pdf",
+      "embedded_images": 0,
+      "text_chars": 242,
+      "svg_has_editable_text": true,
+      "used_in_article": true
+    }
+  ],
+  "pages": {
+    "cas-sc-template": 25,
+    "supplement": 18
+  }
+}

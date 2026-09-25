@@ -1,0 +1,718 @@
+{
+  "schema_version": 1,
+  "pricing_checked": "2026-09-25",
+  "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+  "model": "deepseek-v4-pro",
+  "currency": "USD",
+  "peak_rates_per_million": {
+    "input_hit": 0.044,
+    "input_miss": 1.32,
+    "output": 3.96
+  },
+  "cny_peak_rates_per_million": {
+    "input_hit": 0.3,
+    "input_miss": 9.0,
+    "output": 27.0
+  },
+  "cny_pricing_source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+  "offpeak_multiplier": 0.5,
+  "scope": "Retained records only; union by completion_id; includes billed-token parse failures when usage exists. Not complete lifecycle cost or provider invoice.",
+  "limitations": [
+    "Missing usage is unknown, not zero.",
+    "Primary archives contain acquired labels beyond the final benchmark subset; not exact marginal final-model acquisition.",
+    "Other historical archives include deprecated S8 and earlier development; not current-model training cost.",
+    "Reasoning tokens are included in completion_tokens; never add them twice.",
+    "No historic rate schedule, credits, taxes, exchange conversion, complete failed-attempt ledger or hardware tariff is reconstructed."
+  ],
+  "sources": [
+    {
+      "records": 1502,
+      "unique_completions": 1502,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 1502,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 1502
+      },
+      "created_utc_range": [
+        "2026-08-27T00:31:35+00:00",
+        "2026-08-27T03:17:13+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2431492,
+        "completion_tokens": 5309636,
+        "prompt_cache_hit_tokens": 2064768,
+        "prompt_cache_miss_tokens": 366724
+      },
+      "total_tokens": 7741128,
+      "path": "data/singapore_accessibility/repeat_records.jsonl",
+      "sha256": "f205551bd1d7cc5b84d55ec97e237046738540ae3217e678b752d8ce9c5d055e",
+      "http_status_counts": {
+        "not_retained": 1502
+      },
+      "validity_counts": {
+        "not_retained": 1502
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 1502
+      }
+    },
+    {
+      "records": 1468,
+      "unique_completions": 1468,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 1468,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 1468
+      },
+      "created_utc_range": [
+        "2026-08-26T00:21:45+00:00",
+        "2026-08-26T03:46:53+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2376844,
+        "completion_tokens": 8148691,
+        "prompt_cache_hit_tokens": 1992960,
+        "prompt_cache_miss_tokens": 383884
+      },
+      "total_tokens": 10525535,
+      "path": "data/singapore_accessibility_s8_legacy/repeat_records.jsonl",
+      "sha256": "6d3d73bebb8d14fbd6a84806450f7801782ef9efbf2cd839da7036bfb9839361",
+      "http_status_counts": {
+        "not_retained": 1468
+      },
+      "validity_counts": {
+        "not_retained": 1468
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 1468
+      }
+    },
+    {
+      "records": 2640,
+      "unique_completions": 2640,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 2640,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 2640
+      },
+      "created_utc_range": [
+        "2026-08-24T02:12:20+00:00",
+        "2026-08-24T06:42:47+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2804724,
+        "completion_tokens": 10788064,
+        "prompt_cache_hit_tokens": 2379264,
+        "prompt_cache_miss_tokens": 425460
+      },
+      "total_tokens": 13592788,
+      "path": "data/student_s5_joint/repeat_records.jsonl",
+      "sha256": "d00a2dd86712fd29fdc1dab5c0a25aec6020c36fb132703da21b84cc914426b9",
+      "http_status_counts": {
+        "not_retained": 2640
+      },
+      "validity_counts": {
+        "not_retained": 2640
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 2640
+      }
+    },
+    {
+      "records": 576,
+      "unique_completions": 576,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 0,
+      "completions_missing_usage": 576,
+      "returned_models": {
+        "not_retained": 576
+      },
+      "created_utc_range": [
+        "2026-08-20T03:17:37+00:00",
+        "2026-08-20T06:46:32+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 0
+      },
+      "total_tokens": 0,
+      "path": "data/student_v0_2_a/repeat_records.jsonl",
+      "sha256": "1e0b412de4f96983278afbda0ae2641e0df46de6821fe929af8fd9af16280a92",
+      "http_status_counts": {
+        "not_retained": 576
+      },
+      "validity_counts": {
+        "not_retained": 576
+      },
+      "request_max_tokens_with_usage": {}
+    },
+    {
+      "records": 960,
+      "unique_completions": 960,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 960,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 960
+      },
+      "created_utc_range": [
+        "2026-08-21T03:18:00+00:00",
+        "2026-08-21T07:06:32+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 1017624,
+        "completion_tokens": 3197200,
+        "prompt_cache_hit_tokens": 883584,
+        "prompt_cache_miss_tokens": 134040
+      },
+      "total_tokens": 4214824,
+      "path": "data/student_v0_3/repeat_records.jsonl",
+      "sha256": "2df00ee087023199b2cc660ef59c0d52cc79a3549813545557536fff1eb8e5ab",
+      "http_status_counts": {
+        "not_retained": 960
+      },
+      "validity_counts": {
+        "not_retained": 960
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 960
+      }
+    },
+    {
+      "records": 1440,
+      "unique_completions": 1440,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 1440,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 1440
+      },
+      "created_utc_range": [
+        "2026-08-21T03:18:00+00:00",
+        "2026-08-22T03:28:25+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 1527216,
+        "completion_tokens": 4738802,
+        "prompt_cache_hit_tokens": 1296768,
+        "prompt_cache_miss_tokens": 230448
+      },
+      "total_tokens": 6266018,
+      "path": "data/student_v0_3_s1/repeat_records.jsonl",
+      "sha256": "b234512e9a6bdacad774f06f333f125acc074605ed8585a6c24a6464b7ecb884",
+      "http_status_counts": {
+        "not_retained": 1440
+      },
+      "validity_counts": {
+        "not_retained": 1440
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 1440
+      }
+    },
+    {
+      "records": 2139,
+      "unique_completions": 2139,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 2139,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 2139
+      },
+      "created_utc_range": [
+        "2026-08-21T03:18:00+00:00",
+        "2026-08-22T06:27:43+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2268660,
+        "completion_tokens": 7115601,
+        "prompt_cache_hit_tokens": 1900928,
+        "prompt_cache_miss_tokens": 367732
+      },
+      "total_tokens": 9384261,
+      "path": "data/student_v0_3_s2/repeat_records.jsonl",
+      "sha256": "513a4ad30620d181380fd1a13200aa1f690c33cf353855bc4aec14c4a7dee0f0",
+      "http_status_counts": {
+        "not_retained": 2139
+      },
+      "validity_counts": {
+        "not_retained": 2139
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 2139
+      }
+    },
+    {
+      "records": 4539,
+      "unique_completions": 4539,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 4539,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 4539
+      },
+      "created_utc_range": [
+        "2026-08-21T03:18:00+00:00",
+        "2026-08-23T05:43:26+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 4813848,
+        "completion_tokens": 16515830,
+        "prompt_cache_hit_tokens": 3982080,
+        "prompt_cache_miss_tokens": 831768
+      },
+      "total_tokens": 21329678,
+      "path": "data/student_v0_3_s3/repeat_records.jsonl",
+      "sha256": "35fd28e064bb8cf5ba51d2a9eddc2b7dff514979abf2149a905c16079bb1d589",
+      "http_status_counts": {
+        "not_retained": 4539
+      },
+      "validity_counts": {
+        "not_retained": 4539
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 4539
+      }
+    },
+    {
+      "records": 2280,
+      "unique_completions": 2280,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 2280,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 2280
+      },
+      "created_utc_range": [
+        "2026-08-23T01:14:33+00:00",
+        "2026-08-23T05:43:26+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2418150,
+        "completion_tokens": 9013797,
+        "prompt_cache_hit_tokens": 1976704,
+        "prompt_cache_miss_tokens": 441446
+      },
+      "total_tokens": 11431947,
+      "path": "data/student_v0_3_s3_new/repeat_records.jsonl",
+      "sha256": "3aa9e3bd3cf0697ac5c593cf2c5be997db073bac82912de02e2a5d90f7ac8f4c",
+      "http_status_counts": {
+        "not_retained": 2280
+      },
+      "validity_counts": {
+        "not_retained": 2280
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 2280
+      }
+    },
+    {
+      "records": 2259,
+      "unique_completions": 2259,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 2259,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 2259
+      },
+      "created_utc_range": [
+        "2026-08-21T03:18:00+00:00",
+        "2026-08-22T07:18:31+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2395698,
+        "completion_tokens": 7502033,
+        "prompt_cache_hit_tokens": 2005376,
+        "prompt_cache_miss_tokens": 390322
+      },
+      "total_tokens": 9897731,
+      "path": "data/student_v0_3_s4/repeat_records.jsonl",
+      "sha256": "808e0c43f0f6941bc50d43582698946ce73944f6355dbf36ca5cf4f53ca1197b",
+      "http_status_counts": {
+        "not_retained": 2259
+      },
+      "validity_counts": {
+        "not_retained": 2259
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 2259
+      }
+    },
+    {
+      "records": 5064,
+      "unique_completions": 1475,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 3589,
+      "completions_with_usage": 1475,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 1475
+      },
+      "created_utc_range": [
+        "2026-09-21T15:35:23+00:00",
+        "2026-09-21T16:30:19+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 1968824,
+        "completion_tokens": 5574925,
+        "prompt_cache_hit_tokens": 1192832,
+        "prompt_cache_miss_tokens": 775992
+      },
+      "total_tokens": 7543749,
+      "path": "outputs/revision_20260921/teacher/calls.jsonl",
+      "sha256": "0d2214c21ec10ec0b61b1f5dc7d73baaf740173e1ceb76de53ffa90db242d8df",
+      "http_status_counts": {
+        "200": 1475,
+        "429": 2692,
+        "402": 897
+      },
+      "validity_counts": {
+        "True": 1440,
+        "False": 3624
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 128,
+        "8192": 425,
+        "16384": 919,
+        "32768": 3
+      }
+    },
+    {
+      "records": 2880,
+      "unique_completions": 1440,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 1440,
+      "completions_with_usage": 1440,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 1440
+      },
+      "created_utc_range": [
+        "2026-09-21T16:35:54+00:00",
+        "2026-09-21T17:01:40+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2324370,
+        "completion_tokens": 3254670,
+        "prompt_cache_hit_tokens": 1409152,
+        "prompt_cache_miss_tokens": 915218
+      },
+      "total_tokens": 5579040,
+      "path": "outputs/revision_20260921/teacher_accessibility_neutral_ownership/calls.jsonl",
+      "sha256": "adcb20be3be6826e13b49950667da4b185ce101034c2ac9f82a859810fe8d729",
+      "http_status_counts": {
+        "402": 1440,
+        "200": 1440
+      },
+      "validity_counts": {
+        "False": 1440,
+        "True": 1440
+      },
+      "request_max_tokens_with_usage": {
+        "16384": 1440
+      }
+    },
+    {
+      "records": 240,
+      "unique_completions": 120,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 120,
+      "completions_with_usage": 120,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 120
+      },
+      "created_utc_range": [
+        "2026-09-21T17:03:38+00:00",
+        "2026-09-21T17:06:36+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 159510,
+        "completion_tokens": 238704,
+        "prompt_cache_hit_tokens": 94720,
+        "prompt_cache_miss_tokens": 64790
+      },
+      "total_tokens": 398214,
+      "path": "outputs/revision_20260921/teacher_neutral_ownership/calls.jsonl",
+      "sha256": "46b72517a3a8c1cae42f83f74287e7604351b83eeb00095aa40b2efc4e750449",
+      "http_status_counts": {
+        "402": 120,
+        "200": 120
+      },
+      "validity_counts": {
+        "False": 120,
+        "True": 120
+      },
+      "request_max_tokens_with_usage": {
+        "16384": 120
+      }
+    },
+    {
+      "records": 471,
+      "unique_completions": 120,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 351,
+      "completions_with_usage": 120,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 120
+      },
+      "created_utc_range": [
+        "2026-09-21T15:56:19+00:00",
+        "2026-09-21T16:34:03+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 160182,
+        "completion_tokens": 234800,
+        "prompt_cache_hit_tokens": 84736,
+        "prompt_cache_miss_tokens": 75446
+      },
+      "total_tokens": 394982,
+      "path": "outputs/revision_20260921/teacher_ownership/calls.jsonl",
+      "sha256": "f0ebf4e09026861fdce8725fcdc13eefe9820029fcf4bc695e8dfed52386cf65",
+      "http_status_counts": {
+        "429": 265,
+        "200": 120,
+        "402": 86
+      },
+      "validity_counts": {
+        "False": 351,
+        "True": 120
+      },
+      "request_max_tokens_with_usage": {
+        "8192": 29,
+        "32768": 2,
+        "16384": 89
+      }
+    },
+    {
+      "records": 100,
+      "unique_completions": 87,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 13,
+      "completions_with_usage": 87,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 87
+      },
+      "created_utc_range": [
+        "2026-08-28T00:50:23+00:00",
+        "2026-08-28T03:45:49+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 116732,
+        "completion_tokens": 353019,
+        "prompt_cache_hit_tokens": 29184,
+        "prompt_cache_miss_tokens": 87548
+      },
+      "total_tokens": 469751,
+      "path": "evidence/e2_efficiency/deepseek_calls.jsonl",
+      "sha256": "34e59d1f5216d064799470f9e3f3257d758997d4864c8f63e9df53c73f17bf53",
+      "http_status_counts": {
+        "200": 87,
+        "not_retained": 13
+      },
+      "validity_counts": {
+        "True": 87,
+        "False": 13
+      },
+      "request_max_tokens_with_usage": {
+        "not_retained": 87
+      }
+    }
+  ],
+  "groups": {
+    "teacher": {
+      "records": 5064,
+      "unique_completions": 1475,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 3589,
+      "completions_with_usage": 1475,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 1475
+      },
+      "created_utc_range": [
+        "2026-09-21T15:35:23+00:00",
+        "2026-09-21T16:30:19+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 1968824,
+        "completion_tokens": 5574925,
+        "prompt_cache_hit_tokens": 1192832,
+        "prompt_cache_miss_tokens": 775992
+      },
+      "total_tokens": 7543749
+    },
+    "teacher_accessibility_neutral_ownership": {
+      "records": 2880,
+      "unique_completions": 1440,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 1440,
+      "completions_with_usage": 1440,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 1440
+      },
+      "created_utc_range": [
+        "2026-09-21T16:35:54+00:00",
+        "2026-09-21T17:01:40+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2324370,
+        "completion_tokens": 3254670,
+        "prompt_cache_hit_tokens": 1409152,
+        "prompt_cache_miss_tokens": 915218
+      },
+      "total_tokens": 5579040
+    },
+    "teacher_neutral_ownership": {
+      "records": 240,
+      "unique_completions": 120,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 120,
+      "completions_with_usage": 120,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 120
+      },
+      "created_utc_range": [
+        "2026-09-21T17:03:38+00:00",
+        "2026-09-21T17:06:36+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 159510,
+        "completion_tokens": 238704,
+        "prompt_cache_hit_tokens": 94720,
+        "prompt_cache_miss_tokens": 64790
+      },
+      "total_tokens": 398214
+    },
+    "teacher_ownership": {
+      "records": 471,
+      "unique_completions": 120,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 351,
+      "completions_with_usage": 120,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 120
+      },
+      "created_utc_range": [
+        "2026-09-21T15:56:19+00:00",
+        "2026-09-21T16:34:03+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 160182,
+        "completion_tokens": 234800,
+        "prompt_cache_hit_tokens": 84736,
+        "prompt_cache_miss_tokens": 75446
+      },
+      "total_tokens": 394982
+    },
+    "e2_efficiency": {
+      "records": 100,
+      "unique_completions": 87,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 13,
+      "completions_with_usage": 87,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "deepseek-v4-pro": 87
+      },
+      "created_utc_range": [
+        "2026-08-28T00:50:23+00:00",
+        "2026-08-28T03:45:49+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 116732,
+        "completion_tokens": 353019,
+        "prompt_cache_hit_tokens": 29184,
+        "prompt_cache_miss_tokens": 87548
+      },
+      "total_tokens": 469751
+    },
+    "primary_supervision_archives": {
+      "records": 8681,
+      "unique_completions": 8681,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 8681,
+      "completions_missing_usage": 0,
+      "returned_models": {
+        "not_retained": 8681
+      },
+      "created_utc_range": [
+        "2026-08-21T03:18:00+00:00",
+        "2026-08-27T03:17:13+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 10050064,
+        "completion_tokens": 32613530,
+        "prompt_cache_hit_tokens": 8426112,
+        "prompt_cache_miss_tokens": 1623952
+      },
+      "total_tokens": 42663594
+    },
+    "other_historical_archives": {
+      "records": 2044,
+      "unique_completions": 2044,
+      "duplicate_completion_records": 0,
+      "records_without_completion_id": 0,
+      "completions_with_usage": 1468,
+      "completions_missing_usage": 576,
+      "returned_models": {
+        "not_retained": 2044
+      },
+      "created_utc_range": [
+        "2026-08-20T03:17:37+00:00",
+        "2026-08-26T03:46:53+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 2376844,
+        "completion_tokens": 8148691,
+        "prompt_cache_hit_tokens": 1992960,
+        "prompt_cache_miss_tokens": 383884
+      },
+      "total_tokens": 10525535
+    },
+    "retained_total_deduplicated": {
+      "records": 28558,
+      "unique_completions": 13967,
+      "duplicate_completion_records": 9078,
+      "records_without_completion_id": 5513,
+      "completions_with_usage": 13391,
+      "completions_missing_usage": 576,
+      "returned_models": {
+        "not_retained": 10725,
+        "deepseek-v4-pro": 3242
+      },
+      "created_utc_range": [
+        "2026-08-20T03:17:37+00:00",
+        "2026-09-21T17:06:36+00:00"
+      ],
+      "usage": {
+        "prompt_tokens": 17156526,
+        "completion_tokens": 50418339,
+        "prompt_cache_hit_tokens": 13229696,
+        "prompt_cache_miss_tokens": 3926830
+      },
+      "total_tokens": 67574865
+    }
+  }
+}

@@ -1,0 +1,4 @@
+Paired responses expose errors hidden by static imitation scores.
+Response supervision helps covered tasks but can fail on withheld delays.
+Teacher fidelity does not determine agreement with stated human responses.
+Perceived delay and physical service reduction produce different demand changes.

@@ -1,0 +1,18 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Public transport supply attributes used to condition the Student model.}
+\label{tab:supply_features}
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Attribute & Behavioral role \\
+\midrule
+Access walking time & Burden from origin to boarding stop \\
+Egress walking time & Burden from alighting stop to destination \\
+Waiting time & Schedule-dependent waiting for a connection \\
+In-vehicle time & Time aboard public transport \\
+Transfer time & Time associated with transferring between services \\
+Coverage score & In-vehicle distance divided by OD distance, clipped to $[0,1]$ \\
+Feasibility flag & Whether the specified search identifies a PT connection \\
+\bottomrule
+\end{tabularx}
+\end{table}

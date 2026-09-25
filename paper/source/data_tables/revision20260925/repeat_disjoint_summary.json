@@ -1,0 +1,101 @@
+{
+  "n_endpoints": 373,
+  "n_pairs": 350,
+  "repeat_counts": {
+    "3": 287,
+    "5": 86
+  },
+  "allocations": {
+    "3": 6,
+    "5": 30
+  },
+  "source_sha256": {
+    "data/student_v0_3_s3/aggregated_teacher_dataset.jsonl": "549e127957a4e035d91927163c7ef9a16aaab52ee049446ff5cb1932b5b39c87",
+    "data/student_v0_3_s3/repeat_records.jsonl": "35fd28e064bb8cf5ba51d2a9eddc2b7dff514979abf2149a905c16079bb1d589",
+    "data/student_s5_joint/aggregated_teacher_dataset_k5.jsonl": "2dcc05180853abfe9475392c21ea9f3912a548fd5f899b5f1c249c9572c063b7",
+    "data/student_s5_joint/repeat_records.jsonl": "d00a2dd86712fd29fdc1dab5c0a25aec6020c36fb132703da21b84cc914426b9",
+    "data/singapore_accessibility/states_with_teacher.jsonl": "e620d386486b8262dd8a5101e5d80e65fe69ef9d95337c0c86e56672bc2925a9",
+    "data/singapore_accessibility/repeat_records.jsonl": "f205551bd1d7cc5b84d55ec97e237046738540ae3217e678b752d8ce9c5d055e"
+  },
+  "scope": "Equal-size disjoint Teacher repeat sensitivity, shared endpoint partitions and model comparisons. Thirty correlated allocations are not 30 independent experiments or a precise noise ceiling; no mechanism repeat records available.",
+  "summaries": [
+    {
+      "model": "ce_kl_seed2026",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08939374534874113,
+      "student_to_b": 0.08956251886678629
+    },
+    {
+      "model": "ce_kl_seed42",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08526128995085457,
+      "student_to_b": 0.08541714429807877
+    },
+    {
+      "model": "ce_kl_seed7",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08835965891159665,
+      "student_to_b": 0.08850931371908598
+    },
+    {
+      "model": "direction_magnitude_seed2026",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08171299947400489,
+      "student_to_b": 0.0818462591255991
+    },
+    {
+      "model": "direction_magnitude_seed42",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.07384618218323415,
+      "student_to_b": 0.07394782793806488
+    },
+    {
+      "model": "direction_magnitude_seed7",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08200708086635172,
+      "student_to_b": 0.08216130772386684
+    },
+    {
+      "model": "signed_l1_seed2026",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08158284360198075,
+      "student_to_b": 0.08170705358502418
+    },
+    {
+      "model": "signed_l1_seed42",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.07452601021642931,
+      "student_to_b": 0.07464168169777724
+    },
+    {
+      "model": "signed_l1_seed7",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08267258227428895,
+      "student_to_b": 0.08281811237544472
+    },
+    {
+      "model": "soft_kl_seed2026",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08491467906570165,
+      "student_to_b": 0.08505530413170047
+    },
+    {
+      "model": "soft_kl_seed42",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.07850984409718374,
+      "student_to_b": 0.07863077949858789
+    },
+    {
+      "model": "soft_kl_seed7",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.08301185903071588,
+      "student_to_b": 0.08314798102024763
+    },
+    {
+      "model": "mnl_s",
+      "teacher_self_gap": 0.07261261904761905,
+      "student_to_a": 0.07230801594120076,
+      "student_to_b": 0.07243962165514803
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "call_summary": [
+    {
+      "cohort": "pilot",
+      "regime": "positive",
+      "n_calls": 429,
+      "first_utc": "2026-09-25T04:47:11.294858+00:00",
+      "last_utc": "2026-09-25T05:19:12.515021+00:00",
+      "median_output_tokens": 2658.0,
+      "returned_models": [
+        "deepseek-v4.1-flash"
+      ]
+    },
+    {
+      "cohort": "pilot",
+      "regime": "zero",
+      "n_calls": 3,
+      "first_utc": "2026-09-25T05:04:54.588088+00:00",
+      "last_utc": "2026-09-25T05:04:58.192839+00:00",
+      "median_output_tokens": 130.0,
+      "returned_models": [
+        "deepseek-v4.1-flash"
+      ]
+    },
+    {
+      "cohort": "formal",
+      "regime": "positive",
+      "n_calls": 976,
+      "first_utc": "2026-09-25T05:21:40.230973+00:00",
+      "last_utc": "2026-09-25T06:22:56.260406+00:00",
+      "median_output_tokens": 2774.0,
+      "returned_models": [
+        "deepseek-v4.1-flash"
+      ]
+    },
+    {
+      "cohort": "formal",
+      "regime": "zero",
+      "n_calls": 104,
+      "first_utc": "2026-09-25T05:50:31.141551+00:00",
+      "last_utc": "2026-09-25T06:22:07.154643+00:00",
+      "median_output_tokens": 139.0,
+      "returned_models": [
+        "deepseek-v4.1-flash"
+      ]
+    }
+  ],
+  "primary_persona_groups": [
+    {
+      "cohort": "pilot",
+      "regime": "all_positive",
+      "n_personas": 11,
+      "mean": -0.005195593281439942,
+      "ci_low": -0.009111991521391034,
+      "ci_high": -0.001997548468871478
+    },
+    {
+      "cohort": "pilot",
+      "regime": "mixed",
+      "n_personas": 1,
+      "mean": 0.0019086529117082335,
+      "ci_low": null,
+      "ci_high": null
+    },
+    {
+      "cohort": "formal",
+      "regime": "all_positive",
+      "n_personas": 24,
+      "mean": -0.002986840180505356,
+      "ci_low": -0.004957822045920515,
+      "ci_high": -0.0012057373682419071
+    },
+    {
+      "cohort": "formal",
+      "regime": "mixed",
+      "n_personas": 6,
+      "mean": -0.004048574033502107,
+      "ci_low": -0.0077046330497390235,
+      "ci_high": -0.0011689921886864167
+    }
+  ],
+  "post_hoc": true,
+  "protocol_sha256": "d4d82c22fba92f8796b10643079f60b2f7641d79eca23a8a9cd428edbe7095c9",
+  "code_sha256": "94c70b7b9c5b1f4d2187396124a8af227ebfa41a035b40f47d45e23c14aabf0b",
+  "primary_samples_unchanged": true,
+  "interpretation": "Post hoc infrastructure diagnostic. Temporal service metadata is confounded with persona order; group differences cannot identify a causal reasoning or backend effect. Returned alias without immutable fingerprint is not proof of backend identity. Planning pilot and formal service mix may differ.",
+  "additional_limit": "Reported reasoning-token differences can reflect serving/reporting changes; they do not prove a different backend model or the absence of internal reasoning. Pointwise group intervals are descriptive, not a causal comparison."
+}

@@ -1,0 +1,65 @@
+{
+  "checks": {
+    "same_initialization_within_seed": true,
+    "same_training_schedule_within_seed": true,
+    "all_27_complete": true,
+    "historical_weight1_exact_regression": true
+  },
+  "regression": [
+    {
+      "variant": "soft_kl",
+      "seed": 42,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "soft_kl",
+      "seed": 2026,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "soft_kl",
+      "seed": 7,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "signed_l1",
+      "seed": 42,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "signed_l1",
+      "seed": 2026,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "signed_l1",
+      "seed": 7,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "direction_magnitude",
+      "seed": 42,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "direction_magnitude",
+      "seed": 2026,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    },
+    {
+      "variant": "direction_magnitude",
+      "seed": 7,
+      "same_epoch": true,
+      "max_parameter_difference": 0.0
+    }
+  ],
+  "driver_sha256": "8d547403f45883865868729961aaa1a3c414af4f70ca3e0884f389a4ff9b1cca"
+}

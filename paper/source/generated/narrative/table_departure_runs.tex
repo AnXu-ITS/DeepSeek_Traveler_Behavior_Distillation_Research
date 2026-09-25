@@ -1,0 +1,33 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Timing models selected by validation departure MAE, evaluated on the 437 test states.}
+\label{tab:departure_runs}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrrrr@{}}
+\toprule
+Model & Seed & Epoch & MAE & Median & P90 & Parameters & Train (s) & Infer. ($\mu$s) \\
+\midrule
+Soft KL & 42 & 2 & 8.461 & 3.355 & 25.611 & 24562 & 29.9 & 2.00 \\
+Soft KL & 2026 & 117 & 7.048 & 5.236 & 15.801 & 24562 & 27.3 & 2.39 \\
+Soft KL & 7 & 31 & 7.315 & 5.395 & 16.061 & 24562 & 38.1 & 2.07 \\
+CE + KL & 42 & 2 & 8.455 & 3.348 & 25.600 & 24562 & 33.1 & 1.40 \\
+CE + KL & 2026 & 108 & 6.719 & 5.452 & 14.114 & 24562 & 38.5 & 2.23 \\
+CE + KL & 7 & 36 & 7.103 & 5.110 & 15.388 & 24562 & 34.9 & 1.83 \\
+Signed & 42 & 2 & 8.464 & 3.355 & 25.612 & 24562 & 33.8 & 1.91 \\
+Signed & 2026 & 35 & 7.441 & 5.399 & 15.143 & 24562 & 33.2 & 1.78 \\
+Signed & 7 & 30 & 7.239 & 5.255 & 15.938 & 24562 & 30.9 & 1.75 \\
+Dir. + mag. & 42 & 2 & 8.459 & 3.339 & 25.592 & 24562 & 30.2 & 1.67 \\
+Dir. + mag. & 2026 & 108 & 6.952 & 4.858 & 14.918 & 24562 & 34.6 & 1.79 \\
+Dir. + mag. & 7 & 30 & 7.238 & 5.397 & 16.072 & 24562 & 30.2 & 1.89 \\
+MNL + bounded & 42 & 56 & 10.237 & 8.226 & 19.171 & 555 & 2.4 & 0.20 \\
+MNL + bounded & 2026 & 31 & 10.737 & 7.321 & 24.947 & 555 & 2.4 & 0.19 \\
+MNL + bounded & 7 & 22 & 12.592 & 10.687 & 23.368 & 555 & 2.6 & 0.19 \\
+MNL + neural & 42 & 2 & 8.423 & 3.282 & 25.563 & 18733 & 19.7 & 1.30 \\
+MNL + neural & 2026 & 116 & 7.348 & 5.248 & 15.745 & 18733 & 19.8 & 1.91 \\
+MNL + neural & 7 & 97 & 7.046 & 5.231 & 15.023 & 18733 & 23.7 & 1.82 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip{\footnotesize All timing errors are in minutes. Every run completes 120 epochs and 6,360 updates; Epoch identifies the minimum validation departure-MAE checkpoint. For the modular Students, parameters include the 444 fixed MNL choice coefficients and the timing predictor. Inference time is the median of 30 batches of the 437 encoded states divided by 437, after five untimed calls and with two CPU threads, excluding encoding and transport preparation. Concurrent workload limits cross-run timing comparisons.}
+\end{table}
+

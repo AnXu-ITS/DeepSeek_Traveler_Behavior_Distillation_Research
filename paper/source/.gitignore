@@ -1,0 +1,17 @@
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.spl
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+*.lot
+*.lof
+*.abs
+# Root PDFs are local build outputs; figure PDFs under figures/ are submission assets.
+/cas-sc-template.pdf
+/supplement.pdf
+!supplement.aux

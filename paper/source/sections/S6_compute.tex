@@ -1,0 +1,25 @@
+\section{Computational measurements}
+\label{sec:supp_compute}
+Inference time for choice and timing together is measured on the 437 test states after feature encoding, using two CPU threads. After five untimed calls, 30 batches are timed, and the median batch time is divided by 437 for each seed (Table~\ref{tab:departure_runs}). MNL-S with neural timing requires $1.68\pm0.33$ microseconds per state, compared with $0.19\pm0.002$ with bounded-linear timing and 1.78--2.16 microseconds for the joint neural Students. Feature encoding and route preparation are not included.
+
+The Teacher and SA-Student are compared on the same first 100 states, queried one at a time. The Teacher answers 87 of the 100 requests successfully, taking 86.539 seconds per successful request on average (95\% bootstrap interval 76.745--96.550), whereas SA-Student takes 0.272 milliseconds per state on a local processor. Neither figure includes the construction of a full population. Table~\ref{tab:inference_timing} distinguishes measured values from values scaled to larger populations.
+\input{generated/narrative/table_inference.tex}
+
+The nested Singapore populations contain 1,000, 10,000, 20,000 and 50,000 people, simulated with flow and storage capacity factors of 0.3 throughout (Table~\ref{tab:scale_full}). Construction time covers feature preparation, behavioral prediction and plan generation. The value for 1,000 people is the median of three constructions with identical behavioral predictions. Because larger populations also load the network more heavily at unchanged capacity factors, their simulation times do not correspond to calibrated city populations.
+\input{generated/narrative/table_scale.tex}
+
+Construction with and without reuse is compared for the same population and scenario. With reuse, route and accessibility calculations that depend only on the network and timetable are taken from an earlier construction, while Student predictions are recomputed. Construction time falls from 3,223.6 to 469.5 seconds in Singapore and from 10,491.8 to 103.2 seconds in Helsinki (Table~\ref{tab:pipeline}). All 10,000 mode and origin--destination assignments are unchanged, and only two Singapore departures and one Helsinki departure differ, by 0.01 minutes after rounding.
+\input{generated/narrative/table_pipeline.tex}
+All constructions ran on a machine with 24 logical CPU cores and 31.4 GB of memory, using PyTorch without GPU acceleration. Each city was measured once with reuse. The 50,000-person construction partly overlapped a preliminary Helsinki run, and one Helsinki delay construction shared the machine with other work, so these timings describe this machine under its recorded workload. The full cost of distillation would also include acquisition and retry charges that were not recorded in full. The retrospective accounting below uses available usage records and does not fill missing charges with zeros. The largest simulated population has 50,000 people, and the separate measurement on 100,000 states concerns inference alone.
+\FloatBarrier
+
+\subsection{Retrospective token accounting}
+The accounting script reads retained repeat and API-call records, deduplicates them by completion ID and exports only aggregate counts and file hashes. At peak rates, a completion with $T_h$ cached input tokens, $T_m$ uncached input tokens and $T_o$ output tokens is repriced as
+\begin{equation}
+ C_{\mathrm{API}}=(0.044T_h+1.32T_m+3.96T_o)/10^6\quad\mathrm{USD}.
+\end{equation}
+Off-peak rates are half these values. These are the provider's rates checked on 25 September 2026, not a currency conversion or recovered invoice. The separately published CNY rates give CNY 700.30--1,400.61 for the same retained metered total. Promotions, account credits, tax treatment and unmetered requests are not reconstructed. The reproducible aggregate ledger is included with the manuscript under \path{reproduction/cost_audit/}; it contains no participant-level payloads.
+
+The final same-task campaign made 2,880 recorded attempts: 1,440 valid responses and 1,440 HTTP 402 failures without usage. Its metered responses contain 1,409,152 cached and 915,218 uncached input tokens and 3,254,670 output tokens. Unknown charges for failures are not asserted to be zero. The earlier generic-prompt campaign had 1,475 usage-bearing responses, of which 35 were rejected by parsing; their tokens remain in the cost sum. The final campaign consumed an average of 1,614 input and 2,260 output tokens per valid response, which can inform a workload-matched budget but is not a guaranteed token ceiling for other prompts.
+
+The 12 retained controlled-neural training status files report 29.58--32.13 seconds per fit on the recorded CPU setup, or 371.09 seconds summed over the fits. This sum is historical fit time, not elapsed campaign time or the complete training and adaptation history. No hardware rental or electricity charge was recorded. For reuse, the original acquisition cost is sunk; retraining from frozen targets adds no Teacher calls, while collecting new targets must be budgeted separately.

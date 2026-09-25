@@ -1,0 +1,132 @@
+%% 
+%% Copyright 2019-2020 Elsevier Ltd
+%% 
+%% This file is part of the 'CAS Bundle'.
+%% --------------------------------------
+%% 
+%% Template article for cas-sc documentclass for 
+%% single column output.
+
+\documentclass[a4paper,fleqn]{cas-sc}
+\pdfminorversion=7
+
+\usepackage{tablefootnote}
+\usepackage{appendix}
+\usepackage{threeparttable}
+\usepackage{afterpage}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage[authoryear]{natbib}
+\usepackage{caption}
+\captionsetup{format=plain, indention=0pt}
+\captionsetup[figure]{font=small,labelfont=bf}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	citecolor=blue,
+}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage[above]{placeins}
+\usepackage{microtype}
+\setlength{\emergencystretch}{2em}
+\usepackage{xr}
+\externaldocument[supp-]{supplement}
+% Non-floating table blocks inside a common figure/table result float.
+% They use the CAS table caption, retain independent counters and labels,
+% and allow the visual summary and its exact values to stay on the same page.
+\ExplSyntaxOn
+\NewDocumentEnvironment{resulttable}{}
+  {\begin{minipage}{\linewidth}
+   \__reset_tbl:
+   \dim_set:Nn \l_tbl_width_dim {\linewidth}
+   \cs_set:cpn {@captype} {table}
+   \cs_set_eq:cN {@makecaption} \__make_tbl_caption:nn
+   \centering\small}
+  {\end{minipage}}
+\ExplSyntaxOff
+
+\usepackage[nameinlink]{cleveref}
+\Crefname{figure}{Fig.}{Figs.}
+\crefname{figure}{fig.}{figs.}
+\Crefname{equation}{Eq.}{Eqs.}
+
+%%%Author macros
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+\tsc{EP}
+\tsc{PMS}
+\tsc{BEC}
+\tsc{DE}
+%%%
+
+\begin{document}
+\ExplSyntaxOn
+\bool_gset_true:N \g_stm_nologo_bool
+\ExplSyntaxOff
+\let\printorcid\relax
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{4}
+\setcounter{totalnumber}{10}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.9}
+
+\shorttitle{Auditing LLM-Derived Traveler Responses}
+\shortauthors{A. Xu et al.}
+
+\title [mode = title]{Beyond Static Imitation: Auditing LLM-Derived Traveler Responses for Transport Simulation}
+
+\author[1]{An Xu}
+\ead{AnX.RTL2324@tum-asia.edu.sg}
+
+\author[2]{Zekai Jin}
+
+\author[2]{Chengbo Zhang}
+
+
+\author[1]{Yunfei Yin}
+\cormark[1]
+\ead{yunfeiyin@hit.edu.cn}
+
+\address[1]{School of Transportation Science and Engineering, Harbin Institute of Technology, Harbin 150090, China}
+\address[2]{Department of Civil Engineering, McGill University, Montreal, QC H3A 0C3, Canada}
+
+\cortext[cor1]{Corresponding author: Yunfei Yin (yunfeiyin@hit.edu.cn).}
+
+\begin{abstract}
+Transport scenario analysis needs models that reproduce how choices change when travel conditions change. Distilling a large language model (LLM) into a compact traveler model can reduce repeated inference costs, but agreement with the LLM does not establish agreement with people or with executed travel. We evaluate this chain through paired Teacher--Student responses, independent stated-choice surveys and controlled transit-supply experiments. Matched training shows a modest benefit from explicit response supervision, while a logit Student achieves greater fidelity to the archived Teacher. A new synthetic-persona test supports the response-learning gain under full training, but the advantage reverses on delay scenarios when that intervention family is withheld. In the human surveys, the Teacher-best Student predicts an increase in public-transport use under poorer accessibility where respondents report a decline. Network experiments further distinguish a perceived-delay input from an actual reduction in scheduled service: the two changes produce markedly different demand responses, even with the same population and assignment rule. These findings show why compression fidelity, human agreement and execution must be evaluated separately. Response-specific comparisons help identify the data or model component requiring improvement before a fast behavioral surrogate is used for transport scenario analysis.
+\end{abstract}
+
+\begin{keywords}
+behavioral distillation \sep response fidelity \sep large language models \sep stated choice \sep agent-based transport simulation
+\end{keywords}
+\maketitle
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_methodology}
+\input{sections/04_experimental_design}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+\section*{Data and code availability}
+The archived benchmark, selected models, analysis scripts and compact new-experiment evidence are retained in the research repository, \url{https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research}. The new experimental evidence is pinned to commit \texttt{ba7c5d3}; the complete identifier and source hashes accompany the figure data. The article source includes the aggregate CSV/JSON inputs and scripts needed to regenerate its figures. Frozen API targets permit re-evaluation without new calls. Participant-level survey records and participant-linked payloads remain separately held subject to privacy and applicable permissions. Access to restricted materials should be requested from the corresponding author. Fresh network execution also requires the documented supply files and MATSim environment. Supplementary Section~\ref{supp-sec:materials_scope} distinguishes these dependencies from locally reproducible analysis.
+\FloatBarrier
+\appendix
+\input{sections/A_inputs}
+\input{sections/B_models}
+\input{sections/C_comparisons}
+\input{sections/D_new_evidence}
+\FloatBarrier
+\clearpage
+\setlength{\bibsep}{0pt}
+\bibliographystyle{cas-model2-names}
+\bibliography{references}
+\end{document}

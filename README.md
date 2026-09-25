@@ -1,8 +1,8 @@
 # DeepSeek Traveler Behavior Distillation Research
 
-**Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation**
+**Beyond Static Imitation: Auditing LLM-Derived Traveler Responses for Transport Simulation**
 
-An Xu, Zekai Jin Chengbo Zhang and Yunfei Yin
+An Xu, Zekai Jin, Chengbo Zhang and Yunfei Yin
 
 This project studies whether a compact traveler model can preserve an LLM Teacher's **response to changing travel conditions**, and whether that response remains useful when compared with stated choices and carried into transport simulation. The Students predict probabilities for car, public transport (PT), bicycle and walking, together with a departure-time adjustment. Behavioral prediction runs locally after training.
 
@@ -10,7 +10,7 @@ This project studies whether a compact traveler model can preserve an LLM Teache
 
 ![Figure 1. Research direction: preserving responses for the same traveler and the same trip.](docs/assets/figure1.png)
 
-*Figure 1 from the current manuscript. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Download the original PDF](docs/assets/figure1.pdf).*
+*Original Figure 1 retained: traveler--trip pairing and illustrative pre-routing demand responses. The bars are synthetic mode assignments, not survey observations. [Vector PDF](docs/assets/figure1.pdf).*
 
 ## Research questions
 
@@ -27,6 +27,8 @@ This project studies whether a compact traveler model can preserve an LLM Teache
 | Singapore: 332 people; Shanghai: 321 modeled people | SA-Student accuracy **66.93% / 80.46%** | Accuracy alone is insufficient: intervention-specific response discrepancies remain |
 | Singapore poorer PT access | MNL-S predicts **+13.85 pp** PT response; respondents show **−24.40 pp** | The model closest to the Teacher can reverse a human response |
 | Helsinki: 1,000 fixed travelers, 140 runs | SA-Student deterministic response: **−13.10 pp** predicted versus **−12.30 pp** simulated | Feasibility-constrained assignment improves routability but does not necessarily reduce the response gap |
+| Thirty new synthetic personas, distinct from the pilot | Signed-response minus soft-KL error **−0.00320**, 95% paired interval **[−0.00486, −0.00162]** | Cross-model agreement at one fixed trip; delayed-state comparisons reverse under delay-family holdout |
+| Four physical-supply arms; five paired assignment seeds | SA-Student boarding change: about **−14 pp** for perceived delay and **−0.64 pp** for reduced supply with updated inputs | A behavioral delay input does not substitute for a physical service-reduction experiment |
 
 These are distinct evidence levels. Teacher judgments are numerical elicited targets, the surveys are convenience/snowball stated-choice samples, and MATSim outcomes are simulated trips. The study does not establish population-representative behavior, causal policy effects or citywide field validation. [Full results and uncertainty](docs/RESULTS.md).
 
@@ -55,7 +57,9 @@ This is the deployment sequence. Training uses offline Teacher targets; the eval
 | Researcher | [Data provenance](docs/DATA_SOURCES.md) → [training objectives and splits](docs/TRAINING.md) → [questionnaire instruments and results](docs/surveys/README.md) |
 | Model user | [Model card and quick start](docs/MODEL_USE.md) → [execution workflow](docs/EXECUTION_WORKFLOW.md) |
 
-The [main article](paper/cas-sc-template.pdf) and [supplement](paper/supplement.pdf) are the 24 September 2026 manuscript snapshot. They are research manuscripts; no publication acceptance is claimed. Their availability paragraphs predate this repository expansion; the [current inventory](docs/REPRODUCIBILITY.md) describes the files now included.
+The [main article](paper/revision_20260925/cas-sc-template.pdf) now incorporates the completed controlled, new-reference and physical-supply experiments, with Appendices A–D for interpretation. The [supplement](paper/revision_20260925/supplement.pdf) retains detailed reproduction material. [Editable sources and rebuild commands](paper/source/README.md), [revision report](paper/source/editorial_notes/REVISION_NARRATIVE_CN.md), and [related-work reading notes](docs/RELATED_WORK_READING_CN.md) accompany the draft. Seven new figures are supplied as vector PDF and editable-text SVG with frozen CSV/JSON inputs.
+
+The formal 30-persona comparison finds a small response-learning gain under full training, while delay-family holdout reverses the delayed-state comparison. These new targets came from OpenCode Go Flash, separately from historical official Pro targets. The four-arm network experiment distinguishes perceived delay from a physically reduced timetable. Independent new-human repair validation remains deferred. The experimental snapshot is pinned to `ba7c5d304b46b46f8f74c451cda2825a3916bf6d`; the writing revision changes interpretation and presentation, not frozen observations. These are research drafts; no publication acceptance or field-validation claim is made.
 
 ## Models and supporting materials
 

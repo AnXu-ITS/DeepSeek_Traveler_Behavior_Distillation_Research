@@ -1,0 +1,66 @@
+{
+  "cohort": "pilot",
+  "n": 12,
+  "primary": [
+    {
+      "persona": "NEW_pilot_001",
+      "signed_minus_softkl": -0.005645044084144665
+    },
+    {
+      "persona": "NEW_pilot_002",
+      "signed_minus_softkl": 0.0004605314677426642
+    },
+    {
+      "persona": "NEW_pilot_003",
+      "signed_minus_softkl": -0.009263379969387156
+    },
+    {
+      "persona": "NEW_pilot_004",
+      "signed_minus_softkl": -0.004396899965151163
+    },
+    {
+      "persona": "NEW_pilot_005",
+      "signed_minus_softkl": -0.0027641089228623017
+    },
+    {
+      "persona": "NEW_pilot_006",
+      "signed_minus_softkl": 0.0019086529117082335
+    },
+    {
+      "persona": "NEW_pilot_007",
+      "signed_minus_softkl": -0.0017707414222471185
+    },
+    {
+      "persona": "NEW_pilot_008",
+      "signed_minus_softkl": -0.006843311064229862
+    },
+    {
+      "persona": "NEW_pilot_009",
+      "signed_minus_softkl": -0.021060909735696742
+    },
+    {
+      "persona": "NEW_pilot_010",
+      "signed_minus_softkl": 0.0019362403509506562
+    },
+    {
+      "persona": "NEW_pilot_011",
+      "signed_minus_softkl": -0.006686360630882328
+    },
+    {
+      "persona": "NEW_pilot_012",
+      "signed_minus_softkl": -0.0011175421199313418
+    }
+  ],
+  "mean": -0.00460357276534426,
+  "sd": 0.006306013820045228,
+  "ci95": [
+    -0.008341624999104262,
+    -0.0015557103447884717
+  ],
+  "claim": "Cross-model agreement against Go Flash reference; not original Pro distillation error or human validity",
+  "formal_n_required": 30,
+  "formal_n_budget_max": 120,
+  "precision_halfwidth": 0.01,
+  "formal_authorized_to_run": true,
+  "pilot_excluded_from_formal": true
+}

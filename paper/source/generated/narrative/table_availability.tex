@@ -1,0 +1,20 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Choice agreement under alternative availability rules for SA-Student.}
+\label{tab:availability}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrr@{}}
+\toprule
+City & Availability & Acc. (\%) & Bal. acc. (\%) & Clipped NLL & Support conflicts \\
+\midrule
+Singapore & All four modes & 23.37 & 36.29 & 2.056 & 0 \\
+Singapore & Car relaxed & 27.17 & 43.01 & 1.555 & 0 \\
+Singapore & Ownership & 66.93 & 72.83 & 0.850 & 8 \\
+Shanghai & All four modes & 12.72 & 33.94 & 2.145 & 0 \\
+Shanghai & Car relaxed & 37.75 & 50.39 & 1.406 & 2 \\
+Shanghai & Ownership & 80.46 & 71.71 & 0.548 & 2 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip{\footnotesize All four modes enables the four modeled alternatives. Car relaxed retains the bicycle-access mask; ownership also requires car ownership and a driving licence. NLL uses $\epsilon=10^{-8}$; raw NLL is infinite whenever an explicit true label has zero support. Both cities use the fixed task encoding, with 3,320 Singapore and 3,208 Shanghai explicit labels retained.}
+\end{table}

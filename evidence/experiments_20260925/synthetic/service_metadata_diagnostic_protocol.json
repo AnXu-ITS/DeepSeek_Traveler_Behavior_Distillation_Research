@@ -1,0 +1,16 @@
+{
+  "utc": "2026-09-25T05:52:51.109751+00:00",
+  "trigger": "While checking latency/usage only, formal attempt450 onward showed zero reported reasoning tokens and a changed usage-detail shape; requested and returned model names unchanged",
+  "observed_examples": [
+    400,
+    430,
+    450,
+    480,
+    510,
+    540
+  ],
+  "primary_analysis_unchanged": true,
+  "formal_outcome_comparisons_not_inspected": true,
+  "diagnostic": "Classify valid calls by reported reasoning_tokens >0, ==0 or unavailable; report UTC spans, usage schema and complete-persona groups. Stratify prespecified paired persona response differences by all36 positive, all36 zero, or mixed. No new calls, exclusions, model switching or sample-size changes.",
+  "interpretation": "Post hoc infrastructure diagnostic. Temporal service metadata is confounded with persona order; group differences cannot identify a causal reasoning or backend effect. Returned alias without immutable fingerprint is not proof of backend identity. Planning pilot and formal service mix may differ."
+}

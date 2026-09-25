@@ -1,0 +1,19 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Design of the Helsinki simulation experiment.}
+\label{tab:execution_design}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ll@{}}
+\toprule
+Quantity & Configuration \\
+\midrule
+Initial population & 1,000 fixed people and OD pairs \\
+Conditions & Baseline and 15-minute perceived-delay input; physical timetable fixed \\
+Fitted models & 10: SA-Student; three each of soft KL, direction+magnitude and MNL-S with timing \\
+Assignment rules & Deterministic, stochastic, and feasibility-constrained stochastic assignment \\
+Assignment seeds & 42, 2026 and 7, with common draws across paired conditions \\
+Runs & 14 per fitted model; 140 runs, 70 paired baseline--delay comparisons \\
+Simulation & Flow and storage capacity factors of 0.3; one MATSim iteration \\
+\bottomrule
+\end{tabular*}
+\par\smallskip{\footnotesize Walking and cycling trips use speeds derived from the road links. Walking legs outside the network, such as access to stops, use 1.39 m/s.}
+\end{table}

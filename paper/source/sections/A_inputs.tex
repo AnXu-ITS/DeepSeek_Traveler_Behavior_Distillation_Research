@@ -1,0 +1,45 @@
+\section{Traveler inputs and stated-choice tasks}
+\label{sec:supp_inputs}
+\subsection{Traveler state and public-transport supply}
+Each traveler state combines nine categorical fields and 17 global numerical fields with 12 numerical attributes for every alternative. The categorical fields describe age, income, occupation, habitual mode, schedule flexibility, mobility limitation, trip purpose, time constraint and weather. The global fields cover household composition, access to a car, licence, bicycle and transit pass, trip distance, desired departure and arrival times, and contextual conditions. Alternative attributes include travel time, monetary cost, access time, transfers, reliability delay and weather exposure. Table~\ref{tab:supply_features} defines the additional PT components and the feasibility information.
+\input{generated/narrative/table_supply.tex}
+PT accessibility is derived from a route search over direct and one-transfer connections, with a minimum transfer time of 180 seconds and an extended egress search of up to 1.5 km. Coverage is the in-vehicle distance divided by the origin--destination distance, clipped to $[0,1]$. Accessibility classes are assigned in sequence. Class A requires access and egress of at most five minutes each, coverage of at least 0.85, at most one transfer and a door-to-door time of at most 45 minutes. Class B allows eight minutes of access or egress and coverage of at least 0.7 with one transfer. Class C allows twelve minutes of access or egress, coverage of at least 0.5 and at most two transfers. Class D contains the remaining feasible routes, and class E denotes that no connection was found. Although class C admits two transfers, the search itself returns at most one. Feasibility is therefore defined by the search, and an unsuccessful search does not rule out every physically possible connection.
+
+\subsection{Questionnaire conditions and model encodings}
+The Singapore questionnaire shows respondents numerical tables of time and cost (Table~\ref{tab:survey_tasks}). The Shanghai questionnaire describes conditions qualitatively and states only three values explicitly, a fare of CNY 6, a parking cost of CNY 30 and one additional transfer. The remaining times and their division into PT components are reference values used for model evaluation (Table~\ref{tab:shanghai_cards}) and were not shown to respondents. The two surveys therefore specify their tasks with different numerical precision.
+\input{generated/narrative/table_sg_tasks.tex}
+\input{generated/narrative/table_sh_tasks.tex}
+The questionnaire's car option is represented by the private-car alternative in the four-mode analysis, which leaves the recorded choices and the evaluation denominators unchanged. The model makes private car available only to respondents who own a car and hold a driving licence, and bicycle only to those with bicycle access. Every explicit choice is scored, including eight Singapore car choices and two Shanghai bicycle choices made by respondents for whom the model treats that mode as unavailable. Because NLL is infinite for these choices, reported NLL uses a probability floor of $\epsilon=10^{-8}$, and the number of such choices is reported separately.
+
+\subsection{Sample composition and collection period}
+In Singapore, 334 respondents gave consent and completed the survey. Two visitors were screened out, leaving 332 residents and 3,320 explicit choices. In Shanghai, 341 respondents gave consent, and eight who had not travelled in Shanghai during the preceding 30 days left at screening. All 333 eligible respondents completed the ten tasks. The model's input mapping covers 321 of them. Eleven others reported habitual-mode or departure-schedule categories that the model does not represent, and one declined to report income. Their answers are retained for the human-only sensitivity analysis below.
+
+The 321 Shanghai respondents made 3,208 explicit mode choices and gave two answers indicating that none of the modes was suitable. These two answers are not scored in the four-mode analysis. Contrast denominators are 321 for rain, delay, fare, parking, road and transfer-versus-waiting, and 320 for the interaction and walking-versus-waiting contrasts. Every Singapore contrast has 332 respondents. In Singapore, 23 missing or undisclosed incomes are assigned the medium income category, with low and high incomes examined as sensitivity settings. Responses were submitted from 20 August to 5 September 2026 in Singapore and from 12 to 18 September 2026 in Shanghai, and both questionnaires recorded participant consent.
+
+The electronic questionnaires were circulated through WeChat, WhatsApp and personal networks, including onward sharing by family members, friends, classmates and colleagues. Recruitment was therefore by convenience and snowball sampling. The Singapore questionnaire was administered in Google Forms and the Shanghai questionnaire in Wenjuanxing. The instruments are identified by the \href{https://docs.google.com/forms/d/1fg4KzTXqDBLx1qgT1rOq9EEU6d2xPk4r-PXK0i8XzU4/edit}{Singapore form} (owner/editor access may be required) and the \href{https://v.wjx.cn/vm/YJnKeRu.aspx}{Shanghai questionnaire}. These instrument links do not grant access to individual responses. A privacy statement preceded participation, both instruments recorded consent, and the study was conducted on an ethics-exemption basis. The questionnaires did not solicit sensitive personal information.
+
+\subsection{Reference values and their sensitivity}
+Attributes that were not collected take fixed reference values. Singapore uses a household size of two, medium schedule flexibility, no transit pass and a reference departure at 08:00. Shanghai uses a household size of two and the numerical reference encoding in Table~\ref{tab:shanghai_cards}. The twelve Singapore sensitivity profiles vary car costs, the mapping of missing income and occupation, transit pass, flexibility, purpose, departure time, PT components and coverage, the allocation of delay and rain intensity. The eight Shanghai profiles vary household size, coverage, imputed durations and the allocation of three minutes among PT components while total PT time is held fixed.
+
+All profiles apply the model's availability rule to all 14 fitted models. Table~\ref{tab:ownership_defaults} reports the minimum and maximum across these specifications, which are ranges rather than confidence intervals. The profiles were defined without reference to agreement with human choices. They cover selected reference values and time allocations but not every plausible reading of the qualitative scenarios, and in particular they do not vary the intensity implied by the Shanghai delay description.
+\input{generated/narrative/table_defaults.tex}
+The Shanghai coverage analysis compares the 321 respondents covered by the model with all 333 eligible respondents who completed the survey. A nested respondent bootstrap with 10,000 draws (seed 917) resamples the 333 people and computes both cohort responses in each draw, preserving their overlap and all ten answers. The twelve additional respondents contribute 120 choices, of which 27 are car, 88 PT, none bicycle and five walking. No human response changes by more than 0.26 percentage points, and all eight point estimates keep their sign (Table~\ref{tab:sample_flow_response}).
+\input{generated/narrative/table_sample_flow.tex}
+\FloatBarrier
+
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Sources of information in the stated-choice model inputs.}
+\label{tab:input_provenance}
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Source & Information used & Interpretation \\
+\midrule
+Shown in the questionnaire & Singapore time and cost tables; the Shanghai PT fare of 6 yuan, parking fee of 30 yuan and one transfer & Attributes presented to respondents, with different numerical detail in the two surveys. \\
+Reported by respondents & Personal characteristics supplied by respondents and covered by the model's input mapping & Observed inputs, although not every model attribute was collected. \\
+Specified by the researchers & Characteristics not collected, and Shanghai durations and time components not shown in the tasks & Analysis assumptions. The twelve Singapore and eight Shanghai profiles examine selected alternatives rather than a full uncertainty distribution. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier

@@ -1,0 +1,417 @@
+{
+  "status": "editorial_revision_not_new_experiments",
+  "protected_files": 79,
+  "all_protected_files_unchanged": true,
+  "changed_source_files": [
+    "cas-sc-template.tex",
+    "sections/01_introduction.tex",
+    "sections/02_related_work.tex",
+    "sections/03_methodology.tex",
+    "sections/04_experimental_design.tex",
+    "sections/05_results.tex",
+    "sections/06_discussion.tex",
+    "sections/07_conclusion.tex",
+    "sections/S5_execution.tex",
+    "sections/S7_materials.tex",
+    "supplement.tex",
+    "references.bib"
+  ],
+  "protected_manifest": [
+    {
+      "path": "data_tables/figure3_response_timing.csv",
+      "sha256": "a36372d2868078f58f8d1b9b43bdd8b83042efdb96dfc1482da149f4b2d77d5f",
+      "unchanged": true
+    },
+    {
+      "path": "data_tables/helsinki_run_pairs_published_precision.csv",
+      "sha256": "c751e69baf937fc6055c4abf9e4bac46a84fda437a5ef19147c4c27a4911f247",
+      "unchanged": true
+    },
+    {
+      "path": "data_tables/figure4_response_bars.csv",
+      "sha256": "6318dbb78f3a17a183f0196401f6a6465d9247addbdf7c015b483385e4cad07c",
+      "unchanged": true
+    },
+    {
+      "path": "data_tables/teacher_decomposition_published_precision.csv",
+      "sha256": "52e6e467d07c0d1777f0e8c835c01b6ddf7332152b23906de1b432b5050af946",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_teacher_repeats.tex",
+      "sha256": "3af5ade934f7bb2a114f5bdd3e77a97f9645a5434ff38c99ebc643795cf803c5",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_human_main.tex",
+      "sha256": "14cd4411b2a3e392d81413baa0be7cf82ebfb3e240f25c5a6ab19008680f171b",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_teacher_decomp_combined.tex",
+      "sha256": "401384581d08d6d4dda100f1b35cf00fe95de09fd325d878861df8e2e7c4e8a7",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_defaults.tex",
+      "sha256": "dcf6c46104496cf4187e10654dfa2c9dc7d2b881cf22690a5e0aabe9cd3f47bc",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_population_seeds.tex",
+      "sha256": "29dde41a90dabce1ccaa7b08457747eeaee87b6ea5afa8e1e72a0b3d38f5723f",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_inference.tex",
+      "sha256": "2331eb8c712f6c0708321094136720fdd2857240e4914ee615d375270cfdd10e",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_od_sensitivity.tex",
+      "sha256": "9db0f53324cdbd7bdc54141a537001333c3dc0cf2256e42f67636ec9c34790b8",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_singapore.tex",
+      "sha256": "5f306485b480d64d1cb4ec0bec23279578804ea502941882db95b94eead19b01",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_response_breakdown.tex",
+      "sha256": "3eee48f2bb28e6a3ff27e77820982c131bca6d929828d94865b924c4cacfa5e6",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_sg_tasks.tex",
+      "sha256": "d8187efa366bfb849b0c50ce00a2e289231e2c566f5db69c0d1a04a884364a06",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_study_design.tex",
+      "sha256": "9767ca8a906de227c2150ae01b498fd4a72fc6e4071d50742aac467a4764422c",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_responses_sg_complete.tex",
+      "sha256": "2722efac2654e08beeedfde934a33b64f43934e2f56cef122c8f544d16824744",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_response_interventions.tex",
+      "sha256": "e871f8f66e7644df5dbe95911017aa69fc43aa7235f830172cddfecfd8034006",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_human_full.tex",
+      "sha256": "096cf157eead498507b8afcc64e6b7aa36ea22927986788970813e3f98cdb7ff",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_sg_person_time.tex",
+      "sha256": "5e119251f52e030aa70e224dd3d6abfc1028a7d9bbe83bfb368aad77122aaab6",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_execution_main.tex",
+      "sha256": "1091eecc866f7da87e9860a6fe2ce717d4f9d9e15bb0753a8fda5b7b9926c449",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_training_sources.tex",
+      "sha256": "83d91f3c16129ac7d9db2918caf8f5e5e82760d09de4b0c3ff9d30f066ef5846",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_response_seed_differences.tex",
+      "sha256": "658e75846a45a90963a1c9bef3fb40d17f13864932f4ffe7c341a9c2df465b1b",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_teacher_pilot_sd.tex",
+      "sha256": "c561b3588f52a20f0609b140544f2b1ac83f7fa847e011c59c4c3a991f0eba4a",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_teacher_choices.tex",
+      "sha256": "5828fd9afaa90b9a99bcfd6b81455639925476d34338a3c932a687dfde7b29df",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_teacher_aggregation.tex",
+      "sha256": "8571bdf0cb2c77d169fec89b80e0167dc9383998953dad9639bbd11d115b48e4",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_input_dictionary.tex",
+      "sha256": "ce51d132bc00ce3ea67a0ba1aa989adfdf55db36cff282df3604cc95079d18e0",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_timing_main.tex",
+      "sha256": "e40f87f24b5481afc7da0e38f5c7933ffec0a705b7b83c1060eaca000cb1c1d9",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_availability.tex",
+      "sha256": "a8224eadcb7219156340dc06595f93c8b51e12431be4c662398de32f12138aea",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_sg_paired_counts.tex",
+      "sha256": "5cfe4d6c25f4d861d7b8f48c9e3f11ca9d3192a9fcb19f61c9b0e88af650017e",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_responses_sh_complete.tex",
+      "sha256": "8895dfe41c3602574c8a72a04cc388d95feaaa1b34beca3bbd6368769151aa27",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_sh_tasks.tex",
+      "sha256": "3549732be891f0a9bc2a32ed67d81968e6dd7e614ebb6c204aa0d344b413f91f",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_teacher_prompt_pilot.tex",
+      "sha256": "4e2d80063168aa36cc32b794ef96dc461251a8271b6683bd9f7faa14c72d0b11",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_execution_gap_aggregation.tex",
+      "sha256": "5160677b8900beb6f77e2a942c25a9cdec5970e2acdcc8828ff68b9bd0e2c1b2",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_response_main.tex",
+      "sha256": "d6579ee26a97f63aeb9700f4bcd11f8d38479e96eecaf79c06ffc9af9b3c46ce",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_sample_flow.tex",
+      "sha256": "a177aaaac2d4d56a53c07f64ffb51fcfba665119259102b881cb8c723e6ee820",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_teacher_decomp_s9.tex",
+      "sha256": "4686aa330f87c1760d8c180820a5131438b2b6358c3395708d6cceefebcc8b6b",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_sg_person_counts.tex",
+      "sha256": "9c45eca61d5a91946298927eb24056f6fa2f15ae1fe6b282f2caf94eba3a205c",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_execution_layers.tex",
+      "sha256": "d168958f732a097a46d6bd0e0a982ee6b2bba935ffde01f9ee1e3483220f1d74",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_scale.tex",
+      "sha256": "f9df837a5af120e3710a3c00a9c77e698735a9661b049105e0c86e7ff85b55f9",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_departure_runs.tex",
+      "sha256": "570dc831a1b355a2a914740a1ae9c897571a8f7dd906a3191e2e3d6fcfffe071",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_matched_diagnostics.tex",
+      "sha256": "9fd98c6f0bca041048aacfd1a9db77ebdce7025401049bed13561d3e46e9876c",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_execution_design.tex",
+      "sha256": "53e084afeae3f8f4f8a356b07917b11ff4d57148fe4f64e1b6dcff8668b3ac46",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_supply.tex",
+      "sha256": "c9a8447662348966f3c3fa7b54aadcb42c28991c9e0b663d3e53d77e4af0445b",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_departure_sources.tex",
+      "sha256": "3d5bf34c7ee96c7f2069fd089eba5c68a0d286b8ce3d9acc621f6755a2dbd54e",
+      "unchanged": true
+    },
+    {
+      "path": "generated/narrative/table_pipeline.tex",
+      "sha256": "e02b91a1f62a5c7e5c259c1058e3fb6e35acf786eb4a4a7e21f189facb7f5c71",
+      "unchanged": true
+    },
+    {
+      "path": "figures/redesign920/figure1_unchanged.pdf",
+      "sha256": "eaf778b68d2d355201fe2d22a2ddba9b8694c9682f43b21d0d5d48d9bfd15b8d",
+      "unchanged": true
+    },
+    {
+      "path": "figures/revision20260921/figureS_revision_diagnostics.pdf",
+      "sha256": "2b1297ea009db0de1c155b4e93b4534c24b3d55b6fbba878277b94d2efb8e1da",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure5_teacher_comparison.pdf",
+      "sha256": "45e3a8006e723818ec6c20d9942997550550415a67b64eb296e6f56443812e23",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure3_response_panel.pdf",
+      "sha256": "5262b7cdbf599f8ac40c15ca6407d53ee527402cb0d835c5dc4a79f8b18493e8",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure3_response_timing.svg",
+      "sha256": "3303b24221b51f38f44c1c42e614be3f182abd823d788ce17ea917f847a931ce",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure5_teacher_comparison.svg",
+      "sha256": "5dfaaac57c201bb46c4535cae88e6ac51c8bfeefacdcfdc3bcd332cbae652852",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure6_source_edited.svg",
+      "sha256": "60a8b0a4f3170587c38efef6dd6b9e836d0c0c5440921ef1037e0b3296184d3a",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure3_response_timing.pdf",
+      "sha256": "564e12558d187f88e6cec4325665d8db433e4067c1484bddddf109e756bf231c",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_singapore_bars.pdf",
+      "sha256": "42262acdf8fa01b880de040904ca9c6b43947e87ec598536cad04a6389cf1afe",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_shanghai_bars.svg",
+      "sha256": "3781eb24eb5ea7aaf5037a30ec0104b85bf1431aacfcc1b5f31784656a7d9de5",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_human_response.png",
+      "sha256": "7a5c2164a103ef1b6a69a643dbd3fe69cc4d7d424b752610d35da1d33fd5ca74",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure3_response_panel.svg",
+      "sha256": "6b3a5383c84bbb791fde38df2951402c2f92391848b7960d7aace68e9442cfaa",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure1_response_concept.pdf",
+      "sha256": "5d410e5d88811198dc4fad6367e55a759cf41960fd95f47201e2b9e34b59817d",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_shanghai_bars.pdf",
+      "sha256": "961e6abd57b404c40147d1c6510ba7ba695f50a1358f5f41ef9fbc6e49a0db54",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure3_timing_panel.svg",
+      "sha256": "c57e20ad3eaf0d1df3b0a33689106413ab5bc061c902a6124d2f7b75b83b95f8",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_human_response.pdf",
+      "sha256": "30c2138c3eea4ea33ba22268db7e4037d88356b85b64b3a3533b0bf8e2234f88",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_singapore_bars.png",
+      "sha256": "ae6636d33aeec5d7222043a0de7534d00e685a430215be2a3c589e3dd63d8df2",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure3_timing_panel.pdf",
+      "sha256": "0349ef4ec5aa3ab221e6549ab982c8aebce426825499f877cf0c6b5893b43c8e",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_human_response.svg",
+      "sha256": "734a8258e63c47f06648bb01921e3157d9bb3c392fcc0d4cced872b548079489",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure2_method_template.pptx",
+      "sha256": "f9ebbeb1c9143d0eb672c35d7329ccc81efec8c2f2648ef9bd33777f20e80df8",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_singapore_bars.svg",
+      "sha256": "e22fb3515d2f29532aefcf4ef061e4ba1c51c20b13b4de4632b20ef144f10cd1",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure2_method.pdf",
+      "sha256": "039f79a8855df1cd82a8fb4f88c786664b1216b81d3db24e6e13c3fe38c847bf",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure6_execution_response.pdf",
+      "sha256": "bbf4ddb080a7646b406c526cc249ea06299d75b84c6f749e5aae5ca2b8b4daf8",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figure4_shanghai_bars.png",
+      "sha256": "96e51d9b4f724ed49bbb5f54bdfa863f6fc916460df9d85963ea7262edccfe83",
+      "unchanged": true
+    },
+    {
+      "path": "figures/narrative/figureS_speed_sensitivity.pdf",
+      "sha256": "6ce945c8aa54bd163380180fb1cb0f157b93cb42f61fec237504e0aaa69ab250",
+      "unchanged": true
+    },
+    {
+      "path": "figures/template/figure2_original.pptx",
+      "sha256": "a3cbd788478f421f7d86f658eb71e34d13ac280100bfcc32eaff49b6a9d9cc62",
+      "unchanged": true
+    },
+    {
+      "path": "figures/template/figure2_supplied_method.pptx",
+      "sha256": "0d109689fe81702946edb2ce7db9bb835392eb40dfff3489ca0e6881e9d4c70d",
+      "unchanged": true
+    },
+    {
+      "path": "figures/template/publication_sources/figure5_teacher_comparison.svg",
+      "sha256": "d887918de350af8eabc5d36a8c6dec613c90ebdde3068ab77c0c062597698fa3",
+      "unchanged": true
+    },
+    {
+      "path": "figures/template/publication_sources/figure6_source_edited.svg",
+      "sha256": "eda693e713cad3f413881040e6e63804fc3ee98da6689762aed535beaea8c207",
+      "unchanged": true
+    },
+    {
+      "path": "figures/template/publication_sources/figure3_legacy_scatter.svg",
+      "sha256": "c5dca8bdf0bfb2aff01a54e8f6cb4a3132e3e08f7633cbfbc12d2cc41cdf2f13",
+      "unchanged": true
+    },
+    {
+      "path": "reproduction/README.md",
+      "sha256": "8e7f71a8ed655bb8e20f492f56e984558b4ec0dba3f4b944e2eb343e7f47b19b",
+      "unchanged": true
+    },
+    {
+      "path": "reproduction/accessibility_teacher_prompt.txt",
+      "sha256": "fe579d2cb4264ef41d952d32b5b63ad059d0e0932e35f1ab8ba82ac0beb534fb",
+      "unchanged": true
+    },
+    {
+      "path": "reproduction/s9_adaptation_specification.json",
+      "sha256": "35f8732d9d0b009cddecf9b3e50a1a9f698525d828957d97e8ff6b2423602593",
+      "unchanged": true
+    },
+    {
+      "path": "reproduction/input_fields.csv",
+      "sha256": "d9437a65a714b5ea33a8cdfb20258a35be0845a55f1773d994383e9772f91b3e",
+      "unchanged": true
+    }
+  ],
+  "new_analytical_content": "Feasibility L1 projection identity, counterexample, additive execution-gap decomposition. Not a new empirical campaign."
+}

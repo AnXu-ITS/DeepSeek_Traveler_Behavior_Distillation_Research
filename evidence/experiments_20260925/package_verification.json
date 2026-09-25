@@ -1,0 +1,46 @@
+{
+  "files": 2359,
+  "bytes": 36967527,
+  "sha256": "afd98710febc7d1b2826ca4ad28daa8a72df36db4737e57c663848a562daef72",
+  "crc": "pass",
+  "snapshot_consistency": "all embedded files match manifest",
+  "large_events": "Retained in local physical_supply runs, excluded from Git package; event SHA256 and scripts preserved",
+  "status": {
+    "A": "complete",
+    "B": {
+      "local_family_training": "complete",
+      "pilot": {
+        "required": 432,
+        "valid": 432,
+        "attempts": 488,
+        "complete": true,
+        "quota_peak_no_cache_usd": 1.745949,
+        "input_tokens": 630086,
+        "output_tokens": 1297436,
+        "returned_models": [
+          "deepseek-v4.1-flash"
+        ]
+      },
+      "formal": {
+        "required": 1080,
+        "valid": 1080,
+        "attempts": 1130,
+        "complete": true,
+        "quota_peak_no_cache_usd": 4.1424723,
+        "input_tokens": 1576305,
+        "output_tokens": 3057984,
+        "returned_models": [
+          "deepseek-v4.1-flash"
+        ]
+      },
+      "status": "complete",
+      "blocker": null
+    },
+    "C": "deferred by author: no independent new human responses",
+    "D": {
+      "completed": 40,
+      "expected": 40
+    },
+    "manuscript_writing": "not started; stop gate retained"
+  }
+}

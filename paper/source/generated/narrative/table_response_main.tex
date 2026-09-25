@@ -1,0 +1,22 @@
+\begin{resulttable}
+\centering\small
+\caption{Probability-response fidelity on the held-out Teacher benchmark.}
+\label{tab:response_main}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+Model / objective & Macro-source KL $\downarrow$ & Response error $\downarrow$ & Interaction error $\downarrow$ \\
+\midrule
+Soft KL & $0.0915\pm0.0187$ & $0.0693\pm0.0032$ & $0.0457\pm0.0038$ \\
+CE+KL & $0.1046\pm0.0170$ & $0.0753\pm0.0016$ & $0.0518\pm0.0038$ \\
+Signed response & $0.0871\pm0.0138$ & $0.0665\pm0.0050$ & $0.0465\pm0.0036$ \\
+Direction+magnitude & $0.0861\pm0.0145$ & $0.0659\pm0.0042$ & $0.0464\pm0.0039$ \\
+\midrule
+MNL-S & $0.0731$ & $0.0564$ & $0.0386$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+Neural entries are means $\pm$ SD over three training seeds. The test set contains 437 states, 398 response pairs and 94 interaction contrasts from six held-out synthetic personas. All models, including the MNL-S regularization, are selected by validation macro-source KL. MNL-S uses the same inputs and training states as the neural Students.
+\end{minipage}
+\end{resulttable}

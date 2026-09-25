@@ -1,0 +1,15 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Time required for behavioral prediction alone. Teacher latency refers to successful requests, and Student times exclude supply preparation. Values for 10,000 agents are scaled or projected, not measured constructions.}
+\label{tab:inference_timing}
+\begin{tabularx}{\textwidth}{@{}lXrr@{}}
+\toprule
+Model & Measurement & Mean latency & 10,000 equivalent \\
+\midrule
+Teacher (remote) & 100 attempts, 87 successes & 86.539 s & 240.4 h (projected) \\
+SA-Student sequential & Same first 100 states, one CPU thread & 0.272 ms & -- \\
+SA-Student sequential & 100,000 states, one CPU thread & 0.332 ms & 3.3 s (scaled) \\
+SA-Student batch 256 & 20,000 states, 24 CPU threads & 25,399 states/s & 0.4 s (scaled) \\
+\bottomrule
+\end{tabularx}
+\end{table}

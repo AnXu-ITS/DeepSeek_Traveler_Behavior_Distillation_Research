@@ -1,0 +1,33 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Choice metrics on the Teacher comparison subsets. Each city contributes 24 people and 240 explicit choices. Neural families show the arithmetic mean and sample SD of three separately scored training seeds.}
+\label{tab:teacher_subset_choices}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrr@{}}
+\toprule
+Model & Accuracy (\%) & Brier score & PT-share bias (pp) \\
+\midrule
+\multicolumn{4}{l}{\textit{Singapore}} \\
+Current Teacher & $75.42$ & $0.356$ & $-6.21$ \\
+SA-Student & $61.67$ & $0.549$ & $-29.70$ \\
+MNL-S & $65.00$ & $0.428$ & $0.51$ \\
+Soft KL & $65.42\pm 2.32$ & $0.442\pm 0.049$ & $-17.98\pm 2.55$ \\
+CE+KL & $63.75\pm 0.72$ & $0.488\pm 0.049$ & $-23.26\pm 2.75$ \\
+Signed response & $65.28\pm 2.68$ & $0.437\pm 0.053$ & $-16.32\pm 3.75$ \\
+Direction+magnitude & $64.86\pm 4.17$ & $0.443\pm 0.065$ & $-16.68\pm 5.70$ \\
+\midrule
+\multicolumn{4}{l}{\textit{Shanghai}} \\
+Current Teacher & $85.00$ & $0.233$ & $4.32$ \\
+SA-Student & $76.67$ & $0.342$ & $-18.71$ \\
+MNL-S & $78.33$ & $0.294$ & $-2.53$ \\
+Soft KL & $76.39\pm 0.24$ & $0.329\pm 0.027$ & $-12.54\pm 7.59$ \\
+CE+KL & $74.44\pm 2.51$ & $0.350\pm 0.015$ & $-14.90\pm 6.75$ \\
+Signed response & $77.92\pm 2.73$ & $0.319\pm 0.023$ & $-11.20\pm 6.03$ \\
+Direction+magnitude & $77.92\pm 1.10$ & $0.317\pm 0.022$ & $-10.74\pm 5.80$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+Teacher choice metrics use the mean probabilities from three successful queries per state. SA-Student and MNL-S are single fitted models; their rows have no training-seed SD. For the four neural objectives, probabilities are not averaged across seeds before computing accuracy or Brier score. PT-share bias is predicted probability minus the human PT indicator. Neither subset contains an answer of the no-suitable-mode type or a choice of a mode the model treats as unavailable.
+\end{minipage}
+\end{table}

@@ -1,0 +1,58 @@
+{
+  "documents": {
+    "cas-sc-template": {
+      "pages": 21,
+      "text_layout_issues": [],
+      "rendered_pages": [
+        1,
+        8,
+        18
+      ],
+      "sha256": "900f8b5b780f07c493a24a73b6e55805d4bd695f0c1fc2248a7f0ea0ae59c129"
+    },
+    "supplement": {
+      "pages": 25,
+      "text_layout_issues": [],
+      "rendered_pages": [
+        1,
+        22,
+        23
+      ],
+      "sha256": "574d88a8e1c91e95d6333282a1fd3cea5948d7fc407a090ee27f9508054fae5f"
+    }
+  },
+  "figure_and_original_result_preservation": true,
+  "changed_baseline_files": [
+    "README.md",
+    "cas-sc-template.aux",
+    "cas-sc-template.bbl",
+    "cas-sc-template.pdf",
+    "cas-sc-template.tex",
+    "editorial_notes/AUTHOR_ACTIONS.md",
+    "references.bib",
+    "sections/03_methodology.tex",
+    "sections/04_experimental_design.tex",
+    "sections/05_results.tex",
+    "sections/06_discussion.tex",
+    "sections/S3_human.tex",
+    "sections/S6_compute.tex",
+    "sections/S7_materials.tex",
+    "supplement.aux",
+    "supplement.pdf"
+  ],
+  "clean_repository_source_rebuild": "passed; all PDF page text matches",
+  "aggregate_cost_reproduction": "byte-for-byte matched",
+  "retained_source_ledgers_unchanged": 15,
+  "repository_docs": {
+    "markdown": 101,
+    "pinned_artifacts": 533,
+    "passed": true
+  },
+  "accounting_edge_checks": "passed",
+  "writing_manifest": "passed",
+  "statistics_manifest": "passed",
+  "credential_scan": "no credential-pattern findings in new text assets",
+  "new_experiments_executed": false,
+  "visual_review": "ethics, cost table and supplementary accounting pages inspected; no clipping",
+  "whitespace_note": "Byte-preserved source assets retain original CRLF and template whitespace; not normalized to satisfy diff whitespace warnings."
+}

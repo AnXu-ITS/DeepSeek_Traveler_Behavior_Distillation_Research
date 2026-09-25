@@ -1,0 +1,22 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Construction of the four behavioral-supervision sources and their contributions to the controlled test set.}
+\label{tab:training_sources}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{@{}p{0.16\linewidth}Xrr@{}}
+\toprule
+Source & Comparison represented & States & Pairs \\
+\midrule
+Single-context & A traveler--trip baseline and single-axis changes in weather, congestion, PT delay, fares, parking or road disruption. & 226 & 214 \\
+Accessibility & The same traveler and trip under PT supply profiles, varying access, waiting, transfers and connection feasibility. & 51 & 40 \\
+Joint context & Two perturbations applied together, linked to their baseline and single-perturbation counterparts where available. & 96 & 96 \\
+Mechanism & A baseline and three context--attribute variants: both changed, context only, or attributes only. These separate different encoded paths of the same intervention. & 64 & 48 \\
+\midrule
+Total & Held-out persona groups across the four sources. & 437 & 398 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+A state combines a traveler, a trip, a context, mode attributes and Teacher targets. A response pair links two states, and a state can belong to several pairs. Persona groups are disjoint across training, validation and test (28/6/6). Accessibility data additionally use disjoint OD pools. Teacher probability vectors are averaged over valid repeated queries. The counts are states and pairs, not independent travelers.
+\end{minipage}
+\end{table}

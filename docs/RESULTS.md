@@ -1,3 +1,5 @@
+> **Current manuscript:** The narrative revision incorporates the completed [25 September experiments](EXPERIMENTS_20260925.md), including the delay-family negative results and four-arm physical supply comparison. See [article and appendices](../paper/revision_20260925/cas-sc-template.pdf) and the [revision report](../paper/source/editorial_notes/REVISION_NARRATIVE_CN.md). The historical benchmark tables below remain unchanged; new Go Flash agreement is separate from original Pro compression fidelity.
+
 # Experimental results
 
 Results below follow the **24 September 2026 manuscript**. Earlier repository reports describe different stages and should not be combined as if they used identical populations, supervision or denominators. Full-precision retained aggregate outputs and reported-precision manuscript tables are indexed in the [evidence directory](../evidence/paper_20260924/README.md).

@@ -1,0 +1,73 @@
+\section{Results}
+\label{sec:results}
+\FloatBarrier
+\subsection{Response learning helps within coverage, but does not remove its limits}
+Response supervision improves agreement with the archived Teacher under matched training (Figure~\ref{fig:response_learning}a). The gain is modest relative to the effect of model specification: MNL-S has the lowest response error, while adding a hard-label objective produces the largest error. Separating direction and magnitude does not show a clear additional benefit over direct signed-response fitting. Neither response objective improves the interaction metric over soft KL. The detailed comparison is in Appendix~\ref{sec:core_tables}.
+
+\begin{figure}[pos=htbp]
+\centering\includegraphics[width=\linewidth]{figures/revision20260925/figure2_learning.pdf}
+\caption{Learning gains depend on task coverage. (a) Archived-Teacher response error: means over three neural seeds, with seed SD; MNL-S is a single fit. (b) Signed-response minus soft-KL error on thirty new personas, relative to the Go Flash reference. Bars average seeds and within-person contrasts; whiskers are paired-persona 95\% bootstrap intervals. Negative values favor response supervision. Full-training and delay-withheld fits have matched budgets within, but different budgets between, settings. The overall full-training comparison is primary; delay-specific intervals are descriptive and unadjusted for multiplicity. The two panels use different references and are not directly comparable error scales.}
+\label{fig:response_learning}
+\end{figure}
+
+The new synthetic-persona sample supports a small improvement under full training. Its primary paired error difference is $-0.0032$, with a 95\% interval of $[-0.0049,-0.0016]$ (Table~\ref{tab:primary_results}). Because the API reference differs from the training Teacher, this is evidence of cross-model response agreement at the fixed trip. It is not an estimate of human accuracy. Variation across personas and the remaining conditions is shown in Appendix~\ref{sec:new_protocol}.
+
+The delay-family omission changes the conclusion. With delay examples withheld, signed-response fitting has larger errors than soft KL on both new delay intensities and on the combined fare--delay condition (Figure~\ref{fig:response_learning}b). The retrospective archived-delay comparison points in the same direction. The overall mean across all new conditions partly conceals this failure. Thus an objective that improves covered responses does not establish that the Student has learned a transferable behavioral rule for an omitted intervention.
+\input{generated/revision20260925/table_primary.tex}
+
+Weight and selection sensitivity reinforce this interpretation. Increasing response weight can lower the archived response error, but selecting by validation response does not consistently improve test performance. The direction-plus-magnitude objective is particularly sensitive to that selection change at unit weight. These are sensitivity comparisons, not grounds for choosing a favorable test result after evaluation (Appendix~\ref{sec:optimization_support}). Repeated-Teacher diagnostics also show material variation in the elicited target; they do not provide a precise noise ceiling.
+
+The choice and timing tasks favor different specifications. MNL-S preserves probability responses well, whereas an independent neural timing predictor substantially reduces departure error relative to linear timing and approaches the jointly trained models. This motivates modular estimation. It does not confer an economic interpretation on unconstrained logit coefficients: in the feasible-state diagnostic, some fare increases raise the fitted PT probability (Appendix~\ref{sec:optimization_support}).
+
+\FloatBarrier
+\subsection{The most faithful Student need not be the most human-like}
+\label{sec:human_results}
+The strongest ranking reversal concerns poorer PT accessibility in Singapore. MNL-S, the best model against the archived Teacher, predicts an increase of about 14 percentage points in PT use, while the stated share falls by about 24 points. CE+KL, the least faithful controlled objective, comes closest to that stated change. The task combines longer total travel time, a longer access walk and more transfers, so the reversal concerns the whole access burden rather than a single walking-time coefficient.
+
+\begin{figure}[pos=htbp]
+\centering\includegraphics[width=\linewidth]{figures/revision20260925/figure3_human.pdf}
+\caption{Agreement with stated responses. (a,b) Two contrasts that expose different model failures: bars show model response minus human response; whiskers are family-adjusted respondent-bootstrap intervals. (c,d) All retained contrasts on a common bias scale. A dot marks an interval excluding zero after adjustment within city and model; an unmarked cell does not establish equivalence. Neural responses average three seeds. Singapore has 332 respondents; Shanghai has 321, except the interaction and walking-versus-waiting contrasts, which have 320 complete respondents. Positive bias means a more positive model response, not better performance. Exact responses and intervals are retained in Supplementary Tables~\ref{supp-tab:responses_singapore_0}--\ref{supp-tab:responses_shanghai_1}.}
+\label{fig:human_response}
+\end{figure}
+
+SA-Student exhibits a different limitation. Its delay response is close to the Singapore point estimate, but it overstates the Shanghai decline under the reference encoding (Figure~\ref{fig:human_response}). It also reverses the Shanghai fare and walking-versus-waiting responses. These discrepancies persist across the specified alternative inputs. Because the Shanghai delay description is qualitative and its intensity is held fixed in that sensitivity analysis, the result remains conditional on the numerical interpretation of the task.
+
+Matching levels does not resolve the problem. MNL-S is closer to Singapore's overall PT share, yet SA-Student has the smaller mean absolute response bias there. A model can match how many people choose PT while missing how that share changes. Choice accuracy offers another ranking rather than a general resolution (Appendix~\ref{sec:core_tables}).
+
+Replacing reference values with constructed network inputs improves Shanghai choice accuracy, but most of the gain remains after whole supply profiles are exchanged between respondents. The improvement therefore appears to come largely from a general change in numerical inputs, not from matching observed personal journeys. Those journeys were not collected. This sensitivity check limits what can be claimed about supply-based human alignment.
+
+\FloatBarrier
+\subsection{A later API reference helps locate discrepancies}
+\label{sec:teacher_results}
+The same-task API subsets reveal different patterns beneath a Student--human discrepancy (Figure~\ref{fig:teacher_attribution}). For Singapore accessibility, the later Pro reference also understates the human response, and SA-Student lies close to that reference. Moving the Student toward the reference alone would leave substantial human disagreement. For Shanghai delay, the API reference is close to the human point estimate, while SA-Student responds much more strongly. The latter case motivates checking the Student and its input representation, but does not identify compression as the historical cause.
+
+\begin{figure}[pos=htbp]
+\centering\includegraphics[width=\linewidth]{figures/revision20260925/figure4_decomposition.pdf}
+\caption{Three patterns in the matched survey subsets, each with 24 respondents. The later official Pro API reference and SA-Student are evaluated on the same inputs. Bars and nominal 95\% respondent-bootstrap intervals show the two components of Eq.~\ref{eq:attribution} and their total. Component point estimates add to the total; interval endpoints need not. The walking-versus-waiting case illustrates cancellation. These descriptive contrasts do not reconstruct the original Teacher backend. The complete family-adjusted decomposition is in Appendix~\ref{sec:core_tables}.}
+\label{fig:teacher_attribution}
+\end{figure}
+
+In the walking-versus-waiting task, the two components oppose one another. The Student's modest total bias hides a larger API--human discrepancy offset by a Student--API discrepancy. This explains why a small net error should not be interpreted as evidence that both components are sound.
+
+\FloatBarrier
+\subsection{Changing perceived service is different from changing the timetable}
+\label{sec:execution_results}
+The four-arm Helsinki experiment makes this distinction visible (Figure~\ref{fig:execution_response}). Adding perceived delay produces a substantial fall in predicted PT use and boarding. Removing alternate scheduled departures produces a much smaller demand change when the behavioral inputs are recomputed. With baseline predictions frozen, the reduced timetable leaves the boarding share unchanged in this population, although simulated journey times change. This result does not mean supply is irrelevant; it shows that a perceived-delay input is not an interchangeable substitute for the specified physical disruption.
+
+\begin{figure}[pos=htbp]
+\centering\includegraphics[width=\linewidth]{figures/revision20260925/figure5_supply.pdf}
+\caption{Four-arm physical-supply experiment with a fixed population of 1,000 Helsinki travelers. (a,b) Mean PT shares across the decision-to-boarding sequence. (c,d) Changes relative to baseline, with paired-person 95\% bootstrap intervals after averaging five common assignment seeds within person. ``Fewer trips, fixed'' retains baseline behavior; ``updated'' recomputes behavior from disrupted level of service. All arms use feasibility-constrained assignment. Both route-search and simulation timetables are changed in the reduced-service arms. All outbound journeys complete in these runs; boarding and completion are nevertheless different outcomes.}
+\label{fig:execution_response}
+\end{figure}
+
+For SA-Student, perceived delay reduces boarding by about 14 percentage points, compared with less than one point after the reduced timetable is translated into new behavioral inputs. MNL-S shows the same qualitative separation, with a smaller perceived-delay response. The contrast remains a property of these fitted models, supply inputs and fixed population. There is no iterative behavioral adaptation or equilibrium claim.
+
+Assignment introduces a further distinction. In the original perceived-delay experiment, removing infeasible PT probability makes assigned demand routable but does not necessarily move the executed response closer to the raw prediction. Baseline PT shares and changes from baseline can also behave differently. Appendix~\ref{sec:execution_support} retains the assignment comparison and the stagewise explanation. All stage differences use the initial population, so changes in the denominator cannot masquerade as response preservation.
+
+Journey-time conclusions require more caution than mode counts. The earlier active-mode speed check changes the sign of the simulated time response while leaving assigned modes fixed. The physical-supply extension retains those historical network-speed conventions. Its negative time differences therefore cannot establish that reducing transit service improves real travel times.
+
+\FloatBarrier
+\subsection{After distillation, supply preparation dominates the measured workload}
+Behavioral inference accounts for less than one percent of the larger measured scenario builds. Reusing unchanged network and timetable calculations saves much more construction time than choosing between the compact Students. The practical gain is local reuse of a fitted decision model within a broader computational pipeline, not elimination of the cost of building or executing a transport scenario.
+
+Existing usage logs also support a bounded acquisition-cost estimate without new API experiments. The new synthetic pilot and formal sample record about 6.56 million tokens, valued at approximately US\$3.50 of Go plan allowance under the documented request-time and cache rates. Unreported usage remains unknown; this is not an invoice. Historical Pro acquisition is accounted for separately in Appendix~\ref{sec:cost_summary}. Missing acquisition charges and local-compute tariffs prevent a measured lifecycle break-even claim.

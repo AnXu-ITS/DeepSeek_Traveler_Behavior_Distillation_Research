@@ -1,0 +1,31 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Sensitivity to reference values under the model availability rule. Accuracy is in percent; PT-share and response biases are model minus human in percentage points. Ranges cover all specified profiles.}
+\label{tab:ownership_defaults}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.13}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\toprule
+Model & Accuracy & PT-share bias & Delay bias & Access-contrast bias \\
+\midrule
+\multicolumn{5}{l}{\textit{Singapore (12 profiles)}} \\
+SA-Student & $[66.0, 68.2]$ & $[-31.8, -28.3]$ & $[-4.6, -0.7]$ & $[9.4, 11.4]$ \\
+MNL-S & $[70.4, 72.2]$ & $[-9.4, 1.0]$ & $[3.1, 3.5]$ & $[37.7, 40.2]$ \\
+Soft KL & $[71.3, 73.1]$ & $[-19.5, -15.0]$ & $[-3.4, 3.8]$ & $[13.0, 17.9]$ \\
+CE+KL & $[67.7, 71.5]$ & $[-25.6, -19.7]$ & $[3.0, 8.8]$ & $[-0.6, 4.8]$ \\
+Signed response & $[72.1, 73.6]$ & $[-18.3, -13.6]$ & $[-3.3, 3.9]$ & $[15.3, 20.5]$ \\
+Direction+magnitude & $[70.8, 72.2]$ & $[-19.0, -14.2]$ & $[-4.6, 2.5]$ & $[13.3, 18.3]$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Shanghai (eight profiles)}} \\
+SA-Student & $[74.9, 81.3]$ & $[-22.2, -14.6]$ & $[-16.5, -10.2]$ & $[-13.7, -10.6]$ \\
+MNL-S & $[80.5, 82.6]$ & $[-9.4, -2.9]$ & $[4.7, 7.6]$ & $[-9.7, -7.4]$ \\
+Soft KL & $[76.7, 80.5]$ & $[-14.7, -10.2]$ & $[-5.3, -3.1]$ & $[-11.1, -9.2]$ \\
+CE+KL & $[75.0, 77.4]$ & $[-17.3, -13.5]$ & $[-7.6, -1.5]$ & $[-12.2, -9.1]$ \\
+Signed response & $[77.1, 80.5]$ & $[-14.3, -8.5]$ & $[-3.6, -1.0]$ & $[-12.1, -10.1]$ \\
+Direction+magnitude & $[77.9, 81.2]$ & $[-13.5, -8.6]$ & $[-3.9, -0.7]$ & $[-11.1, -9.3]$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+The access contrast is poorer PT accessibility in Singapore and walking versus waiting in Shanghai; these are different task definitions. Singapore has 3,320 scored choices and 332 complete respondents per contrast. Shanghai has 3,208 choices, 321 complete delay respondents and 320 for walking versus waiting. The eight Singapore and two Shanghai choices of modes the model treats as unavailable remain scored. Neural accuracy is the mean of individual-seed accuracies, not classification from averaged probabilities.
+\end{minipage}
+\end{table}

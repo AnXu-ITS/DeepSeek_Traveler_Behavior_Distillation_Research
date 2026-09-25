@@ -1,0 +1,54 @@
+\section{Evaluating and learning traveler responses}
+\label{sec:method}
+\subsection{The response as the object of comparison}
+\label{sec:states}
+A traveler state $\mathbf x$ describes a person, a trip, contextual conditions and attributes of four alternatives: private car, public transport (PT), bicycle and walking. Attributes include time, cost, weather exposure and the components of a PT journey. A model returns a normalized choice distribution $\mathbf p(\mathbf x)$ and a departure-time adjustment. The distribution is a model output, not an established human choice frequency. Appendix~\ref{sec:supp_inputs} explains the inputs and the survey encodings.
+
+For two states that hold the person and trip fixed, the response is
+\begin{equation}
+\Delta\mathbf p_j=\mathbf p_j(\mathbf x')-\mathbf p_j(\mathbf x),\qquad j\in\{T,S\}.
+\label{eq:response}
+\end{equation}
+Here $T$ and $S$ denote Teacher and Student. We evaluate the absolute difference between their responses, averaged over modes available in either state and then over paired states:
+\begin{equation}
+E_{\Delta p}=\frac{1}{N}\sum_{i=1}^{N}\frac{1}{|\mathcal A_i|}
+\sum_{m\in\mathcal A_i}|\Delta p_{S,im}-\Delta p_{T,im}|.
+\label{eq:response_metric_main}
+\end{equation}
+Lower error means closer agreement in the specified change. This finite contrast does not by itself estimate a population causal effect or an elasticity. Static KL divergence measures endpoint agreement, departure MAE measures timing agreement, and an interaction contrast asks whether two perturbations combine in the same way. Supplementary Section~\ref{supp-sec:metric_definitions} gives the additional definitions.
+
+\subsection{Controlled and adapted Students}
+\label{sec:architectures}
+The joint neural Student encodes the traveler and the attributes of each alternative, scores the alternatives and normalizes over the available modes. It shares these representations with a departure predictor. The multinomial logit Student (MNL-S) instead uses linear choice utilities on the same structured information. Separate ridge, bounded-linear and neural timing predictors allow choice and departure adjustment to favor different specifications. The neural outputs are bounded to an hour in either direction. Appendix~\ref{sec:model_details} explains the model roles; detailed dimensions and fitting settings are in Supplementary Section~\ref{supp-sec:supp_controlled}.
+
+We also evaluate a frozen supply-adapted Student (SA-Student). This model was adapted with additional PT attributes and contrasts between contexts, travelers and accessibility levels. Its training history and availability treatment differ from those of the controlled Students. It therefore provides a deployment case, not an isolated test of the response penalty (Appendix~\ref{sec:s9_recipe}).
+
+\subsection{Response-aware fitting}
+\label{sec:loss}
+The soft-KL baseline fits the Teacher distribution and departure adjustment at both endpoints of every training pair. Signed-response fitting adds a weighted penalty on the difference between the Teacher and Student changes:
+\begin{equation}
+\mathcal L=\mathcal L_{\mathrm{endpoint}}+\lambda\mathcal L_{\mathrm{response}}.
+\label{eq:training_objective}
+\end{equation}
+The response penalty is a batch average over available mode--pair entries. We compare direct signed absolute error with a penalty that separates direction and magnitude. An additional CE+KL comparator fits the Teacher's most likely mode as a hard label. All controlled neural objectives receive the same endpoint information. Thus paired supervision changes what the optimizer prioritizes; it does not supply new Teacher knowledge. Appendix~\ref{sec:loss_diagnostics} gives the exact losses and their limitations, including a flat region in the direction-plus-magnitude penalty.
+
+\subsection{Human responses and network execution}
+\label{sec:execution_method}
+For a survey contrast, the human response is the change in the share selecting the relevant mode or mode group. The corresponding model response is the change in its predicted probability, averaged over the same respondents. We report their difference as \emph{response bias}: positive values mean a more positive model response, and negative values a more negative one. Full task sets are retained together when resampling respondents.
+
+An API reference queried on the same survey tasks provides a further descriptive comparison. On the same people and contrasts,
+\begin{equation}
+S-H=(T_{\mathrm{now}}-H)+(S-T_{\mathrm{now}}),
+\label{eq:attribution}
+\end{equation}
+where each term is a mean response. This identity separates two observed discrepancies. Because $T_{\mathrm{now}}$ was queried later, it does not identify the historical error introduced by compression.
+
+In simulation, we trace PT use from predicted probabilities through feasibility adjustment, mode assignment, routing and boarding. A feasible route is one returned by the specified direct-or-one-transfer search, rather than proof that all other connections are impossible. Deterministic assignment takes the most probable mode; stochastic assignment samples the probabilities; feasibility-constrained sampling first removes unavailable or unroutable alternatives and renormalizes. Without that correction, a failed car, bicycle or PT route triggers a walking fallback. Predictions remain fixed during each simulation run.
+
+Every stage uses the initial population as denominator. If $R$ denotes a change from baseline, the predicted-to-simulated gap is
+\begin{equation}
+G=R^{\mathrm{sim}}-R^{\mathrm{pred}}
+=(R^{\mathrm{adj}}-R^{\mathrm{pred}})+(R^{\mathrm{sim}}-R^{\mathrm{adj}}).
+\label{eq:execution_decomposition}
+\end{equation}
+This separates a change to the sampling distribution from subsequent execution. Boarding and journey completion remain distinct outcomes. The departure adjustment is applied before route feasibility is checked, so timing can change the itinerary even if it leaves the binary feasibility indicator unchanged. Appendix~\ref{sec:execution_support} explains the execution controls and the geometry of the feasibility correction.

@@ -1,0 +1,33 @@
+\section{Supply-adapted Student}
+\label{sec:s9_recipe}
+SA-Student adapts a previously trained joint neural Student to six additional PT-supply fields. The existing weights, categorical vocabularies and normalization are kept. The input weights for the new fields start at zero, and their normalization is fitted on the accessibility training states. The adapted model has 24,562 parameters. The accessibility supervision contains 336 states, divided into 234 for training, 51 for validation and 51 for testing, with disjoint pools of 79, 14 and 20 origin--destination pairs and of 28, six and six personas. Its targets average three Teacher queries for 89 states and five for 247, 1,502 valid queries in total.
+
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Specification and selection of the supply-adapted Student.}
+\label{tab:s9_spec}
+\renewcommand{\arraystretch}{1.14}
+\begin{tabularx}{\linewidth}{@{}p{0.27\linewidth}X@{}}
+\toprule
+Item & SA-Student configuration \\
+\midrule
+Initialization & Previously trained joint Student; weights of the six added supply fields set to zero \\
+Parameters & 24,562 \\
+Accessibility split & 234 / 51 / 51 states (training / validation / test) \\
+State-level objective & CE + KL for mode choice; Huber loss with one-minute transition for departure \\
+Additional supervision & Direction/magnitude, mechanism, persona and accessibility contrasts \\
+Supervision sources & Single-context : joint context : mechanism : accessibility = 2:1:1:1, with additional persona and accessibility-curve updates \\
+Optimizer & Adam; learning rate $1.25\times10^{-4}$; weight decay $10^{-4}$ \\
+Batch sizes & 32 states/pairs; eight mechanism quadruplets \\
+Training schedule & Seed 42; maximum 120 epochs; patience 15 \\
+Selection & Minimum KL on accessibility validation states, subject to at most a one-point loss in single-context accuracy and at most 10\% increases in single-context KL and in KL on joint contexts seen in training, relative to initialization \\
+Selected epoch & 17 \\
+Evaluation & Weights fixed in the stated-choice and simulation experiments \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+SA-Student applies the direction and magnitude terms of the main text to the modes available in the perturbed state, whereas the controlled comparison uses the modes available in either state. Mechanism supervision matches the responses from a baseline to variants that change the context together with the attributes, the context alone or the attributes alone. Persona supervision matches differences between travelers making the same trip, and accessibility supervision matches the PT response between the best and worst accessibility classes for a fixed traveler and trip.
+
+Each epoch draws 104 single-context pairs and 52 each of joint-context pairs, persona pairs, accessibility states and accessibility-curve pairs, limited by the size of the available pools, while mechanism updates use the available groups of four states. All active loss terms have unit weight, and each type of update keeps its own reduction by sum or mean. The supplementary data files describe these settings and include the accessibility prompt. Because its initialization, additional supervision and adaptation differ from the controlled objectives of Section~\ref{sec:supp_controlled}, SA-Student is not treated as part of the matched comparison of objectives. The predecessor checkpoint and its training history are retained in the corresponding model release.
+\FloatBarrier

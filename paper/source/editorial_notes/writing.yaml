@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "task_id": "WRITING-NARRATIVE-AIT-20260925",
+  "status": "completed",
+  "mode": "evidence_based_revision",
+  "source_context": {
+    "project_mode": "standalone",
+    "snapshot_ref": null,
+    "result_ref": "data_tables/revision20260925/SOURCE_MANIFEST.json",
+    "claims_authority_ref": null,
+    "scope_note": "Author-authorized structural narrative and figure revision incorporating completed experiments A, B, D; new-human validation C deferred."
+  },
+  "axes": {
+    "paper_type": "empirical_analysis",
+    "sections": [
+      "method",
+      "experiments",
+      "results",
+      "discussion",
+      "appendix"
+    ],
+    "language": "english",
+    "venue": "Artificial Intelligence for Transportation"
+  },
+  "input_artifacts": [],
+  "argument": {
+    "central_claim_id": "C-cost",
+    "one_sentence_argument": "Response learning is coverage-dependent; fidelity to an LLM, agreement with people and network execution require separate empirical checks.",
+    "contribution_claim_ids": [
+      "C-cost",
+      "C-provider",
+      "C-consent"
+    ],
+    "outline_ref": "NARRATIVE_REVISION_PLAN_CN.md",
+    "outline_confirmation": {
+      "status": "not_required",
+      "decision_ref": null
+    }
+  },
+  "claim_bindings": [
+    {
+      "claim_id": "C-cost",
+      "manuscript_location": "sections/05_results.tex; sections/S6_compute.tex",
+      "support_status": "supported",
+      "is_core": true,
+      "evidence_refs": [
+        "reproduction/cost_audit/api_usage_aggregate.json",
+        "reproduction/cost_audit/cost_estimates.json"
+      ]
+    },
+    {
+      "claim_id": "C-provider",
+      "manuscript_location": "sections/03_methodology.tex; sections/S7_materials.tex",
+      "support_status": "supported",
+      "is_core": true,
+      "evidence_refs": [
+        "author confirmation in current request",
+        "https://api-docs.deepseek.com/updates/",
+        "reproduction/cost_audit/api_usage_aggregate.json"
+      ]
+    },
+    {
+      "claim_id": "C-consent",
+      "manuscript_location": "sections/04_experimental_design.tex",
+      "support_status": "supported",
+      "is_core": true,
+      "evidence_refs": [
+        "author-provided ethics and consent statement in current request"
+      ]
+    },
+    {
+      "claim_id": "C-split",
+      "manuscript_location": "sections/04_experimental_design.tex",
+      "support_status": "supported",
+      "is_core": true,
+      "evidence_refs": [
+        "git:4e67286:configs/joint_sampling.yaml",
+        "git:4e67286:outputs/matched_response_v1/bundle/manifest.json"
+      ]
+    }
+  ],
+  "terminology": [],
+  "symbols": [],
+  "numeric_mentions": [
+    {
+      "display_value": "13,391; USD 102.71–205.42",
+      "manuscript_location": "sections/05_results.tex; sections/S6_compute.tex",
+      "source_ref": "reproduction/cost_audit/cost_estimates.json",
+      "comparison_context": "Deduplicated metered archive; current-rate scenarios, not invoice"
+    }
+  ],
+  "missing_evidence": [
+    "Independent prospective human repair validation",
+    "Calibrated field disruption effects",
+    "Complete metered lifecycle cost"
+  ],
+  "revision_changes": [
+    {
+      "location": "sections/05_results.tex; sections/S6_compute.tex",
+      "reason": "Author-requested evidence-grounded correction or addition",
+      "input_ref": "reproduction/cost_audit/api_usage_aggregate.json; reproduction/cost_audit/cost_estimates.json",
+      "before_claim": "No complete lifecycle accounting",
+      "after_claim": "Observed usage repriced with missingness and lifecycle boundary"
+    },
+    {
+      "location": "sections/03_methodology.tex; sections/S7_materials.tex",
+      "reason": "Author-requested evidence-grounded correction or addition",
+      "input_ref": "author confirmation in current request; https://api-docs.deepseek.com/updates/; reproduction/cost_audit/api_usage_aggregate.json",
+      "before_claim": "Pro requests assumed rerouted to Flash",
+      "after_claim": "Author-confirmed official V4 Pro; updated continuation notice; incomplete immutable fingerprints"
+    },
+    {
+      "location": "sections/04_experimental_design.tex",
+      "reason": "Author-requested evidence-grounded correction or addition",
+      "input_ref": "author-provided ethics and consent statement in current request",
+      "before_claim": "Ethics-exemption basis",
+      "after_claim": "Exact supplied consent statement; no formal institutional ethics approval obtained"
+    },
+    {
+      "location": "sections/04_experimental_design.tex",
+      "reason": "Author-requested evidence-grounded correction or addition",
+      "input_ref": "git:4e67286:configs/joint_sampling.yaml; git:4e67286:outputs/matched_response_v1/bundle/manifest.json",
+      "before_claim": "Persona-disjoint description without limited combination holdout",
+      "after_claim": "Existing limited combination exclusion identified; broader leakage/generalization not certified"
+    }
+  ],
+  "output_artifacts": [
+    {
+      "id": "main",
+      "path": "cas-sc-template.pdf"
+    },
+    {
+      "id": "supplement",
+      "path": "supplement.pdf"
+    },
+    {
+      "id": "figures",
+      "path": "scripts/make_revision_figures.py"
+    }
+  ],
+  "blockers": []
+}

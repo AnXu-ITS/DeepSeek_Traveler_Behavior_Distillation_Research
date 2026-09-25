@@ -1,0 +1,53 @@
+\section{Controlled learning and departure prediction}
+\label{sec:supp_controlled}
+\subsection{Training and model selection}
+The controlled benchmark contains 1,839 training, 365 validation and 437 test states from disjoint groups of 28, six and six personas. The test set comprises 226 single-context, 51 accessibility, 96 joint-context and 64 mechanism states, which define 398 response pairs and 94 interaction contrasts. Training proceeds over pairs, and the 1,681 training pairs expose the model to 3,362 states per epoch. Within each training seed (42, 2026 and 7), the four neural objectives share initialization, feature encoding, the order of training pairs and a budget of 6,360 updates over 120 epochs. They also share the availability rule, under which a mode enters the response loss if it is available in either state of a pair.
+
+Every neural Student has 24,562 parameters. The nine categorical fields receive eight-dimensional embeddings and are combined with 17 standardized global features in a two-layer encoder of width 64. A mode embedding and the 12 alternative attributes enter a two-layer encoder of width 32, and a scorer with 64 hidden units maps both representations to utilities. The departure predictor uses the global representation together with the mean representation of the available alternatives. Hidden layers use ReLU activations, and the global encoder and scorer apply a dropout rate of 0.1. All models are trained with Adam at a learning rate of $1.25\times10^{-4}$ and weight decay of $10^{-4}$, in batches of 32 pairs, with a Huber loss on departure adjustment whose transition is one minute. For the probability-response comparison, the epoch with the lowest validation macro-source KL is retained.
+
+MNL-S specifies four linear utilities over 111 explanatory variables. It minimizes cross-entropy against the soft Teacher targets with an $L_2$ penalty, whose weight of $10^{-4}$ was chosen from $\{10^{-4},10^{-3},10^{-2},10^{-1}\}$ by validation macro-source KL. Estimation by L-BFGS-B converges within 2,000 iterations. The ridge departure predictor uses a penalty of $10^{-3}$, chosen by validation departure MAE. Table~\ref{tab:matched_diagnostics} reports feasibility and departure-tail metrics for the models selected on choice.
+\input{generated/narrative/table_training_sources.tex}
+
+\paragraph{Response and feasibility metrics.}
+\label{sec:metric_definitions}
+For response pair $i$, let $\mathcal A_i$ be the set of alternatives available in either of its two states. Probability-response error is
+\begin{equation}
+ E_{\Delta p}=\frac{1}{N_{\mathrm{pair}}}\sum_{i=1}^{N_{\mathrm{pair}}}
+ \frac{1}{|\mathcal A_i|}\sum_{m\in\mathcal A_i}
+ |\Delta p^S_{im}-\Delta p^T_{im}|.
+ \label{eq:response_metric}
+\end{equation}
+Fidelity at individual states is measured by $D_{\mathrm{KL}}(\mathbf p_T\Vert\mathbf p_S)=\sum_{m:p_{T,m}>0}p_{T,m}\log(p_{T,m}/p_{S,m})$, and macro-source KL summarizes this divergence at the level of the four supervision sources. For a linked baseline $0$, individual perturbations $a,b$ and their combination $ab$, the mode-specific interaction is
+\begin{equation}
+ I^j_{im}=p^j_{im}(ab)-p^j_{im}(a)-p^j_{im}(b)+p^j_{im}(0),\qquad j\in\{T,S\}.
+ \label{eq:interaction_metric}
+\end{equation}
+Interaction error averages $|I^S_{im}-I^T_{im}|$ over the modes available in a linked contrast and then over the 94 evaluated contrasts. It therefore measures how two perturbations combine, rather than the response to a single intervention. With $\mathcal E$ denoting the test states in which no PT route is found, the feasibility violation rate is
+\begin{equation}
+ \mathrm{FVR}=\frac{1}{|\mathcal E|}\sum_{x\in\mathcal E}
+ \mathbf 1\!\left\{\operatorname*{arg\,max}_{m\in\mathcal A(x)}p_{S,m}(x)=\mathrm{PT}\right\}.
+ \label{eq:fvr_metric}
+\end{equation}
+The controlled evaluation contains $|\mathcal E|=12$ such states. FVR counts how often PT is the most probable mode where the route search finds no connection, which differs from the mean PT probability on those states. Departure MAE averages $|\tau_S-\tau_T|$ over the evaluated states.
+
+\input{generated/narrative/table_matched_diagnostics.tex}
+
+\subsection{Independent departure predictors}
+\label{sec:departure_predictors}
+The modular comparison keeps the 444 MNL-S choice coefficients fixed and adds either a bounded linear predictor with 111 parameters or an independent neural predictor with 18,289 parameters. The neural predictor keeps the feature encoders and departure layer of the joint architecture, omits the utility scorer and is trained on the departure Huber loss alone. The two modular Students therefore have 555 and 18,733 parameters in total.
+
+All timing comparisons share the training states, the three seeds, the optimizer and the budget of 6,360 updates. The retained epoch minimizes validation departure MAE, with ties resolved in favour of the earliest epoch, and the four joint objectives are retrained under the same criterion. These timing fits are separate from the fits used for the probability-response comparison, although both follow the same update budget. Table~\ref{tab:departure_runs} lists the selected epochs, the results for every seed and the inference times, and Table~\ref{tab:departure_sources} breaks the errors down by supervision source.
+\input{generated/narrative/table_departure_runs.tex}
+\input{generated/narrative/table_departure_sources.tex}
+Ridge predictions on the test set lie between $-36.63$ and 36.48 minutes, so the $\pm60$-minute bound is never active. Combined with the fixed MNL-S choice probabilities, the independent neural predictor reaches a departure MAE of $7.61\pm0.72$ minutes. It remains $0.180$ minutes above the best joint model, CE+KL selected on departure MAE, with a persona-clustered 95\% interval of $[0.002,0.418]$. Replacing the ridge predictor thus closes most, though not all, of the timing gap to the joint models.
+
+The loss properties and their graphical diagnostic are in Appendix~\ref{main-sec:loss_diagnostics}.
+
+\subsection{Response robustness}
+Tables~\ref{tab:response_breakdown}--\ref{tab:response_seed_differences} break the response errors down by supervision source, intervention, persona and seed. When each test persona is removed in turn, direction+magnitude remains better than soft KL, with seed-averaged differences between $-0.00408$ and $-0.00310$ and an improvement in all 18 combinations of seed and removed persona. Signed response improves on the seed average after every removal and in 14 of the 18 individual combinations.
+\input{generated/narrative/table_response_breakdown.tex}
+\input{generated/narrative/table_response_interventions.tex}
+\input{generated/narrative/table_response_seed_differences.tex}
+Individual repeated Teacher responses are available for 373 test states, 287 with three queries and 86 with five, which together define 350 complete response pairs. The 64 mechanism states and their 48 pairs lack individual repeats and are excluded from this analysis. The same recomputed targets are used for every Student. Table~\ref{tab:teacher_aggregation} compares averaging with renormalized medians and with omitting each of the first three queries in turn. Resampling the queries within each state 1,000 times gives intervals for the difference in response error relative to soft KL of $[-0.00319,-0.00195]$ for signed response, $[-0.00366,-0.00270]$ for direction+magnitude and $[-0.01318,-0.00855]$ for MNL-S. These intervals describe sensitivity to the available Teacher queries for fixed fitted models.
+\input{generated/narrative/table_teacher_aggregation.tex}
+\FloatBarrier
