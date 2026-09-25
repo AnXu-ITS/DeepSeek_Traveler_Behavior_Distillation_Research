@@ -1,0 +1,17 @@
+{
+  "original_trips": 13655,
+  "retained_trips": 6924,
+  "removed_trips": 6731,
+  "retained_fraction": 0.5070670084218235,
+  "groups": 344,
+  "singleton_groups": 35,
+  "schedule_sha256": "ba5c852a380d4ae3bb6b1acf929d97312f5e8246ec37220588f19b77439515d7",
+  "original_schedule_sha256": "f662a9529850fb8b11dcdf2fd75d231279cb76c48e2130e74792c18945a6ac15",
+  "index_sha256": "a93abb9729da3378e48e28033b1368d97245962ab7fa7f69404e178029cd96b2",
+  "checks": {
+    "real_supply_changed": true,
+    "index_matches_schedule": true,
+    "physical_network_unchanged": true,
+    "vehicle_types_unchanged": true
+  }
+}

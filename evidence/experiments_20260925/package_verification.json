@@ -1,0 +1,32 @@
+{
+  "files": 692,
+  "bytes": 25525247,
+  "sha256": "b5aa4decdd526287d90a8c8fea03f4bcd6e781c9974e5f955ebe0096f24f2cd4",
+  "crc": "pass",
+  "snapshot_consistency": "all embedded files match manifest",
+  "large_events": "Retained in local physical_supply runs, excluded from Git package; event SHA256 and scripts preserved",
+  "status": {
+    "A": "complete",
+    "B": {
+      "local_family_training": "complete",
+      "pilot": {
+        "required": 432,
+        "valid": 0,
+        "attempts": 2,
+        "complete": false,
+        "quota_peak_no_cache_usd": 0.0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "returned_models": []
+      },
+      "formal": "not started",
+      "blocker": "Provider requires Global privacy region; pending author setting change"
+    },
+    "C": "deferred by author: no independent new human responses",
+    "D": {
+      "completed": 40,
+      "expected": 40
+    },
+    "manuscript_writing": "not started; stop gate retained"
+  }
+}

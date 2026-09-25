@@ -1,0 +1,24 @@
+{
+  "A": "complete",
+  "B": {
+    "local_family_training": "complete",
+    "pilot": {
+      "required": 432,
+      "valid": 0,
+      "attempts": 2,
+      "complete": false,
+      "quota_peak_no_cache_usd": 0.0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "returned_models": []
+    },
+    "formal": "not started",
+    "blocker": "Provider requires Global privacy region; pending author setting change"
+  },
+  "C": "deferred by author: no independent new human responses",
+  "D": {
+    "completed": 40,
+    "expected": 40
+  },
+  "manuscript_writing": "not started; stop gate retained"
+}

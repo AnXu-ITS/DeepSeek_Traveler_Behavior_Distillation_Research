@@ -1,0 +1,90 @@
+{
+  "id": "response_revision_20260925_v1",
+  "authorized": "User requested remaining experiments and stop before writing; human new-data stage deferred",
+  "created_utc": "2026-09-25T02:42:22.5226557Z",
+  "base_commit": "29004527730f596d6161996bd4de56b3cdbeb5e6",
+  "A": {
+    "mnl_l2": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "response_weights": [
+      0.25,
+      0.5,
+      1,
+      2
+    ],
+    "gradient_epochs": [
+      0,
+      1,
+      30,
+      60,
+      120
+    ],
+    "epochs": 120,
+    "seeds": [
+      42,
+      2026,
+      7
+    ],
+    "objectives": [
+      "soft KL shared zero-weight control",
+      "signed L1",
+      "direction plus magnitude"
+    ],
+    "test_selection": false,
+    "diagnostic_seed": 917,
+    "selectors": [
+      "validation macro source KL",
+      "validation mean pair response gap"
+    ],
+    "diagnostic_units": 128
+  },
+  "B": {
+    "no_paid_fallback": true,
+    "max_output_tokens": 8192,
+    "scope": "cross-model reference generalization, not the original Pro compression error",
+    "repeats": 3,
+    "states_per_persona": 12,
+    "max_formal_attempts": 4752,
+    "formal_max": 120,
+    "primary_precision_halfwidth": 0.01,
+    "formal_min": 30,
+    "model": "deepseek-v4.1-flash",
+    "pilot_personas": 12,
+    "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+    "provider": "OpenCode Go",
+    "primary_comparison": "signed L1 weight1 static selector minus softKL static selector, seed mean response gap, across new personas",
+    "max_pilot_attempts": 476
+  },
+  "C": {
+    "status": "deferred",
+    "reason": "User confirms no new independent respondents"
+  },
+  "D": {
+    "models": [
+      "S9",
+      "MNL with independent neural timing seed42"
+    ],
+    "disruption": "retain alternating chronologically sorted departures on each transit route; retain single-departure routes",
+    "n": 1000,
+    "total_runs": 40,
+    "seeds": [
+      42,
+      2026,
+      7,
+      917,
+      20260925
+    ],
+    "policy": "planner_sampling",
+    "arms": [
+      "baseline",
+      "perceived_delay",
+      "frozen_behavior_disrupted_supply",
+      "recomputed_LOS_disrupted_supply"
+    ]
+  },
+  "stop_before_manuscript_writing": true
+}

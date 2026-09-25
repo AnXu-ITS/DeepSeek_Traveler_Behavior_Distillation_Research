@@ -1,0 +1,386 @@
+{
+  "checks": [
+    {
+      "split": "train",
+      "n_endpoints": 1839,
+      "n_pairs": 1681,
+      "n_interactions": 333,
+      "all_references_local": true,
+      "heldout_endpoints": 0,
+      "heldout_references": 0,
+      "excluded_references": 0,
+      "cross_source_semantic_fare_congestion_endpoints": 0
+    },
+    {
+      "split": "val",
+      "n_endpoints": 365,
+      "n_pairs": 337,
+      "n_interactions": 70,
+      "all_references_local": true,
+      "heldout_endpoints": 0,
+      "heldout_references": 0,
+      "excluded_references": 0,
+      "cross_source_semantic_fare_congestion_endpoints": 0
+    },
+    {
+      "split": "test",
+      "n_endpoints": 437,
+      "n_pairs": 398,
+      "n_interactions": 94,
+      "all_references_local": true,
+      "heldout_endpoints": 24,
+      "heldout_references": 24,
+      "excluded_references": 0,
+      "cross_source_semantic_fare_congestion_endpoints": 24
+    }
+  ],
+  "overlap": [
+    {
+      "left": "train",
+      "right": "val",
+      "field": "persona",
+      "n_shared": 0
+    },
+    {
+      "left": "train",
+      "right": "val",
+      "field": "input_hash",
+      "n_shared": 0
+    },
+    {
+      "left": "train",
+      "right": "test",
+      "field": "persona",
+      "n_shared": 0
+    },
+    {
+      "left": "train",
+      "right": "test",
+      "field": "input_hash",
+      "n_shared": 0
+    },
+    {
+      "left": "val",
+      "right": "test",
+      "field": "persona",
+      "n_shared": 0
+    },
+    {
+      "left": "val",
+      "right": "test",
+      "field": "input_hash",
+      "n_shared": 0
+    }
+  ],
+  "lineage": [
+    {
+      "run": "ce_kl_seed2026",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "ce_kl_seed42",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "ce_kl_seed7",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "direction_magnitude_seed2026",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "direction_magnitude_seed42",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "direction_magnitude_seed7",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "signed_l1_seed2026",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "signed_l1_seed42",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "signed_l1_seed7",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "soft_kl_seed2026",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "soft_kl_seed42",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    },
+    {
+      "run": "soft_kl_seed7",
+      "initialization": "random; no inherited checkpoint",
+      "bundle": "b0cf7ab33c9432a51c73aab3c392f15a151740394918ca40164eb0f9c3a362e6",
+      "source_code": "3c40e5f214d97867a5c7cd5df7b0a1dc18c6431a929b79950a6b0631f3f62d8d"
+    }
+  ],
+  "heldout_results": [
+    {
+      "run": "ce_kl_seed2026",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.050404223271425304,
+        "probability_l1": 0.21602282257948535,
+        "mode_accuracy": 0.9583333333333334,
+        "departure_mae": 5.65315395941337,
+        "pt_mae": 0.08566434961805741,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 11.12583816885948
+      },
+      "pairs": 24,
+      "response_gap": 0.04606518735942395,
+      "interaction_gap": 0.0438079036806756
+    },
+    {
+      "run": "ce_kl_seed42",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.10859757334117749,
+        "probability_l1": 0.2869285344740104,
+        "mode_accuracy": 0.75,
+        "departure_mae": 5.8945249487956355,
+        "pt_mae": 0.04738388080522418,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 12.840638279914856
+      },
+      "pairs": 24,
+      "response_gap": 0.04073246559587017,
+      "interaction_gap": 0.04668301518899393
+    },
+    {
+      "run": "ce_kl_seed7",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.06367219649031998,
+        "probability_l1": 0.21702497669224008,
+        "mode_accuracy": 1.0,
+        "departure_mae": 4.220438738663991,
+        "pt_mae": 0.0630078606630365,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 10.328504395484924
+      },
+      "pairs": 24,
+      "response_gap": 0.032728424993056636,
+      "interaction_gap": 0.04560328730597527
+    },
+    {
+      "run": "direction_magnitude_seed2026",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.05207725926931162,
+        "probability_l1": 0.23993204456459108,
+        "mode_accuracy": 0.9583333333333334,
+        "departure_mae": 5.673266993711391,
+        "pt_mae": 0.09646657357613246,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 10.646560869216918
+      },
+      "pairs": 24,
+      "response_gap": 0.03766156136777638,
+      "interaction_gap": 0.037686123310032495
+    },
+    {
+      "run": "direction_magnitude_seed42",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.07594769076385387,
+        "probability_l1": 0.27859001826037033,
+        "mode_accuracy": 0.75,
+        "departure_mae": 6.111592362665881,
+        "pt_mae": 0.06326294725139936,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 14.362038545608517
+      },
+      "pairs": 24,
+      "response_gap": 0.03858342141819897,
+      "interaction_gap": 0.040258034347088
+    },
+    {
+      "run": "direction_magnitude_seed7",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.06896079500831177,
+        "probability_l1": 0.25743979152757673,
+        "mode_accuracy": 0.9166666666666666,
+        "departure_mae": 4.695193866888682,
+        "pt_mae": 0.10257068338493507,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 13.174226951599117
+      },
+      "pairs": 24,
+      "response_gap": 0.03231220063051895,
+      "interaction_gap": 0.04404114795826015
+    },
+    {
+      "run": "signed_l1_seed2026",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.06257023619238966,
+        "probability_l1": 0.2700958456495622,
+        "mode_accuracy": 0.9583333333333334,
+        "departure_mae": 5.809874820709228,
+        "pt_mae": 0.1126002948731184,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 11.553998193740844
+      },
+      "pairs": 24,
+      "response_gap": 0.040335936544513444,
+      "interaction_gap": 0.03896455125815377
+    },
+    {
+      "run": "signed_l1_seed42",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.07305903485895637,
+        "probability_l1": 0.2712582738249718,
+        "mode_accuracy": 0.7916666666666666,
+        "departure_mae": 6.62159045599401,
+        "pt_mae": 0.0582397441243132,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 15.242904906272887
+      },
+      "pairs": 24,
+      "response_gap": 0.03911424179697132,
+      "interaction_gap": 0.04054550024917532
+    },
+    {
+      "run": "signed_l1_seed7",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.06691063670030188,
+        "probability_l1": 0.26157675741814695,
+        "mode_accuracy": 0.9166666666666666,
+        "departure_mae": 4.534009497923155,
+        "pt_mae": 0.1039541761080424,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 12.412773714065546
+      },
+      "pairs": 24,
+      "response_gap": 0.02957463292254997,
+      "interaction_gap": 0.03898452191367399
+    },
+    {
+      "run": "soft_kl_seed2026",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.058719905887524466,
+        "probability_l1": 0.2561652510268614,
+        "mode_accuracy": 0.9583333333333334,
+        "departure_mae": 6.187303416927655,
+        "pt_mae": 0.11358296250303586,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 11.166162935495375
+      },
+      "pairs": 24,
+      "response_gap": 0.0427301230705369,
+      "interaction_gap": 0.04258539050773657
+    },
+    {
+      "run": "soft_kl_seed42",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.08189788976758049,
+        "probability_l1": 0.3037265281688111,
+        "mode_accuracy": 0.7916666666666666,
+        "departure_mae": 6.403985951840878,
+        "pt_mae": 0.08229065143565337,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 15.319999723434446
+      },
+      "pairs": 24,
+      "response_gap": 0.04353447931227942,
+      "interaction_gap": 0.04209480369297639
+    },
+    {
+      "run": "soft_kl_seed7",
+      "state": {
+        "n": 24,
+        "personas": 6,
+        "kl": 0.07739518649274461,
+        "probability_l1": 0.29552167149679737,
+        "mode_accuracy": 0.875,
+        "departure_mae": 4.442748377472162,
+        "pt_mae": 0.12089227139949799,
+        "fvr": null,
+        "infeasible_pt_mass": null,
+        "n_infeasible": 0,
+        "departure_p90": 11.9992974615097
+      },
+      "pairs": 24,
+      "response_gap": 0.029226532429044744,
+      "interaction_gap": 0.039320865707373
+    }
+  ],
+  "auxiliary": "Controlled loss_for_units uses endpoint KL, departure Huber and declared pair loss only. No auxiliary updater or pretrained checkpoint is used.",
+  "source_sha256": {
+    "src\\traveler_distillation\\matched_response\\data.py": "ebe57ee2d584a58a2dfa74f6c01ea7c135338ea596a78e50be18541c99aedfd6",
+    "src\\traveler_distillation\\matched_response\\experiment.py": "f22afe804a9fceb195dd6cb21bed89ce8126a234d48d9bcc4465f106499d8d21",
+    "outputs\\matched_response_v1\\bundle\\manifest.json": "bacfbcd8d6d2822978fe048249dc23bbe86b19530118a14d4883a795000a93fe"
+  },
+  "scope": "fare x congestion combination disjoint only; constituent axes occur in training; frozen S9 has different lineage and is not covered by this guarantee"
+}

@@ -1,6 +1,8 @@
 # Proposed response-fidelity revision experiments
 
-**Status: proposed, not executed or approved.** The author requested a plan and API budget before any new experiment. The present revision only edits the manuscript and repository and audits existing metadata/usage. Existing numerical findings, raw questionnaires and answers remain unchanged. The base experimental commit is `4e67286ce72680a9e3a916a3fb7e97b1548b53f7`.
+**Historical planning snapshot.** The author subsequently authorized experiments, changed the new Teacher request to Go DeepSeek V4.1 Flash, deferred new-human validation, and required stopping before manuscript writing. See the [current experiment record](EXPERIMENTS_20260925.md). The original proposal and its Pro pricing assumptions below are preserved for provenance.
+
+**Status when this plan was written: proposed, not executed or approved.** The author requested a plan and API budget before any new experiment. The present revision only edits the manuscript and repository and audits existing metadata/usage. Existing numerical findings, raw questionnaires and answers remain unchanged. The base experimental commit is `4e67286ce72680a9e3a916a3fb7e97b1548b53f7`.
 
 ## Decisions supported by the current evidence
 
