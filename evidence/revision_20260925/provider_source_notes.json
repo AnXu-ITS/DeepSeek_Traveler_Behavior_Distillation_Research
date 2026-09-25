@@ -1,0 +1,23 @@
+{
+  "checked": "2026-09-25",
+  "sources": [
+    {
+      "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+      "use": "Current USD rate card and model service label"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+      "use": "Current CNY rate card, independent of exchange conversion"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/updates/",
+      "use": "Updated notice confirms continued V4 Pro service after September 14"
+    },
+    {
+      "url": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/",
+      "use": "Older conflicting routing announcement retained as provenance; not used to infer a Flash backend"
+    }
+  ],
+  "author_confirmation": "Official DeepSeek V4 Pro throughout, as stated by the author in the current request",
+  "caveat": "No claim of recovered immutable model identity for early records"
+}

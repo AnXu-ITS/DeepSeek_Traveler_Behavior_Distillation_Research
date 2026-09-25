@@ -1,0 +1,306 @@
+\begin{thebibliography}{34}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Inproceedings
+\bibitem[{Aher et~al.(2023)Aher, Arriaga and Kalai}]{aher2023using}
+\bibinfo{author}{Aher, G.V.}, \bibinfo{author}{Arriaga, R.I.},
+  \bibinfo{author}{Kalai, A.T.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Using large language models to simulate multiple
+  humans and replicate human subject studies}, in:
+  \bibinfo{booktitle}{Proceedings of the 40th International Conference on
+  Machine Learning}, pp. \bibinfo{pages}{337--371}.
+%Type = Article
+\bibitem[{Argyle et~al.(2023)Argyle, Busby, Fulda, Gubler, Rytting and
+  Wingate}]{argyle2023out}
+\bibinfo{author}{Argyle, L.P.}, \bibinfo{author}{Busby, E.C.},
+  \bibinfo{author}{Fulda, N.}, \bibinfo{author}{Gubler, J.R.},
+  \bibinfo{author}{Rytting, C.}, \bibinfo{author}{Wingate, D.},
+  \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{Out of one, many: Using language models to simulate
+  human samples}.
+\newblock \bibinfo{journal}{Political Analysis} \bibinfo{volume}{31},
+  \bibinfo{pages}{337--351}.
+%Type = Article
+\bibitem[{Axhausen(2002)}]{axhausen2002some}
+\bibinfo{author}{Axhausen, K.W.}, \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{Some ideas for agent-based transport simulation}.
+\newblock \bibinfo{journal}{Arbeitsberichte Verkehrs-und Raumplanung}
+  \bibinfo{volume}{125}.
+%Type = Book
+\bibitem[{Ben-Akiva and Lerman(1985)}]{ben1985discrete}
+\bibinfo{author}{Ben-Akiva, M.E.}, \bibinfo{author}{Lerman, S.R.},
+  \bibinfo{year}{1985}.
+\newblock \bibinfo{title}{Discrete choice analysis: theory and application to
+  travel demand}. volume~\bibinfo{volume}{9}.
+\newblock \bibinfo{publisher}{MIT press}.
+%Type = Article
+\bibitem[{Bisbee et~al.(2024)Bisbee, Clinton, Dorff, Kenkel and
+  Larson}]{bisbee2024synthetic}
+\bibinfo{author}{Bisbee, J.}, \bibinfo{author}{Clinton, J.D.},
+  \bibinfo{author}{Dorff, C.}, \bibinfo{author}{Kenkel, B.},
+  \bibinfo{author}{Larson, J.M.}, \bibinfo{year}{2024}.
+\newblock \bibinfo{title}{Synthetic replacements for human survey data? {T}he
+  perils of large language models}.
+\newblock \bibinfo{journal}{Political Analysis} \bibinfo{volume}{32},
+  \bibinfo{pages}{348--362}.
+%Type = Article
+\bibitem[{Chen et~al.(2026)Chen, Shen, Zhou, Liu, Wang and
+  Ke}]{incremental2026}
+\bibinfo{author}{Chen, T.}, \bibinfo{author}{Shen, Z.}, \bibinfo{author}{Zhou,
+  B.}, \bibinfo{author}{Liu, Y.}, \bibinfo{author}{Wang, S.},
+  \bibinfo{author}{Ke, J.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Addressing the online incremental transport mode
+  choice prediction problem with an {LLM}-augmented class-incremental learning
+  approach}.
+\newblock \bibinfo{journal}{Transportation Research Part C: Emerging
+  Technologies} \bibinfo{volume}{188}, \bibinfo{pages}{105709}.
+\newblock \DOIprefix\doi{10.1016/j.trc.2026.105709}.
+%Type = Article
+\bibitem[{Cheng(2026)}]{cheng2026calm}
+\bibinfo{author}{Cheng, Y.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{{CALM}: A calibrated {LLM}--choice--network framework
+  for activity-based traveler simulation}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:2609.22252} \URLprefix
+  \url{https://arxiv.org/html/2609.22252v1}. \bibinfo{note}{preprint; version
+  consulted 24 September 2026}.
+%Type = Inproceedings
+\bibitem[{Czarnecki et~al.(2017)Czarnecki, Osindero, Jaderberg, Swirszcz and
+  Pascanu}]{czarnecki2017sobolev}
+\bibinfo{author}{Czarnecki, W.M.}, \bibinfo{author}{Osindero, S.},
+  \bibinfo{author}{Jaderberg, M.}, \bibinfo{author}{Swirszcz, G.},
+  \bibinfo{author}{Pascanu, R.}, \bibinfo{year}{2017}.
+\newblock \bibinfo{title}{Sobolev training for neural networks}, in:
+  \bibinfo{booktitle}{Advances in Neural Information Processing Systems}.
+\newblock \URLprefix \url{https://arxiv.org/abs/1706.04859}.
+%Type = Misc
+\bibitem[{{DeepSeek}(2026a)}]{deepseek2026updates}
+\bibinfo{author}{{DeepSeek}}, \bibinfo{year}{2026}a.
+\newblock \bibinfo{title}{Api change log}.
+\newblock \URLprefix \url{https://api-docs.deepseek.com/updates/}.
+  \bibinfo{note}{official continuation notice for DeepSeek V4 Pro; accessed 25
+  September 2026}.
+%Type = Misc
+\bibitem[{{DeepSeek}(2026b)}]{deepseek2026pricing}
+\bibinfo{author}{{DeepSeek}}, \bibinfo{year}{2026}b.
+\newblock \bibinfo{title}{Models and pricing}.
+\newblock \URLprefix \url{https://api-docs.deepseek.com/quick_start/pricing/}.
+  \bibinfo{note}{official API documentation; accessed 25 September 2026}.
+%Type = Article
+\bibitem[{Gou et~al.(2021)Gou, Yu, Maybank and Tao}]{gou2021knowledge}
+\bibinfo{author}{Gou, J.}, \bibinfo{author}{Yu, B.}, \bibinfo{author}{Maybank,
+  S.J.}, \bibinfo{author}{Tao, D.}, \bibinfo{year}{2021}.
+\newblock \bibinfo{title}{Knowledge distillation: A survey}.
+\newblock \bibinfo{journal}{International Journal of Computer Vision}
+  \bibinfo{volume}{129}, \bibinfo{pages}{1789--1819}.
+%Type = Article
+\bibitem[{Hensher and Greene(2003)}]{hensher2003mixed}
+\bibinfo{author}{Hensher, D.A.}, \bibinfo{author}{Greene, W.H.},
+  \bibinfo{year}{2003}.
+\newblock \bibinfo{title}{The mixed logit model: the state of practice}.
+\newblock \bibinfo{journal}{Transportation} \bibinfo{volume}{30},
+  \bibinfo{pages}{133--176}.
+%Type = Article
+\bibitem[{Hinton et~al.(2015)Hinton, Vinyals and Dean}]{hinton2015distilling}
+\bibinfo{author}{Hinton, G.}, \bibinfo{author}{Vinyals, O.},
+  \bibinfo{author}{Dean, J.}, \bibinfo{year}{2015}.
+\newblock \bibinfo{title}{Distilling the knowledge in a neural network}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:1503.02531} .
+%Type = Book
+\bibitem[{Horni et~al.(2016)Horni, Nagel and Axhausen}]{horni2016multi}
+\bibinfo{author}{Horni, A.}, \bibinfo{author}{Nagel, K.},
+  \bibinfo{author}{Axhausen, K.W.}, \bibinfo{year}{2016}.
+\newblock \bibinfo{title}{The multi-agent transport simulation MATSim}.
+\newblock \bibinfo{publisher}{Ubiquity Press London}.
+%Type = Article
+\bibitem[{Liu et~al.(2026a)Liu, Li and Ma}]{gatsim2026}
+\bibinfo{author}{Liu, Q.}, \bibinfo{author}{Li, C.}, \bibinfo{author}{Ma, W.},
+  \bibinfo{year}{2026}a.
+\newblock \bibinfo{title}{{GATSim}: Urban mobility simulation with generative
+  agents}.
+\newblock \bibinfo{journal}{Transportation Research Part C: Emerging
+  Technologies} \bibinfo{volume}{186}, \bibinfo{pages}{105576}.
+\newblock \DOIprefix\doi{10.1016/j.trc.2026.105576}.
+%Type = Article
+\bibitem[{Liu et~al.(2026b)Liu, Li and Ma}]{genagents2026}
+\bibinfo{author}{Liu, Q.}, \bibinfo{author}{Li, C.}, \bibinfo{author}{Ma, W.},
+  \bibinfo{year}{2026}b.
+\newblock \bibinfo{title}{Generative agents for urban mobility: A cognitive
+  framework for realistic travel behavior simulation}.
+\newblock \bibinfo{journal}{Simulation Modelling Practice and Theory}
+  \bibinfo{volume}{147}, \bibinfo{pages}{103234}.
+\newblock \DOIprefix\doi{10.1016/j.simpat.2025.103234}.
+%Type = Article
+\bibitem[{Liu et~al.(2026c)Liu, Li and Yin}]{liu2026persona}
+\bibinfo{author}{Liu, T.}, \bibinfo{author}{Li, M.}, \bibinfo{author}{Yin, Y.},
+  \bibinfo{year}{2026}c.
+\newblock \bibinfo{title}{Aligning {LLM} with humans for travel choices: A
+  persona-based embedding learning approach}.
+\newblock \bibinfo{journal}{Transportation Science} \bibinfo{volume}{60},
+  \bibinfo{pages}{806--827}.
+\newblock \DOIprefix\doi{10.1287/trsc.2025.0330}.
+%Type = Article
+\bibitem[{Liu et~al.(2025)Liu, Yang and Yin}]{liu2025framework}
+\bibinfo{author}{Liu, T.}, \bibinfo{author}{Yang, J.}, \bibinfo{author}{Yin,
+  Y.}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Toward llm-agent-based modeling of transportation
+  systems: A conceptual framework}.
+\newblock \bibinfo{journal}{Artificial Intelligence for Transportation}
+  \bibinfo{volume}{1}, \bibinfo{pages}{100001}.
+\newblock \DOIprefix\doi{10.1016/j.ait.2025.100001}.
+%Type = Article
+\bibitem[{Liu et~al.(2026d)Liu, Yang, Yin, Li, Wang and Zhu}]{dualagent2026}
+\bibinfo{author}{Liu, T.}, \bibinfo{author}{Yang, J.}, \bibinfo{author}{Yin,
+  Y.}, \bibinfo{author}{Li, M.}, \bibinfo{author}{Wang, L.},
+  \bibinfo{author}{Zhu, Z.}, \bibinfo{year}{2026}d.
+\newblock \bibinfo{title}{Aligning {LLM} agents with human learning and
+  adjustment behavior: A dual agent approach}.
+\newblock \bibinfo{journal}{Transportation Research Part C: Emerging
+  Technologies} \bibinfo{volume}{191}, \bibinfo{pages}{105818}.
+\newblock \DOIprefix\doi{10.1016/j.trc.2026.105818}.
+%Type = Article
+\bibitem[{Mart{\'{i}}n-Baos et~al.(2023)Mart{\'{i}}n-Baos,
+  L{\'{o}}pez-G{\'{o}}mez, Rodriguez-Benitez, Hillel and
+  Garc{\'{i}}a-R{\'{o}}denas}]{martinbaos2023prediction}
+\bibinfo{author}{Mart{\'{i}}n-Baos, J.{\'{A}}.},
+  \bibinfo{author}{L{\'{o}}pez-G{\'{o}}mez, J.A.},
+  \bibinfo{author}{Rodriguez-Benitez, L.}, \bibinfo{author}{Hillel, T.},
+  \bibinfo{author}{Garc{\'{i}}a-R{\'{o}}denas, R.}, \bibinfo{year}{2023}.
+\newblock \bibinfo{title}{A prediction and behavioural analysis of machine
+  learning methods for modelling travel mode choice}.
+\newblock \bibinfo{journal}{Transportation Research Part C: Emerging
+  Technologies} \bibinfo{volume}{156}, \bibinfo{pages}{104318}.
+\newblock \DOIprefix\doi{10.1016/j.trc.2023.104318}.
+%Type = Incollection
+\bibitem[{McFadden(1974)}]{mcfadden1974conditional}
+\bibinfo{author}{McFadden, D.}, \bibinfo{year}{1974}.
+\newblock \bibinfo{title}{Conditional logit analysis of qualitative choice
+  behavior}, in: \bibinfo{booktitle}{Frontiers in Econometrics}.
+  \bibinfo{publisher}{Academic Press New York}, pp. \bibinfo{pages}{105--142}.
+%Type = Article
+\bibitem[{Mo et~al.(2026)Mo, Xu, Ma, Cho, Zhuang, Guo and
+  Zhao}]{mo2026llmtravel}
+\bibinfo{author}{Mo, B.}, \bibinfo{author}{Xu, H.}, \bibinfo{author}{Ma, R.},
+  \bibinfo{author}{Cho, J.H.}, \bibinfo{author}{Zhuang, D.},
+  \bibinfo{author}{Guo, X.}, \bibinfo{author}{Zhao, J.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Large language models for travel behavior
+  prediction}.
+\newblock \bibinfo{journal}{Transportation Research Interdisciplinary
+  Perspectives} \bibinfo{volume}{38}, \bibinfo{pages}{102124}.
+\newblock \DOIprefix\doi{10.1016/j.trip.2026.102124}.
+%Type = Article
+\bibitem[{Natterer et~al.(2025)Natterer, Rao, Tejada~Lapuerta, Engelhardt,
+  H{\"o}rl and Bogenberger}]{natterer2025surrogates}
+\bibinfo{author}{Natterer, E.S.}, \bibinfo{author}{Rao, S.R.},
+  \bibinfo{author}{Tejada~Lapuerta, A.}, \bibinfo{author}{Engelhardt, R.},
+  \bibinfo{author}{H{\"o}rl, S.}, \bibinfo{author}{Bogenberger, K.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Machine learning surrogates for agent-based models in
+  transportation policy analysis}.
+\newblock \bibinfo{journal}{Transportation Research Part C: Emerging
+  Technologies} \bibinfo{volume}{180}, \bibinfo{pages}{105360}.
+\newblock \DOIprefix\doi{10.1016/j.trc.2025.105360}.
+%Type = Article
+\bibitem[{Nie et~al.(2025)Nie, Sun and Ma}]{nie2025roles}
+\bibinfo{author}{Nie, T.}, \bibinfo{author}{Sun, J.}, \bibinfo{author}{Ma, W.},
+  \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Exploring the roles of large language models in
+  reshaping transportation systems: A survey, framework, and roadmap}.
+\newblock \bibinfo{journal}{Artificial Intelligence for Transportation}
+  \bibinfo{volume}{1}, \bibinfo{pages}{100003}.
+\newblock \DOIprefix\doi{10.1016/j.ait.2025.100003}.
+%Type = Inproceedings
+\bibitem[{Park et~al.(2019)Park, Kim, Lu and Cho}]{park2019relational}
+\bibinfo{author}{Park, W.}, \bibinfo{author}{Kim, D.}, \bibinfo{author}{Lu,
+  Y.}, \bibinfo{author}{Cho, M.}, \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Relational knowledge distillation}, in:
+  \bibinfo{booktitle}{Proceedings of the IEEE/CVF Conference on Computer Vision
+  and Pattern Recognition}, pp. \bibinfo{pages}{3967--3976}.
+\newblock \URLprefix
+  \url{https://openaccess.thecvf.com/content_CVPR_2019/html/Park_Relational_Knowledge_Distillation_CVPR_2019_paper.html}.
+%Type = Article
+\bibitem[{Sanh et~al.(2019)Sanh, Debut, Chaumond and Wolf}]{sanh2019distilbert}
+\bibinfo{author}{Sanh, V.}, \bibinfo{author}{Debut, L.},
+  \bibinfo{author}{Chaumond, J.}, \bibinfo{author}{Wolf, T.},
+  \bibinfo{year}{2019}.
+\newblock \bibinfo{title}{Distilbert, a distilled version of bert: smaller,
+  faster, cheaper and lighter}.
+\newblock \bibinfo{journal}{arXiv preprint arXiv:1910.01108} .
+%Type = Article
+\bibitem[{Sifringer et~al.(2020)Sifringer, Lurkin and
+  Alahi}]{sifringer2020enhancing}
+\bibinfo{author}{Sifringer, B.}, \bibinfo{author}{Lurkin, V.},
+  \bibinfo{author}{Alahi, A.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Enhancing discrete choice models with representation
+  learning}.
+\newblock \bibinfo{journal}{Transportation Research Part B: Methodological}
+  \bibinfo{volume}{140}, \bibinfo{pages}{236--261}.
+\newblock \DOIprefix\doi{10.1016/j.trb.2020.08.006}.
+%Type = Book
+\bibitem[{Train(2009)}]{train2009discrete}
+\bibinfo{author}{Train, K.E.}, \bibinfo{year}{2009}.
+\newblock \bibinfo{title}{Discrete choice methods with simulation}.
+\newblock \bibinfo{publisher}{Cambridge University Press}.
+%Type = Article
+\bibitem[{Walker and Ben-Akiva(2002)}]{walker2002generalized}
+\bibinfo{author}{Walker, J.}, \bibinfo{author}{Ben-Akiva, M.},
+  \bibinfo{year}{2002}.
+\newblock \bibinfo{title}{Generalized random utility model}.
+\newblock \bibinfo{journal}{Mathematical Social Sciences} \bibinfo{volume}{43},
+  \bibinfo{pages}{303--343}.
+%Type = Article
+\bibitem[{Wang et~al.(2025)Wang, Duan, He, Lyu, Chen, Zheng, Yao and
+  Ma}]{wang2025agentic}
+\bibinfo{author}{Wang, L.}, \bibinfo{author}{Duan, P.}, \bibinfo{author}{He,
+  Z.}, \bibinfo{author}{Lyu, C.}, \bibinfo{author}{Chen, X.},
+  \bibinfo{author}{Zheng, N.}, \bibinfo{author}{Yao, L.}, \bibinfo{author}{Ma,
+  Z.}, \bibinfo{year}{2025}.
+\newblock \bibinfo{title}{Agentic large language models for day-to-day route
+  choices}.
+\newblock \bibinfo{journal}{Transportation Research Part C: Emerging
+  Technologies} \bibinfo{volume}{180}, \bibinfo{pages}{105307}.
+\newblock \DOIprefix\doi{10.1016/j.trc.2025.105307}.
+%Type = Article
+\bibitem[{Wang et~al.(2020)Wang, Wang and Zhao}]{wang2020deep}
+\bibinfo{author}{Wang, S.}, \bibinfo{author}{Wang, Q.}, \bibinfo{author}{Zhao,
+  J.}, \bibinfo{year}{2020}.
+\newblock \bibinfo{title}{Deep neural networks for choice analysis: Extracting
+  complete economic information for interpretation}.
+\newblock \bibinfo{journal}{Transportation Research Part C: Emerging
+  Technologies} \bibinfo{volume}{118}, \bibinfo{pages}{102701}.
+%Type = Article
+\bibitem[{Xu and Wang(2026)}]{xu2026satisfaction}
+\bibinfo{author}{Xu, P.}, \bibinfo{author}{Wang, D.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Applying large language models to travel satisfaction
+  analysis}.
+\newblock \bibinfo{journal}{Artificial Intelligence for Transportation}
+  \bibinfo{volume}{8}, \bibinfo{pages}{100079}.
+\newblock \DOIprefix\doi{10.1016/j.ait.2026.100079}.
+%Type = Article
+\bibitem[{Xu and Jiao(2027)}]{ragbenchmark2026}
+\bibinfo{author}{Xu, Y.}, \bibinfo{author}{Jiao, J.}, \bibinfo{year}{2027}.
+\newblock \bibinfo{title}{Benchmarking retrieval-augmented generation
+  strategies for large language model-based travel mode choice prediction}.
+\newblock \bibinfo{journal}{Travel Behaviour and Society} \bibinfo{volume}{46},
+  \bibinfo{pages}{101375}.
+\newblock \DOIprefix\doi{10.1016/j.tbs.2026.101375}.
+%Type = Article
+\bibitem[{Yan et~al.(2026)Yan, Liu and Yin}]{valuingtime2026}
+\bibinfo{author}{Yan, Y.}, \bibinfo{author}{Liu, T.}, \bibinfo{author}{Yin,
+  Y.}, \bibinfo{year}{2026}.
+\newblock \bibinfo{title}{Valuing time in silicon: Can large language models
+  replicate human value of travel time}.
+\newblock \bibinfo{journal}{Travel Behaviour and Society} \bibinfo{volume}{44},
+  \bibinfo{pages}{101245}.
+\newblock \DOIprefix\doi{10.1016/j.tbs.2026.101245}.
+
+\end{thebibliography}

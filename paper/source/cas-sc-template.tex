@@ -1,0 +1,123 @@
+%% 
+%% Copyright 2019-2020 Elsevier Ltd
+%% 
+%% This file is part of the 'CAS Bundle'.
+%% --------------------------------------
+%% 
+%% Template article for cas-sc documentclass for 
+%% single column output.
+
+\documentclass[a4paper,fleqn]{cas-sc}
+\pdfminorversion=7
+
+\usepackage{tablefootnote}
+\usepackage{appendix}
+\usepackage{threeparttable}
+\usepackage{afterpage}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage[authoryear]{natbib}
+\usepackage{caption}
+\captionsetup{format=plain, indention=0pt}
+\captionsetup[figure]{font=small,labelfont=bf}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	citecolor=blue,
+}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage[above]{placeins}
+\usepackage{microtype}
+\setlength{\emergencystretch}{2em}
+\usepackage{xr}
+\externaldocument[supp-]{supplement}
+% Non-floating table blocks inside a common figure/table result float.
+% They use the CAS table caption, retain independent counters and labels,
+% and allow the visual summary and its exact values to stay on the same page.
+\ExplSyntaxOn
+\NewDocumentEnvironment{resulttable}{}
+  {\begin{minipage}{\linewidth}
+   \__reset_tbl:
+   \dim_set:Nn \l_tbl_width_dim {\linewidth}
+   \cs_set:cpn {@captype} {table}
+   \cs_set_eq:cN {@makecaption} \__make_tbl_caption:nn
+   \centering\small}
+  {\end{minipage}}
+\ExplSyntaxOff
+
+\usepackage[nameinlink]{cleveref}
+\Crefname{figure}{Fig.}{Figs.}
+\crefname{figure}{fig.}{figs.}
+\Crefname{equation}{Eq.}{Eqs.}
+
+%%%Author macros
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+\tsc{EP}
+\tsc{PMS}
+\tsc{BEC}
+\tsc{DE}
+%%%
+
+\begin{document}
+\ExplSyntaxOn
+\bool_gset_true:N \g_stm_nologo_bool
+\ExplSyntaxOff
+\let\printorcid\relax
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{4}
+\setcounter{totalnumber}{10}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.9}
+
+\shorttitle{Auditing LLM-Derived Traveler Responses}
+\shortauthors{A. Xu et al.}
+
+\title [mode = title]{Beyond Static Imitation: Auditing LLM-Derived Traveler Responses for Transport Simulation}
+
+\author[1]{An Xu}
+\ead{AnX.RTL2324@tum-asia.edu.sg}
+
+\author[2]{Zekai Jin}
+
+\author[2]{Chengbo Zhang}
+
+
+\author[1]{Yunfei Yin}
+\cormark[1]
+\ead{yunfeiyin@hit.edu.cn}
+
+\address[1]{School of Transportation Science and Engineering, Harbin Institute of Technology, Harbin 150090, China}
+\address[2]{Department of Civil Engineering, McGill University, Montreal, QC H3A 0C3, Canada}
+
+\cortext[cor1]{Corresponding author: Yunfei Yin (yunfeiyin@hit.edu.cn).}
+
+\begin{abstract}
+Transport scenario analysis requires traveler models that reproduce changes in choices, not only baseline predictions. For models distilled from large language models (LLMs), agreement with a Teacher does not establish agreement with travelers or preservation of responses in simulation. We develop a response-centric evaluation that links three comparisons: paired Teacher--Student contrasts, agreement with stated choices, and transmission through assignment and network execution. A persona-disjoint benchmark from one LLM Teacher contains 398 test response pairs across six synthetic personas, evaluated with three neural training seeds. Explicit response supervision reduces mean absolute probability-response error from 0.06930 to 0.06586; a multinomial logit Student reduces it further to 0.05644. Pairing the logit model with independent neural timing yields a departure error of 7.61 minutes against the Teacher. The model ranking changes when evaluated on stated-choice convenience samples of 332 Singapore and 321 Shanghai respondents. For poorer public-transport accessibility in Singapore, the Teacher-best Student predicts a 13.85-percentage-point increase in PT use, whereas respondents report a 24.40-point decrease. A 1,000-traveler Helsinki execution experiment further separates response preservation from routability: feasibility-constrained assignment removes unroutable PT assignments without reducing the response gap under a perceived-delay perturbation. These results establish distinct tests for compression fidelity, agreement with stated behavior and execution consistency. Model selection for transport simulation should evaluate the relevant intervention response at each level rather than rely on a single imitation or prediction score.
+\end{abstract}
+
+\begin{keywords}
+behavioral distillation \sep response fidelity \sep large language models \sep stated choice \sep agent-based transport simulation
+\end{keywords}
+\maketitle
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_methodology}
+\input{sections/04_experimental_design}
+\input{sections/05_results}
+\input{sections/06_discussion}
+\input{sections/07_conclusion}
+\section*{Data and code availability}
+Code, prepared synthetic benchmark states and targets, split manifests, selected Student checkpoints, evaluation scripts and compact result tables are included in the research repository, \url{https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research}. The experimental artifacts are pinned to the 24 September 2026 repository edition at commit \texttt{4e67286}; the 25 September editorial revision adds aggregate cost accounting and corrected service and consent statements without new experiments. The complete base identifier and material inventory are given in Supplementary Section~\ref{supp-sec:materials_scope}. Archived targets permit controlled-model evaluation without new Teacher calls. The repository remains access-controlled; requests should be directed to the corresponding author. Participant-level survey records and participant-linked API payloads are retained separately, subject to privacy and applicable permissions. The repository includes Helsinki run-level summaries and analysis code; fresh simulation additionally requires the documented supply files and MATSim environment. Supplementary Section~\ref{supp-sec:materials_scope} specifies the coverage of each reproduction task.
+\bibliographystyle{cas-model2-names}
+\bibliography{references}
+\end{document}

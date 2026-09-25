@@ -1,0 +1,24 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Per-seed paired response-error differences relative to soft KL, using the validation-KL checkpoints.}
+\label{tab:response_seed_differences}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}lrrlrr@{}}
+\toprule
+Objective & Seed & Difference & 95\% interval & Pairs & Personas \\
+\midrule
+CE + KL & 42 & 0.00742 & [0.00153, 0.01469] & 398 & 6 \\
+CE + KL & 2026 & 0.00371 & [-0.00207, 0.01002] & 398 & 6 \\
+CE + KL & 7 & 0.00679 & [0.00069, 0.01278] & 398 & 6 \\
+Signed & 42 & -0.00524 & [-0.00815, -0.00228] & 398 & 6 \\
+Signed & 2026 & -0.00334 & [-0.00941, 0.00038] & 398 & 6 \\
+Signed & 7 & 0.00027 & [-0.00252, 0.00304] & 398 & 6 \\
+Dir. + mag. & 42 & -0.00499 & [-0.00773, -0.00235] & 398 & 6 \\
+Dir. + mag. & 2026 & -0.00441 & [-0.00762, -0.00172] & 398 & 6 \\
+Dir. + mag. & 7 & -0.00094 & [-0.00342, 0.00113] & 398 & 6 \\
+\bottomrule
+\end{tabular}
+\par\smallskip{\footnotesize Negative differences favor the listed objective. Intervals use 10,000 paired persona-cluster resamples, retaining all tasks for each of six test personas. They condition on each fitted seed and are exploratory intervals without adjustment across the methods and seeds.}
+\end{table}
+

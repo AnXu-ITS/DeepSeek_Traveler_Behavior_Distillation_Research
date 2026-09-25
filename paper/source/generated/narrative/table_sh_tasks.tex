@@ -1,0 +1,24 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Shanghai scenario wording and the numerical reference encoding used for model evaluation. Numerical reference values were not displayed as a task table in the deployed questionnaire.}
+\label{tab:shanghai_cards}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule
+Task & Condition stated to respondents & Additional numerical reference encoding \\
+\midrule
+B0 & Clear weather; normal traffic & Times car/PT/bicycle/walk: 20/35/25/80 min; car cost 15 yuan, PT fare 4 yuan. \\
+W1 & Rain; normal traffic & Rain intensity 0.75; travel times unchanged. \\
+D1 & Clear weather; PT delayed & PT time $35\to50$ min, waiting $5\to20$ min; context delay 15 min. \\
+WD1 & Rain and PT delay & W1 and D1 reference changes combined. \\
+F1 & Clear weather; PT fare rises to 6 yuan & Fare $4\to6$ yuan; baseline 4 yuan is imputed. \\
+P1 & Clear weather; parking fee rises to 30 yuan & Total car cost $15\to35$ yuan: parking $10\to30$ plus 5 yuan imputed other cost; parking multiplier 3. \\
+R1 & Clear weather; road temporarily obstructed & Car time $20\to40$ min and road-disruption flag. \\
+A\_WALK & Clear weather; PT stops farther away & Access and egress each $7\to12$ min; PT total 45 min. \\
+A\_WAIT & Clear weather; fewer PT services & Waiting $5\to15$ min; PT total 45 min. \\
+A\_TRANSFER & Clear weather; one PT transfer & One transfer and 10 min transfer time; PT total 45 min. \\
+\bottomrule
+\end{tabularx}
+\par\smallskip{\footnotesize The analysis uses private car, public transport, conventional bicycle and walking. Answers indicating that none of the offered modes is suitable have no four-mode label. A common reference trip has distance 6 km, desired departure 08:00 and desired arrival 09:00. Baseline PT components are access/egress/wait/in-vehicle/transfer times 7/7/5/16/0 min, coverage 0.8 and a feasible-PT flag. Household size 2 and unmeasured numerical attributes are reference values, not measurements of respondents' trips. Only the fare of 6 yuan, the parking fee of 30 yuan and one transfer are stated numerically in the questionnaire.}
+\end{table}

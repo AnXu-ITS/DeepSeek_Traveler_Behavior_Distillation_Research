@@ -49,7 +49,7 @@ Use the commands in [TRAINING.md](TRAINING.md). The prepared bundle avoids re-qu
 
 The repository provides result CSVs, manuscript tables and analysis implementations. Complete respondent bootstrap or contemporary Teacher re-evaluation additionally requires participant-linked inputs, which are not included in this update. The raw questionnaires and responses are unchanged in the authors' retained workspace. Reading an aggregate CSV is not an independent rerun of the respondent-level analysis.
 
-The 140-run Helsinki experiment additionally requires prepared Helsinki supply, the fixed population and the Java/MATSim runtime. Its complete event directories occupy approximately 57.5 GB in the retained workspace; this update adds run-level/paired summaries, protocol information and analysis code rather than that entire archive. The summary evidence contains 140 completed runs and 70 baseline/delay pairs. The article's original availability text predates this repository expansion.
+The 140-run Helsinki experiment additionally requires prepared Helsinki supply, the fixed population and the Java/MATSim runtime. Its complete event directories occupy approximately 57.5 GB in the retained workspace; this update adds run-level/paired summaries, protocol information and analysis code rather than that entire archive. The summary evidence contains 140 completed runs and 70 baseline/delay pairs. The 25 September manuscript now identifies the experimental base commit and the later editorial/cost-accounting revision separately.
 
 No new Teacher request, full training campaign or MATSim simulation is part of this repository documentation update. Verification includes actual local inference and an archived-checkpoint re-evaluation; the report states their exact scope.
 
@@ -71,3 +71,18 @@ This is a materials assessment, not venue-compliance certification or a claim th
 ## Verify this repository edition
 
 Run `python scripts/check_repository_docs.py` to check Markdown language, local links, code fences and the copied-evidence hashes without changing research outputs.
+
+
+## 25 September 2026 revision
+
+The numerical experiments and original evidence remain pinned to `4e67286ce72680a9e3a916a3fb7e97b1548b53f7`. The new source package is under [paper/source](../paper/source/README.md). The new [cost evidence](../evidence/revision_20260925/api_usage_aggregate.json) is an aggregate-only retrospective audit; it does not revise frozen targets or raw participant records.
+
+Recompute the rate-card scenarios without an API key:
+
+```bash
+python scripts/audit_api_costs_20260925.py --aggregate evidence/revision_20260925/api_usage_aggregate.json --output outputs/recomputed_api_costs
+```
+
+This verifies arithmetic from aggregate usage. Rebuilding those aggregates requires the retained source ledgers whose hashes are listed in the evidence file. It is separate from independent end-to-end reproduction. New experiments in [the revision plan](REVISION_EXPERIMENT_PLAN.md) remain proposed and require the author's decision before execution.
+
+Three manifest-pinned SVG assets use explicit `-text` attributes so Git does not convert their line endings on Windows. Their restored working bytes equal the existing pinned Git blobs; the recorded hashes and check algorithm are unchanged. This fixes artifact checkout integrity only, not the separate training-source path-fingerprint portability issue.

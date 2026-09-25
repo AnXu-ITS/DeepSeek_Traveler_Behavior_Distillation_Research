@@ -1,0 +1,23 @@
+\begin{resulttable}
+\caption{Choice accuracy, PT share bias and mean absolute response bias against stated choices.}
+\label{tab:human_main}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+\toprule
+& \multicolumn{3}{c}{Singapore ($n=332$)} & \multicolumn{3}{c}{Shanghai ($n=321$)} \\
+\cmidrule(lr){2-4}\cmidrule(l){5-7}
+Model & Acc. (\%) & PT bias (pp) & Mean $|B_c|$ & Acc. (\%) & PT bias (pp) & Mean $|B_c|$ \\
+\midrule
+SA-Student & $66.9$ & $-30.7$ & $4.0$ & $80.5$ & $-16.8$ & $5.8$ \\
+MNL-S & $71.1$ & $-3.8$ & $11.1$ & $81.8$ & $-5.4$ & $4.1$ \\
+Soft KL & $72.9\,\pm\,0.9$ & $-17.7\,\pm\,3.3$ & $8.2\,\pm\,3.3$ & $78.5\,\pm\,1.7$ & $-12.3\,\pm\,7.9$ & $7.6\,\pm\,0.9$ \\
+CE+KL & $69.7\,\pm\,0.3$ & $-23.5\,\pm\,3.5$ & $6.9\,\pm\,1.7$ & $77.1\,\pm\,3.0$ & $-15.0\,\pm\,6.8$ & $9.1\,\pm\,1.9$ \\
+Signed response & $73.1\,\pm\,1.2$ & $-16.0\,\pm\,3.5$ & $8.6\,\pm\,3.0$ & $79.8\,\pm\,1.1$ & $-10.7\,\pm\,6.2$ & $7.7\,\pm\,1.8$ \\
+Direction+magnitude & $71.8\,\pm\,3.1$ & $-16.7\,\pm\,6.2$ & $8.8\,\pm\,2.0$ & $80.3\,\pm\,0.5$ & $-10.4\,\pm\,5.9$ & $7.5\,\pm\,1.0$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+All 3,320 Singapore and 3,208 Shanghai explicit choices are scored, including eight and two choices of modes the model treats as unavailable. PT bias is the mean predicted PT probability minus the stated PT share. Mean $|B_c|$ is computed within each fitted seed by taking the absolute bias for each contrast and averaging over the five Singapore or eight Shanghai contrasts; these seed-level metrics are then averaged. Figure~\ref{fig:human_response} instead plots signed biases averaged over seeds, whose absolute values need not equal the table metric. Both are in percentage points. Neural entries are means $\pm$ SD over three training seeds. Always predicting PT gives accuracies of 66.57\% and 71.98\%. Further metrics are given in Supplementary Table~\ref{supp-tab:human_primary}.
+\end{minipage}
+\end{resulttable}

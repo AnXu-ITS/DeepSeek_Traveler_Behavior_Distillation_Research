@@ -1,6 +1,6 @@
 # DeepSeek Traveler Behavior Distillation Research
 
-**Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation**
+**Beyond Static Imitation: Auditing LLM-Derived Traveler Responses for Transport Simulation**
 
 An Xu, Zekai Jin Chengbo Zhang and Yunfei Yin
 
@@ -55,7 +55,7 @@ This is the deployment sequence. Training uses offline Teacher targets; the eval
 | Researcher | [Data provenance](docs/DATA_SOURCES.md) → [training objectives and splits](docs/TRAINING.md) → [questionnaire instruments and results](docs/surveys/README.md) |
 | Model user | [Model card and quick start](docs/MODEL_USE.md) → [execution workflow](docs/EXECUTION_WORKFLOW.md) |
 
-The [main article](paper/cas-sc-template.pdf) and [supplement](paper/supplement.pdf) are the 24 September 2026 manuscript snapshot. They are research manuscripts; no publication acceptance is claimed. Their availability paragraphs predate this repository expansion; the [current inventory](docs/REPRODUCIBILITY.md) describes the files now included.
+The [main article](paper/revision_20260925/cas-sc-template.pdf) and [supplement](paper/revision_20260925/supplement.pdf) are the 25 September 2026 evidence-limited revision, based on the author-supplied response-fidelity source package. [Editable LaTeX sources](paper/source/README.md), [API provenance and cost accounting](docs/API_COST_AND_PROVENANCE.md), and the [proposed experiment plan](docs/REVISION_EXPERIMENT_PLAN.md) accompany them. No new training, Teacher queries or simulations were run for this revision. These are research manuscripts; no publication acceptance is claimed. The [current inventory](docs/REPRODUCIBILITY.md) describes reproduction coverage.
 
 ## Models and supporting materials
 

@@ -1,0 +1,6 @@
+PyMuPDF
+python-pptx
+lxml
+CairoSVG
+matplotlib
+numpy

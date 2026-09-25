@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "STAT-API-20260925",
+  "version": 1,
+  "status": "executed",
+  "mode": "paper_update",
+  "purpose": "Offline retained-usage accounting and rate-card scenarios",
+  "source_snapshot_ref": "git:4e67286 and retained ledger hashes in api_usage_aggregate.json",
+  "input_run_ids": [
+    "data/singapore_accessibility/repeat_records.jsonl",
+    "data/singapore_accessibility_s8_legacy/repeat_records.jsonl",
+    "data/student_s5_joint/repeat_records.jsonl",
+    "data/student_v0_2_a/repeat_records.jsonl",
+    "data/student_v0_3/repeat_records.jsonl",
+    "data/student_v0_3_s1/repeat_records.jsonl",
+    "data/student_v0_3_s2/repeat_records.jsonl",
+    "data/student_v0_3_s3/repeat_records.jsonl",
+    "data/student_v0_3_s3_new/repeat_records.jsonl",
+    "data/student_v0_3_s4/repeat_records.jsonl",
+    "outputs/revision_20260921/teacher/calls.jsonl",
+    "outputs/revision_20260921/teacher_accessibility_neutral_ownership/calls.jsonl",
+    "outputs/revision_20260921/teacher_neutral_ownership/calls.jsonl",
+    "outputs/revision_20260921/teacher_ownership/calls.jsonl",
+    "evidence/e2_efficiency/deepseek_calls.jsonl"
+  ],
+  "included_run_ids": [
+    "data/singapore_accessibility/repeat_records.jsonl",
+    "data/singapore_accessibility_s8_legacy/repeat_records.jsonl",
+    "data/student_s5_joint/repeat_records.jsonl",
+    "data/student_v0_2_a/repeat_records.jsonl",
+    "data/student_v0_3/repeat_records.jsonl",
+    "data/student_v0_3_s1/repeat_records.jsonl",
+    "data/student_v0_3_s2/repeat_records.jsonl",
+    "data/student_v0_3_s3/repeat_records.jsonl",
+    "data/student_v0_3_s3_new/repeat_records.jsonl",
+    "data/student_v0_3_s4/repeat_records.jsonl",
+    "outputs/revision_20260921/teacher/calls.jsonl",
+    "outputs/revision_20260921/teacher_accessibility_neutral_ownership/calls.jsonl",
+    "outputs/revision_20260921/teacher_neutral_ownership/calls.jsonl",
+    "outputs/revision_20260921/teacher_ownership/calls.jsonl",
+    "evidence/e2_efficiency/deepseek_calls.jsonl"
+  ],
+  "excluded_runs": [],
+  "experimental_unit": {
+    "name": "completion_id",
+    "definition": "A returned completion; deduplicated across retained archives",
+    "independence_basis": "No inferential independence assumed; deterministic token totals"
+  },
+  "grouping_factors": [
+    "acquisition_source",
+    "usage_presence",
+    "current_rate_scenario"
+  ],
+  "metrics": [
+    {
+      "id": "cost",
+      "name": "Repriced metered tokens",
+      "calculation": "Sum cache-hit, cache-miss and output token counts times published rate; output includes reasoning",
+      "unit": "USD and CNY",
+      "direction": "neutral",
+      "aggregation": "sum over unique completion IDs; unknown usage excluded from monetary sum but counted",
+      "source_refs": [
+        "evidence/revision_20260925/api_usage_aggregate.json"
+      ]
+    }
+  ],
+  "statistical_methods": [
+    {
+      "id": "accounting",
+      "applies_to_metric_ids": [
+        "cost"
+      ],
+      "method": "Deterministic deduplicated accounting",
+      "rationale": "Estimate monetary usage without new requests",
+      "assumptions": [
+        "Provider usage fields represent tokens",
+        "Current prices used as scenarios rather than historic invoice"
+      ],
+      "uncertainty": "Tariff scenarios, not confidence intervals; missing usage unknown",
+      "effect_size": "Not applicable to descriptive monetary accounting",
+      "multiplicity_control": "Not applicable; no hypothesis tests",
+      "implementation_ref": "scripts/audit_api_costs_20260925.py"
+    }
+  ],
+  "data_integrity": {
+    "raw_immutable": true,
+    "missing_policy": "Count missing usage; never price it as zero",
+    "outlier_policy": "No outlier exclusion; parse failures with usage included",
+    "selection_policy": "All matching retained input files inventoried; duplicate completions counted once",
+    "checks": [
+      "cache hit plus miss equals input",
+      "duplicate usage consistency",
+      "group token sums equal deduplicated union"
+    ],
+    "evidence_refs": [
+      "evidence/revision_20260925/api_usage_aggregate.json"
+    ]
+  },
+  "outputs": [
+    {
+      "id": "costs",
+      "kind": "result_table",
+      "path": "evidence/revision_20260925/api_cost_table.csv",
+      "format": "CSV",
+      "source_metric_ids": [
+        "cost"
+      ],
+      "evidence_refs": [
+        "evidence/revision_20260925/api_usage_aggregate.json"
+      ]
+    }
+  ],
+  "provenance": {
+    "analysis_code_refs": [
+      "scripts/audit_api_costs_20260925.py"
+    ],
+    "config_refs": [
+      "evidence/revision_20260925/api_usage_aggregate.json"
+    ],
+    "environment_refs": [
+      "Python 3.10.11; standard library"
+    ],
+    "generated_at": "2026-09-25",
+    "evidence_refs": [
+      "evidence/revision_20260925/api_usage_aggregate.json"
+    ]
+  },
+  "supersedes": null
+}

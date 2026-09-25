@@ -1,0 +1,26 @@
+\begin{table}[pos=!ht]
+\centering\small
+\caption{Predicted and simulated PT responses in the fixed 1,000-person Helsinki population.}
+\label{tab:execution_main}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrr@{}}
+\toprule
+Model & Assignment & Predicted (pp) & Simulated (pp) & Gap (pp) & Assignment SD \\
+\midrule
+SA-Student & Deterministic & $-13.10$ & $-12.30$ & $0.80$ & -- \\
+SA-Student & Stochastic & $-13.10$ & $-14.17$ & $-1.07$ & 1.55 \\
+SA-Student & Constrained & $-13.10$ & $-14.17$ & $-1.07$ & 1.40 \\
+Soft KL & Deterministic & $-6.97\pm4.92$ & $-8.03\pm5.13$ & $-1.06\pm1.24$ & -- \\
+Soft KL & Stochastic & $-6.97\pm4.92$ & $-6.97\pm3.32$ & $0.01\pm2.18$ & 0.27 \\
+Soft KL & Constrained & $-6.97\pm4.92$ & $-7.06\pm3.41$ & $-0.08\pm2.04$ & 0.28 \\
+Direction+magnitude & Deterministic & $-6.77\pm4.96$ & $-8.63\pm4.76$ & $-1.87\pm1.33$ & -- \\
+Direction+magnitude & Stochastic & $-6.77\pm4.96$ & $-7.12\pm3.97$ & $-0.35\pm1.30$ & 0.35 \\
+Direction+magnitude & Constrained & $-6.77\pm4.96$ & $-7.22\pm4.06$ & $-0.45\pm1.24$ & 0.32 \\
+MNL-S + neural time & Deterministic & $-6.84\pm0.00$ & $-6.90\pm0.00$ & $-0.06\pm0.00$ & -- \\
+MNL-S + neural time & Stochastic & $-6.84\pm0.00$ & $-6.63\pm0.00$ & $0.21\pm0.00$ & 1.10 \\
+MNL-S + neural time & Constrained & $-6.84\pm0.00$ & $-6.67\pm0.00$ & $0.17\pm0.00$ & 1.21 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip{\footnotesize Responses are changes in PT use from baseline to perceived delay over the same 1,000 people, with the physical timetable unchanged. Gap is the simulated minus the predicted response. Constrained denotes feasibility-constrained stochastic assignment. Values average assignment repetitions within each fitted model and then across models, and $\pm$ gives the SD across three training seeds. SA-Student is a single fitted model. Assignment SD is the mean within-model SD across assignment repetitions. Intermediate stages and absolute-gap summaries are given in Supplementary Tables~\ref{supp-tab:execution_layers}--\ref{supp-tab:execution_gap_aggregation}.}
+\end{table}

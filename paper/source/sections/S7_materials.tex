@@ -1,0 +1,74 @@
+\section{Model roles, input sources and research materials}
+\label{sec:materials_scope}
+
+\subsection{Model roles and input sources}
+Table~\ref{tab:model_roles} summarizes how the three model families enter the study, and Table~\ref{tab:input_provenance} the sources of information in the stated-choice inputs. Fitting settings and the numerical task specifications are given in Sections~\ref{sec:supp_controlled}, \ref{sec:s9_recipe} and~\ref{sec:supp_inputs}.
+
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Model families, their estimation and their role in the study.}
+\label{tab:model_roles}
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Model family & Behavioral specification & Estimation and role \\
+\midrule
+Joint neural Students & Shared representations with separate choice and departure outputs & Four objectives trained under matched conditions isolate the effect of the loss. Probability responses and timing are evaluated with separately selected fits. \\
+MNL-S with separate timing & Linear choice utilities and an independently estimated timing predictor & Same inputs and training states, with a separately regularized choice model. Compares functional specifications and the separation of outcomes. \\
+Supply-adapted Student & Adapted joint neural model with additional PT attributes & Differs in initialization, objective, auxiliary supervision and treatment of availability. Evaluated as an additional model, not as part of the matched loss comparison. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Sources of information in the stated-choice model inputs.}
+\label{tab:input_provenance}
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Source & Information used & Interpretation \\
+\midrule
+Shown in the questionnaire & Singapore time and cost tables; the Shanghai PT fare of 6 yuan, parking fee of 30 yuan and one transfer & Attributes presented to respondents, with different numerical detail in the two surveys. \\
+Reported by respondents & Personal characteristics supplied by respondents and covered by the model's input mapping & Observed inputs, although not every model attribute was collected. \\
+Specified by the researchers & Characteristics not collected, and Shanghai durations and time components not shown in the tasks & Analysis assumptions. The twelve Singapore and eight Shanghai profiles examine selected alternatives rather than a full uncertainty distribution. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+
+\subsection{Versioned materials and reproduction tasks}
+The material inventory refers to the repository edition of 24 September 2026 at commit
+\begin{center}\small\texttt{4e67286ce72680a9e3a916a3fb7e97b1548b53f7}.\end{center}
+The repository is \url{https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research}. It remains access-controlled. Its \path{docs/REPRODUCIBILITY.md} maps materials to reproduction tasks, and \path{evidence/paper_20260924/} contains the artifact manifest, verification record and compact numerical evidence. The manuscript source package separately contains input definitions, adaptation settings, editable figures and tabulated summaries.
+
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Teacher targets, reference-model provenance and supporting materials. Frozen-target re-evaluation and live-API replication are distinct tasks.}
+\label{tab:teacher_materials}
+\renewcommand{\arraystretch}{1.13}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Use & Coverage & Materials and interpretation \\
+\midrule
+Controlled supervision & 437 test states; repeat analysis covers 373 states and 350 pairs. & Prepared states, aggregate targets, splits, 12 selected neural fits, MNL-S records and evaluation code are included. Individual repeats are unavailable for the 64 mechanism states; the authors identify the service as official DeepSeek V4 Pro, while immutable per-response backend identity is not retained for every target. \\
+Supply adaptation & 336 accessibility states; 1,502 valid queries. & Adaptation specification and released SA-Student and predecessor checkpoints are included. Retained response records and training history support the adaptation provenance. \\
+Contemporary API reference & 24 respondents per city; ten tasks; three successful elicitations per state. & Configuration, prompt, campaign summary and aggregate comparisons are included. The returned model string is the alias \texttt{deepseek-v4-pro}; participant-linked payloads are retained separately. The alias alone does not establish backend identity. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The authors confirm use of the official DeepSeek V4 Pro service throughout collection. The API documentation, checked on 25 September 2026, explicitly retains Pro service after 14 September and identifies the model as DeepSeek-V4-Pro-0813. This supersedes the routing assumption in the earlier editorial draft. The historical news page and the revised API documentation are not consistent on the announced routing plan; we use the updated service documentation and retained request records for attribution rather than infer that these experiments used Flash. The deduplicated supervision archives retain completion creation times from 21 August to 27 August 2026 (UTC), while the final same-task reference completions were created on 21 September 2026 from 16:35:54 to 17:01:40 UTC. These are provider creation times, not selection seeds. The final campaign has 1,440 usage-bearing responses, all returning \texttt{deepseek-v4-pro}, and each recorded request specifies 16,384 maximum tokens. Its copied campaign configuration reports 8,192; the request-level fields take precedence for this batch. Early repeat records do not retain a response model field, and immutable backend fingerprints are incomplete. Frozen targets therefore remain the basis for exact target-based re-evaluation; service identity alone does not turn the later comparison into a causal estimate of compression error.
+
+\paragraph{Controlled-model evaluation.}
+The prepared benchmark is in \path{outputs/matched_response_v1/bundle/}, selected neural fits in \path{outputs/matched_response_v1/train/}, and modular fits in \path{outputs/revision_20260921/baselines/}. Local inference uses a synthetic example and a frozen checkpoint. The archived-checkpoint helper extracts the recorded source and checks its fingerprint before evaluation. Historical fingerprints depend on platform-specific path separators; portability changes should be versioned rather than treated as exact replay. The repository's retained verification record reports local inference and re-evaluation of two selected neural checkpoints, not a new full training campaign.
+
+\paragraph{Survey analyses.}
+The repository includes the English questionnaire instruments, complete aggregate contrast tables and analysis implementations. Reproducing respondent-level resampling or participant-linked Teacher comparisons requires the separately retained participant records and appropriate privacy-aware access. Aggregate-table inspection is distinct from re-estimation of participant-level intervals. These restrictions do not apply to the synthetic benchmark targets and released model weights.
+
+\paragraph{Network execution.}
+The repository includes the 140-run ledger, 70 paired summaries, experiment driver and event-analysis code. Fresh Helsinki execution requires the fixed population, prepared road/transit supply and Java/MATSim runtime; the full event archive, approximately 57.5 GB, is retained separately. The implementation is specified by \path{scripts/revision_20260921/helsinki_execution.py} and \path{src/traveler_distillation/matsim/adapter.py}. Dependency records are provided, although the historical stages do not share one fully locked environment.
+
+The retained ledgers contain 1,000 people in each completed run and no zero-feasible-mass case. Across conditions, 2,006 outbound PT assignments and 940 car assignments fell back to walking; these are repeated traveler records, not distinct people. No recorded outbound or return walking route consisted only of its origin link. The general adapter can produce an origin-link-only walk after an unsuccessful walking search, so this tested behavior does not establish handling of disconnected networks. These ledger checks assess the completed runs; the repository expansion itself did not rerun all simulations.
+
+Requests for access should be directed to the corresponding author, subject to participant privacy and third-party terms. The included manifest records artifact hashes and the material scope, while the verification record distinguishes executed checks from retained historical outputs. This inventory supersedes earlier availability text that predates the repository expansion.

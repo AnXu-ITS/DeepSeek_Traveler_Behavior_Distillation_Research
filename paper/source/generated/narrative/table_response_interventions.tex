@@ -1,0 +1,31 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Controlled response error by intervention definition.}
+\label{tab:response_interventions}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Intervention & Pairs & Soft KL & CE + KL & Signed & Dir. + mag. \\
+\midrule
+Congestion: context only & 8 & 0.05091 & 0.05784 & 0.05093 & 0.04885 \\
+Congestion: attributes only & 8 & 0.04187 & 0.04275 & 0.04199 & 0.04152 \\
+Congestion: both & 8 & 0.05253 & 0.06909 & 0.05570 & 0.05503 \\
+Fare & 36 & 0.04100 & 0.04289 & 0.04235 & 0.04096 \\
+Fare + congestion & 24 & 0.03850 & 0.03984 & 0.03634 & 0.03619 \\
+Fare + PT delay & 24 & 0.07456 & 0.07840 & 0.07016 & 0.07083 \\
+Parking: context only & 8 & 0.08981 & 0.09016 & 0.08602 & 0.08283 \\
+Parking: attributes only & 8 & 0.09207 & 0.09701 & 0.08363 & 0.08431 \\
+Parking: both & 8 & 0.09204 & 0.08070 & 0.08167 & 0.07987 \\
+Parking price & 36 & 0.05709 & 0.05605 & 0.05375 & 0.05385 \\
+Congestion & 48 & 0.04134 & 0.04474 & 0.04077 & 0.03972 \\
+Congestion + road disruption & 24 & 0.05745 & 0.07450 & 0.05266 & 0.05111 \\
+Congestion + rain & 24 & 0.09853 & 0.11422 & 0.09445 & 0.09030 \\
+Road disruption & 12 & 0.06587 & 0.08475 & 0.06310 & 0.06346 \\
+Supply profile & 40 & 0.12287 & 0.12834 & 0.11296 & 0.11947 \\
+PT delay & 34 & 0.06330 & 0.06899 & 0.06214 & 0.06020 \\
+Rain & 48 & 0.09163 & 0.10183 & 0.09141 & 0.08755 \\
+\bottomrule
+\end{tabular}
+\par\smallskip{\footnotesize Each value averages the three validation-KL-selected seeds. Labels follow the definition of each perturbation, not its outcome, and the 17 rows partition all 398 test pairs. Context only, attributes only and both denote mechanism contrasts that change the context description, the level-of-service attributes, or both.}
+\end{table}
+

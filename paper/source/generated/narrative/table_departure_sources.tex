@@ -1,0 +1,39 @@
+\begin{table}[pos=htbp]
+\centering\footnotesize
+\caption{Departure errors by test source under validation departure-MAE selection.}
+\label{tab:departure_sources}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Model & Source & States & MAE & Median & P90 \\
+\midrule
+Soft KL & single-context & 226 & $6.849\pm0.667$ & 4.226 & 18.489 \\
+Soft KL & joint & 96 & $8.923\pm2.010$ & 5.378 & 21.530 \\
+Soft KL & mechanism & 64 & $5.921\pm0.466$ & 4.643 & 12.608 \\
+Soft KL & accessibility & 51 & $10.614\pm0.732$ & 5.379 & 27.664 \\
+CE + KL & single-context & 226 & $6.618\pm0.888$ & 4.282 & 17.240 \\
+CE + KL & joint & 96 & $8.729\pm2.170$ & 5.319 & 21.548 \\
+CE + KL & mechanism & 64 & $5.911\pm0.558$ & 4.546 & 12.851 \\
+CE + KL & accessibility & 51 & $10.453\pm0.769$ & 5.354 & 27.870 \\
+Signed & single-context & 226 & $6.964\pm0.553$ & 4.300 & 18.324 \\
+Signed & joint & 96 & $9.186\pm1.845$ & 5.317 & 21.257 \\
+Signed & mechanism & 64 & $5.843\pm0.352$ & 4.636 & 12.183 \\
+Signed & accessibility & 51 & $10.621\pm0.595$ & 5.529 & 28.323 \\
+Dir. + mag. & single-context & 226 & $6.765\pm0.748$ & 4.199 & 17.986 \\
+Dir. + mag. & joint & 96 & $8.869\pm2.055$ & 5.262 & 21.354 \\
+Dir. + mag. & mechanism & 64 & $5.851\pm0.385$ & 4.345 & 11.952 \\
+Dir. + mag. & accessibility & 51 & $10.675\pm0.528$ & 5.560 & 28.118 \\
+MNL + bounded & single-context & 226 & $10.622\pm1.429$ & 8.019 & 22.556 \\
+MNL + bounded & joint & 96 & $12.294\pm1.512$ & 10.099 & 24.505 \\
+MNL + bounded & mechanism & 64 & $9.447\pm2.162$ & 8.102 & 17.805 \\
+MNL + bounded & accessibility & 51 & $13.805\pm1.021$ & 10.171 & 28.499 \\
+MNL + neural & single-context & 226 & $6.807\pm0.672$ & 4.429 & 17.822 \\
+MNL + neural & joint & 96 & $8.977\pm1.956$ & 5.312 & 22.015 \\
+MNL + neural & mechanism & 64 & $5.806\pm0.517$ & 4.144 & 12.449 \\
+MNL + neural & accessibility & 51 & $10.821\pm0.819$ & 4.955 & 27.857 \\
+\bottomrule
+\end{tabular}
+\par\smallskip{\footnotesize All errors are in minutes. MAE reports the mean and sample SD across three training seeds; Median and P90 are means of the corresponding per-seed error quantiles. Source rows cover all test states and do not affect training or model selection.}
+\end{table}
+

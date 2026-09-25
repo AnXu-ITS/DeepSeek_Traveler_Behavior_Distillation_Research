@@ -1,0 +1,106 @@
+%% 
+%% Copyright 2019-2020 Elsevier Ltd
+%% 
+%% This file is part of the 'CAS Bundle'.
+%% --------------------------------------
+%% 
+%% Supplementary material for cas-sc documentclass
+%% 
+
+\documentclass[a4paper,fleqn]{cas-sc}
+\pdfminorversion=7
+
+\usepackage{tablefootnote}
+\usepackage{appendix}
+\usepackage{threeparttable}
+\usepackage{afterpage}
+\usepackage[table]{xcolor}
+\usepackage{float}
+\usepackage[authoryear]{natbib}
+\usepackage{caption}
+\captionsetup{format=plain, indention=0pt}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	citecolor=blue,
+}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{tabulary}
+\usepackage{placeins}
+\usepackage{microtype}
+\setlength{\emergencystretch}{2em}
+\usepackage[nameinlink]{cleveref}
+\Crefname{figure}{Fig.}{Figs.}
+\crefname{figure}{fig.}{figs.}
+\Crefname{equation}{Eq.}{Eqs.}
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\theequation}{S\arabic{equation}}
+
+%%%Author macros
+\def\tsc#1{\csdef{#1}{\textsc{\lowercase{#1}}\xspace}}
+\tsc{WGM}
+\tsc{QE}
+\tsc{EP}
+\tsc{PMS}
+\tsc{BEC}
+\tsc{DE}
+%%%
+
+\usepackage{xr}
+\externaldocument[main-]{cas-sc-template}
+
+\begin{document}
+\ExplSyntaxOn
+\bool_gset_true:N \g_stm_nologo_bool
+\ExplSyntaxOff
+\let\printorcid\relax
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.05}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{8}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
+
+\shorttitle{Supplementary material}
+\shortauthors{A. Xu et al.}
+
+\title [mode = title]{Supplementary Material: Beyond Static Imitation: Auditing LLM-Derived Traveler Responses for Transport Simulation}
+
+\author[1]{An Xu}
+\ead{AnX.RTL2324@tum-asia.edu.sg}
+
+\author[2]{Zekai Jin}
+
+\author[2]{Chengbo Zhang}
+
+\author[1]{Yunfei Yin}
+\cormark[1]
+\ead{yunfeiyin@hit.edu.cn}
+
+\address[1]{School of Transportation Science and Engineering, Harbin Institute of Technology, Harbin 150090, China}
+\address[2]{Department of Civil Engineering, McGill University, Montreal, QC H3A 0C3, Canada}
+
+\cortext[cor1]{Corresponding author: Yunfei Yin (yunfeiyin@hit.edu.cn).}
+
+\begin{abstract}
+This supplement documents the traveler inputs and stated-choice tasks, the specification and training of the Student models, the complete comparisons with stated choices and with the contemporary Teacher, the simulation experiments and the computational measurements. It follows the order of the three questions in the main article, which concern fidelity to Teacher responses, agreement with stated responses and preservation of responses in simulation.
+\end{abstract}
+\maketitle
+\input{sections/S1_inputs}
+\input{sections/S2_learning}
+\input{sections/S3_human}
+\input{sections/S4_s9}
+\input{sections/S5_execution}
+\input{sections/S6_compute}
+\input{sections/S7_materials}
+\end{document}

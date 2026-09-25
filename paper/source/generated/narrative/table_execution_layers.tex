@@ -1,0 +1,26 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Helsinki PT responses at every stage from prediction to simulation, averaged over assignment repetitions within each fitted model and then over models.}
+\label{tab:execution_layers}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llrrrrr@{}}
+\toprule
+Model & Assignment & Predicted & Adjusted & Assigned & Routed & Simulated \\
+\midrule
+Direction+magnitude & Constrained & -6.77 & -6.84 & -7.22 & -7.22 & -7.22 \\
+Direction+magnitude & Deterministic & -6.77 & -6.77 & -8.10 & -8.63 & -8.63 \\
+Direction+magnitude & Stochastic & -6.77 & -6.77 & -7.01 & -7.12 & -7.12 \\
+MNL-S + neural time & Constrained & -6.84 & -6.10 & -6.67 & -6.67 & -6.67 \\
+MNL-S + neural time & Deterministic & -6.84 & -6.84 & -7.30 & -6.90 & -6.90 \\
+MNL-S + neural time & Stochastic & -6.84 & -6.84 & -7.40 & -6.63 & -6.63 \\
+SA-Student & Constrained & -13.10 & -12.83 & -14.17 & -14.17 & -14.17 \\
+SA-Student & Deterministic & -13.10 & -13.10 & -13.00 & -12.30 & -12.30 \\
+SA-Student & Stochastic & -13.10 & -13.10 & -14.60 & -14.17 & -14.17 \\
+Soft KL & Constrained & -6.97 & -6.60 & -7.06 & -7.06 & -7.06 \\
+Soft KL & Deterministic & -6.97 & -6.97 & -7.60 & -8.03 & -8.03 \\
+Soft KL & Stochastic & -6.97 & -6.97 & -7.34 & -6.97 & -6.97 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip{\footnotesize All entries are percentage points with the same 1,000 initial people per run. The main table separates training variation from sampling variation. Results for individual runs are given in the supplementary data files.}
+\end{table}

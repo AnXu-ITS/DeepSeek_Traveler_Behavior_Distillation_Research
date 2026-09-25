@@ -18,3 +18,13 @@ configs/survey_alignment.yaml -text
 
 outputs/reviewer_closure_20260920/baseline/** -text
 cvpr_workspace/analysis/statistics/** -text
+
+# Preserve exact bytes of manifest-pinned SVG assets on Windows checkouts.
+docs/assets/figure3_response_timing.svg -text
+docs/assets/figure5_teacher_comparison.svg -text
+docs/assets/figure6_source_edited.svg -text
+
+# Keep this source/evidence snapshot byte-stable across checkouts.
+paper/source/** -text
+evidence/revision_20260925/** -text
+scripts/audit_api_costs_20260925.py -text

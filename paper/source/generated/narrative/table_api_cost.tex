@@ -1,0 +1,23 @@
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Retained API usage repriced at the official DeepSeek V4 Pro rates checked on 25 September 2026. Costs are estimates in USD, not invoices.}
+\label{tab:api_cost}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{@{}Xrrrr@{}}
+\toprule
+Acquisition group & Metered calls & Input (M) & Output (M) & USD range \\
+\midrule
+Primary supervision archives & 8,681 & 10.050 & 32.614 & 65.83--131.66 \\
+Final same-task reference & 1,440 & 2.324 & 3.255 & 7.08--14.16 \\
+Earlier same-task campaign & 1,475 & 1.969 & 5.575 & 11.58--23.15 \\
+Neutral-metadata pilot & 120 & 0.160 & 0.239 & 0.52--1.03 \\
+Ownership pilot & 120 & 0.160 & 0.235 & 0.52--1.03 \\
+Latency benchmark & 87 & 0.117 & 0.353 & 0.76--1.51 \\
+Other historical development & 1,468 & 2.377 & 8.149 & 16.43--32.86 \\
+Retained metered total & 13,391 & 17.157 & 50.418 & 102.71--205.42 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+Completion IDs are deduplicated across archives. Input costs use the recorded cache-hit/miss split; output includes reasoning tokens. The range reprices the same usage entirely at off-peak or peak rates, rather than reconstructing historical deductions. The primary archives contain the legacy, joint and corrected accessibility acquisition pools, including labels outside the final benchmark. Other development includes deprecated S8. A further 576 retained completions lack usage and are excluded from the monetary sum, as are unmetered failures; their cost is unknown. The earlier same-task campaign includes 35 responses rejected by parsing but with recorded token usage. This is neither the marginal cost of one fitted Student nor a full project invoice.
+\end{minipage}
+\end{table}

@@ -2,7 +2,7 @@
 
 ## Supervision and split construction
 
-DeepSeek supplies numerical mode-probability judgments and departure adjustments. These are elicited judgments, not human frequencies or token probabilities. Available repeated vectors are averaged within a state. The paper identifies the Teacher as `deepseek-v4-pro`; complete historical backend identities and failure/retry records are not established for every earlier supervision source. Re-evaluation should use retained targets rather than assume a new API response reproduces the historical service.
+DeepSeek supplies numerical mode-probability judgments and departure adjustments. These are elicited judgments, not human frequencies or token probabilities. Available repeated vectors are averaged within a state. The authors confirm that all Teacher elicitation used DeepSeek V4 Pro supplied directly by the official DeepSeek API (`https://api.deepseek.com`, request model `deepseek-v4-pro`). Later response fields agree with that name. Immutable backend identities and complete failure/retry records are not established for every earlier supervision source. The updated official API documentation confirms continued Pro service after 14 September 2026; the old news-page routing plan is not used to relabel these experiments as Flash. Re-evaluation should use retained targets rather than assume a new API response reproduces the historical service.
 
 | Source / partition | Coverage |
 |---|---|
