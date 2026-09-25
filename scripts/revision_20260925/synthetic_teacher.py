@@ -69,20 +69,28 @@ def acquire(cohort,n,preflight=False):
     dest=DEST/cohort;dest.mkdir(exist_ok=True);existing=list(dest.glob('*.json'));attempts=[read_json(p) for p in existing if p.name.startswith('attempt_')];done={(r['state_id'],r['repeat']) for r in attempts if r.get('valid')}
     jobs=[(s,k) for s in states for k in range(3) if (s['id'],k) not in done]
     if preflight:jobs=jobs[:1]
-    cap=476 if cohort=='pilot' else math.ceil(n*36*1.1);budget=3. if cohort=='pilot' else 8.;spent=sum(cost(r.get('usage',{})) for r in attempts);reserved=0.;counter=len(attempts);lock=threading.Lock();stop=threading.Event();started=time.monotonic()
+    # Amendment v2: transport recovery only, frozen model/prompt/states unchanged.
+    # Prior attempt records and first valid replies are never replaced.
+    cap=len(states)*3*3;budget=3. if cohort=='pilot' else 8.;spent=sum(cost(r.get('usage',{})) for r in attempts);reserved=0.;counter=max([r['attempt'] for r in attempts],default=0);lock=threading.Lock();stop=threading.Event();started=time.monotonic()
+    counts={job:sum((r['state_id'],r['repeat'])==job for r in attempts) for job in [(s['id'],k) for s,k in jobs]}
+    source_sha=file_hash(__file__);session_utc=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    write_json(dest/f'launch_after_{counter:05d}.json',dict(utc=session_utc,driver_sha256=source_sha,manifest_sha256=file_hash(DEST/'states.jsonl'),protocol_version='transport_recovery_v2',attempt_cap=cap,max_attempts_per_slot=8,known_usage_peak_no_cache_cap_usd=budget,prior_attempts=len(attempts),pending=len(jobs),workers=1 if preflight else 8,unknown_usage='Transport failures without provider usage are unknown and are outside the known-usage cost total; attempt caps additionally limit exposure'))
     headers={'Authorization':'Bearer '+key,'User-Agent':'traveler-response-research/1.0','x-opencode-session':'ait-response-revision-20260925-'+cohort}
+    client=httpx.Client(timeout=httpx.Timeout(180,connect=30),trust_env=False,limits=httpx.Limits(max_connections=8,max_keepalive_connections=8,keepalive_expiry=60))
     def one(job):
         nonlocal spent,reserved,counter
         state,k=job;body={'model':MODEL,'temperature':.2,'max_tokens':8192,'messages':[{'role':'system','content':S8_SYSTEM_PROMPT},{'role':'user','content':build_s8_user_prompt(json.dumps(state['state'],ensure_ascii=False))}]}
         # UTF-8 bytes upper-bound input tokens conservatively for reservation.
         envelope=(len(json.dumps(body).encode())*.30+8192*1.20)/1e6
-        for retry in range(2):
+        for retry in range(max(0,8-counts[state['id'],k])):
+            if retry:time.sleep(min(2**retry,16))
             with lock:
-                if stop.is_set() or counter>=cap or spent+reserved+envelope>budget:stop.set();return
+                if stop.is_set() or (dest/'STOP_REQUESTED').exists() or counter>=cap or spent+reserved+envelope>budget:stop.set();return
                 counter+=1;idx=counter;reserved+=envelope
-            record=dict(state_id=state['id'],repeat=k,attempt=idx,requested_model=MODEL,endpoint=ENDPOINT,request_hash=digest(body),utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),valid=False)
+            call_start=time.monotonic()
+            record=dict(state_id=state['id'],repeat=k,attempt=idx,requested_model=MODEL,endpoint=ENDPOINT,request_hash=digest(body),utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),valid=False,driver_sha256=source_sha,protocol_version='transport_recovery_v2')
             try:
-                with httpx.Client(timeout=180,trust_env=False) as client:r=client.post(ENDPOINT,headers=headers,json=body)
+                r=client.post(ENDPOINT,headers=headers,json=body)
                 record['http_status']=r.status_code
                 if r.status_code!=200:
                     # No echoed request headers or secret-bearing exception strings.
@@ -95,12 +103,21 @@ def acquire(cohort,n,preflight=False):
                     action=TeacherResponseParser().parse(content)
                     vr=TeacherResponseValidator().validate(UniversalTravelerState.model_validate(state['state']),action)
                     record.update(valid=vr.valid,validation_reason=vr.reason,action=action.model_dump(mode='json'))
-            except Exception as e:record['error_type']=type(e).__name__
+            except Exception as e:
+                record['error_type']=type(e).__name__
+                record['error_chain_types']=[]
+                cause=e.__cause__
+                while cause is not None and len(record['error_chain_types'])<5:
+                    record['error_chain_types'].append(type(cause).__name__);cause=cause.__cause__
+            record['elapsed_s']=time.monotonic()-call_start
+            record['finished_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
             with lock:
                 reserved-=envelope;spent+=cost(record.get('usage',{}));write_json(dest/f'attempt_{idx:05d}.json',record)
                 if idx%12==0 or preflight or record.get('http_status') in [401,402,403,429]:print(json.dumps(dict(attempts=idx,quota_peak_no_cache_usd=round(spent,4),last_status=record.get('http_status'),valid=record['valid'],elapsed_s=round(time.monotonic()-started))),flush=True)
             if record['valid'] or stop.is_set():return
-    with concurrent.futures.ThreadPoolExecutor(max_workers=1 if preflight else 8) as pool:list(pool.map(one,jobs))
+    try:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1 if preflight else 8) as pool:list(pool.map(one,jobs))
+    finally:client.close()
     records=[read_json(p) for p in dest.glob('attempt_*.json')];valid={(r['state_id'],r['repeat']) for r in records if r.get('valid')}
     write_json(dest/'status.json',dict(required=len(states)*3,valid=len(valid),attempts=len(records),complete=len(valid)==len(states)*3,quota_peak_no_cache_usd=sum(cost(r.get('usage',{})) for r in records),input_tokens=sum(r.get('usage',{}).get('prompt_tokens',0) for r in records),output_tokens=sum(r.get('usage',{}).get('completion_tokens',0) for r in records),returned_models=sorted({str(r.get('returned_model')) for r in records if r.get('valid')})))
     print(json.dumps(read_json(dest/'status.json')),flush=True)

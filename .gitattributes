@@ -31,4 +31,5 @@ scripts/audit_api_costs_20260925.py -text
 
 # Preserve new experiment source and evidence bytes for recorded SHA256.
 scripts/revision_20260925/** -text
+cvpr_workspace/analysis/statistics/synthetic_audit.py -text
 evidence/experiments_20260925/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

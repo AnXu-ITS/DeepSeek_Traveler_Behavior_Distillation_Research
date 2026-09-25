@@ -18,11 +18,11 @@ def evaluate(cohort='pilot'):
         eps.append(endpoint(s['id'],'synthetic',cohort,s['state'],probs,np.mean([a['departure_time_shift_min'] for a in actions]),bucket=s['card'],original_id=s['id']))
     assert all(sum(e['persona']==p for e in eps)==12 for p in {e['persona'] for e in eps})
     torch.set_num_threads(2);unit=[];allpred=[]
-    checkpoint_sets=[('full',OUT/'controlled'),('delay_holdout',OUT/'delay_family/train')]
-    # OUT imported from controlled is controlled directory; use its parent.
     checkpoint_sets=[('full',OUT),('delay_holdout',OUT.parent/'delay_family/train')]
     for family,folder in checkpoint_sets:
-        for v,w in [('soft_kl',0),('signed_l1',1)]:
+        variants=[('soft_kl',0),('signed_l1',1)]
+        if family=='full':variants.append(('direction_magnitude',1))
+        for v,w in variants:
             for seed in [42,2026,7]:
                 for sel in ['static','response']:
                     path=folder/f'{v}_w{w}_seed{seed}'/f'best_{sel}.pt';ck=torch.load(path,map_location='cpu',weights_only=False);ext=S8FeatureExtractor.from_state_dict(ck['extractor_state']);model=TravelerStudentS8(ck['config'],ext.spec);model.load_state_dict(ck['model_state'])
@@ -32,6 +32,19 @@ def evaluate(cohort='pilot'):
                         if p['bucket']=='baseline':continue
                         b=by[p['persona']+':baseline'];mask=np.array(p['mask'])|np.array(b['mask']);dt=np.array(p['teacher'])-b['teacher'];ds=np.array(p['student'])-b['student']
                         unit.append(dict(family=family,variant=v,seed=seed,selection=sel,persona=p['persona'],card=p['bucket'],response_gap=float(abs(dt-ds)[mask].mean())))
+    # Descriptive baseline, selected only on historical validation data.
+    from mnl_selection import LinearUtility,predictions
+    mnl=LinearUtility();X,M=mnl.design([e['state'] for e in eps])
+    for sel,choice in read_json(OUT.parent/'mnl_selection/selection.json').items():
+        path=OUT.parent/f'mnl_selection/candidate_{choice["l2"]:g}.npz'
+        ck=np.load(path);mnl.coef=ck['coef'];mnl.departure=ck['departure']
+        P,D=mnl.predict_arrays(X,M);pr=predictions(eps,P,D);by={r['id']:r for r in pr}
+        for r in pr:
+            allpred.append(dict(family='full',variant='mnl',seed=None,selection=sel,checkpoint_sha256=file_hash(path),**r))
+            if r['bucket']=='baseline':continue
+            b=by[r['persona']+':baseline'];mask=np.array(r['mask'])|np.array(b['mask'])
+            dt=np.array(r['teacher'])-b['teacher'];ds=np.array(r['student'])-b['student']
+            unit.append(dict(family='full',variant='mnl',seed=None,selection=sel,persona=r['persona'],card=r['bucket'],response_gap=float(abs(dt-ds)[mask].mean())))
     write_rows(DEST/cohort/'predictions.jsonl',allpred);write_rows(DEST/cohort/'pair_metrics.jsonl',unit)
     primary=[]
     for pid in sorted({r['persona'] for r in unit}):
