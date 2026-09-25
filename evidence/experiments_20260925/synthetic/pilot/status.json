@@ -1,0 +1,12 @@
+{
+  "required": 432,
+  "valid": 432,
+  "attempts": 488,
+  "complete": true,
+  "quota_peak_no_cache_usd": 1.745949,
+  "input_tokens": 630086,
+  "output_tokens": 1297436,
+  "returned_models": [
+    "deepseek-v4.1-flash"
+  ]
+}

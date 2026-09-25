@@ -1,7 +1,7 @@
 {
-  "files": 692,
-  "bytes": 25525247,
-  "sha256": "b5aa4decdd526287d90a8c8fea03f4bcd6e781c9974e5f955ebe0096f24f2cd4",
+  "files": 2359,
+  "bytes": 36967527,
+  "sha256": "afd98710febc7d1b2826ca4ad28daa8a72df36db4737e57c663848a562daef72",
   "crc": "pass",
   "snapshot_consistency": "all embedded files match manifest",
   "large_events": "Retained in local physical_supply runs, excluded from Git package; event SHA256 and scripts preserved",
@@ -11,16 +11,30 @@
       "local_family_training": "complete",
       "pilot": {
         "required": 432,
-        "valid": 0,
-        "attempts": 2,
-        "complete": false,
-        "quota_peak_no_cache_usd": 0.0,
-        "input_tokens": 0,
-        "output_tokens": 0,
-        "returned_models": []
+        "valid": 432,
+        "attempts": 488,
+        "complete": true,
+        "quota_peak_no_cache_usd": 1.745949,
+        "input_tokens": 630086,
+        "output_tokens": 1297436,
+        "returned_models": [
+          "deepseek-v4.1-flash"
+        ]
       },
-      "formal": "not started",
-      "blocker": "Provider requires Global privacy region; pending author setting change"
+      "formal": {
+        "required": 1080,
+        "valid": 1080,
+        "attempts": 1130,
+        "complete": true,
+        "quota_peak_no_cache_usd": 4.1424723,
+        "input_tokens": 1576305,
+        "output_tokens": 3057984,
+        "returned_models": [
+          "deepseek-v4.1-flash"
+        ]
+      },
+      "status": "complete",
+      "blocker": null
     },
     "C": "deferred by author: no independent new human responses",
     "D": {

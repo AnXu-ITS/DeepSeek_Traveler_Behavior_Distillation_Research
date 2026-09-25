@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "formal_frozen_before_first_request": true,
+  "formal_ids_match_frozen_plan": true,
+  "pilot_records_unchanged_since_formal_lock": true,
+  "cross_cohort_unique_completion_ids": 1525,
+  "historical_pinned_artifacts_unchanged": 533,
+  "manuscript_files_unchanged": 146,
+  "valid_responses": 1512,
+  "attempt_outcomes": {
+    "400": 2,
+    "ConnectError": 43,
+    "200": 1525,
+    "RemoteProtocolError": 41,
+    "ConnectTimeout": 7
+  },
+  "combined_usage": {
+    "total_attempts": 1618,
+    "usage_reported_attempts": 1525,
+    "usage_unknown_attempts": 93,
+    "input_tokens": 2206391,
+    "output_tokens": 4355420,
+    "cached_input_tokens": 1432320,
+    "total_tokens": 6561811,
+    "request_time_rate_quota_estimate_usd": 3.4951896419999993,
+    "known_usage_all_offpeak_cache_estimate_usd": 2.733659609999999,
+    "known_usage_peak_no_cache_usd": 5.888421300000002
+  },
+  "cost_interpretation": "Quota-equivalent estimate on reported usage only, not an invoice or verified balance debit. Unreported usage remains unknown. Monthly subscription is not added per request.",
+  "new_human_validation": "deferred by author",
+  "manuscript_writing": "not started",
+  "driver_sha256": "92a901a806841d8fe859087e3ab17a76f5336061135e652d6998954619eb6989"
+}

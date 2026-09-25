@@ -98,6 +98,11 @@ def main():
             if r['metric']=='response_gap' and r['card']=='ALL':lines.append(f'| {r["family"]} | {r["variant"]} | {r["selection"]} | {r["mean"]:.6f} | [{r["ci_low"]:.6f}, {r["ci_high"]:.6f}] |')
         lines+=['','逐强度/干预、交互、不可行 PT 概率和 departure MAE 见同目录 `descriptive_summary.csv`；逐人配对差见 `paired_contrasts.csv`。输入覆盖的 192 项审计见 `intensity_support_audit.json`。不同数值强度不自动等于独立的未见类别。',
             '新参考来自 Go Flash，与历史 Pro 来源不同。因此这项结果是跨参考模型的一致性评估，不是原 Pro 压缩误差，也不是人类行为准确率。实验固定一个数值行程，不能据此声称跨城市或真实人群泛化。']
+        if cohort=='formal':
+            lines+=['','### 正式延迟情境：必须与总体均值一起阅读','', '| 训练设置 | 选择 | 延迟情境 | signed-minus-soft | 95% 人设区间 |','|---|---|---|---:|---|']
+            for r in read_json(folder/'paired_contrasts.json'):
+                if r['card'] in ['delay_8','delay_45','fare_delay']:lines.append(f'| {r["family"]} | {r["selection"]} | {r["card"]} | {r["mean"]:.6f} | [{r["ci_low"]:.6f}, {r["ci_high"]:.6f}] |')
+            lines+=['','正数表示 signed-L1 的误差更大。这些是预先保留的延迟情境的描述性比较，区间未作多重性校正。全数据与类别留出的数据量/更新次数不同；每个设置内部两方法预算匹配，但不能把跨设置差异解释为单独移除类别的纯因果效应。']
     if (DEST/'mnl_selection/extended_sensitivity_summary.json').exists():
         lines+=['','## 优化与 MNL 方向诊断','', '保留 135 条固定诊断批次的梯度记录，分别列出 KL、加权 departure、加权 response 范数和 KL-response 余弦；见 `audit/gradient_summary.json`。这些是沿训练轨迹的诊断，不能单凭梯度大小认定某个损失有因果优势。',
             '', '| 选择 | 扰动 | 可行端点数 | PT 概率平均变化 | PT 概率增加比例 |','|---|---|---:|---:|---:|']
@@ -113,7 +118,11 @@ def main():
         lines+=['','按每个人设的全部 36 次有效响应将其分为全 positive、全 zero 或 mixed，主差值的描述性分组如下。','', '| 批次 | 分组 | 人设数 | signed-minus-soft 主差值 |','|---|---|---:|---:|']
         for r in sm['primary_persona_groups']:lines.append(f'| {r["cohort"]} | {r["regime"]} | {r["n_personas"]} | {r["mean"]:.6f} |')
         lines+=['','该诊断在查看正式方法比较结果前、观察到服务元数据异常后登记，因此是事后基础设施敏感性分析。没有删样本、改主分析或改样本量。分组与采集时间、人设顺序混杂，不能推导推理模式/服务后端的因果效果。新结果只适用于本次实际服务混合条件，不能称为同一不可变后端下的严格复现；pilot 方差对正式精度的规划也需结合实际区间与服务差异解释。']
-    if done:lines+=['','A、B 与 D 已完成；C 按作者要求延期。现在停在写作前，等待作者阅读本报告后决定论文论证范围。']
+    if (DEST/'final_delivery_audit.json').exists():
+        total=read_json(DEST/'final_delivery_audit.json')['combined_usage']
+        lines+=['','## 本轮 API 合计','',f'pilot 与正式阶段合计 1,512 个有效响应、{total["total_attempts"]:,} 次尝试；{total["usage_reported_attempts"]:,} 次有 usage（包括 13 个无效回答），{total["usage_unknown_attempts"]} 次未知。已记录总用量 {total["total_tokens"]:,} tokens。',
+            f'按请求时间与缓存记录估算约 **USD {total["request_time_rate_quota_estimate_usd"]:.4f} 的 Go 套餐额度**；已记录部分全峰时/无缓存重估为 USD {total["known_usage_peak_no_cache_usd"]:.4f}。未报告 usage 的尝试不按零计费，账户实际扣费未核实。费率依据为 2026-09-25 查阅的 [Go 官方文档](https://opencode.ai/docs/go/)，不是账单；USD 10/月的订阅费用单列。']
+    if done:lines+=['','A、B 与 D 已完成；C 按作者要求延期。现在停在写作前。当前证据适合推进有明确适用范围的诊断/评估论文；不能写成已经完成独立人类修复验证，或已经证明对所有未见干预都有改善。']
     (DEST/'EXPERIMENT_REPORT_CN.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print(json.dumps(read_json(DEST/'stage_status.json')),flush=True)
 

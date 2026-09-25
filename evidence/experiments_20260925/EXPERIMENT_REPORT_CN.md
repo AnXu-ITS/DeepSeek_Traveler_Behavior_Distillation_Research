@@ -28,6 +28,8 @@
 | direction_magnitude | 2 | static | 0.065966 | 0.004536 | 0.090433 |
 | direction_magnitude | 2 | response | 0.065983 | 0.004343 | 0.090307 |
 
+逐次训练耗时之和：27 个受控拟合 845.69 秒，6 个家族留出拟合 200.17 秒。不是端到端 campaign wall-clock 或 CPU-seconds；没有资源账单/费率，不虚构美元训练成本。
+
 这些均值不是独立总体样本：原测试集只有 6 个独立人设。配对人设区间见 `controlled/paired_comparisons.json`，权重网格的比较为敏感性分析，不能事后选最优测试权重当作预注册主结果。
 
 组合留出审计：训练/验证未引用 fare×congestion 留出端点；测试有 24 个该组合端点。构成它的单独因素在训练中存在，因此结论只适用于组合留出，不是全部干预类别未见。
@@ -42,9 +44,10 @@
 
 ## API 与新增数据
 
-当前 pilot 有效响应：0/432。请求实际模型 deepseek-v4.1-flash，提供方 OpenCode Go；不能记为 V4 Pro 或 DeepSeek 官方直供。
-预检遇到 HTTP 400：Go 要求工作区 Privacy 使用 Global regions。已经停止自动重试，等待作者修改或选择暂缓。失败请求未报告 token 用量；这不能替代账户账单。
-计划 pilot 约 1.84M tokens（包含 10% 余量）；按旧平均用量与 Go Flash 价格约 0.7–1.5 USD 的套餐额度。套餐订阅费与按 token 计算的额度价值分开报告。正式人数按 pilot 中逐人主要差值 SD 和半宽 0.01 计算，30–120 人，pilot 与正式人设完全分离。
+当前 pilot 有效响应：432/432。请求实际模型 deepseek-v4.1-flash，提供方 OpenCode Go；不能记为 V4 Pro 或 DeepSeek 官方直供。
+作者设置 Global 后预检成功。保留最初两次 HTTP 400、全部连接故障和无效响应；仅补采缺失的有效 state-repeat 单元，传输恢复修订不改变模型、提示词、温度、输出上限或情境。
+正式响应：1080/1080。正式人数按 pilot 中逐人主要差值 SD 和半宽 0.01 计算，30–120 人，pilot 与正式人设完全分离。计划公式不保证最终达到该精度。
+已收到 usage 的失败/无效回答也计入成本；未返回 usage 的调用记为未知，不能按零费用处理。按 token 估算的套餐额度价值、订阅费和实际账单分别报告。
 
 独立人类修复验证按作者回复暂缓，现有问卷不能充当新增独立验证。
 
@@ -56,7 +59,7 @@
 
 ## 写作停止点
 
-尚未开始把新结果写入论文。待其余可执行实验与完整性核验结束后，再向作者汇报；新 API 的阻塞单独列明，不能声称全部实验已经完成。
+尚未开始把新结果写入论文。已完成的阶段按证据单独列出；独立人类修复仍延期，不能把其他实验的完成改述为独立人类修复已经验证。
 
 ## 必须保留的类别留出负结果
 
@@ -66,15 +69,132 @@ signed-L1 在这项类别留出诊断中更差；不能将已覆盖任务的响�
 
 ## 四臂供给实验已核验结果
 
-| 模型 | 比较 | 原始 PT 概率变化 pp | 实际上车变化 pp | 完成率变化 pp |
-|---|---|---:|---:|---:|
-| s9 | perceived_delay minus baseline | -13.095 | -14.080 | 0.000 |
-| s9 | frozen_disrupted minus baseline | -0.000 | 0.000 | 0.000 |
-| s9 | recomputed_disrupted minus baseline | -0.600 | -0.640 | 0.000 |
-| s9 | recomputed_disrupted minus frozen_disrupted | -0.600 | -0.640 | 0.000 |
-| independent_neural_seed42 | perceived_delay minus baseline | -6.839 | -6.100 | 0.000 |
-| independent_neural_seed42 | frozen_disrupted minus baseline | 0.000 | 0.000 | 0.000 |
-| independent_neural_seed42 | recomputed_disrupted minus baseline | -1.143 | -1.000 | 0.000 |
-| independent_neural_seed42 | recomputed_disrupted minus frozen_disrupted | -1.143 | -1.000 | 0.000 |
+| 模型 | 比较 | 原始 PT 概率变化 pp | 实际上车变化 pp | 完成率变化 pp | 完成/时限时间变化 min |
+|---|---|---:|---:|---:|---:|
+| s9 | perceived_delay minus baseline | -13.095 | -14.080 | 0.000 | -2.434 |
+| s9 | frozen_disrupted minus baseline | -0.000 | 0.000 | 0.000 | -0.765 |
+| s9 | recomputed_disrupted minus baseline | -0.600 | -0.640 | 0.000 | -0.922 |
+| s9 | recomputed_disrupted minus frozen_disrupted | -0.600 | -0.640 | 0.000 | -0.156 |
+| independent_neural_seed42 | perceived_delay minus baseline | -6.839 | -6.100 | 0.000 | -1.069 |
+| independent_neural_seed42 | frozen_disrupted minus baseline | 0.000 | 0.000 | 0.000 | -0.271 |
+| independent_neural_seed42 | recomputed_disrupted minus baseline | -1.143 | -1.000 | 0.000 | -0.717 |
+| independent_neural_seed42 | recomputed_disrupted minus frozen_disrupted | -1.143 | -1.000 | 0.000 | -0.446 |
 
 40 个组合包括 12 个逐人核验后复用的历史运行与 28 个新 MATSim 运行。每个组合的初始分母为 1,000 人，配对分配种子为 5 个；不能把 40,000 次执行记录视作 40,000 个独立人。区间、各阶段及行程时间见 `physical_supply`。
+本次各组出程均完成，因此完成/时限时间等于本次观测的出程时长。冻结行为、减少班次后上车比例未变，但模拟时长发生变化；这不等于供给没有影响，也不能将负时长差解释为现实减班收益。该时间结果沿用未校准的历史自由流网络执行口径。
+
+## 独立 pilot：仅用于样本量规划
+
+12 个人设；432 个有效回答。主比较为全数据、static 选模下 signed-L1 减 soft-KL 的逐人响应误差差值，负数有利于 signed-L1：均值 -0.004604，95% 配对人设区间 [-0.008342, -0.001556]。
+每个人设内平均三个训练种子及 11 个干预对，再重采样人设；不能把调用次数、训练种子或共享 baseline 当独立样本。所有次要比较为描述性、点态区间。
+规划 SD=0.006306，锁定正式人数 30；pilot 不并入正式测试。
+
+记录请求 488 次，其中 435 次有 usage，53 次 usage 未知。已记录输入 630,086、输出 1,297,436、合计 1,927,522 tokens；缓存输入 399,488 已包含在输入中，reasoning 已包含在输出中。
+按请求 UTC 峰/闲时及缓存量估算已记录部分：USD 0.8142 套餐额度；全峰时、无缓存保守重估 USD 1.7459。不包括未知用量，不是实际账单；账户剩余额度未核实。Go 订阅 USD 10/月不应再次按每次请求叠加。
+
+| 训练数据 | 方法 | 选模 | 平均响应误差 | 95% 人设区间 |
+|---|---|---|---:|---|
+| delay_holdout | signed_l1 | response | 0.110845 | [0.075512, 0.152833] |
+| delay_holdout | signed_l1 | static | 0.110795 | [0.075463, 0.152956] |
+| delay_holdout | soft_kl | response | 0.112380 | [0.077081, 0.154979] |
+| delay_holdout | soft_kl | static | 0.110216 | [0.075986, 0.151791] |
+| full | direction_magnitude | response | 0.114070 | [0.079443, 0.154907] |
+| full | direction_magnitude | static | 0.107306 | [0.073732, 0.146683] |
+| full | mnl | response | 0.097051 | [0.058115, 0.142317] |
+| full | mnl | static | 0.097051 | [0.058115, 0.142317] |
+| full | signed_l1 | response | 0.107375 | [0.075617, 0.144287] |
+| full | signed_l1 | static | 0.107185 | [0.075775, 0.143633] |
+| full | soft_kl | response | 0.115423 | [0.080899, 0.156375] |
+| full | soft_kl | static | 0.111789 | [0.078448, 0.150446] |
+
+逐强度/干预、交互、不可行 PT 概率和 departure MAE 见同目录 `descriptive_summary.csv`；逐人配对差见 `paired_contrasts.csv`。输入覆盖的 192 项审计见 `intensity_support_audit.json`。不同数值强度不自动等于独立的未见类别。
+新参考来自 Go Flash，与历史 Pro 来源不同。因此这项结果是跨参考模型的一致性评估，不是原 Pro 压缩误差，也不是人类行为准确率。实验固定一个数值行程，不能据此声称跨城市或真实人群泛化。
+
+## 正式新合成人设实验
+
+30 个人设；1080 个有效回答。主比较为全数据、static 选模下 signed-L1 减 soft-KL 的逐人响应误差差值，负数有利于 signed-L1：均值 -0.003199，95% 配对人设区间 [-0.004863, -0.001622]。
+每个人设内平均三个训练种子及 11 个干预对，再重采样人设；不能把调用次数、训练种子或共享 baseline 当独立样本。所有次要比较为描述性、点态区间。
+
+记录请求 1130 次，其中 1090 次有 usage，40 次 usage 未知。已记录输入 1,576,305、输出 3,057,984、合计 4,634,289 tokens；缓存输入 1,032,832 已包含在输入中，reasoning 已包含在输出中。
+按请求 UTC 峰/闲时及缓存量估算已记录部分：USD 2.6809 套餐额度；全峰时、无缓存保守重估 USD 4.1425。不包括未知用量，不是实际账单；账户剩余额度未核实。Go 订阅 USD 10/月不应再次按每次请求叠加。
+
+| 训练数据 | 方法 | 选模 | 平均响应误差 | 95% 人设区间 |
+|---|---|---|---:|---|
+| delay_holdout | signed_l1 | response | 0.110590 | [0.088324, 0.134768] |
+| delay_holdout | signed_l1 | static | 0.111683 | [0.088965, 0.136393] |
+| delay_holdout | soft_kl | response | 0.112022 | [0.089027, 0.136583] |
+| delay_holdout | soft_kl | static | 0.110799 | [0.088162, 0.135177] |
+| full | direction_magnitude | response | 0.113705 | [0.089510, 0.139787] |
+| full | direction_magnitude | static | 0.108824 | [0.086650, 0.132623] |
+| full | mnl | response | 0.105160 | [0.079613, 0.132077] |
+| full | mnl | static | 0.105160 | [0.079613, 0.132077] |
+| full | signed_l1 | response | 0.109943 | [0.088659, 0.132817] |
+| full | signed_l1 | static | 0.109688 | [0.088645, 0.132465] |
+| full | soft_kl | response | 0.116151 | [0.091676, 0.142595] |
+| full | soft_kl | static | 0.112887 | [0.090908, 0.136512] |
+
+逐强度/干预、交互、不可行 PT 概率和 departure MAE 见同目录 `descriptive_summary.csv`；逐人配对差见 `paired_contrasts.csv`。输入覆盖的 192 项审计见 `intensity_support_audit.json`。不同数值强度不自动等于独立的未见类别。
+新参考来自 Go Flash，与历史 Pro 来源不同。因此这项结果是跨参考模型的一致性评估，不是原 Pro 压缩误差，也不是人类行为准确率。实验固定一个数值行程，不能据此声称跨城市或真实人群泛化。
+
+### 正式延迟情境：必须与总体均值一起阅读
+
+| 训练设置 | 选择 | 延迟情境 | signed-minus-soft | 95% 人设区间 |
+|---|---|---|---:|---|
+| full | static | delay_8 | -0.001423 | [-0.002814, -0.000022] |
+| full | static | delay_45 | -0.006857 | [-0.012193, -0.001266] |
+| full | static | fare_delay | -0.010786 | [-0.016339, -0.005575] |
+| full | response | delay_8 | -0.004081 | [-0.006753, -0.001402] |
+| full | response | delay_45 | -0.009877 | [-0.027766, 0.008123] |
+| full | response | fare_delay | -0.018112 | [-0.038510, 0.001020] |
+| delay_holdout | static | delay_8 | 0.005320 | [0.004089, 0.006577] |
+| delay_holdout | static | delay_45 | 0.010336 | [0.008051, 0.012668] |
+| delay_holdout | static | fare_delay | 0.006235 | [0.002672, 0.009788] |
+| delay_holdout | response | delay_8 | 0.006526 | [0.004892, 0.008163] |
+| delay_holdout | response | delay_45 | 0.012026 | [0.009778, 0.014221] |
+| delay_holdout | response | fare_delay | 0.006855 | [0.002888, 0.010751] |
+
+正数表示 signed-L1 的误差更大。这些是预先保留的延迟情境的描述性比较，区间未作多重性校正。全数据与类别留出的数据量/更新次数不同；每个设置内部两方法预算匹配，但不能把跨设置差异解释为单独移除类别的纯因果效应。
+
+## 优化与 MNL 方向诊断
+
+保留 135 条固定诊断批次的梯度记录，分别列出 KL、加权 departure、加权 response 范数和 KL-response 余弦；见 `audit/gradient_summary.json`。这些是沿训练轨迹的诊断，不能单凭梯度大小认定某个损失有因果优势。
+
+| 选择 | 扰动 | 可行端点数 | PT 概率平均变化 | PT 概率增加比例 |
+|---|---|---:|---:|---:|
+| static | cost_plus1 | 39 | -0.000087 | 0.333 |
+| static | time_plus5 | 39 | -0.013803 | 0.000 |
+| static | access_and_total_plus5 | 39 | -0.010883 | 0.000 |
+| response | cost_plus1 | 39 | -0.000087 | 0.333 |
+| response | time_plus5 | 39 | -0.013803 | 0.000 |
+| response | access_and_total_plus5 | 39 | -0.010883 | 0.000 |
+
+接驳扰动同时增加 access 与 total PT time 各 5 分钟，避免只改分量而不改总量。该 MNL 使用无单调约束的共同特征，系数和概率方向不应解释为已识别的经济偏好或时间价值。
+
+## API 服务元数据变化：事后诊断
+
+请求模型、温度、提示词、输出上限均未改变，但部分正式响应的 reasoning_tokens 回报为 0，usage 字段结构和延迟也与此前不同。返回模型名保持一致且没有不可变后端指纹。这是返回特征的变化，不能据此断言后台换模型或实际上完全没有内部推理。
+
+| 批次 | 报告的 reasoning | 调用数 | 输出 tokens 中位数 |
+|---|---|---:|---:|
+| pilot | positive | 429 | 2658 |
+| pilot | zero | 3 | 130 |
+| formal | positive | 976 | 2774 |
+| formal | zero | 104 | 139 |
+
+按每个人设的全部 36 次有效响应将其分为全 positive、全 zero 或 mixed，主差值的描述性分组如下。
+
+| 批次 | 分组 | 人设数 | signed-minus-soft 主差值 |
+|---|---|---:|---:|
+| pilot | all_positive | 11 | -0.005196 |
+| pilot | mixed | 1 | 0.001909 |
+| formal | all_positive | 24 | -0.002987 |
+| formal | mixed | 6 | -0.004049 |
+
+该诊断在查看正式方法比较结果前、观察到服务元数据异常后登记，因此是事后基础设施敏感性分析。没有删样本、改主分析或改样本量。分组与采集时间、人设顺序混杂，不能推导推理模式/服务后端的因果效果。新结果只适用于本次实际服务混合条件，不能称为同一不可变后端下的严格复现；pilot 方差对正式精度的规划也需结合实际区间与服务差异解释。
+
+## 本轮 API 合计
+
+pilot 与正式阶段合计 1,512 个有效响应、1,618 次尝试；1,525 次有 usage（包括 13 个无效回答），93 次未知。已记录总用量 6,561,811 tokens。
+按请求时间与缓存记录估算约 **USD 3.4952 的 Go 套餐额度**；已记录部分全峰时/无缓存重估为 USD 5.8884。未报告 usage 的尝试不按零计费，账户实际扣费未核实。费率依据为 2026-09-25 查阅的 [Go 官方文档](https://opencode.ai/docs/go/)，不是账单；USD 10/月的订阅费用单列。
+
+A、B 与 D 已完成；C 按作者要求延期。现在停在写作前。当前证据适合推进有明确适用范围的诊断/评估论文；不能写成已经完成独立人类修复验证，或已经证明对所有未见干预都有改善。

@@ -1,0 +1,56 @@
+{
+  "stages": [
+    {
+      "stage": "controlled",
+      "runs": 27,
+      "sum_run_elapsed_s": 845.6889999999548,
+      "min_run_elapsed_s": 26.26600000000326,
+      "max_run_elapsed_s": 48.32900000002701,
+      "source_sha256": {
+        "outputs/revision_20260925/controlled/direction_magnitude_w0.25_seed2026/status.json": "acc07ac335aef4bfbd72ba3454cbae1ea0f2cefa6e030a9f9bf725956f22b45c",
+        "outputs/revision_20260925/controlled/direction_magnitude_w0.25_seed42/status.json": "af9de970d029adaa6573db88f7d4cf9b61156245968c3cf795e9eba0b04a784b",
+        "outputs/revision_20260925/controlled/direction_magnitude_w0.25_seed7/status.json": "6d229b2040cc6e25001c35cbfc9798209c7b07f282f01cdae17cfb5ad0206aca",
+        "outputs/revision_20260925/controlled/direction_magnitude_w0.5_seed2026/status.json": "7825070dbe775adbb40ed5f7513573fe744434386c8f99af26d828d7caf0dea1",
+        "outputs/revision_20260925/controlled/direction_magnitude_w0.5_seed42/status.json": "c219bac3396209d883ae5008d5539f28d44cfc1a5703ac7f1502740db3224cd4",
+        "outputs/revision_20260925/controlled/direction_magnitude_w0.5_seed7/status.json": "1e43cda3565a3fa356b6b5f3c0b2dc8926b8398a07fbc444e9e8e31c0c68f707",
+        "outputs/revision_20260925/controlled/direction_magnitude_w1_seed2026/status.json": "27faca2dbef0eee0f8726926d3a6e3856c21b973c4ad8e5d8a22e875e1382676",
+        "outputs/revision_20260925/controlled/direction_magnitude_w1_seed42/status.json": "231e3bbb1db83ccfc6135ffc2dac67eb006b1e2b6134bec40d92656d07f56ef2",
+        "outputs/revision_20260925/controlled/direction_magnitude_w1_seed7/status.json": "60fb01b1427ed4db99945e1ec135b7657143e01b9bd0afd1621b6f50b772c87e",
+        "outputs/revision_20260925/controlled/direction_magnitude_w2_seed2026/status.json": "438af0889afa9a9f9af00798b2a6ab2f08894c07f74dfc36d503197c4cbefd06",
+        "outputs/revision_20260925/controlled/direction_magnitude_w2_seed42/status.json": "ed0975e80c7c5c011b4ea772ed484ea4e310694677c3c9a985ebe36baf261be6",
+        "outputs/revision_20260925/controlled/direction_magnitude_w2_seed7/status.json": "aa35de12cad44b5e2df9e0a328fc97f721473a9a4aca9e14dc3682f297081f6d",
+        "outputs/revision_20260925/controlled/signed_l1_w0.25_seed2026/status.json": "6be9d49dc06129c4f15752b642d4a1c3ef120cc041bb3a4a323415001906da5b",
+        "outputs/revision_20260925/controlled/signed_l1_w0.25_seed42/status.json": "015dbba1cd9c444459eaeb392fa3e37019fb47aa77d69a1f120b8ca6d4eddf58",
+        "outputs/revision_20260925/controlled/signed_l1_w0.25_seed7/status.json": "ed27c65330e119d12af09a84ce4d51b8a3ecac975d6ae29298f700a73842f4cf",
+        "outputs/revision_20260925/controlled/signed_l1_w0.5_seed2026/status.json": "54caf49aebd17a2b6bc7e8cb4e9440337af65a0cb9ef3404a9a544b0c8d432a8",
+        "outputs/revision_20260925/controlled/signed_l1_w0.5_seed42/status.json": "602a62bfddc9e7342f096076b2eba633dfd6a16d350df2bfe5fa7c5cd4954dc5",
+        "outputs/revision_20260925/controlled/signed_l1_w0.5_seed7/status.json": "76d2ad98883deb188667556610302727e1b1f9a0d5730ed7badec4c1ff5cccc2",
+        "outputs/revision_20260925/controlled/signed_l1_w1_seed2026/status.json": "53e366b12033aaebb621e1211b12efa28dc1de28a97188d3ffabc981f0a0e917",
+        "outputs/revision_20260925/controlled/signed_l1_w1_seed42/status.json": "a5d0c25b7f5ebf7677e5467b7a53a5f7d9bd1ad2b25a995c6d9db4bb84997ca4",
+        "outputs/revision_20260925/controlled/signed_l1_w1_seed7/status.json": "5fa5dcbbad618bad80ef61b2b5e8db6910ade2826eac1dcccfa7c1cc1946a658",
+        "outputs/revision_20260925/controlled/signed_l1_w2_seed2026/status.json": "5750b3e9207df5d50382897e6a6496d4de89b8c3e4886389a71447337bb36f10",
+        "outputs/revision_20260925/controlled/signed_l1_w2_seed42/status.json": "b09e8f61b9bf453a8f96db01cff0277142612dda4faeb123f9dbdf7a796324ba",
+        "outputs/revision_20260925/controlled/signed_l1_w2_seed7/status.json": "753361a7b5353444c9b00378c9ec7f924eafe1d934b7abf6a9befa5424b65a3b",
+        "outputs/revision_20260925/controlled/soft_kl_w0_seed2026/status.json": "93851c4cef92916eac67179419794de1b1e3de7299b03f4579017c4883c5cb26",
+        "outputs/revision_20260925/controlled/soft_kl_w0_seed42/status.json": "5e518dd62083784304276422941156a9d989aee497ba79371bc0f598533c0bf8",
+        "outputs/revision_20260925/controlled/soft_kl_w0_seed7/status.json": "5a01dbc54be09c18fe34fe07cc87c7418df0e3d54f24cffa92dc555ddef83378"
+      }
+    },
+    {
+      "stage": "delay_family",
+      "runs": 6,
+      "sum_run_elapsed_s": 200.1720000000205,
+      "min_run_elapsed_s": 28.60999999998603,
+      "max_run_elapsed_s": 38.98399999999674,
+      "source_sha256": {
+        "outputs/revision_20260925/delay_family/train/signed_l1_w1_seed2026/status.json": "8b76f337dd6af1f4c5fcdfa632820cfba84a911f346257998de4a4fb1f0671ff",
+        "outputs/revision_20260925/delay_family/train/signed_l1_w1_seed42/status.json": "0e8237da9eb9ccc31667ce2fdc29d86025115ef9d426121c613f413556ee951f",
+        "outputs/revision_20260925/delay_family/train/signed_l1_w1_seed7/status.json": "4528fb824860f76749b3d42e872ce87069adb03ffa96aa2058afc2bdc6a35bd2",
+        "outputs/revision_20260925/delay_family/train/soft_kl_w0_seed2026/status.json": "d096a5241cc1c8dd8520b9d5c68e2de1e115aa4d1b8af53255695b6ec50cd081",
+        "outputs/revision_20260925/delay_family/train/soft_kl_w0_seed42/status.json": "f3f492a40bd6dab092ca8dc4e2ff03c4066dde462063f1c443d67ba119880b42",
+        "outputs/revision_20260925/delay_family/train/soft_kl_w0_seed7/status.json": "8013d1ffc16a1dc5e714c299f8a96289b22c2387dbe959d2fe30cdd0395895b7"
+      }
+    }
+  ],
+  "interpretation": "Sum of recorded per-fit elapsed times, not end-to-end campaign wall time or CPU-seconds. No currency conversion without measured resource billing or a declared tariff."
+}

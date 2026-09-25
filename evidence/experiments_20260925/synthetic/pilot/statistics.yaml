@@ -1,0 +1,1536 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "synthetic_reference_pilot",
+  "version": 1,
+  "status": "accepted",
+  "mode": "audit_recompute",
+  "purpose": "Recompute complete-cohort persona statistics and acquisition integrity; not a paper acceptance decision",
+  "source_snapshot_ref": "outputs/revision_20260925/synthetic/pilot/acquisition_snapshot.json",
+  "input_run_ids": [
+    "pilot/attempt_00001",
+    "pilot/attempt_00002",
+    "pilot/attempt_00003",
+    "pilot/attempt_00004",
+    "pilot/attempt_00005",
+    "pilot/attempt_00006",
+    "pilot/attempt_00007",
+    "pilot/attempt_00008",
+    "pilot/attempt_00009",
+    "pilot/attempt_00010",
+    "pilot/attempt_00011",
+    "pilot/attempt_00012",
+    "pilot/attempt_00013",
+    "pilot/attempt_00014",
+    "pilot/attempt_00015",
+    "pilot/attempt_00016",
+    "pilot/attempt_00017",
+    "pilot/attempt_00018",
+    "pilot/attempt_00019",
+    "pilot/attempt_00020",
+    "pilot/attempt_00021",
+    "pilot/attempt_00022",
+    "pilot/attempt_00023",
+    "pilot/attempt_00024",
+    "pilot/attempt_00025",
+    "pilot/attempt_00026",
+    "pilot/attempt_00027",
+    "pilot/attempt_00028",
+    "pilot/attempt_00029",
+    "pilot/attempt_00030",
+    "pilot/attempt_00031",
+    "pilot/attempt_00032",
+    "pilot/attempt_00033",
+    "pilot/attempt_00034",
+    "pilot/attempt_00035",
+    "pilot/attempt_00036",
+    "pilot/attempt_00037",
+    "pilot/attempt_00038",
+    "pilot/attempt_00039",
+    "pilot/attempt_00040",
+    "pilot/attempt_00041",
+    "pilot/attempt_00042",
+    "pilot/attempt_00043",
+    "pilot/attempt_00044",
+    "pilot/attempt_00045",
+    "pilot/attempt_00046",
+    "pilot/attempt_00047",
+    "pilot/attempt_00048",
+    "pilot/attempt_00049",
+    "pilot/attempt_00050",
+    "pilot/attempt_00051",
+    "pilot/attempt_00052",
+    "pilot/attempt_00053",
+    "pilot/attempt_00054",
+    "pilot/attempt_00055",
+    "pilot/attempt_00056",
+    "pilot/attempt_00057",
+    "pilot/attempt_00058",
+    "pilot/attempt_00059",
+    "pilot/attempt_00060",
+    "pilot/attempt_00061",
+    "pilot/attempt_00062",
+    "pilot/attempt_00063",
+    "pilot/attempt_00064",
+    "pilot/attempt_00065",
+    "pilot/attempt_00066",
+    "pilot/attempt_00067",
+    "pilot/attempt_00068",
+    "pilot/attempt_00069",
+    "pilot/attempt_00070",
+    "pilot/attempt_00071",
+    "pilot/attempt_00072",
+    "pilot/attempt_00073",
+    "pilot/attempt_00074",
+    "pilot/attempt_00075",
+    "pilot/attempt_00076",
+    "pilot/attempt_00077",
+    "pilot/attempt_00078",
+    "pilot/attempt_00079",
+    "pilot/attempt_00080",
+    "pilot/attempt_00081",
+    "pilot/attempt_00082",
+    "pilot/attempt_00083",
+    "pilot/attempt_00084",
+    "pilot/attempt_00085",
+    "pilot/attempt_00086",
+    "pilot/attempt_00087",
+    "pilot/attempt_00088",
+    "pilot/attempt_00089",
+    "pilot/attempt_00090",
+    "pilot/attempt_00091",
+    "pilot/attempt_00092",
+    "pilot/attempt_00093",
+    "pilot/attempt_00094",
+    "pilot/attempt_00095",
+    "pilot/attempt_00096",
+    "pilot/attempt_00097",
+    "pilot/attempt_00098",
+    "pilot/attempt_00099",
+    "pilot/attempt_00100",
+    "pilot/attempt_00101",
+    "pilot/attempt_00102",
+    "pilot/attempt_00103",
+    "pilot/attempt_00104",
+    "pilot/attempt_00105",
+    "pilot/attempt_00106",
+    "pilot/attempt_00107",
+    "pilot/attempt_00108",
+    "pilot/attempt_00109",
+    "pilot/attempt_00110",
+    "pilot/attempt_00111",
+    "pilot/attempt_00112",
+    "pilot/attempt_00113",
+    "pilot/attempt_00114",
+    "pilot/attempt_00115",
+    "pilot/attempt_00116",
+    "pilot/attempt_00117",
+    "pilot/attempt_00118",
+    "pilot/attempt_00119",
+    "pilot/attempt_00120",
+    "pilot/attempt_00121",
+    "pilot/attempt_00122",
+    "pilot/attempt_00123",
+    "pilot/attempt_00124",
+    "pilot/attempt_00125",
+    "pilot/attempt_00126",
+    "pilot/attempt_00127",
+    "pilot/attempt_00128",
+    "pilot/attempt_00129",
+    "pilot/attempt_00130",
+    "pilot/attempt_00131",
+    "pilot/attempt_00132",
+    "pilot/attempt_00133",
+    "pilot/attempt_00134",
+    "pilot/attempt_00135",
+    "pilot/attempt_00136",
+    "pilot/attempt_00137",
+    "pilot/attempt_00138",
+    "pilot/attempt_00139",
+    "pilot/attempt_00140",
+    "pilot/attempt_00141",
+    "pilot/attempt_00142",
+    "pilot/attempt_00143",
+    "pilot/attempt_00144",
+    "pilot/attempt_00145",
+    "pilot/attempt_00146",
+    "pilot/attempt_00147",
+    "pilot/attempt_00148",
+    "pilot/attempt_00149",
+    "pilot/attempt_00150",
+    "pilot/attempt_00151",
+    "pilot/attempt_00152",
+    "pilot/attempt_00153",
+    "pilot/attempt_00154",
+    "pilot/attempt_00155",
+    "pilot/attempt_00156",
+    "pilot/attempt_00157",
+    "pilot/attempt_00158",
+    "pilot/attempt_00159",
+    "pilot/attempt_00160",
+    "pilot/attempt_00161",
+    "pilot/attempt_00162",
+    "pilot/attempt_00163",
+    "pilot/attempt_00164",
+    "pilot/attempt_00165",
+    "pilot/attempt_00166",
+    "pilot/attempt_00167",
+    "pilot/attempt_00168",
+    "pilot/attempt_00169",
+    "pilot/attempt_00170",
+    "pilot/attempt_00171",
+    "pilot/attempt_00172",
+    "pilot/attempt_00173",
+    "pilot/attempt_00174",
+    "pilot/attempt_00175",
+    "pilot/attempt_00176",
+    "pilot/attempt_00177",
+    "pilot/attempt_00178",
+    "pilot/attempt_00179",
+    "pilot/attempt_00180",
+    "pilot/attempt_00181",
+    "pilot/attempt_00182",
+    "pilot/attempt_00183",
+    "pilot/attempt_00184",
+    "pilot/attempt_00185",
+    "pilot/attempt_00186",
+    "pilot/attempt_00187",
+    "pilot/attempt_00188",
+    "pilot/attempt_00189",
+    "pilot/attempt_00190",
+    "pilot/attempt_00191",
+    "pilot/attempt_00192",
+    "pilot/attempt_00193",
+    "pilot/attempt_00194",
+    "pilot/attempt_00195",
+    "pilot/attempt_00196",
+    "pilot/attempt_00197",
+    "pilot/attempt_00198",
+    "pilot/attempt_00199",
+    "pilot/attempt_00200",
+    "pilot/attempt_00201",
+    "pilot/attempt_00202",
+    "pilot/attempt_00203",
+    "pilot/attempt_00204",
+    "pilot/attempt_00205",
+    "pilot/attempt_00206",
+    "pilot/attempt_00207",
+    "pilot/attempt_00208",
+    "pilot/attempt_00209",
+    "pilot/attempt_00210",
+    "pilot/attempt_00211",
+    "pilot/attempt_00212",
+    "pilot/attempt_00213",
+    "pilot/attempt_00214",
+    "pilot/attempt_00215",
+    "pilot/attempt_00216",
+    "pilot/attempt_00217",
+    "pilot/attempt_00218",
+    "pilot/attempt_00219",
+    "pilot/attempt_00220",
+    "pilot/attempt_00221",
+    "pilot/attempt_00222",
+    "pilot/attempt_00223",
+    "pilot/attempt_00224",
+    "pilot/attempt_00225",
+    "pilot/attempt_00226",
+    "pilot/attempt_00227",
+    "pilot/attempt_00228",
+    "pilot/attempt_00229",
+    "pilot/attempt_00230",
+    "pilot/attempt_00231",
+    "pilot/attempt_00232",
+    "pilot/attempt_00233",
+    "pilot/attempt_00234",
+    "pilot/attempt_00235",
+    "pilot/attempt_00236",
+    "pilot/attempt_00237",
+    "pilot/attempt_00238",
+    "pilot/attempt_00239",
+    "pilot/attempt_00240",
+    "pilot/attempt_00241",
+    "pilot/attempt_00242",
+    "pilot/attempt_00243",
+    "pilot/attempt_00244",
+    "pilot/attempt_00245",
+    "pilot/attempt_00246",
+    "pilot/attempt_00247",
+    "pilot/attempt_00248",
+    "pilot/attempt_00249",
+    "pilot/attempt_00250",
+    "pilot/attempt_00251",
+    "pilot/attempt_00252",
+    "pilot/attempt_00253",
+    "pilot/attempt_00254",
+    "pilot/attempt_00255",
+    "pilot/attempt_00256",
+    "pilot/attempt_00257",
+    "pilot/attempt_00258",
+    "pilot/attempt_00259",
+    "pilot/attempt_00260",
+    "pilot/attempt_00261",
+    "pilot/attempt_00262",
+    "pilot/attempt_00263",
+    "pilot/attempt_00264",
+    "pilot/attempt_00265",
+    "pilot/attempt_00266",
+    "pilot/attempt_00267",
+    "pilot/attempt_00268",
+    "pilot/attempt_00269",
+    "pilot/attempt_00270",
+    "pilot/attempt_00271",
+    "pilot/attempt_00272",
+    "pilot/attempt_00273",
+    "pilot/attempt_00274",
+    "pilot/attempt_00275",
+    "pilot/attempt_00276",
+    "pilot/attempt_00277",
+    "pilot/attempt_00278",
+    "pilot/attempt_00279",
+    "pilot/attempt_00280",
+    "pilot/attempt_00281",
+    "pilot/attempt_00282",
+    "pilot/attempt_00283",
+    "pilot/attempt_00284",
+    "pilot/attempt_00285",
+    "pilot/attempt_00286",
+    "pilot/attempt_00287",
+    "pilot/attempt_00288",
+    "pilot/attempt_00289",
+    "pilot/attempt_00290",
+    "pilot/attempt_00291",
+    "pilot/attempt_00292",
+    "pilot/attempt_00293",
+    "pilot/attempt_00294",
+    "pilot/attempt_00295",
+    "pilot/attempt_00296",
+    "pilot/attempt_00297",
+    "pilot/attempt_00298",
+    "pilot/attempt_00299",
+    "pilot/attempt_00300",
+    "pilot/attempt_00301",
+    "pilot/attempt_00302",
+    "pilot/attempt_00303",
+    "pilot/attempt_00304",
+    "pilot/attempt_00305",
+    "pilot/attempt_00306",
+    "pilot/attempt_00307",
+    "pilot/attempt_00308",
+    "pilot/attempt_00309",
+    "pilot/attempt_00310",
+    "pilot/attempt_00311",
+    "pilot/attempt_00312",
+    "pilot/attempt_00313",
+    "pilot/attempt_00314",
+    "pilot/attempt_00315",
+    "pilot/attempt_00316",
+    "pilot/attempt_00317",
+    "pilot/attempt_00318",
+    "pilot/attempt_00319",
+    "pilot/attempt_00320",
+    "pilot/attempt_00321",
+    "pilot/attempt_00322",
+    "pilot/attempt_00323",
+    "pilot/attempt_00324",
+    "pilot/attempt_00325",
+    "pilot/attempt_00326",
+    "pilot/attempt_00327",
+    "pilot/attempt_00328",
+    "pilot/attempt_00329",
+    "pilot/attempt_00330",
+    "pilot/attempt_00331",
+    "pilot/attempt_00332",
+    "pilot/attempt_00333",
+    "pilot/attempt_00334",
+    "pilot/attempt_00335",
+    "pilot/attempt_00336",
+    "pilot/attempt_00337",
+    "pilot/attempt_00338",
+    "pilot/attempt_00339",
+    "pilot/attempt_00340",
+    "pilot/attempt_00341",
+    "pilot/attempt_00342",
+    "pilot/attempt_00343",
+    "pilot/attempt_00344",
+    "pilot/attempt_00345",
+    "pilot/attempt_00346",
+    "pilot/attempt_00347",
+    "pilot/attempt_00348",
+    "pilot/attempt_00349",
+    "pilot/attempt_00350",
+    "pilot/attempt_00351",
+    "pilot/attempt_00352",
+    "pilot/attempt_00353",
+    "pilot/attempt_00354",
+    "pilot/attempt_00355",
+    "pilot/attempt_00356",
+    "pilot/attempt_00357",
+    "pilot/attempt_00358",
+    "pilot/attempt_00359",
+    "pilot/attempt_00360",
+    "pilot/attempt_00361",
+    "pilot/attempt_00362",
+    "pilot/attempt_00363",
+    "pilot/attempt_00364",
+    "pilot/attempt_00365",
+    "pilot/attempt_00366",
+    "pilot/attempt_00367",
+    "pilot/attempt_00368",
+    "pilot/attempt_00369",
+    "pilot/attempt_00370",
+    "pilot/attempt_00371",
+    "pilot/attempt_00372",
+    "pilot/attempt_00373",
+    "pilot/attempt_00374",
+    "pilot/attempt_00375",
+    "pilot/attempt_00376",
+    "pilot/attempt_00377",
+    "pilot/attempt_00378",
+    "pilot/attempt_00379",
+    "pilot/attempt_00380",
+    "pilot/attempt_00381",
+    "pilot/attempt_00382",
+    "pilot/attempt_00383",
+    "pilot/attempt_00384",
+    "pilot/attempt_00385",
+    "pilot/attempt_00386",
+    "pilot/attempt_00387",
+    "pilot/attempt_00388",
+    "pilot/attempt_00389",
+    "pilot/attempt_00390",
+    "pilot/attempt_00391",
+    "pilot/attempt_00392",
+    "pilot/attempt_00393",
+    "pilot/attempt_00394",
+    "pilot/attempt_00395",
+    "pilot/attempt_00396",
+    "pilot/attempt_00397",
+    "pilot/attempt_00398",
+    "pilot/attempt_00399",
+    "pilot/attempt_00400",
+    "pilot/attempt_00401",
+    "pilot/attempt_00402",
+    "pilot/attempt_00403",
+    "pilot/attempt_00404",
+    "pilot/attempt_00405",
+    "pilot/attempt_00406",
+    "pilot/attempt_00407",
+    "pilot/attempt_00408",
+    "pilot/attempt_00409",
+    "pilot/attempt_00410",
+    "pilot/attempt_00411",
+    "pilot/attempt_00412",
+    "pilot/attempt_00413",
+    "pilot/attempt_00414",
+    "pilot/attempt_00415",
+    "pilot/attempt_00416",
+    "pilot/attempt_00417",
+    "pilot/attempt_00418",
+    "pilot/attempt_00419",
+    "pilot/attempt_00420",
+    "pilot/attempt_00421",
+    "pilot/attempt_00422",
+    "pilot/attempt_00423",
+    "pilot/attempt_00424",
+    "pilot/attempt_00425",
+    "pilot/attempt_00426",
+    "pilot/attempt_00427",
+    "pilot/attempt_00428",
+    "pilot/attempt_00429",
+    "pilot/attempt_00430",
+    "pilot/attempt_00431",
+    "pilot/attempt_00432",
+    "pilot/attempt_00433",
+    "pilot/attempt_00434",
+    "pilot/attempt_00435",
+    "pilot/attempt_00436",
+    "pilot/attempt_00437",
+    "pilot/attempt_00438",
+    "pilot/attempt_00439",
+    "pilot/attempt_00440",
+    "pilot/attempt_00441",
+    "pilot/attempt_00442",
+    "pilot/attempt_00443",
+    "pilot/attempt_00444",
+    "pilot/attempt_00445",
+    "pilot/attempt_00446",
+    "pilot/attempt_00447",
+    "pilot/attempt_00448",
+    "pilot/attempt_00449",
+    "pilot/attempt_00450",
+    "pilot/attempt_00451",
+    "pilot/attempt_00452",
+    "pilot/attempt_00453",
+    "pilot/attempt_00454",
+    "pilot/attempt_00455",
+    "pilot/attempt_00456",
+    "pilot/attempt_00457",
+    "pilot/attempt_00458",
+    "pilot/attempt_00459",
+    "pilot/attempt_00460",
+    "pilot/attempt_00461",
+    "pilot/attempt_00462",
+    "pilot/attempt_00463",
+    "pilot/attempt_00464",
+    "pilot/attempt_00465",
+    "pilot/attempt_00466",
+    "pilot/attempt_00467",
+    "pilot/attempt_00468",
+    "pilot/attempt_00469",
+    "pilot/attempt_00470",
+    "pilot/attempt_00471",
+    "pilot/attempt_00472",
+    "pilot/attempt_00473",
+    "pilot/attempt_00474",
+    "pilot/attempt_00475",
+    "pilot/attempt_00476",
+    "pilot/attempt_00477",
+    "pilot/attempt_00478",
+    "pilot/attempt_00479",
+    "pilot/attempt_00480",
+    "pilot/attempt_00481",
+    "pilot/attempt_00482",
+    "pilot/attempt_00483",
+    "pilot/attempt_00484",
+    "pilot/attempt_00485",
+    "pilot/attempt_00486",
+    "pilot/attempt_00487",
+    "pilot/attempt_00488"
+  ],
+  "included_run_ids": [
+    "pilot/attempt_00004",
+    "pilot/attempt_00006",
+    "pilot/attempt_00009",
+    "pilot/attempt_00012",
+    "pilot/attempt_00013",
+    "pilot/attempt_00014",
+    "pilot/attempt_00016",
+    "pilot/attempt_00017",
+    "pilot/attempt_00018",
+    "pilot/attempt_00019",
+    "pilot/attempt_00020",
+    "pilot/attempt_00022",
+    "pilot/attempt_00023",
+    "pilot/attempt_00025",
+    "pilot/attempt_00029",
+    "pilot/attempt_00033",
+    "pilot/attempt_00035",
+    "pilot/attempt_00038",
+    "pilot/attempt_00040",
+    "pilot/attempt_00041",
+    "pilot/attempt_00046",
+    "pilot/attempt_00047",
+    "pilot/attempt_00049",
+    "pilot/attempt_00050",
+    "pilot/attempt_00052",
+    "pilot/attempt_00055",
+    "pilot/attempt_00058",
+    "pilot/attempt_00059",
+    "pilot/attempt_00062",
+    "pilot/attempt_00064",
+    "pilot/attempt_00066",
+    "pilot/attempt_00067",
+    "pilot/attempt_00068",
+    "pilot/attempt_00070",
+    "pilot/attempt_00074",
+    "pilot/attempt_00076",
+    "pilot/attempt_00078",
+    "pilot/attempt_00080",
+    "pilot/attempt_00081",
+    "pilot/attempt_00084",
+    "pilot/attempt_00085",
+    "pilot/attempt_00086",
+    "pilot/attempt_00088",
+    "pilot/attempt_00089",
+    "pilot/attempt_00090",
+    "pilot/attempt_00093",
+    "pilot/attempt_00094",
+    "pilot/attempt_00095",
+    "pilot/attempt_00096",
+    "pilot/attempt_00098",
+    "pilot/attempt_00099",
+    "pilot/attempt_00101",
+    "pilot/attempt_00102",
+    "pilot/attempt_00105",
+    "pilot/attempt_00106",
+    "pilot/attempt_00108",
+    "pilot/attempt_00109",
+    "pilot/attempt_00112",
+    "pilot/attempt_00113",
+    "pilot/attempt_00115",
+    "pilot/attempt_00116",
+    "pilot/attempt_00117",
+    "pilot/attempt_00118",
+    "pilot/attempt_00119",
+    "pilot/attempt_00120",
+    "pilot/attempt_00121",
+    "pilot/attempt_00122",
+    "pilot/attempt_00123",
+    "pilot/attempt_00124",
+    "pilot/attempt_00125",
+    "pilot/attempt_00126",
+    "pilot/attempt_00127",
+    "pilot/attempt_00128",
+    "pilot/attempt_00129",
+    "pilot/attempt_00130",
+    "pilot/attempt_00131",
+    "pilot/attempt_00132",
+    "pilot/attempt_00133",
+    "pilot/attempt_00134",
+    "pilot/attempt_00135",
+    "pilot/attempt_00136",
+    "pilot/attempt_00137",
+    "pilot/attempt_00138",
+    "pilot/attempt_00139",
+    "pilot/attempt_00140",
+    "pilot/attempt_00141",
+    "pilot/attempt_00142",
+    "pilot/attempt_00143",
+    "pilot/attempt_00144",
+    "pilot/attempt_00145",
+    "pilot/attempt_00146",
+    "pilot/attempt_00147",
+    "pilot/attempt_00148",
+    "pilot/attempt_00149",
+    "pilot/attempt_00150",
+    "pilot/attempt_00151",
+    "pilot/attempt_00152",
+    "pilot/attempt_00153",
+    "pilot/attempt_00154",
+    "pilot/attempt_00155",
+    "pilot/attempt_00156",
+    "pilot/attempt_00157",
+    "pilot/attempt_00158",
+    "pilot/attempt_00159",
+    "pilot/attempt_00160",
+    "pilot/attempt_00161",
+    "pilot/attempt_00162",
+    "pilot/attempt_00163",
+    "pilot/attempt_00164",
+    "pilot/attempt_00165",
+    "pilot/attempt_00166",
+    "pilot/attempt_00167",
+    "pilot/attempt_00168",
+    "pilot/attempt_00169",
+    "pilot/attempt_00170",
+    "pilot/attempt_00171",
+    "pilot/attempt_00172",
+    "pilot/attempt_00173",
+    "pilot/attempt_00174",
+    "pilot/attempt_00175",
+    "pilot/attempt_00176",
+    "pilot/attempt_00177",
+    "pilot/attempt_00178",
+    "pilot/attempt_00179",
+    "pilot/attempt_00180",
+    "pilot/attempt_00181",
+    "pilot/attempt_00182",
+    "pilot/attempt_00183",
+    "pilot/attempt_00185",
+    "pilot/attempt_00186",
+    "pilot/attempt_00187",
+    "pilot/attempt_00188",
+    "pilot/attempt_00189",
+    "pilot/attempt_00190",
+    "pilot/attempt_00191",
+    "pilot/attempt_00192",
+    "pilot/attempt_00193",
+    "pilot/attempt_00194",
+    "pilot/attempt_00195",
+    "pilot/attempt_00196",
+    "pilot/attempt_00197",
+    "pilot/attempt_00198",
+    "pilot/attempt_00199",
+    "pilot/attempt_00200",
+    "pilot/attempt_00201",
+    "pilot/attempt_00202",
+    "pilot/attempt_00203",
+    "pilot/attempt_00204",
+    "pilot/attempt_00205",
+    "pilot/attempt_00206",
+    "pilot/attempt_00207",
+    "pilot/attempt_00208",
+    "pilot/attempt_00209",
+    "pilot/attempt_00210",
+    "pilot/attempt_00211",
+    "pilot/attempt_00212",
+    "pilot/attempt_00213",
+    "pilot/attempt_00214",
+    "pilot/attempt_00215",
+    "pilot/attempt_00216",
+    "pilot/attempt_00217",
+    "pilot/attempt_00218",
+    "pilot/attempt_00219",
+    "pilot/attempt_00220",
+    "pilot/attempt_00221",
+    "pilot/attempt_00222",
+    "pilot/attempt_00223",
+    "pilot/attempt_00224",
+    "pilot/attempt_00225",
+    "pilot/attempt_00226",
+    "pilot/attempt_00227",
+    "pilot/attempt_00228",
+    "pilot/attempt_00229",
+    "pilot/attempt_00230",
+    "pilot/attempt_00231",
+    "pilot/attempt_00232",
+    "pilot/attempt_00233",
+    "pilot/attempt_00234",
+    "pilot/attempt_00235",
+    "pilot/attempt_00236",
+    "pilot/attempt_00237",
+    "pilot/attempt_00238",
+    "pilot/attempt_00239",
+    "pilot/attempt_00240",
+    "pilot/attempt_00241",
+    "pilot/attempt_00242",
+    "pilot/attempt_00243",
+    "pilot/attempt_00244",
+    "pilot/attempt_00245",
+    "pilot/attempt_00246",
+    "pilot/attempt_00247",
+    "pilot/attempt_00248",
+    "pilot/attempt_00249",
+    "pilot/attempt_00250",
+    "pilot/attempt_00251",
+    "pilot/attempt_00252",
+    "pilot/attempt_00253",
+    "pilot/attempt_00254",
+    "pilot/attempt_00255",
+    "pilot/attempt_00256",
+    "pilot/attempt_00257",
+    "pilot/attempt_00258",
+    "pilot/attempt_00259",
+    "pilot/attempt_00260",
+    "pilot/attempt_00261",
+    "pilot/attempt_00262",
+    "pilot/attempt_00263",
+    "pilot/attempt_00264",
+    "pilot/attempt_00265",
+    "pilot/attempt_00266",
+    "pilot/attempt_00267",
+    "pilot/attempt_00268",
+    "pilot/attempt_00269",
+    "pilot/attempt_00270",
+    "pilot/attempt_00271",
+    "pilot/attempt_00272",
+    "pilot/attempt_00273",
+    "pilot/attempt_00274",
+    "pilot/attempt_00275",
+    "pilot/attempt_00276",
+    "pilot/attempt_00277",
+    "pilot/attempt_00278",
+    "pilot/attempt_00279",
+    "pilot/attempt_00280",
+    "pilot/attempt_00281",
+    "pilot/attempt_00282",
+    "pilot/attempt_00283",
+    "pilot/attempt_00284",
+    "pilot/attempt_00285",
+    "pilot/attempt_00286",
+    "pilot/attempt_00287",
+    "pilot/attempt_00288",
+    "pilot/attempt_00289",
+    "pilot/attempt_00290",
+    "pilot/attempt_00291",
+    "pilot/attempt_00292",
+    "pilot/attempt_00293",
+    "pilot/attempt_00294",
+    "pilot/attempt_00295",
+    "pilot/attempt_00296",
+    "pilot/attempt_00297",
+    "pilot/attempt_00298",
+    "pilot/attempt_00299",
+    "pilot/attempt_00300",
+    "pilot/attempt_00301",
+    "pilot/attempt_00302",
+    "pilot/attempt_00303",
+    "pilot/attempt_00304",
+    "pilot/attempt_00305",
+    "pilot/attempt_00306",
+    "pilot/attempt_00307",
+    "pilot/attempt_00308",
+    "pilot/attempt_00309",
+    "pilot/attempt_00310",
+    "pilot/attempt_00311",
+    "pilot/attempt_00312",
+    "pilot/attempt_00313",
+    "pilot/attempt_00314",
+    "pilot/attempt_00315",
+    "pilot/attempt_00316",
+    "pilot/attempt_00317",
+    "pilot/attempt_00318",
+    "pilot/attempt_00319",
+    "pilot/attempt_00320",
+    "pilot/attempt_00321",
+    "pilot/attempt_00322",
+    "pilot/attempt_00323",
+    "pilot/attempt_00324",
+    "pilot/attempt_00325",
+    "pilot/attempt_00326",
+    "pilot/attempt_00327",
+    "pilot/attempt_00328",
+    "pilot/attempt_00329",
+    "pilot/attempt_00330",
+    "pilot/attempt_00331",
+    "pilot/attempt_00332",
+    "pilot/attempt_00333",
+    "pilot/attempt_00334",
+    "pilot/attempt_00335",
+    "pilot/attempt_00336",
+    "pilot/attempt_00337",
+    "pilot/attempt_00338",
+    "pilot/attempt_00339",
+    "pilot/attempt_00340",
+    "pilot/attempt_00341",
+    "pilot/attempt_00342",
+    "pilot/attempt_00343",
+    "pilot/attempt_00344",
+    "pilot/attempt_00345",
+    "pilot/attempt_00346",
+    "pilot/attempt_00347",
+    "pilot/attempt_00348",
+    "pilot/attempt_00349",
+    "pilot/attempt_00350",
+    "pilot/attempt_00351",
+    "pilot/attempt_00352",
+    "pilot/attempt_00353",
+    "pilot/attempt_00354",
+    "pilot/attempt_00355",
+    "pilot/attempt_00356",
+    "pilot/attempt_00357",
+    "pilot/attempt_00358",
+    "pilot/attempt_00359",
+    "pilot/attempt_00360",
+    "pilot/attempt_00361",
+    "pilot/attempt_00362",
+    "pilot/attempt_00363",
+    "pilot/attempt_00364",
+    "pilot/attempt_00365",
+    "pilot/attempt_00366",
+    "pilot/attempt_00367",
+    "pilot/attempt_00368",
+    "pilot/attempt_00369",
+    "pilot/attempt_00370",
+    "pilot/attempt_00371",
+    "pilot/attempt_00372",
+    "pilot/attempt_00373",
+    "pilot/attempt_00374",
+    "pilot/attempt_00375",
+    "pilot/attempt_00376",
+    "pilot/attempt_00377",
+    "pilot/attempt_00378",
+    "pilot/attempt_00379",
+    "pilot/attempt_00380",
+    "pilot/attempt_00381",
+    "pilot/attempt_00382",
+    "pilot/attempt_00383",
+    "pilot/attempt_00384",
+    "pilot/attempt_00385",
+    "pilot/attempt_00386",
+    "pilot/attempt_00387",
+    "pilot/attempt_00388",
+    "pilot/attempt_00389",
+    "pilot/attempt_00390",
+    "pilot/attempt_00391",
+    "pilot/attempt_00392",
+    "pilot/attempt_00393",
+    "pilot/attempt_00394",
+    "pilot/attempt_00395",
+    "pilot/attempt_00396",
+    "pilot/attempt_00397",
+    "pilot/attempt_00398",
+    "pilot/attempt_00399",
+    "pilot/attempt_00400",
+    "pilot/attempt_00401",
+    "pilot/attempt_00402",
+    "pilot/attempt_00403",
+    "pilot/attempt_00404",
+    "pilot/attempt_00405",
+    "pilot/attempt_00406",
+    "pilot/attempt_00407",
+    "pilot/attempt_00408",
+    "pilot/attempt_00409",
+    "pilot/attempt_00410",
+    "pilot/attempt_00411",
+    "pilot/attempt_00412",
+    "pilot/attempt_00413",
+    "pilot/attempt_00414",
+    "pilot/attempt_00415",
+    "pilot/attempt_00416",
+    "pilot/attempt_00417",
+    "pilot/attempt_00418",
+    "pilot/attempt_00419",
+    "pilot/attempt_00420",
+    "pilot/attempt_00421",
+    "pilot/attempt_00422",
+    "pilot/attempt_00423",
+    "pilot/attempt_00424",
+    "pilot/attempt_00425",
+    "pilot/attempt_00426",
+    "pilot/attempt_00427",
+    "pilot/attempt_00428",
+    "pilot/attempt_00429",
+    "pilot/attempt_00430",
+    "pilot/attempt_00431",
+    "pilot/attempt_00432",
+    "pilot/attempt_00433",
+    "pilot/attempt_00434",
+    "pilot/attempt_00435",
+    "pilot/attempt_00436",
+    "pilot/attempt_00437",
+    "pilot/attempt_00438",
+    "pilot/attempt_00439",
+    "pilot/attempt_00440",
+    "pilot/attempt_00441",
+    "pilot/attempt_00442",
+    "pilot/attempt_00443",
+    "pilot/attempt_00444",
+    "pilot/attempt_00445",
+    "pilot/attempt_00446",
+    "pilot/attempt_00447",
+    "pilot/attempt_00448",
+    "pilot/attempt_00449",
+    "pilot/attempt_00450",
+    "pilot/attempt_00451",
+    "pilot/attempt_00452",
+    "pilot/attempt_00453",
+    "pilot/attempt_00454",
+    "pilot/attempt_00455",
+    "pilot/attempt_00456",
+    "pilot/attempt_00457",
+    "pilot/attempt_00458",
+    "pilot/attempt_00459",
+    "pilot/attempt_00460",
+    "pilot/attempt_00461",
+    "pilot/attempt_00462",
+    "pilot/attempt_00463",
+    "pilot/attempt_00464",
+    "pilot/attempt_00465",
+    "pilot/attempt_00466",
+    "pilot/attempt_00467",
+    "pilot/attempt_00468",
+    "pilot/attempt_00469",
+    "pilot/attempt_00470",
+    "pilot/attempt_00471",
+    "pilot/attempt_00472",
+    "pilot/attempt_00473",
+    "pilot/attempt_00474",
+    "pilot/attempt_00475",
+    "pilot/attempt_00476",
+    "pilot/attempt_00477",
+    "pilot/attempt_00478",
+    "pilot/attempt_00479",
+    "pilot/attempt_00480",
+    "pilot/attempt_00481",
+    "pilot/attempt_00482",
+    "pilot/attempt_00483",
+    "pilot/attempt_00484",
+    "pilot/attempt_00485",
+    "pilot/attempt_00486",
+    "pilot/attempt_00487",
+    "pilot/attempt_00488"
+  ],
+  "excluded_runs": [
+    {
+      "run_id": "pilot/attempt_00001",
+      "reason": "HTTP 400",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00001.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00002",
+      "reason": "HTTP 400",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00002.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00003",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00003.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00005",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00005.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00007",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00007.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00008",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00008.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00010",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00010.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00011",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00011.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00015",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00015.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00021",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00021.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00024",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00024.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00026",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00026.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00027",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00027.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00028",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00028.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00030",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00030.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00031",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00031.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00032",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00032.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00034",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00034.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00036",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00036.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00037",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00037.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00039",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00039.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00042",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00042.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00043",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00043.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00044",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00044.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00045",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00045.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00048",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00048.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00051",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00051.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00053",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00053.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00054",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00054.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00056",
+      "reason": "TeacherParseError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00056.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00057",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00057.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00060",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00060.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00061",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00061.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00063",
+      "reason": "TeacherParseError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00063.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00065",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00065.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00069",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00069.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00071",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00071.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00072",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00072.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00073",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00073.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00075",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00075.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00077",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00077.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00079",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00079.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00082",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00082.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00083",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00083.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00087",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00087.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00091",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00091.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00092",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00092.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00097",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00097.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00100",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00100.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00103",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00103.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00104",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00104.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00107",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00107.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00110",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00110.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00111",
+      "reason": "ConnectError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00111.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00114",
+      "reason": "RemoteProtocolError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00114.json"
+      ]
+    },
+    {
+      "run_id": "pilot/attempt_00184",
+      "reason": "TeacherParseError",
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/attempt_00184.json"
+      ]
+    }
+  ],
+  "experimental_unit": {
+    "name": "synthetic persona",
+    "definition": "Complete 12-state x 3-response group; neural seed replicas and shared baseline remain within person",
+    "independence_basis": "Distinct generated attribute profiles, conditional on one trip and one generative population; no claim of human independence"
+  },
+  "grouping_factors": [
+    "training family",
+    "objective",
+    "checkpoint selection",
+    "intervention card"
+  ],
+  "metrics": [
+    {
+      "id": "response_gap",
+      "name": "response_gap",
+      "calculation": "See deterministic per-unit implementation and frozen analysis protocol",
+      "unit": "probability",
+      "direction": "lower",
+      "aggregation": "Within persona, average neural seeds; equally weighted cards for overall endpoint/response metrics; then equal-weight personas",
+      "source_refs": [
+        "outputs/revision_20260925/synthetic/pilot/predictions.jsonl",
+        "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+      ]
+    },
+    {
+      "id": "kl",
+      "name": "kl",
+      "calculation": "See deterministic per-unit implementation and frozen analysis protocol",
+      "unit": "nats",
+      "direction": "lower",
+      "aggregation": "Within persona, average neural seeds; equally weighted cards for overall endpoint/response metrics; then equal-weight personas",
+      "source_refs": [
+        "outputs/revision_20260925/synthetic/pilot/predictions.jsonl",
+        "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+      ]
+    },
+    {
+      "id": "probability_l1",
+      "name": "probability_l1",
+      "calculation": "See deterministic per-unit implementation and frozen analysis protocol",
+      "unit": "probability",
+      "direction": "lower",
+      "aggregation": "Within persona, average neural seeds; equally weighted cards for overall endpoint/response metrics; then equal-weight personas",
+      "source_refs": [
+        "outputs/revision_20260925/synthetic/pilot/predictions.jsonl",
+        "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+      ]
+    },
+    {
+      "id": "departure_mae",
+      "name": "departure_mae",
+      "calculation": "See deterministic per-unit implementation and frozen analysis protocol",
+      "unit": "minutes",
+      "direction": "lower",
+      "aggregation": "Within persona, average neural seeds; equally weighted cards for overall endpoint/response metrics; then equal-weight personas",
+      "source_refs": [
+        "outputs/revision_20260925/synthetic/pilot/predictions.jsonl",
+        "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+      ]
+    },
+    {
+      "id": "infeasible_pt_mass",
+      "name": "infeasible_pt_mass",
+      "calculation": "See deterministic per-unit implementation and frozen analysis protocol",
+      "unit": "probability",
+      "direction": "lower",
+      "aggregation": "Within persona, average neural seeds; equally weighted cards for overall endpoint/response metrics; then equal-weight personas",
+      "source_refs": [
+        "outputs/revision_20260925/synthetic/pilot/predictions.jsonl",
+        "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+      ]
+    },
+    {
+      "id": "top_choice_violation",
+      "name": "top_choice_violation",
+      "calculation": "See deterministic per-unit implementation and frozen analysis protocol",
+      "unit": "probability",
+      "direction": "lower",
+      "aggregation": "Within persona, average neural seeds; equally weighted cards for overall endpoint/response metrics; then equal-weight personas",
+      "source_refs": [
+        "outputs/revision_20260925/synthetic/pilot/predictions.jsonl",
+        "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+      ]
+    },
+    {
+      "id": "interaction_gap",
+      "name": "interaction_gap",
+      "calculation": "See deterministic per-unit implementation and frozen analysis protocol",
+      "unit": "probability",
+      "direction": "lower",
+      "aggregation": "Within persona, average neural seeds; equally weighted cards for overall endpoint/response metrics; then equal-weight personas",
+      "source_refs": [
+        "outputs/revision_20260925/synthetic/pilot/predictions.jsonl",
+        "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+      ]
+    }
+  ],
+  "statistical_methods": [
+    {
+      "id": "paired_persona_bootstrap",
+      "applies_to_metric_ids": [
+        "response_gap",
+        "kl",
+        "probability_l1",
+        "departure_mae",
+        "infeasible_pt_mass",
+        "top_choice_violation",
+        "interaction_gap"
+      ],
+      "method": "10000 equal-probability persona resamples with replacement, seed 20260925; percentile 95% interval",
+      "rationale": "Keeps correlated cards, repeated calls and neural seeds within the sampled persona",
+      "assumptions": [
+        "Generated personas are the sampling units within the fixed synthetic design",
+        "Inference is conditional on frozen checkpoints, trip and reference provider"
+      ],
+      "uncertainty": "Persona-level interval conditional on this three-repeat target estimate; does not separately integrate API resampling uncertainty",
+      "effect_size": "Absolute means and signed-minus-soft probability differences",
+      "multiplicity_control": "One primary formal comparison; all other intervals pointwise descriptive, no familywise significance claim",
+      "implementation_ref": "cvpr_workspace/analysis/statistics/synthetic_audit.py"
+    }
+  ],
+  "data_integrity": {
+    "raw_immutable": true,
+    "missing_policy": "Require all planned states and three valid replies per state; no imputation",
+    "outlier_policy": "No outcome-based removal",
+    "selection_policy": "Frozen historical validation selectors; pilot excluded from formal",
+    "checks": [
+      "manifest and system prompt hashes",
+      "request body reconstruction",
+      "unique completions and state-repeat slots",
+      "returned model",
+      "strict parser and validator recomputation",
+      "complete persona groups",
+      "novel unique persona profiles",
+      "formal-pilot disjointness",
+      "feasible PT time decomposition"
+    ],
+    "evidence_refs": [
+      "outputs/revision_20260925/synthetic/pilot/acquisition_audit.json"
+    ]
+  },
+  "outputs": [
+    {
+      "id": "descriptive_summary",
+      "kind": "result_table",
+      "path": "outputs/revision_20260925/synthetic/pilot/descriptive_summary.json",
+      "format": "json",
+      "source_metric_ids": [
+        "response_gap",
+        "kl",
+        "probability_l1",
+        "departure_mae",
+        "infeasible_pt_mass",
+        "top_choice_violation",
+        "interaction_gap"
+      ],
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/descriptive_units.jsonl"
+      ]
+    },
+    {
+      "id": "paired_contrasts",
+      "kind": "result_table",
+      "path": "outputs/revision_20260925/synthetic/pilot/paired_contrasts.json",
+      "format": "json",
+      "source_metric_ids": [
+        "response_gap"
+      ],
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/descriptive_units.jsonl"
+      ]
+    },
+    {
+      "id": "audit",
+      "kind": "statistics_report",
+      "path": "outputs/revision_20260925/synthetic/pilot/acquisition_audit.json",
+      "format": "json",
+      "source_metric_ids": [
+        "response_gap",
+        "kl",
+        "probability_l1",
+        "departure_mae",
+        "infeasible_pt_mass",
+        "top_choice_violation",
+        "interaction_gap"
+      ],
+      "evidence_refs": [
+        "outputs/revision_20260925/synthetic/pilot/acquisition_snapshot.json"
+      ]
+    }
+  ],
+  "provenance": {
+    "analysis_code_refs": [
+      "cvpr_workspace/analysis/statistics/synthetic_audit.py",
+      "scripts/revision_20260925/synthetic_analysis.py"
+    ],
+    "config_refs": [
+      "docs/SYNTHETIC_ANALYSIS_PROTOCOL.md",
+      "outputs/revision_20260925/synthetic/acquisition_protocol.json"
+    ],
+    "environment_refs": [
+      "outputs/revision_20260925/synthetic/pilot/environment.json"
+    ],
+    "generated_at": "2026-09-25T05:20:50.044413+00:00",
+    "evidence_refs": [
+      "outputs/revision_20260925/synthetic/pilot/acquisition_snapshot.json"
+    ]
+  },
+  "supersedes": null
+}
