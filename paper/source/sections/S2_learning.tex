@@ -41,26 +41,7 @@ All timing comparisons share the training states, the three seeds, the optimizer
 \input{generated/narrative/table_departure_sources.tex}
 Ridge predictions on the test set lie between $-36.63$ and 36.48 minutes, so the $\pm60$-minute bound is never active. Combined with the fixed MNL-S choice probabilities, the independent neural predictor reaches a departure MAE of $7.61\pm0.72$ minutes. It remains $0.180$ minutes above the best joint model, CE+KL selected on departure MAE, with a persona-clustered 95\% interval of $[0.002,0.418]$. Replacing the ridge predictor thus closes most, though not all, of the timing gap to the joint models.
 
-\subsection{Properties of the learning objectives}
-\label{sec:loss_diagnostics}
-The signed and direction+magnitude objectives add response penalties to soft KL and place no weight on the hard-label cross-entropy, which only CE+KL includes. The persona, mechanism and accessibility supervision used to adapt SA-Student plays no part in the controlled comparison.
-
-For a freely fitted state with common probability support and equal CE and KL weights,
-\begin{equation}
-\arg\min_{\mathbf p}\{\mathrm{CE}(a_T,\mathbf p)+D_{\mathrm{KL}}(\mathbf p_T\Vert\mathbf p)\}=\frac{\mathbf p_T+\mathrm{onehot}(a_T)}{2}.
-\end{equation}
-This optimum sharpens the Teacher distribution, and when the Teacher's leading mode is the same in both states of a pair, it halves the idealized probability difference. The fitted networks behave in the opposite way. On the 334 test pairs with an unchanged leading mode, the $L_1$ magnitudes of the responses, 0.1555, 0.1662 and 0.1876 under soft KL for the three seeds, rise to 0.1810, 0.1910 and 0.2280 under CE+KL. Parameter sharing and finite optimization thus shape the fitted response in ways the single-state solution does not predict.
-
-For Teacher response $t>0$ and Student response $s\in[-t,0]$, equally normalized direction and magnitude terms satisfy
-\begin{equation}
-[-s]_+ + |t-|s||=t.
-\end{equation}
-The direction term is normalized by the number of available modes with a non-negligible Teacher response, and the magnitude term by the number of all available modes. The loss is flat over this interval whenever the two counts coincide, which holds for 357 of the 398 test pairs when each pair is evaluated alone, although the composition of a batch can change it. In a three-mode example with baseline $(0.4,0.3,0.3)$, a Teacher change of $(0.2,-0.1,-0.1)$ and a Student change of $(-0.1,0.05,0.05)$, the response gradients cancel while the endpoint losses remain active. A mode with a negligible Teacher response alters the normalization and removes the flat region. Figure~\ref{fig:loss_robustness} illustrates the loss surface and the sensitivity to individual personas.
-\begin{figure}[pos=htbp]
-\centering\includegraphics[width=.93\textwidth]{figures/revision20260921/figureS_revision_diagnostics.pdf}
-\caption{Loss and persona sensitivity. Left: the equal-normalization direction+magnitude penalty and signed absolute error for a Teacher response of 0.2. Right: paired-objective response errors relative to soft KL after omitting each test persona from evaluation. Points average three fitted seeds; models are not retrained.}
-\label{fig:loss_robustness}
-\end{figure}
+The loss properties and their graphical diagnostic are in Appendix~\ref{main-sec:loss_diagnostics}.
 
 \subsection{Response robustness}
 Tables~\ref{tab:response_breakdown}--\ref{tab:response_seed_differences} break the response errors down by supervision source, intervention, persona and seed. When each test persona is removed in turn, direction+magnitude remains better than soft KL, with seed-averaged differences between $-0.00408$ and $-0.00310$ and an improvement in all 18 combinations of seed and removed persona. Signed response improves on the seed average after every removal and in 14 of the 18 individual combinations.

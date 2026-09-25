@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research",
+  "pull_request": "https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/pull/1",
+  "status": "draft PR; pushed and verified; not merged",
+  "base_commit": "4e67286ce72680a9e3a916a3fb7e97b1548b53f7",
+  "revision_commit": "29004527730f596d6161996bd4de56b3cdbeb5e6",
+  "branch": "revision/response-fidelity-20260925",
+  "new_experiments_executed": false
+}

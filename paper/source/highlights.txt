@@ -1,5 +1,4 @@
-Paired contrasts separate response fidelity from baseline imitation.
-Teacher fidelity and stated-response agreement favor different Students.
-A logit choice model outperforms neural Students on the Teacher benchmark.
-Routability does not ensure preservation of the predicted response.
-Stagewise accounting localizes changes from prediction to PT boarding.
+Paired responses expose errors hidden by static imitation scores.
+Response supervision helps covered tasks but can fail on withheld delays.
+Teacher fidelity does not determine agreement with stated human responses.
+Perceived delay and physical service reduction produce different demand changes.

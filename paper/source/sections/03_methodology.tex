@@ -1,88 +1,54 @@
-\section{Response-centric evaluation and distillation}
+\section{Evaluating and learning traveler responses}
 \label{sec:method}
-Behavioral distillation is treated here as the estimation of a surrogate that reproduces both the Teacher's predictions at individual traveler states and its reaction to specified changes in travel conditions. Every candidate model produces a mode-choice distribution and a departure-time adjustment, which allows joint and modular specifications to be compared on the same behavioral outcomes. How these outcomes are realized in simulation is examined separately (Figure~\ref{fig:workflow}).
-
-\begin{figure}[pos=htbp]
-\centering\includegraphics[width=0.76\textwidth,height=0.66\textheight,keepaspectratio]{figures/narrative/figure2_method.pdf}
-\caption{Response-aware behavioral distillation and evaluation. Paired states define changes in mode-choice probabilities, while the Teacher also supplies departure-adjustment targets. Joint neural and modular Students predict choice and timing. The schematic objective combines endpoint fitting with response supervision; the four controlled objectives are specified in Section~\ref{sec:loss}, and MNL-S is fitted to endpoint targets. SA-Student additionally uses supply and between-traveler supervision outside that matched comparison. Evaluation distinguishes Teacher fidelity, agreement with stated responses and preservation of predicted responses through assignment, routing and MATSim execution. Arrows link these components conceptually; human responses are used only for evaluation, and simulated experience does not feed back into the behavioral predictions.}
-\label{fig:workflow}
-\end{figure}
-
-\subsection{Traveler states and response targets}
+\subsection{The response as the object of comparison}
 \label{sec:states}
-A state $\mathbf{x}$ describes a traveler, a trip and its context, together with level-of-service attributes for four alternatives: private car, public transport (PT), bicycle and walking. The attributes cover travel time, monetary cost and weather exposure, and for PT also access, waiting, in-vehicle and transfer conditions. Variable definitions and encoding rules are given in Supplementary Section~\ref{supp-sec:supp_inputs} and Table~\ref{supp-tab:input_dictionary}.
+A traveler state $\mathbf x$ describes a person, a trip, contextual conditions and attributes of four alternatives: private car, public transport (PT), bicycle and walking. Attributes include time, cost, weather exposure and the components of a PT journey. A model returns a normalized choice distribution $\mathbf p(\mathbf x)$ and a departure-time adjustment. The distribution is a model output, not an established human choice frequency. Appendix~\ref{sec:supp_inputs} explains the inputs and the survey encodings.
 
-Let $\mathbf p_j(\mathbf x)$ denote the elicited or predicted choice distribution and $\tau_j(\mathbf x)$ the departure adjustment in minutes, where $j\in\{T,S\}$ indexes the Teacher and the Student. The term probability refers to the normalized model output, not an established human choice frequency. For a pair of states that share the same traveler and trip,
+For two states that hold the person and trip fixed, the response is
 \begin{equation}
-\Delta\mathbf p_j(\mathbf x,\mathbf x')=\mathbf p_j(\mathbf x')-\mathbf p_j(\mathbf x),\qquad j\in\{T,S\}.
+\Delta\mathbf p_j=\mathbf p_j(\mathbf x')-\mathbf p_j(\mathbf x),\qquad j\in\{T,S\}.
 \label{eq:response}
 \end{equation}
-These differences are the response targets. The perturbation from $\mathbf x$ to $\mathbf x'$ is a specified change to the state, such as additional PT delay or heavy rain. The resulting finite contrasts describe how a model reacts to that change. They are not, on their own, estimates of elasticities or of causal effects in a traveler population.
+Here $T$ and $S$ denote Teacher and Student. We evaluate the absolute difference between their responses, averaged over modes available in either state and then over paired states:
+\begin{equation}
+E_{\Delta p}=\frac{1}{N}\sum_{i=1}^{N}\frac{1}{|\mathcal A_i|}
+\sum_{m\in\mathcal A_i}|\Delta p_{S,im}-\Delta p_{T,im}|.
+\label{eq:response_metric_main}
+\end{equation}
+Lower error means closer agreement in the specified change. This finite contrast does not by itself estimate a population causal effect or an elasticity. Static KL divergence measures endpoint agreement, departure MAE measures timing agreement, and an interaction contrast asks whether two perturbations combine in the same way. Supplementary Section~\ref{supp-sec:metric_definitions} gives the additional definitions.
 
-We used DeepSeek V4 Pro, supplied directly through the official DeepSeek API (\url{https://api.deepseek.com}), for Teacher elicitation throughout the study, with the request model \texttt{deepseek-v4-pro}. Valid repeated numerical probability vectors are averaged within state; repetition measures elicitation variability rather than additional travelers. The service and model attribution is based on the authors' collection records and confirmation; retained model fields in the later campaigns also report \texttt{deepseek-v4-pro}. The provider's current documentation identifies this service as DeepSeek-V4-Pro-0813 and confirms continued Pro API service after 14 September 2026 \citep{deepseek2026pricing,deepseek2026updates}. This service-level attribution does not establish an immutable backend fingerprint for every archived response. We retain the distinction between frozen training targets and later same-task elicitations; Supplementary Table~\ref{supp-tab:teacher_materials} gives their provenance.
-
-\subsection{Joint and modular behavioral specifications}
+\subsection{Controlled and adapted Students}
 \label{sec:architectures}
-The joint neural Student learns choice and timing from shared representations. A global encoder embeds traveler and trip attributes, an alternative encoder embeds mode-specific attributes, and a shared scorer maps both to a utility $u_m$. Probabilities are normalized over the alternatives available to the traveler, $\mathcal A(\mathbf x)$:
-\begin{equation}
-p_{S,m}(\mathbf x)=\frac{\exp(u_m)}{\sum_{k\in\mathcal A(\mathbf x)}\exp(u_k)},\quad m\in\mathcal A(\mathbf x).
-\label{eq:utility}
-\end{equation}
-Unavailable modes receive zero probability. Departure adjustment is predicted from the global representation and the mean representation of the available alternatives, with $\tau_S=60\tanh(z)$ limiting the adjustment to $\pm60$ minutes. Network dimensions are reported in Supplementary Section~\ref{supp-sec:supp_controlled}.
+The joint neural Student encodes the traveler and the attributes of each alternative, scores the alternatives and normalizes over the available modes. It shares these representations with a departure predictor. The multinomial logit Student (MNL-S) instead uses linear choice utilities on the same structured information. Separate ridge, bounded-linear and neural timing predictors allow choice and departure adjustment to favor different specifications. The neural outputs are bounded to an hour in either direction. Appendix~\ref{sec:model_details} explains the model roles; detailed dimensions and fitting settings are in Supplementary Section~\ref{supp-sec:supp_controlled}.
 
-The supply-matched multinomial logit Student (MNL-S) replaces the neural scorer with four linear utilities on the same structured information and is fitted to the soft Teacher targets. Choice and timing are estimated separately in this specification. Three timing predictors are paired with the same MNL-S choice probabilities: ridge regression, a bounded linear predictor $60\tanh(\mathbf w^\top\mathbf x+b)$, and an independent neural predictor that shares the joint model's encoder structure but receives only departure supervision. Holding the choice model fixed isolates the contribution of the timing specification.
+We also evaluate a frozen supply-adapted Student (SA-Student). This model was adapted with additional PT attributes and contrasts between contexts, travelers and accessibility levels. Its training history and availability treatment differ from those of the controlled Students. It therefore provides a deployment case, not an isolated test of the response penalty (Appendix~\ref{sec:s9_recipe}).
 
-A third model, the \emph{supply-adapted Student} (SA-Student), extends a pretrained joint model with additional PT-supply attributes and with supervision on contrasts between travelers, between contexts and attributes, and between accessibility levels. The adapted model was selected by minimizing KL divergence on the accessibility validation states, subject to constraints on its earlier performance (Supplementary Table~\ref{supp-tab:s9_spec}), and it is held fixed in the stated-choice and simulation experiments. Because its initialization, objective, auxiliary supervision and treatment of mode availability all differ from those of the controlled models, SA-Student is reported as an additional model rather than as a test of the response loss. The roles of the three model families are summarized in Supplementary Table~\ref{supp-tab:model_roles}, and the adaptation is specified in Section~\ref{supp-sec:s9_recipe}.
-
-\subsection{Response-aware learning objectives}
+\subsection{Response-aware fitting}
 \label{sec:loss}
-Four objectives are compared within the joint architecture. With $H_1$ denoting the Huber loss with a one-minute transition, the objective at a single state is
+The soft-KL baseline fits the Teacher distribution and departure adjustment at both endpoints of every training pair. Signed-response fitting adds a weighted penalty on the difference between the Teacher and Student changes:
 \begin{equation}
-\ell_{\mathrm{soft}}(\mathbf x)=D_{\mathrm{KL}}(\mathbf p_T\Vert\mathbf p_S)+H_1(\tau_S-\tau_T).
-\label{eq:state}
+\mathcal L=\mathcal L_{\mathrm{endpoint}}+\lambda\mathcal L_{\mathrm{response}}.
+\label{eq:training_objective}
 \end{equation}
-\emph{Soft KL} applies this loss to both states of every training pair. \emph{CE+KL} adds an equally weighted cross-entropy term for the Teacher's most likely mode, a hard label derived from its probability vector. The two response-aware objectives instead add a penalty on probability changes to soft KL and omit the hard label.
+The response penalty is a batch average over available mode--pair entries. We compare direct signed absolute error with a penalty that separates direction and magnitude. An additional CE+KL comparator fits the Teacher's most likely mode as a hard label. All controlled neural objectives receive the same endpoint information. Thus paired supervision changes what the optimizer prioritizes; it does not supply new Teacher knowledge. Appendix~\ref{sec:loss_diagnostics} gives the exact losses and their limitations, including a flat region in the direction-plus-magnitude penalty.
 
-Within a training batch $\mathcal B$, let $a_{im}$ indicate that mode $m$ is available in at least one state of pair $i$. The \emph{signed-response} loss is
-\begin{equation}
-\ell_{\mathrm{signed}}=\frac{\sum_{i\in\mathcal B,m}a_{im}|\Delta p_{S,im}-\Delta p_{T,im}|}{\max(1,\sum_{i\in\mathcal B,m}a_{im})}.
-\label{eq:signed}
-\end{equation}
-The \emph{direction+magnitude} objective penalizes the sign and the size of the response separately:
-\begin{align}
-\ell_{\mathrm{dir}}&=\frac{\sum_{i\in\mathcal B,m}a_{im}b_{im}[-\operatorname{sgn}(\Delta p_{T,im})\Delta p_{S,im}]_+}{\max(1,\sum_{i\in\mathcal B,m}a_{im}b_{im})},\label{eq:direction}\\
-\ell_{\mathrm{mag}}&=\frac{\sum_{i\in\mathcal B,m}a_{im}\big||\Delta p_{T,im}|-|\Delta p_{S,im}|\big|}{\max(1,\sum_{i\in\mathcal B,m}a_{im})},\label{eq:magnitude}
-\end{align}
-where $b_{im}=\mathbf1(|\Delta p_{T,im}|>10^{-6})$ and $[u]_+=\max(u,0)$. Both terms carry unit weight. Their denominators differ because the direction term ignores negligible Teacher responses. The auxiliary supervision of SA-Student plays no part in this comparison.
-
-Paired supervision changes the geometry of the fitting objective: it prioritizes differences between states whose endpoint targets are shared by all controlled models. Thus any improvement is attributable to response weighting under the matched protocol, not to additional Teacher information. Writing $\mathbf e(\mathbf x)=\mathbf p_S(\mathbf x)-\mathbf p_T(\mathbf x)$ for the endpoint error,
-\begin{equation}
-\|\Delta\mathbf p_S-\Delta\mathbf p_T\|_1\leq\|\mathbf e(\mathbf x')\|_1+\|\mathbf e(\mathbf x)\|_1,
-\label{eq:bound}
-\end{equation}
-so a Student that matched the Teacher exactly at every state would also reproduce every response. The experiment tests response weighting under finite coverage and capacity. These penalties are optimization targets, not directional constraints: equally normalized direction and magnitude terms can have cancelling gradients on an interval of wrong-sign responses, and CE+KL changes the idealized single-state target. Supplementary Section~\ref{supp-sec:loss_diagnostics} derives both properties. The direct signed-response objective supplies a comparison that does not rely on splitting sign and magnitude.
-
-\subsection{From predicted behavior to simulated demand}
+\subsection{Human responses and network execution}
 \label{sec:execution_method}
-Behavioral availability and route feasibility restrict choices in different ways. Availability defines the choice set in Eq.~\ref{eq:utility}, whereas route feasibility depends on whether the route search finds a connection for a given trip and departure time. The PT search considers direct and one-transfer connections, so an unsuccessful search does not prove that no connection exists (Supplementary Section~\ref{supp-sec:supp_inputs}).
+For a survey contrast, the human response is the change in the share selecting the relevant mode or mode group. The corresponding model response is the change in its predicted probability, averaged over the same respondents. We report their difference as \emph{response bias}: positive values mean a more positive model response, and negative values a more negative one. Full task sets are retained together when resampling respondents.
 
-Three rules convert predicted probabilities into assigned modes. Deterministic assignment selects the most probable mode, stochastic assignment samples from the predicted distribution, and feasibility-constrained assignment samples after removing probability from alternatives for which no route was found and renormalizing the remainder. Without this constraint, a failed route search for car, bicycle or PT triggers a direct fallback to walking, rather than selection of the next-highest-probability mode. The walking route is then constructed on the walking network.
-
-The feasibility correction has an explicit distributional cost. Let $F$ be the feasible set and $Z=\sum_{m\in F}p_m>0$ the retained probability mass. Conditional renormalization gives $q_m=p_m/Z$ for $m\in F$ and zero otherwise, satisfying
+An API reference queried on the same survey tasks provides a further descriptive comparison. On the same people and contrasts,
 \begin{equation}
- \|\mathbf q-\mathbf p\|_1=2(1-Z)
- =\min_{\mathbf r\in\Delta(F)}\|\mathbf r-\mathbf p\|_1,
- \label{eq:feasible_projection}
+S-H=(T_{\mathrm{now}}-H)+(S-T_{\mathrm{now}}),
+\label{eq:attribution}
 \end{equation}
-where $\Delta(F)$ is the simplex supported on $F$. Thus a feasible assignment distribution cannot preserve positive mass on an excluded mode. Minimizing this endpoint displacement does not minimize response displacement: with $\mathbf d=\mathbf q-\mathbf p$, the change induced in a response is $\mathbf d(\mathbf x')-\mathbf d(\mathbf x)$. The identity is a property of the assignment rule, not a new learning result; a proof and counterexample are given in Supplementary Section~\ref{supp-sec:feasibility_geometry}.
+where each term is a mean response. This identity separates two observed discrepancies. Because $T_{\mathrm{now}}$ was queried later, it does not identify the historical error introduced by compression.
 
-For each traveler, supply attributes are computed at the requested departure time. The fixed model predicts a departure adjustment, which is added before checking route feasibility. The feasibility mask requires behavioral availability and a route returned in the requested mode at this adjusted time. Feasibility-constrained assignment applies this mask and renormalizes once; final routing uses the same adjusted time and routing procedure, without another behavioral prediction. Return trips are routed separately at their scheduled return time, with the same fallback rule. If the retained probability mass is zero, the implementation stops the run rather than dropping that traveler or inventing an alternative. All 140 completed runs retained the full population; none encountered zero feasible mass. Supplementary Section~\ref{supp-sec:materials_scope} reports the route-ledger checks and implementation details.
+In simulation, we trace PT use from predicted probabilities through feasibility adjustment, mode assignment, routing and boarding. A feasible route is one returned by the specified direct-or-one-transfer search, rather than proof that all other connections are impossible. Deterministic assignment takes the most probable mode; stochastic assignment samples the probabilities; feasibility-constrained sampling first removes unavailable or unroutable alternatives and renormalizes. Without that correction, a failed car, bicycle or PT route triggers a walking fallback. Predictions remain fixed during each simulation run.
 
-PT use is then traced through five stages: predicted probabilities, feasibility-adjusted probabilities, assigned modes, routed modes and PT boarding in the simulation. Every stage uses the initial population as its denominator. For a contrast $c$, the total response gap can be separated as
+Every stage uses the initial population as denominator. If $R$ denotes a change from baseline, the predicted-to-simulated gap is
 \begin{equation}
- G_c=R_c^{\mathrm{sim}}-R_c^{\mathrm{pred}}
- =\underbrace{R_c^{\mathrm{adj}}-R_c^{\mathrm{pred}}}_{\text{feasibility adjustment}}
- +\underbrace{R_c^{\mathrm{sim}}-R_c^{\mathrm{adj}}}_{\text{downstream execution}},
- \label{eq:execution_decomposition}
+G=R^{\mathrm{sim}}-R^{\mathrm{pred}}
+=(R^{\mathrm{adj}}-R^{\mathrm{pred}})+(R^{\mathrm{sim}}-R^{\mathrm{adj}}).
+\label{eq:execution_decomposition}
 \end{equation}
-where $R_c^{\mathrm{adj}}$ is the response after the specified probability correction. Without that correction, $R_c^{\mathrm{adj}}=R_c^{\mathrm{pred}}$. This separates the effect of changing the sampling distribution from subsequent assignment and execution. Simulated PT use means boarding a PT vehicle before reaching the outbound destination, which is not the same as completing the journey. Because the behavioral predictions are held fixed during simulation, the gap reflects assignment, routing and simulation execution with fixed behavioral predictions.
+This separates a change to the sampling distribution from subsequent execution. Boarding and journey completion remain distinct outcomes. The departure adjustment is applied before route feasibility is checked, so timing can change the itinerary even if it leaves the binary feasibility indicator unchanged. Appendix~\ref{sec:execution_support} explains the execution controls and the geometry of the feasibility correction.

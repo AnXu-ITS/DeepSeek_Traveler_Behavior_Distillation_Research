@@ -1,0 +1,222 @@
+--- zip_baseline/README.md
++++ revision/README.md
+@@ -1,32 +1,24 @@
+-# AIT response-fidelity manuscript revision
++# AIT response-fidelity revision — 25 September 2026
+ 
+-**Editorial revision date:** 24 September 2026  
+ **Title:** Beyond Static Imitation: Auditing LLM-Derived Traveler Responses for Transport Simulation
+ 
+-This package revises the supplied manuscript source using its existing evidence and a fresh review of AIT/adjacent literature and the connected research repository. It includes compiled main and supplementary PDFs, editable LaTeX, a unified diff, preservation checks and an evidence-based development roadmap.
++This is an evidence-limited editorial revision of the author-supplied `AIT_Response_Fidelity_Revision.zip`. Existing scientific results, figure assets and original numerical result tables are preserved. No new training, Teacher requests, survey collection or MATSim simulations were run.
+ 
+-## Read first
++The revision inserts the author's ethics/consent statement, identifies official DeepSeek V4 Pro supply, corrects the superseded routing assumption using official API documentation, records the existing limited compositional holdout, and adds a retrospective API cost table plus a conditional lifecycle break-even formulation.
+ 
+-- `cas-sc-template.pdf`: revised main article.
+-- `supplement.pdf`: revised supplementary material.
+-- `editorial_notes/STRONG_PAPER_ROADMAP_CN.md`: evidence, experiment priorities and submission gates.
+-- `editorial_notes/WRITING_EDITS_CN.md`: before/after writing decisions.
+-- `editorial_notes/AUTHOR_ACTIONS.md`: unresolved factual and empirical work.
+-- `editorial_notes/manuscript_revision.patch`: source differences from the supplied manuscript.
+-- `editorial_notes/preservation_checks.json`: checks that original numerical tables, figures and reproduction assets are unchanged.
++## Files
+ 
+-## Status
++- `cas-sc-template.pdf` and `supplement.pdf`: compiled revised article and supplement.
++- `sections/`, `generated/`, `figures/`, `references.bib`: editable article sources and figure assets.
++- `reproduction/cost_audit/`: aggregate-only token ledger, reproducible offline cost script and planning scenarios. Estimates are not provider invoices.
++- `editorial_notes/revision_20260925.patch`: changes from the supplied ZIP, where present in the full local delivery.
+ 
+-No new model training, Teacher queries, participant collection or MATSim simulation was performed for this revision. New mathematical text explains feasibility normalization and response-gap accounting. A numerical decomposition uses existing rounded means and is identified as such. The revised availability statement refers to research repository commit `4e67286ce72680a9e3a916a3fb7e97b1548b53f7`, not a claim that this compact manuscript ZIP contains that full research repository.
+-
+-The current version is a working manuscript pending author actions, especially ethics documentation and API provenance. It does not claim public data release, newly completed experiments, or guaranteed acceptance.
++Earlier editorial notes in the full local package are historical inputs, not the status of this revision. The original experimental repository base remains `4e67286ce72680a9e3a916a3fb7e97b1548b53f7`. New experiments remain proposals requiring an author decision; no future result is used as current evidence.
+ 
+ ## Build
+-
+-With pdfLaTeX and BibTeX installed:
+ 
+ ```bash
+ python build.py --clean
+ ```
+ 
+-Both documents are built so their cross-document references resolve. A successful final build checks for undefined references/citations, multiply defined labels, overfull boxes and oversized floats. Original figures and generated numerical tables were not redesigned. Prior editorial documents are retained under `editorial_notes/previous_revision/` for history, not as current status.
++This uses pdfLaTeX and BibTeX and resolves cross-document references. Source files and both compiled PDFs are supplied. The limited revisions are complete; the broader stronger-paper roadmap and submission readiness remain open.
+--- zip_baseline/cas-sc-template.tex
++++ revision/cas-sc-template.tex
+@@ -117,7 +117,7 @@
+ \input{sections/06_discussion}
+ \input{sections/07_conclusion}
+ \section*{Data and code availability}
+-Code, prepared synthetic benchmark states and targets, split manifests, selected Student checkpoints, evaluation scripts and compact result tables are included in the research repository, \url{https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research}. This statement refers to the 24 September 2026 repository edition at commit \texttt{4e67286}; the complete identifier and material inventory are given in Supplementary Section~\ref{supp-sec:materials_scope}. Archived targets permit controlled-model evaluation without new Teacher calls. The repository remains access-controlled; requests should be directed to the corresponding author. Participant-level survey records and participant-linked API payloads are retained separately, subject to privacy and applicable permissions. The repository includes Helsinki run-level summaries and analysis code; fresh simulation additionally requires the documented supply files and MATSim environment. Supplementary Section~\ref{supp-sec:materials_scope} specifies the coverage of each reproduction task.
++Code, prepared synthetic benchmark states and targets, split manifests, selected Student checkpoints, evaluation scripts and compact result tables are included in the research repository, \url{https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research}. The experimental artifacts are pinned to the 24 September 2026 repository edition at commit \texttt{4e67286}; the 25 September editorial revision adds aggregate cost accounting and corrected service and consent statements without new experiments. The complete base identifier and material inventory are given in Supplementary Section~\ref{supp-sec:materials_scope}. Archived targets permit controlled-model evaluation without new Teacher calls. The repository remains access-controlled; requests should be directed to the corresponding author. Participant-level survey records and participant-linked API payloads are retained separately, subject to privacy and applicable permissions. The repository includes Helsinki run-level summaries and analysis code; fresh simulation additionally requires the documented supply files and MATSim environment. Supplementary Section~\ref{supp-sec:materials_scope} specifies the coverage of each reproduction task.
+ \bibliographystyle{cas-model2-names}
+ \bibliography{references}
+ \end{document}
+--- zip_baseline/editorial_notes/AUTHOR_ACTIONS.md
++++ revision/editorial_notes/AUTHOR_ACTIONS.md
+@@ -4,8 +4,8 @@
+ 
+ | ID | Action | Status in this delivery |
+ |---|---|---|
+-| E1 | Supply actual ethics approval/exemption basis, institution/authority, date and identifier where applicable; verify consent and intended data use. | Original author statement retained; nonprinting source comment inserted. No approval invented. |
+-| T1 | Audit actual request UTC timestamps and provider routing; separate training targets from current API reference. | Alias ambiguity corrected in prose. Raw backend attribution remains unresolved. |
++| E1 | Supply actual ethics approval/exemption basis, institution/authority, date and identifier where applicable; verify consent and intended data use. | Updated 25 September: author-supplied consent statement inserted verbatim; formal institutional approval was not obtained. No exemption claim remains in the active manuscript. |
++| T1 | Audit actual request UTC timestamps and provider routing; separate training targets from current API reference. | Updated 25 September: official V4 Pro supply confirmed by author; later model fields and request timestamps audited; updated provider continuation notice cited. Immutable historical fingerprints remain incomplete. |
+ | H1 | Confirm actual task presentation randomization/counterbalancing and the meaning of car/bicycle options. | No randomization or alternative equivalence assumed. |
+ | H2 | Validate a prospective repair on independent respondents/tasks; explicitly separate human-trained and Teacher-only models. | Designed in roadmap; not run. |
+ | O1 | Execute intervention/intensity/composition holdouts, complete leakage audit, second frozen Teacher and paired uncertainty plan. | Proposed, not run. |
+@@ -13,7 +13,7 @@
+ | M1 | Document utility identification, actual feature treatment and interpretable contrasts for MNL-S. | Interpretation constrained; coefficients not inferred. |
+ | N1 | Complete physical-supply control experiment before making operational disruption claims. | Existing perceived-delay experiment retained and correctly scoped. |
+ | R1 | Test fresh-environment reproduction; establish reviewer access; resolve path-fingerprint portability in a versioned manner. | Current repository inventory updated from pinned state. No public release or independent full rerun claimed. |
+-| C1 | Include supervision/training/failure cost for any lifecycle savings claim. | Post-training timing retained; break-even experiment specified, not fabricated. |
++| C1 | Include supervision/training/failure cost for any lifecycle savings claim. | Updated 25 September: retained usage deduplicated and repriced; historical training status times reported. Lifecycle break-even remains conditional on unrecorded costs. |
+ | A1 | Add an accurate AI-assistance disclosure after author review of this substantive reorganization and analytical assistance; verify all adopted text, mathematics and references. | Disclosure guidance provided; author review and final attestation remain pending. |
+ | V1 | Confirm that the manuscript package remains the intended source version and approve revised framing/references. | Original package preserved separately; unified diff provided. |
+ 
+--- zip_baseline/references.bib
++++ revision/references.bib
+@@ -347,3 +347,18 @@
+   url={https://www.deepseek.com/en/news/deepseek-v4-1-flash/},
+   note={Provider announcement, 10 September 2026; accessed 24 September 2026}
+ }
++
++@misc{deepseek2026pricing,
++  author={{DeepSeek}},
++  title={Models and Pricing},
++  year={2026},
++  url={https://api-docs.deepseek.com/quick_start/pricing/},
++  note={Official API documentation; accessed 25 September 2026}
++}
++@misc{deepseek2026updates,
++  author={{DeepSeek}},
++  title={API Change Log},
++  year={2026},
++  url={https://api-docs.deepseek.com/updates/},
++  note={Official continuation notice for DeepSeek V4 Pro; accessed 25 September 2026}
++}
+--- zip_baseline/sections/03_methodology.tex
++++ revision/sections/03_methodology.tex
+@@ -19,7 +19,7 @@
+ \end{equation}
+ These differences are the response targets. The perturbation from $\mathbf x$ to $\mathbf x'$ is a specified change to the state, such as additional PT delay or heavy rain. The resulting finite contrasts describe how a model reacts to that change. They are not, on their own, estimates of elasticities or of causal effects in a traveler population.
+ 
+-The training targets are archived numerical judgments elicited through a DeepSeek API; the recorded model alias is \texttt{deepseek-v4-pro}. Valid repeated vectors are averaged within state. Repetition measures variation in elicitation, not additional travelers. An API alias does not uniquely identify an immutable backend: the provider announced a routing change for this alias from 14 September 2026 \citep{deepseek2026routing}. We therefore distinguish the archived training Teacher from the contemporary API reference used in the later survey comparison. Retained targets define the reproducible compression task; the available request provenance is summarized in Supplementary Table~\ref{supp-tab:teacher_materials}.
++We used DeepSeek V4 Pro, supplied directly through the official DeepSeek API (\url{https://api.deepseek.com}), for Teacher elicitation throughout the study, with the request model \texttt{deepseek-v4-pro}. Valid repeated numerical probability vectors are averaged within state; repetition measures elicitation variability rather than additional travelers. The service and model attribution is based on the authors' collection records and confirmation; retained model fields in the later campaigns also report \texttt{deepseek-v4-pro}. The provider's current documentation identifies this service as DeepSeek-V4-Pro-0813 and confirms continued Pro API service after 14 September 2026 \citep{deepseek2026pricing,deepseek2026updates}. This service-level attribution does not establish an immutable backend fingerprint for every archived response. We retain the distinction between frozen training targets and later same-task elicitations; Supplementary Table~\ref{supp-tab:teacher_materials} gives their provenance.
+ 
+ \subsection{Joint and modular behavioral specifications}
+ \label{sec:architectures}
+--- zip_baseline/sections/04_experimental_design.tex
++++ revision/sections/04_experimental_design.tex
+@@ -5,7 +5,7 @@
+ 
+ \subsection{Controlled Teacher-response benchmark}
+ \label{sec:controlled_design}
+-A persona is a generated traveler profile, and a state combines a persona with a trip, a context, alternative attributes and Teacher targets. The training, validation and test sets contain 1,839, 365 and 437 states drawn from disjoint groups of 28, six and six personas. The test states form 398 response pairs and 94 interaction contrasts. Single-context changes, PT-supply profiles, joint perturbations and context--attribute contrasts all follow the same persona partition (Supplementary Table~\ref{supp-tab:training_sources}).
++A persona is a generated traveler profile, and a state combines a persona with a trip, a context, alternative attributes and Teacher targets. The training, validation and test sets contain 1,839, 365 and 437 states drawn from disjoint groups of 28, six and six personas. The test states form 398 response pairs and 94 interaction contrasts. Single-context changes, PT-supply profiles, joint perturbations and context--attribute contrasts all follow the same persona partition (Supplementary Table~\ref{supp-tab:training_sources}). The prepared manifest also excludes the fare--congestion joint combination from training and validation (112 and 24 candidate states, respectively). This provides a limited compositional holdout within the joint source; the reported aggregate comparison does not establish generalization across all unseen intervention families or intensity ranges.
+ 
+ Within each of three training seeds, the four neural objectives share the architecture, inputs, availability rules, training pairs, initialization and optimization budget, so that the objective is the only difference between them. Models for the probability-response comparison are selected by macro-source KL, a validation KL divergence summarized at the level of the four supervision sources. MNL-S receives the same endpoint information and exposure weights, is regularized separately and is selected by the same criterion. Optimization settings are reported in Supplementary Section~\ref{supp-sec:supp_controlled}.
+ 
+@@ -17,9 +17,9 @@
+ 
+ \subsection{Stated-choice experiments}
+ \label{sec:human_design}
+-The Singapore sample comprises 332 eligible residents who made 3,320 choices. Its ten tasks form five within-person pairs on PT accessibility, rain, fares, PT delay and roadworks. The Shanghai cohort evaluated by the models comprises 321 respondents with 3,208 explicit four-mode choices over ten tasks. Two further answers indicate no suitable mode and are not scored. Twelve eligible respondents whose answers fall outside the model's input mapping are retained in a human-only sensitivity analysis. Responses were collected from 20 August to 5 September 2026 in Singapore and from 12 to 18 September 2026 in Shanghai, and both questionnaires recorded participant consent. We distributed electronic questionnaires through WeChat, WhatsApp and related personal contacts to research-group members' families, friends, classmates and colleagues, and through onward sharing within those networks. Singapore used Google Forms and Shanghai used Wenjuanxing. The target of inference is response agreement within these convenience and snowball samples, not citywide mode shares. Singapore eligibility required residence in Singapore; Shanghai eligibility required travel in Shanghai during the preceding 30 days. Participants completed ten stated-choice tasks online. A privacy statement preceded the survey, and we did not solicit sensitive personal information. The study was conducted on an ethics-exemption basis.
+-% AUTHOR ACTION E1: Before submission, specify the institution/authority, determination date and reference (if issued), or the applicable documented exemption basis. Do not invent approval or imply that editorial revision resolved this.
+- Sample flow and questionnaire access are reported in Supplementary Section~\ref{supp-sec:supp_inputs}.
++The Singapore sample comprises 332 eligible residents who made 3,320 choices. Its ten tasks form five within-person pairs on PT accessibility, rain, fares, PT delay and roadworks. The Shanghai cohort evaluated by the models comprises 321 respondents with 3,208 explicit four-mode choices over ten tasks. Two further answers indicate no suitable mode and are not scored. Twelve eligible respondents whose answers fall outside the model's input mapping are retained in a human-only sensitivity analysis. Responses were collected from 20 August to 5 September 2026 in Singapore and from 12 to 18 September 2026 in Shanghai, and both questionnaires recorded participant consent. We distributed electronic questionnaires through WeChat, WhatsApp and related personal contacts to research-group members' families, friends, classmates and colleagues, and through onward sharing within those networks. Singapore used Google Forms and Shanghai used Wenjuanxing. The target of inference is response agreement within these convenience and snowball samples, not citywide mode shares. Singapore eligibility required residence in Singapore; Shanghai eligibility required travel in Shanghai during the preceding 30 days. Participants completed ten stated-choice tasks online. Sample flow and questionnaire access are reported in Supplementary Section~\ref{supp-sec:supp_inputs}.
++
++\paragraph{Ethics and consent statement.} The stated-choice questionnaires were administered as anonymous, minimal-risk surveys. No direct personal identifiers were collected. Before beginning the questionnaire, all participants were shown an electronic information and consent statement describing the study purpose, voluntary participation, intended research use of the responses, and confidentiality protections; only respondents who provided consent proceeded to the survey. Formal institutional ethics approval was not obtained. The study procedures were designed to protect participant privacy and to limit data collection to information necessary for the stated research purpose.
+ 
+ The two surveys specify their tasks in different ways. Singapore shows respondents numerical tables of time and cost. Shanghai describes most conditions qualitatively, with explicit values only for a 6-yuan PT fare, a 30-yuan parking fee and one transfer. Model inputs therefore combine attributes displayed in the questionnaire, characteristics reported by respondents and reference values for information that was not collected (Supplementary Table~\ref{supp-tab:input_provenance}). The reference values do not depend on respondents' answers. Twelve alternative specifications for Singapore and eight for Shanghai vary selected missing attributes and reference times (Supplementary Table~\ref{supp-tab:ownership_defaults}).
+ 
+@@ -44,7 +44,7 @@
+ \bar r^S_c-\bar r^H_c=(\bar r^T_c-\bar r^H_c)+(\bar r^S_c-\bar r^T_c).
+ \label{eq:attribution}
+ \end{equation}
+-The first term compares the current API reference with stated behavior; the second compares the Student with that reference. This is an exact descriptive identity, not an identification of compression error. Without a verified common backend, the second term combines Student differences with possible service changes, including alias routing \citep{deepseek2026routing,bisbee2024synthetic}. All terms use common respondent resamples, with elicitation variability reported separately.
++The first term compares the current API reference with stated behavior; the second compares the Student with that reference. This is an exact descriptive identity, not an identification of compression error. Both campaigns used the official DeepSeek V4 Pro service, but without a common immutable backend record the second term can also include differences between acquisition periods and elicitation protocols \citep{bisbee2024synthetic}. All terms use common respondent resamples, with elicitation variability reported separately.
+ 
+ \subsection{Simulation and computational experiments}
+ \label{sec:execution_design}
+--- zip_baseline/sections/05_results.tex
++++ revision/sections/05_results.tex
+@@ -83,5 +83,13 @@
+ 
+ The dominant cost lies in network and timetable calculations. Reusing those that do not change between scenarios reduces construction time from 3,223.6 to 469.5 seconds in Singapore and from 10,491.8 to 103.2 seconds in Helsinki, with mode and origin--destination assignments unchanged. Each city was measured under one reuse condition, and concurrent workload limits the precision of these timings. The differences among compact Students are negligible by comparison.
+ 
+-These measurements concern repeated prediction after distillation. Teacher latency was measured on successful requests, and population-scale Teacher times are projections. A full cost comparison would also need to account for the original supervision, failed requests, retries and training (Supplementary Section~\ref{supp-sec:supp_compute}).
++The archived usage records also permit a monetary estimate without new Teacher calls (Table~\ref{tab:api_cost}). Across the retained archives, 13,391 deduplicated completions with usage consumed 17.157 million input and 50.418 million output tokens. Repricing them at the official V4 Pro rates gives US\$102.71--205.42; the final same-task reference accounts for US\$7.08--14.16. These are rate-card scenarios for observed usage, not provider invoices or a complete lifecycle total. In particular, 576 earlier completions lack usage, and the retained archives do not cover every failed attempt or acquisition source. Reasoning tokens are already included in output tokens.
++\input{generated/narrative/table_api_cost.tex}
++
++For repeated deployment, let $C_0$ denote acquisition, retry, training and necessary adaptation costs, and let $c_L$ and $c_S$ be the monetary costs of evaluating the same scenario directly with the LLM and with the Student. The break-even workload is
++\begin{equation}
++ N^*=\frac{C_0}{c_L-c_S},\qquad c_L>c_S.
++ \label{eq:break_even}
++\end{equation}
++Shared feature, supply and routing work must be counted consistently in both pipelines, with matching caching and concurrency assumptions. Existing inference, construction and token records support the components above, but the missing acquisition charges and local-compute tariff prevent a measured lifecycle break-even claim. Wall-clock and resource break-even require separate calculations in their own units; successful-request latency cannot replace elapsed campaign time (Supplementary Section~\ref{supp-sec:supp_compute}).
+ \FloatBarrier
+--- zip_baseline/sections/06_discussion.tex
++++ revision/sections/06_discussion.tex
+@@ -19,7 +19,7 @@
+ 
+ The stagewise accounting makes these differences auditable. All shares use the same initial population; predicted and adjusted probabilities remain distinct from assigned modes, routed modes and boarding events. Signed and absolute gaps are both needed because cancellation across fitted models can conceal errors. Timing outputs also warrant separate evaluation: they change itineraries even when binary feasibility remains unchanged. The additional speed experiment shows why a stable mode count alone cannot validate a journey-time outcome.
+ 
+-For implementation, the relevant efficiency result concerns repeated use after training. Behavioral inference consumes approximately 0.35\% of the measured larger scenario builds, shifting attention to supply calculation and reuse rather than marginal differences between compact Students. This finding does not yet determine the break-even workload for distillation; that requires acquisition, failure/retry and training costs in addition to deployment time.
++For implementation, the relevant efficiency result concerns repeated use after training. Behavioral inference consumes approximately 0.35\% of the measured larger scenario builds, shifting attention to supply calculation and reuse rather than marginal differences between compact Students. The retained token ledger quantifies an additional acquisition-cost component, but it does not yet determine the lifecycle break-even workload: unmetered attempts and local-compute costs remain outside the estimate in Table~\ref{tab:api_cost}.
+ 
+ \subsection{Scope of inference and next tests}
+ Three boundaries define the conclusions. First, the compression comparison uses one archived Teacher and six held-out synthetic personas. Teacher reaggregation and seed variation test sensitivity within that design; they do not substitute for new personas, unseen interventions or another frozen Teacher. Second, the human evidence concerns stated responses in two convenience samples under documented encodings. The cities used different task formats, Shanghai's qualitative tasks require numerical reference values, and the existing sensitivity analysis holds its delay at 15 minutes. Explicit currency, alternative-set interpretation and randomized, numerically matched tasks are priorities for further validation. Third, Helsinki holds physical supply and behavioral predictions fixed to isolate execution effects. Physical service changes and feedback from experienced conditions require separate experiments before extending the conclusions to equilibrium or operational disruption forecasting.
+--- zip_baseline/sections/S3_human.tex
++++ revision/sections/S3_human.tex
+@@ -18,7 +18,7 @@
+ 
+ The Teacher prompts contain the same numerical and categorical attributes and the same ownership and access rule as the Student inputs, but not the recorded human choices. Persona identifiers are replaced by neutral codes, task and context identifiers by constants, and origin and destination types by an unspecified value. The Students do not use any of these metadata. Monetary values are given without currency names. The prompt is the one used to label the accessibility supervision of SA-Student, which explains PT feasibility and the components of door-to-door time. The reference values and the private-car representation follow Section~\ref{sec:supp_inputs}.
+ 
+-All successful requests were answered by \texttt{deepseek-v4-pro}. Requests specified a temperature of 0.2 and a budget of 16,384 tokens, without changing the default reasoning settings. According to the provider's documentation, the default reasoning mode uses high effort and ignores the temperature parameter,\footnote{DeepSeek API documentation, \url{https://api-docs.deepseek.com/guides/thinking_mode/}, accessed 22 September 2026.} so the temperature setting may not have controlled sampling. These queries were made after the Students had been trained and are separate from the supervision used to train them.
++All successful requests returned the model field \texttt{deepseek-v4-pro} from the official DeepSeek service. Requests specified a temperature of 0.2 and a budget of 16,384 tokens, without changing the default reasoning settings. According to the provider's documentation, the default reasoning mode uses high effort and ignores the temperature parameter,\footnote{DeepSeek API documentation, \url{https://api-docs.deepseek.com/guides/thinking_mode/}, accessed 22 September 2026.} so the temperature setting may not have controlled sampling. These queries were made after the Students had been trained and are separate from the supervision used to train them.
+ 
+ The three probability vectors for each state are averaged. Table~\ref{tab:teacher_subset_choices} gives choice metrics for the subsets, and Table~\ref{tab:teacher_query_repeats} gives the human and Teacher responses together with the variation across repeated queries. Neural accuracy is computed for each fitted seed before averaging.
+ \input{generated/narrative/table_teacher_choices.tex}
+--- zip_baseline/sections/S6_compute.tex
++++ revision/sections/S6_compute.tex
+@@ -10,5 +10,16 @@
+ 
+ Construction with and without reuse is compared for the same population and scenario. With reuse, route and accessibility calculations that depend only on the network and timetable are taken from an earlier construction, while Student predictions are recomputed. Construction time falls from 3,223.6 to 469.5 seconds in Singapore and from 10,491.8 to 103.2 seconds in Helsinki (Table~\ref{tab:pipeline}). All 10,000 mode and origin--destination assignments are unchanged, and only two Singapore departures and one Helsinki departure differ, by 0.01 minutes after rounding.
+ \input{generated/narrative/table_pipeline.tex}
+-All constructions ran on a machine with 24 logical CPU cores and 31.4 GB of memory, using PyTorch without GPU acceleration. Each city was measured once with reuse. The 50,000-person construction partly overlapped a preliminary Helsinki run, and one Helsinki delay construction shared the machine with other work, so these timings describe this machine under its recorded workload. The full cost of distillation would also include the original Teacher supervision with its failed requests and retries, which was not recorded in full. The largest simulated population has 50,000 people, and the separate measurement on 100,000 states concerns inference alone.
++All constructions ran on a machine with 24 logical CPU cores and 31.4 GB of memory, using PyTorch without GPU acceleration. Each city was measured once with reuse. The 50,000-person construction partly overlapped a preliminary Helsinki run, and one Helsinki delay construction shared the machine with other work, so these timings describe this machine under its recorded workload. The full cost of distillation would also include acquisition and retry charges that were not recorded in full. The retrospective accounting below uses available usage records and does not fill missing charges with zeros. The largest simulated population has 50,000 people, and the separate measurement on 100,000 states concerns inference alone.
+ \FloatBarrier
++
++\subsection{Retrospective token accounting}
++The accounting script reads retained repeat and API-call records, deduplicates them by completion ID and exports only aggregate counts and file hashes. At peak rates, a completion with $T_h$ cached input tokens, $T_m$ uncached input tokens and $T_o$ output tokens is repriced as
++\begin{equation}
++ C_{\mathrm{API}}=(0.044T_h+1.32T_m+3.96T_o)/10^6\quad\mathrm{USD}.
++\end{equation}
++Off-peak rates are half these values. These are the provider's rates checked on 25 September 2026, not a currency conversion or recovered invoice. The separately published CNY rates give CNY 700.30--1,400.61 for the same retained metered total. Promotions, account credits, tax treatment and unmetered requests are not reconstructed. The reproducible aggregate ledger is included with the manuscript under \path{reproduction/cost_audit/}; it contains no participant-level payloads.
++
++The final same-task campaign made 2,880 recorded attempts: 1,440 valid responses and 1,440 HTTP 402 failures without usage. Its metered responses contain 1,409,152 cached and 915,218 uncached input tokens and 3,254,670 output tokens. Unknown charges for failures are not asserted to be zero. The earlier generic-prompt campaign had 1,475 usage-bearing responses, of which 35 were rejected by parsing; their tokens remain in the cost sum. The final campaign consumed an average of 1,614 input and 2,260 output tokens per valid response, which can inform a workload-matched budget but is not a guaranteed token ceiling for other prompts.
++
++The 12 retained controlled-neural training status files report 29.58--32.13 seconds per fit on the recorded CPU setup, or 371.09 seconds summed over the fits. This sum is historical fit time, not elapsed campaign time or the complete training and adaptation history. No hardware rental or electricity charge was recorded. For reuse, the original acquisition cost is sunk; retraining from frozen targets adds no Teacher calls, while collecting new targets must be budgeted separately.
+--- zip_baseline/sections/S7_materials.tex
++++ revision/sections/S7_materials.tex
+@@ -51,15 +51,14 @@
+ \toprule
+ Use & Coverage & Materials and interpretation \\
+ \midrule
+-Controlled supervision & 437 test states; repeat analysis covers 373 states and 350 pairs. & Prepared states, aggregate targets, splits, 12 selected neural fits, MNL-S records and evaluation code are included. Individual repeats are unavailable for the 64 mechanism states; historical backend identity is not established for every target. \\
++Controlled supervision & 437 test states; repeat analysis covers 373 states and 350 pairs. & Prepared states, aggregate targets, splits, 12 selected neural fits, MNL-S records and evaluation code are included. Individual repeats are unavailable for the 64 mechanism states; the authors identify the service as official DeepSeek V4 Pro, while immutable per-response backend identity is not retained for every target. \\
+ Supply adaptation & 336 accessibility states; 1,502 valid queries. & Adaptation specification and released SA-Student and predecessor checkpoints are included. Retained response records and training history support the adaptation provenance. \\
+ Contemporary API reference & 24 respondents per city; ten tasks; three successful elicitations per state. & Configuration, prompt, campaign summary and aggregate comparisons are included. The returned model string is the alias \texttt{deepseek-v4-pro}; participant-linked payloads are retained separately. The alias alone does not establish backend identity. \\
+ \bottomrule
+ \end{tabularx}
+ \end{table}
+ 
+-The provider announced that requests to \texttt{deepseek-v4-pro} would be routed to V4.1-Flash from 04:00 UTC on 14 September 2026 until the subsequent Pro release. The announcement is available at \url{https://www.deepseek.com/en/news/deepseek-v4-1-flash/} (accessed 24 September 2026). A returned alias is therefore insufficient to establish a common backend across acquisition periods. Archived targets and frozen Students define the controlled compression comparison. The later API comparison is interpreted as a contemporary reference, not an isolated estimate of historical compression error. Per-request timestamps and routing evidence are needed to resolve any finer backend attribution.
+-% AUTHOR ACTION T1: Check raw per-request UTC timestamps and provider evidence before making any more specific model-version claim. Selection/bootstrap seeds are not timestamps.
++The authors confirm use of the official DeepSeek V4 Pro service throughout collection. The API documentation, checked on 25 September 2026, explicitly retains Pro service after 14 September and identifies the model as DeepSeek-V4-Pro-0813. This supersedes the routing assumption in the earlier editorial draft. The historical news page and the revised API documentation are not consistent on the announced routing plan; we use the updated service documentation and retained request records for attribution rather than infer that these experiments used Flash. The deduplicated supervision archives retain completion creation times from 21 August to 27 August 2026 (UTC), while the final same-task reference completions were created on 21 September 2026 from 16:35:54 to 17:01:40 UTC. These are provider creation times, not selection seeds. The final campaign has 1,440 usage-bearing responses, all returning \texttt{deepseek-v4-pro}, and each recorded request specifies 16,384 maximum tokens. Its copied campaign configuration reports 8,192; the request-level fields take precedence for this batch. Early repeat records do not retain a response model field, and immutable backend fingerprints are incomplete. Frozen targets therefore remain the basis for exact target-based re-evaluation; service identity alone does not turn the later comparison into a causal estimate of compression error.
+ 
+ \paragraph{Controlled-model evaluation.}
+ The prepared benchmark is in \path{outputs/matched_response_v1/bundle/}, selected neural fits in \path{outputs/matched_response_v1/train/}, and modular fits in \path{outputs/revision_20260921/baselines/}. Local inference uses a synthetic example and a frozen checkpoint. The archived-checkpoint helper extracts the recorded source and checks its fingerprint before evaluation. Historical fingerprints depend on platform-specific path separators; portability changes should be versioned rather than treated as exact replay. The repository's retained verification record reports local inference and re-evaluation of two selected neural checkpoints, not a new full training campaign.

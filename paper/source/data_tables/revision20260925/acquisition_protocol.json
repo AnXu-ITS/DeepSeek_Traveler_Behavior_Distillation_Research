@@ -1,0 +1,21 @@
+{
+  "model": "deepseek-v4.1-flash",
+  "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+  "temperature": 0.2,
+  "max_tokens": 8192,
+  "thinking": "provider default; no override",
+  "prompt_sha256": "107f8d7b196926c775dc0591a17b6c8689e60e5cf1c262c2125999e259d9e956",
+  "manifest_sha256": "c1fd3c74285ff738947a20a4c19bc8576d2a758689ac40250e75e634ba285cbb",
+  "workers": 8,
+  "repeats": 3,
+  "pilot_attempt_cap": 476,
+  "pilot_peak_no_cache_quota_cap_usd": 3.0,
+  "formal_peak_no_cache_quota_cap_usd": 8.0,
+  "stopping": "stop on 401/402/403, do not retry access or quota denial; at most two attempts per unit; no paid fallback configured",
+  "primary_precision_halfwidth": 0.01,
+  "formal_n_rule": "max(30, ceil((1.96 * persona SD of prespecified signed-minus-softKL contrast / .01)^2)); if >120 report precision budget gap instead of claiming target achieved",
+  "setting": "132 novel persona attribute combinations, a single fixed numeric trip and feasible training-input accessibility profile; no geographic OOD claim",
+  "families": "delay, fare, access burden, fare-delay, fare-access, service infeasibility, rain; distinct intensity cards; no claim all families unseen",
+  "delay_interpretation": "extra wait, counted once in total travel time",
+  "source": "synthetic only; no human questionnaire or respondent data sent"
+}

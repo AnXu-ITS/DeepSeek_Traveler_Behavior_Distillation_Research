@@ -1,0 +1,26 @@
+{
+  "documents": {
+    "cas-sc-template": {
+      "pages": 25,
+      "log_errors": [],
+      "empty_pages": []
+    },
+    "supplement": {
+      "pages": 18,
+      "log_errors": [],
+      "empty_pages": []
+    }
+  },
+  "visual_review": "All pages inspected as rendered contact sheets; selected figure and table pages inspected at readable resolution.",
+  "issues_fixed": [
+    "Figure 1 text touching the box boundary",
+    "Appendix table float causing an overfull vertical box",
+    "Scientific card labels displayed as internal identifiers",
+    "Heatmap cells and colorbar converted to vector geometry"
+  ],
+  "final_author_adjustments": [
+    "Original Figure 1 and caption restored, byte/content verified against pre-revision backup",
+    "Point and lollipop charts replaced by zero-origin horizontal bars retaining original intervals",
+    "Updated charts inspected at readable resolution; all 25 article pages reviewed after rebuild"
+  ]
+}

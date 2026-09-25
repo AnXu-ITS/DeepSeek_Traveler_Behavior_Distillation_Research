@@ -1,0 +1,60 @@
+{
+  "four_csv_unchanged": true,
+  "figure4_rows": 78,
+  "figure4_max_identity_residual_pp": 0.010000000000001563,
+  "teacher_groups": 52,
+  "teacher_max_identity_residual_pp": 0.10000000000000009,
+  "helsinki_pairs": 70,
+  "helsinki_max_gap_residual_pp": 1.3322676295501878e-15,
+  "response_improvement_percent": 14.303067112055883,
+  "changed_numeric_tables": [
+    "generated\\narrative\\table_human_main.tex"
+  ],
+  "pdfs": {
+    "cas-sc-template": {
+      "pages": 19,
+      "outside_pages": [],
+      "empty_pages": [],
+      "replacement_glyph_pages": [],
+      "log_issues": []
+    },
+    "supplement": {
+      "pages": 24,
+      "outside_pages": [],
+      "empty_pages": [],
+      "replacement_glyph_pages": [],
+      "log_issues": []
+    }
+  },
+  "figure2_native_equations": 8,
+  "figure2_text_fonts": [
+    "Arial",
+    "Cambria Math"
+  ],
+  "figure2_pdf_raster_images": 0,
+  "route_records": {
+    "counts": {
+      "runs": 140,
+      "persons": 140000,
+      "zero_mass": 0,
+      "no_mode": 0,
+      "fallback_pt_pt": 0,
+      "fallback_bike_bike": 0,
+      "fallback_walk_walk": 0,
+      "fallback_car_car": 0,
+      "fallback_pt_walk": 2006,
+      "fallback_car_walk": 940
+    },
+    "minimum_route_links": {
+      "outbound_route": 26,
+      "return_route": 26
+    },
+    "short_routes": []
+  },
+  "repository": {
+    "private": true,
+    "checked_commit": "de906ac8a3efae692797bd08e340375107b8e52a",
+    "later_outputs_in_remote": false
+  },
+  "scope": "No model training, Teacher querying, full bootstrap reproduction or new simulation; unchanged numerical package and focused source/ledger checks."
+}

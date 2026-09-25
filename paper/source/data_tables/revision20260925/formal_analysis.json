@@ -1,0 +1,133 @@
+{
+  "cohort": "formal",
+  "n": 30,
+  "primary": [
+    {
+      "persona": "NEW_formal_013",
+      "signed_minus_softkl": 0.00258704699591579
+    },
+    {
+      "persona": "NEW_formal_014",
+      "signed_minus_softkl": -0.000991770437671076
+    },
+    {
+      "persona": "NEW_formal_015",
+      "signed_minus_softkl": -0.005200464268325128
+    },
+    {
+      "persona": "NEW_formal_016",
+      "signed_minus_softkl": -0.0029307147730529837
+    },
+    {
+      "persona": "NEW_formal_017",
+      "signed_minus_softkl": -0.0013111948887047364
+    },
+    {
+      "persona": "NEW_formal_018",
+      "signed_minus_softkl": -0.005756103020354036
+    },
+    {
+      "persona": "NEW_formal_019",
+      "signed_minus_softkl": -0.00520158723564676
+    },
+    {
+      "persona": "NEW_formal_020",
+      "signed_minus_softkl": -0.004647719252906329
+    },
+    {
+      "persona": "NEW_formal_021",
+      "signed_minus_softkl": -0.0019461588834960158
+    },
+    {
+      "persona": "NEW_formal_022",
+      "signed_minus_softkl": -0.01677453867229453
+    },
+    {
+      "persona": "NEW_formal_023",
+      "signed_minus_softkl": -0.0009162528500298306
+    },
+    {
+      "persona": "NEW_formal_024",
+      "signed_minus_softkl": 0.0012292788630004006
+    },
+    {
+      "persona": "NEW_formal_025",
+      "signed_minus_softkl": -0.0026269417615266202
+    },
+    {
+      "persona": "NEW_formal_026",
+      "signed_minus_softkl": -0.0020244314029098515
+    },
+    {
+      "persona": "NEW_formal_027",
+      "signed_minus_softkl": -0.012070994427800436
+    },
+    {
+      "persona": "NEW_formal_028",
+      "signed_minus_softkl": -5.187706680995219e-05
+    },
+    {
+      "persona": "NEW_formal_029",
+      "signed_minus_softkl": 0.0003833399031715895
+    },
+    {
+      "persona": "NEW_formal_030",
+      "signed_minus_softkl": -0.000838271659775007
+    },
+    {
+      "persona": "NEW_formal_031",
+      "signed_minus_softkl": -0.004989705069453301
+    },
+    {
+      "persona": "NEW_formal_032",
+      "signed_minus_softkl": -0.0020215294937923345
+    },
+    {
+      "persona": "NEW_formal_033",
+      "signed_minus_softkl": -0.0028309599688872006
+    },
+    {
+      "persona": "NEW_formal_034",
+      "signed_minus_softkl": 0.004798359629915247
+    },
+    {
+      "persona": "NEW_formal_035",
+      "signed_minus_softkl": 0.002608705068108813
+    },
+    {
+      "persona": "NEW_formal_036",
+      "signed_minus_softkl": -0.004674732480753785
+    },
+    {
+      "persona": "NEW_formal_037",
+      "signed_minus_softkl": -0.004760931491979592
+    },
+    {
+      "persona": "NEW_formal_038",
+      "signed_minus_softkl": -0.008839637655670751
+    },
+    {
+      "persona": "NEW_formal_039",
+      "signed_minus_softkl": -0.002543185886073246
+    },
+    {
+      "persona": "NEW_formal_040",
+      "signed_minus_softkl": 0.0023958796793489
+    },
+    {
+      "persona": "NEW_formal_041",
+      "signed_minus_softkl": -0.011991092044891877
+    },
+    {
+      "persona": "NEW_formal_042",
+      "signed_minus_softkl": -0.004037423979796541
+    }
+  ],
+  "mean": -0.0031991869511047064,
+  "sd": 0.004648475733970109,
+  "ci95": [
+    -0.004862988833135568,
+    -0.0016221432437107304
+  ],
+  "claim": "Cross-model agreement against Go Flash reference; not original Pro distillation error or human validity"
+}

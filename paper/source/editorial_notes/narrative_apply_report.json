@@ -1,0 +1,80 @@
+{
+  "mode": "full_reemission_escalated",
+  "authorization": "User explicitly requested narrative, figure and appendix restructuring on 2026-09-25",
+  "changes": [
+    {
+      "file": "cas-sc-template.tex",
+      "before_sha256": "48abe11491e2fdf6765bb93925b8772318c2ec86bbb2b86c213f4535001649f9",
+      "after_sha256": "e32ae73e10d85894ba4c72503207344ec46031f6a5c80ae16d1df9832a7c73b5"
+    },
+    {
+      "file": "supplement.tex",
+      "before_sha256": "b0b41e3cf07ef392e1240dbbd96a4780c1a42c5732ef343efdfc96c8559fc5da",
+      "after_sha256": "ffd1266bffbf0f395842972a4a98b2c95c3b5da17556741432c3df22604db930"
+    },
+    {
+      "file": "sections/01_introduction.tex",
+      "before_sha256": "ac81a0bfc65f6dc170c300e6b8be3c50738c16988ad2ca739f2d19920d26e7cd",
+      "after_sha256": "c8ebcda3452f4cdc3d0e1c70177caae45388de59ea8b53463d282de78756c59e"
+    },
+    {
+      "file": "sections/02_related_work.tex",
+      "before_sha256": "5330020b16ae57f7d5e58a6ce20bdea0221bea9e61a4f7db3e0ba0d5314eb211",
+      "after_sha256": "33fec09ead045038466f1a907113e647c640eefee226e2455c7ed4bce431a4b8"
+    },
+    {
+      "file": "sections/03_methodology.tex",
+      "before_sha256": "bc5102a39bf358ff8a9082fcf66397ba88f236bd226d5c4f5f0490d915ab7033",
+      "after_sha256": "9e504d4111517dc560d9500db3ac421f1ea7bd9b834c63adf04e674c69a4a9e0"
+    },
+    {
+      "file": "sections/04_experimental_design.tex",
+      "before_sha256": "b24bef75a34de47516c3bc8f3256bb38f1db9b6db8409b6f878f46c0a5199661",
+      "after_sha256": "a2ea7276e1aabfd43737cd240372283ea240be04fdc424bfe22770c49c331a48"
+    },
+    {
+      "file": "sections/05_results.tex",
+      "before_sha256": "956904ceeffb00019c1b34bcb8b80338f58d5dbdc3ff7131ff270565f09e12bb",
+      "after_sha256": "efda92709c3248c75d10df581cdbe3cbf71da876c2a5eda8eef9483ea16f28ba"
+    },
+    {
+      "file": "sections/06_discussion.tex",
+      "before_sha256": "6fcf220adbff59172a057d02cda8bc92194772117a5164f36a4b704cb0525b1b",
+      "after_sha256": "fc59fa0c0deebf33d9e71e4f5fe08a6d9ec0b88ec463886203d15a7cf0bdce36"
+    },
+    {
+      "file": "sections/07_conclusion.tex",
+      "before_sha256": "83848206d538a00e30130d3e6174bf0574f0fa77a9144699b4263c0e32f1b32b",
+      "after_sha256": "cc19397be705b4ce07234fa2fc1cb69d66a081e176630e19539f9ae25c72d0ad"
+    },
+    {
+      "file": "sections/S1_inputs.tex",
+      "before_sha256": "6b49155aa770ed1ca30f744721e3a8a01511a96d1033ac38ba350e7e77c6b4a0",
+      "after_sha256": "ae7175c3cd2f026587ebd427777f57894cd375d7b03db3072b2c0678a9165657"
+    },
+    {
+      "file": "sections/S2_learning.tex",
+      "before_sha256": "9d97ba0aae439dee85caa748b1adae1e3e0699ce97b8f0465239342af56f9db6",
+      "after_sha256": "a10a753860e8ff1557363cf69e8918de7f25cfe005d51d269e6c7e05f300fff4"
+    },
+    {
+      "file": "sections/S3_human.tex",
+      "before_sha256": "56acd789eede4c2fc66bcec26f7596d2cf2869e287e77f170f392a8753ebd2ed",
+      "after_sha256": "27cc2fc1792af140d3096eb86c164f055ad4872958049e36125caab9af09dd65"
+    },
+    {
+      "file": "sections/S5_execution.tex",
+      "before_sha256": "bc56a5d8cb5f9d979d9f052a678e60915e9cab1999976994c6c63751a68a17cc",
+      "after_sha256": "7e77d29d344c892ee794ae062f9234697df9ab71c15471e39d85e6ae91dda1f4"
+    },
+    {
+      "file": "sections/S7_materials.tex",
+      "before_sha256": "30504f83f65453433d37c12a850b5ebc15f02e507f9cc1d342cba2a6bfab226e",
+      "after_sha256": "b3b04be94eb2cda49589a4d97c5eb1eff613056ab84d9fe9c219205e85f79f83"
+    }
+  ],
+  "final_author_adjustments": {
+    "figure1": "original retained",
+    "point_charts": "horizontal bars, original uncertainty retained"
+  }
+}

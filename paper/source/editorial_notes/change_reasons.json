@@ -1,0 +1,126 @@
+[
+  {
+    "file": "cas-sc-template.tex",
+    "reason": "Align title with the demonstrated diagnostic contribution rather than a general preservation guarantee."
+  },
+  {
+    "file": "supplement.tex",
+    "reason": "Align title with the demonstrated diagnostic contribution rather than a general preservation guarantee."
+  },
+  {
+    "file": "cas-sc-template.tex",
+    "reason": "Update running title."
+  },
+  {
+    "file": "cas-sc-template.tex",
+    "reason": "Rebuild abstract around three evaluation levels, absolute effects and the behavioral rank reversal; retain one-Teacher and sample scope."
+  },
+  {
+    "file": "sections/01_introduction.tex",
+    "reason": "Replace a six-claim narrative with one scientific question and three contributions; correct fidelity-as-necessary-for-human-validity error."
+  },
+  {
+    "file": "sections/02_related_work.tex",
+    "reason": "Position against empirical alignment, derivative/relational supervision, network surrogates and concurrent preprint; remove sweeping claims about all prior systems."
+  },
+  {
+    "file": "sections/03_methodology.tex",
+    "reason": "Make evaluation framework primary without changing equations or implementations."
+  },
+  {
+    "file": "sections/03_methodology.tex",
+    "reason": "Define the statistical object without pretending elicited vectors are calibrated behavioral probabilities."
+  },
+  {
+    "file": "sections/03_methodology.tex",
+    "reason": "Separate frozen target reproducibility from live-model identity; do not infer actual backend from alias or dates encoded in seeds."
+  },
+  {
+    "file": "sections/03_methodology.tex",
+    "reason": "Reframe an apologetic statement as a controlled experimental design strength."
+  },
+  {
+    "file": "sections/03_methodology.tex",
+    "reason": "Retain the material gradient limitation; remove rhetorical self-undermining and state the relevant control."
+  },
+  {
+    "file": "sections/03_methodology.tex",
+    "reason": "Move audit detail out of the conceptual exposition while retaining failure semantics."
+  },
+  {
+    "file": "sections/04_experimental_design.tex",
+    "reason": "State the estimand rather than a generic inadequacy."
+  },
+  {
+    "file": "sections/04_experimental_design.tex",
+    "reason": "Preserve original ethics statement and flag essential evidence for author completion; do not fabricate formal approval."
+  },
+  {
+    "file": "sections/04_experimental_design.tex",
+    "reason": "Identify the temporal comparison as a reference, not a training-Teacher attribution experiment."
+  },
+  {
+    "file": "sections/04_experimental_design.tex",
+    "reason": "Avoid implying immutable Teacher identity."
+  },
+  {
+    "file": "sections/04_experimental_design.tex",
+    "reason": "Bind equation notation to the actual comparison."
+  },
+  {
+    "file": "sections/04_experimental_design.tex",
+    "reason": "Correct the inferential scope of the discrepancy identity."
+  },
+  {
+    "file": "sections/04_experimental_design.tex",
+    "reason": "Explain why the control exists while keeping its boundary adjacent to the design."
+  },
+  {
+    "file": "sections/05_results.tex",
+    "reason": "Limit empirical opening to tested setting."
+  },
+  {
+    "file": "sections/05_results.tex",
+    "reason": "Avoid repeating a subjective downrating; effect size and uncertainty already given."
+  },
+  {
+    "file": "sections/05_results.tex",
+    "reason": "Make result title describe the actual estimand."
+  },
+  {
+    "file": "sections/05_results.tex",
+    "reason": "Correct grammar without changing reported value."
+  },
+  {
+    "file": "sections/05_results.tex",
+    "reason": "Preserve figure artwork while clarifying what its Teacher label means."
+  },
+  {
+    "file": "sections/05_results.tex",
+    "reason": "Avoid claiming physical-disruption validity from the controlled perceived-delay test."
+  },
+  {
+    "file": "sections/05_results.tex",
+    "reason": "Scope efficiency claim to measured deployment workload, not full lifecycle amortization."
+  },
+  {
+    "file": "sections/06_discussion.tex",
+    "reason": "Organize interpretation around model selection and next tests; preserve precise scope and change limitations into explicit estimands and actionable boundaries."
+  },
+  {
+    "file": "sections/07_conclusion.tex",
+    "reason": "Close on established contribution and use, without universal efficiency or generalization claims."
+  },
+  {
+    "file": "cas-sc-template.tex",
+    "reason": "Replace outdated missing-material statements with a pinned, tiered availability statement verified against connected repository."
+  },
+  {
+    "file": "sections/S7_materials.tex",
+    "reason": "Replace obsolete repository deficit narrative with verified task-level coverage; retain genuine privacy, backend and runtime constraints."
+  },
+  {
+    "file": "references.bib",
+    "reason": "Add focused prior art and provider provenance; keep concurrent preprint clearly labeled."
+  }
+]

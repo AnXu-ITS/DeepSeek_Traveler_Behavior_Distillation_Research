@@ -1,0 +1,619 @@
+--- uploaded/cas-sc-template.tex
++++ revised/cas-sc-template.tex
+@@ -99,7 +99,7 @@
+ \cortext[cor1]{Corresponding author: Yunfei Yin (yunfeiyin@hit.edu.cn).}
+ 
+ \begin{abstract}
+-Large language models (LLMs) can describe how travelers might react to delays, fares or rain, but querying them for every agent in a city-scale simulation remains costly. Distilling their judgments into compact traveler models removes this cost and raises a question that predictive accuracy does not answer, namely whether the distilled model changes its choices in the same way as its source when conditions change. This study evaluates LLM-derived traveler models by their responses to paired changes in travel conditions and follows these responses through comparisons with the LLM Teacher, with stated choices and with simulated network demand. On a held-out benchmark of six synthetic personas and three training seeds, paired response supervision lowers probability-response error by 4.97\% relative to pointwise distribution matching, and a multinomial logit Student lowers it by a further 14.30\%. Combining that choice model with an independent neural departure predictor gives a departure error of 7.61 minutes against the Teacher, within the range of jointly trained neural models. Stated-choice data from 332 Singapore and 321 Shanghai respondents show that agreement with people depends on the intervention, and the model with the smallest Teacher error reverses the stated response to poorer public-transport accessibility. Contemporary Teacher predictions for 24 respondents per city separate discrepancies already present in the Teacher from those that arise between Student and Teacher. In a 1,000-traveler Helsinki simulation, feasibility-constrained assignment makes more trips routable without narrowing the gap between predicted and simulated responses. Fidelity at one level therefore does not carry over to the next, and the choice of traveler model should follow the intervention and behavioral outcome that a simulation is meant to inform.
++Large language models (LLMs) can describe how travelers might react to delays, fares or rain, but querying them for every agent in a city-scale simulation remains costly. Distilling their judgments into compact traveler models removes this cost and raises a question that predictive accuracy does not answer, namely whether the distilled model changes its choices in the same way as its source when conditions change. This study evaluates LLM-derived traveler models by their responses to paired changes in travel conditions and follows these responses through comparisons with the LLM Teacher, with stated choices and with simulated network demand. On a held-out benchmark of six synthetic personas and three training seeds, paired response supervision lowers probability-response error by 4.97\% relative to pointwise distribution matching, and a multinomial logit Student lowers it by a further 14.30\%. Combining that choice model with an independent neural departure predictor gives a departure error of 7.61 minutes against the Teacher, within the range of jointly trained neural models. Stated-choice data from 332 Singapore and 321 Shanghai respondents show that agreement with people depends on the intervention, and the model with the smallest Teacher error reverses the stated response to poorer public-transport accessibility. Contemporary Teacher predictions for 24 respondents per city distinguish Teacher--human from Student--Teacher discrepancies on the same tasks. In a 1,000-traveler Helsinki simulation, feasibility-constrained assignment makes more trips routable without narrowing the gap between predicted and simulated responses. Fidelity at one level therefore need not carry over to the next, and the choice of traveler model should follow the intervention and behavioral outcome that a simulation is meant to inform.
+ \end{abstract}
+ 
+ \begin{keywords}
+@@ -114,7 +114,7 @@
+ \input{sections/06_discussion}
+ \input{sections/07_conclusion}
+ \section*{Data and code availability}
+-The supplementary materials include the model and input definitions, the Teacher prompt used for the accessibility tasks, the adaptation settings of SA-Student, editable figures and the summary results underlying the reported tables. Participant-level survey records, individual Teacher responses, trained weights and complete simulation events are not publicly released. Supplementary Section~\ref{supp-sec:materials_scope} describes these materials and distinguishes the supervision used for training from the later Teacher evaluation.
++The manuscript package provides model and input definitions, the accessibility Teacher prompt, SA-Student adaptation settings, editable figures and summary data. The research repository is \url{https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research}. It currently requires access permission and contains source code, released model checkpoints and selected supporting data. The authors also retain the training targets, evaluation predictions, statistical scripts and detailed records for the later experiments, including the 140 Helsinki runs. These later records are not all present in the linked repository. Requests to inspect supporting materials should be directed to the corresponding author, subject to participant privacy and third-party data terms. Supplementary Section~\ref{supp-sec:materials_scope} distinguishes the manuscript package, repository contents and retained local records.
+ \bibliographystyle{cas-model2-names}
+ \bibliography{references}
+ \end{document}
+--- uploaded/generated/narrative/table_human_main.tex
++++ revised/generated/narrative/table_human_main.tex
+@@ -18,6 +18,6 @@
+ \bottomrule
+ \end{tabular*}
+ \par\smallskip\begin{minipage}{\linewidth}\footnotesize
+-All 3,320 Singapore and 3,208 Shanghai explicit choices are scored, including eight and two choices of modes the model treats as unavailable. PT bias is the mean predicted PT probability minus the stated PT share. Mean $|B_c|$ averages the absolute response bias over the five Singapore or eight Shanghai contrasts. Both are in percentage points. Neural entries are means $\pm$ SD over three training seeds. Always predicting PT gives accuracies of 66.57\% and 71.98\%. Further metrics are given in Supplementary Table~\ref{supp-tab:human_primary}.
++All 3,320 Singapore and 3,208 Shanghai explicit choices are scored, including eight and two choices of modes the model treats as unavailable. PT bias is the mean predicted PT probability minus the stated PT share. Mean $|B_c|$ is computed within each fitted seed by taking the absolute bias for each contrast and averaging over the five Singapore or eight Shanghai contrasts; these seed-level metrics are then averaged. Figure~\ref{fig:human_response} instead plots signed biases averaged over seeds, whose absolute values need not equal the table metric. Both are in percentage points. Neural entries are means $\pm$ SD over three training seeds. Always predicting PT gives accuracies of 66.57\% and 71.98\%. Further metrics are given in Supplementary Table~\ref{supp-tab:human_primary}.
+ \end{minipage}
+ \end{resulttable}
+--- uploaded/README.md
++++ revised/README.md
+@@ -38,12 +38,12 @@
+ python build.py
+ ```
+ 
+-LibreOffice (`soffice` or `libreoffice`) is required for automatic Figure 2 PDF export. Alternatively, open `figures/narrative/figure2_method_template.pptx` in PowerPoint, export its single slide as `figures/narrative/figure2_method.pdf`, and compile the article. Figure 2 uses **Roboto Condensed**; install this font locally for the intended editable-slide layout. Font files are not distributed. The provided PDF already preserves the exported appearance.
++Figure 2 uses the supplied Scheme B diagram, with Arial text and eight native Office Math equations (Cambria Math). The PPTX remains editable. On Windows, `scripts/edit_figure2_template.py` rebuilds it from the preserved source using Arial font metrics, and `scripts/export_figure2.ps1` normalizes and exports it through Microsoft PowerPoint. The supplied PDF is ready for compilation without PowerPoint. Formula objects include Office-generated fallback previews for compatibility; the publication PDF retains vector text and equations.
+ 
+ Figure-specific behavior:
+ 
+ - **Figure 1:** the central label is corrected to “Same traveler + same trip.” Existing artwork and plotted values are retained.
+-- **Figure 2:** edited directly from the supplied PPTX. The blue/green/orange ribbons, three-column layout, original pictograms, central joint/separate comparison and MATSim flow are retained. Revised labels/connectors are editable PowerPoint objects.
++- **Figure 2:** the supplied Scheme B radial layout is preserved. All ordinary labels use Arial. Outlined equations have been replaced with native editable Office Math. The main caption explains the schematic loss, the endpoint-fitted MNL-S and the separate SA-Student role; obsolete (a)/(b)/(c) references are removed.
+ - **Figure 3:** the uploaded PDF used response bars and timing bars, but its SVG/script described an earlier scatter plot. The regeneration script is now aligned with the publication's two-panel design and reads the unchanged CSV. It does not merge the two model-selection experiments. The old scatter SVG is retained only under `figures/template/publication_sources/`.
+ - **Figure 4:** rebuilt from the unchanged 78-row full-sample CSV, retaining all reported point estimates and adjusted intervals. `SA-Student` is a display label; the CSV key remains `S9`.
+ - **Figures 5–6:** terminology is edited in preserved SVG sources without changing non-text plot geometry. Figure 6 explicitly labels perceived delay and the unchanged physical timetable. The Shanghai speed panel remains supplementary.
+@@ -52,6 +52,6 @@
+ 
+ ## Research-material scope
+ 
+-This is a manuscript/figure source package, not a full experimental repository. Participant-level records, original deployed questionnaire files, request-level Teacher responses, weights and complete simulation events are not included. The provided JSON is a descriptive adaptation specification, not an executable training configuration. Previously recorded upstream provenance is retained and attributed in `reproduction/README.md`; the upstream repository was not accessed or re-verified during this revision.
++This is a manuscript and figure source package. The linked research repository is currently private, and its remote tree does not contain the later matched-response or September 21 experiment outputs. Local retained records include training targets, checkpoints, evaluation predictions, contemporary Teacher calls and all 140 completed Helsinki runs. The revised availability statement distinguishes these scopes instead of treating absence from this package as loss of evidence. See `reproduction/README.md` and `editorial_notes/REVISION_20260924_CN.md`.
+ 
+-See Supplementary Section S7 and the Chinese revision report for distinctions between existing evidence, newly clarified reporting and outstanding factual checks. No new experiment is claimed in this revision.
++No training, Teacher requests or MATSim runs were performed during this revision. Survey recruitment and ethics-exemption information was supplied by the authors; the identity of any exemption authority and the corresponding documentary record have not been supplied.
+--- uploaded/reproduction/README.md
++++ revised/reproduction/README.md
+@@ -29,6 +29,22 @@
+ 
+ The supplied README also attributed the Helsinki CSV to archived LaTeX run-pair tables at manuscript-history commit `fa50b42`. These are **inherited provenance statements**, not accesses or independent verification performed in the current editing session. The current revision preserves the four numerical CSVs, prompt, field dictionary and adaptation JSON byte-for-byte.
+ 
+-## Scope and outstanding records
++## Verified retained records (24 September 2026)
+ 
+-Individual survey records, original deployed instruments, complete historical Teacher calls, fitted weights, the predecessor's complete training history and full simulation events are not supplied here. Complete parsing/retry rules and the routing treatment of all zero-feasible-mass or substitution cases also remain outside this manuscript package. Supplementary Section S7 reports these boundaries. No Teacher requests, training runs or transport simulations were performed for this revision.
++The earlier statements above describe the uploaded package's inherited provenance. This revision additionally checked the current local workbench and authenticated GitHub repository metadata. The repository is **private**. Its current tree includes the S7 and S9 checkpoints and training-history files, Teacher parsing/validation code, and Shanghai questionnaire materials; it does **not** include `outputs/matched_response_v1`, `outputs/revision_20260921` or `scripts/revision_20260921`.
++
++Paths below are relative to the research workbench, not this compact manuscript package:
++
++| Record | Verified location | Scope |
++|---|---|---|
++| Controlled final targets and splits | `outputs/matched_response_v1/bundle/` | Train, validation and test endpoints, pairs and interactions |
++| Controlled fitted models and evaluation | `outputs/matched_response_v1/train/`, `test/`, `comparison/` | Retained locally; not present in the checked remote tree |
++| Accessibility targets and repeats | `data/singapore_accessibility/states_with_teacher.jsonl`, `repeat_records.jsonl` | Final targets and available repeated responses |
++| Predecessor and adapted checkpoints | `releases/s7_w3_generic_core_v1/checkpoint/`, `releases/s9_supply_aware_v2/checkpoint/` | Weights and training histories retained; release directories present remotely |
++| Contemporary Teacher requests and predictions | `outputs/revision_20260921/teacher/` | Calls, aggregates, selected states and analysis manifest retained locally |
++| Helsinki detailed evidence | `outputs/revision_20260921/execution/` | 140 completed runs, ledgers, predictions, plans, events and audits retained locally |
++| Statistical and experiment code | `scripts/revision_20260921/` | Retained locally; not in the checked remote tree |
++
++`verified_implementation/` includes the exact inspected experiment driver, route adapter, prior verification script and a new aggregate record check. These are reference extracts, not a standalone runnable simulation package. The driver and adapter match the source fingerprints saved with the historical experiment protocol. The audit inspected 140,000 run-person records and found no zero feasible mass, no empty feasible set and no origin-link-only recorded walking route. It did not rerun MATSim or revalidate every training step or bootstrap interval.
++
++Participant-linked records are not copied into this manuscript delivery. The Google Forms URL is an editor link and may require owner access; the questionnaire links do not grant respondent-data access. No assumption is made that complete historical backend metadata or every failed Teacher call is recoverable. No new Teacher call, training run or simulation was performed.
+--- uploaded/scripts/edit_figure2_template.py
++++ revised/scripts/edit_figure2_template.py
+@@ -1,239 +1,66 @@
+-"""Reconstruct Figure 2 inside the supplied three-column PowerPoint template.
+-
+-Keeps the original ribbons, column frames, pictograms, example cards, and
+-choice/timing comparison layout. All revised labels and connectors are native
+-PowerPoint objects. No experimental values are generated by this script.
+-Export the result with LibreOffice/PowerPoint, then use the resulting vector PDF.
+-"""
+ from pathlib import Path
+-from copy import deepcopy
+-from pptx import Presentation
+-from pptx.util import Inches, Pt
+-from pptx.dml.color import RGBColor
+-from pptx.enum.shapes import MSO_SHAPE, MSO_CONNECTOR
+-from pptx.enum.text import PP_ALIGN, MSO_ANCHOR, MSO_AUTO_SIZE
+-from lxml import etree
+-
++from lxml import etree as E
++import zipfile, copy, pymupdf as fitz
+ ROOT=Path(__file__).resolve().parents[1]
+-SOURCE=ROOT/'figures/template/figure2_supplied_method.pptx'
+-OUT=ROOT/'figures/narrative/figure2_method_template.pptx'
+-p=Presentation(SOURCE);s=p.slides[0]
+-original={sh.shape_id:sh for sh in s.shapes}
+-BLUE='0867AE';GREEN='138934';ORANGE='EF871F';INK='08164F'
+-PALE_BLUE='E4F3FC';PALE_GREEN='E9F6E9';PALE_ORANGE='FFF4E5'
+-A='http://schemas.openxmlformats.org/drawingml/2006/main'
+-
+-# Retain real template objects rather than making a flat background screenshot.
+-keep=set(range(2,14))|{14,16,18,20,22,44,72}|set(range(86,107))
+-keep|={248,249,251,252,253,254,910,918,920,882,884,888,890}
+-keep|=set(range(408,425))|set(range(441,449))
+-keep|={511,513,514,515,516,523,524,555,947,945,949,906,908,912,914}
+-keep -= {94,101,415}
+-for sh in list(s.shapes):
+-    if sh.shape_id not in keep:s.shapes._spTree.remove(sh._element)
+-# The legacy equation title is an AlternateContent node, not exposed by python-pptx.
+-for node in list(s.shapes._spTree):
+-    if etree.QName(node).localname == 'AlternateContent':
+-        s.shapes._spTree.remove(node)
+-
+-def remove(ids):
+-    for sh in list(s.shapes):
+-        if sh.shape_id in ids:s.shapes._spTree.remove(sh._element)
+-
+-def style_text(sh,text,size=20,bold=True,color=INK,align=PP_ALIGN.CENTER):
+-    tf=sh.text_frame;tf.clear();tf.word_wrap=False;tf.auto_size=MSO_AUTO_SIZE.NONE
+-    tf.margin_left=tf.margin_right=Pt(1);tf.margin_top=tf.margin_bottom=Pt(0)
+-    tf.vertical_anchor=MSO_ANCHOR.MIDDLE
+-    for i,line in enumerate(text.split('\n')):
+-        par=tf.paragraphs[0] if i==0 else tf.add_paragraph()
+-        par.alignment=align;par.space_before=par.space_after=Pt(0)
+-        par.line_spacing=1.0
+-        r=par.add_run();r.text=line;r.font.name='Roboto Condensed'
+-        r.font.size=Pt(size);r.font.bold=bold;r.font.color.rgb=RGBColor.from_string(color)
+-    sh.name='Figure 2 | '+text.replace('\n',' / ')
+-    return sh
+-
+-def text(txt,x,y,w,h,size=20,bold=True,color=INK,align=PP_ALIGN.CENTER):
+-    sh=s.shapes.add_textbox(Inches(x),Inches(y),Inches(w),Inches(h))
+-    return style_text(sh,txt,size,bold,color,align)
+-
+-def box(txt,x,y,w,h,fill=PALE_BLUE,line=BLUE,size=20,bold=True):
+-    sh=s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,Inches(x),Inches(y),Inches(w),Inches(h))
+-    sh.name='Figure 2 | container'
+-    sh.fill.solid();sh.fill.fore_color.rgb=RGBColor.from_string(fill)
+-    sh.line.color.rgb=RGBColor.from_string(line);sh.line.width=Pt(1.3)
+-    try:sh.adjustments[0]=.045
+-    except Exception:pass
+-    for e in sh._element.findall(f'.//{{{A}}}effectRef'):e.set('idx','0')
+-    if txt:text(txt,x+.04,y+.02,w-.08,h-.04,size,bold)
+-    return sh
+-
+-def conn(points,col=BLUE,width=1.8,arrow=True):
+-    for i,((x1,y1),(x2,y2)) in enumerate(zip(points[:-1],points[1:])):
+-        sh=s.shapes.add_connector(MSO_CONNECTOR.STRAIGHT,Inches(x1),Inches(y1),Inches(x2),Inches(y2))
+-        sh.name='Figure 2 | relationship';sh.line.color.rgb=RGBColor.from_string(col);sh.line.width=Pt(width)
+-        if arrow and i==len(points)-2:
+-            e=etree.SubElement(sh._element.spPr.find(f'{{{A}}}ln'),f'{{{A}}}tailEnd')
+-            e.set('type','triangle');e.set('w','med');e.set('len','med')
+-
+-def icon(ident,x,y,w=None,h=None):
+-    e=deepcopy(original[ident]._element)
+-    for cn in e.findall('.//{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr'):
+-        cn.set('id',str(s.shapes._next_shape_id));cn.set('name','Retained template pictogram')
+-    s.shapes._spTree.insert_element_before(e,'p:extLst')
+-    sh=s.shapes[-1];sh.left=Inches(x);sh.top=Inches(y)
+-    if w is not None:sh.width=Inches(w)
+-    if h is not None:sh.height=Inches(h)
+-    return sh
+-
+-# Original blue/green/orange ribbon backgrounds and chevrons are unchanged.
+-headers={8:('(a) Behavioral Supervision',26),9:('State predictions and scenario responses',19),
+-         10:('(b) Traveler Models',26),11:('Joint and separate choice–timing specifications',19),
+-         12:('(c) Demand Simulation',26),13:('From predicted choices to simulated trips',19)}
+-for ident,(label,size) in headers.items():
+-    sh=original[ident]
+-    if ident in (8,10,12):
+-        sh.left=Inches({8:.35,10:5.87,12:11.49}[ident]);sh.width=Inches(5.0)
+-    style_text(sh,label,size,True if ident in (8,10,12) else False,'FFFFFF')
+-
+-# (a) The four cards and their actual template graphics stay in their original locations.
+-text('Behavioral contrasts',.30,.99,2.50,.46,22)
+-text('Scenario contrasts',.40,1.60,2.20,.29,19)
+-text('Single and joint changes',.40,2.39,2.18,.23,18,False)
+-text('Traveler contrasts†',.40,2.80,2.20,.29,19)
+-text('Between travelers',.42,3.61,2.16,.24,18,False)
+-text('Context–attribute',.40,3.98,2.20,.29,19)
+-text('Base / joint\nContext / attributes',.39,4.75,2.23,.45,18,False)
+-text('PT supply profiles',.40,5.34,2.20,.29,19)
+-text('Access · wait · transfers',.38,6.24,2.23,.30,18,False)
+-# Teacher target area: replace the request/validation lifecycle with the target objects.
+-box('',3.07,1.25,2.16,5.32,fill='FFF8E9',line=ORANGE)
+-text('LLM Teacher',3.15,1.34,2.00,.38,22)
+-icon(937,3.83,1.91,.65,.62)
+-text('Repeated\nelicitation',3.17,2.83,1.96,.72,21)
+-conn([(4.15,2.56),(4.15,2.77)])
+-conn([(4.15,3.60),(4.15,3.82)])
+-box('',3.21,3.88,1.88,2.49,fill='FFF2D9',line=ORANGE)
+-text('Teacher targets',3.25,3.99,1.80,.34,20)
+-text('pₜ(x)',3.29,4.50,1.72,.40,27,False)
+-text('τₜ(x)',3.29,5.06,1.72,.40,27,False)
+-text('Δpₜ',3.29,5.62,1.72,.40,27,False)
+-conn([(4.15,6.58),(4.15,7.04)])
+-conn([(2.72,6.72),(2.72,7.04)])
+-# The bottom estimation strip remains in place, without gear/update/checkpoint graphics.
+-box('',.18,7.10,5.21,2.10,fill='F0F8FE',line='58BFF1')
+-text('Estimation objectives',.36,7.24,4.83,.36,22)
+-for label,x,w in [('State\nfidelity',.31,1.56),('Response\nfidelity',1.97,1.56),('Departure\nfit',3.63,1.61)]:
+-    box(label,x,7.80,w,.62,fill='FFFFFF',line='58BFF1',size=20)
+-conn([(2.78,8.43),(2.78,8.66)])
+-box('Model estimation',1.06,8.71,3.44,.35,fill=PALE_BLUE,line=BLUE,size=21)
+-# The dagger is explained in the paper caption and slide notes to keep the cards readable.
+-
+-# (b) Preserve the original input blocks, pictograms, and two-output chart/axis.
+-remove({253,254,411,414})
+-text('Traveler state',6.89,.96,2.93,.31,21)
+-text('Traveler and trip',5.99,1.43,2.18,.30,20)
+-text('Modes and service',8.48,1.43,2.35,.30,19)
+-text('Traveler / trip attributes',5.99,2.41,2.19,.26,18,False)
+-text('Service attributes',8.51,2.41,2.26,.26,18,False)
+-# Two specifications in the same original center-column geometry.
+-box('',5.87,3.16,2.42,3.15,fill='F5FAFD',line=BLUE)
+-box('',8.43,3.16,2.42,3.15,fill='F4FAF2',line=GREEN)
+-text('Joint neural model',5.94,3.23,2.28,.34,21)
+-text('Separate models',8.50,3.23,2.28,.34,21)
+-conn([(8.35,2.86),(8.35,3.00),(7.08,3.00),(7.08,3.16)],GREEN)
+-conn([(8.35,3.00),(9.64,3.00),(9.64,3.16)],GREEN)
+-box('Shared\nrepresentation',6.02,3.83,2.12,.62,PALE_BLUE,BLUE,19)
+-conn([(7.08,3.58),(7.08,3.82)])
+-conn([(7.08,4.45),(7.08,4.58),(6.56,4.58),(6.56,4.77)])
+-conn([(7.08,4.58),(7.64,4.58),(7.64,4.77)])
+-box('Choice\nutilities',6.01,4.78,1.08,.62,PALE_BLUE,BLUE,19)
+-box('Departure\npredictor',7.17,4.78,1.00,.62,PALE_GREEN,GREEN,18)
+-conn([(6.55,5.40),(6.55,5.60)])
+-conn([(7.67,5.40),(7.67,5.60)],GREEN)
+-box('pₛ(x)',6.01,5.60,1.08,.50,PALE_BLUE,BLUE,25,False)
+-box('τₛ(x)',7.17,5.60,1.00,.50,PALE_GREEN,GREEN,25,False)
+-conn([(9.64,3.58),(9.64,3.71),(9.08,3.71),(9.08,3.84)],GREEN)
+-conn([(9.64,3.71),(10.21,3.71),(10.21,3.84)],GREEN)
+-box('MNL-S\nlinear\nutilities',8.53,3.85,1.09,1.34,PALE_BLUE,BLUE,19)
+-box('Neural\ndeparture\npredictor',9.68,3.85,1.09,1.34,PALE_GREEN,GREEN,18)
+-conn([(9.08,5.19),(9.08,5.60)])
+-conn([(10.22,5.19),(10.22,5.60)],GREEN)
+-box('pₛ(x)',8.53,5.60,1.09,.50,PALE_BLUE,BLUE,25,False)
+-box('τₛ(x)',9.68,5.60,1.09,.50,PALE_GREEN,GREEN,25,False)
+-# Converging arrows denote the same output type, not averaged model predictions.
+-for x in (6.55,7.67,9.08,10.22):conn([(x,6.10),(x,6.43)],GREEN,arrow=False)
+-conn([(6.55,6.43),(10.22,6.43)],GREEN,arrow=False)
+-conn([(8.35,6.43),(8.35,6.64)],GREEN)
+-text('Behavioral predictions',6.77,6.74,3.25,.29,21)
+-text('Mode probabilities',5.97,7.16,2.19,.28,18)
+-text('Departure shift τₛ',8.52,7.16,2.18,.30,18)
+-# Bottom strip is explanatory, not an internal lifecycle.
+-text('Common outcomes,\ndifferent specifications',5.94,8.55,4.82,.58,22,True,GREEN)
+-conn([(4.51,8.89),(5.57,8.89)],BLUE)
+-
+-# (c) Keep original population/network/timetable imagery at the top.
+-remove({515,523,524,555,947})
+-text('Simulation inputs',11.49,.99,4.68,.29,22,True,'AF3B00')
+-text('Travelers and trips',11.56,1.34,2.21,.31,20)
+-text('Population\nOD pairs',12.63,1.77,1.15,.57,18,False)
+-text('Network and timetable',14.04,1.34,2.28,.31,19)
+-text('Network',14.08,2.25,1.14,.23,18,False)
+-text('Timetable',15.20,2.25,1.08,.23,18,False)
+-conn([(12.67,2.55),(12.67,2.73),(15.17,2.73),(15.17,2.55)],BLUE,arrow=False)
+-conn([(13.91,2.73),(13.91,2.98)],BLUE)
+-box('Level of service and route availability',11.42,2.98,5.01,.66,PALE_ORANGE,ORANGE,21)
+-conn([(13.91,3.64),(13.91,3.97)],BLUE)
+-box('',11.77,3.98,4.32,.66,PALE_BLUE,BLUE)
+-icon(620,12.02,4.10,.43,.43)
+-text('Behavioral prediction: pₛ, τₛ',12.54,4.08,3.42,.45,21)
+-# Link the center's common predictions to the simulation prediction step.
+-conn([(10.99,7.49),(11.14,7.49),(11.14,4.31),(11.76,4.31)],GREEN)
+-conn([(13.91,4.65),(13.91,4.93)],BLUE)
+-box('',11.43,4.94,5.00,.99,PALE_ORANGE,ORANGE)
+-text('Mode assignment',11.53,4.99,4.78,.30,22)
+-text('Deterministic',11.48,5.40,1.48,.39,18)
+-text('Stochastic',13.08,5.40,1.27,.39,18)
+-text('Feasibility-\nconstrained',14.55,5.31,1.78,.55,18)
+-conn([(13.91,5.94),(13.91,6.15)],BLUE)
+-box('OD and adjusted departure',11.99,6.16,3.83,.39,'FFFFFF',ORANGE,20)
+-conn([(13.91,6.56),(13.91,6.81)],BLUE)
+-box('',12.00,6.82,4.06,.46,'FFFFFF',ORANGE)
+-icon(959,12.18,6.81,.46,.46)
+-text('Multimodal routing',12.75,6.87,3.04,.32,21)
+-conn([(13.90,7.29),(13.90,7.36),(12.63,7.36),(12.63,7.46)],BLUE)
+-box('',11.60,7.46,2.05,.49,'FFFFFF',ORANGE)
+-icon(961,11.72,7.51,.36,.36)
+-text('Travel plans',12.11,7.54,1.43,.32,21)
+-conn([(13.66,7.69),(14.40,7.69)],BLUE)
+-box('',14.41,7.46,1.98,.49,'FFFFFF',ORANGE)
+-icon(763,14.58,7.50,.37,.39)
+-text('MATSim',15.08,7.54,1.11,.30,21)
+-conn([(15.37,7.96),(15.37,8.15)],BLUE)
+-box('',11.32,8.17,5.20,1.01,PALE_ORANGE,ORANGE)
+-for x,w,title,sub in [(11.44,1.40,'Mode use','PT use'),(12.94,1.76,'Activity','Boardings · VKT'),(14.80,1.58,'Journeys','Time · completion')]:
+-    box('',x,8.28,w,.58,'FFFFFF',ORANGE)
+-    text(title,x+.03,8.30,w-.06,.23,18)
+-    text(sub,x+.03,8.60,w-.06,.21,16,False)
+-text('Response gap: simulated − predicted',11.49,8.94,4.87,.23,19,False,'AF3B00')
+-
+-s.notes_slide.notes_text_frame.text=(
+- 'Edited directly from the supplied Figure 2 PPTX template. Original three-column ribbons, frames, '
+- 'example artwork, traveler/mode/network pictograms and the joint/separate architecture comparison are retained. '
+- 'Teacher targets are p_T(x), tau_T(x), and the finite scenario response Delta p_T. '
+- 'Dagger: between-traveler contrasts are additional supervision for SA-Student, not a shared auxiliary loss '
+- 'in the four-objective controlled comparison. The neural timing illustration is one of three independent timing specifications. '
+- 'Probabilities are normalized over behaviorally available alternatives; search-defined feasibility is applied separately. '
+- 'The last assignment policy is stochastic after feasibility adjustment. No online Teacher, survey training input, '
+- 'or simulation-to-training feedback is shown. The diagram does not specify the undocumented zero-feasible-mass case '
+- 'or claim that all fitted models share an identical training history. All new text and diagrams are editable PowerPoint objects.'
+-)
+-# Ensure unique identifiers even in retained group pictograms.
+-ids=[]
+-for sh in s.shapes:
+-    for e in sh._element.findall('.//{http://schemas.openxmlformats.org/presentationml/2006/main}cNvPr'):
+-        ids.append(e)
+-for idx,e in enumerate(ids,2):e.set('id',str(idx))
+-OUT.parent.mkdir(parents=True,exist_ok=True);p.save(OUT)
+-print(OUT)
+-print('Original shapes:',len(original),'Revised shapes:',len(s.shapes))
++src=ROOT/'figures/template/figure2_schemeB_original.pptx'
++out=ROOT/'figures/narrative/figure2_method_template.pptx'
++ns={'p':'http://schemas.openxmlformats.org/presentationml/2006/main','a':'http://schemas.openxmlformats.org/drawingml/2006/main','m':'http://schemas.openxmlformats.org/officeDocument/2006/math','a14':'http://schemas.microsoft.com/office/drawing/2010/main'}
++def el(tag,**attrs):return E.Element('{'+ns[tag.split(':')[0]]+'}'+tag.split(':')[1],**{k:str(v) for k,v in attrs.items()})
++def child(par,tag,**attrs): n=el(tag,**attrs);par.append(n);return n
++def run(text,plain=False):
++ r=el('m:r');pr=child(r,'m:rPr');sty=child(pr,'m:sty');sty.set('{'+ns['m']+'}val','p' if plain else 'i');child(r,'m:t').text=text;return r
++def sub(base,idx):
++ n=el('m:sSub');child(n,'m:e').append(run(base));child(n,'m:sub').append(run(idx,True));return n
++def prime():
++ n=el('m:sSup');child(n,'m:e').append(run('x'));child(n,'m:sup').append(run('′',True));return n
++def prob():return [sub('p','T'),run('('),run('x'),run(')')]
++def probprime():return [sub('p','T'),run('('),prime(),run(')')]
++with zipfile.ZipFile(src) as z:data={n:z.read(n) for n in z.namelist()}
++r=E.fromstring(data['ppt/slides/slide1.xml'])
++# Preserve the native diagram; edit typography and replace outlined formulas with Office Math.
++fonts={False:fitz.Font(fontfile='C:/Windows/Fonts/arial.ttf'),True:fitz.Font(fontfile='C:/Windows/Fonts/arialbd.ttf')}
++for sp in r.xpath('//p:sp',namespaces=ns):
++ tx=sp.find('p:txBody',ns)
++ if tx is None:continue
++ xfrm=sp.find('p:spPr/a:xfrm',ns);width=int(xfrm.find('a:ext',ns).get('cx'))/12700
++ for rp in tx.xpath('.//a:rPr',namespaces=ns):
++  latin=rp.find('a:latin',ns)
++  if latin is None:latin=child(rp,'a:latin')
++  latin.set('typeface','Arial')
++  t=rp.getparent().find('a:t',ns)
++  if t is not None and t.text:
++   size=int(rp.get('sz','1800'))/100;need=fonts[rp.get('b')=='1'].text_length(t.text,fontsize=size)
++   if need>width:rp.set('sz',str(int(size*100*width/need*.98)))
++def replace(name,nodes,box,size=24,text=None):
++ sp=r.xpath('//p:sp[p:nvSpPr/p:cNvPr/@name=$n]',namespaces=ns,n=name)[0]
++ sp.find('p:nvSpPr/p:cNvSpPr',ns).set('txBox','1')
++ pr=sp.find('p:spPr',ns)
++ for c in list(pr):pr.remove(c)
++ xf=child(pr,'a:xfrm');child(xf,'a:off',x=round(box[0]*12700),y=round(box[1]*12700));child(xf,'a:ext',cx=round(box[2]*12700),cy=round(box[3]*12700))
++ child(child(pr,'a:prstGeom',prst='rect'),'a:avLst');child(pr,'a:noFill');child(child(pr,'a:ln'),'a:noFill')
++ tx=child(sp,'p:txBody');child(child(tx,'a:bodyPr',wrap='none',lIns=0,rIns=0,tIns=0,bIns=0,anchor='ctr'),'a:noAutofit');child(tx,'a:lstStyle');p=child(tx,'a:p');pp=child(p,'a:pPr',algn='ctr');dp=child(pp,'a:defRPr',sz=int(size*100));child(child(dp,'a:solidFill'),'a:srgbClr',val='102451');child(dp,'a:latin',typeface='Arial' if text else 'Cambria Math')
++ if text:
++  rr=child(p,'a:r');rrp=child(rr,'a:rPr',sz=int(size*100));child(rrp,'a:latin',typeface='Arial');child(child(rrp,'a:solidFill'),'a:srgbClr',val='102451');child(rr,'a:t').text=text
++ else:
++  math=child(p,'a14:m');mp=child(math,'m:oMathPara');mpp=child(mp,'m:oMathParaPr');jc=child(mpp,'m:jc');jc.set('{'+ns['m']+'}val','center');om=child(mp,'m:oMath')
++  for n in nodes:om.append(n)
++  for mr in om.xpath('.//m:r',namespaces=ns):
++   rp=el('a:rPr',sz=int(size*100));child(rp,'a:latin',typeface='Cambria Math');child(child(rp,'a:solidFill'),'a:srgbClr',val='102451');mr.insert(1,rp)
++ child(p,'a:endParaRPr',sz=int(size*100))
++replace('Baseline x',[run('x')],(235,144,75,34),30)
++replace('Perturbed x prime — x',[prime()],(531,144,75,34),30)
++sp=r.xpath('//p:sp[p:nvSpPr/p:cNvPr/@name=$n]',namespaces=ns,n='Perturbed x prime — prime')[0];sp.getparent().remove(sp)
++replace('Teacher endpoint probabilities',prob()+[run('   ',True)]+probprime(),(46,480,203,36),24)
++replace('Teacher response equation',[run('Δ'),sub('p','T'),run('=')]+probprime()+[run('−')]+prob(),(43,523,208,38),21)
++replace('Teacher departure adjustment',[sub('τ','T')],(116,566,65,35),27)
++replace('Response finite difference',[run('Δp=p('),prime(),run(')−p(x)')],(324,575,207,38),21)
++replace('Response departure adjustment — tau',[run('τ')],(356,611,27,34),27)
++replace('Response departure adjustment — description line 1',[],(384,610,129,19),13,text='(departure-time')
++replace('Response departure adjustment — description line 2',[],(384,630,129,19),13,text='adjustment)')
++replace('Surrogate objective',[sub('ℒ','state'),run('+λ'),sub('ℒ','response')],(591,637,207,40),23)
++data['ppt/slides/slide1.xml']=E.tostring(r,xml_declaration=True,encoding='UTF-8',standalone=True)
++for n,b in list(data.items()):
++ if n.endswith('.xml') and n!='ppt/slides/slide1.xml':data[n]=b.replace(b'Times New Roman',b'Arial')
++with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
++ for n,b in data.items():z.writestr(n,b)
++print(out,'native equations',len(r.xpath('//m:oMath',namespaces=ns)))
+--- uploaded/scripts/regenerate_figures.py
++++ revised/scripts/regenerate_figures.py
+@@ -1,7 +1,7 @@
+ """Rebuild edited publication figures; no training, API calls or simulation.
+ 
+-Compilation does not require this optional script. LibreOffice and the fonts
+-noted in README.md are required for Figure 2 export.
++Compilation does not require this optional script. Microsoft PowerPoint and Arial
++are used for native-equation Figure 2 export.
+ """
+ from pathlib import Path
+ import shutil
+@@ -12,16 +12,9 @@
+ for name in ('edit_publication_figures.py','make_figure3_response_timing.py',
+              'make_figure4_bars.py','assemble_execution_figure.py','edit_figure2_template.py'):
+     subprocess.run([sys.executable,str(ROOT/'scripts'/name)],cwd=ROOT,check=True)
+-lo=shutil.which('soffice') or shutil.which('libreoffice')
+-if not lo:
+-    raise SystemExit('Figure 2 PPTX was rebuilt. Export it as PDF in PowerPoint/LibreOffice, '
+-                     'saving figures/narrative/figure2_method.pdf.')
+-with tempfile.TemporaryDirectory() as tmp:
+-    tmp=Path(tmp)
+-    subprocess.run([lo,'-env:UserInstallation='+(tmp/'profile').as_uri(),
+-                    '--headless','--convert-to','pdf','--outdir',str(tmp),
+-                    str(ROOT/'figures/narrative/figure2_method_template.pptx')],check=True)
+-    result=tmp/'figure2_method_template.pdf'
+-    if not result.exists(): raise RuntimeError('LibreOffice did not produce the Figure 2 PDF.')
+-    shutil.copy2(result,ROOT/'figures/narrative/figure2_method.pdf')
+-print('All edited publication figures regenerated from supplied sources and summaries.')
++if sys.platform == 'win32':
++    subprocess.run(['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
++                    str(ROOT/'scripts/export_figure2.ps1')], check=True)
++else:
++    raise SystemExit('Export the native-equation Figure 2 PPTX using Microsoft PowerPoint as figures/narrative/figure2_method.pdf. The supplied PDF is ready for LaTeX compilation.')
++print('Publication figures regenerated; no experiments or data changes.')
+--- uploaded/sections/03_methodology.tex
++++ revised/sections/03_methodology.tex
+@@ -3,8 +3,8 @@
+ Behavioral distillation is treated here as the estimation of a surrogate that reproduces both the Teacher's predictions at individual traveler states and its reaction to specified changes in travel conditions. Every candidate model produces a mode-choice distribution and a departure-time adjustment, which allows joint and modular specifications to be compared on the same behavioral outcomes. How these outcomes are realized in simulation is examined separately (Figure~\ref{fig:workflow}).
+ 
+ \begin{figure}[pos=htbp]
+-\centering\includegraphics[width=\textwidth]{figures/narrative/figure2_method.pdf}
+-\caption{Behavioral supervision, model specification and demand simulation. (a) Teacher probabilities and departure adjustments define targets at individual states and responses between paired states. Between-traveler contrasts (\textdagger) supervise only SA-Student and lie outside the matched comparison of four objectives. (b) Joint and separate choice--timing models predict the same outcomes. The modular example combines MNL-S with neural timing. (c) Assignment and routing turn predictions into plans that are simulated in MATSim, and response preservation compares predicted with simulated changes in mode use. Arrows denote estimation or prediction, not averaging across models or behavioral feedback. Stated choices serve only for external evaluation.}
++\centering\includegraphics[width=0.86\textwidth,height=0.76\textheight,keepaspectratio]{figures/narrative/figure2_method.pdf}
++\caption{Response-aware behavioral distillation and evaluation. Paired states define changes in mode-choice probabilities, while the Teacher also supplies departure-adjustment targets. Joint neural and modular Students predict choice and timing. The schematic objective combines endpoint fitting with response supervision; the four controlled objectives are specified in Section~\ref{sec:loss}, and MNL-S is fitted to endpoint targets. SA-Student additionally uses supply and between-traveler supervision outside that matched comparison. Evaluation distinguishes Teacher fidelity, agreement with stated responses and preservation of predicted responses through assignment, routing and MATSim execution. Arrows link these components conceptually; human responses are used only for evaluation, and simulated experience does not feed back into the behavioral predictions.}
+ \label{fig:workflow}
+ \end{figure}
+ 
+@@ -66,6 +66,8 @@
+ \label{sec:execution_method}
+ Behavioral availability and route feasibility restrict choices in different ways. Availability defines the choice set in Eq.~\ref{eq:utility}, whereas route feasibility depends on whether the route search finds a connection for a given trip and departure time. The PT search considers direct and one-transfer connections, so an unsuccessful search does not prove that no connection exists (Supplementary Section~\ref{supp-sec:supp_inputs}).
+ 
+-Three rules convert predicted probabilities into assigned modes. Deterministic assignment selects the most probable mode, stochastic assignment samples from the predicted distribution, and feasibility-constrained assignment samples after removing probability from alternatives for which no route was found and renormalizing the remainder. Without this constraint, a traveler assigned to an unroutable mode is reassigned during routing. Predicted departure adjustments are applied before routing.
++Three rules convert predicted probabilities into assigned modes. Deterministic assignment selects the most probable mode, stochastic assignment samples from the predicted distribution, and feasibility-constrained assignment samples after removing probability from alternatives for which no route was found and renormalizing the remainder. Without this constraint, a failed route search for car, bicycle or PT triggers a direct fallback to walking, rather than selection of the next-highest-probability mode. The walking route is then constructed on the walking network.
+ 
+-PT use is then traced through five stages: predicted probabilities, feasibility-adjusted probabilities, assigned modes, routed modes and PT boarding in the simulation. Every stage uses the initial population as its denominator. For a contrast $c$, the predicted-to-simulated response gap is $G_c=R_c^{\mathrm{sim}}-R_c^{\mathrm{pred}}$. Simulated PT use means boarding a PT vehicle before reaching the outbound destination, which is not the same as completing the journey. Because the behavioral predictions are held fixed during simulation, any gap arises from assignment and routing rather than from re-estimated behavior.
++For each traveler, supply attributes are computed at the requested departure time. The fixed model predicts a departure adjustment, which is added before checking route feasibility. The feasibility mask requires behavioral availability and a route returned in the requested mode at this adjusted time. Feasibility-constrained assignment applies this mask and renormalizes once; final routing uses the same adjusted time and routing procedure, without another behavioral prediction. Return trips are routed separately at their scheduled return time, with the same fallback rule. If the retained probability mass is zero, the implementation stops the run rather than dropping that traveler or inventing an alternative. None of the 140 completed runs encountered this condition. Their 140,000 traveler records retain 1,000 people per run, and all recorded outbound and return walking routes contain more than the origin link. Supplementary Section~\ref{supp-sec:materials_scope} identifies the implementation and the retained decision records.
++
++PT use is then traced through five stages: predicted probabilities, feasibility-adjusted probabilities, assigned modes, routed modes and PT boarding in the simulation. Every stage uses the initial population as its denominator. For a contrast $c$, the predicted-to-simulated response gap is $G_c=R_c^{\mathrm{sim}}-R_c^{\mathrm{pred}}$. Simulated PT use means boarding a PT vehicle before reaching the outbound destination, which is not the same as completing the journey. Because the behavioral predictions are held fixed during simulation, the gap reflects assignment, routing and simulation execution with fixed behavioral predictions.
+--- uploaded/sections/04_experimental_design.tex
++++ revised/sections/04_experimental_design.tex
+@@ -17,7 +17,7 @@
+ 
+ \subsection{Stated-choice experiments}
+ \label{sec:human_design}
+-The Singapore sample comprises 332 eligible residents who made 3,320 choices. Its ten tasks form five within-person pairs on PT accessibility, rain, fares, PT delay and roadworks. The Shanghai cohort evaluated by the models comprises 321 respondents with 3,208 explicit four-mode choices over ten tasks. Two further answers indicate no suitable mode and are not scored. Twelve eligible respondents whose answers fall outside the model's input mapping are retained in a human-only sensitivity analysis. Responses were collected from 20 August to 5 September 2026 in Singapore and from 12 to 18 September 2026 in Shanghai, and both questionnaires recorded participant consent. The samples are not claimed to represent the two city populations (sample flow in Supplementary Section~\ref{supp-sec:supp_inputs}).
++The Singapore sample comprises 332 eligible residents who made 3,320 choices. Its ten tasks form five within-person pairs on PT accessibility, rain, fares, PT delay and roadworks. The Shanghai cohort evaluated by the models comprises 321 respondents with 3,208 explicit four-mode choices over ten tasks. Two further answers indicate no suitable mode and are not scored. Twelve eligible respondents whose answers fall outside the model's input mapping are retained in a human-only sensitivity analysis. Responses were collected from 20 August to 5 September 2026 in Singapore and from 12 to 18 September 2026 in Shanghai, and both questionnaires recorded participant consent. We distributed electronic questionnaires through WeChat, WhatsApp and related personal contacts to research-group members' families, friends, classmates and colleagues, and through onward sharing within those networks. Singapore used Google Forms and Shanghai used Wenjuanxing. This convenience and snowball recruitment does not yield representative city samples. Singapore eligibility required residence in Singapore; Shanghai eligibility required travel in Shanghai during the preceding 30 days. Participants completed ten stated-choice tasks online. A privacy statement preceded the survey, and we did not solicit sensitive personal information. The study was conducted on an ethics-exemption basis. Sample flow and questionnaire access are reported in Supplementary Section~\ref{supp-sec:supp_inputs}.
+ 
+ The two surveys specify their tasks in different ways. Singapore shows respondents numerical tables of time and cost. Shanghai describes most conditions qualitatively, with explicit values only for a 6-yuan PT fare, a 30-yuan parking fee and one transfer. Model inputs therefore combine attributes displayed in the questionnaire, characteristics reported by respondents and reference values for information that was not collected (Supplementary Table~\ref{supp-tab:input_provenance}). The reference values do not depend on respondents' answers. Twelve alternative specifications for Singapore and eight for Shanghai vary selected missing attributes and reference times (Supplementary Table~\ref{supp-tab:ownership_defaults}).
+ 
+@@ -35,7 +35,7 @@
+ 
+ \subsection{Contemporary Teacher comparison}
+ \label{sec:teacher_design}
+-To locate the source of discrepancies with people, the Teacher is queried directly on the stated-choice tasks for 24 respondents per city, stratified by age and car ownership. Each of the ten tasks per respondent receives three successful Teacher elicitations. The Teacher receives the same numerical and categorical attributes and the same availability rule as the Students, but not the human answers. Metadata that the Students do not use are set to neutral values, and the prompt explains PT feasibility and its time components. Service settings and repeat variability are reported in Supplementary Section~\ref{supp-sec:teacher_revision}.
++To compare Teacher--human and Student--Teacher discrepancies on the same tasks, the Teacher is queried directly on the stated-choice tasks for 24 respondents per city, stratified by age and car ownership. Each of the ten tasks per respondent receives three successful Teacher elicitations. The Teacher receives the same numerical and categorical attributes and the same availability rule as the Students, but not the human answers. Metadata that the Students do not use are set to neutral values, and the prompt explains PT feasibility and its time components. Service settings and repeat variability are reported in Supplementary Section~\ref{supp-sec:teacher_revision}.
+ 
+ On the same respondents, the signed response discrepancy of a Student decomposes as
+ \begin{equation}
+--- uploaded/sections/05_results.tex
++++ revised/sections/05_results.tex
+@@ -10,15 +10,15 @@
+ \par\vspace{4pt}
+ \input{generated/narrative/table_timing_main.tex}
+ \end{figure}
+-Explicit response supervision improves the property it targets. Direction+magnitude lowers mean response error from 0.06930 under soft KL to 0.06586, a reduction of 4.97\% (Table~\ref{tab:response_main}; Figure~\ref{fig:response_learning}a). The paired difference is $-0.00345$, with a persona-clustered 95\% interval of $[-0.00504,-0.00191]$. Signed response reaches 0.06653. The difference between the two paired objectives is small ($-0.00067$, interval $[-0.00199,0.00072]$), which attributes the gain to supervising probability changes rather than to separating their sign and size.
++Explicit response supervision improves the property it targets. Direction+magnitude lowers mean response error from 0.06930 under soft KL to 0.06586, a reduction of 4.97\% (Table~\ref{tab:response_main}; Figure~\ref{fig:response_learning}a). The paired difference is $-0.00345$, with a persona-clustered 95\% interval of $[-0.00504,-0.00191]$. Signed response reaches 0.06653. The difference between the two paired objectives is small ($-0.00067$, interval $[-0.00199,0.00072]$), which supports explicit response supervision but does not establish an additional benefit from separating sign and size.
+ 
+ The improvement is small but consistent. Across the three training seeds, direction+magnitude differs from soft KL by $-0.00499$, $-0.00441$ and $-0.00094$, although the interval for the third seed includes zero. Averaged over seeds, the error is lower for each of the six test personas, and removing any one persona from evaluation leaves differences between $-0.00408$ and $-0.00310$ (Supplementary Tables~\ref{supp-tab:response_breakdown} and~\ref{supp-tab:response_seed_differences}). The advantage of both paired objectives also persists when the targets are recomputed from the available repeated Teacher outputs, an analysis that excludes the mechanism states for which repeats were not recovered.
+ 
+-The benefit is specific to single contrasts. For combined perturbations, the paired objectives reach interaction errors of 0.0465 and 0.0464, slightly above the 0.0457 of soft KL, so supervising individual responses does not teach the model how two changes combine. CE+KL has the largest response error, 0.07528, even though it fits an additional target. Its hard label pulls predictions toward the Teacher's leading mode, and in the fitted networks this enlarges the probability changes on pairs whose leading mode does not change (Supplementary Section~\ref{supp-sec:loss_diagnostics}). Fitting the most likely mode appears to distort the graded responses on which scenario analysis depends.
++The benefit is specific to single contrasts. For combined perturbations, the paired objectives reach interaction errors of 0.0465 and 0.0464, slightly above the 0.0457 of soft KL, so supervising individual responses did not improve interaction error in this benchmark. CE+KL has the largest response error, 0.07528, even though it fits an additional target. Its hard label pulls predictions toward the Teacher's leading mode, and in the fitted networks this enlarges the probability changes on pairs whose leading mode does not change (Supplementary Section~\ref{supp-sec:loss_diagnostics}). Fitting the most likely mode appears to distort the graded responses on which scenario analysis depends.
+ 
+ A change of specification matters more than any change of objective. MNL-S, fitted to the same endpoints with linear utilities, attains the lowest errors on all three measures: 0.05644 for response error, 0.07310 for macro-source KL and 0.03865 for interaction error. Its response error is 14.30\% below that of direction+magnitude, with a paired interval of $[-0.01246,-0.00722]$. One plausible reading is that structured utilities restrict how a change in an attribute can propagate to probabilities. With only 28 training personas, this restriction appears to generalize better than the additional freedom of the neural Students, which can fit individual states without reproducing the contrasts between them.
+ 
+-The linear specification is less suited to timing. With the MNL-S choice probabilities held fixed, ridge regression, the bounded linear predictor and the independent neural predictor give departure MAEs of 12.35, 11.19 and 7.61 minutes (Table~\ref{tab:timing_main}; Figure~\ref{fig:response_learning}b). The neural predictor brings the modular model within the 7.43--7.71-minute range of the joint models selected for timing, with 18,733 rather than 24,562 parameters. Choice and timing therefore favor different functional forms, and estimating them separately retains the response advantage of linear utilities without sacrificing departure accuracy. All timing errors are measured against Teacher targets, not observed departure behavior.
++The linear specification is less suited to timing. With the MNL-S choice probabilities held fixed, ridge regression, the bounded linear predictor and the independent neural predictor give departure MAEs of 12.35, 11.19 and 7.61 minutes (Table~\ref{tab:timing_main}; Figure~\ref{fig:response_learning}b). The neural predictor brings the modular model within the 7.43--7.71-minute range of the joint models selected for timing, with 18,733 rather than 24,562 parameters. Choice and timing therefore favor different functional forms, and estimating them separately retains the response advantage of linear utilities with comparable departure errors in this benchmark. All timing errors are measured against Teacher targets, not observed departure behavior.
+ 
+ \FloatBarrier
+ \subsection{Agreement with stated responses}
+@@ -32,7 +32,7 @@
+ \end{figure}
+ How well a Student agrees with people depends on the intervention. In Singapore, SA-Student predicts a PT-delay response of $-14.86$ percentage points, compared with a stated change of $-12.05$ points, a bias of $-2.81$ points (nominal 95\% interval $[-8.18,2.75]$). Rain lowers its bicycle-plus-walk probability by 19.70 points, close to the 21.99-point fall in stated choice. Poorer PT accessibility is a different case. The Student predicts a change of $-14.42$ points against a stated $-24.40$, and the resulting $+9.98$-point bias remains positive after adjustment for multiple contrasts ($[3.01,16.93]$).
+ 
+-Shanghai reverses the pattern for delay. Under the reference specification, SA-Student predicts a PT-delay response of $-30.57$ points, roughly twice the stated $-14.64$. The bias of $-15.93$ points excludes zero after adjustment over eight contrasts ($[-22.41,-9.21]$). The Student also predicts responses of the wrong sign for the fare and walking-versus-waiting contrasts (Figure~\ref{fig:human_response}). These discrepancies persist across the alternative input specifications, where the delay bias ranges from $-16.53$ to $-10.25$ points and both sign reversals remain.
++Shanghai reverses the pattern for delay. Under the reference specification, SA-Student predicts a PT-delay response of $-30.57$ points, roughly twice the stated $-14.64$. The bias of $-15.93$ points excludes zero after adjustment over eight contrasts ($[-22.41,-9.21]$). The Student also predicts responses of the wrong sign for the fare and walking-versus-waiting contrasts (Figure~\ref{fig:human_response}). These discrepancies persist across the eight alternative input specifications, where the delay bias ranges from $-16.53$ to $-10.25$ points and both sign reversals remain. These specifications retain the 15-minute encoding of the qualitative delay condition; they do not test sensitivity to its intensity.
+ 
+ The ranking of objectives on the Teacher benchmark does not carry over to people. In Singapore, direction+magnitude shifts the delay bias from $+1.78$ points under soft KL to $-1.34$, yet both objectives substantially understate the rain response. MNL-S offers the clearest example. It approximates the Singapore fare response and the Shanghai parking and road responses, but under poorer Singapore accessibility it predicts a PT change of $+13.85$ points, whereas the stated PT share falls by 24.40 points. The accessibility task raises PT travel time from 32 to 48 minutes, access walking from three to twelve minutes and transfers from zero to two (Supplementary Table~\ref{supp-tab:survey_tasks}). The reversal thus concerns this combined access burden rather than any single walking-time coefficient. The model with the smallest Teacher error is, for this intervention, the only one that predicts the wrong direction. Conversely, CE+KL, which has the largest Teacher-response error, comes closest to the stated accessibility response ($-23.37$ against $-24.40$ points; Supplementary Table~\ref{supp-tab:responses_singapore_0}).
+ 
+@@ -40,11 +40,11 @@
+ 
+ Numerical inputs affect agreement as well, though not mainly through respondent-specific matching. In Shanghai, replacing reference values with network-derived inputs raises accuracy by 2.80 percentage points, and the gain remains 2.56 points after assigning fresh origin--destination pairs and 2.52 points after exchanging complete supply profiles between respondents. Most of the improvement therefore comes from a general shift in the numerical inputs rather than from matching them to individual respondents (Supplementary Section~\ref{supp-sec:od_sensitivity}).
+ 
+-\subsection{Teacher and Student sources of discrepancy}
++\subsection{Teacher--human and Student--Teacher discrepancies}
+ \label{sec:teacher_results}
+-The matched 24-person subsets separate two kinds of discrepancy (Figure~\ref{fig:teacher_attribution}). The first originates in the Teacher. Under poorer accessibility, the selected Singapore respondents reduce PT choice by 37.50 points, while the contemporary Teacher predicts a reduction of 15.40 points and SA-Student 13.46. The attenuation is thus already present in the Teacher, and SA-Student adds only $+1.94$ points to it (nominal 95\% interval $[-3.40,7.26]$).
++The matched 24-person subsets describe two components of discrepancy under the reference inputs (Figure~\ref{fig:teacher_attribution}). They compare current predictions and do not identify the historical origin of the differences. The first component is the contemporary Teacher--human discrepancy. Under poorer accessibility, the selected Singapore respondents reduce PT choice by 37.50 points, while the contemporary Teacher predicts a reduction of 15.40 points and SA-Student 13.46. The attenuation is also observed in the contemporary Teacher, and SA-Student differs from it by $+1.94$ points to it (nominal 95\% interval $[-3.40,7.26]$).
+ 
+-The second kind arises between Teacher and Student. For the encoded Shanghai delay task, the selected respondents and the Teacher agree closely, at $-8.33$ and $-8.17$ points, but SA-Student predicts $-34.87$. Its difference from the Teacher is $-26.70$ points, with a family-adjusted interval of $[-36.95,-15.42]$. The other Students respond less strongly, at $-19.03$ for soft KL, $-17.17$ for direction+magnitude and $-8.85$ for MNL-S, so the exaggerated delay response is specific to SA-Student rather than a general consequence of compression.
++The second component is the Student--Teacher discrepancy. For the encoded Shanghai delay task, the selected respondents and the Teacher agree closely, at $-8.33$ and $-8.17$ points, but SA-Student predicts $-34.87$. Its difference from the Teacher is $-26.70$ points, with a family-adjusted interval of $[-36.95,-15.42]$. The other Students respond less strongly, at $-19.03$ for soft KL, $-17.17$ for direction+magnitude and $-8.85$ for MNL-S, so SA-Student shows the largest discrepancy in this comparison. This pattern does not isolate its training history from changes in the Teacher service.
+ 
+ \begin{figure}[pos=H]
+ \centering\includegraphics[width=0.88\textwidth]{figures/narrative/figure5_teacher_comparison.pdf}
+@@ -52,7 +52,7 @@
+ \label{fig:teacher_attribution}
+ \end{figure}
+ 
+-The two terms of Eq.~\ref{eq:attribution} can also offset each other (Table~\ref{tab:teacher_decomposition_s9}). In the Shanghai walking-versus-waiting contrast, the Teacher exceeds the human response by $+16.31$ points and SA-Student falls $11.88$ points below the Teacher, leaving a total bias of only $+4.43$ points. A small total bias can therefore conceal two larger, opposing discrepancies. For this reason the decomposition is more informative than the total bias about where a correction should be applied, although the Student--Teacher term may also include changes in the Teacher since training.
++The two terms of Eq.~\ref{eq:attribution} can also offset each other (Table~\ref{tab:teacher_decomposition_s9}). In the Shanghai walking-versus-waiting contrast, the Teacher exceeds the human response by $+16.31$ points and SA-Student falls $11.88$ points below the Teacher, leaving a total bias of only $+4.43$ points. A small total bias can therefore conceal two larger, opposing discrepancies. For this reason the decomposition is more informative than the total bias for distinguishing the two observed discrepancies, although the Student--Teacher term may also include changes in the Teacher since training.
+ 
+ \input{generated/narrative/table_teacher_decomp_s9.tex}
+ 
+@@ -66,7 +66,7 @@
+ \label{fig:execution_response}
+ \end{figure}
+ 
+-Stochastic assignment represents the predicted distribution in expectation, but a finite population still varies from draw to draw. For SA-Student, ordinary and feasibility-constrained sampling both give a mean simulated response of $-14.17$ points, with assignment SDs of 1.55 and 1.40 points. Feasibility adjustment changes the probability response to $-12.83$ points and prevents PT assignments for which no route exists. It makes the assigned demand routable, but it does not bring the simulated response closer to the original prediction in this population. Routability and response preservation are separate properties of an assignment rule.
++Stochastic assignment represents the predicted distribution in expectation, but a finite population still varies from draw to draw. For SA-Student, ordinary and feasibility-constrained sampling both give a mean simulated response of $-14.17$ points, with assignment SDs of 1.55 and 1.40 points. Feasibility adjustment changes the probability response to $-12.83$ points and prevents PT assignments for which the specified search finds no route. It makes the assigned demand routable, but it does not bring the simulated response closer to the original prediction in this population. Routability and response preservation are separate properties of an assignment rule.
+ \input{generated/narrative/table_execution_main.tex}
+ 
+ MNL-S with neural timing predicts $-6.84$ points and yields $-6.90$ under deterministic assignment (Table~\ref{tab:execution_main}). Its stochastic and feasibility-constrained means are $-6.63$ and $-6.67$. For a given assignment seed, PT use is identical across its three independently fitted timing predictors, so timing variability does not alter this model's simulated mode response.
+--- uploaded/sections/06_discussion.tex
++++ revised/sections/06_discussion.tex
+@@ -1,14 +1,14 @@
+ \section{Discussion}
+ \label{sec:discussion}
+ \subsection{What a distilled traveler model should preserve}
+-The benchmark results support treating responses, rather than predictions at individual states, as the object of behavioral distillation. Relative to soft KL, direction+magnitude supervision lowered Teacher-response error in every seed and, on average over seeds, for every held-out persona. The gain was modest, however, and did not extend to combined perturbations. The inequality in Eq.~\ref{eq:bound} explains why the gain is limited. Paired supervision does not add information beyond the endpoint targets, it only redirects optimization toward the contrasts that a scenario queries. Its value can be expected to matter most where training coverage is thin relative to the variety of scenarios, which is the usual situation when an LLM supplies the supervision.
++The benchmark results support treating responses, rather than predictions at individual states, as the object of behavioral distillation. Relative to soft KL, direction+magnitude supervision lowered Teacher-response error in every seed and, on average over seeds, for every held-out persona. The gain was modest, however, and did not extend to combined perturbations. The inequality in Eq.~\ref{eq:bound} relates endpoint errors to response errors; it does not determine the size of the observed gain. Paired supervision does not add information beyond the endpoint targets, it only redirects optimization toward the contrasts that a scenario queries. Its value can be expected to matter most where training coverage is thin relative to the variety of scenarios, which is the usual situation when an LLM supplies the supervision.
+ 
+ The larger lesson concerns specification. A linear utility model distilled from the same Teacher targets preserved responses better than any neural objective, while a separately trained neural predictor was needed for departure timing. Choice and timing thus appear to call for different functional forms, and a modular Student lets each be estimated and later recalibrated on its own terms. A linear choice model also keeps the distilled behavior open to inspection, since its utilities can be compared with established evidence on time and cost sensitivity. This property is relevant to the hybrid LLM and conventional modeling that has been proposed for transport agent-based simulation \citep{liu2025framework}, where the LLM would supply behavioral knowledge and a transparent model would carry it into the simulation.
+ 
+ \subsection{Teacher fidelity and agreement with people}
+ Fidelity to the Teacher did not predict agreement with stated behavior. MNL-S, the most faithful Student, reversed the stated response to poorer accessibility in Singapore, whereas CE+KL, the least faithful objective, came closest to it. A related dissociation appeared between levels and responses. SA-Student understated PT use by about 31 points in Singapore yet had the smallest average response bias there, while MNL-S came within four points of the PT share yet reversed the accessibility response and understated the rain response. These patterns are consistent with evidence that LLMs capture the direction of travel trade-offs more reliably than their magnitude \citep{valuingtime2026}, and they extend that concern from the LLM to the models distilled from it.
+ 
+-The contemporary Teacher comparison indicates where such discrepancies should be addressed. When the Teacher already departs from people, as for Singapore accessibility, a more faithful Student cannot help, and the remedy lies in the prompt, the input representation or calibration against observed choices. When the Student departs from a Teacher that agrees with people, as for the Shanghai delay task, the remedy lies in the Student's specification and training history. Cancellation between the two terms, as in the Shanghai walking-versus-waiting contrast, shows that a small total bias is not in itself evidence of a sound model. Calibration to stated behavior is a task distinct from compression, and the surveys analyzed here were used only for evaluation.
++The contemporary Teacher comparison separates discrepancies that call for different follow-up analyses. For Singapore accessibility, closer imitation alone cannot eliminate the remaining Teacher--human discrepancy. Matching the current Teacher would reduce SA-Student's absolute response bias from 24.04 to 22.10 percentage points on this subset, leaving a substantial difference from stated behavior. Prompt design, input representation and calibration against observed choices are possible avenues to examine. For the Shanghai delay task under the reference encoding, the current Teacher is close to the human point estimate while SA-Student departs more strongly. This motivates checking the Student's specification and training history, but the comparison cannot exclude changes in the Teacher service. Cancellation between the two terms, as in the Shanghai walking-versus-waiting contrast, shows that a small total bias is not in itself evidence of a sound model. Calibration to stated behavior is a task distinct from compression, and the surveys analyzed here were used only for evaluation.
+ 
+ \subsection{From predicted responses to simulated demand}
+ Assignment and routing reshape predicted behavior before it becomes demand. In Helsinki, PT use fell by more than eleven points between prediction and simulation for SA-Student, while its delay response moved by less than one point. A simulation can therefore preserve a response well and still misstate the level of demand on which that response acts, and the two quantities deserve separate reporting. Feasibility-constrained assignment illustrates a related point. It removed unroutable PT assignments without narrowing the response gap, so improving the consistency of assigned demand with the network does not by itself improve preservation of the behavioral prediction.
+@@ -16,6 +16,6 @@
+ Reporting choices matter as well. Signed average gaps near zero concealed model-specific gaps of about two points in either direction, and absolute summaries revealed a difference between objectives that the signed mean hid. Departure adjustments changed selected itineraries without changing feasibility, and identical demand plans in Shanghai produced journey-time changes of opposite sign under different active-mode speed assumptions. Retaining probabilities and departure adjustments until assignment, and reporting each stage against the same population, makes these transformations visible and separable from the behavioral model.
+ 
+ \subsection{Scope and further evaluation}
+-The benchmark rests on one Teacher and six held-out synthetic personas. Additional training seeds would describe optimization variability more precisely but would not widen persona coverage, and a second Teacher would be needed to show which findings are specific to the LLM used here. The stated-choice samples were collected over short periods, their recruitment is only partly documented, and the two cities used different task formats. Differences between Singapore and Shanghai therefore cannot be attributed to population preferences alone, and the contemporary Teacher comparison rests on 24 respondents per city.
++The benchmark rests on one Teacher and six held-out synthetic personas. Additional training seeds would describe optimization variability more precisely but would not widen persona coverage, and a second Teacher would be needed to show which findings are specific to the LLM used here. The stated-choice samples were collected over short periods through convenience and snowball recruitment within personal networks, and the two cities used different task formats. Differences between Singapore and Shanghai therefore cannot be attributed to population preferences alone, and the contemporary Teacher comparison rests on 24 respondents per city.
+ 
+-Model inputs for the surveys combine displayed attributes, reported characteristics and researcher-specified values. The sensitivity analyses cover selected defaults and reference times but not every reasonable numerical reading of the qualitative Shanghai conditions, and monetary values were supplied to the Teacher without explicit currency names. Agreement with stated choices should accordingly be read as agreement under these specifications rather than as calibrated forecasting accuracy. The Helsinki experiment varies perceived delay with the timetable held fixed and uses a single MATSim iteration without behavioral re-estimation. Physical service disruptions, feedback from experienced congestion and equilibrium forecasting remain to be examined. Parts of the historical supervision and routing records are incomplete, and Supplementary Section~\ref{supp-sec:materials_scope} describes the materials that are available for replication.
++Model inputs for the surveys combine displayed attributes, reported characteristics and researcher-specified values. The sensitivity analyses cover selected defaults and reference times while holding the Shanghai delay encoding at 15 minutes, and monetary values were supplied to the Teacher without explicit currency names. Agreement with stated choices should accordingly be read as agreement under these specifications rather than as calibrated forecasting accuracy. The Helsinki experiment varies perceived delay with the timetable held fixed and uses a single MATSim iteration without behavioral re-estimation. Physical service disruptions, feedback from experienced congestion and equilibrium forecasting remain to be examined. The retained research records extend beyond the manuscript package, while the linked repository currently requires permission to access. Supplementary Section~\ref{supp-sec:materials_scope} distinguishes retained records, repository contents and unresolved historical request metadata.
+--- uploaded/sections/S1_inputs.tex
++++ revised/sections/S1_inputs.tex
+@@ -16,6 +16,8 @@
+ 
+ The 321 Shanghai respondents made 3,208 explicit mode choices and gave two answers indicating that none of the modes was suitable. These two answers are not scored in the four-mode analysis. Contrast denominators are 321 for rain, delay, fare, parking, road and transfer-versus-waiting, and 320 for the interaction and walking-versus-waiting contrasts. Every Singapore contrast has 332 respondents. In Singapore, 23 missing or undisclosed incomes are assigned the medium income category, with low and high incomes examined as sensitivity settings. Responses were submitted from 20 August to 5 September 2026 in Singapore and from 12 to 18 September 2026 in Shanghai, and both questionnaires recorded participant consent.
+ 
++The electronic questionnaires were circulated through WeChat, WhatsApp and personal networks, including onward sharing by family members, friends, classmates and colleagues. Recruitment was therefore by convenience and snowball sampling. The Singapore questionnaire was administered in Google Forms and the Shanghai questionnaire in Wenjuanxing. The instruments are identified by the \href{https://docs.google.com/forms/d/1fg4KzTXqDBLx1qgT1rOq9EEU6d2xPk4r-PXK0i8XzU4/edit}{Singapore form} (owner/editor access may be required) and the \href{https://v.wjx.cn/vm/YJnKeRu.aspx}{Shanghai questionnaire}. These instrument links do not grant access to individual responses. A privacy statement preceded participation, both instruments recorded consent, and the study was conducted on an ethics-exemption basis. The questionnaires did not solicit sensitive personal information.
++
+ \subsection{Reference values and their sensitivity}
+ Attributes that were not collected take fixed reference values. Singapore uses a household size of two, medium schedule flexibility, no transit pass and a reference departure at 08:00. Shanghai uses a household size of two and the numerical reference encoding in Table~\ref{tab:shanghai_cards}. The twelve Singapore sensitivity profiles vary car costs, the mapping of missing income and occupation, transit pass, flexibility, purpose, departure time, PT components and coverage, the allocation of delay and rain intensity. The eight Shanghai profiles vary household size, coverage, imputed durations and the allocation of three minutes among PT components while total PT time is held fixed.
+ 
+--- uploaded/sections/S4_s9.tex
++++ revised/sections/S4_s9.tex
+@@ -29,5 +29,5 @@
+ 
+ SA-Student applies the direction and magnitude terms of the main text to the modes available in the perturbed state, whereas the controlled comparison uses the modes available in either state. Mechanism supervision matches the responses from a baseline to variants that change the context together with the attributes, the context alone or the attributes alone. Persona supervision matches differences between travelers making the same trip, and accessibility supervision matches the PT response between the best and worst accessibility classes for a fixed traveler and trip.
+ 
+-Each epoch draws 104 single-context pairs and 52 each of joint-context pairs, persona pairs, accessibility states and accessibility-curve pairs, limited by the size of the available pools, while mechanism updates use the available groups of four states. All active loss terms have unit weight, and each type of update keeps its own reduction by sum or mean. The supplementary data files describe these settings and include the accessibility prompt. Because the adaptation differs from the controlled objectives of Section~\ref{sec:supp_controlled}, and because the full training history of the initial model is not available, SA-Student is not treated as part of the matched comparison of objectives.
++Each epoch draws 104 single-context pairs and 52 each of joint-context pairs, persona pairs, accessibility states and accessibility-curve pairs, limited by the size of the available pools, while mechanism updates use the available groups of four states. All active loss terms have unit weight, and each type of update keeps its own reduction by sum or mean. The supplementary data files describe these settings and include the accessibility prompt. Because its initialization, additional supervision and adaptation differ from the controlled objectives of Section~\ref{sec:supp_controlled}, SA-Student is not treated as part of the matched comparison of objectives. The predecessor checkpoint and its training history are retained in the corresponding model release.
+ \FloatBarrier
+--- uploaded/sections/S7_materials.tex
++++ revised/sections/S7_materials.tex
+@@ -38,26 +38,26 @@
+ \FloatBarrier
+ 
+ \subsection{Teacher information and available materials}
+-The supplementary data files contain the input-field dictionary, the prompt used for the accessibility supervision and the contemporary evaluation, a description of the SA-Student adaptation settings, the summary results underlying the reported tables in tabular form, and the sources of all figures. Table~\ref{tab:teacher_materials} distinguishes the three uses of Teacher information in the study and the corresponding materials.
++The manuscript package contains the input dictionary, accessibility prompt, SA-Student adaptation specification, editable figures and tabulated summaries. It is a compact manuscript package rather than a copy of all experimental records. The research repository, \url{https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research}, is access-controlled. Its contents include training and inference code, released checkpoints, selected supervision and evaluation summaries, and Shanghai questionnaire materials. The additional records described below are retained locally by the authors; absence from this package does not mean that a record has been lost.
+ 
+ \begin{table}[pos=htbp]
+ \centering\small
+-\caption{Uses of Teacher information, their coverage and the corresponding materials.}
++\caption{Teacher information and retained supporting materials. Repository access currently requires permission; the later experimental outputs are not all synchronized to that repository.}
+ \label{tab:teacher_materials}
+-\renewcommand{\arraystretch}{1.16}
+-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.35\linewidth}>{\raggedright\arraybackslash}X@{}}
++\renewcommand{\arraystretch}{1.13}
++\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.32\linewidth}>{\raggedright\arraybackslash}X@{}}
+ \toprule
+-Use & Coverage in the study & Available materials \\
++Use & Coverage & Retained supporting records \\
+ \midrule
+-Controlled supervision & 437 test states. The analysis of repeated queries covers 373 states and 350 pairs, and the 64 mechanism states have no individual repeats. & Summary results and model specifications. Individual historical responses, their collection dates and full request settings are not available. \\
+-Supply adaptation & 336 accessibility states, averaging three queries for 89 states and five for 247. & Accessibility prompt and adaptation settings. Individual responses, weights and the training history of the initial model are not available. \\
+-Contemporary evaluation & 24 respondents per city, ten tasks and three successful queries per state. & Response and variability summaries, decomposition tables and request settings. Individual requests and respondent-level inputs are not released. \\
++Controlled supervision & 437 test states; repeated-query analysis covers 373 states and 350 pairs; 64 mechanism states lack individual repeats. & Final state targets and splits, available repeated responses, fitted models, test predictions and statistical scripts. Complete historical backend identities and request metadata are not established for every target. \\
++Supply adaptation & 336 accessibility states with 1,502 valid queries. & Aggregated targets, repeated-response records, split manifests, adaptation code and the released SA-Student checkpoint and training history. The predecessor checkpoint is also retained. \\
++Contemporary evaluation & 24 respondents per city, ten tasks and three successful queries per state. & Request outputs, per-state predictions, evaluation scripts, respondent resampling results and decomposition summaries; participant-linked inputs require privacy-aware access. \\
+ \bottomrule
+ \end{tabularx}
+ \end{table}
+ 
+-The Teacher is identified as \texttt{deepseek-v4-pro}, and Section~\ref{sec:teacher_revision} reports the settings of the contemporary requests. The model served under this name may have changed between the original supervision and the later evaluation, and the available records do not allow such changes to be separated from other differences between Student and Teacher. The accessibility prompt requires probabilities over the available modes that sum to one. The rules used to parse and validate the original responses and a complete record of failed requests are not available, so the original targets cannot be reconstructed exactly from the released materials.
++The Teacher is identified as \texttt{deepseek-v4-pro}; Section~\ref{sec:teacher_revision} reports the contemporary request settings. Retained numerical targets and model files support re-evaluation without re-querying the service. They cannot establish that the remotely served model was unchanged between supervision and contemporary evaluation, or recreate undocumented historical backend behavior. A complete historical failure/retry log has not been established for every supervision source.
+ 
+-For Helsinki, the data files report the 70 paired comparisons at the reported precision but not the individual probabilities and simulation events. The order in which unroutable choices were reassigned, the handling of travelers without any feasible alternative and the timing of feasibility checks relative to departure adjustment are likewise not documented in the released materials. The reported summaries can therefore be verified, but individual simulation decisions cannot be reproduced independently.
++For Helsinki, the authors retain the 140 completed-run directories, model predictions, adjusted-time feasibility checks, per-person decision ledgers, population plans, simulation events and statistical summaries. The manuscript CSV contains 70 paired summaries at reported precision. The experiment driver \path{scripts/revision_20260921/helsinki_execution.py} and the route adapter \path{src/traveler_distillation/matsim/adapter.py} specify the assignment, timing and fallback rules described in the main text. Checking the retained ledgers found 1,000 people in each completed run and no case with zero feasible probability mass. Across runs, 2,006 outbound PT assignments and 940 car assignments fell back to walking; these are repeated traveler records across experimental conditions, not distinct people. No recorded outbound or return walking route consisted only of its origin link. The general adapter does encode an origin-link-only walk if its walking search fails, so the observed connected-route behavior should not be extrapolated to disconnected networks without an explicit failure rule.
+ 
+-Participant-level survey records, the deployed questionnaires, trained weights and complete network and event files are not publicly released. Collection periods, consent and sample flow are reported in Section~\ref{sec:supp_inputs}.
++The authors retain the questionnaire instruments and respondent records. Singapore used Google Forms and Shanghai used Wenjuanxing, with instrument links in Section~\ref{sec:supp_inputs}. Requests for supporting data should be directed to the corresponding author and handled subject to participant privacy and applicable third-party terms. The repository currently lacks the later matched-response and September revision output directories, so a repository link alone does not provide a complete independent reproduction of every result. The package's accompanying material index lists the locations checked for this revision.

@@ -1,0 +1,117 @@
+{
+  "basis": "Uploaded source ZIP and supplied review/revision instructions; no new experiments.",
+  "protected_files": [
+    {
+      "path": "data_tables/figure4_response_bars.csv",
+      "sha256": "d72bb5ee76e598add8afea415146eac509f5e4508f467c07d3686ac2ac3ba842",
+      "unchanged": true
+    },
+    {
+      "path": "data_tables/helsinki_run_pairs_published_precision.csv",
+      "sha256": "29da679e5a594e19c80b17d1c6a3f19490384ca3280502ca2e111a7824f173b6",
+      "unchanged": true
+    },
+    {
+      "path": "data_tables/figure3_response_timing.csv",
+      "sha256": "a36372d2868078f58f8d1b9b43bdd8b83042efdb96dfc1482da149f4b2d77d5f",
+      "unchanged": true
+    },
+    {
+      "path": "data_tables/teacher_decomposition_published_precision.csv",
+      "sha256": "3a0a3afdd1521bda0643b7cdcaea237a5d9bea17d4fd0e4a065d5010b17d8d51",
+      "unchanged": true
+    },
+    {
+      "path": "reproduction/accessibility_teacher_prompt.txt",
+      "sha256": "fe579d2cb4264ef41d952d32b5b63ad059d0e0932e35f1ab8ba82ac0beb534fb",
+      "unchanged": true
+    },
+    {
+      "path": "reproduction/s9_adaptation_specification.json",
+      "sha256": "35f8732d9d0b009cddecf9b3e50a1a9f698525d828957d97e8ff6b2423602593",
+      "unchanged": true
+    },
+    {
+      "path": "reproduction/input_fields.csv",
+      "sha256": "ca26c4a2d860dbb013c7007c1916ec95ddc555bfc6bd84c90a9529bf5b8b45b1",
+      "unchanged": true
+    },
+    {
+      "path": "references.bib",
+      "sha256": "7e5a611171f77ebfe43c4f58db1522c9013233ffd33b6bd50a847b8a42792db9",
+      "unchanged": true
+    }
+  ],
+  "equations": [
+    {
+      "path": "sections/03_methodology.tex",
+      "math_environments": 6,
+      "identical_after_whitespace_normalization": true
+    },
+    {
+      "path": "sections/04_experimental_design.tex",
+      "math_environments": 2,
+      "identical_after_whitespace_normalization": true
+    }
+  ],
+  "numeric_tables": {
+    "existing_table_files_checked": 40,
+    "unchanged_numeric_row_tokens": 39,
+    "documented_exception": [
+      {
+        "file": "table_sg_tasks.tex",
+        "original_numeric_tokens": 65,
+        "revised_numeric_tokens": 60
+      }
+    ],
+    "exception_note": "An unused cost-display row was removed from Table S2; all scored choices, predictions and other existing table-row numbers are unchanged."
+  },
+  "figures": {
+    "figure5_teacher_comparison.svg": {
+      "nontext_vector_elements": 195,
+      "geometry_attributes_unchanged": true
+    },
+    "figure6_source_edited.svg": {
+      "nontext_vector_elements": 222,
+      "geometry_attributes_unchanged": true
+    },
+    "figure2": {
+      "slides": 1,
+      "editable_top_level_shapes": 226,
+      "unique_shape_identifiers": true,
+      "source": "Original supplied PowerPoint template, preserved under figures/template/."
+    }
+  },
+  "build": {
+    "cas-sc-template": {
+      "pages": 17,
+      "critical_issues": [],
+      "nonblocking_notices": [
+        "Package hyperref Warning: Ignoring empty anchor on input line 109.",
+        "Package hyperref Warning: Ignoring empty anchor on input line 109."
+      ],
+      "visual_review": "Every page rendered and reviewed in contact sheets; revised figure PDFs and Figure 2 exported slide additionally inspected at larger scale."
+    },
+    "supplement": {
+      "pages": 22,
+      "critical_issues": [],
+      "nonblocking_notices": [
+        "Package hyperref Warning: Ignoring empty anchor on input line 97.",
+        "Package hyperref Warning: Ignoring empty anchor on input line 97.",
+        "Underfull \\hbox (badness 3039) in paragraph at lines 18--18",
+        "Underfull \\hbox (badness 10000) in paragraph at lines 18--18",
+        "Underfull \\hbox (badness 10000) in paragraph at lines 18--18",
+        "Underfull \\hbox (badness 10000) in paragraph at lines 18--18"
+      ],
+      "visual_review": "Every page rendered and reviewed in contact sheets; revised figure PDFs and Figure 2 exported slide additionally inspected at larger scale."
+    }
+  },
+  "not_performed": [
+    "No additional personas or new survey responses",
+    "No new Teacher requests",
+    "No model retraining or loss alteration",
+    "No respondent-level bootstrap recomputation",
+    "No MATSim executions",
+    "No current upstream-repository or bibliographic metadata re-verification"
+  ]
+}

@@ -1,0 +1,33 @@
+\section{Supporting comparisons and execution interpretation}
+\label{sec:core_tables}
+The following tables retain the exact core comparisons behind the main narrative. Seed standard deviations measure training variability; they are not respondent confidence intervals. The same-task API decomposition uses common respondent resamples and refers to a later Pro service, not a recovered training backend.
+\input{generated/revision20260925/table_response_main.tex}
+\input{generated/revision20260925/table_timing_main.tex}
+\input{generated/revision20260925/table_human_main.tex}
+\input{generated/revision20260925/table_teacher_decomp_s9.tex}
+\input{generated/revision20260925/table_execution_main.tex}
+
+\FloatBarrier
+\subsection{Assignment, routing and completion}
+\label{sec:execution_support}
+The original perceived-delay experiment contains 140 model--condition--assignment configurations, all with the full population retained. Its sampling policies use three paired assignment seeds; this differs from the five-seed four-arm extension. No run encountered zero retained feasible mass. If that mass is zero, the implementation stops rather than silently discarding the traveler. Behavioral predictions are computed once, followed by a departure adjustment, feasibility checks, assignment and routing at the adjusted time.
+
+For SA-Student, the original feasibility-constrained result shifts the PT response by approximately $+0.27$ percentage points during probability adjustment and by $-1.34$ points between adjusted probabilities and boarding. The total gap is about $-1.07$ points. These values describe three assignment seeds and should not be interchanged with the five-seed extension. The new reanalysis averages paired seeds within person before estimating intervals for every stage increment; its full aggregate ledger is supplied with the article data. Signed averages can hide opposing model-level gaps, which is why the supplement also reports absolute gaps after averaging assignment repetitions within each fitted model.
+
+The physical disruption groups scheduled trips by line and ordered stops, retains alternating departures chronologically, and keeps singleton groups. It retains 6,924 of 13,655 trips across 344 groups. The baseline level-of-service reconstruction matches all 1,000 inputs. Every one of the 40 extension configurations passes checks on population size, assignment transformation, common random numbers, supply paths and retained trip identifiers. Each completes all outbound journeys. Completion-conditioned and completion-or-horizon means therefore coincide in these runs, although neither is a calibrated real-world time estimate.
+\subsection{Feasibility correction and response geometry}
+\label{sec:feasibility_geometry}
+For a normalized distribution $\mathbf p$ and feasible set $F$ with mass $Z>0$, conditional renormalization adds mass $1-Z$ within $F$ and removes mass $1-Z$ outside it. Hence $\|\mathbf q-\mathbf p\|_1=2(1-Z)$. Every distribution supported on $F$ must remove all outside mass, and its inside changes have a sum of $1-Z$; the triangle inequality therefore gives the same lower bound. Conditional renormalization attains it, though the $L_1$ minimizer need not be unique.
+
+An endpoint-optimal correction need not preserve a paired response. For a fixed feasible set $F=\{1,2\}$, let baseline probabilities be $(0.4,0.3,0.3)$ and perturbed probabilities $(0.4,0.2,0.4)$. Their corrections are $(4/7,3/7,0)$ and $(2/3,1/3,0)$. The probability of mode 1 is unchanged before correction but increases by $2/21$ afterward. This constructed example proves the distinction without making a claim about its empirical prevalence. The main-text decomposition reports the specified correction separately from subsequent execution; it does not attribute every correction-induced response difference to an unavoidable lower bound.
+\FloatBarrier
+\subsection{Active-mode speed sensitivity in Shanghai}
+\label{sec:speed_sensitivity}
+The Shanghai experiment holds the 321 people, their assigned modes, departure times and plans fixed, and compares active-mode speeds derived from the network links with caps of 1.34 m/s for walking and 4.17 m/s for cycling. The timetable is the same in the baseline and perceived-delay conditions. PT users number 224 at baseline and 134 under delay, and every person completes both journeys.
+
+With network-derived speeds, mean outbound times are 19.68 minutes at baseline and 15.23 minutes under perceived delay. With speed caps, the corresponding means are 33.59 and 47.63 minutes. The paired difference is therefore $-4.44$ minutes ($[-5.06,-3.84]$) under link speeds and $+14.04$ minutes ($[11.18,17.05]$) under speed caps (Figure~\ref{fig:speed_sensitivity}). Delay moves 90 travelers away from PT, and whether this shortens or lengthens the average journey depends on the speeds assumed for walking and cycling. The times are model outputs and have not been compared with observed trip durations.
+\begin{figure}[pos=htbp]
+\centering\includegraphics[width=.57\textwidth]{figures/narrative/figureS_speed_sensitivity.pdf}
+\caption{Sensitivity of Shanghai journey times to the speeds of walking and cycling in the simulation. People, assigned modes, departure times and physical timetables are identical across speed settings. Values are mean durations of completed outbound trips.}
+\label{fig:speed_sensitivity}
+\end{figure}

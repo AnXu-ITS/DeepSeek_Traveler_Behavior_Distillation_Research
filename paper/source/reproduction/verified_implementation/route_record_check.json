@@ -1,0 +1,19 @@
+{
+  "counts": {
+    "runs": 140,
+    "persons": 140000,
+    "zero_mass": 0,
+    "no_mode": 0,
+    "fallback_pt_pt": 0,
+    "fallback_bike_bike": 0,
+    "fallback_walk_walk": 0,
+    "fallback_car_car": 0,
+    "fallback_pt_walk": 2006,
+    "fallback_car_walk": 940
+  },
+  "minimum_route_links": {
+    "outbound_route": 26,
+    "return_route": 26
+  },
+  "short_routes": []
+}
