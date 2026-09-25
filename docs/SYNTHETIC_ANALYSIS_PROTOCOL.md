@@ -17,6 +17,12 @@ The API reference is the actual returned DeepSeek V4.1 Flash model through OpenC
 
 All attempts, including transport failures and invalid content, remain in the acquisition ledger. Usage reported for unsuccessful or invalid responses is included in token totals. Calls without provider usage have unknown usage; quota-equivalent estimates are not invoices or verified account debits. Actual peak/off-peak pricing and cache counts are distinguished from the conservative peak/no-cache reservation.
 
+## Post hoc service-metadata diagnostic
+
+During formal acquisition, monitoring showed that some valid replies reported zero reasoning tokens, a different usage-detail shape and much shorter latency, while request parameters and the returned model name remained unchanged. This diagnostic was recorded after observing infrastructure metadata and before inspecting formal method-comparison outcomes. It is not part of the original confirmatory comparison.
+
+Retain every valid reply and the frozen formal sample. Summarize reported positive/zero/unavailable reasoning tokens, UTC spans and complete-persona groups. Describe the unchanged primary persona contrast within all-positive, all-zero and mixed metadata groups. The grouping is confounded with collection time and persona order: it does not identify a causal reasoning or backend effect, and zero reported reasoning does not prove that the service performed no internal reasoning. Without an immutable backend fingerprint, the new result concerns the realized service mix. Do not claim strict reproduction under one immutable backend.
+
 ## Transport recovery amendment
 
 After the author enabled Global regions, requests returned the requested model, but the initial pilot had repeated `ConnectError` and `RemoteProtocolError` failures. The first acquisition driver is retained with SHA256 `ae6b1dc81dfcf0a418c1b4c48f20bc104177a055b6e13078a1a3cebc668cf48b`. Its active process finishes under its original bounds. Subsequent launches use a persistent HTTP connection pool with eight workers, a 30-second connection timeout, the unchanged 180-second read timeout, and 2/4/8/16-second bounded backoff.

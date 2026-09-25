@@ -104,6 +104,15 @@ def main():
         for r in read_json(DEST/'mnl_selection/extended_sensitivity_summary.json')['rows']:
             if r['subset']=='service_feasible':lines.append(f'| {r["selection"]} | {r["perturbation"]} | {r["n_endpoints"]} | {r["mean_pt_probability_change"]:.6f} | {r["fraction_pt_increases"]:.3f} |')
         lines+=['','接驳扰动同时增加 access 与 total PT time 各 5 分钟，避免只改分量而不改总量。该 MNL 使用无单调约束的共同特征，系数和概率方向不应解释为已识别的经济偏好或时间价值。']
+    if (DEST/'synthetic/service_metadata_diagnostic.json').exists():
+        sm=read_json(DEST/'synthetic/service_metadata_diagnostic.json')
+        lines+=['','## API 服务元数据变化：事后诊断','',
+            '请求模型、温度、提示词、输出上限均未改变，但部分正式响应的 reasoning_tokens 回报为 0，usage 字段结构和延迟也与此前不同。返回模型名保持一致且没有不可变后端指纹。这是返回特征的变化，不能据此断言后台换模型或实际上完全没有内部推理。',
+            '', '| 批次 | 报告的 reasoning | 调用数 | 输出 tokens 中位数 |','|---|---|---:|---:|']
+        for r in sm['call_summary']:lines.append(f'| {r["cohort"]} | {r["regime"]} | {r["n_calls"]} | {r["median_output_tokens"]:.0f} |')
+        lines+=['','按每个人设的全部 36 次有效响应将其分为全 positive、全 zero 或 mixed，主差值的描述性分组如下。','', '| 批次 | 分组 | 人设数 | signed-minus-soft 主差值 |','|---|---|---:|---:|']
+        for r in sm['primary_persona_groups']:lines.append(f'| {r["cohort"]} | {r["regime"]} | {r["n_personas"]} | {r["mean"]:.6f} |')
+        lines+=['','该诊断在查看正式方法比较结果前、观察到服务元数据异常后登记，因此是事后基础设施敏感性分析。没有删样本、改主分析或改样本量。分组与采集时间、人设顺序混杂，不能推导推理模式/服务后端的因果效果。新结果只适用于本次实际服务混合条件，不能称为同一不可变后端下的严格复现；pilot 方差对正式精度的规划也需结合实际区间与服务差异解释。']
     if done:lines+=['','A、B 与 D 已完成；C 按作者要求延期。现在停在写作前，等待作者阅读本报告后决定论文论证范围。']
     (DEST/'EXPERIMENT_REPORT_CN.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     print(json.dumps(read_json(DEST/'stage_status.json')),flush=True)
