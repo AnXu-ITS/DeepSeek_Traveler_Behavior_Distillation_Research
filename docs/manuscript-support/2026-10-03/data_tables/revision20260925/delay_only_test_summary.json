@@ -1,0 +1,58 @@
+[
+  {
+    "variant": "soft_kl",
+    "selection": "static",
+    "n_pairs": 58,
+    "response_gap": 0.0582667301775055
+  },
+  {
+    "variant": "signed_l1",
+    "selection": "static",
+    "n_pairs": 58,
+    "response_gap": 0.06139609520589863
+  },
+  {
+    "variant": "signed_minus_soft",
+    "selection": "static",
+    "paired": {
+      "mean": 0.00312936502839313,
+      "n": 58,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        0.001818854288406808,
+        0.004942290550370889
+      ]
+    }
+  },
+  {
+    "variant": "soft_kl",
+    "selection": "response",
+    "n_pairs": 58,
+    "response_gap": 0.05786694439295153
+  },
+  {
+    "variant": "signed_l1",
+    "selection": "response",
+    "n_pairs": 58,
+    "response_gap": 0.06318837841547108
+  },
+  {
+    "variant": "signed_minus_soft",
+    "selection": "response",
+    "paired": {
+      "mean": 0.0053214340225195365,
+      "n": 58,
+      "n_personas": 6,
+      "bootstrap_unit": "persona, all associated tasks retained",
+      "uncertainty": "conditional on fixed training seeds and existing tasks",
+      "small_cluster_warning": true,
+      "ci": [
+        0.0036211654304440974,
+        0.007149197277125234
+      ]
+    }
+  }
+]

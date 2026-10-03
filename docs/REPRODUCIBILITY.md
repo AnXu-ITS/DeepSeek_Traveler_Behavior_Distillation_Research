@@ -71,3 +71,7 @@ This is a materials assessment, not venue-compliance certification or a claim th
 ## Verify this repository edition
 
 Run `python scripts/check_repository_docs.py` to check Markdown language, local links, code fences and the copied-evidence hashes without changing research outputs.
+
+## Current manuscript additions (3 October 2026)
+
+See the [compact support package](manuscript-support/2026-10-03/README.md) and [extended records R1–R5](manuscript-support/2026-09-30/README.md). The package verifies retained summary arithmetic; it does not rerun model training, respondent analyses, Teacher acquisition or MATSim.

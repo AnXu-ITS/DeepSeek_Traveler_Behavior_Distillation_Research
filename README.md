@@ -1,8 +1,8 @@
 # DeepSeek Traveler Behavior Distillation Research
 
-**Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation**
+**Beyond Static Imitation: Evaluating LLM-Derived Traveler Responses for Transport Simulation**
 
-An Xu, Zekai Jin Chengbo Zhang and Yunfei Yin
+An Xu, Chengbo Zhang, Zekai Jin, Yimin Zhao and Yunfei Yin
 
 This project studies whether a compact traveler model can preserve an LLM Teacher's **response to changing travel conditions**, and whether that response remains useful when compared with stated choices and carried into transport simulation. The Students predict probabilities for car, public transport (PT), bicycle and walking, together with a departure-time adjustment. Behavioral prediction runs locally after training.
 
@@ -17,6 +17,10 @@ This project studies whether a compact traveler model can preserve an LLM Teache
 1. **Teacher fidelity:** Does matching predictions at individual states also preserve changes between paired states? We compare four neural objectives under matched training conditions and an MNL Student with separate departure prediction.
 2. **Agreement with people:** Do model responses agree with stated choices in Singapore and Shanghai? Human responses are held out from fitting and model selection.
 3. **Simulation execution:** How do predicted responses change during mode assignment, route search and MATSim execution? We track probabilities, assigned modes, routed modes and simulated PT boarding separately.
+
+## Current manuscript support
+
+The [versioned support index](docs/manuscript-support/2026-09-30/README.md) provides records R1–R5 and the [3 October compact evidence supplement](docs/manuscript-support/2026-10-03/README.md). The latter includes the 30-persona comparison, response-weight summaries, the 40-run physical-supply ledger, five-seed decomposition and latency table used in the current manuscript. It can be checked offline without API calls. The PDFs under `paper/` remain dated historical snapshots.
 
 ## Main findings
 
@@ -69,7 +73,7 @@ The [main article](paper/cas-sc-template.pdf) and [supplement](paper/supplement.
 | Modular timing fits | [Baseline records](outputs/revision_20260921/baselines) | Separate timing selection and evaluation |
 | Manuscript evidence | [Evidence index](evidence/paper_20260924/README.md) | Published-precision tables, aggregate outputs and file hashes |
 
-The repository is access-controlled as of this update. This revision does not change its visibility or grant new licenses. Raw participant workbooks and participant-linked Teacher payloads are not added. Large MATSim event archives remain retained by the authors; the repository includes run-level results and their analysis code. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
+The repository is publicly accessible (verified 3 October 2026). Public access does not grant a new license. Raw participant workbooks and participant-linked Teacher payloads are not added. Large MATSim event archives remain retained by the authors; the repository includes run-level results and their analysis code. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
 
 ## Quick start: local model inference
 

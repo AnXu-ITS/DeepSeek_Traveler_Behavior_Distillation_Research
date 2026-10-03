@@ -1,0 +1,27 @@
+\begin{table}[pos=htbp]\centering\small
+\caption{Absolute response errors and the prespecified comparison on new personas.}
+\label{tab:primary_results}
+\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}
+\toprule
+\multicolumn{3}{l}{\textit{(a) Absolute response errors (descriptive)}} \\
+Setting and model & Error & 95\% persona interval \\
+\midrule
+Full: soft KL & $0.1129$ & $[0.0909,0.1365]$ \\
+Full: signed response & $0.1097$ & $[0.0886,0.1325]$ \\
+Full: direction+magnitude & $0.1088$ & $[0.0866,0.1326]$ \\
+Full: MNL-S & $0.1052$ & $[0.0796,0.1321]$ \\
+Delay withheld: soft KL & $0.1108$ & $[0.0882,0.1352]$ \\
+Delay withheld: signed response & $0.1117$ & $[0.0890,0.1364]$ \\
+\midrule
+\multicolumn{3}{l}{\textit{(b) Signed-response minus soft-KL error}} \\
+Setting and contrast & Difference & 95\% paired interval \\
+\midrule
+Full: all contrasts (primary) & $-0.0032$ & $[-0.0049,-0.0016]$ \\
+Delay withheld: all contrasts & $+0.0009$ & $[-0.0004,+0.0021]$ \\
+Delay withheld: 8-minute delay & $+0.0053$ & $[+0.0041,+0.0066]$ \\
+Delay withheld: 45-minute delay & $+0.0103$ & $[+0.0081,+0.0127]$ \\
+Delay withheld: fare + delay & $+0.0062$ & $[+0.0027,+0.0098]$ \\
+\bottomrule\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize All entries use the thirty formal personas, one fixed trip and the later DeepSeek V4 Pro reference campaign, with KL-selected fits. Errors and differences are in probability units, not changes in population mode share. Neural errors average training seeds within persona; MNL-S is a single choice fit. Intervals are the retained persona-bootstrap intervals. Only the designated comparison in (b) is primary; all other intervals are descriptive and unadjusted. Marginal intervals in (a) must not be subtracted to infer a paired interval. Full and delay-withheld settings have different data and update counts.
+\end{minipage}\end{table}

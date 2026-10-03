@@ -1,0 +1,19 @@
+% Reported measurements restored from repository record R4; no new benchmark.
+\begin{table}[pos=htbp]
+\centering\small
+\caption{Measured latency for remote Teacher queries and local behavioral prediction.}
+\label{tab:inference_motivation}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}lXr@{}}
+\toprule
+Model and execution & Evaluated inputs & Mean time per state \\
+\midrule
+Teacher API & 87 successful responses from 100 sequential requests & 86.539~s \\
+SA-Student, one CPU thread & The same 100-state input list & 0.272~ms \\
+SA-Student, one CPU thread & Separate 100,000-state inference test & 0.332~ms \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize
+The Teacher mean excludes failed requests; its reported 95\% bootstrap interval is 76.745--96.550~s. The first Student mean covers the full 100-state list, not only the 87 successful Teacher states. Student timings exclude supply preparation. The comparison concerns the recorded remote and local execution settings; larger-population Teacher runtimes were not measured.
+\end{minipage}
+\end{table}

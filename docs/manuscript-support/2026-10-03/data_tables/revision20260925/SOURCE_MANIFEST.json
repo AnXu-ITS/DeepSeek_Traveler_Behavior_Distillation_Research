@@ -1,0 +1,80 @@
+{
+  "experiment_commit": "ba7c5d304b46b46f8f74c451cda2825a3916bf6d",
+  "files": [
+    {
+      "file": "weight_selection_summary.csv",
+      "source": "weight_selection_summary.csv",
+      "sha256": "75a58e69ad22e52d88a35f35e9e646cdb1c703880faec9adec0133e943f7a6e5"
+    },
+    {
+      "file": "controlled_paired_comparisons.json",
+      "source": "controlled/paired_comparisons.json",
+      "sha256": "e72b34973dc9b91074cda320e9b742a57c92c4f21e74c7108cce736e9a780d77"
+    },
+    {
+      "file": "delay_only_test_summary.json",
+      "source": "delay_family/delay_only_test_summary.json",
+      "sha256": "b2f2fd9e14505d5e9662bb0fb79a1991c37d560fdb20c90f719ce891067105ee"
+    },
+    {
+      "file": "formal_paired_contrasts.csv",
+      "source": "synthetic/formal/paired_contrasts.csv",
+      "sha256": "51c822b49c8580748953c22495458e9f869484301aba421acd2533f91d3d2ade"
+    },
+    {
+      "file": "formal_descriptive_summary.csv",
+      "source": "synthetic/formal/descriptive_summary.csv",
+      "sha256": "50f18d50ccc34dd1985eb08f4a2516dc110bbbd871a716f4dc26ba0c989bbc50"
+    },
+    {
+      "file": "formal_analysis.json",
+      "source": "synthetic/formal/analysis.json",
+      "sha256": "d661b16e9d43989062789badb3bb5cd6a8fb9d1dda9b9161fc6b52a49e805de5"
+    },
+    {
+      "file": "service_metadata_diagnostic.json",
+      "source": "synthetic/service_metadata_diagnostic.json",
+      "sha256": "b54a30dcc0a1008104477ebc1a07e1cd8914891522638de30a8e1883c1ab72c8"
+    },
+    {
+      "file": "formal_launch_plan.json",
+      "source": "synthetic/formal_launch_plan.json",
+      "sha256": "31a8fe772b8e8760527f9c465c3b7e57aa7fff87681febe455a6caeb09d1807d"
+    },
+    {
+      "file": "acquisition_protocol.json",
+      "source": "synthetic/acquisition_protocol.json",
+      "sha256": "c6572aab345abaca3a0d8cfc32daa729f68b83646d5bae50655b7960fbc264d3"
+    },
+    {
+      "file": "physical_verified_contrasts.json",
+      "source": "physical_supply/verified_contrasts.json",
+      "sha256": "cc7f3f87c6cc10f70d396dcd91ad6b944750b7bd3082fa0216f9102ad503b336"
+    },
+    {
+      "file": "physical_run_metrics.json",
+      "source": "physical_supply/run_metrics.json",
+      "sha256": "2817459c61a5ba5a093f617960e8a020e8c582b45d1e9d7cae174acfbf24319a"
+    },
+    {
+      "file": "physical_verification.json",
+      "source": "physical_supply/verification.json",
+      "sha256": "b59cf51990f84304adab7b41930a3f454f2f404df8f64a84c71c6a9d37223056"
+    },
+    {
+      "file": "stagewise_summary.json",
+      "source": "audit/stagewise_summary.json",
+      "sha256": "fa26609f242ded81ee290c0e9239ac6eb0cc2231273f73f51fca8da4b86c303b"
+    },
+    {
+      "file": "gradient_summary.json",
+      "source": "audit/gradient_summary.json",
+      "sha256": "281ed11904374fe42e0230ae6d55ebdcce8536febd20d039c939112afeda90fa"
+    },
+    {
+      "file": "repeat_disjoint_summary.json",
+      "source": "audit/repeat_disjoint_summary.json",
+      "sha256": "4d7e172fa639bbba4009077583ee94268876f10717722f4e1e59aaa51f183821"
+    }
+  ]
+}

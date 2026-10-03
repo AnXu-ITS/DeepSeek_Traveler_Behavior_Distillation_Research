@@ -1,0 +1,21 @@
+\begin{table}[pos=htbp]\centering\small
+\caption{Five-seed decomposition of changes from baseline in the physical-supply experiment.}
+\label{tab:five_seed_stages}
+\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrrr@{}}
+\toprule
+Arm & Pred. & Adj. incr. & Assign. incr. & Route incr. & Board incr. & Final & Seed SD \\
+\midrule
+\multicolumn{8}{l}{\textit{SA-Student}} \\
+Perceived delay & $-13.10$ & $0.26$ & $-1.25$ & $0.00$ & $0.00$ & $-14.08$ & $1.03$ \\
+Fewer trips, fixed & $0.00$ & $0.00$ & $0.00$ & $0.00$ & $0.00$ & $0.00$ & $0.00$ \\
+Fewer trips, updated & $-0.60$ & $0.00$ & $-0.04$ & $0.00$ & $0.00$ & $-0.64$ & $0.25$ \\
+\addlinespace
+\multicolumn{8}{l}{\textit{MNL-S + fixed neural timing}} \\
+Perceived delay & $-6.84$ & $0.74$ & $0.00$ & $0.00$ & $0.00$ & $-6.10$ & $1.18$ \\
+Fewer trips, fixed & $0.00$ & $0.00$ & $0.00$ & $0.00$ & $0.00$ & $0.00$ & $0.00$ \\
+Fewer trips, updated & $-1.14$ & $0.00$ & $0.15$ & $0.00$ & $0.00$ & $-1.00$ & $0.21$ \\
+\addlinespace
+\bottomrule\end{tabular*}
+\par\smallskip\begin{minipage}{\linewidth}\footnotesize All entries are percentage points and average the five paired assignment seeds. Pred. and Final are the initial predicted and final boarding responses; incr. denotes an increment between stages. The four intervening columns are increments from feasibility adjustment, sampled assignment, routing and boarding, respectively, as in Eq.~\ref{eq:execution_decomposition}; their sum added to Pred. gives Final, up to rounding. Seed SD is the sample SD of the boarding response across assignment seeds; respondent-bootstrap intervals are reported separately. Both models and the 1,000-person population are fixed.
+\end{minipage}\end{table}

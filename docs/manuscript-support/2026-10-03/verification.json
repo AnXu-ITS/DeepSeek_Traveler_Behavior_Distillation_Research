@@ -1,0 +1,90 @@
+{
+  "scope": "Retained summaries only; no acquisition, training, respondent bootstrap or network rerun.",
+  "personas": 30,
+  "primary_mean": -0.0031991869511047064,
+  "primary_ci95": [
+    -0.004862988833135568,
+    -0.0016221432437107304
+  ],
+  "runs": 40,
+  "stages": [
+    {
+      "model": "independent_neural_seed42",
+      "arm": "frozen_disrupted",
+      "predicted_pp": 0.0,
+      "increments_pp": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "boarding_pp": 0.0,
+      "seed_sd_pp": 0.0
+    },
+    {
+      "model": "independent_neural_seed42",
+      "arm": "perceived_delay",
+      "predicted_pp": -6.839421839976639,
+      "increments_pp": [
+        0.7391806832689305,
+        0.00024115670770896713,
+        0.0,
+        0.0
+      ],
+      "boarding_pp": -6.1,
+      "seed_sd_pp": 1.1789826122551594
+    },
+    {
+      "model": "independent_neural_seed42",
+      "arm": "recomputed_disrupted",
+      "predicted_pp": -1.1430525679967218,
+      "increments_pp": [
+        -0.004963792808526657,
+        0.1480163608052485,
+        0.0,
+        0.0
+      ],
+      "boarding_pp": -1.0,
+      "seed_sd_pp": 0.21213203435596426
+    },
+    {
+      "model": "s9",
+      "arm": "frozen_disrupted",
+      "predicted_pp": -1.2908321078697327e-08,
+      "increments_pp": [
+        1.0117876536597237e-08,
+        2.79044454210009e-09,
+        0.0,
+        0.0
+      ],
+      "boarding_pp": 0.0,
+      "seed_sd_pp": 0.0
+    },
+    {
+      "model": "s9",
+      "arm": "perceived_delay",
+      "predicted_pp": -13.095165478549973,
+      "increments_pp": [
+        0.2648978544526557,
+        -1.2497323759026848,
+        0.0,
+        0.0
+      ],
+      "boarding_pp": -14.080000000000002,
+      "seed_sd_pp": 1.0281050529979898
+    },
+    {
+      "model": "s9",
+      "arm": "recomputed_disrupted",
+      "predicted_pp": -0.5999987795278239,
+      "increments_pp": [
+        -0.003181507655524607,
+        -0.03681971281665153,
+        0.0,
+        0.0
+      ],
+      "boarding_pp": -0.64,
+      "seed_sd_pp": 0.25099800796022265
+    }
+  ]
+}

@@ -38,7 +38,7 @@ Numerical Shanghai durations were researcher-specified encodings: the questionna
 
 ## Access and redistribution
 
-This repository is private at the time of this update; visibility is unchanged. Original code/materials do not acquire a new open-source license through documentation edits. No repository-wide license grant has been added. Third-party assets retain their own terms, including OpenStreetMap attribution and ODbL obligations. The Singapore snapshot's redistribution permission and exact upstream identity should be resolved before a public raw-feed release; this update does not add that archive. Check the applicable timetable-provider and software terms before redistribution.
+This repository is publicly accessible as verified on 3 October 2026. Original code/materials do not acquire a new open-source license through documentation edits. No repository-wide license grant has been added. Third-party assets retain their own terms, including OpenStreetMap attribution and ODbL obligations. The Singapore snapshot's redistribution permission and exact upstream identity should be resolved before a public raw-feed release; this update does not add that archive. Check the applicable timetable-provider and software terms before redistribution.
 
 Included: synthetic controlled targets, selected checkpoints, experiment/statistical code, aggregate survey/Teacher/simulation results, English questionnaires, figures and manuscript snapshots. Retained separately: raw participant workbooks, participant-linked states/predictions/Teacher requests, full event archives and large external supply resources. Supporting-material requests can be made through the corresponding-author contact in the manuscript, subject to participant privacy and third-party terms.
 
