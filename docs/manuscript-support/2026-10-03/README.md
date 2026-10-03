@@ -32,3 +32,7 @@ The existing [experiment source and archive](https://github.com/AnXu-ITS/DeepSee
 The retained acquisition protocol identifies **`deepseek-v4.1-flash` through OpenCode Go**, and `formal_analysis.json` labels this result as agreement with a later Flash reference. It does not identify the new-persona campaign as an official-direct V4 Pro collection. The archived Pro supervision and same-task survey comparison are separate collections. Manuscript or historical support prose describing all three collections as the same Pro service is inconsistent with these retained records and requires correction or replacement evidence. No acquisition record was rewritten during this release.
 
 R1–R5 contain preserved LaTeX excerpts with historical numbering and availability wording. The current manuscript places the four additional diagnostics in Supplementary Section S6. Public availability of this repository does not release participant workbooks, participant-linked model requests, full event archives or third-party assets under a new license.
+
+## Author declarations
+
+The [current declarations](DECLARATIONS.md) contain the author-supplied CRediT and ethics statements, HIT-specific funding, competing interests and AI disclosure limited to Figure 1 for figure preparation. Historical acquisition protocols remain unchanged.

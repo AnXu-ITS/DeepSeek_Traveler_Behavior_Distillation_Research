@@ -10,13 +10,15 @@ This project studies whether a compact traveler model can preserve an LLM Teache
 
 ![Figure 1. Research direction: preserving responses for the same traveler and the same trip.](docs/assets/figure1.png)
 
-*Figure 1 from the current manuscript. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Download the original PDF](docs/assets/figure1.pdf).*
+*Figure 1 from the current manuscript. OpenAI ChatGPT was used to assist with the preparation of Figure 1. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Download the original PDF](docs/assets/figure1.pdf).*
 
 ## Research questions
 
 1. **Teacher fidelity:** Does matching predictions at individual states also preserve changes between paired states? We compare four neural objectives under matched training conditions and an MNL Student with separate departure prediction.
 2. **Agreement with people:** Do model responses agree with stated choices in Singapore and Shanghai? Human responses are held out from fitting and model selection.
 3. **Simulation execution:** How do predicted responses change during mode assignment, route search and MATSim execution? We track probabilities, assigned modes, routed modes and simulated PT boarding separately.
+
+[Current author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md)
 
 ## Current manuscript support
 
