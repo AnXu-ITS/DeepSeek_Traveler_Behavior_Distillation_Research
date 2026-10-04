@@ -18,3 +18,9 @@ configs/survey_alignment.yaml -text
 
 outputs/reviewer_closure_20260920/baseline/** -text
 cvpr_workspace/analysis/statistics/** -text
+
+# Keep archived source bytes identical to the historical evidence inventory.
+archive/development_history/author_workflows/** -text
+
+# Preserve the original bilingual survey input template.
+docs/plans/shanghai_survey_v2/participant_sections.source.txt -text

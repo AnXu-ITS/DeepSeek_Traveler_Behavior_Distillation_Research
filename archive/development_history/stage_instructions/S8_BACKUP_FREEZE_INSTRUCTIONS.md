@@ -2,11 +2,11 @@
 
 This procedure describes packaging the first supply-aware checkpoint and its feature extension, provenance and gates. The data were later found to use incorrect active-mode speeds, so the S8 experiment is deprecated. The original tag remains an audit record. New applications should use the corrected S9 model and current guide rather than rerun these historical instructions against frozen output paths.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S8_BACKUP_FREEZE_INSTRUCTIONS.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S8_BACKUP_FREEZE_INSTRUCTIONS.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Retained English technical listings
+## Supply-aware release layout and freeze requirements
 
 ```text
 releases/

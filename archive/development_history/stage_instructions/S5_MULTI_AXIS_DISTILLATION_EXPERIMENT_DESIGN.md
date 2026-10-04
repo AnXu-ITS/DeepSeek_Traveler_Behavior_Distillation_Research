@@ -2,11 +2,11 @@
 
 S5 extends single-context supervision to joint perturbations and tests whether probability responses combine as the Teacher predicts. It distinguishes seen joint combinations from held-out combinations and evaluates both endpoint fidelity and interaction behavior. This historical stage contributes supervision sources to the later controlled benchmark, but its own training recipe and comparisons differ from that matched experiment.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S5_MULTI_AXIS_DISTILLATION_EXPERIMENT_DESIGN.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S5_MULTI_AXIS_DISTILLATION_EXPERIMENT_DESIGN.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Retained English technical listings
+## Joint-context sampling, schema and artifact layout
 
 ```text
 rain ∈ {0, 1}

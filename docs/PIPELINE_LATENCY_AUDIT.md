@@ -2,11 +2,11 @@
 
 The implemented deployment chain performs Student inference in Python before MATSim starts and hands off plans as files. It does not make per-decision Python/Java service calls during the reported fixed-plan simulation. The audit separates process setup, supply/feature construction, Student inference, plan construction, simulation and event parsing. Reusing unchanged supply calculations can save much more time than optimizing an already compact model. Cold, warm and model-only timings use different denominators; historical successful-request Teacher timings do not include all retry and training costs.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/PIPELINE_LATENCY_AUDIT.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/PIPELINE_LATENCY_AUDIT.md).
 
 [Current research](<RESEARCH_DESIGN.md>) · [Training](<TRAINING.md>) · [Results](<RESULTS.md>) · [Data and access](<DATA_SOURCES.md>) · [Model use](<MODEL_USE.md>)
 
-## Historical numerical table 1
+## Student inference latency by batch size
 
 | batch | ms/state | decisions/s |
 |---|---|---|
@@ -16,7 +16,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | **256(best)** | **0.051** | **19,489** |
 | 1024 | 0.059 | 16,904 |
 
-## Historical numerical table 2
+## Cold and cached feature-construction latency
 
 |path| ms/state |relative to cold path|
 |---|---|---|
@@ -24,7 +24,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | cold first-pass feature construction(accessibility + alt routing, unique OD) | 100.9 | 1× |
 | **disk cache hit + memoization(second scenario/second run, same as OD)** | **0.046**(including disk loading 0.01s/1000 records) | **2,478× faster than accessibility recomputation; 2,200× faster than cold first pass** |
 
-## Historical numerical table 3
+## Measured and projected runtime by population size
 
 |population size| pure Student inference(batches 256) |current end-to-end construction| optimized end-to-end construction(cache+batch processing) |
 |---|---|---|---|

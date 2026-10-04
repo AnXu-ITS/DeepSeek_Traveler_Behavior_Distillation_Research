@@ -2,11 +2,11 @@
 
 This early experiment samples heterogeneous synthetic travelers, maps their attributes to the Student state schema and constructs simulation demand. It is a development-stage population/adapter check. Its synthetic network and mode representation differ from the later real-geometry supply experiments and current Helsinki response-preservation study.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/PHASE9_population_report.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/PHASE9_population_report.md).
 
 [Current research](<../docs/RESEARCH_DESIGN.md>) · [Training](<../docs/TRAINING.md>) · [Results](<../docs/RESULTS.md>) · [Data and access](<../docs/DATA_SOURCES.md>) · [Model use](<../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Student and executed mode shares by scenario
 
 |scenario| bike | car | pt | walk |
 |---|---|---|---|---|
@@ -19,7 +19,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | combined (student) | 0.000 | 0.396 | 0.554 | 0.050 |
 | combined (executed) | 0.000 | 0.396 | 0.554 | 0.050 |
 
-## Historical numerical table 2
+## Scenario mode-share changes from baseline
 
 |scenario| bike | car | pt | walk |
 |---|---|---|---|---|
@@ -27,7 +27,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | fare_surge | -2.5pp | +7.0pp | -4.3pp | -0.2pp |
 | combined | -19.2pp | +15.0pp | +5.4pp | -1.2pp |
 
-## Historical numerical table 3
+## Average leg and trip durations by scenario
 
 |scenario| avg leg | avg trip |
 |---|---|---|
@@ -36,7 +36,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | fare_surge | 5520.8 | 9010.0 |
 | combined | 4999.6 | 8959.2 |
 
-## Retained English technical listings
+## Population-scenario experiment command
 
 ```powershell
 .venv\Scripts\python.exe scripts\run_population_experiment.py --checkpoint outputs/student_v0_3_c/checkpoints/best.pt --num-personas 1000 --trips-per-persona 2 --scenarios baseline,rain,fare_surge,combined --output data/population_experiment

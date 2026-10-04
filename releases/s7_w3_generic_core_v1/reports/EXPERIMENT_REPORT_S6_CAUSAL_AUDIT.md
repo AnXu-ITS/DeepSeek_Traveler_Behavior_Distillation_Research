@@ -2,11 +2,11 @@
 
 S6 compares natural perturbations with states that change context labels, numerical travel attributes or both. These comparisons test what information Teacher and Student responses follow, and whether distillation preserves the observed mechanism. The contrasts are diagnostic model experiments; they are not field estimates of causal effects. Mechanism states later contribute a separate source to the controlled response benchmark.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/releases/s7_w3_generic_core_v1/reports/EXPERIMENT_REPORT_S6_CAUSAL_AUDIT.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Natural, broken-path and mediator-only response magnitudes and ratios
 
 | axis | model | E_natural | E_broken | E_mediator | R_shortcut | R_mediator |
 |---|---|---:|---:|---:|---:|---:|
@@ -20,7 +20,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | parking_cost | C0_preS5 | 0.4591 | 0.4717 | 0.0226 | 1.0309 | 0.0525 |
 | parking_cost | C1_S5 | 0.4535 | 0.4642 | 0.0236 | 1.0197 | 0.0588 |
 
-## Historical numerical table 2
+## Mode-probability changes under mechanism interventions
 
 | axis | model | ΔP natural | ΔP broken | ΔP mediator |
 |---|---|---:|---:|---:|
