@@ -102,7 +102,7 @@ Historical source directories retain their original names. The [documentation hi
 
 ## Data access, ethics and citation
 
-This repository is public. Public access does not grant a new license; third-party terms still apply. The current tree excludes the raw participant workbook removed on 4 October 2026. Historical Git revisions were not rewritten. Participant-linked inputs and full event archives require separate privacy-aware access; aggregate evidence and synthetic benchmark materials support the tasks described in the reproduction guide. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
+This repository is public. Public access does not grant a new license; third-party terms still apply. The current release provides synthetic benchmark materials and aggregate evidence. Raw participant workbooks and participant-linked inputs are excluded from this release. Full event archives and restricted supporting materials require separate privacy-aware access. The reproduction guide describes the tasks supported by the included materials. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
 
 The surveys were administered anonymously with electronic consent. The study was conducted without a formal institutional ethics review or exemption determination. The [author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md) also document funding, competing interests, contributions and ChatGPT assistance with language editing and Figure 1.
 
