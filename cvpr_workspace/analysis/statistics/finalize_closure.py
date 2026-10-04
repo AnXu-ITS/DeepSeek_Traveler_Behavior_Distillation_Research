@@ -1,72 +1,23 @@
-"""Produce reviewable result tables, statistics contract and Chinese closeout."""
-from reviewer_closure import *
+"""Retired author-workspace closure entry point.
+
+The historical implementation is retained under
+archive/development_history/author_workflows/cvpr_workspace/analysis/statistics/.
+It required validation tools, tests and manuscript files outside this release.
+"""
+import sys
+
+
 def main():
- assert read(OUT/'verification.json')['status']=='PASS'
- matched=read(OUT/'matched/means_and_training_seed_sd.json');mnl=read(OUT/'baseline/metrics.json');fvr=read(OUT/'fvr/analysis.json');network=read(OUT/'network_survey/scores.json');choice=read(OUT/'choice_set_sensitivity/scores.json');subgroups=read(OUT/'choice_set_sensitivity/subgroups.json');policies=read(OUT/'execution/policy_aggregates.json');historical=read(OUT/'historical/three_city_execution.json');contrast=read(OUT/'survey/network_s9.json')['contrasts']
- table=[]
- for v in VARIANTS:
-  m=matched[v];table.append(dict(model=v,training_seeds=3,macro_source_kl=m['macro_source_kl']['mean'],response_gap=m['response_gap']['mean'],interaction_error=m['interaction_error']['mean'],fvr=m['fvr']['mean'],departure_mae=m['departure_mae']['mean'],departure_median=m['departure_median']['mean'],departure_p90=m['departure_p90']['mean'],response_training_seed_sd=m['response_gap']['sd']))
- p=jl(OUT/'baseline/predictions.jsonl');table.append(dict(model='supply_mnl',training_seeds='deterministic convex fit',macro_source_kl=mnl['state']['macro_source_kl'],response_gap=mnl['response']['response_gap'],interaction_error=mnl['interaction']['error'],fvr=mnl['state']['fvr'],departure_mae=mnl['state']['departure_mae'],departure_median=float(np.median([r['departure_mae'] for r in p])),departure_p90=mnl['state']['departure_p90'],response_training_seed_sd=None))
- csvout(OUT/'main_comparison.csv',table)
- execution=read(OUT/'execution/summary.json');sources=read(OUT/'protocol.json')['source_sha256']
- write(OUT/'execution_decisions.json',dict(
-  original_protocol='protocol.json',completed=['Statistical repair and eight contrasts','Four-candidate supply-feature-matched linear choice baseline selected on validation only','Frozen FVR paired audit and full metric references','48 Shanghai model/selection/mask executions','12 original Singapore/Helsinki scenario raw-event audits','Model/split/survey fact inventories'],
-  extensions=[dict(name='All 12 matched checkpoints on network survey inputs',reason='Ensure common-supply human comparison for every retained neural seed; no refitting or selection'),dict(name='Car-or-taxi choice-set stress test',reason='Reviewer identified ownership mask mismatch; all 14 models retained, no best-case encoding selection')],
-  deferred_by_scientific_scope=[dict(item='New Teacher-human-Student labels',reason='Do not retain causal attribution to Teacher nationality or city preference; no new paid API calls performed'),dict(item='G full historical-recipe retraining and D/E component ablations',reason='No full-pipeline or separate-component necessity claim; existing controlled A/B/C/F and stronger linear baseline are sufficient to reject universal superiority'),dict(item='Fresh blind Teacher-labelled benchmark',reason='Current historical test is explicitly marked reused; cannot manufacture independence by reshuffling observed data'),dict(item='More cities, mass population reruns, equilibrium calibration',reason='Not required for bounded supply-conditioned execution claim')],
-  resolved_engineering_issues=['Installed scipy 1.16.3 after default index download stalled; existing NumPy retained','Initialized preflight fallback counters required by production adapter','Parsed workbook row counts without relying on missing dimension metadata','Archived failed external DTD reads and retried identical MATSim inputs; failed logs retained'],
-  departure_head_difference='Ridge baseline is unbounded, S9 uses +-60 min tanh. Retained native outputs; execution compares complete policies, not only mode heads. Some baseline network shifts exceed 60 min; inspect saved rows.',
-  not_claimed_complete=['Ethics/recruitment/incentives facts unavailable from retained files','Manuscript revision and final submission build','Calibrated taxi mode or observed respondent OD']))
- report=[]
- def add(s):report.append(s)
- add('# AIT 审稿补实验收尾报告\n\n日期：2026-09-20。所有数值来自本轮本地执行及原始产物复算。原始问卷、冻结 S7/S9、既有预测和仿真结果未覆盖；只修复了两个旧评分脚本，原脚本副本另存。')
- add('## 一、结论\n\n本轮设计的实验与核验已完成，但结果要求调整论文主张。冻结 S9 可以继续用于明确输入语义、选择集和供给条件下的行为代理与仿真探索；现有证据不支持“普遍优于参数化选择模型”，也不足以把上海问卷总体准确率作为无条件的真实行为预测能力。没有证据要求立即全面重训 S9。最先需要解决的是选择集语义和论证范围。')
- add('三个关键发现：供给信息匹配的线性选择基线在响应误差上优于现有 matched 神经模型；上海高准确率对汽车可用性规则非常敏感；原 FVR 改善是真实的 4/12→1/12，但旧显著性推断不稳健。')
- add('## 二、实际完成量\n\n- 39 组原上海评分复核；117 个有缺失卡片的区间修正，原点估计不变。另用 10,000 次有效受访者重采样完成 40 组输入/模型编码的 320 个响应对比。\n- 12 次 matched 训练重新进行哈希、曝光、选模、逐样本指标及配对区间审计，PASS；补齐全指标、训练 seed 标准差及中位 departure 误差。\n- 4 个正则强度的线性选择基线全部收敛；另有 4 个 departure ridge 候选，均仅由验证集选择。\n- 14 个模型在相同上海路网问卷输入上评分，并完成 14 个模型的 drive-or-taxi 可用模式敏感性。\n- 新增 48 次 MATSim：2 模型 × 3 场景 × 2 掩码 ×（1 次 argmax + 3 个采样 seed）；共 15,408 人次去程及 15,408 人次回程逐人验证。\n- 重新流式读取新加坡/Helsinki 原 12 个正式场景事件，与上海 10 场景合成 22 行统一分母账本。\n- 核对 31 个历史 checkpoint、23 个 split 清单及四份历史数据哈希；保存调查事实表，未知项明确标记。')
- add('## 三、公平基线改变了结论\n\n基线为 MNL 型线性 softmax 选择模型：使用同一个 train-fitted extractor 的类别 one-hot、全部全局数值、四个备选方式的供给字段和可用性；111 维输入、444 个方式系数。使用相同 1,839 个训练端点及每轮 3,362 次监督曝光对应的权重。正则网格 0.0001/0.001/0.01/0.1 事前写入本轮协议，由验证集 macro-source KL 选定 0.0001。没有响应损失。它与神经网络优化方法、参数量和更新预算不同，因此这是信息匹配的模型族比较，不是 loss 单因素消融。')
- add('| 模型 | macro KL↓ | response gap↓ | interaction↓ | FVR↓ | departure MAE（min）↓ |\n|---|---:|---:|---:|---:|---:|')
- for r in table:add(f"| {r['model']} | {r['macro_source_kl']:.6f} | {r['response_gap']:.6f} | {r['interaction_error']:.6f} | {r['fvr']:.4f} | {r['departure_mae']:.3f} |")
- diff=read(OUT/'baseline/paired_mnl_minus_neural.json')['direction_magnitude']['response_gap']
- add(f"神经模型行为指标为三个训练 seed 的均值；线性基线是确定性的凸优化结果。线性基线相对 direction+magnitude 的响应误差差值为 {diff['mean']:.6f}，persona-cluster 95% CI [{diff['ci'][0]:.6f}, {diff['ci'][1]:.6f}]，相对下降约 {100*(1-mnl['response']['response_gap']/matched['direction_magnitude']['response_gap']['mean']):.2f}%。其 departure 误差较差，应保留这种取舍。仅六个测试 persona，区间对固定 seed 和历史任务条件化；这些模型比较是探索性分析，不能宣称广泛总体的最终排名。")
- add('允许保留的结论：在相同神经架构和训练安排内，response supervision 相比 soft KL 有平均改善；direction+magnitude 相比 signed L1 的独特优势仍未建立。必须撤去“复杂损失天然更优”或“普遍胜过传统选择模型”的表述。冻结 S9 的 437 端点结果另列 `frozen_reference/`，不混入上述中性起点消融。')
- add('## 四、上海：供给改善存在，但选择集是更大的限制\n\n原口径下，路网输入的冻结 S9 准确率为 83.31%、NLL 0.4752；线性基线为 80.94%、NLL 0.4855。S9 的准确率较高，但两者 NLL/Brier 的配对区间均包含零，不能写成所有对齐指标全面胜出。12 个 matched checkpoint 的全部路网结果均已保留，未挑最佳 seed。')
- add(f"问卷实际选项是“自己开车或打车”，本地题面显示逻辑没有按有车/驾照隐藏该选项。旧适配器却将 car 限制为有车且有驾照。允许所有受访者选择 car、其余输入保持相同时，S9 准确率变为 **{choice['s9']['accuracy']*100:.2f}%**，线性基线为 **{choice['supply_mnl']['accuracy']*100:.2f}%**。这不是新的‘真实准确率’：该诊断未建立独立 taxi 模式、候车时间或可靠车费，而且部分状态可能超出训练支持范围。它证明 83.31% 对选择集假设高度依赖，不能仅凭加入路网后数值改善就宣布真实行为验证通过。")
- own=subgroups['s9']['original_car_offered']['original_mask'];no=subgroups['s9']['original_car_masked']['original_mask']
- add(f"分层结果也支持这一点：原本提供 car 的 {own['n_respondents']} 人、{own['n_scored']} 个有效选择中，S9 准确率 {own['accuracy']*100:.2f}%；原本屏蔽 car 的 {no['n_respondents']} 人中，S9 准确率 {no['accuracy']*100:.2f}%，而 always-PT 已达到 {no['human_pt']*100:.2f}%。后一个分层的高准确率主要处于 PT 占比很高的选择集，不能单独证明细致响应已学会。")
- add('八个预设对比采用同一受访者内完整配对，以下为 PT 响应，parking/road 则为 car 响应；单位为百分点。差值区间同时保存普通 95% 与每模型八对比的 Bonferroni 99.375% 区间。固定任务顺序、假设 OD 和补值的不确定性不在这些区间中。')
- add('| 对比 | n | 人类变化 | S9变化 | S9−人类 95% CI |\n|---|---:|---:|---:|---:|')
- for k,r in contrast.items():
-  d=r['model_minus_human'];add(f"| {k} | {d['n']} | {100*r['human']['mean']:+.2f} | {100*r['model']['mean']:+.2f} | [{100*d['ci95'][0]:+.2f}, {100*d['ci95'][1]:+.2f}] |")
- add('票价、延误和便利性对比仍存在误差；不能写“十任务全部方向正确”。人类问卷的真实性沿用用户明确确认的“真实受访者独立作答，未按填写方案引导”，以上发现不构成数据真实性指控。')
- add('## 五、原 FVR 已定量闭环\n\n真实配对为 3 个纠正、0 个新增违规：S7 4/12，S9 1/12。保留旧脚本的共享 RNG 消耗顺序后，准确复现旧区间 [−0.5000, −0.0833]；因此不能简单指责原程序算错。精确 IID 配对 bootstrap 为 [−0.5000, 0]，双侧精确 McNemar p=0.25；按六个 persona 重抽样为 [−0.5833, 0]。应保留描述性改善，删除稳健显著改善的表述。McNemar 的独立性假设也受设计状态相关影响，不能用它替代人口层面的检验。')
- add('## 六、执行规则与 departure\n\n48 次新增执行全部完成去程和回程，无 stuck、无未匹配 leg、无路由与实际去程方式不一致。原 S9 argmax 的三个场景复现既有选择数量。采样采用同受访者/seed 的共同均匀数，比较不会偷偷换人或换随机数；三个采样 seed 不是训练 seed，也不是置信区间。')
- add('| 模型/策略/掩码 | B0 实际PT | D1 实际PT | A_TRANSFER实际PT |\n|---|---:|---:|---:|')
- for name,r in policies.items():add('| '+name+' | '+' | '.join(f"{r['cards'][c]['executed_pt_share_mean']*100:.2f}%" for c in ['B0','D1','A_TRANSFER'])+' |')
- add('硬掩码检查的是模型调整出发时刻下的去程路由可行性，不保证回程可行，也不改变原始偏好概率。返程 fallback 单列保留。上海基准 PT 对所有人可达，因此该地的硬掩码主要触及少数汽车路由问题，不能外推为 PT 不可达城市中的一般结论。固定物理路网和合成时刻表没有随题卡实体封路或减班，故仍是条件化需求执行。')
- timing=list(csv.DictReader((OUT/'execution/departure_timing.csv').open(encoding='utf-8-sig')))
- add('| 模型/场景 | 平均绝对departure调整（min） | PT路由发生变化人数 | 调整前/后PT fallback |\n|---|---:|---:|---:|')
- for r in timing:add(f"| {r['run']} | {float(r['shift_mae_from_requested']):.3f} | {r['pt_route_changed']} | {r['pt_requested_fallback']}/{r['pt_adjusted_fallback']} |")
- add('供给特征在 requested departure 构建，实际路由在 adjusted departure 计算；逐人两个时刻及路由签名均已记录。S9 的 departure head 限于 ±60 min，而线性 ridge head 未截断，部分上海预测超过60 min；本轮保留各自原生输出，因此两模型执行比较包含 departure head 差异，不声称纯方式决策的因果差异。问卷没有 departure 真值，所有 departure MAE 均相对 Teacher，不称为人类时间预测误差。')
- add('## 七、三城统一分母\n\n下表仅展示基准，完整 22 场景见 `historical/three_city_execution.csv`。实际 PT 是去程观察到上车的个体，完成数独立按目的活动到达统计；legs、boardings 和人不是同一分母。')
- add('| 城市 | 人数 | PT意图 | 路由PT | 实际PT | 去程完成人数 | 回程完成人数 |\n|---|---:|---:|---:|---:|---:|---:|')
- for r in historical:
-  if r['scenario'] in ['C0_baseline','B0']:add(f"| {r['city']} | {r['n_decision_people']} | {r['intended_pt']} | {r['routed_outbound_pt']} | {r['observed_outbound_pt']} | {r['outbound_completed_people']} | {r['return_completed_people']} |")
- add('Helsinki 的75.9%是PT意图到路由PT的保留比例，基准实际往返完成率为99.99%；两者不能互换。Singapore 基准有9741人完成去程、9062人完成回程，不能用退出码0声称所有旅程成功。旧 Singapore/Helsinki 没有保留完整概率账本，该栏明确为空，不用新推理冒充历史概率。')
- add('## 八、验收与仍需真实记录支持的事项\n\n`verification.json` 的全部检查 PASS；9 项针对缺失重采样、配对、共同随机数和上海映射的测试通过。原上海80个冻结执行文件哈希一致；四份历史数据哈希一致。所有运行与失败日志均保留，未删除不利模型或不利 seed。统计合同另通过 `validate_statistics_manifest.py` 验证。')
- add('本轮能够自主完成的技术实验已经收尾。以下不是可以靠运行代码补造的事实：招募方式、激励、伦理审批/豁免依据，以及未实际采集的真实 OD、出租车价格和 departure 标签。调查时间从原始工作簿提取，见 `provenance/survey_files.json`。历史 test 曾反复用于研发观察，因此只称“复用历史 benchmark”，不声称新盲测；当前数据/特征/训练划分审计未发现跨 split 混入，不能把研发访问与直接训练泄漏混为一谈。')
- add('未追加 Teacher 三方标签、完整G重训和D/E消融，是因为本轮不保留 Teacher国别/城市偏好归因、完整配方因果贡献或双组件分别必要的主张；不是将这些项目伪记为完成。论文正文、引用和投稿包本轮没有改写，尚需按本报告重写并重新编译。')
- add('## 九、下一步建议\n\n1. 以“受控神经蒸馏的性能取舍、供给和选择集条件下的外部对齐、可审计的路网执行”重写方法和结果，同时把新线性基线放正文；保留新加坡负面结果。\n2. 上海问卷主结果明确限定原选择集规则，加入 drive-or-taxi 敏感性；不能把83.31%当作已解决语义差异后的预测指标。若要正式标榜真实出行方式预测，先明确 drive/taxi 的独立可用性、成本和时间编码，并补独立验证资料。\n3. 继续使用冻结S9做适用条件明确的模拟代理；真实城市份额、政策效应和个体建议需要人类数据校准及独立留出。仅在修复输入语义后仍有明确压缩误差时，考虑局部再蒸馏；本轮结果不支持直接全面重训。')
- add('## 产物入口与复现\n\n- `outputs/reviewer_closure_20260920/protocol.json`：冻结设计、输入哈希、候选规则。\n- `main_comparison.csv`、`matched/all_seeds.csv`：主对照及全seed指标。\n- `baseline/`：四候选、选择记录、线性参数、原始预测和配对比较。\n- `survey_corrected_full/`：39组旧统计修正版；`survey/contrasts.csv`：320个响应对比。\n- `network_survey/`、`choice_set_sensitivity/`：全部模型人类对齐及语义敏感性。\n- `fvr/`、`frozen_reference/`：真实配对、精确复核及完整冻结模型参考。\n- `execution/ledger.csv`、`execution/departure_timing.csv`：48次执行与时刻依赖。\n- `historical/three_city_execution.csv`、`provenance/`：三城账本和历史/调查事实。\n- `verification.json`、`artifact_manifest.json`：最终验收和产物哈希。\n- 稳定代码：`cvpr_workspace/analysis/statistics/`；执行次序见其中 `REPRODUCE.md`。')
- text=''
- for part in report:
-  separator='\n' if text.rstrip().endswith('|') and part.startswith('|') else '\n\n'
-  text+=separator+part if text else part
- text+='\n';(OUT/'REPORT.md').write_text(text,encoding='utf-8');(ROOT/'docs/AIT_REVIEW_CLOSURE_20260920.md').write_text(text,encoding='utf-8')
- ids=[p.stem for p in (ROOT/'outputs/shanghai_sp_v1/predictions').glob('*.jsonl')]+[f'matched_{v}_{s}' for v,s in itertools.product(VARIANTS,SEEDS)]+[r['run'] for r in execution]+['supply_mnl','frozen_s7','frozen_s9']+[f"historical_{r['city']}_{r['scenario']}" for r in historical]+[f'network_{k}' for k in network]+[f'choice_set_{k}' for k in choice]
- code='cvpr_workspace/analysis/statistics/reviewer_closure.py';prefix='outputs/reviewer_closure_20260920/'
- metrics=[dict(id=k,name=k,calculation=v,unit=u,direction=d,aggregation=a,source_refs=[prefix+p]) for k,v,u,d,a,p in [
- ('response','Mean absolute difference of teacher and student paired probability changes on union availability mask','probability','lower','pair-weighted; persona-cluster bootstrap','baseline/pairs.jsonl'),('fidelity','KL(Teacher||Student), equal-source macro average','nats','lower','endpoint then source','main_comparison.csv'),('departure','MAE, median and P90 of model minus Teacher departure','minutes','lower','endpoint','matched/all_seeds.csv'),('human','Accuracy, NLL, Brier and PT probability gap','mixed specified per field','contextual','choice point estimate; equal respondent clustered intervals','network_survey/scores.csv'),('contrast','Within-person weighted card differences, model minus human','probability','contextual','complete respondent pairs, eight contrasts per model','survey/contrasts.csv'),('fvr','Argmax PT on designed infeasible states','fraction','lower','12 paired states, six personas','fvr/analysis.json'),('execution','Intention, routed mode, observed boarding mode, activity arrivals, legs, boardings','counts with explicit denominators','contextual','scenario/person/journey','execution/ledger.csv')]]
- methods=[dict(id='metric_specific',applies_to_metric_ids=[m['id'] for m in metrics],method='Deterministic recomputation; paired respondent/persona bootstrap; exact McNemar and multinomial bootstrap enumeration for FVR; seed SD separate from resampling',rationale='Preserve dependency and denominators',assumptions=['Respondents sampled independently; fixed questionnaire order limits interpretation','Only six synthetic test personas; conditional small-cluster sensitivity','Observed historical benchmark, no fresh blind-test claim'],uncertainty='10000 resamples seed917; original corrected score files retain 2000 draws; three policy sampling seeds described by SD only',effect_size='Raw paired differences and absolute metrics, no p-only reporting',multiplicity_control='Bonferroni 99.375% per eight survey contrasts within each model; other comparisons exploratory, nominal 95% intervals, no universal ranking inference',implementation_ref=code)]
- manifest=dict(schema_version='1.0',analysis_id='ait_reviewer_closure_20260920',version=1,status='executed',mode='audit_recompute',purpose='Review closure statistics and same-information baseline, with bounded exploratory inference',source_snapshot_ref=prefix+'protocol.json',input_run_ids=ids,included_run_ids=ids,excluded_runs=[],experimental_unit=dict(name='Respondent for survey; persona for synthetic paired inference; person/journey for execution',definition='All observations within each declared unit retained together',independence_basis='No independence assumption between cards, legs, endpoints sharing persona, or training/policy seeds'),grouping_factors=['model','training seed','policy sampling seed','city','scenario','choice set'],metrics=metrics,statistical_methods=methods,data_integrity=dict(raw_immutable=True,missing_policy='Complete paired respondents per contrast; original primary choice rule; no imputation',outlier_policy='No outlier exclusions',selection_policy='Baseline validation macro KL only; all candidates and all neural seeds reported',checks=list(read(OUT/'verification.json')['checks']),evidence_refs=[prefix+'verification.json']),outputs=[dict(id=m['id'],kind='result_table' if m['source_refs'][0].endswith('.csv') else 'structured_data',path=m['source_refs'][0],format=Path(m['source_refs'][0]).suffix.lstrip('.'),source_metric_ids=[m['id']],evidence_refs=[prefix+'verification.json']) for m in metrics],provenance=dict(analysis_code_refs=[code],config_refs=[prefix+'protocol.json'],environment_refs=[prefix+'verification.json'],generated_at=datetime.datetime.now(datetime.timezone.utc).isoformat(),evidence_refs=[prefix+'verification.json']),supersedes=None)
- write(ROOT/'cvpr_workspace/result_package/statistics/ait_reviewer_closure_20260920/statistics.yaml',manifest)
- print('Chinese report and statistics contract generated',flush=True)
-if __name__=='__main__':main()
+    print(
+        "This historical closure entry point is retired: its complete validation "
+        "environment is not included in this release. No results were generated "
+        "or validated. See cvpr_workspace/analysis/statistics/REPRODUCE.md and "
+        "docs/REPRODUCIBILITY.md. For the supported read-only repository check, "
+        "run: python scripts/check_repository_docs.py",
+        file=sys.stderr,
+    )
+    return 2
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

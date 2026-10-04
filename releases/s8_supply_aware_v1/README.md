@@ -1,10 +1,16 @@
 # S8 — Supply-Aware Traveler Agent v1.0 (FROZEN)
 
 Frozen release of the S8 student checkpoint (real-supply transit accessibility
-adaptation, Case B schema evolution, stop rule met). This directory is
-**read-only by policy**: never modify, overwrite, or save training/Phase C
-outputs into it. See `FINAL_S8_FREEZE.md` for the freeze record, claims
-boundaries, and the Phase C guard.
+adaptation, Case B schema evolution, stop rule met). S8 is deprecated; see the
+[current deprecation record](../../docs/S8_DEPRECATION.md). Its checkpoint,
+configuration, normalization and numerical artifacts remain frozen. Do not
+overwrite them or save training/Phase C outputs here. See `FINAL_S8_FREEZE.md`
+for the historical freeze record, claims boundaries and Phase C guard.
+
+Markdown documentation on the current branch has editorial updates. The
+full-package checksums apply to the [original tagged package](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/tree/s8-supply-aware-v1.0/releases/s8_supply_aware_v1).
+Model and numerical artifact bytes are unchanged; see the
+[documentation boundary](../../docs/DOCUMENTATION_HISTORY.md#maintained-documentation-and-source-boundaries).
 
 ## Contents
 

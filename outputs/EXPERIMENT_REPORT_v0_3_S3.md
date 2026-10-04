@@ -2,11 +2,11 @@
 
 This development-stage report evaluates Teacher imitation, probability distributions, departure adjustment and scenario-response behavior under the model/data version named in the title. Additional supervision stages must be interpreted using their own splits and selection rules. Historical pointwise or synthetic-context results are not interchangeable with the later 437-state, 398-pair controlled benchmark. The retained numerical tables below preserve the original stage-specific results.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/EXPERIMENT_REPORT_v0_3_S3.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/EXPERIMENT_REPORT_v0_3_S3.md).
 
 [Current research](<../docs/RESEARCH_DESIGN.md>) · [Training](<../docs/TRAINING.md>) · [Results](<../docs/RESULTS.md>) · [Data and access](<../docs/DATA_SOURCES.md>) · [Model use](<../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Teacher perturbation response and signal-to-noise ratio
 
 |perturbation axis| Teacher response \|ΔP_T\| |Teacher variability|signal-to-noise ratio|
 |---|---|---|---|
@@ -17,7 +17,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | transit_delay | 0.0453 | 0.1414 | 0.32 |
 | fare_multiplier | 0.0358 | 0.1345 | 0.27 |
 
-## Historical numerical table 2
+## Response changes after persona expansion
 
 |axis|metric| before(S4-C) | after(S3-C) |
 |---|---|---|---|
@@ -28,7 +28,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | parking_cost | sign | 0.771 | 0.678 |
 | weather | sign | 0.707 | 0.693 |
 
-## Historical numerical table 3
+## Student test performance after persona expansion
 
 |Metric (test)| v0.3-S3-A | v0.3-S3-B | v0.3-S3-C |
 |---|---|---|---|
@@ -39,7 +39,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | sign agreement | 0.6301 | 0.6745 | **0.7048** |
 | heterogeneity \|dP_T−dP_S\| | n/a | n/a | 0.0955 (561pairs) |
 
-## Historical numerical table 4
+## Prediction performance by held-out persona
 
 | persona | n | mode_acc | prob_L1 |
 |---|---|---|---|

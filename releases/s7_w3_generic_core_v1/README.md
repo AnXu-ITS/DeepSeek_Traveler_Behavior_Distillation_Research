@@ -1,9 +1,14 @@
 # S7-W3 — Generic Behavioral Core v1.0 (FROZEN)
 
 Frozen release of the S7-W3 student checkpoint (mechanism-aware fine-tuning,
-Grade B, seed-stable). This directory is **read-only by policy**: never modify,
-overwrite, or save training outputs into it. See `FINAL_S7_W3_FREEZE.md` for the
-freeze record, claims boundaries, and checksums.
+Grade B, seed-stable). The checkpoint, configuration, normalization and numerical
+artifacts are frozen: never overwrite them or save new training outputs here.
+See `FINAL_S7_W3_FREEZE.md` for the historical freeze record and claims boundaries.
+
+Markdown documentation on the current branch has editorial updates. The
+full-package checksums apply to the [original tagged package](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/tree/s7-w3-generic-core-v1.0/releases/s7_w3_generic_core_v1).
+Model and numerical artifact bytes are unchanged; see the
+[documentation boundary](../../docs/DOCUMENTATION_HISTORY.md#maintained-documentation-and-source-boundaries).
 
 ## Contents
 

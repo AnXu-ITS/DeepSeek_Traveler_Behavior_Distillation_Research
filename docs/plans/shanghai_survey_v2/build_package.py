@@ -109,7 +109,7 @@ def main():
                            forms=forms))
     labels = dict(car=("自驾小汽车","Driving"), pt=("公共交通","Public transport"),
                   bike=("普通人力自行车","Conventional pedal bicycle"), walk=("步行","Walking"))
-    parts = [(HERE / "participant_sections.md").read_text(encoding="utf-8")]
+    parts = [(HERE / "participant_sections.source.txt").read_text(encoding="utf-8")]
     for idx, c in enumerate(cards, 1):
         parts.append(f"\n## 情景卡 {idx:02d} / Situation card {idx:02d}\n\n<!-- card_id={c['card_id']}，显示序号由所分配题序决定，勿向受访者显示研究代号。 -->\n")
         parts.append(c["note_zh"] + "\n\n" + c["note_en"] + "\n")

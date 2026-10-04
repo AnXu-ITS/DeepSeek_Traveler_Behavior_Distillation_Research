@@ -2,11 +2,11 @@
 
 This record varies synthetic demand size under a fixed scenario configuration and reports runtime/loading outcomes. Population counts, completion metrics and event counts retain their original denominators. This development-stage scale check should not be merged with later experiments using different capacity factors, populations or Student versions.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_b5/demand_sweep/scale_report.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_b5/demand_sweep/scale_report.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Traffic and transit outcomes across the demand sweep
 
 |metric| 1000 | 2000 | 5000 | 10000 | 40000 |
 |---|---|---|---|---|---|

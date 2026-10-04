@@ -1,11 +1,16 @@
 # S9 — Supply-Aware Traveler Agent v2.0 (FROZEN)
 
-Frozen release of the S9 student checkpoint — the supply-aware traveler agent
-retrained on the CORRECTED Singapore accessibility dataset (walk 1.34 m/s /
-bike 4.17 m/s; S8 used road free-flow speeds, see `docs/S8_DEPRECATION.md`).
-This directory is **read-only by policy**: never modify, overwrite, or save
-training/Phase C outputs into it. See `FINAL_S9_FREEZE.md` for the freeze
-record, claims boundaries, and the Phase C guard.
+Frozen release of the S9 student checkpoint, retrained on the corrected
+Singapore accessibility dataset (walk 1.34 m/s / bike 4.17 m/s). S8 used road
+free-flow speeds; see the [deprecation record](../../docs/S8_DEPRECATION.md).
+The checkpoint, configuration, normalization and numerical artifacts remain
+frozen: never overwrite them or save training/Phase C outputs here. See
+`FINAL_S9_FREEZE.md` for the historical freeze record, claims boundaries and guard.
+
+Markdown documentation on the current branch has editorial updates. The
+full-package checksums apply to the [original tagged package](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/tree/s9-supply-aware-v2.0/releases/s9_supply_aware_v2).
+Model and numerical artifact bytes are unchanged; see the
+[documentation boundary](../../docs/DOCUMENTATION_HISTORY.md#maintained-documentation-and-source-boundaries).
 
 ## Contents
 

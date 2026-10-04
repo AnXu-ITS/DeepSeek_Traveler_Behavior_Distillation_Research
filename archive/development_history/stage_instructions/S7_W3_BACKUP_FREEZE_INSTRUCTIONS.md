@@ -2,11 +2,11 @@
 
 This historical procedure collects the selected generic Student checkpoint, configuration, schema, vocabularies, normalization, supervision lineage, test metrics and reproducibility checks into a frozen release. It requires output isolation and checksum checks and separates archived results from new experiments. S7-W3 is the predecessor used for the later S9 supply adaptation; it is not a replacement for the current controlled models.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S7_W3_BACKUP_FREEZE_INSTRUCTIONS.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Retained English technical listings
+## Generic-core release layout and freeze requirements
 
 ```text
 S8-...

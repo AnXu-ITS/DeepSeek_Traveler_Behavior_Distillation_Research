@@ -412,16 +412,18 @@
       "sha256": "4a3bff27883eb07e097050fe628a997408370db8ab5f95322e85f0794b443778"
     },
     {
-      "path": "scripts/revision_20260921/complete_prompt_pilot.ps1",
+      "path": "archive/development_history/author_workflows/scripts/revision_20260921/complete_prompt_pilot.ps1",
       "source": "workbench/scripts/revision_20260921/complete_prompt_pilot.ps1",
       "source_sha256": "f4ae8954e59bd5719d784e527116e7a34582801e81b578ec1b9d31c3f4c9e57b",
-      "sha256": "f4ae8954e59bd5719d784e527116e7a34582801e81b578ec1b9d31c3f4c9e57b"
+      "sha256": "f4ae8954e59bd5719d784e527116e7a34582801e81b578ec1b9d31c3f4c9e57b",
+      "original_path": "scripts/revision_20260921/complete_prompt_pilot.ps1"
     },
     {
-      "path": "scripts/revision_20260921/complete_teacher.ps1",
+      "path": "archive/development_history/author_workflows/scripts/revision_20260921/complete_teacher.ps1",
       "source": "workbench/scripts/revision_20260921/complete_teacher.ps1",
       "source_sha256": "eb92c2876b03a2f712cf36c9cb03f60ecf77729eaee9c53285b3d47ed9f15e46",
-      "sha256": "eb92c2876b03a2f712cf36c9cb03f60ecf77729eaee9c53285b3d47ed9f15e46"
+      "sha256": "eb92c2876b03a2f712cf36c9cb03f60ecf77729eaee9c53285b3d47ed9f15e46",
+      "original_path": "scripts/revision_20260921/complete_teacher.ps1"
     },
     {
       "path": "scripts/revision_20260921/departure_baselines.py",
@@ -478,10 +480,11 @@
       "sha256": "0a080c5304b74f297ff9dbadcde150987e5c4e8eef5c643cc097dce504c6840f"
     },
     {
-      "path": "scripts/revision_20260921/human_complete_resident_sensitivity.py",
+      "path": "archive/development_history/author_workflows/scripts/revision_20260921/human_complete_resident_sensitivity.py",
       "source": "workbench/scripts/revision_20260921/human_complete_resident_sensitivity.py",
       "source_sha256": "d73fffa7a517b9ebc4baa97bd6cb294e23abe12ed6122cdf10e264eb897df38c",
-      "sha256": "d73fffa7a517b9ebc4baa97bd6cb294e23abe12ed6122cdf10e264eb897df38c"
+      "sha256": "d73fffa7a517b9ebc4baa97bd6cb294e23abe12ed6122cdf10e264eb897df38c",
+      "original_path": "scripts/revision_20260921/human_complete_resident_sensitivity.py"
     },
     {
       "path": "scripts/revision_20260921/independent_teacher_result_audit.py",
@@ -3114,10 +3117,11 @@
       "sha256": "dfc798b4572408c26818e51a2fe3d283cdc09fb562c188cc046c9de347c31408"
     },
     {
-      "path": "cvpr_workspace/analysis/statistics/finalize_closure.py",
+      "path": "archive/development_history/author_workflows/cvpr_workspace/analysis/statistics/finalize_closure.py",
       "source": "workbench/cvpr_workspace/analysis/statistics/finalize_closure.py",
       "source_sha256": "f2d51a4a99257dc46eaa3bdc37efcac445a291498cb52aa05873499f82c58dbd",
-      "sha256": "f2d51a4a99257dc46eaa3bdc37efcac445a291498cb52aa05873499f82c58dbd"
+      "sha256": "f2d51a4a99257dc46eaa3bdc37efcac445a291498cb52aa05873499f82c58dbd",
+      "original_path": "cvpr_workspace/analysis/statistics/finalize_closure.py"
     },
     {
       "path": "cvpr_workspace/analysis/statistics/frozen_reference.py",
@@ -3144,10 +3148,11 @@
       "sha256": "b0c2c8b0095a6e5591b562fed6e5f8d0af90ce7582ac504f6cb6c85ccbca57e4"
     },
     {
-      "path": "cvpr_workspace/analysis/statistics/seal_closure.py",
+      "path": "archive/development_history/author_workflows/cvpr_workspace/analysis/statistics/seal_closure.py",
       "source": "workbench/cvpr_workspace/analysis/statistics/seal_closure.py",
       "source_sha256": "58104565f1618fe2dc24bdb1ccf1733a1806befd3ec15e366608fbbb021738ff",
-      "sha256": "58104565f1618fe2dc24bdb1ccf1733a1806befd3ec15e366608fbbb021738ff"
+      "sha256": "58104565f1618fe2dc24bdb1ccf1733a1806befd3ec15e366608fbbb021738ff",
+      "original_path": "cvpr_workspace/analysis/statistics/seal_closure.py"
     },
     {
       "path": "cvpr_workspace/analysis/statistics/verify_closure.py",
@@ -3203,5 +3208,10 @@
       "source_sha256": "a27405c6f8d6b8d4fb03af25dfaebc7cee3559e791ea76c112c11264b2ab90c3",
       "sha256": "a27405c6f8d6b8d4fb03af25dfaebc7cee3559e791ea76c112c11264b2ab90c3"
     }
-  ]
+  ],
+  "source_archive": {
+    "edition": "2026-10-04 maintained entry points",
+    "preserved_from_commit": "3c41e7e1826d53c74493910ad9b9eaf31f5f6657",
+    "scope": "Five original author-workflow source files are retained byte-for-byte under archive/development_history/author_workflows. Their source, source_sha256 and sha256 values are unchanged; original_path records the former location. Maintained replacements at the former paths are outside this historical evidence inventory."
+  }
 }

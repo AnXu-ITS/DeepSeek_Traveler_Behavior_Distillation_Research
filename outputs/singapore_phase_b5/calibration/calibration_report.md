@@ -2,11 +2,11 @@
 
 This historical study examines effective flow/storage settings for the synthetic demand placed on the Singapore network. The resulting factors are scenario configuration choices. They do not establish a calibrated reproduction of observed Singapore congestion. Demand, stuck events, unfinished legs and travel times should be interpreted together under the stated population and mode representation.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_b5/calibration/calibration_report.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_b5/calibration/calibration_report.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Effective-capacity and demand calibration comparison
 
 |configuration| slow-passage | links>15s | mean delay (s) | car travel (min) | car failure rate |interpretation|
 |---|---|---|---|---|---|---|
