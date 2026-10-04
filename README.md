@@ -14,7 +14,7 @@ This repository contains code, released models and supporting evidence for evalu
 | Inspect the current manuscript evidence | [3 October support package](docs/manuscript-support/2026-10-03/README.md) and [extended records R1–R5](docs/manuscript-support/2026-09-30/README.md) |
 | Check stated-choice instruments, sample flow and results | [Questionnaires and survey results](docs/surveys/README.md) |
 | Trace code, models, inputs and reproduction limits | [Reproduction guide](docs/REPRODUCIBILITY.md) and [data provenance](docs/DATA_SOURCES.md) |
-| Check ethics, contributions and AI-use statements | [Current author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md) |
+| Check ethics and contributions | [Current author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md) |
 
 The current manuscript is supported by the versioned records above. The [article PDF](paper/cas-sc-template.pdf) and [supplement PDF](paper/supplement.pdf) under `paper/` are **historical snapshots dated 24 September 2026**. They do not contain every later addition. No publication acceptance is claimed.
 
@@ -26,7 +26,7 @@ The current manuscript is supported by the versioned records above. The [article
 
 ![Figure 1. Research direction: preserving responses for the same traveler and the same trip.](docs/assets/figure1.png)
 
-*Figure 1 from the manuscript. OpenAI ChatGPT was used to assist with the preparation of Figure 1. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Original PDF](docs/assets/figure1.pdf).*
+*Figure 1 from the manuscript. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Original PDF](docs/assets/figure1.pdf).*
 
 ## Evidence by experiment
 
@@ -104,6 +104,6 @@ Historical source directories retain their original names. The [documentation hi
 
 This repository is public. Public access does not grant a new license; third-party terms still apply. The current release provides synthetic benchmark materials and aggregate evidence. Raw participant workbooks and participant-linked inputs are excluded from this release. Full event archives and restricted supporting materials require separate privacy-aware access. The reproduction guide describes the tasks supported by the included materials. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
 
-The surveys were administered anonymously with electronic consent. The study was conducted without a formal institutional ethics review or exemption determination. The [author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md) also document funding, competing interests, contributions and ChatGPT assistance with language editing and Figure 1.
+The surveys were administered anonymously with electronic consent. The study was conducted without a formal institutional ethics review or exemption determination. The [author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md) also document funding, competing interests and contributions.
 
 Please cite the manuscript using [CITATION.cff](CITATION.cff) and identify the exact repository commit used in your analysis.
