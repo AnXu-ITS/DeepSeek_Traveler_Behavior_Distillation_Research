@@ -42,6 +42,6 @@ This repository is publicly accessible as verified on 3 October 2026. Original c
 
 Included: synthetic controlled targets, selected checkpoints, experiment/statistical code, aggregate survey/Teacher/simulation results, English questionnaires, figures and manuscript snapshots. Retained separately: raw participant workbooks, participant-linked states/predictions/Teacher requests, full event archives and large external supply resources. Supporting-material requests can be made through the corresponding-author contact in the manuscript, subject to participant privacy and third-party terms.
 
-The manuscript reports participant consent and an ethics-exemption basis. The exemption authority and documentary reference have not been supplied in the inspected materials; this repository does not invent an approval identifier.
+The surveys were administered anonymously, with study information and electronic consent before participation. Participation was voluntary, and no direct personal identifiers were collected. Only de-identified attributes required for the model analyses were transmitted to the external model service. The study was conducted without a formal institutional ethics review or exemption determination. See the [author-supplied ethics and consent statement](manuscript-support/2026-10-03/DECLARATIONS.md#ethics-and-consent-statement).
 
 [Evidence inventory](REPRODUCIBILITY.md) · [Survey results](surveys/RESULTS.md)
