@@ -35,4 +35,4 @@ R1–R5 contain preserved LaTeX excerpts with historical numbering and availabil
 
 ## Author declarations
 
-The [current declarations](DECLARATIONS.md) contain the author-supplied CRediT and ethics statements, HIT-specific funding, competing interests and AI disclosure limited to Figure 1 for figure preparation. Historical acquisition protocols remain unchanged.
+The [current declarations](DECLARATIONS.md) contain the author-supplied CRediT and ethics statements, HIT-specific funding and competing interests. Historical acquisition protocols remain unchanged.

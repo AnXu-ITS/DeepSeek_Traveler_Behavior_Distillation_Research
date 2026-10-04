@@ -21,11 +21,3 @@ The work carried out by the authors affiliated with Harbin Institute of Technolo
 ## Declaration of competing interest
 
 The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
-
-## Declaration of generative AI and AI-assisted technologies in the manuscript preparation process
-
-During the preparation of this work, the authors used OpenAI ChatGPT to assist with language editing and the preparation of Figure 1. The authors reviewed and edited all outputs as needed and take full responsibility for the content of the publication.
-
-## Figure 1 caption disclosure
-
-OpenAI ChatGPT was used to assist with the preparation of Figure 1.
