@@ -1,20 +1,23 @@
 # Documentation and research history
 
-The current repository navigation follows **Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation**, manuscript snapshot dated 24 September 2026. The preceding remote revision was `de906ac8a3efae692797bd08e340375107b8e52a`.
+The current manuscript is **Beyond Static Imitation: Evaluating LLM-Derived Traveler Responses for Transport Simulation**, by An Xu, Chengbo Zhang, Zekai Jin, Yimin Zhao and Yunfei Yin. The [3 October 2026 support index](manuscript-support/2026-10-03/README.md) and [author declarations](manuscript-support/2026-10-03/DECLARATIONS.md) identify the current materials and statements.
 
-## Current reader-facing documents
+## Versioned evidence
 
-The [project overview](../README.md), [research design](RESEARCH_DESIGN.md), [data sources](DATA_SOURCES.md), [training guide](TRAINING.md), [result synthesis](RESULTS.md), [model-use guide](MODEL_USE.md), [execution workflow](EXECUTION_WORKFLOW.md) and [survey collection](surveys/README.md) were written against the current manuscript and retained evidence.
+| Edition | Materials and scope |
+|---|---|
+| 24 September 2026 | [Baseline evidence package](../evidence/paper_20260924/README.md), [result synthesis](RESULTS.md), controlled models and 140-run Helsinki experiment |
+| 30 September 2026 | [Extended records R1–R5](manuscript-support/2026-09-30/README.md), preserved source excerpts supporting the streamlined supplement |
+| 3 October 2026 | [Compact manuscript evidence](manuscript-support/2026-10-03/README.md), including the thirty-persona reference comparison, forty-run physical-supply experiment and five-seed decomposition |
+| Historical manuscript PDFs | [Article](../paper/cas-sc-template.pdf) and [supplement](../paper/supplement.pdf), both the 24 September snapshot |
 
-The questionnaires are English documentation versions of the actual retained instruments. They preserve task conditions and choices, while consolidating repeated bilingual lines or repeated option lists. They do not replace or alter the administered forms or raw answers. Earlier Shanghai survey designs remain historical design drafts.
+The later reference campaign and physical-supply experiment are separate from the original controlled benchmark, survey comparison and 140-run execution study. Their sample sizes, service identities and denominators must remain distinguishable. Historical excerpts retain their source wording; the current support index documents the reference-service discrepancy and updated public availability.
 
-## Earlier reports
+## Development records
 
-Existing Chinese Markdown documents have been reorganized into English historical editions in the review clone. These are editorial consolidations, not line-by-line translations: they preserve the purpose and interpretation of each stage, selected original numerical tables and English code listings, with a direct link to the complete historical version. Historical reports retain their original model names, experimental stages and numbers; translation does not make an old result current. The 189 retained historical numerical tables use a reviewed English terminology glossary; numerical literals are retained. For the current scientific interpretation, use the authored guides above and the manuscript tables.
+The [development archive](../archive/development_history/README.md) contains the former root progress record and seven historical stage instructions. Their results and technical content are preserved. Obsolete implementation task sheets, high-level planning notes and cost projections were removed from the current tree during the 4 October documentation cleanup. Earlier revisions remain in Git history.
 
-The original-language documents remain recoverable at the preceding Git commit. Frozen model weights, normalization, configurations and numerical release artifacts are not retrained or re-estimated by this update. Where release documentation is translated, its bytes necessarily differ from the historical freeze; original release tags and historical checksum files remain the authority for the original package. The new file manifest describes this documentation/evidence edition separately and does not overwrite the historical checksum manifests.
-
-| Historical stage | How to interpret it now |
+| Historical stage | Interpretation |
 |---|---|
 | Early v0.x / S1–S6 | Development of targets, losses and prototype evaluations |
 | S7-W3 | Frozen generic behavioral predecessor |
@@ -24,15 +27,12 @@ The original-language documents remain recoverable at the preceding Git commit. 
 | Matched response v1 | Controlled objective comparison with common endpoint information and persona splits |
 | September 21 revision experiments | Modular timing, full stated-response analysis, contemporary Teacher comparison and 140-run Helsinki execution study |
 
-Earlier claims about a model being “healthy,” a gate passing, a stop rule, or a planned feedback loop are historical operational judgments. They are not additional evidence of human calibration, causal validity or a completed behavioral feedback loop in the current article.
+Operational gates and prototype feedback-loop results in these records do not establish human calibration, causal validity or a completed behavioral feedback loop in the current manuscript.
 
-## What changed in this repository edition
+## Preservation
 
-- Added an English research overview, audience-specific navigation and the manuscript's Figure 1.
-- Added the requested traveler-input → Student → demand-plan → routing → MATSim → events workflow.
-- Added English questionnaires, complete aggregate response tables, training/model documentation and provenance.
-- Added prepared synthetic benchmark data, selected later fits, aggregate revision results and corresponding code.
-- Added a minimal released-model inference example and an archived-source checkpoint evaluator.
-- Retained repository visibility, original survey records, original checkpoints and historical numerical evidence.
+Earlier Chinese Markdown reports were consolidated into English historical editions, with links to complete originals at commit `de906ac8a3efae692797bd08e340375107b8e52a`. Historical numerical values, model identities and source scopes remain associated with their original stages. The administered questionnaires and raw answers were not changed by translation; the English instruments document their content. Earlier Shanghai designs remain separate from the final field instrument.
 
-The local review clone is a normal Git working repository that can be inspected and synchronized with the named GitHub repository. It is not a bare `git clone --mirror` directory and does not rewrite the original workbench's uncommitted changes.
+Frozen weights, normalization, configurations, numerical evidence, original provenance and checksum manifests were not changed by the documentation cleanup. Translated release documents can differ from historical freeze bytes; original tags and historical checksum files identify the original packages. The [evidence manifest](../evidence/paper_20260924/artifact_manifest.json) identifies the copied evidence edition.
+
+[Current repository](../README.md) · [Reproduction scope](REPRODUCIBILITY.md) · [Data and access](DATA_SOURCES.md)
