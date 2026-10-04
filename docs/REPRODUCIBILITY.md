@@ -1,6 +1,6 @@
 # Reproduction guide and material inventory
 
-This update provides a versioned research repository and compact evidence package for the 24 September 2026 manuscript. It supports local inference, inspection of the results and re-evaluation of the released controlled models. It is **not a claim that every experiment can be rerun from a fresh clone without additional data or runtime setup**.
+This guide describes the baseline evidence package from 24 September 2026 and its reproduction scope. The [3 October manuscript support package](manuscript-support/2026-10-03/README.md) adds the later thirty-persona reference comparison, forty-run physical-supply experiment and offline summary checks; [records R1–R5](manuscript-support/2026-09-30/README.md) provide extended supporting material. The repository supports local inference, inspection of retained results and re-evaluation of the released controlled models. It is **not a claim that every experiment can be rerun from a fresh clone without additional data or runtime setup**.
 
 ## Material inventory
 

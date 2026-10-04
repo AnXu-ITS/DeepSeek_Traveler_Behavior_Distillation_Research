@@ -4,39 +4,68 @@
 
 An Xu, Chengbo Zhang, Zekai Jin, Yimin Zhao and Yunfei Yin
 
-This project studies whether a compact traveler model can preserve an LLM Teacher's **response to changing travel conditions**, and whether that response remains useful when compared with stated choices and carried into transport simulation. The Students predict probabilities for car, public transport (PT), bicycle and walking, together with a departure-time adjustment. Behavioral prediction runs locally after training.
+This repository contains code, released models and supporting evidence for evaluating whether a compact traveler model preserves an LLM Teacher's response to changing travel conditions. The study then checks agreement with stated human choices and tracks responses through transport simulation. Students predict probabilities for car, public transport (PT), bicycle and walking, together with a departure-time adjustment. Behavioral prediction runs locally after training.
 
-[Research and design](docs/RESEARCH_DESIGN.md) · [Data sources](docs/DATA_SOURCES.md) · [Training](docs/TRAINING.md) · [Results](docs/RESULTS.md) · [Questionnaires](docs/surveys/README.md) · [Model use](docs/MODEL_USE.md) · [Reproduction](docs/REPRODUCIBILITY.md)
+## Reviewer guide
 
-![Figure 1. Research direction: preserving responses for the same traveler and the same trip.](docs/assets/figure1.png)
+| Task | Start here |
+|---|---|
+| Understand the questions, models and evaluation boundaries | [Research design](docs/RESEARCH_DESIGN.md) and [training](docs/TRAINING.md) |
+| Inspect the current manuscript evidence | [3 October support package](docs/manuscript-support/2026-10-03/README.md) and [extended records R1–R5](docs/manuscript-support/2026-09-30/README.md) |
+| Check stated-choice instruments, sample flow and results | [Questionnaires and survey results](docs/surveys/README.md) |
+| Trace code, models, inputs and reproduction limits | [Reproduction guide](docs/REPRODUCIBILITY.md) and [data provenance](docs/DATA_SOURCES.md) |
+| Check ethics, contributions and AI-use statements | [Current author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md) |
 
-*Figure 1 from the current manuscript. OpenAI ChatGPT was used to assist with the preparation of Figure 1. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Download the original PDF](docs/assets/figure1.pdf).*
+The current manuscript is supported by the versioned records above. The [article PDF](paper/cas-sc-template.pdf) and [supplement PDF](paper/supplement.pdf) under `paper/` are **historical snapshots dated 24 September 2026**. They do not contain every later addition. No publication acceptance is claimed.
 
 ## Research questions
 
-1. **Teacher fidelity:** Does matching predictions at individual states also preserve changes between paired states? We compare four neural objectives under matched training conditions and an MNL Student with separate departure prediction.
+1. **Teacher fidelity:** Does matching predictions at individual states preserve changes between paired states? Controlled neural objectives and an MNL Student are evaluated separately from modular departure prediction.
 2. **Agreement with people:** Do model responses agree with stated choices in Singapore and Shanghai? Human responses are held out from fitting and model selection.
-3. **Simulation execution:** How do predicted responses change during mode assignment, route search and MATSim execution? We track probabilities, assigned modes, routed modes and simulated PT boarding separately.
+3. **Simulation execution:** How do predicted responses change during mode assignment, route search and MATSim execution? Probabilities, assigned modes, routed modes and simulated PT boarding are tracked separately.
 
-[Current author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md)
+![Figure 1. Research direction: preserving responses for the same traveler and the same trip.](docs/assets/figure1.png)
 
-## Current manuscript support
+*Figure 1 from the manuscript. OpenAI ChatGPT was used to assist with the preparation of Figure 1. The profiles are illustrative; bars show rounded mode assignments before routing for 10,000 synthetic Singapore travelers, not survey choices. [Original PDF](docs/assets/figure1.pdf).*
 
-The [versioned support index](docs/manuscript-support/2026-09-30/README.md) provides records R1–R5 and the [3 October compact evidence supplement](docs/manuscript-support/2026-10-03/README.md). The latter includes the 30-persona comparison, response-weight summaries, the 40-run physical-supply ledger, five-seed decomposition and latency table used in the current manuscript. It can be checked offline without API calls. The PDFs under `paper/` remain dated historical snapshots.
+## Evidence by experiment
 
-## Main findings
-
-| Evidence | Result | Interpretation |
+| Experiment | Coverage | Evidence and interpretation |
 |---|---|---|
-| Six held-out synthetic personas; three training seeds | Direction+magnitude supervision reduces probability-response error by **4.97%** relative to soft KL; MNL-S reduces it by a further **14.30%** | A simpler choice specification can outperform the joint neural model on Teacher response fidelity |
-| Independent neural timing with MNL-S | Departure MAE **7.61 ± 0.72 min** against the Teacher | Choice and timing can be modeled separately; timing fits use a different selection criterion |
-| Singapore: 332 people; Shanghai: 321 modeled people | SA-Student accuracy **66.93% / 80.46%** | Accuracy alone is insufficient: intervention-specific response discrepancies remain |
-| Singapore poorer PT access | MNL-S predicts **+13.85 pp** PT response; respondents show **−24.40 pp** | The model closest to the Teacher can reverse a human response |
-| Helsinki: 1,000 fixed travelers, 140 runs | SA-Student deterministic response: **−13.10 pp** predicted versus **−12.30 pp** simulated | Feasibility-constrained assignment improves routability but does not necessarily reduce the response gap |
+| Original controlled response benchmark | Six held-out synthetic personas; 437 states; three neural training seeds | Direction+magnitude supervision reduces response error by 4.97% relative to soft KL; MNL-S reduces it by a further 14.30%. [Baseline results](docs/RESULTS.md) |
+| Later synthetic-persona reference comparison | Thirty formal personas, separate from the original test split | Signed-response minus soft-KL error difference is −0.003199, with paired-persona 95% interval [−0.004863, −0.001622]. [Current support](docs/manuscript-support/2026-10-03/README.md) |
+| Stated human choices | 332 Singapore people; 321 modeled Shanghai people | SA-Student accuracy is 66.93% / 80.46%, while intervention-specific response discrepancies remain. [Full response results](docs/surveys/RESULTS.md) |
+| Original Helsinki execution study | One fixed population of 1,000 travelers; 140 runs | Perceived PT delay changes while the physical timetable remains fixed. SA-Student's deterministic PT response is −13.10 pp predicted and −12.30 pp simulated. [Execution results](docs/RESULTS.md#simulation-execution) |
+| Later Helsinki physical-supply experiment | Forty model–arm–seed runs | Separate physical-supply contrasts and stage summaries. Assigned, routed and boarded PT counts agree in the retained forty-run ledger. [Verification and scope](docs/manuscript-support/2026-10-03/README.md) |
 
-These are distinct evidence levels. Teacher judgments are numerical elicited targets, the surveys are convenience/snowball stated-choice samples, and MATSim outcomes are simulated trips. The study does not establish population-representative behavior, causal policy effects or citywide field validation. [Full results and uncertainty](docs/RESULTS.md).
+These experiments have different samples and denominators. Teacher judgments are numerical elicited targets, the surveys are convenience/snowball stated-choice samples, and MATSim outcomes are simulated trips. The study does not establish population-representative behavior, causal policy effects or citywide field validation.
 
-## Experimental execution workflow
+The retained later reference protocol identifies **`deepseek-v4.1-flash` through OpenCode Go**. Historical supervision and the same-task survey reference are separate collections. The [current support index](docs/manuscript-support/2026-10-03/README.md#reference-identity-and-historical-text) explains the discrepancy between historical prose and retained service records; acquisition records remain unchanged.
+
+## Quick start and offline checks
+
+### Local released-model inference
+
+```bash
+python -m venv .venv
+# Activate .venv using the command appropriate for your shell.
+python -m pip install -e .
+python -m pip install -r requirements-research.txt
+python examples/predict_released_student.py
+```
+
+The example loads a frozen checkpoint and one synthetic held-out state. It requires neither an API key nor Java, a transport network or a new Teacher request. See [model use](docs/MODEL_USE.md).
+
+### Verify retained summaries and repository documentation
+
+```bash
+python docs/manuscript-support/2026-10-03/verify_summaries.py
+python scripts/check_repository_docs.py
+```
+
+The first check recomputes the thirty-persona primary contrast and interval, forty-run population/completion counts and five-seed response decompositions. The second checks Markdown links and copied-evidence hashes. These checks do not rerun training, respondent analyses, Teacher acquisition or MATSim. [Full reproduction scope](docs/REPRODUCIBILITY.md).
+
+## Simulation workflow
 
 ```mermaid
 flowchart TD
@@ -51,59 +80,30 @@ flowchart TD
     I --> J["Realized trips and events"]
 ```
 
-This is the deployment sequence. Training uses offline Teacher targets; the evaluated simulation keeps behavioral predictions fixed and does not feed simulated experience back into the Student. [Assignment, routing and event definitions](docs/EXECUTION_WORKFLOW.md).
+Training uses offline Teacher targets. The evaluated simulations keep behavioral predictions fixed and do not feed simulated experience back into the Student. Full MATSim construction requires supply files and the Java/MATSim runtime. [Execution definitions](docs/EXECUTION_WORKFLOW.md).
 
-## Start here
+## Models and repository map
 
-| Reader | Recommended route |
+| Material | Location |
 |---|---|
-| Reviewer | [Study design](docs/RESEARCH_DESIGN.md) → [complete results](docs/RESULTS.md) → [evidence and reproduction scope](docs/REPRODUCIBILITY.md) |
-| Researcher | [Data provenance](docs/DATA_SOURCES.md) → [training objectives and splits](docs/TRAINING.md) → [questionnaire instruments and results](docs/surveys/README.md) |
-| Model user | [Model card and quick start](docs/MODEL_USE.md) → [execution workflow](docs/EXECUTION_WORKFLOW.md) |
+| SA-Student, archival identifier S9 | [Frozen release](releases/s9_supply_aware_v2/README.md), 24,562 parameters |
+| S7-W3 generic predecessor | [Release](releases/s7_w3_generic_core_v1/README.md) |
+| Deprecated S8 | [Deprecation notice](docs/S8_DEPRECATION.md) |
+| State schemas, Students, training and transport adapters | `src/traveler_distillation/` |
+| Population-to-MATSim pipeline | `reference_pipeline/` |
+| Experiment and statistical analysis | `scripts/` and `cvpr_workspace/analysis/statistics/` |
+| Prepared synthetic benchmark and controlled models | `outputs/matched_response_v1/` |
+| Modular-model evidence | `outputs/revision_20260921/` |
+| Baseline manuscript tables, aggregate outputs and hashes | [Evidence index](evidence/paper_20260924/README.md) |
+| Later manuscript evidence | [Versioned support](docs/manuscript-support/2026-10-03/README.md) |
+| Earlier results and experiment designs | [Development archive](archive/development_history/README.md) |
 
-The [main article](paper/cas-sc-template.pdf) and [supplement](paper/supplement.pdf) are the 24 September 2026 manuscript snapshot. They are research manuscripts; no publication acceptance is claimed. Their availability paragraphs predate this repository expansion; the [current inventory](docs/REPRODUCIBILITY.md) describes the files now included.
+Historical source directories retain their original names. The [documentation history](docs/DOCUMENTATION_HISTORY.md) distinguishes model versions and manuscript editions.
 
-## Models and supporting materials
+## Data access, ethics and citation
 
-| Material | Location | Role |
-|---|---|---|
-| **SA-Student**, archival identifier **S9** | [Frozen release](releases/s9_supply_aware_v2/README.md) | 24,562-parameter supply-adapted model; fixed during survey and execution evaluation |
-| S7-W3 | [Predecessor release](releases/s7_w3_generic_core_v1/README.md) | Generic behavioral initialization for adaptation |
-| S8 | [Deprecation notice](docs/S8_DEPRECATION.md) | Historical checkpoint with incorrect active-mode speed inputs; not a current result |
-| Controlled neural fits | [Training records](outputs/matched_response_v1/train) | Four objectives × three seeds, selected by validation macro-source KL |
-| Prepared benchmark | [Bundle](outputs/matched_response_v1/bundle) | Synthetic states, targets, splits, response pairs and interactions |
-| Modular timing fits | [Baseline records](outputs/revision_20260921/baselines) | Separate timing selection and evaluation |
-| Manuscript evidence | [Evidence index](evidence/paper_20260924/README.md) | Published-precision tables, aggregate outputs and file hashes |
+This repository is public. Public access does not grant a new license; third-party terms still apply. The current release provides synthetic benchmark materials and aggregate evidence. Raw participant workbooks and participant-linked inputs are excluded from this release. Full event archives and restricted supporting materials require separate privacy-aware access. The reproduction guide describes the tasks supported by the included materials. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
 
-The repository is publicly accessible (verified 3 October 2026). Public access does not grant a new license. Raw participant workbooks and participant-linked Teacher payloads are not added. Large MATSim event archives remain retained by the authors; the repository includes run-level results and their analysis code. [Availability and third-party terms](docs/DATA_SOURCES.md#access-and-redistribution).
+The surveys were administered anonymously with electronic consent. The study was conducted without a formal institutional ethics review or exemption determination. The [author declarations](docs/manuscript-support/2026-10-03/DECLARATIONS.md) also document funding, competing interests, contributions and ChatGPT assistance with language editing and Figure 1.
 
-## Quick start: local model inference
-
-```bash
-python -m venv .venv
-# Activate .venv using the command appropriate for your shell.
-python -m pip install -e .
-python -m pip install -r requirements-research.txt
-python examples/predict_released_student.py
-```
-
-The example loads a released checkpoint and one synthetic held-out state. It requires neither an API key nor Java, a transport network or a new Teacher request. Full MATSim construction additionally requires supply files and the Java/MATSim runtime. [Detailed usage](docs/MODEL_USE.md).
-
-## Repository map
-
-```text
-docs/                         Research, data, training, results and user guides
-docs/surveys/                 English questionnaires and complete response tables
-docs/assets/                  Manuscript Figure 1 and supporting figures
-paper/                        Main article and supplement PDF snapshots
-src/traveler_distillation/    State schemas, Students, training and transport adapters
-reference_pipeline/          Reusable population-to-MATSim pipeline
-scripts/revision_20260921/    Later experiment and statistical analysis code
-outputs/matched_response_v1/  Prepared synthetic benchmark and selected fitted models
-outputs/revision_20260921/    Compact modular-model evidence
-evidence/paper_20260924/       Current manuscript tables and aggregate results
-releases/                    Original model versions and translated documentation
-archive/                     Earlier plans and experiment history
-```
-
-Historical reports remain available for provenance. Their dates, model names and scope matter: earlier MNL-B, single-city deployment and prototype feedback experiments are not the current MNL-S comparison or the 140-run Helsinki experiment. [Documentation history](docs/DOCUMENTATION_HISTORY.md).
+Please cite the manuscript using [CITATION.cff](CITATION.cff) and identify the exact repository commit used in your analysis.

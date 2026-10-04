@@ -13,7 +13,7 @@ The two questionnaires evaluate whether fixed models agree with human responses 
 | Paired responses | Five contrasts, n=332 each | Eight contrasts; n=321 except interaction and walk-versus-wait, n=320 |
 | Numerical task detail | Explicit time/cost tables | Mostly qualitative; explicitly CNY 6 fare, CNY 30 parking, one transfer |
 
-Recruitment used convenience and snowball sharing through WeChat, WhatsApp and personal contacts. The samples are not representative city samples. Both instruments recorded consent and displayed a privacy statement. The manuscript reports an ethics-exemption basis; its documentary authority/reference is not available in the inspected materials.
+Recruitment used convenience and snowball sharing through WeChat, WhatsApp and personal contacts. The samples are not representative city samples. Both instruments recorded consent and displayed a privacy statement. The study was conducted without a formal institutional ethics review or exemption determination. The [current author-supplied ethics and consent statement](../manuscript-support/2026-10-03/DECLARATIONS.md#ethics-and-consent-statement) records anonymous, voluntary participation and electronic consent.
 
 ## Results and analysis choices
 

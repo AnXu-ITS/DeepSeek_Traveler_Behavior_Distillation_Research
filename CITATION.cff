@@ -5,20 +5,28 @@ title: "DeepSeek Traveler Behavior Distillation Research"
 authors:
   - family-names: Xu
     given-names: An
+  - family-names: Zhang
+    given-names: Chengbo
   - family-names: Jin
     given-names: Zekai
+  - family-names: Zhao
+    given-names: Yimin
   - family-names: Yin
     given-names: Yunfei
 repository-code: "https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research"
 preferred-citation:
   type: unpublished
-  title: "Beyond Static Imitation: Preserving LLM-Derived Traveler Responses for Transport Simulation"
+  title: "Beyond Static Imitation: Evaluating LLM-Derived Traveler Responses for Transport Simulation"
   authors:
     - family-names: Xu
       given-names: An
+    - family-names: Zhang
+      given-names: Chengbo
     - family-names: Jin
       given-names: Zekai
+    - family-names: Zhao
+      given-names: Yimin
     - family-names: Yin
       given-names: Yunfei
   year: 2026
-  notes: "Manuscript snapshot dated 24 September 2026; no publication acceptance is implied."
+  notes: "Current manuscript title and author list as documented on 3 October 2026; no publication acceptance is implied."

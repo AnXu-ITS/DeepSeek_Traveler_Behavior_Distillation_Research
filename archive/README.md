@@ -1,7 +1,10 @@
-# Historical development archive
+# Historical research archive
 
-This directory retains superseded generators, validation scripts, plans and prototype artifacts for research provenance. Later repeated-target and validated-data pipelines supersede early single-call tooling. The archived material is not the recommended deployment interface; use the current model-use and reproduction guides.
+Historical material documents earlier development stages and is separate from the current manuscript evidence.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/archive/README.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+- [Development history](development_history/README.md): progress record, experiment designs and model-freeze procedures
+- `legacy_20260821/scripts/`: superseded generation and audit utilities
 
-[Current research](<../docs/RESEARCH_DESIGN.md>) · [Training](<../docs/TRAINING.md>) · [Results](<../docs/RESULTS.md>) · [Data and access](<../docs/DATA_SOURCES.md>) · [Model use](<../docs/MODEL_USE.md>)
+Use the [current manuscript support](../docs/manuscript-support/2026-10-03/README.md), [model-use guide](../docs/MODEL_USE.md) and [reproduction guide](../docs/REPRODUCIBILITY.md) for the reviewer-facing repository.
+
+Historical code, report values, model names and source dates retain their original meaning. Obsolete implementation task sheets and planning notes were removed from the current tree; previous versions remain in Git history.
