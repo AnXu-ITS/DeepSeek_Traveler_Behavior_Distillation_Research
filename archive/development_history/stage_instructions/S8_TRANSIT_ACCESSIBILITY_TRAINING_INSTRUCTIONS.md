@@ -2,11 +2,11 @@
 
 This record describes the first supply-aware accessibility adaptation, including data splits, inherited generic weights, added PT features, loss settings and validation gates. Its active-mode travel-time inputs were later found to be incorrect. Numerical results below are preserved for historical inspection only. They must not be used as final S9 or current-paper evidence. The corrected S9 release and current training guide supersede this experiment for model use.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S8_TRANSIT_ACCESSIBILITY_TRAINING_INSTRUCTIONS.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Retained English technical listings
+## Accessibility features, sampling and adaptation settings
 
 ```text
 transit_accessibility = low/medium/high

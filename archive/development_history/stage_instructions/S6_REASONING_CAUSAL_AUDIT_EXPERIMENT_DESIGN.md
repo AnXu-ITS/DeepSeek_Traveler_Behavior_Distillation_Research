@@ -2,11 +2,11 @@
 
 S6 compares natural perturbations with states that change context labels, numerical travel attributes or both. These comparisons test what information Teacher and Student responses follow, and whether distillation preserves the observed mechanism. The contrasts are diagnostic model experiments; they are not field estimates of causal effects. Mechanism states later contribute a separate source to the controlled response benchmark.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S6_REASONING_CAUSAL_AUDIT_EXPERIMENT_DESIGN.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/stage_instructions/S6_REASONING_CAUSAL_AUDIT_EXPERIMENT_DESIGN.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Retained English technical listings
+## Mechanism-intervention examples and audit artifact layout
 
 ```text
 congestion=high → car↓

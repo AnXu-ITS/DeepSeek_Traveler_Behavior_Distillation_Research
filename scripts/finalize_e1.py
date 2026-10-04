@@ -2,7 +2,9 @@
 """E1 finalize — regenerate the E1 report (with T4) and refresh the archive.
 
 Run AFTER scripts/singapore/run_phase_c_mnl.py completes:
-    python scripts/finalize_e1.py [--paper-repo <path>]
+    python scripts/finalize_e1.py --paper-repo <path>
+
+Alternatively, set AIT_PAPER_REPO to the intended manuscript directory.
 
 Does: make_e1_report.py -> E1_REPORT.md; copies E1_REPORT.md,
 PHASE_C_MNL_REPORT.md, phase_c_mnl_records.json into the paper-repo archive
@@ -12,22 +14,25 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_PAPER = Path(r"C:\Users\xuan1\Desktop\UOL学习\蒸馏出行意图paper")
 SCENARIOS = ["C0_baseline", "C1_heavy_rain", "C2_fare_increase",
              "C3_transit_delay", "C4_road_disruption", "C5_joint_rain_delay"]
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--paper-repo", type=str, default=str(DEFAULT_PAPER))
+    ap.add_argument("--paper-repo", type=Path, default=os.environ.get("AIT_PAPER_REPO") or None,
+                    help="Manuscript directory (or set AIT_PAPER_REPO)")
     args = ap.parse_args()
-    paper = Path(args.paper_repo)
+    if args.paper_repo is None:
+        ap.error("provide --paper-repo or set AIT_PAPER_REPO")
+    paper = args.paper_repo.expanduser().resolve()
     archive = paper / "data_report" / "10_E1_MNL"
 
     records_path = _ROOT / "outputs" / "singapore_phase_c_mnl" / "phase_c_mnl_records.json"

@@ -2,11 +2,11 @@
 
 Phase A checks preparation of explicit road/transit supply, schema-compatible Student demand and MATSim execution on a small population. The checks concern file/network validity, route construction and simulated mode events. They are prerequisites for later scale/scenario experiments, not an empirical calibration of real traveler behavior.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_a/PHASE_A_GATE.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_a/PHASE_A_GATE.md).
 
 [Current research](<../../docs/RESEARCH_DESIGN.md>) · [Training](<../../docs/TRAINING.md>) · [Results](<../../docs/RESULTS.md>) · [Data and access](<../../docs/DATA_SOURCES.md>) · [Model use](<../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Singapore execution-readiness checks
 
 |check item|result|
 |---|---|
@@ -17,7 +17,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | stuckAndAbort | **0** |
 |journey completeness| departure 5,796 = arrival 5,796(no failed trips) |
 
-## Historical numerical table 2
+## Road-network and transit-supply artifact inventory
 
 |artifacts|population size|
 |---|---|

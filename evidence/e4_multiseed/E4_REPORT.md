@@ -2,11 +2,11 @@
 
 This record examines repeated Singapore scenario populations under fixed model and supply settings. Population seeds change synthetic people/trips and are distinct from the training seeds of the later controlled neural comparison. Paired scenarios share their population within a seed. Reported intervals and variation retain the historical population, event and scenario definitions.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/evidence/e4_multiseed/E4_REPORT.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/evidence/e4_multiseed/E4_REPORT.md).
 
 [Current research](<../../docs/RESEARCH_DESIGN.md>) · [Training](<../../docs/TRAINING.md>) · [Results](<../../docs/RESULTS.md>) · [Data and access](<../../docs/DATA_SOURCES.md>) · [Model use](<../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Scenario outcomes by population seed
 
 | seed | scenario | decision share car/pt/bike/walk(%) | PT boardings | car VKT(km) | stuck people(rate) | failed trips | mean trip time(min) |
 |---|---|---|---|---|---|---|---|
@@ -29,7 +29,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | 7 | C4_road_disruption | 1.7/38.2/41.3/18.8 | 8708 | 2640.4 | 275(3.2%) | 1385 | 53.05 |
 | 7 | C5_joint_rain_delay | 37.4/18.9/24.4/19.3 | 4417 | 41967.2 | 181(4.1%) | 764 | 39.34 |
 
-## Historical numerical table 2
+## Paired scenario changes from baseline by population seed
 
 | seed | scenario | Δcar share(pp) | Δpt share(pp) | ΔPT boardings | Δcar VKT(km) | Δstuck people | Δmean trip time(min) |
 |---|---|---|---|---|---|---|---|
@@ -49,7 +49,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | 7 | C4_road_disruption | -26.5 | +12.3 | +2848 | -30683.8 | +68 | +8.61 |
 | 7 | C5_joint_rain_delay | +9.1 | -6.9 | -1443 | +8643.0 | -26 | -5.10 |
 
-## Historical numerical table 3
+## Cross-seed summaries of scenario effects
 
 | scenario | Δpt share mean ± std(min–max) | ΔPT boardings mean ± std(min–max) | Δcar share mean ± std | ΔVKT mean ± std | Δstuck mean ± std | sign agreement(Δpt/Δboardings) | \|mean\|/std(Δpt) |
 |---|---|---|---|---|---|---|
@@ -59,14 +59,14 @@ This is an English editorial consolidation of the historical document. The [comp
 | C4_road_disruption | 12.0 ± 0.3(11.7–12.3) | 2847 ± 78(2768–2924) | -26.4 ± 0.2(-26.5–-26.1) | -30600.1 ± 443.3(-30995.6–-30121.0) | 73 ± 4(68–76) | 3/3 / 3/3 | 39.39 |
 | C5_joint_rain_delay | -6.7 ± 0.3(-6.9–-6.4) | -1353 ± 78(-1443–-1303) | 9.3 ± 0.2(9.1–9.4) | 8756.0 ± 121.1(8643.0–8883.8) | -27 ± 1(-28–-26) | 3/3 / 3/3 | 26.49 |
 
-## Historical numerical table 4
+## Fare-increase response stability across population seeds
 
 |primary metric| 3-seed Δ value(2026/42/7) |level|
 |---|---|---|
 | Δpt share(pp) | +0.4 / +0.5 / +0.5 | **stable** |
 | ΔPT boardings | +61 / +99 / +80 | **stable** |
 
-## Historical numerical table 5
+## Artifact checksums and runtime by seed and scenario
 
 | seed / scenario | population.xml SHA256(before 12) | manifest SHA256(before 12) | checkpoint SHA256(before 12) | build / matsim / parse(s) |
 |---|---|---|---|---|

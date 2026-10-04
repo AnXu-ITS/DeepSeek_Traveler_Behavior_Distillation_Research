@@ -36,3 +36,13 @@ Earlier Chinese Markdown reports were consolidated into English historical editi
 Frozen weights, normalization, configurations, numerical evidence, original provenance and checksum manifests were not changed by the documentation cleanup. Translated release documents can differ from historical freeze bytes; original tags and historical checksum files identify the original packages. The [evidence manifest](../evidence/paper_20260924/artifact_manifest.json) identifies the copied evidence edition.
 
 [Current repository](../README.md) · [Reproduction scope](REPRODUCIBILITY.md) · [Data and access](DATA_SOURCES.md)
+
+## Maintained documentation and source boundaries
+
+The 4 October maintenance edition replaces repeated editorial notices with concise source links and descriptive headings. Numerical tables and technical listings retain their original contents. Six empty questionnaire-summary pages are consolidated in the [survey version index](plans/README.md); the questionnaire HTML, cards, mappings and validation records remain available.
+
+Markdown reports within the S7, S8 and S9 directories are maintained documentation. The checkpoint, configuration, normalization, data, metrics and historical checksum files remain frozen. Full-package checksum manifests refer to the original tagged packages, not to the edited Markdown presentation on the current branch.
+
+Five author-local workflow scripts are [archived byte-for-byte](../archive/development_history/author_workflows/README.md). The evidence manifest records their new paths and original paths without changing their historical hashes. Current replacement entry points either use explicit configuration or clearly report that the incomplete historical closure workflow is retired.
+
+PR #1's [September revision snapshot](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/tree/3584851fd5938cd38649cb5cfd5ececc063e0e10) retains manuscript sources and revised PDFs not fully incorporated into main. It remains separate from the current compact support package; preserving it is not a claim that all its contents were merged.

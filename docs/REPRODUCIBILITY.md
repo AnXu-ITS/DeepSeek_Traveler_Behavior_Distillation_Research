@@ -75,3 +75,13 @@ Run `python scripts/check_repository_docs.py` to check Markdown language, local 
 ## Current manuscript additions (3 October 2026)
 
 See the [compact support package](manuscript-support/2026-10-03/README.md) and [extended records R1–R5](manuscript-support/2026-09-30/README.md). The package verifies retained summary arithmetic; it does not rerun model training, respondent analyses, Teacher acquisition or MATSim.
+
+## Maintained entry points and historical source
+
+The two completion launchers in `scripts/revision_20260921/` now read `DEEPSEEK_API_KEY` from the process environment. They no longer read credentials from an external instruction document. Running them still requests a paid Teacher service and requires an intentional new acquisition; it is not needed for the offline checks above.
+
+The historical `finalize_closure.py` and `seal_closure.py` commands are retired. Their former workflow depends on absent tests, an external validation tool and an author-local manuscript directory. The retained source is [archived with its original hashes](../archive/development_history/author_workflows/README.md). Current entry points exit with an explanation before writing outputs. They do not certify a replacement closure result.
+
+The resident-sensitivity script keeps its numerical analysis but writes its LaTeX fragment to a configurable output location. MATSim launchers accept explicit build/release locations rather than an author's Windows profile. These maintenance changes do not change retained historical calculations.
+
+The [evidence manifest](../evidence/paper_20260924/artifact_manifest.json) still covers the same 533 original artifact contents. For five archived source files, `path` now locates the retained bytes and `original_path` records their former location; `source`, `source_sha256` and `sha256` are unchanged. Active replacements are a new maintenance edition, not byte-identical historical source.

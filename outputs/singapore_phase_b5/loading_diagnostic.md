@@ -2,11 +2,11 @@
 
 This diagnostic examines network loading, departures, congestion and completion under the historical supply and demand representation. Active-mode speeds and whether a mode is network-routed or teleported affect capacity and travel-time interpretation. A low stuck count alone does not establish faithful physical or behavioral simulation.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_b5/loading_diagnostic.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/singapore_phase_b5/loading_diagnostic.md).
 
 [Current research](<../../docs/RESEARCH_DESIGN.md>) · [Training](<../../docs/TRAINING.md>) · [Results](<../../docs/RESULTS.md>) · [Data and access](<../../docs/DATA_SOURCES.md>) · [Model use](<../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Highest-flow road links and volume-to-capacity ratios
 
 | rank | link | peak flow (veh/h) | capacity | V/C |
 |---|---|---|---:|---:|

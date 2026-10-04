@@ -2,11 +2,11 @@
 
 S7 supplements the generic Student with mechanism and between-person response supervision while checking retention of earlier endpoint and context behavior. The W3 model was frozen as the generic behavioral predecessor. Its inherited supervision matters when interpreting S9: adaptation from this checkpoint is not a matched comparison against a randomly initialized baseline. Current controlled objectives deliberately exclude these auxiliary updates.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/outputs/EXPERIMENT_REPORT_S7_MECHANISM_AWARE.md).
 
 [Current research](<../docs/RESEARCH_DESIGN.md>) · [Training](<../docs/TRAINING.md>) · [Results](<../docs/RESULTS.md>) · [Data and access](<../docs/DATA_SOURCES.md>) · [Model use](<../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Congestion: Teacher–Student effect gaps
 
 | model | G_nat (natural gap) | G_broken (broken gap) | G_med (mediator gap) |
 |---|---|---|---|
@@ -19,7 +19,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 0.1340 [0.0738, 0.2149] | 0.1377 [0.0719, 0.2051] | 0.1764 [0.1065, 0.2545] |
 | broken_only | 0.1337 [0.0732, 0.2152] | 0.1372 [0.0719, 0.2037] | 0.1766 [0.1063, 0.2549] |
 
-## Historical numerical table 2
+## Congestion: effect-gap changes from the joint-context baseline
 
 | variant | ΔG_nat | ΔG_broken | ΔG_med |
 |---|---|---|---|
@@ -29,7 +29,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | -0.0060 [-0.0245, +0.0124] | +0.0022 [-0.0119, +0.0128] | +0.0072 [-0.0144, +0.0267] |
 | broken_only | -0.0064 [-0.0243, +0.0117] | +0.0016 [-0.0131, +0.0127] | +0.0073 [-0.0136, +0.0263] |
 
-## Historical numerical table 3
+## Parking cost: Teacher–Student effect gaps
 
 | model | G_nat (natural gap) | G_broken (broken gap) | G_med (mediator gap) |
 |---|---|---|---|
@@ -42,7 +42,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 0.2044 [0.1168, 0.3273] | 0.2448 [0.1257, 0.3591] | 0.2579 [0.1408, 0.3951] |
 | broken_only | 0.2037 [0.1160, 0.3273] | 0.2446 [0.1258, 0.3587] | 0.2579 [0.1408, 0.3951] |
 
-## Historical numerical table 4
+## Parking cost: effect-gap changes from the joint-context baseline
 
 | variant | ΔG_nat | ΔG_broken | ΔG_med |
 |---|---|---|---|
@@ -52,7 +52,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | +0.0020 [-0.0132, +0.0145] | -0.0023 [-0.0179, +0.0127] | -0.0055 [-0.0091, -0.0019] |
 | broken_only | +0.0013 [-0.0141, +0.0141] | -0.0026 [-0.0183, +0.0126] | -0.0055 [-0.0091, -0.0019] |
 
-## Historical numerical table 5
+## Congestion: shortcut and mediator ratios
 
 | model | R_shortcut | R_mediator | Gap_shortcut vs Teacher | Gap_mediator vs Teacher |
 |---|---|---|---|---|
@@ -65,7 +65,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 0.7777 [0.5040, 1.0674] | 0.8296 [0.3641, 1.3579] | 0.3476 [0.1566, 0.5633] | 0.8336 [0.4673, 1.2198] |
 | broken_only | 0.7819 [0.5068, 1.0726] | 0.8317 [0.3629, 1.3650] | 0.3514 [0.1618, 0.5680] | 0.8377 [0.4691, 1.2245] |
 
-## Historical numerical table 6
+## Parking cost: shortcut and mediator ratios
 
 | model | R_shortcut | R_mediator | Gap_shortcut vs Teacher | Gap_mediator vs Teacher |
 |---|---|---|---|---|
@@ -78,7 +78,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 1.0432 [1.0172, 1.0737] | 0.0848 [0.0602, 0.1086] | 0.3333 [0.1983, 0.4869] | 0.6840 [0.4887, 0.9612] |
 | broken_only | 1.0434 [1.0174, 1.0740] | 0.0850 [0.0605, 0.1089] | 0.3336 [0.1985, 0.4871] | 0.6837 [0.4884, 0.9609] |
 
-## Historical numerical table 7
+## Congestion: intervention response magnitudes
 
 | model | E_natural | E_broken | E_mediator |
 |---|---|---|---|
@@ -91,7 +91,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 0.1953 [0.1409, 0.2496] | 0.1620 [0.0764, 0.2609] | 0.1354 [0.0584, 0.2148] |
 | broken_only | 0.1939 [0.1397, 0.2480] | 0.1614 [0.0763, 0.2595] | 0.1346 [0.0576, 0.2139] |
 
-## Historical numerical table 8
+## Parking cost: intervention response magnitudes
 
 | model | E_natural | E_broken | E_mediator |
 |---|---|---|---|
@@ -104,7 +104,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 0.4138 [0.3326, 0.4929] | 0.4288 [0.3514, 0.5064] | 0.0324 [0.0257, 0.0407] |
 | broken_only | 0.4127 [0.3320, 0.4916] | 0.4277 [0.3506, 0.5051] | 0.0324 [0.0258, 0.0407] |
 
-## Historical numerical table 9
+## Legacy single-axis performance retention
 
 | model | mode acc | KL | prob L1 | ΔP gap | sign agreement |
 |---|---|---|---|---|---|
@@ -115,7 +115,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 0.8451 [0.8009, 0.8895] | 0.0697 [0.0584, 0.0817] | 0.2424 [0.2140, 0.2705] | 0.0507 [0.0440, 0.0575] | 0.7122 [0.6639, 0.7609] |
 | broken_only | 0.8451 [0.8009, 0.8895] | 0.0697 [0.0584, 0.0818] | 0.2424 [0.2140, 0.2705] | 0.0506 [0.0440, 0.0575] | 0.7122 [0.6639, 0.7609] |
 
-## Historical numerical table 10
+## Joint-context performance retention
 
 | model | seen joint KL | seen joint L1 | unseen joint KL | unseen joint L1 | interaction L1 err |
 |---|---|---|---|---|---|
@@ -126,7 +126,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | 0.0421 [0.0287, 0.0578] | 0.1733 [0.1346, 0.2118] | 0.0848 [0.0330, 0.1485] | 0.2360 [0.1400, 0.3458] | 0.0488 [0.0380, 0.0604] |
 | broken_only | 0.0421 [0.0286, 0.0578] | 0.1730 [0.1344, 0.2116] | 0.0850 [0.0330, 0.1488] | 0.2362 [0.1400, 0.3462] | 0.0488 [0.0379, 0.0603] |
 
-## Historical numerical table 11
+## Legacy and joint-context divergence changes
 
 | variant | Δ legacy KL | Δ seen joint KL | Δ unseen joint KL |
 |---|---|---|---|
@@ -136,7 +136,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | mech_only | -0.0038 [-0.0050, -0.0025]* | -0.0020 [-0.0035, -0.0006]* | -0.0032 [-0.0077, +0.0015] |
 | broken_only | -0.0038 [-0.0050, -0.0025]* | -0.0020 [-0.0034, -0.0006]* | -0.0030 [-0.0075, +0.0018] |
 
-## Historical numerical table 12
+## Selected-model mechanism-repair checks
 
 |condition| Δ mean [95% CI] |interpretation|
 |---|---|---|
@@ -145,7 +145,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | congestion shortcut gap ↓ | -0.0566 [-0.1164, -0.0051] | ✅ statistically supported improvement |
 | parking_cost shortcut gap ↓ | +0.0073 [+0.0005, +0.0128] | ❌ significant opposite response |
 
-## Historical numerical table 13
+## Training-seed robustness of selected-model changes
 
 | seed | parking G_med | congestion G_broken | congestion Gap_shortcut | Δ legacy KL | Δ seen joint KL |
 |---|---|---|---|---|---|

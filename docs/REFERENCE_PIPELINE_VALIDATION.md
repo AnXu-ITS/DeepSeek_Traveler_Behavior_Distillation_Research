@@ -2,11 +2,11 @@
 
 The reference implementation is checked against the production Student and routing implementation on fixed inputs. The checks distinguish probability differences, identical mode decisions, cached/uncached construction and MATSim execution. Singapore and Helsinki validation conditions use their own supply snapshots and cache states. This is deployment parity evidence rather than a new human-behavior validation or proof of suitability for arbitrary cities.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/REFERENCE_PIPELINE_VALIDATION.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/docs/REFERENCE_PIPELINE_VALIDATION.md).
 
 [Current research](<RESEARCH_DESIGN.md>) · [Training](<TRAINING.md>) · [Results](<RESULTS.md>) · [Data and access](<DATA_SOURCES.md>) · [Model use](<MODEL_USE.md>)
 
-## Historical numerical table 1
+## Fixture decision-parity checks
 
 |check|result|
 |---|---|
@@ -25,7 +25,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | adapter_manifest.json(JSON semantics) |**equal**|
 | original path build / Reference build | 72.0 s / 77.5 s(same order of magnitude; Reference additional persistence 2,316 records SP routing) |
 
-## Historical numerical table 2
+## Cold-cache and warm-cache benchmark components
 
 | | run 1(cold) | run 2(warm) |
 |---|---|---|
@@ -39,7 +39,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | estimated routing saved | — | **139.4 s** |
 | mode distribution | bike 176 / car 146 / pt 114 / walk 64 |**identical**|
 
-## Historical numerical table 3
+## Helsinki decision and artifact parity
 
 |check|result|
 |---|---|
@@ -52,7 +52,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | **Reference warm build(cache reuse)** | **103.2 s** → **relative to original pipeline 92.1×; relative to cold 101.7×** |
 | warm cache | hit rate **100%**(146,812/146,812), estimated routing saved **10,735 s** |
 
-## Historical numerical table 4
+## Singapore and Helsinki build-time comparison
 
 |city| original pipeline build | Reference cold(cache construction) | Reference warm | **vs original pipeline** | **cold→warm** |share of cold-construction cost removed|decision parity| population.xml |
 |---|---|---|---|---|---|---|---|---|

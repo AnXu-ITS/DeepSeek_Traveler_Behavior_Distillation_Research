@@ -9,11 +9,11 @@ os.environ.setdefault('OMP_NUM_THREADS','1')
 from pathlib import Path
 from collections import Counter
 import csv,json,hashlib
+import argparse
 import numpy as np
 from prepare_survey import ROOT,OUT,ORDER,MODES,readj,sha,writej
 
 DEST=OUT/'human_complete_resident_sensitivity'
-PAPER=ROOT.parent/'蒸馏出行意图paper'
 NAMES={'rain':'Rain','delay':'PT delay','rain_delay_interaction':r'Rain $\times$ delay','fare':'PT fare','parking':'Parking','road':'Road penalty','walk_vs_wait':'Walk versus wait','transfer_vs_wait':'Transfer versus wait'}
 
 def readcsv(p):return list(csv.DictReader(p.open(encoding='utf-8-sig')))
@@ -21,7 +21,16 @@ def csvout(p,data):
     with p.open('w',encoding='utf-8-sig',newline='') as f:
         w=csv.DictWriter(f,fieldnames=list(data[0]));w.writeheader();w.writerows(data)
 
-def main():
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--supplement-output', type=Path,
+                        default=DEST/'supp_sample_flow.tex',
+                        help='LaTeX fragment destination (default: the analysis output directory)')
+    return parser.parse_args(argv)
+
+def main(argv=None):
+    args = parse_args(argv)
+    supplement_output = args.supplement_output.expanduser().resolve()
     DEST.mkdir(exist_ok=True)
     sources=[ROOT/'outputs/shanghai_sp_v1/sp_responses.csv',ROOT/'outputs/shanghai_sp_v1/input_coverage.csv',OUT/'sample_flow_audit/shanghai_excluded_record_flow.csv',OUT/'sample_flow_audit/sample_flow_audit.json',OUT/'contrasts.json']
     hashes={str(p.relative_to(ROOT)):sha(p) for p in sources}
@@ -84,7 +93,8 @@ def main():
     maxchange=max(rows,key=lambda r:abs(r['full_minus_original_response_pp']))
     sign_preserved=all(np.sign(r['original_human_response_pp'])==np.sign(r['complete_resident_human_response_pp']) for r in rows)
     text.append(f"Across the omitted 12 respondents' 120 task choices, {union['car']} were driving/taxi, {union['pt']} PT, {union['bike']} bicycle and {union['walk']} walking. These repeated task counts are descriptive, not 120 independent respondents. The largest absolute change in an aggregate human response is {abs(maxchange['full_minus_original_response_pp']):.2f} points ({NAMES[maxchange['contrast']]}). "+('All eight point-estimate response directions are retained. ' if sign_preserved else 'Some point-estimate response directions change. ')+ 'This comparison leaves the frozen model cohort and its Teacher sample unchanged, and does not test model predictions for the 12 omitted people.')
-    (PAPER/'Elsevier_template/generated/revision20260921/supp_sample_flow.tex').write_text('\n'.join(text)+'\n',encoding='utf-8')
+    supplement_output.parent.mkdir(parents=True,exist_ok=True)
+    supplement_output.write_text('\n'.join(text)+'\n',encoding='utf-8')
     methods='Shanghai model comparisons retain the 321-person frozen mapping cohort; a separate human-only sensitivity compares it with all 333 consented respondents eligible by recent Shanghai travel using a shared, nested respondent bootstrap.'
     limits='Twelve complete Shanghai respondents fall outside the original input-mapping rule, including one income refusal; the human-only coverage comparison quantifies their influence on aggregate responses but cannot establish predictive validity for those omitted participants.'
     (DEST/'main_text_suggestions.txt').write_text('Methods: '+methods+'\n\nLimitations: '+limits+'\n',encoding='utf-8')
@@ -96,10 +106,10 @@ def main():
     report=['# Shanghai complete-eligible-cohort human-only sensitivity','',methods,'',limits,'',
       f'All 333 eligible respondents answered ten tasks; 321 are the frozen model subset, 12 additional people supply 120 explicit choices. The same two none-suitable answers remain unscored. Largest absolute response change: {abs(maxchange["full_minus_original_response_pp"]):.4f} pp ({maxchange["contrast"]}). Directions preserved: {sign_preserved}.','',
       'The bootstrap samples the 333-person empirical distribution and carries the subset membership indicator, preserving overlap; this also allows its empirical mixture proportion to vary between draws. It is a coverage sensitivity, not a causal estimate. Frozen models, their cohort and all Teacher files are unchanged.','',
-      'Files: human_responses_333_vs_321.csv (point estimates, counts and shared-bootstrap intervals), additional_respondents_mode_distribution.csv (12-person union plus category11/income1), additional_respondents_task_distribution.csv, paired_nested_bootstrap.npz, verification.json. The generated supp_sample_flow.tex is ready for the root coordinator to insert.']
+      'Files: human_responses_333_vs_321.csv (point estimates, counts and shared-bootstrap intervals), additional_respondents_mode_distribution.csv (12-person union plus category11/income1), additional_respondents_task_distribution.csv, paired_nested_bootstrap.npz, verification.json. The generated LaTeX supplement fragment accompanies the aggregate results.']
     (DEST/'HUMAN_COVERAGE_SENSITIVITY.md').write_text('\n'.join(report)+'\n',encoding='utf-8')
     writej(DEST/'manifest.json',dict(files={p.name:sha(p) for p in DEST.iterdir() if p.is_file() and p.name!='manifest.json'},
-        supplement_fragment_sha256=sha(PAPER/'Elsevier_template/generated/revision20260921/supp_sample_flow.tex'),
+        supplement_fragment_sha256=sha(supplement_output),
         legacy_path_note='Directory/CSV fields containing resident are historical names; actual S02 screens recent Shanghai travel, not residence.'))
     print(json.dumps(dict(status='complete',response_comparison=rows,additional_distribution=dist),ensure_ascii=False))
 

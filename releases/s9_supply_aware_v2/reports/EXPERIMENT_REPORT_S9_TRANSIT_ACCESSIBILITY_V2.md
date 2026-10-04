@@ -2,11 +2,11 @@
 
 S9, called SA-Student in the current manuscript, initializes from frozen S7-W3 and adapts to corrected Singapore PT accessibility inputs. It has 24,562 parameters, 336 states split 234/51/51, and 1,502 valid Teacher queries. Training selects epoch 17. This historical adaptation comparison includes inherited generic and auxiliary supervision, so it is not the later matched objective ablation. The 51-state accessibility test and 226-state single-context test are distinct evaluation sets.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/releases/s9_supply_aware_v2/reports/EXPERIMENT_REPORT_S9_TRANSIT_ACCESSIBILITY_V2.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/releases/s9_supply_aware_v2/reports/EXPERIMENT_REPORT_S9_TRANSIT_ACCESSIBILITY_V2.md).
 
 [Current research](<../../../docs/RESEARCH_DESIGN.md>) · [Training](<../../../docs/TRAINING.md>) · [Results](<../../../docs/RESULTS.md>) · [Data and access](<../../../docs/DATA_SOURCES.md>) · [Model use](<../../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Teacher transit probability by corrected accessibility class
 
 | class | n | Teacher P(PT) |
 |---|---|---|
@@ -16,7 +16,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | D_poor | 84 | 0.189 |
 | E_infeasible | 80 | 0.000 |
 
-## Historical numerical table 2
+## Corrected supply-aware model performance
 
 |metric| B0 S7-W3 | S9 | Teacher |
 |---|---|---|---|
@@ -26,7 +26,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | pair monotonicity | 0.6316 | **0.6579** | 0.7895 |
 | sensitivity ΔP_PT | 0.0845 | **0.1527** | 0.4480 |
 
-## Historical numerical table 3
+## Generic-capability regression checks
 
 |validation check|value|interpretation|
 |---|---|---|

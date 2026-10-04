@@ -2,11 +2,11 @@
 
 This record traces the development from early pointwise distillation through multi-context and mechanism supervision, S7-W3 freezing, the deprecated S8 adaptation, and corrected S9 deployment. Earlier prototype feedback experiments and operational gates have their own scope. The current paper uses the later controlled-response, human-response and fixed-behavior execution comparisons. Historical numbers below remain associated with their original stages.
 
-This is an English editorial consolidation of the historical document. The [complete original version](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/PROGRESS.md) remains available in Git history. The numerical tables and English code listings retained below are historical records, not newly executed results.
+Original source: [archived document](https://github.com/AnXu-ITS/DeepSeek_Traveler_Behavior_Distillation_Research/blob/de906ac8a3efae692797bd08e340375107b8e52a/PROGRESS.md).
 
 [Current research](<../../docs/RESEARCH_DESIGN.md>) · [Training](<../../docs/TRAINING.md>) · [Results](<../../docs/RESULTS.md>) · [Data and access](<../../docs/DATA_SOURCES.md>) · [Model use](<../../docs/MODEL_USE.md>)
 
-## Historical numerical table 1
+## Early Student test performance
 
 |Metric (test)| v0.2-A | v0.2-B | v0.2-C |
 |---|---|---|---|
@@ -16,7 +16,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | counterfactual \|ΔP_T−ΔP_S\| | **0.1269** | 0.1564 | 0.1461 |
 | heterogeneity \|ΔP_T−ΔP_S\| | — | — | 0.1601 (8pairs) |
 
-## Historical numerical table 2
+## Persona-holdout Student test performance
 
 |Metric (test)| v0.3-A | v0.3-B (+decomposed response supervision) | v0.3-C (+heterogeneity) |
 |---|---|---|---|
@@ -27,7 +27,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | sign agreement | 0.6508 | **0.7143** | 0.6825 |
 | heterogeneity \|dP_T−dP_S\| | n/a | n/a | 0.0986 (48pairs) |
 
-## Historical numerical table 3
+## Population mode-share responses to scenario changes
 
   |scenario| bike | car | pt | walk |
   |---|---|---|---|---|
@@ -35,7 +35,7 @@ This is an English editorial consolidation of the historical document. The [comp
   | fare ×2 | −2.5 | +7.0 | −4.3 | −0.2 |
   | combined | −19.2 | +15.0 | +5.4 | −1.2 |
 
-## Historical numerical table 4
+## Feedback-loop congestion equilibria
 
   |scenario| equilibrium c* | car share |iterations to convergence|
   |---|---|---|---|
@@ -43,28 +43,28 @@ This is an English editorial consolidation of the historical document. The [comp
   | rain | **0.44** | 38.5% | 5 |
   | fare ×2 | 0.40 | 31.6% | 4 |
 
-## Historical numerical table 5
+## Congestion response before and after additional supervision
 
   | checkpoint | |ΔP_S| | |ΔP_T−ΔP_S| | sign |
   |---|---|---|---|---|
   | v0.3-C(without congestion training) | 0.0067 | 0.0637 | 0.3611 |
   | **v0.3-S1-C(after additional training)** | 0.0215 | 0.0604 | **0.7361** |
 
-## Historical numerical table 6
+## Parking-cost and transit-delay response changes
 
   |axis| sign before→after | \|ΔP_T−ΔP_S\| before→after |
   |---|---|---|
   | parking_cost | 0.315 → **0.778** | 0.090 → **0.059** |
   | transit_delay | 0.685 → **0.759** | 0.067 → **0.047** |
 
-## Historical numerical table 7
+## Road-disruption response before and after additional supervision
 
   | checkpoint | \|ΔP_S\| | \|ΔP_T−ΔP_S\| | sign |
   |---|---|---|---|
   | v0.3-S2-C(without disruption training) | 0.1056 | 0.0738 | 0.7778 |
   | **v0.3-S4-C(after additional training)** | **0.1408** | 0.0787 | **0.8333** |
 
-## Historical numerical table 8
+## Single-axis and joint-context model comparison
 
 |metric| M0 single-axis | M1 joint(K=5) | M2 joint(+K=7) |
 |---|---|---|---|
@@ -74,7 +74,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | legacy acc(no regression) | 0.8496 | 0.8496 | 0.8451 |
 | legacy KL | 0.0776 | 0.0745 | **0.0735** |
 
-## Historical numerical table 9
+## Shortcut and mediator ratios by perturbation axis
 
 |axis| Teacher | C0 pre-S5 | C1 S5 |interpretation|
 |---|---|---|---|---|
@@ -82,7 +82,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | congestion | 0.52 / **0.89** | 0.81 / 0.75 | 1.02 / 0.67 | Case 1 distillation degradation |
 | parking_cost | 0.69 / 0.56 | 1.03 / **0.05** | 1.02 / 0.06 | Case 1 mechanism loss |
 
-## Historical numerical table 10
+## Singapore execution metrics by population size
 
 |metric| 100 | 500 | 1000 |
 |---|---|---|---|
@@ -95,7 +95,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | runtime (s) | 29.4 | 26.5 | 27.6 |
 | executed mode share | 0.18/0.33/0.06/0.43 | 0.18/0.29/0.06/0.48 | 0.19/0.29/0.06/0.47 |
 
-## Historical numerical table 11
+## Transit-accessibility adaptation performance
 
 |metric| S7-W3 (B0) | S8 (R2) | Teacher |
 |---|---|---|---|
@@ -104,7 +104,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | monotonicity pair/triplet | 0.657/0.261 | **0.686/0.304** | 0.800/0.522 |
 | sensitivity ΔP_PT | 0.163 | 0.156 | 0.212 |
 
-## Historical numerical table 12
+## Singapore scenario results with the deprecated supply-aware model
 
 |scenario| car | pt | bike | walk | PT boardings | VKT |
 |---|---|---|---|---|---|---|
@@ -115,7 +115,7 @@ This is an English editorial consolidation of the historical document. The [comp
 | C4 road disruption | **0.2%** | 5.5% | 43.1% | **51.3%** | 1,230 | **168 km** |
 | C5 rain+delay | 36.5% | 0.2% | 13.4% | 49.9% | 43 | 41,475 km |
 
-## Historical numerical table 13
+## Singapore scenario results after supply correction
 
 |scenario| car | pt | bike | walk | PT boardings | VKT |
 |---|---|---|---|---|---|---|
